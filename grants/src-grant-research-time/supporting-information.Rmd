@@ -1,0 +1,141 @@
+---
+title: "Supporting information"
+output: md_document
+---
+
+# Abstract
+
+<!--
+In the abstract, please describe in brief the following: 
+- What is to be done: purpose and aims 
+- How the research will be carried out: project organisation, time plan and scientific methods 
+- What is important about the planned research 
+
+The abstract shall provide a summary picture of the purpose and implementation of the research. Please use wording to ensure persons with another subject specialisation can understand the information. 
+
+The description may cover a maximum of 1 500 characters including blank spaces. This is approximately one third of an A4 page in Arial, font size 11, single line spacing.
+-->
+
+Trauma is a massive global health issue. Many training programmes have been developed to help physician in the initial management of trauma patients. Advanced Trauma Life Support® (ATLS®) is the most popular of these programmes and have been used to train over one million physicians worldwide. Despite its widespread use, there are no controlled trials showing that ATLS® improves patient outcomes. Multiple systematic reviews stress the need for such trials. 
+
+We will conduct a batched stepped wedge cluster randomised controlled trial with the aim to compare the effects of ATLS® training with standard care on outcomes in adult trauma patients. Cluster will be hospitals in India. We will roll out the intervention of ATLS® training to 32 clusters organised in four batches. Within each batch, clusters will be randomised to one of eight implementation sequences. We expect a sample size of 6528 patients over five years.
+
+This is a collaborative project between researchers and institutions in Sweden, India, and the United Kingdom. Our research will be important regardless of whether the results are positive or negative. If we show that ATLS® improves patient outcomes then ATLS® should be promoted to save lives and reduce morbidity. If we show that ATLS does not improve patient outcomes then this should impact how trauma life support training is delivered and new course concepts may be needed.
+
+# Popular science description
+
+<!--
+Describe the planned research in such a way that a person who is not a researcher can understand it. Do this by answering the following questions: 
+- What is the research about? 
+- Why is it important to research this? 
+- In what way may the new knowledge be important? 
+- The popular science description is important when we inform about the research funded by the Swedish Research Council. 
+
+The text must be in Swedish and cover a maximum of 2 000 characters including blank spaces. This is approximately half an A4 page in Arial, font size 11, single line spacing. 
+-->
+
+Varje år dör 4.5 miljoner människor av trauma, alltså svår kroppskada som orsakas av olyckor eller våld. Trauma är den främsta orsaken till sjukdomsbörda bland unga vuxna. Ett bra primärt omhändertagande, alltså vård tidigt efter skadan, är avgörande för att rädda liv och minska sjuklighet. Flera kurser har tagits fram för att förbättra det primära omhändertagandet. Den mest kända kursen är Avanced Trauma Life Support®, och mer än en miljon läkare över hela världen har utbildats i ATLS® sedan 1978.
+
+Trots att ATLS används i så stor omfattning finns det ingen forskning av hög kvalitet som visar att ATLS® förbättrar utfallen hos patienter. Detta är problematiskt eftersom det betyder att många länder, inklusive Sverige, spenderar miljontals kronor varje år på att utbilda läkare i ATLS® utan att veta om det leder till förbättrad överlevnad eller minskad sjuklighet hos patienter.
+
+Vi vill därför studera om ATLS® förbättrar överlevnad och minskar sjuklighet hos vuxna traumapatienter. Vi genomför projektet i Indien eftersom ATLS® inte är standard där än. I vårt projekt kommer vi att slumpa sjukhus till olika tidpunkter när de ska införa ATLS®. Vi kommer att samla in data från patienter under en period innan sjukhusen inför ATLS® och sedan under en period efter att de inför ATLS®. Vi kommer därefter att jämföra utfall hos patienter innan och efter införandet av ATLS®.
+
+Vårt projekt blir det första att utvärdera effekten av ATLS® på utfall hos patienter genom storskalig forskning av hög kvalitet. Kunskapen som genereras från vårt projekt är viktig oavsett om resultaten är positiva eller negativa. Om vi visar att ATLS® förbättrar överlevnad och minskar sjuklighet bör ATLS® eller liknande kurser införas i större skala. Om vi visar att ATLS® inte förbättrar överlevnad och minskar sjuklighet behövs nya sätt att träna det primära omhändertagandet av traumapatienter.
+
+# Legal and formal requirements
+
+<!--
+State whether the research covers the handling of personal data, or experiments on animals and/or studies involving humans. 
+If the research covers any of the above, you must also describe/state the approvals and permits your research project requires, and how you plan to obtain these. Describe any other permits that affect your application, such as whether parts of the research will be done in a country other than Sweden. If no approvals or permits are needed, please state so. 
+
+The description may cover a maximum of 2 000 characters including blank spaces. This is approximately half an A4 page in Arial, font size 11, single line spacing. 
+-->
+
+
+Our project involves human participants and covers handling of personal data. We will conduct the research in India but we will store pseudonymised data on servers in Sweden and conduct the data analysis using these data. We will therefore require the following approvals:
+
+Indian Health Ministry Screening Committee approval. This approval is required for health research in India involving foreign funding. We will apply for this approval during 2023 or early 2024 through our collaboration partner The George Institute for Global Health (TGI), which has extensive experience in applying for and being granted this approval for similar trials. This approval typically takes four months.
+
+Ethical approval at each of the participating hospitals. We will apply for ethical approval from each of the participating hospitals, because India has no central ethical review authority with the mandate to clear projects across hospitals. We will apply for ethical approval from hospitals as they are found eligible for participation. TGI will coordinate these applications. Based on previous experiences these approvals take between four to six months.
+
+Ethical approval in Sweden. We will apply for ethical approval from the The Swedish Ethical Review Authority, which is required for the handling of pseudonymised personal data in Sweden. This application will be coordinated by the principal investigator and is expected to take three months.
+
+We will also register the handling of personal data with the Data Protection Officer at Karolinska Institutet.
+
+# Ethical considerations
+
+<!--
+Reflect on the ethical issues that may arise for your project, and describe these. You must also describe how you plan to address ethical dilemmas that may arise. Please justify why the research should be carried out against the background of the ethical issues you have identified. Examples of issues to reflect on: 
+- How do your research questions and expected results measure up in relation to the ethical issues? 
+- What (direct) risks (physical, mental, or integrity) will research persons or animals be exposed to? 
+- What long-term risks may arise from the research? Is there any risk that the research may be used in a way that is detrimental to animals, nature/the environment, or society (whole or parts of the same) in other respects? 
+- Is the research expected to contribute to other values over and above the knowledge gain? If so, to whom? 
+- How do you weigh up the risks (in particular short-term risks) against the value (which is often more long-term) of the research? 
+
+If no ethical issues are raised, please justify this. The description may cover a maximum of 4 000 characters including blank spaces. This is approximately one A4 page in Arial, font size 11, single line spacing.
+-->
+
+## How do your research questions and expected results measure up in relation to the ethical issues? 
+
+There are three main ethical issues with our research:
+
+- Trauma patients constitute a vulnerable population because they often arrive in a state of emotional and physical distress with injuries and pain from injuries affecting their level of consciousness. They also often lack the protection of a proxy decision maker.
+- It will not be possible for patients to opt out from being subjected to the intervention, because the intervention is delivered at the cluster level and involves training physicians in trauma life support. Therefore, as physicians cannot be expected to temporarily forget their training.
+- We will apply for a waiver of informed consent from the ethical review boards at the participating hospitals. We do this because the target population will often have reduced decisional capacity at the time of data collection and the nature of the intervention is such that they can not refuse receiving it.
+
+Regulations on medical research in Sweden and India allow such a waiver when the research is expected to generate knowledge that cannot be generated through research using informed consent, or the research is expected to directly benefit research participants. If the research is not expected to directly benefit research participants it is still allowed if the research is expected to generate knowledge that can directly benefit the patient population to which the participant belongs, and the research involves minimal risk.
+
+Our research measure up to these issues for the following reasons. First, it cannot be conducted using informed consent because the cohort of patients with severe trauma is the group most likely to benefit from improvements in early management and it is therefore crucial to include this population. Second, the research can directly benefit the participants during the intervention phase if ATLS is found to improve patient outcomes. The procedures that we will use to collect data will be direct observation of care, routine physical examinations, questionnaires, and extraction of already collected data from patient records, which are often seen as involving only minimal risk.
+
+## What (direct) risks (physical, mental, or integrity) will research persons or animals be exposed to? 
+
+The direct risks includes integrity violations and data leakage. We will mitigate these risks by employing rigorous data collection and storage mechanisms.
+
+## What long-term risks may arise from the research? Is there any risk that the research may be used in a way that is detrimental to animals, nature/the environment, or society (whole or parts of the same) in other respects? 
+
+The long-term risks of the research and the risk that the research will be used in detrimental ways are minimal. Our trial will assess the effect of Advanced Trauma Life Support® (ATLS®) on patient outcomes. Training in ATLS® is standard in many health care systems and it is unlikely that training physicians in this programme induces any harm to participants. 
+
+## Is the research expected to contribute to other values over and above the knowledge gain? If so, to whom? 
+
+In addition to the knowledge gain, our research may directly benefit the participants enrolled during the intervention phase in each hospital. 
+
+## How do you weigh up the risks (in particular short-term risks) against the value (which is often more long-term) of the research? 
+
+We assess the short term risks as minimal, because the intervention involves training physicians in a well established trauma life support programme and the data collection rely mostly on data from participants' hospital records. We will not perform any invasive measurements or procedures as part of the data collection. The short term risks of integrity violations and data leakage are weighed up by the potential direct benefit for the participants in the intervention phase and by the potential for improved care for the trauma patient population.
+
+# Sex and gender perspectives
+
+<!--
+Please state whether sex and gender perspectives are applicable in your planned research, and justify your decision. Please note that we are not asking for information about the composition of the research team (men/women). Read more about sex and gender perspectives in research content.Opens in new window. 
+
+The following applies: 
+
+If you answer “Yes”: Please justify your answer, and describe also how you take account of sex and gender perspectives in the research plan. If you have stated that sex and gender perspectives are applicable, but still choose not to include them in your research plan, you will need to justify this here. 
+
+If you answer “No”, and thereby do not consider that sex and gender perspectives are applicable for your planned research, you do not need to justify your decision. 
+
+The justification may cover a maximum of 4 000 characters including blank spaces. This is approximately one A4 page in Arial, font size 11, single line spacing. 
+-->
+
+The sex and gender perspectives are integral parts of our research. We have previously shown that almost 80% of both patients who present and patients who are admitted with trauma in the setting of our proposed research are male. We have also shown that female and male patients have similar odds of early and late mortality after adjusting for potential confounders. In yet unpublished data, we find that old-aged females (60 years and above) and middle-aged men (33-59 years) report the lowest health status, while middle-aged females had the highest odds of reporting problems across the functional domains. In qualitative interviews with trauma patients after discharge from hospital we find that females and males face different challenges, especially regarding self care and daily activities.
+
+These previous findings indicate that we can expect outcomes, and particularly secondary non-mortality outcomes, to differ between females and males. In our proposed trial we therefore take account of sex and gender perspectives in two ways. First, we will adjust for sex in our fully adjusted covariate analysis. This will allow us to identify and discuss the effect of patient sex on the trial outcomes. Second, we will perform prespecified subgroup analyses in females and males respectively. These subgroup analyses will allow us to explore potential heterogeneity in the intervention effect in females and males. These subgroup analyses will unfortunately need to be explorative and hypothesis generating, as it is beyond the limits of the funding available within this call for these analyses to achieve the same power as the main analysis. 
+
+# Other applications or grants
+
+<!--
+Describe the relationship between the different projects if 
+- you are applying for or intend to apply for other grants from the Swedish Research Council 
+- you are receiving an ongoing grant from the Swedish Research Council with a grant period that wholly or partly overlaps with the grant you are now applying for 
+- there are applications or grants relating to the same project concept/purpose from the Swedish Research Council or other funding bodies (from you or another researcher). 
+
+In all cases, you should also justify why you are submitting one or several further applications. If there are no other applications or grants, please state so. 
+
+The description may cover a maximum of 2 000 characters including blank spaces. This is approximately half an A4 page in Arial, font size 11, single line spacing. 
+-->
+
+In addition to the current call, we will also apply for the following grants:
+- Swedish Research Council Development Research. We will propose to assess the effectiveness of a low cost alternative to Advanced Trauma Life Support® using a design that is feasible under the funding constraints of that call. 
+- Swedish Research Council Grant for research time in a clinical environment. I will apply for this grant to cover my research activity in this project and PhD-student salaries.
+- Laerdal Foundation Project support grant. We will apply for the same project idea as this call but for additional funding to allow longer follow up and higher resolution data collection.
+- European Research Council Advanced and starting grants. Similar to the Laerdal Foundation Project support grant, we will apply for this grant to 1) allow for the inclusion of more clusters to power the trial for subgroup analyses, and 2) allow for longer follow up and higher resolution data collection. 

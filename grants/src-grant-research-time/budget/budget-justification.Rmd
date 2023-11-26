@@ -1,0 +1,19 @@
+---
+output: word_document
+---
+
+# Justification of the budget applied for
+
+<!-- Describe briefly the primary costs you intend to cover within the framework for the grant budget. -->
+
+The primary costs that I intend to cover within the framework for this grant budget are:
+
+- my research time, corresponding to 30% of full time for five years;
+- the salary of one PhD-student, full-time, for three years;
+- the salary of one research assistant, corresponding to 20% of full time for three years;
+- the salary of one postdoctoral researcher, full-time, for two years; and
+- travel and accommodation during research visits to trial sites and collaborators.
+
+I have applied for the remaining project costs related to project management, data collection, trial monitoring and ATLS® training in my application for the Swedish Research Council Project Grant in Medicine and Health. 
+ 
+

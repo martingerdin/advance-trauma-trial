@@ -1,0 +1,23 @@
+---
+output: word_document
+---
+
+# Letter of Support
+
+<!--
+This document, covering maximum 1 A4 page plus possibly one further page for a digital signature, shall include information about your clinical employment (position and employer) and employment level (minimum 30 per cent) and shall confirm that working hours corresponding to 30, 40 or 50 per cent will be released for the research project in question. The name and contact details of the operational manager or corresponding signing the certificate shall be stated. Please note that the letter of support is an important part of the assessment of the application, and that we are not asking for a letter of recommendation. The document must be written in English.
+-->
+
+Martin Gerdin Wärnberg is employed as a resident in anaesthesia and intensive care at Function Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna. His employment level is 100%. Working hours corresponding to 30% will be released for the research project in question.
+
+
+
+
+
+Lars I Eriksson, MD, PhD, FRCA  
+Professor, Academic chair  
+Director of Research & Development, Education and Innovation  
+Perioperative Medicine and Intensive Care  
+Section for Anesthesiology and Intensive Care Medicine  
+Karolinska Institutet and Karolinska University Hospital  
+SE-171 76 Stockholm, Sweden
