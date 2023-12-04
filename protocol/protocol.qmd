@@ -10,10 +10,6 @@ format:
     toc-depth: 3
     number-sections: true
     fig-caption: true
-    include-in-header: 
-      text: |
-        \let\oldsection\section
-        \renewcommand\section{\clearpage\oldsection}
 ---
 
 ```{r setup, include=FALSE}
@@ -37,6 +33,8 @@ Sponsor: Karolinska Institutet
 Co-sponsor: The George Institute for Global Health, India
 
 Principal Investigator: Martin Gerdin Wärnberg
+
+\newpage
 
 # Roles and Contact information
 
@@ -90,6 +88,8 @@ unless they otherwise agree in a written agreement.*
 | project management, statistics or |                                  |
 | data management.*                 |                                  |
 +-----------------------------------+----------------------------------+
+
+\newpage
 
 # List of used acronyms and abbreviations 
 
@@ -173,12 +173,14 @@ rows as needed.*
                      the product in the RSI.
   --------------------------------------------------------------------------
 
+\newpage
+
 # Synopsis
 
 **Title**
 Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
 
-**Acronym**
+<!-- **Acronym** -->
 
 **Rationale**
 Trauma is a massive global health issue [@injuries2020; @GBD2020]. Many training programmes have been developed to help physicians in the initial management of trauma patients [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular of these programmes and have been used to train over one million physicians worldwide [@acsAtls2018]. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. Multiple systematic reviews emphasise the need for such trials [@Mohammad2013; @Jayaraman2014; @Jin2021].
@@ -200,19 +202,9 @@ Adult trauma patients presenting to the emergency department of a participating 
 
 **Eligibility Criteria**
 
-*Cluster*
+*Cluster* will be hospitals with a baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months, that provide general surgery, imaging and blood banking services around the clock, and where no more than 25% of initial trauma care providers trained in any trauma life support training programme.
 
-- baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
-- provides general surgery, imaging and blood banking services around the clock; and
-- no more than 25% of initial trauma care providers trained in any trauma life support training programme.
-
-*Patient*
-
-- age of at least 15 years;
-- present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
-- admitted or died between arrival at the hospital and admission;
-- transferred from the emergency department of a participating hospital to another hospital for admission; and
-- trauma occurred less than 48 hours before arrival at the hospital.
+*Patients* will at least 15 years old, who present to the emergency department of participating hospitals with a history of trauma occuring less than 48 hours before arrival, and who are admitted or die between and admission, or who are transferred from the emergency department of a participating hospital to another hospital for admission.
 
 **Intervention** 
 The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
@@ -223,13 +215,15 @@ In-hospital data collection will be conducted under a waiver of informed consent
 **Trial Period**
 2024-10-01 to 2029-10-01
 
+\newpage
+
 # Background and rationale
 
 Each year, 4.3 million people die from trauma [@injuries2020]. Among people aged 10-24 and 25-49 years trauma is the largest cause of disability adjusted life years [@GBD2020]. Most deaths from trauma occur within the first 24-48 hours  [@Rauf2019]. Traumatic brain injury and exsanguination are the most common causes of trauma deaths [@Roy2017; @Callcut2019]. Most preventable trauma deaths are caused by clinical judgement errors during initial resuscitation or early care including airway management and haemorrhage control, even though the deaths occur later during the hospital stay [@Roy2017; @Ghorbani2018].
 
-Several trauma life support training programmes have been developed to improve the early management of patients in the hospital by providing a structured framework for assessment and treatment [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. The proprietary Advanced Trauma Life Support® (ATLS®) is the most established trauma life support training programme and more than one million physicians in over 80 countries have been trained in the programme since the first course in 1978 [@acsAtls2018]. In the US and many other countries training in ATLS® is virtually mandatory for trauma care physicians [@ACS2022]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020].
+Several trauma life support training programmes have been developed to improve the early management of patients in the hospital by providing a structured framework for assessment and treatment [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. The proprietary Advanced Trauma Life Support^®^ (ATLS^®^) is the most established trauma life support training programme and more than one million physicians in over 80 countries have been trained in the programme since the first course in 1978 [@acsAtls2018]. In the US and many other countries training in ATLS^®^ is virtually mandatory for trauma care physicians [@ACS2022]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020].
 
-There are three randomised controlled studies showing that ATLS® improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS® improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. We conducted an updated systematic review for project (unpublished), and estimated a pooled risk ratio of `r pooled.rr` (95% CI `r pooled.ci`) from  `r number_to_text(number.identified.studies)` heterogeneous (I^2^ `r I2`) retrospective or small studies on the effect of ATLS on mortality (Figure \@ref(fig:forest-plot)) `r pooled.studies.citation`. No study assessed functional outcomes.
+There are three randomised controlled studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. We conducted an updated systematic review for project (unpublished), and estimated a pooled risk ratio of `r pooled.rr` (95% CI `r pooled.ci`) from  `r number_to_text(number.identified.studies)` heterogeneous (I^2^ `r I2`) retrospective or small studies on the effect of ATLS on mortality (Figure \@ref(fig:forest-plot)) `r pooled.studies.citation`. No study assessed functional outcomes.
 
 We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) that we conducted between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial. We published the protocol for this pilot study [@GerdinWärnberg2022]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India (unpublished data) and shows that it is feasible to conduct the proposed trial with a high recruitment rate (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
 
@@ -238,165 +232,54 @@ To involve patients and the public in the planning of this trial we conducted 19
 ## Updated systematic review
 We performed a systematic literature search in the Medline, Embase, Cochrane, Web of Science, CINAHL and Google Scholar databases (PROSPERO ID CRD42022373977). The last search was conducted on November 11, 2022. We developed the search strategy in Medline (Ovid) in collaboration with librarians at the Karolinska Institutet University Library. We limited the search to English language articles, searched all databases from inception, and screened a total of 7896 records. We used a random effects model to pool estimates across studies.
 
-```{r forest-plot, echo = FALSE, fig.cap="Summary of the systematic review conducted for this application. Abbreviations: CI Confidence Interval, RR Risk Ratio."}
+```{r forest-plot}
+#| echo: false
+#| fig.cap: "Summary of the updated system review. The forest plot shows the effect of ATLS on mortality. Abbreviations: RR, risk ratio; CI, confidence interval; ATLS, Advanced Trauma Life Support; I^2^, heterogeneity."
 knitr::include_graphics("forest-plot.pdf")
 ```
 
 # Benefit-risk evaluation 
 
-*The benefits of the trial should be weighed against the risks for the
-subjects. Risks can be divided into those with causal relationship with
-the investigational medicinal product and those with causal relationship
-with trial-specific examinations.*
+The direct risks includes integrity violations and data leakage. We will mitigate these risks by employing rigorous data collection and storage mechanisms. The procedures that we will use to collect data will be direct observation of care, routine physical examinations, questionnaires, and extraction of already collected data from patient records, which are often seen as involving only minimal risk. 
 
-*If an investigational medicinal product is administered in a manner
-that is not described in the summary of product characteristics (SPC),
-the risks related to this must be evaluated. The sponsor should
-summarize if the benefit-risk evaluation is positive for the trial. This
-section is an important source of information when authoring the
-Informed Consent Form (ICF).*
+The long-term risks of the research and the risk that the research will be used in detrimental ways are minimal. Our trial will assess the effect of Advanced Trauma Life Support^®^ (ATLS^®^) on patient outcomes. Training in ATLS^®^ is standard in many health care systems and it is unlikely that training physicians in this programme induces any harm to participants. 
 
-*Summarize the expected therapeutic benefit in terms of:*
+We consider these risks weighed up by the potential direct benefit for the participants in the intervention phase, if ATLS^®^ is found to improve patient outcomes, and by the potential for improved care for the trauma patient population.
 
--   *the investigational medicinal product's characteristics and
-    knowledge about it*
+# Trial aim
 
--   *for the subject as an individual*
-
--   *for the group represented by the subject or public health benefit*
-
-*Summarize the risks and inconveniences to subjects regarding:*
-
--   *the investigational and auxiliary medicinal product's
-    characteristics and knowledge about them*
-
--   *the characteristics of the intervention in relation to normal
-    clinical practice, the safety measures, including provisions for
-    risk minimisation measures, monitoring, safety reporting and safety
-    plan, and the risk to subjects\' health that the medical condition
-    for which the investigational medicinal product is being
-    investigated may pose*
-
--   *subjects participating in clinical trials in an emergency
-    situation - scientific justification is required such that
-    participation in the clinical trial provides a direct clinically
-    relevant benefit to the subject.*
-
-*Check also that you describe:*
-
--   *The measures taken to minimise sources of error, including, where
-    appropriate, randomisation and blinding.*
-
--   *Other expected benefits, e.g., health economics benefits.*
-
--   *Risks that are associated with participation in this trial;
-    trial-specific examinations and/or sampling not included in routine
-    clinical practice. The risk of possible deterioration of the
-    subjects\' disease state in, e.g., placebo treatment should also be
-    included.*
-
--   *Expected adverse reactions. This includes both the investigational
-    medicinal product and the comparator product.*
-
--   *Possible interactions with concomitant medical treatments.*
-
--   *Steps that will be taken to control or mitigate risks (i.e. close
-    follow-up of subjects).*
-
--   *Benefit-risk rationale, concluding that it is ethical to perform
-    the trial and that the benefits justify the risks.*
-
-# Trial objectives
-
-*Objectives or purpose = describe why the trial is done and what you
-want to accomplish with the trial. Note that the connection should be
-clear between the objective, endpoint and method description for
-measurement of the outcome.*
-
-*List the trial's primary and secondary objectives (e.g., to study the
-effect, pharmacokinetics, and/or safety of the investigational medicinal
-product).*
-
-*Describe which endpoint (variables) will measure these. Be sure that
-each variable is clearly defined. Use neutral words to describe the
-objectives. This section can have sub-sections such as "primary
-objective", "secondary objective", "primary endpoint (variable)", and
-"secondary endpoints (variables)". Briefly state these, while methods
-and questionnaires can be referred to under section 8.1, Methods for
-measurement of endpoints for clinical efficacy.*
-
-## Primary objective
-
-*Describe the primary objective (there should only be one).*
-
-*Example of a main aim / primary objective: To compare the
-blood-pressure lowering effect of drug x with drug y.*
-
-*Text suggestion:* The primary objective of this trial is to...
-
-## Secondary objective(s)
-
-*Describe eventual secondary objective(s). These should be as few as
-possible (e.g., AE, subgroup analyses, quality of life, etc.).*
-
-*Text suggestion:* The secondary objective of this trial is to...
-
-## Primary outcome (variable)
-
-*The method by which the primary endpoint is measured. The primary
-endpoint is described in more detail in section 8.1.1, Primary endpoint
-(variable).*
-
-*Text suggestion:* Primary variable: *Blood pressure measured 30 hours
-after administration of the investigational medicinal product.*
-
-### Secondary outcomes (variables)
-
-*- Should we measure functional outcome/disability with WHODAS instead?*
-*- Should we remove complications because they are too difficult to measure?*
-
-- all cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department;
-- quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L;
-- poor functional outcome within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the EQ5D3L domains of mobility, self-care, usual activities, and pain/discomfort, with poor functional outcome defined as being confined to bed, unable to bath or dress oneself, unable to perform usual activities, or having extreme pain or discomfort;
-- return to work at 30 days and three months after arrival at the emergency department; and
-- in-hospital pulmonary, septic, or renal complications.
+To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
 
 # Trial design and procedures
 
 ## Overall trial design 
 
-*The trial should be designed so that the data obtained can answer the
-scientific questions.*
+We will conduct a batched stepped-wedge cluster randomised controlled trial (see Figure \@ref(fig:trial-design)). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be a tertiary hospital in India. We will conduct this trial in India because physicians providing initial trauma care in India are not routinely trained in ATLS^®^ or similar programmes.
 
-*A description of the trial design should include:*
+We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)`. 
 
--   *Type of clinical trial (Phase I, human pharmacology; Phase II,
-    therapeutic explorative; Phase III, therapeutic confirmative; Phase
-    IV, therapeutic usage).*
+## Design justification
 
--   *The trial design to be conducted, e.g., open, randomized,
-    single/double-blinded, placebo-controlled. If randomization occurs,
-    refer to section 7.5, Randomization, for more information.*
+We use the cluster randomised design because the intervention cannot be randomised at the individual patient level. We use the stepped-wedge design for two reasons. First, this design is statistically more efficient than the parallel cluster design when the number of clusters is limited [@Hemming2020May]. In this trial, the number of clusters is limited because of the costs associated with ATLS^®^ training and the available slots for ATLS^®^ training in India. Second, the stepped-wedge design is likely to enhance participation and engagement because all clusters receive the intervention. The batched stepped-wedge design further improves feasibility as it does not require all clusters to start at the same time, and it is robust to potential delays in cluster recruitment [@Kasza2022]. 
 
--   *Parallel group or cross-over etc.*
+```{r trial-design}
+#| echo: false
+#| fig.cap: "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
+#| fig.align: "center"
+#| message: FALSE
 
--   *Provide a rationale for the chosen trial design. The rationale
-    should be relevant for the trial's objective and should also
-    contribute to identification of relevant trial endpoint
-    (variables).*
-
--   *Describe how long a subject will participate in the trial. Also
-    describe* *the sequence and duration of all periods in the clinical
-    trial, including follow-up, if applicable.*
-
--   *List which investigational medicinal product(s) is used in the
-    trial as well as possible comparative treatments. Refer to section
-    7, Trial treatments, for more detailed information.*
-
--   *A schematic diagram of the trial design, procedures, and steps; see
-    provided example (Figure X).*
-
-***Figure** X **Trial design***
+knitr::include_graphics(
+    create_trial_design_flowchart(
+        clusters = clusters, sequences = sequences, batches = batches,
+        min.standard.care.months = min.standard.care.months,
+        min.intervention.months = min.intervention.months,
+        batches.overlap.months = batches.overlap.months,
+        transition.months = transition.months,
+        transition.overlap.months = transition.overlap.months,
+        return.figure = FALSE
+    )
+)
+```
 
 ## Procedures and flow chart
 
@@ -741,6 +624,15 @@ State whether the analysis will be performed continuously during the
 trial or after completion of subject enrollment.*
 
 #### Secondary outcomes
+
+*- Should we measure functional outcome/disability with WHODAS instead?*
+*- Should we remove complications because they are too difficult to measure?*
+
+- all cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department;
+- quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L;
+- poor functional outcome within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the EQ5D3L domains of mobility, self-care, usual activities, and pain/discomfort, with poor functional outcome defined as being confined to bed, unable to bath or dress oneself, unable to perform usual activities, or having extreme pain or discomfort;
+- return to work at 30 days and three months after arrival at the emergency department; and
+- in-hospital pulmonary, septic, or renal complications.
 
 *Describe the secondary endpoints (variables) as precisely as possible.
 Include information about how the secondary endpoints (variables) will
@@ -1429,6 +1321,11 @@ collected.
 
 ### Ethical review of the trial
 
+It will not be possible for patients to opt out from being subjected to the intervention, because the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training.
+- We will apply for a waiver of informed consent from the ethical review boards at the participating hospitals. We do this because the target population will often have reduced decisional capacity at the time of data collection and the nature of the intervention is such that they can not refuse receiving it.
+
+Our research measure up to these issues for the following reasons. First, it cannot be conducted using informed consent because the cohort of patients with severe trauma is the group most likely to benefit from improvements in early management and it is therefore crucial to include this population. 
+
 *Describe the procedure for approval of the final clinical trial
 protocol and informed consent form.* *Application for permission for a
 clinical trial on medicinal products from the Swedish Medical Products
@@ -1565,7 +1462,7 @@ Pharmaceutical Insurance. Check if the product is covered by the drug
 insurance at [lff.se](https://lff.se/) and that the insurance also
 covers clinical trials.*
 
-## Substantial changes to the trial
+# Substantial changes to the trial
 
 *This section describes how to handle substantial changes in the trial.
 Substantial changes include changes that:*
@@ -1611,7 +1508,7 @@ site.
 Non-substantial changes should be continuously recorded and entered in
 CTIS.
 
-## Collection, handling, and archiving of data
+# Collection, handling, and archiving of data
 
 *From the protocol it must be clear how the data will be collected.
 Describe which other types of data collection documents, in addition to
@@ -1670,7 +1567,7 @@ archived for at least *25* years after the trial is completed. Source
 data in the medical records system are stored and archived in accordance
 with national regulations.
 
-## Case Report Form 
+# Case Report Form 
 
 *All information related to the clinical trial should be recorded,
 processed, handled and stored by the sponsor or investigator, as
