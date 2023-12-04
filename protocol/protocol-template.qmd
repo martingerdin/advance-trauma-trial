@@ -1,384 +1,25 @@
-> ![Kliniska Studier Sverige
-> logotyp.](media/image1.png){width="4.120746937882765in"
-> height="0.839080271216098in"}
+---
+title: "Clinical Trial Protocol"
+subtitle: "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+---
 
-# Mall Prövningsprotokoll engelska  {#mall-prövningsprotokoll-engelska .unnumbered}
+\<\<Short title/and eventual Acronym\>\>
 
-> Klinisk läkemedelsprövning CTR
+Clinical Trials Registry-India ID:
 
-**Detta dokument är framtaget och kvalitetssäkrat av Kliniska Studier
-Sverige.**
+ClinicalTrials.gov ID:
 
-Vi utvecklar och erbjuder stöd för kliniska studier i hälso- och
-sjukvården.
+Version number: 0.9
 
-Stödet vi erbjuder ger goda förutsättningar för kliniska studier av hög
-kvalitet.
+Date: 2023-12-04
 
-## Introduction to the Clinical Trial Protocol template for medicinal products {#introduction-to-the-clinical-trial-protocol-template-for-medicinal-products .unnumbered}
+Sponsor: Karolinska Institutet
 
-This document was published 2022-05-25. This is version 1.0.
+Co-sponsor: The George Institute for Global Health, India
 
-This template is adapted to meet the requirements of the new EU
-Regulation on clinical trials of medicinal products for human use (EU
-536/2014) when the application is made via the EU common portal CTIS
-(Clinical Trial Information System).
+Principal Investigator: Martin Gerdin Wärnberg
 
-The EU Regulation on clinical trials of medicinal products for human use
-(EU 536/2014) is also called CTR (Clinical Trials Regulation) in this
-template.
-
-Note that this template may be updated in the near future if the
-interpretation of the new regulatory framework becomes clearer.
-
-The two first pages are not included in the Clinical Trial Protocol
-(CTP) template but gives a short introduction to you who will write a
-CTP. These pages should be removed when using this template. The CTP
-template is primarily directed towards intervention studies and is based
-on the requirements of the EU- common Regulation 536/2014 and ICH-GCP.
-Some sections can be removed if the study is not a clinical trial of
-medicinal products. This template is not adapted to address clinical
-trials for medical devices. Visit the websites of the Swedish Medical
-Products Agency (Läkemedelsverket)
-([Link](https://www.lakemedelsverket.se/sv/tillstand-godkannande-och-kontroll/klinisk-provning/lakemedel-for-manniskor#hmainbody1))
-for more information about the EU-common Regulation 536/2014 .
-
-This CTP template is a supportive document to facilitate your work. It
-is not always required to use all sections of this template. Sections
-can be removed and/or new sections can be added. This applies also to
-subsections. The template should be adjusted so that it fits your trial.
-Note that if headings are removed, you must ensure that the requirements
-for what should be included in a CTP according to CTR and ICH-GCP are
-still met.
-
--   On the first page of the CTP (including headings), \<\<Text\>\>
-    should be replaced with trial-specific information.
-
--   *Text written in red Italics include information about what can or
-    should be described under that respective section. This text should
-    be deleted from the final document.*
-
--   Examples of wording that can be used for that section of the text
-    are written in plain font/style.
-
--   When the CTP is complete, update the table of contents.
-
-The CTR defines certain clinical trials as so-called low-intervention
-clinical trials. These trials may be subject to less stringent rules, as
-described in the instruction text of the template under the relevant
-section.
-
-A low-intervention clinical trial is a clinical trial where:
-
-a)  The investigational medicinal product, excluding placebo
-    preparation, is approved,
-
-b)  It is clear from the clinical trial protocol that,
-
-    i.  the investigational medicinal product is used according to the
-        terms in its marketing authorization, or
-
-    ii. use of the investigational medicinal product is evidence-based
-        and supported by published scientific evidence of the safety and
-        efficacy of this product in one of the involved EU member
-        states, and
-
-c)  the complementary diagnostic or monitoring procedures do not
-    contribute more than minimally to the risk or burden to subject
-    safety compared to normal clinical practice in any of the member
-    states involved.
-
-If your clinical trial is a low-intervention clinical trial, this must
-be clearly described and justified in the CTP and in the cover letter
-sent via CTIS when applying for approval.
-
-Responsible for the template:
-
--   The national QA working group within the node organization connected
-    to Clinical Studies Sweden (Kliniska Studier Sverige).
-
-Suggestions for improvement of this template can be sent to any of the
-email addresses provided below and the designated QA contact at the
-respective regional node can take the proposal further.
-
-Contact information for the regional nodes:
-
--   Gothia Forum: <gothiaforum@vgregion.se>
-
--   Forum Norr: <forumnorr@regionvasterbotten.se>
-
--   Forum Mellansverige: <forummellansverige-ucr@uu.se>
-
--   Forum Sydost: <forumo@regionostergotland.se>
-
--   Forum Stockholm-Gotland: <feasibility.karolinska@sll.se>
-
--   Forum Söder: <forumsoder@skane.se>
-
-## CLINICAL TRIAL PROTOCOL {#clinical-trial-protocol .unnumbered}
-
-**\<\<Title\>\>**
-
-> *The title should preferably include the name of the investigational
-> medicinal product, trial population, keywords about the study design
-> (e.g., phase, randomization, blinding, etc.) and the primary
-> objective.*
->
-> \<\<Short title/and eventual Acronym\>\>
->
-> Trial ID: \<\< Trialcode \>\>
->
-> EU Trial number: \<\< XXXX-XXXXXX-XX-XX \>\>
->
-> Version number: \<\< Version number \>\>
->
-> Date: \<\< YYYY-MM-DD \>\>
->
-> Sponsor: \<\< Name \>\>
->
-> Co-sponsor: \<\< Name \>\>
->
-> *It is optional whether the Principal Investigator should be included
-> on the title page or not. If it is relevant for the trial, keep it.
-> Otherwise, the line can be removed.*
->
-> Principal Investigator \<\< Name \>\>
-
-## Innehåll {#innehåll .unnumbered}
-
-[Signature page [5](#signature-page)](#signature-page)
-
-[Contact information [7](#contact-information)](#contact-information)
-
-[List of used acronyms and abbreviations
-[9](#list-of-used-acronyms-and-abbreviations)](#list-of-used-acronyms-and-abbreviations)
-
-[1. Synopsis [11](#synopsis)](#synopsis)
-
-[2. Background and rationale
-[12](#background-and-rationale)](#background-and-rationale)
-
-[3. Benefit-risk evaluation
-[12](#benefit-risk-evaluation)](#benefit-risk-evaluation)
-
-[4. Trial objectives [13](#trial-objectives)](#trial-objectives)
-
-[4.1. Primary objective [14](#primary-objective)](#primary-objective)
-
-[4.2. Secondary objective(s)
-[14](#secondary-objectives)](#secondary-objectives)
-
-[4.3. Primary endpoint (variable)
-[14](#primary-endpoint-variable)](#primary-endpoint-variable)
-
-[4.4. Secondary endpoint (variables)
-[14](#secondary-endpoint-variables)](#secondary-endpoint-variables)
-
-[5. Trial design and procedures
-[14](#trial-design-and-procedures)](#trial-design-and-procedures)
-
-[5.1. Overall trial design
-[14](#overall-trial-design)](#overall-trial-design)
-
-[5.2. Procedures and flow chart
-[16](#procedures-and-flow-chart)](#procedures-and-flow-chart)
-
-[5.3. Biological sampling procedures
-[17](#biological-sampling-procedures)](#biological-sampling-procedures)
-
-[5.3.1. Handling, storage, and destruction of biological samples
-[17](#handling-storage-and-destruction-of-biological-samples)](#handling-storage-and-destruction-of-biological-samples)
-
-[5.3.2. Total volume of blood per subject
-[17](#total-volume-of-blood-per-subject)](#total-volume-of-blood-per-subject)
-
-[5.3.3. Biobank [17](#biobank)](#biobank)
-
-[5.4. End of Trial [18](#end-of-trial)](#end-of-trial)
-
-[6. Subject selection [18](#subject-selection)](#subject-selection)
-
-[6.1. Inclusion criteria [19](#inclusion-criteria)](#inclusion-criteria)
-
-[6.2. Exclusion criteria [19](#exclusion-criteria)](#exclusion-criteria)
-
-[6.3. Screening [20](#screening)](#screening)
-
-[6.4. Withdrawal criteria
-[20](#withdrawal-criteria)](#withdrawal-criteria)
-
-[7. Trial treatments [20](#trial-treatments)](#trial-treatments)
-
-[7.1. Description of investigational medicinal product(s)
-[21](#description-of-investigational-medicinal-products)](#description-of-investigational-medicinal-products)
-
-[7.2. Dose and administration
-[21](#dose-and-administration)](#dose-and-administration)
-
-[7.3. Packaging, labeling, and handling of investigational medicinal
-products(s)
-[21](#packaging-labeling-and-handling-of-investigational-medicinal-productss)](#packaging-labeling-and-handling-of-investigational-medicinal-productss)
-
-[7.4. Drug accountability and treatment compliance
-[21](#drug-accountability-and-treatment-compliance)](#drug-accountability-and-treatment-compliance)
-
-[7.5. Randomization [22](#randomization)](#randomization)
-
-[7.6. Blinding [22](#blinding)](#blinding)
-
-[7.7. Code breaking [22](#code-breaking)](#code-breaking)
-
-[7.8. Auxiliary medicinal products
-[22](#auxiliary-medicinal-products)](#auxiliary-medicinal-products)
-
-[7.9. Concomitant use of other medicinal products and treatments
-[23](#concomitant-use-of-other-medicinal-products-and-treatments)](#concomitant-use-of-other-medicinal-products-and-treatments)
-
-[7.10. Destruction [23](#destruction)](#destruction)
-
-[7.11. Treatment after trial end
-[23](#treatment-after-trial-end)](#treatment-after-trial-end)
-
-[8. Methods for measurement of endpoints for clinical efficacy and
-safety
-[24](#methods-for-measurement-of-endpoints-for-clinical-efficacy-and-safety)](#methods-for-measurement-of-endpoints-for-clinical-efficacy-and-safety)
-
-[8.1. Methods for measurement of endpoints for clinical efficacy
-[24](#methods-for-measurement-of-endpoints-for-clinical-efficacy)](#methods-for-measurement-of-endpoints-for-clinical-efficacy)
-
-[8.1.1. Primary endpoint [24](#primary-endpoint)](#primary-endpoint)
-
-[8.1.2. Secondary endpoints
-[24](#secondary-endpoints)](#secondary-endpoints)
-
-[8.2. Methods for measurement of endpoints for clinical safety
-[24](#methods-for-measurement-of-endpoints-for-clinical-safety)](#methods-for-measurement-of-endpoints-for-clinical-safety)
-
-[9. Handling of Adverse Events
-[24](#handling-of-adverse-events)](#handling-of-adverse-events)
-
-[9.1. Definitions [25](#definitions)](#definitions)
-
-[9.1.1. Adverse Event (AE) [25](#adverse-event-ae)](#adverse-event-ae)
-
-[9.1.2. Adverse Reaction (AR)
-[25](#adverse-reaction-ar)](#adverse-reaction-ar)
-
-[9.1.3. Serious Adverse Event (SAE)
-[25](#serious-adverse-event-sae)](#serious-adverse-event-sae)
-
-[9.1.4. Suspected Unexpected Serious Adverse Reaction (SUSAR)
-[26](#suspected-unexpected-serious-adverse-reaction-susar)](#suspected-unexpected-serious-adverse-reaction-susar)
-
-[9.2. Assessment of Adverse Events (AE)
-[26](#assessment-of-adverse-events-ae)](#assessment-of-adverse-events-ae)
-
-[9.2.1. Assessment of causal relationship
-[26](#assessment-of-causal-relationship)](#assessment-of-causal-relationship)
-
-[9.2.2. Assessment of intensity
-[27](#assessment-of-intensity)](#assessment-of-intensity)
-
-[9.2.3. Assessment of seriousness
-[27](#assessment-of-seriousness)](#assessment-of-seriousness)
-
-[9.3. Reporting and registration of Adverse Events
-[27](#reporting-and-registration-of-adverse-events)](#reporting-and-registration-of-adverse-events)
-
-[9.3.1. Reporting of Adverse Events (AE)
-[28](#reporting-of-adverse-events-ae)](#reporting-of-adverse-events-ae)
-
-[9.3.2. Reporting of Serious Adverse Events (SAE)
-[28](#reporting-of-serious-adverse-events-sae)](#reporting-of-serious-adverse-events-sae)
-
-[9.3.3. Reporting of Suspected Unexpected Serious Adverse Reactions
-(SUSAR)
-[29](#reporting-of-suspected-unexpected-serious-adverse-reactions-susar)](#reporting-of-suspected-unexpected-serious-adverse-reactions-susar)
-
-[9.4. Follow-up of Adverse Events
-[30](#follow-up-of-adverse-events)](#follow-up-of-adverse-events)
-
-[9.5. Independent Data Monitoring Committee
-[30](#independent-data-monitoring-committee)](#independent-data-monitoring-committee)
-
-[9.6. Annual Safety Report (ASR)
-[30](#annual-safety-report-asr)](#annual-safety-report-asr)
-
-[9.7. Procedures in case of emergencies, overdose or pregnancy
-[31](#procedures-in-case-of-emergencies-overdose-or-pregnancy)](#procedures-in-case-of-emergencies-overdose-or-pregnancy)
-
-[9.8. Reference Safety Information
-[31](#reference-safety-information)](#reference-safety-information)
-
-[10. Statistics [31](#statistics)](#statistics)
-
-[10.1. Analysis population
-[31](#analysis-population)](#analysis-population)
-
-[10.2. Statistical analyses
-[32](#statistical-analyses)](#statistical-analyses)
-
-[10.2.1. Statistical methods
-[32](#statistical-methods)](#statistical-methods)
-
-[10.2.2. Drop-outs [32](#drop-outs)](#drop-outs)
-
-[10.3. Adjustment of significance and confidence interval
-[32](#adjustment-of-significance-and-confidence-interval)](#adjustment-of-significance-and-confidence-interval)
-
-[10.4. Sample size calculations
-[32](#sample-size-calculations)](#sample-size-calculations)
-
-[10.5. Interim analysis (if relevant)
-[32](#interim-analysis-if-relevant)](#interim-analysis-if-relevant)
-
-[11. Quality Control and Quality Assurance
-[33](#quality-control-and-quality-assurance)](#quality-control-and-quality-assurance)
-
-[11.1. Quality Assurance and Sponsor oversight
-[33](#quality-assurance-and-sponsor-oversight)](#quality-assurance-and-sponsor-oversight)
-
-[11.2. Monitoring [33](#monitoring)](#monitoring)
-
-[11.3. Source data [34](#source-data)](#source-data)
-
-[11.4. Deviations, serious breaches and other reporting obligations
-[35](#deviations-serious-breaches-and-other-reporting-obligations)](#deviations-serious-breaches-and-other-reporting-obligations)
-
-[11.5. Audits and inspections
-[36](#audits-and-inspections)](#audits-and-inspections)
-
-[12. Ethics [36](#ethics)](#ethics)
-
-[12.1. Compliance to the protocol, ICH-GCP and regulations
-[36](#compliance-to-the-protocol-ich-gcp-and-regulations)](#compliance-to-the-protocol-ich-gcp-and-regulations)
-
-[12.2. Ethical review of the trial
-[36](#ethical-review-of-the-trial)](#ethical-review-of-the-trial)
-
-[12.3. Procedure for obtaining informed consent
-[36](#procedure-for-obtaining-informed-consent)](#procedure-for-obtaining-informed-consent)
-
-[12.4. Data protection [37](#data-protection)](#data-protection)
-
-[12.5. Insurances [38](#insurances)](#insurances)
-
-[13. Substantial changes to the trial
-[38](#substantial-changes-to-the-trial)](#substantial-changes-to-the-trial)
-
-[14. Collection, handling, and archiving of data
-[39](#collection-handling-and-archiving-of-data)](#collection-handling-and-archiving-of-data)
-
-[14.1. Case Report Form [40](#case-report-form)](#case-report-form)
-
-[15. Notification of trial completion, reporting, and publication
-[41](#notification-of-trial-completion-reporting-and-publication)](#notification-of-trial-completion-reporting-and-publication)
-
-[16. References [42](#_Toc106263014)](#_Toc106263014)
-
-[17. Attachments [42](#attachments)](#attachments)
-
-## Signature page {#signature-page .unnumbered}
+# Signature page
 
 *For single-centre trials, remove the signature line of the coordinating
 investigator. If the sponsor and principal investigator are the same
@@ -395,7 +36,7 @@ in accordance with ICH-GCP.*
 
 *Text suggestion:*
 
-### Sponsor {#sponsor .unnumbered}
+## Sponsor
 
 I am responsible for ensuring that this protocol includes all essential
 information to be able to conduct this trial. I will submit the protocol
@@ -411,7 +52,7 @@ Printed name
 **\
 **
 
-### Coordinating Investigator {#coordinating-investigator .unnumbered}
+## Coordinating Investigator
 
 I have read this protocol and agree that it includes all essential
 information to be able to conduct the trial. By signing my name below, I
@@ -434,7 +75,7 @@ Coordinating Investigator's signature Date
 
 Printed name
 
-### Principal Investigator {#principal-investigator .unnumbered}
+## Principal Investigator
 
 I have read this protocol and agree that it includes all essential
 information to be able to conduct the trial. By signing my name below, I
@@ -457,7 +98,7 @@ Principal Investigator's signature Date
 
 Printed name
 
-## Contact information {#contact-information .unnumbered}
+# Contact information
 
 *List the name, role in the trial, contact address, telephone number,
 and email for all involved in the trial (Sponsor, eventual Co-sponsor,
@@ -510,16 +151,7 @@ unless they otherwise agree in a written agreement.*
 | data management.*                 |                                  |
 +-----------------------------------+----------------------------------+
 
-: A table marked as Contact information. It has two columns. The one to
-the left is marked as Responsibility in the clinical trial, while the
-one to the right is unmarked. The left one contains information such as:
-Sponsor - Responsibility: X, Y; Co-sponsor - Responsibility: X, Y;
-Coordinating Investigator / Principal Investigator - Responsibility: X,
-Y; Specify others involved: Clinical monitoring organization, project.
-The column to the right contains information such as: Name, title,
-Site/Institution, Contact address, Telephone number, Email.
-
-## List of used acronyms and abbreviations {#list-of-used-acronyms-and-abbreviations .unnumbered}
+# List of used acronyms and abbreviations 
 
 *List all abbreviations used in the protocol. Each term should be
 written out fully the first time it is used in the protocol, with the
@@ -577,11 +209,6 @@ rows as needed.*
   ITT                Intention-to-treat = including all data from all
                      subjects who have participated in the trial
 
-  Läkemedelsverket   Swedish Medical Products Agency -- the national
-                     authority responsible for regulation and surveillance
-                     of the development, manufacturing and sale of medicinal
-                     products.
-
   PP                 Per Protocol analysis = including only data from
                      subjects who have completed the trial completely in
                      accordance with the protocol, with no deviations from
@@ -606,113 +233,35 @@ rows as needed.*
                      the product in the RSI.
   --------------------------------------------------------------------------
 
-  : A table with two columns. The columns are marked as Abbreviation and
-  Term/Explanation respectively. The table contains information such as:
-  AR - Adverse Reaction = any unfavorable and unexpected reaction to an
-  investigational medicinal product, regardless of dose; ASR - Annual
-  Safety Report = the annual safety report for reporting to authorities.
-  In Sweden this is the Swedish Medical Products Agency; CRF - Case
-  Report Form.
+# Synopsis
 
-## Synopsis
+## Title
+Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
 
-*Brief summary of the trial including aim, primary and secondary
-objectives, trial design, investigational medicinal product, dose, route
-of administration, trial population, number of subjects, time plan for
-the trial.*
+## Acronym
 
-*Note: This is a summary, not an introduction.*
+## Rationale
 
-*It is recommended that the synopsis is understandable to a layman if
-this is the summary that will be submitted with the application. The
-synopsis must be submitted in Swedish or applicable local language and
-should be a maximum of two pages. The synopsis can be part of the
-protocol or a separate document (e.g. when different language versions
-are submitted), in the latter case it must always be submitted to CTIS
-together with the protocol.*
+## Aim
 
-*For more details on what is recommended to be included in the synopsis,
-see the European Commission\'s CTR Questions and Answers document
-(*[link](https://ec.europa.eu/health/medicinal-products/eudralex/eudralex-volume-10_en#set-of-documents-applicable-to-clinical-trials-that-will-be-authorised-under-regulation-eu-no-5362014-once-it-becomes-applicable)*),
-Chapter V, EudraLex - Volume 10 - Clinical trials guidelines), question
-5.8.*
+## Primary Outcome
 
-+-----------------------+----------------------------------------------+
-| EU Trial number:      |                                              |
-+=======================+==============================================+
-| Title:                |                                              |
-+-----------------------+----------------------------------------------+
-| Trial ID:             |                                              |
-+-----------------------+----------------------------------------------+
-| Short background/     |                                              |
-| Rationale/Aim:        |                                              |
-+-----------------------+----------------------------------------------+
-| Primary objective:    |                                              |
-+-----------------------+----------------------------------------------+
-| Secondary objectives: |                                              |
-+-----------------------+----------------------------------------------+
-| Primary outcome:\     |                                              |
-| *Describe also when   |                                              |
-| assessment is made*   |                                              |
-+-----------------------+----------------------------------------------+
-| Secondary outcome:    |                                              |
-+-----------------------+----------------------------------------------+
-| Trial design:         |                                              |
-|                       |                                              |
-| *Describe the design  |                                              |
-| and how long the      |                                              |
-| subjects participate  |                                              |
-| in the trial. E.g.    |                                              |
-| double-blind          |                                              |
-| placebo-controlled    |                                              |
-| trial where subjects  |                                              |
-| participate for x     |                                              |
-| weeks.*               |                                              |
-+-----------------------+----------------------------------------------+
-| Trial population:     |                                              |
-|                       |                                              |
-| *E.g. patients with   |                                              |
-| asthma 18-55 years    |                                              |
-| old*                  |                                              |
-+-----------------------+----------------------------------------------+
-| Number of subjects:   |                                              |
-+-----------------------+----------------------------------------------+
-| Inclusion criteria:   |                                              |
-+-----------------------+----------------------------------------------+
-| Exclusion criteria:   |                                              |
-+-----------------------+----------------------------------------------+
-| Intervention:         |                                              |
-|                       |                                              |
-| *Describe             |                                              |
-| interventions and     |                                              |
-| length of treatment,  |                                              |
-| including background  |                                              |
-| treatment. Describe   |                                              |
-| also trial-related    |                                              |
-| diagnostic and        |                                              |
-| monitoring procedures |                                              |
-| used.*                |                                              |
-+-----------------------+----------------------------------------------+
-| Investigational       |                                              |
-| medicinal product(s), |                                              |
-| dosage,               |                                              |
-| administration:       |                                              |
-+-----------------------+----------------------------------------------+
-| Ethical               |                                              |
-| considerations,       |                                              |
-| benefit/risk:         |                                              |
-+-----------------------+----------------------------------------------+
-| Trial period:         | *E.g. Q1 20XX -- Q1 20XX*                    |
-+-----------------------+----------------------------------------------+
+## Secondary Outcomes
 
-: A table marked as Synopsis with only one column that contains
-information such as: EU Trial number; Title; Trial ID; Short
-background/Rationale/Aim; Primary objective; Secondary objectives;
-Primary outcome: Describe also when assessment is made; Secondary
-outcome: Trial design: Describe the design and how long the subjects
-participate in the trial. E.g. double-blind placebo-controlled trial
-where subjects participate for x weeks; Trial population: E.g. patients
-with asthma 18-55 years old; Number of subjects.
+## Trial Design
+
+## Trial Population
+
+## Sample Size
+
+## Eligibility Criteria
+
+## Intervention
+
+## Ethical Considerations
+
+## Trial Period
+2024-10-01 to 2029-10-01
 
 ## Background and rationale
 
