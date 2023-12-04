@@ -15,8 +15,10 @@ get_preliminary_results <- function(use.saved = FALSE) {
         tern <- readr::read_csv(paste0(Sys.getenv("DATA_DIR"), "tern/current/dataset.csv"))
 
         ## Import codebook
-        codebook.arguments <- lapply(c("URL", "UID", "USERNAME", "PASSWORD"),
-                                     function(x) Sys.getenv(paste0("KOBO_", x)))
+        codebook.arguments <- lapply(
+            c("URL", "UID", "USERNAME", "PASSWORD"),
+            function(x) Sys.getenv(paste0("KOBO_", x))
+        )
         codebook <- do.call(noacsr::kobo_get_project_codebook, codebook.arguments)
 
         ## Prepare data
@@ -24,25 +26,29 @@ get_preliminary_results <- function(use.saved = FALSE) {
         tern$study <- "TERN"
 
         ## Define basic results
-        arrival.dates <- tern %>% pull(incident__date_of_arrival) %>% sort()
+        arrival.dates <- tern %>%
+            pull(incident__date_of_arrival) %>%
+            sort()
         format_date <- function(date) paste0(month(date[1], label = TRUE, abbr = FALSE), " ", year(date[1]))
         preliminary.results <- list()
-        preliminary.results$start.date <- format_date(arrival.dates[1])
-        preliminary.results$end.date <- format_date(rev(arrival.dates)[1])
-        n.no.consent <-  list("11542" = 40,
-                              "44805" = 10,
-                              "55356" = 43,
-                              "78344" = 3,
-                              "95846" = 9, 
-                              "88456" = 0, # To be updated
-                              "10263" = 2)
-        preliminary.results$recruitment.rate <- nrow(tern)/(nrow(tern) + sum(unlist(n.no.consent)))
+        preliminary.results$pilot.start.date <- format_date(arrival.dates[1])
+        preliminary.results$pilot.end.date <- format_date(rev(arrival.dates)[1])
+        n.no.consent <- list(
+            "11542" = 40,
+            "44805" = 10,
+            "55356" = 43,
+            "78344" = 3,
+            "95846" = 9,
+            "88456" = 0, # To be updated
+            "10263" = 2
+        )
+        preliminary.results$recruitment.rate <- nrow(tern) / (nrow(tern) + sum(unlist(n.no.consent)))
 
         ## Estimate composite outcome
         in.hospital.mortality <- tern$outcomes__discharge_alive == "Yes"
         tern$in.hospital.mortality <- in.hospital.mortality
         n.lost.to.follow.up <- sum(is.na(tern$in.hospital.mortality))
-        preliminary.results$rate.lost.to.follow.up <- n.lost.to.follow.up/nrow(tern)
+        preliminary.results$rate.lost.to.follow.up <- n.lost.to.follow.up / nrow(tern)
         icc.in.hospital.mortality <- estimate_icc("in.hospital.mortality", "id__reg_hospital_id", tern)
         labelled::var_label(tern$in.hospital.mortality) <- "In-hospital mortality"
         confined.to.bed <- tern$outcomes__eq5dm == "I am confined to bed"
@@ -65,12 +71,12 @@ get_preliminary_results <- function(use.saved = FALSE) {
         tern$composite.outcome <- tern$poor.functional.outcome | tern$in.hospital.mortality
         labelled::var_label(tern$composite.outcome) <- "Composite endpoint"
         preliminary.results$tern.patients <- nrow(tern)
-        
+
         ## Add delay
         tern$delay <- as.numeric(with(tern, difftime(incident__date_of_arrival, incident__date_of_injury, units = "hours")))
 
         ## Estimate missing data
-        rates.missing.data <- unlist(lapply(tern, function(column) round(sum(is.na(column)/length(column) * 100))))
+        rates.missing.data <- unlist(lapply(tern, function(column) round(sum(is.na(column) / length(column) * 100))))
         rates.relevant.missing.data <- rates.missing.data[c("patinfo__pt_age", "patinfo__pt_gender", "incident__moi", "interventions__admitted", "in.hospital.mortality")]
         preliminary.results$rates.missing.data <- rates.relevant.missing.data
         preliminary.results$mean.missing.data <- mean(rates.relevant.missing.data)
@@ -131,7 +137,7 @@ get_preliminary_results <- function(use.saved = FALSE) {
         taft$admitted <- TRUE
         taft <- taft[, c("study", "centre", "age", "delay", "admitted", "poor.functional.outcome", "composite.outcome", "in.hospital.mortality", "sex")]
         taft$sex <- factor(taft$sex, levels = c(0, 1), labels = c("Female", "Male"))
-        
+
         ## Merge datasets
         all.data <- dplyr::bind_rows(tern, titco, ttris, taft)
         preliminary.results$number.total.patients <- nrow(all.data)
@@ -152,22 +158,24 @@ get_preliminary_results <- function(use.saved = FALSE) {
         preliminary.results$rate.in.hospital.mortality.males <- mean(eligible.data$in.hospital.mortality[eligible.data$sex == "Male"], na.rm = TRUE)
         preliminary.results$rate.in.hospital.mortality.females <- mean(eligible.data$in.hospital.mortality[eligible.data$sex == "Female"], na.rm = TRUE)
 
-        ## Celculate outcome rates per study 
+        ## Celculate outcome rates per study
         rates.per.study <- lapply(split(eligible.data, eligible.data$study), function(study.data) {
-            outcomes <- setNames(nm = c("in.hospital.mortality",
-                                        "poor.functional.outcome",
-                                        "composite.outcome"))
+            outcomes <- setNames(nm = c(
+                "in.hospital.mortality",
+                "poor.functional.outcome",
+                "composite.outcome"
+            ))
             outcome.rates <- lapply(outcomes, function(outcome) {
                 mean(study.data[, outcome], na.rm = TRUE)
             })
-            return (outcome.rates)
+            return(outcome.rates)
         })
         preliminary.results$rates.per.study <- rates.per.study
 
         ## Save results
         saveRDS(preliminary.results, "preliminary-results.Rds")
     }
-    
+
     ## Return results
-    return (preliminary.results)
+    return(preliminary.results)
 }
