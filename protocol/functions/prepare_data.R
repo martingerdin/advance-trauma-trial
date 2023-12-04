@@ -6,9 +6,14 @@
 #' @param codebook A list. A list describing the columns of data or
 #'     NULL. Defaults to NULL.
 prepare_data <- function(data, codebook = NULL) {
+    ## Define borrowed functions
+    `%>%` <- magrittr::`%>%`
+    pull <- dplyr::pull
+
     ## Check arguments
     assertthat::assert_that(is.data.frame(data))
     assertthat::assert_that(is.list(codebook) | is.null(codebook))
+
     ## Modify codebook
     variable.names <- codebook$survey$name
     codebook$survey$type <- setNames(codebook$survey$type, nm = variable.names)
@@ -16,30 +21,41 @@ prepare_data <- function(data, codebook = NULL) {
     for (binary.outcome in binary_outcomes()) {
         codebook$survey$label[unlist(strsplit(binary.outcome$name, "__"))[2]] <- binary.outcome$label
     }
+
     ## Rename variables
     names(data) <- gsub("/", "__", names(data), fixed = TRUE)
+
     ## Prepare data
     prepared.data <- data
     prepared.data$`patinfo/pt_age` <- as.numeric(prepared.data$patinfo__pt_age)
+
     ## Replace with missing
     prepared.data <- prepared.data %>%
-        naniar::replace_with_na_if(.predicate = is.character,
-                                   condition = ~ .x %in% c("999", "unknown")) %>%
-        naniar::replace_with_na_if(.predicate = is.numeric,
-                                   condition = ~ .x == 999)
+        naniar::replace_with_na_if(
+            .predicate = is.character,
+            condition = ~ .x %in% c("999", "unknown")
+        ) %>%
+        naniar::replace_with_na_if(
+            .predicate = is.numeric,
+            condition = ~ .x == 999
+        )
+
     ## Deal with edge cases
     variable <- prepared.data$complications__failure_of_conservative_management
     variable[variable == "0" | variable == "NO" | variable == "no"] <- "No"
     variable[variable == "Yes - Surgery on the 3rd day"] <- "Yes"
     variable <- as.factor(variable)
     prepared.data$complications__failure_of_conservative_management <- variable
+
     ## Generate AIS codes
-    icd10.data <- prepared.data[, c("interventions__injury_first_surg_icd10",
-                                    "interventions__injury_xray_icd10",
-                                    "interventions__injury_external_1_icd10",
-                                    "interventions__injury_first_ct_icd10",
-                                    "interventions__injury_second_ct_icd10")]
-    icd10.data <- icd10.data %>% naniar::replace_with_na_all(condition = ~.x %in% c("0", "NAD"))
+    icd10.data <- prepared.data[, c(
+        "interventions__injury_first_surg_icd10",
+        "interventions__injury_xray_icd10",
+        "interventions__injury_external_1_icd10",
+        "interventions__injury_first_ct_icd10",
+        "interventions__injury_second_ct_icd10"
+    )]
+    icd10.data <- icd10.data %>% naniar::replace_with_na_all(condition = ~ .x %in% c("0", "NAD"))
     split.icd10.data <- do.call(cbind, lapply(icd10.data, function(column) {
         split.data <- strsplit(column, ",")
         max.length <- max(lengths(split.data))
@@ -49,34 +65,38 @@ prepare_data <- function(data, codebook = NULL) {
         split.data[] <- lapply(split.data, function(split.column) {
             split.column <- gsub("(^[0-9])", "S\\1", split.column)
             ## split.column <- gsub("(^[LETTERS])", "\\1\\.", split.column)
-            return (split.column)
+            return(split.column)
         })
-        return (split.data)
+        return(split.data)
     }))
     colnames(split.icd10.data) <- paste0("dx", 1:ncol(split.icd10.data))
     iss.data <- icdpicr::cat_trauma(split.icd10.data,
-                                    dx_pre = "dx",
-                                    icd10 = "base",
-                                    i10_iss_method = "roc_max_NIS")[, c("mxaisbr_General",
-                                                                        "mxaisbr_HeadNeck",
-                                                                        "mxaisbr_Face",
-                                                                        "mxaisbr_Extremities", 
-                                                                        "mxaisbr_Chest",
-                                                                        "mxaisbr_Abdomen",
-                                                                        "maxais",
-                                                                        "riss",
-                                                                        "niss")]
+        dx_pre = "dx",
+        icd10 = "base",
+        i10_iss_method = "roc_max_NIS"
+    )[, c(
+        "mxaisbr_General",
+        "mxaisbr_HeadNeck",
+        "mxaisbr_Face",
+        "mxaisbr_Extremities",
+        "mxaisbr_Chest",
+        "mxaisbr_Abdomen",
+        "maxais",
+        "riss",
+        "niss"
+    )]
     prepared.data <- cbind(prepared.data, iss.data)
+
     ## Label variables
     prepared.data[] <- lapply(names(prepared.data), function(column.name) {
         column.data <- prepared.data %>%
             pull(.data[[column.name]]) %>%
             label_variable(name = column.name, codebook = codebook)
-        return (column.data)
+        return(column.data)
     })
     labelled::var_label(prepared.data$riss) <- "Injury Severity Score"
     labelled::var_label(prepared.data$niss) <- "New Injury Severity Score"
-    return (prepared.data)
+    return(prepared.data)
 }
 
 label_variable <- function(variable.data, name, codebook) {
@@ -95,12 +115,8 @@ label_variable <- function(variable.data, name, codebook) {
             relabelled.data <- factor(logical.data, levels = c(TRUE, FALSE), labels = c("Yes", "No"))
         }
     }
-    if (!is.null(type))
+    if (!is.null(type)) {
         labelled::var_label(relabelled.data) <- variable.label
-    return (relabelled.data)
+    }
+    return(relabelled.data)
 }
-
-
-
-
-
