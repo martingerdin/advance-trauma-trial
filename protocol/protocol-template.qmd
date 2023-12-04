@@ -1,0 +1,2433 @@
+> ![Kliniska Studier Sverige
+> logotyp.](media/image1.png){width="4.120746937882765in"
+> height="0.839080271216098in"}
+
+# Mall Prövningsprotokoll engelska  {#mall-prövningsprotokoll-engelska .unnumbered}
+
+> Klinisk läkemedelsprövning CTR
+
+**Detta dokument är framtaget och kvalitetssäkrat av Kliniska Studier
+Sverige.**
+
+Vi utvecklar och erbjuder stöd för kliniska studier i hälso- och
+sjukvården.
+
+Stödet vi erbjuder ger goda förutsättningar för kliniska studier av hög
+kvalitet.
+
+## Introduction to the Clinical Trial Protocol template for medicinal products {#introduction-to-the-clinical-trial-protocol-template-for-medicinal-products .unnumbered}
+
+This document was published 2022-05-25. This is version 1.0.
+
+This template is adapted to meet the requirements of the new EU
+Regulation on clinical trials of medicinal products for human use (EU
+536/2014) when the application is made via the EU common portal CTIS
+(Clinical Trial Information System).
+
+The EU Regulation on clinical trials of medicinal products for human use
+(EU 536/2014) is also called CTR (Clinical Trials Regulation) in this
+template.
+
+Note that this template may be updated in the near future if the
+interpretation of the new regulatory framework becomes clearer.
+
+The two first pages are not included in the Clinical Trial Protocol
+(CTP) template but gives a short introduction to you who will write a
+CTP. These pages should be removed when using this template. The CTP
+template is primarily directed towards intervention studies and is based
+on the requirements of the EU- common Regulation 536/2014 and ICH-GCP.
+Some sections can be removed if the study is not a clinical trial of
+medicinal products. This template is not adapted to address clinical
+trials for medical devices. Visit the websites of the Swedish Medical
+Products Agency (Läkemedelsverket)
+([Link](https://www.lakemedelsverket.se/sv/tillstand-godkannande-och-kontroll/klinisk-provning/lakemedel-for-manniskor#hmainbody1))
+for more information about the EU-common Regulation 536/2014 .
+
+This CTP template is a supportive document to facilitate your work. It
+is not always required to use all sections of this template. Sections
+can be removed and/or new sections can be added. This applies also to
+subsections. The template should be adjusted so that it fits your trial.
+Note that if headings are removed, you must ensure that the requirements
+for what should be included in a CTP according to CTR and ICH-GCP are
+still met.
+
+-   On the first page of the CTP (including headings), \<\<Text\>\>
+    should be replaced with trial-specific information.
+
+-   *Text written in red Italics include information about what can or
+    should be described under that respective section. This text should
+    be deleted from the final document.*
+
+-   Examples of wording that can be used for that section of the text
+    are written in plain font/style.
+
+-   When the CTP is complete, update the table of contents.
+
+The CTR defines certain clinical trials as so-called low-intervention
+clinical trials. These trials may be subject to less stringent rules, as
+described in the instruction text of the template under the relevant
+section.
+
+A low-intervention clinical trial is a clinical trial where:
+
+a)  The investigational medicinal product, excluding placebo
+    preparation, is approved,
+
+b)  It is clear from the clinical trial protocol that,
+
+    i.  the investigational medicinal product is used according to the
+        terms in its marketing authorization, or
+
+    ii. use of the investigational medicinal product is evidence-based
+        and supported by published scientific evidence of the safety and
+        efficacy of this product in one of the involved EU member
+        states, and
+
+c)  the complementary diagnostic or monitoring procedures do not
+    contribute more than minimally to the risk or burden to subject
+    safety compared to normal clinical practice in any of the member
+    states involved.
+
+If your clinical trial is a low-intervention clinical trial, this must
+be clearly described and justified in the CTP and in the cover letter
+sent via CTIS when applying for approval.
+
+Responsible for the template:
+
+-   The national QA working group within the node organization connected
+    to Clinical Studies Sweden (Kliniska Studier Sverige).
+
+Suggestions for improvement of this template can be sent to any of the
+email addresses provided below and the designated QA contact at the
+respective regional node can take the proposal further.
+
+Contact information for the regional nodes:
+
+-   Gothia Forum: <gothiaforum@vgregion.se>
+
+-   Forum Norr: <forumnorr@regionvasterbotten.se>
+
+-   Forum Mellansverige: <forummellansverige-ucr@uu.se>
+
+-   Forum Sydost: <forumo@regionostergotland.se>
+
+-   Forum Stockholm-Gotland: <feasibility.karolinska@sll.se>
+
+-   Forum Söder: <forumsoder@skane.se>
+
+## CLINICAL TRIAL PROTOCOL {#clinical-trial-protocol .unnumbered}
+
+**\<\<Title\>\>**
+
+> *The title should preferably include the name of the investigational
+> medicinal product, trial population, keywords about the study design
+> (e.g., phase, randomization, blinding, etc.) and the primary
+> objective.*
+>
+> \<\<Short title/and eventual Acronym\>\>
+>
+> Trial ID: \<\< Trialcode \>\>
+>
+> EU Trial number: \<\< XXXX-XXXXXX-XX-XX \>\>
+>
+> Version number: \<\< Version number \>\>
+>
+> Date: \<\< YYYY-MM-DD \>\>
+>
+> Sponsor: \<\< Name \>\>
+>
+> Co-sponsor: \<\< Name \>\>
+>
+> *It is optional whether the Principal Investigator should be included
+> on the title page or not. If it is relevant for the trial, keep it.
+> Otherwise, the line can be removed.*
+>
+> Principal Investigator \<\< Name \>\>
+
+## Innehåll {#innehåll .unnumbered}
+
+[Signature page [5](#signature-page)](#signature-page)
+
+[Contact information [7](#contact-information)](#contact-information)
+
+[List of used acronyms and abbreviations
+[9](#list-of-used-acronyms-and-abbreviations)](#list-of-used-acronyms-and-abbreviations)
+
+[1. Synopsis [11](#synopsis)](#synopsis)
+
+[2. Background and rationale
+[12](#background-and-rationale)](#background-and-rationale)
+
+[3. Benefit-risk evaluation
+[12](#benefit-risk-evaluation)](#benefit-risk-evaluation)
+
+[4. Trial objectives [13](#trial-objectives)](#trial-objectives)
+
+[4.1. Primary objective [14](#primary-objective)](#primary-objective)
+
+[4.2. Secondary objective(s)
+[14](#secondary-objectives)](#secondary-objectives)
+
+[4.3. Primary endpoint (variable)
+[14](#primary-endpoint-variable)](#primary-endpoint-variable)
+
+[4.4. Secondary endpoint (variables)
+[14](#secondary-endpoint-variables)](#secondary-endpoint-variables)
+
+[5. Trial design and procedures
+[14](#trial-design-and-procedures)](#trial-design-and-procedures)
+
+[5.1. Overall trial design
+[14](#overall-trial-design)](#overall-trial-design)
+
+[5.2. Procedures and flow chart
+[16](#procedures-and-flow-chart)](#procedures-and-flow-chart)
+
+[5.3. Biological sampling procedures
+[17](#biological-sampling-procedures)](#biological-sampling-procedures)
+
+[5.3.1. Handling, storage, and destruction of biological samples
+[17](#handling-storage-and-destruction-of-biological-samples)](#handling-storage-and-destruction-of-biological-samples)
+
+[5.3.2. Total volume of blood per subject
+[17](#total-volume-of-blood-per-subject)](#total-volume-of-blood-per-subject)
+
+[5.3.3. Biobank [17](#biobank)](#biobank)
+
+[5.4. End of Trial [18](#end-of-trial)](#end-of-trial)
+
+[6. Subject selection [18](#subject-selection)](#subject-selection)
+
+[6.1. Inclusion criteria [19](#inclusion-criteria)](#inclusion-criteria)
+
+[6.2. Exclusion criteria [19](#exclusion-criteria)](#exclusion-criteria)
+
+[6.3. Screening [20](#screening)](#screening)
+
+[6.4. Withdrawal criteria
+[20](#withdrawal-criteria)](#withdrawal-criteria)
+
+[7. Trial treatments [20](#trial-treatments)](#trial-treatments)
+
+[7.1. Description of investigational medicinal product(s)
+[21](#description-of-investigational-medicinal-products)](#description-of-investigational-medicinal-products)
+
+[7.2. Dose and administration
+[21](#dose-and-administration)](#dose-and-administration)
+
+[7.3. Packaging, labeling, and handling of investigational medicinal
+products(s)
+[21](#packaging-labeling-and-handling-of-investigational-medicinal-productss)](#packaging-labeling-and-handling-of-investigational-medicinal-productss)
+
+[7.4. Drug accountability and treatment compliance
+[21](#drug-accountability-and-treatment-compliance)](#drug-accountability-and-treatment-compliance)
+
+[7.5. Randomization [22](#randomization)](#randomization)
+
+[7.6. Blinding [22](#blinding)](#blinding)
+
+[7.7. Code breaking [22](#code-breaking)](#code-breaking)
+
+[7.8. Auxiliary medicinal products
+[22](#auxiliary-medicinal-products)](#auxiliary-medicinal-products)
+
+[7.9. Concomitant use of other medicinal products and treatments
+[23](#concomitant-use-of-other-medicinal-products-and-treatments)](#concomitant-use-of-other-medicinal-products-and-treatments)
+
+[7.10. Destruction [23](#destruction)](#destruction)
+
+[7.11. Treatment after trial end
+[23](#treatment-after-trial-end)](#treatment-after-trial-end)
+
+[8. Methods for measurement of endpoints for clinical efficacy and
+safety
+[24](#methods-for-measurement-of-endpoints-for-clinical-efficacy-and-safety)](#methods-for-measurement-of-endpoints-for-clinical-efficacy-and-safety)
+
+[8.1. Methods for measurement of endpoints for clinical efficacy
+[24](#methods-for-measurement-of-endpoints-for-clinical-efficacy)](#methods-for-measurement-of-endpoints-for-clinical-efficacy)
+
+[8.1.1. Primary endpoint [24](#primary-endpoint)](#primary-endpoint)
+
+[8.1.2. Secondary endpoints
+[24](#secondary-endpoints)](#secondary-endpoints)
+
+[8.2. Methods for measurement of endpoints for clinical safety
+[24](#methods-for-measurement-of-endpoints-for-clinical-safety)](#methods-for-measurement-of-endpoints-for-clinical-safety)
+
+[9. Handling of Adverse Events
+[24](#handling-of-adverse-events)](#handling-of-adverse-events)
+
+[9.1. Definitions [25](#definitions)](#definitions)
+
+[9.1.1. Adverse Event (AE) [25](#adverse-event-ae)](#adverse-event-ae)
+
+[9.1.2. Adverse Reaction (AR)
+[25](#adverse-reaction-ar)](#adverse-reaction-ar)
+
+[9.1.3. Serious Adverse Event (SAE)
+[25](#serious-adverse-event-sae)](#serious-adverse-event-sae)
+
+[9.1.4. Suspected Unexpected Serious Adverse Reaction (SUSAR)
+[26](#suspected-unexpected-serious-adverse-reaction-susar)](#suspected-unexpected-serious-adverse-reaction-susar)
+
+[9.2. Assessment of Adverse Events (AE)
+[26](#assessment-of-adverse-events-ae)](#assessment-of-adverse-events-ae)
+
+[9.2.1. Assessment of causal relationship
+[26](#assessment-of-causal-relationship)](#assessment-of-causal-relationship)
+
+[9.2.2. Assessment of intensity
+[27](#assessment-of-intensity)](#assessment-of-intensity)
+
+[9.2.3. Assessment of seriousness
+[27](#assessment-of-seriousness)](#assessment-of-seriousness)
+
+[9.3. Reporting and registration of Adverse Events
+[27](#reporting-and-registration-of-adverse-events)](#reporting-and-registration-of-adverse-events)
+
+[9.3.1. Reporting of Adverse Events (AE)
+[28](#reporting-of-adverse-events-ae)](#reporting-of-adverse-events-ae)
+
+[9.3.2. Reporting of Serious Adverse Events (SAE)
+[28](#reporting-of-serious-adverse-events-sae)](#reporting-of-serious-adverse-events-sae)
+
+[9.3.3. Reporting of Suspected Unexpected Serious Adverse Reactions
+(SUSAR)
+[29](#reporting-of-suspected-unexpected-serious-adverse-reactions-susar)](#reporting-of-suspected-unexpected-serious-adverse-reactions-susar)
+
+[9.4. Follow-up of Adverse Events
+[30](#follow-up-of-adverse-events)](#follow-up-of-adverse-events)
+
+[9.5. Independent Data Monitoring Committee
+[30](#independent-data-monitoring-committee)](#independent-data-monitoring-committee)
+
+[9.6. Annual Safety Report (ASR)
+[30](#annual-safety-report-asr)](#annual-safety-report-asr)
+
+[9.7. Procedures in case of emergencies, overdose or pregnancy
+[31](#procedures-in-case-of-emergencies-overdose-or-pregnancy)](#procedures-in-case-of-emergencies-overdose-or-pregnancy)
+
+[9.8. Reference Safety Information
+[31](#reference-safety-information)](#reference-safety-information)
+
+[10. Statistics [31](#statistics)](#statistics)
+
+[10.1. Analysis population
+[31](#analysis-population)](#analysis-population)
+
+[10.2. Statistical analyses
+[32](#statistical-analyses)](#statistical-analyses)
+
+[10.2.1. Statistical methods
+[32](#statistical-methods)](#statistical-methods)
+
+[10.2.2. Drop-outs [32](#drop-outs)](#drop-outs)
+
+[10.3. Adjustment of significance and confidence interval
+[32](#adjustment-of-significance-and-confidence-interval)](#adjustment-of-significance-and-confidence-interval)
+
+[10.4. Sample size calculations
+[32](#sample-size-calculations)](#sample-size-calculations)
+
+[10.5. Interim analysis (if relevant)
+[32](#interim-analysis-if-relevant)](#interim-analysis-if-relevant)
+
+[11. Quality Control and Quality Assurance
+[33](#quality-control-and-quality-assurance)](#quality-control-and-quality-assurance)
+
+[11.1. Quality Assurance and Sponsor oversight
+[33](#quality-assurance-and-sponsor-oversight)](#quality-assurance-and-sponsor-oversight)
+
+[11.2. Monitoring [33](#monitoring)](#monitoring)
+
+[11.3. Source data [34](#source-data)](#source-data)
+
+[11.4. Deviations, serious breaches and other reporting obligations
+[35](#deviations-serious-breaches-and-other-reporting-obligations)](#deviations-serious-breaches-and-other-reporting-obligations)
+
+[11.5. Audits and inspections
+[36](#audits-and-inspections)](#audits-and-inspections)
+
+[12. Ethics [36](#ethics)](#ethics)
+
+[12.1. Compliance to the protocol, ICH-GCP and regulations
+[36](#compliance-to-the-protocol-ich-gcp-and-regulations)](#compliance-to-the-protocol-ich-gcp-and-regulations)
+
+[12.2. Ethical review of the trial
+[36](#ethical-review-of-the-trial)](#ethical-review-of-the-trial)
+
+[12.3. Procedure for obtaining informed consent
+[36](#procedure-for-obtaining-informed-consent)](#procedure-for-obtaining-informed-consent)
+
+[12.4. Data protection [37](#data-protection)](#data-protection)
+
+[12.5. Insurances [38](#insurances)](#insurances)
+
+[13. Substantial changes to the trial
+[38](#substantial-changes-to-the-trial)](#substantial-changes-to-the-trial)
+
+[14. Collection, handling, and archiving of data
+[39](#collection-handling-and-archiving-of-data)](#collection-handling-and-archiving-of-data)
+
+[14.1. Case Report Form [40](#case-report-form)](#case-report-form)
+
+[15. Notification of trial completion, reporting, and publication
+[41](#notification-of-trial-completion-reporting-and-publication)](#notification-of-trial-completion-reporting-and-publication)
+
+[16. References [42](#_Toc106263014)](#_Toc106263014)
+
+[17. Attachments [42](#attachments)](#attachments)
+
+## Signature page {#signature-page .unnumbered}
+
+*For single-centre trials, remove the signature line of the coordinating
+investigator. If the sponsor and principal investigator are the same
+person, write "Sponsor/Principal Investigator" on the first signature
+line then remove the other signature lines.*
+
+*If the clinical trial has more than one sponsor, all sponsors should
+agree, for example, on the signing of the protocol by means of a written
+agreement setting out their respective obligations. For example, the
+sponsor responsible for the design of the protocol may be deemed as the
+most appropriate to sign the protocol. Protocol signatures are not
+required for clinical trial applications, but these should be in place
+in accordance with ICH-GCP.*
+
+*Text suggestion:*
+
+### Sponsor {#sponsor .unnumbered}
+
+I am responsible for ensuring that this protocol includes all essential
+information to be able to conduct this trial. I will submit the protocol
+and all other important trial-related information to the responsible
+investigator(s) so that they can conduct the trial correctly. I am aware
+that it is my responsibility to hold the staff members who work with
+this trial informed and trained.
+
+Sponsor's signature Date
+
+Printed name
+
+**\
+**
+
+### Coordinating Investigator {#coordinating-investigator .unnumbered}
+
+I have read this protocol and agree that it includes all essential
+information to be able to conduct the trial. By signing my name below, I
+agree to conduct the trial in compliance with this clinical trial
+protocol, the EU Regulation on clinical trials of medicinal products for
+human use (EU 536/2014), the Declaration of Helsinki, ICH-GCP (Good
+Clinical Practice) guidelines and the current national regulations
+governing the conduct of this clinical trial.
+
+I will submit this protocol and all other important trial-related
+information to the principal investigators who participate in this
+trial, so that they can conduct the trial correctly. I am aware of my
+responsibility to continuously keep the principal investigators who work
+with this trial informed and trained.
+
+I am aware that quality control of this trial will be performed in the
+form of monitoring and eventual audit and inspection.
+
+Coordinating Investigator's signature Date
+
+Printed name
+
+### Principal Investigator {#principal-investigator .unnumbered}
+
+I have read this protocol and agree that it includes all essential
+information to be able to conduct the trial. By signing my name below, I
+agree to conduct the trial in compliance with this clinical trial
+protocol, the EU Regulation on clinical trials of medicinal products for
+human use (EU 536/2014), the Declaration of Helsinki, ICH-GCP (Good
+Clinical Practice) guidelines and the current national regulations
+governing the conduct of this clinical trial.
+
+I will submit this protocol and all other important trial-related
+information to the staff members and investigators who participate in
+this trial, so that they can conduct the trial correctly. I am aware of
+my responsibility to continuously keep the staff members and
+investigators who work with this trial informed and trained.
+
+I am aware that quality control of this trial will be performed in the
+form of monitoring and eventual audit and inspection.
+
+Principal Investigator's signature Date
+
+Printed name
+
+## Contact information {#contact-information .unnumbered}
+
+*List the name, role in the trial, contact address, telephone number,
+and email for all involved in the trial (Sponsor, eventual Co-sponsor,
+Coordinating Investigator/Principal Investigator, clinical monitoring
+organization if appointed, etc.). Add rows if needed for the trial.*
+
+*Contact details must be provided for the sponsor; name and address and
+the name and responsibilities of the sponsor\'s representative and any
+co-sponsors authorised to sign the clinical trial protocol or any
+eventual amendments of this.*
+
+*In order to avoid liability issues in clinical trials with multiple
+sponsors, all sponsors shall be subject to the liability of one sponsor
+unless they otherwise agree in a written agreement.*
+
++-----------------------------------+----------------------------------+
+| **Responsibility in the clinical  |                                  |
+| trial**                           |                                  |
++===================================+==================================+
+| Sponsor                           | \<\<Name, title\>\>              |
+|                                   |                                  |
+| Responsibility:                   | \<\<Site/Institution\>\>         |
+|                                   |                                  |
+| -   X                             | \<\<Contact address\>\>          |
+|                                   |                                  |
+| -   Y                             | \<\<Telephone number\>\>         |
+|                                   |                                  |
+|                                   | \<\<Email\>\>                    |
++-----------------------------------+----------------------------------+
+| Co-sponsor                        |                                  |
+|                                   |                                  |
+| Responsibility:                   |                                  |
+|                                   |                                  |
+| -   X                             |                                  |
+|                                   |                                  |
+| -   Y                             |                                  |
++-----------------------------------+----------------------------------+
+| *Coordinating Investigator /      |                                  |
+| Principal Investigator*           |                                  |
+|                                   |                                  |
+| Responsibility:                   |                                  |
+|                                   |                                  |
+| -   X                             |                                  |
+|                                   |                                  |
+| -   Y                             |                                  |
++-----------------------------------+----------------------------------+
+| *Specify others involved:\        |                                  |
+| Clinical monitoring organization, |                                  |
+| project management, statistics or |                                  |
+| data management.*                 |                                  |
++-----------------------------------+----------------------------------+
+
+: A table marked as Contact information. It has two columns. The one to
+the left is marked as Responsibility in the clinical trial, while the
+one to the right is unmarked. The left one contains information such as:
+Sponsor - Responsibility: X, Y; Co-sponsor - Responsibility: X, Y;
+Coordinating Investigator / Principal Investigator - Responsibility: X,
+Y; Specify others involved: Clinical monitoring organization, project.
+The column to the right contains information such as: Name, title,
+Site/Institution, Contact address, Telephone number, Email.
+
+## List of used acronyms and abbreviations {#list-of-used-acronyms-and-abbreviations .unnumbered}
+
+*List all abbreviations used in the protocol. Each term should be
+written out fully the first time it is used in the protocol, with the
+abbreviation in parentheses. Examples of common abbreviations are shown
+below but this list should be adapted to your trial; add and/or remove
+rows as needed.*
+
+  --------------------------------------------------------------------------
+  **Abbreviation**   **Term/Explanation**
+  ------------------ -------------------------------------------------------
+  Adverse Event (AE) Any untoward medical occurrence in a subject to whom a
+                     medicinal product is administered and which does not
+                     necessarily have a causal relationship with this
+                     treatment.
+
+  Serious Adverse    Any untoward medical occurrence that at any dose
+  Event (SAE)        requires inpatient hospitalisation or prolongation of
+                     existing hospitalisation, results in persistent or
+                     significant disability or incapacity, results in a
+                     congenital anomaly or birth defect, is
+                     life-threatening, or results in death
+
+  AR                 Adverse Reaction = any unfavorable and unexpected
+                     reaction to an investigational medicinal product,
+                     regardless of dose
+
+  ASR                Annual Safety Report = the annual safety report for
+                     reporting to authorities. In Sweden this is the Swedish
+                     Medical Products Agency.
+
+  CRF                Case Report Form
+
+  CTIS               Clinical Trial Information System = Centralized EU
+                     database/portal for application and communication with
+                     authorities concerning clinical trials. In Sweden this
+                     includes the Swedish Medical Products Agency and the
+                     Swedish Ethical Review Authority.
+
+  CTR                EU Regulation 536/2014, also called CTR, Clinical
+                     Trials Regulation
+
+  DSUR               Development Safety Update Report = the standard which
+                     should be used for annual safety reporting to
+                     authorities
+
+  EPM                Etikprövningsmyndigheten (English: Swedish Ethical
+                     Review Authority)
+
+  GCP                Good Clinical Practice
+
+  IB                 Investigator's Brochure
+
+  ICH                International Council for Harmonization
+
+  ITT                Intention-to-treat = including all data from all
+                     subjects who have participated in the trial
+
+  Läkemedelsverket   Swedish Medical Products Agency -- the national
+                     authority responsible for regulation and surveillance
+                     of the development, manufacturing and sale of medicinal
+                     products.
+
+  PP                 Per Protocol analysis = including only data from
+                     subjects who have completed the trial completely in
+                     accordance with the protocol, with no deviations from
+                     the protocol
+
+  RSI                Reference safety information. A list of all known
+                     adverse reactions for the investigational medicinal
+                     product, including severity and frequency of the
+                     adverse reaction. The RSI is contained in the Summary
+                     of Product Characteristics or IB and is used to
+                     determine which new adverse reactions should be
+                     reported as suspected unexpected serious adverse
+                     reactions (SUSARs).
+
+  SPC or SmPC        Summary of Product Characteristics
+
+  SUSAR              Suspected Unexpected Serious Adverse Reaction. This is
+                     an event that is likely related to the investigational
+                     medicinal product but with unexpected occurrence. An
+                     adverse reaction is unexpected if its nature or
+                     seriousness is not consistent with the information on
+                     the product in the RSI.
+  --------------------------------------------------------------------------
+
+  : A table with two columns. The columns are marked as Abbreviation and
+  Term/Explanation respectively. The table contains information such as:
+  AR - Adverse Reaction = any unfavorable and unexpected reaction to an
+  investigational medicinal product, regardless of dose; ASR - Annual
+  Safety Report = the annual safety report for reporting to authorities.
+  In Sweden this is the Swedish Medical Products Agency; CRF - Case
+  Report Form.
+
+## Synopsis
+
+*Brief summary of the trial including aim, primary and secondary
+objectives, trial design, investigational medicinal product, dose, route
+of administration, trial population, number of subjects, time plan for
+the trial.*
+
+*Note: This is a summary, not an introduction.*
+
+*It is recommended that the synopsis is understandable to a layman if
+this is the summary that will be submitted with the application. The
+synopsis must be submitted in Swedish or applicable local language and
+should be a maximum of two pages. The synopsis can be part of the
+protocol or a separate document (e.g. when different language versions
+are submitted), in the latter case it must always be submitted to CTIS
+together with the protocol.*
+
+*For more details on what is recommended to be included in the synopsis,
+see the European Commission\'s CTR Questions and Answers document
+(*[link](https://ec.europa.eu/health/medicinal-products/eudralex/eudralex-volume-10_en#set-of-documents-applicable-to-clinical-trials-that-will-be-authorised-under-regulation-eu-no-5362014-once-it-becomes-applicable)*),
+Chapter V, EudraLex - Volume 10 - Clinical trials guidelines), question
+5.8.*
+
++-----------------------+----------------------------------------------+
+| EU Trial number:      |                                              |
++=======================+==============================================+
+| Title:                |                                              |
++-----------------------+----------------------------------------------+
+| Trial ID:             |                                              |
++-----------------------+----------------------------------------------+
+| Short background/     |                                              |
+| Rationale/Aim:        |                                              |
++-----------------------+----------------------------------------------+
+| Primary objective:    |                                              |
++-----------------------+----------------------------------------------+
+| Secondary objectives: |                                              |
++-----------------------+----------------------------------------------+
+| Primary outcome:\     |                                              |
+| *Describe also when   |                                              |
+| assessment is made*   |                                              |
++-----------------------+----------------------------------------------+
+| Secondary outcome:    |                                              |
++-----------------------+----------------------------------------------+
+| Trial design:         |                                              |
+|                       |                                              |
+| *Describe the design  |                                              |
+| and how long the      |                                              |
+| subjects participate  |                                              |
+| in the trial. E.g.    |                                              |
+| double-blind          |                                              |
+| placebo-controlled    |                                              |
+| trial where subjects  |                                              |
+| participate for x     |                                              |
+| weeks.*               |                                              |
++-----------------------+----------------------------------------------+
+| Trial population:     |                                              |
+|                       |                                              |
+| *E.g. patients with   |                                              |
+| asthma 18-55 years    |                                              |
+| old*                  |                                              |
++-----------------------+----------------------------------------------+
+| Number of subjects:   |                                              |
++-----------------------+----------------------------------------------+
+| Inclusion criteria:   |                                              |
++-----------------------+----------------------------------------------+
+| Exclusion criteria:   |                                              |
++-----------------------+----------------------------------------------+
+| Intervention:         |                                              |
+|                       |                                              |
+| *Describe             |                                              |
+| interventions and     |                                              |
+| length of treatment,  |                                              |
+| including background  |                                              |
+| treatment. Describe   |                                              |
+| also trial-related    |                                              |
+| diagnostic and        |                                              |
+| monitoring procedures |                                              |
+| used.*                |                                              |
++-----------------------+----------------------------------------------+
+| Investigational       |                                              |
+| medicinal product(s), |                                              |
+| dosage,               |                                              |
+| administration:       |                                              |
++-----------------------+----------------------------------------------+
+| Ethical               |                                              |
+| considerations,       |                                              |
+| benefit/risk:         |                                              |
++-----------------------+----------------------------------------------+
+| Trial period:         | *E.g. Q1 20XX -- Q1 20XX*                    |
++-----------------------+----------------------------------------------+
+
+: A table marked as Synopsis with only one column that contains
+information such as: EU Trial number; Title; Trial ID; Short
+background/Rationale/Aim; Primary objective; Secondary objectives;
+Primary outcome: Describe also when assessment is made; Secondary
+outcome: Trial design: Describe the design and how long the subjects
+participate in the trial. E.g. double-blind placebo-controlled trial
+where subjects participate for x weeks; Trial population: E.g. patients
+with asthma 18-55 years old; Number of subjects.
+
+## Background and rationale
+
+*Provide a summary of the background of the trial, including
+justification for why the proposed trial is relevant and/or necessary to
+perform. This should be stated in a scientific context that motivates
+the choice of objectives and expected outcomes of the trial. Describe
+which disease will be studied, current treatment strategies, and
+background to the trial including relevant references to scientific
+literature. Summarize results from previous relevant
+preclinical/clinical studies. Provide references to literature and data
+that are relevant to the clinical trial and provide background
+information to the clinical trial.*
+
+*Also describe whether patients/patient organisations were involved in
+the design of the clinical trial, and if so, describe their
+involvement.*
+
+## Benefit-risk evaluation 
+
+*The benefits of the trial should be weighed against the risks for the
+subjects. Risks can be divided into those with causal relationship with
+the investigational medicinal product and those with causal relationship
+with trial-specific examinations.*
+
+*If an investigational medicinal product is administered in a manner
+that is not described in the summary of product characteristics (SPC),
+the risks related to this must be evaluated. The sponsor should
+summarize if the benefit-risk evaluation is positive for the trial. This
+section is an important source of information when authoring the
+Informed Consent Form (ICF).*
+
+*Summarize the expected therapeutic benefit in terms of:*
+
+-   *the investigational medicinal product's characteristics and
+    knowledge about it*
+
+-   *for the subject as an individual*
+
+-   *for the group represented by the subject or public health benefit*
+
+*Summarize the risks and inconveniences to subjects regarding:*
+
+-   *the investigational and auxiliary medicinal product's
+    characteristics and knowledge about them*
+
+-   *the characteristics of the intervention in relation to normal
+    clinical practice, the safety measures, including provisions for
+    risk minimisation measures, monitoring, safety reporting and safety
+    plan, and the risk to subjects\' health that the medical condition
+    for which the investigational medicinal product is being
+    investigated may pose*
+
+-   *subjects participating in clinical trials in an emergency
+    situation - scientific justification is required such that
+    participation in the clinical trial provides a direct clinically
+    relevant benefit to the subject.*
+
+*Check also that you describe:*
+
+-   *The measures taken to minimise sources of error, including, where
+    appropriate, randomisation and blinding.*
+
+-   *Other expected benefits, e.g., health economics benefits.*
+
+-   *Risks that are associated with participation in this trial;
+    trial-specific examinations and/or sampling not included in routine
+    clinical practice. The risk of possible deterioration of the
+    subjects\' disease state in, e.g., placebo treatment should also be
+    included.*
+
+-   *Expected adverse reactions. This includes both the investigational
+    medicinal product and the comparator product.*
+
+-   *Possible interactions with concomitant medical treatments.*
+
+-   *Steps that will be taken to control or mitigate risks (i.e. close
+    follow-up of subjects).*
+
+-   *Benefit-risk rationale, concluding that it is ethical to perform
+    the trial and that the benefits justify the risks.*
+
+## Trial objectives
+
+*Objectives or purpose = describe why the trial is done and what you
+want to accomplish with the trial. Note that the connection should be
+clear between the objective, endpoint and method description for
+measurement of the outcome.*
+
+*List the trial's primary and secondary objectives (e.g., to study the
+effect, pharmacokinetics, and/or safety of the investigational medicinal
+product).*
+
+*Describe which endpoint (variables) will measure these. Be sure that
+each variable is clearly defined. Use neutral words to describe the
+objectives. This section can have sub-sections such as "primary
+objective", "secondary objective", "primary endpoint (variable)", and
+"secondary endpoints (variables)". Briefly state these, while methods
+and questionnaires can be referred to under section 8.1, Methods for
+measurement of endpoints for clinical efficacy.*
+
+### Primary objective
+
+*Describe the primary objective (there should only be one).*
+
+*Example of a main aim / primary objective: To compare the
+blood-pressure lowering effect of drug x with drug y.*
+
+*Text suggestion:* The primary objective of this trial is to...
+
+### Secondary objective(s)
+
+*Describe eventual secondary objective(s). These should be as few as
+possible (e.g., AE, subgroup analyses, quality of life, etc.).*
+
+*Text suggestion:* The secondary objective of this trial is to...
+
+### Primary endpoint (variable)
+
+*The method by which the primary endpoint is measured. The primary
+endpoint is described in more detail in section 8.1.1, Primary endpoint
+(variable).*
+
+*Text suggestion:* Primary variable: *Blood pressure measured 30 hours
+after administration of the investigational medicinal product.*
+
+### Secondary endpoint (variables)
+
+*Describe what will be measured for the secondary endpoints. Secondary
+endpoints (variables) are described in more detail in section 8.1.2,
+Secondary endpoints (variables).*
+
+## Trial design and procedures
+
+### Overall trial design 
+
+*The trial should be designed so that the data obtained can answer the
+scientific questions.*
+
+*A description of the trial design should include:*
+
+-   *Type of clinical trial (Phase I, human pharmacology; Phase II,
+    therapeutic explorative; Phase III, therapeutic confirmative; Phase
+    IV, therapeutic usage).*
+
+-   *The trial design to be conducted, e.g., open, randomized,
+    single/double-blinded, placebo-controlled. If randomization occurs,
+    refer to section 7.5, Randomization, for more information.*
+
+-   *Parallel group or cross-over etc.*
+
+-   *Provide a rationale for the chosen trial design. The rationale
+    should be relevant for the trial's objective and should also
+    contribute to identification of relevant trial endpoint
+    (variables).*
+
+-   *Describe how long a subject will participate in the trial. Also
+    describe* *the sequence and duration of all periods in the clinical
+    trial, including follow-up, if applicable.*
+
+-   *List which investigational medicinal product(s) is used in the
+    trial as well as possible comparative treatments. Refer to section
+    7, Trial treatments, for more detailed information.*
+
+-   *A schematic diagram of the trial design, procedures, and steps; see
+    provided example (Figure X).*
+
+***Figure** X **Trial design***
+
+![A table that shows the number of visits which ranges from 1 to 6. The
+number of weeks corresponds to each week and goes from -1 to 15. The
+table shows different tasks done during each visit, like, for example,
+screening during the first one and randomization during the second one.
+Treatment A and B during visits 3 and 4, evaluation during the fourth
+visit, and finally, end of treatment during the fifth
+visit.](media/image3.png){width="6.358333333333333in" height="5.325in"}
+
+### Procedures and flow chart
+
+*Describe all trial-related procedure(s) (e.g. ECG, sampling,
+examinations, AE reporting, etc) the subject undergoes during each
+visit. Include a table that summarizes the activities during each visit,
+see example in Table X.*
+
+*Describe any pre-screening procedures planned for the trial.*
+
+*Keep in mind that it must be a physician who checks the
+inclusion/exclusion criteria and obtains the informed consent.*
+
+*Also define the visit window, i.e., how much a follow-up visit may vary
+in time.*
+
+*Example table:*
+
+*Table X* Flow chart
+
++-----------------+--------------+-----------+-----------+-----------+
+| Procedure       | *Screening*  | *Visit 1* | *Visit 2* | *Visit 3* |
+|                 |              |           |           |           |
+|                 | *Day/Week x  | *         | *Day/Week | *Day/Week |
+|                 | Inclusion    | Baseline* | x (±10    | x (±10    |
+|                 | visit*       |           | days)*    | days)*    |
++=================+==============+===========+===========+===========+
+| *Incl/exclusion | √            |           |           |           |
+| criteria*       |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *Informed       | √            |           |           |           |
+| consent*        |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *Medical        | √            |           |           |           |
+| history/        |              |           |           |           |
+| concomitant     |              |           |           |           |
+| medications*    |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *Randomization* | √\*          | √\*       |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *Instructions   |              | √         |           |           |
+| for handling    |              |           |           |           |
+| the medicinal   |              |           |           |           |
+| product(s)*     |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *Fill out       |              | √         | √         | √         |
+| EQ-5D*          |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *X-ray (CT)*    |              |           | √         | √         |
++-----------------+--------------+-----------+-----------+-----------+
+| *Adverse Events |              | √         | √         | √         |
+| (AE & SAE)*     |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+| *End of Trial*  |              |           |           | √         |
++-----------------+--------------+-----------+-----------+-----------+
+|                 |              |           |           |           |
++-----------------+--------------+-----------+-----------+-----------+
+
+: A table with five columns and ten rows. The columns are marked in the
+following order: Procedure; Screening Day/Week x Inclusion visit; Visit
+1 Baseline; Visit 2 Day/Week x (±10 days); Visit 3 Day/Week x (±10
+days). The information found in the rows in the first column is:
+Incl/exclusion criteria; Informed consent; Medical history/concomitant
+medications; Randomization; Instructions for handling the medicinal
+product(s); Fill out EQ-5D; X-ray (CT); Adverse Events (AE & SAE); End
+of Trial; Some of the fields in the table are either blank or contain a
+check mark. For example, the first four procedures are present during
+the screening, the next four during the first visit, and the final three
+or four are present during visits 2 and 3.
+
+*\*Randomization can be done at, e.g., the screening visit or visit 1;
+adjust the table for the trial.*
+
+### Biological sampling procedures
+
+*A description of the procedures to comply with the applicable rules for
+the collection, storage and future use of biological samples from
+subjects, if applicable, unless specified in a separate document.*
+
+#### **Handling, storage, and destruction of biological samples**
+
+*Specify sampling, sampling volumes, analytical methods (including
+information about method validation) and where the analyses will be
+performed. Check if the lab is accredited or which quality standards
+should be met for the chosen analysis.*
+
+*Detailed sampling and handling procedures are described in a separate
+document.*
+
+#### **Total volume of blood per subject** 
+
+*Text suggestion:* The total volume of blood taken from each subject
+during the trial is a maximum of *\<\<volume\>\>* ml.
+
+#### **Biobank**
+
+*If a sample is taken within the healthcare system for research
+purposes, it is covered by the Swedish Biobank Act, see exemptions
+below.*
+
+*There is an exemption for samples taken for research that will not be
+saved in the biobank: The Swedish Biobank Act is not applicable to
+samples which are intended for research, and which are analyzed within
+six months after sampling date and destroyed immediately after analysis.
+Both conditions must be met. For more information see link (in Swedish):
+<http://biobanksverige.se/forandring-i-biobankslagen-januari-2019>.*
+
+*Researchers uncertain about whether a sample in the trial is covered by
+the exemption rule are advised to contact the region's biobank
+coordinator or a regional biobank center for advice.*
+
+*According to CTR, a biobank application must be submitted to
+<kliniskaprovningar@biobanksverige.se> in parallel with the clinical
+trial application in CTIS. For more information see
+<https://biobanksverige.se/forskning/klinisk-provning/>*
+
+*Text suggestion:* All samples taken in this trial are registered in a
+biobank at *\<\<Name of biobank\>\>* and handled according to the
+current biobank laws and regulations. The samples are
+coded/pseudonymized to protect the subject´s identity. All samples and
+the identification/code list are stored securely and separately to
+prevent access by unauthorized persons.
+
+### End of Trial
+
+*Provide a clear and unambiguous indication of what constitutes the end
+of the trial and, if it is not the date of the last visit of the last
+subject, a specification of the estimated end date of the trial.*
+
+*If treatment of the subjects who completed the trial differs from
+normal clinical practice, this should be stated. This can, for example,
+mean that the trial subjects should receive the investigational
+medicinal product after the trial ends -- if so, describe how this will
+be done (see section 7.10, Treatment after trial end).*
+
+*See also section 6.4, Withdrawal criteria, and section 15, Notification
+of trial completion, reporting, and publication.*
+
+*If a clinical trial is suspended or terminated prematurely due to a
+change in the benefit/risk balance, for reasons of subject safety, this
+should be notified to the concerned Member States via CTIS. The
+notification should be made as soon as possible, but no later than 15
+days after the clinical trial was suspended or terminated prematurely.
+The reasons for such action and follow-up measures should be provided.
+The resumption of a clinical trial after it has been temporarily
+suspended due to a change in the benefit/risk balance is considered to
+be a substantial modification.*
+
+*Text suggestion:*
+
+The trial ends when the last subject has completed the last follow-up
+(or if this is not relevant give the estimate completion date instead).
+
+The trial may be prematurely terminated if it this is necessary for
+safety reasons affecting the risk-benefit balance or if the recruitment
+of subjects cannot be met within reasonable time limits. If the trial is
+prematurely terminated or suspended, the investigator should immediately
+inform the subjects about this and ensure appropriate treatment and
+follow-up. The Swedish Medical Products Agency should be informed as
+soon as possible via CTIS, but no later than 15 days after trial
+suspension.
+
+Decisions on premature termination are taken by the sponsor.
+
+## Subject selection
+
+*A description of the groups and subgroups of subjects to be enrolled in
+the clinical trial, including, where applicable, groups of subjects with
+special needs (e.g. age, gender, healthy volunteers, subjects with rare
+or very rare diseases). A justification of the gender and age
+distribution of the subjects if a certain gender or age group is not
+enrolled or is underrepresented in the clinical trial, an explanation of
+the reasons and a justification of these exclusion criteria.*
+
+### Inclusion criteria
+
+*Only pre-defined inclusion, exclusion, and withdrawal criteria can be
+used in the trial. Inclusion criteria often include signed informed
+consent, age, disease, symptoms, possibly requirements for negative
+pregnancy test, contraception use during the trial. If fertile women are
+to be included, see
+document,"[Antikonceptionsrekommendationer](https://www.lakemedelsverket.se/sv/tillstand-godkannande-och-kontroll/klinisk-provning/lakemedel-for-manniskor/antikonception-preventivmetoder)"
+(in Swedish), on the Swedish Medical Product Agency's website.*
+
+*Note that all inclusion criteria are written so that they can be
+answered with a" Yes".*
+
+*Text suggestion:* To be included in the trial, subjects must meet the
+following criteria:
+
+-   The subject has given their written consent to participate in the
+    trial.
+
+-   *For female subjects of fertile age, adequate contraception should
+    be used, specify which methods. A negative pregnancy test can
+    eventually be a requirement, specify requirement/type of pregnancy
+    test. Contraceptive requirements may also apply to male subjects.*
+
+### Exclusion criteria
+
+*State the criteria that the subject cannot meet in order to be included
+in the trial, with respect to the subject's safety or something that may
+interfere with the trial results.*
+
+*Check that all contraindications for the investigational medicinal
+product in the SPC/IB are included.*
+
+*The following exclusion criteria are commonly included in trials:*
+
+-   *Contraindications*
+
+-   *Concomitant medications*
+
+-   *Known or suspected allergies against any product included in the
+    trial*
+
+-   *Pregnancy, breastfeeding, or planned pregnancy*
+
+-   *Mental inability, reluctance or language difficulties that result
+    in difficulty understanding the meaning of participation in the
+    trial*
+
+-   *Treatment or disease which, according to the investigator, can
+    affect treatment or trial results*
+
+-   *Participation or recent participation in a clinical trial with a
+    investigational medicinal product (specify how recently, usually 30
+    days). Previous participation in this trial.*
+
+*Text suggestion:* Subjects must not be included in this trial if any of
+the following criteria are met:
+
+-   .
+
+-   .
+
+-   .
+
+### Screening
+
+*Describe the process for screening and inclusion. Also provide
+information about whether and when re-screening is allowed.*
+
+*Text suggestion:* Subject eligibility (that subjects fulfill all
+inclusion criteria and do not meet any exclusion criteria) is
+established before inclusion, treatment, or randomization.
+
+### Withdrawal criteria
+
+*Specify criteria for when and how subjects can/must be prematurely
+taken out of the trial.*
+
+-   *The subject may choose to discontinue the trial at any time*
+
+-   *The principal investigator or safety committee can terminate a
+    subject's participation (due to, e.g., non-tolerable adverse
+    events/adverse reactions, pregnancy, etc.)*
+
+-   *A concerned Competent Authority can terminate the trial.*
+
+*Describe the care of trial subjects who prematurely discontinue the
+trial (e.g., continued treatment, examinations).*
+
+*Describe how data will be handled for subjects who discontinue the
+trial prematurely. Specify if a closing visit will be performed or if
+other follow-up is planned (e.g., overall survival).*
+
+*It should also be clarified whether a subject who has discontinued the
+trial will/can be replaced to achieve the desired number of included
+subjects and, if so, in which case/how this will be done.*
+
+*If an exclusion criterion applies throughout the trial, this should
+also be stated.*
+
+*See also section 5.4, End of Trial, and section 15, Notification of
+trial completion, reporting, and publication.*
+
+*Example text:\
+*Subjects can discontinue their participation in the trial at any time
+without any consequence to his/her continued treatment. The
+investigator/sponsor can at any time terminate the trial for a subject
+due to, e.g., unacceptable adverse events/adverse reactions or because
+the subject does not follow procedures in the clinical trial protocol.
+If the subject discontinues the trial, follow-up of this subject will be
+performed according to the clinic's routine.
+
+## Trial treatments
+
+*The term investigational medicinal product includes medicinal products
+used as comparators (placebo or active medicinal product). The same
+requirements apply to comparator medicinal products as to the medicinal
+products under investigation. Comparator medicinal products should
+therefore be described in a similar way in this section, i.e. when the
+instruction text below states investigational medicinal products, the
+corresponding information also needs to be provided for any comparator
+medicinal products.*
+
+### Description of investigational medicinal product(s)
+
+*Describe all investigational medicinal product(s) in detail. State the
+name, manufacturer, formulation, restrictions, treatment time with the
+drug, allowable treatment interruption, etc.*
+
+*Describe whether investigational medicinal products are authorised for
+sale and whether they are to be used in accordance with the terms of the
+marketing authorisation.*
+
+*In multicentre trials involving several EU countries and where the
+trade name of the medicinal product varies within the EU, only the
+active substance or ATC code should be provided.*
+
+*Indicate what is used as a control/comparator (standard treatment) or
+placebo.*
+
+*Describe how the investigational medicinal product(s) are provided and
+the responsibilities associated with it: Are drugs used from the
+clinic's shelf, ordered from the pharmacy, provided by the manufacturer,
+or prescribed? Describe also the responsibilities associated with
+administration.*
+
+### Dose and administration
+
+*Describe rationale for the basis of the chosen dose, dosing regimen,
+administration route and method, administration instructions (e.g., with
+food) and the treatment period. Describe the situations where possible
+change of dose may be relevant, e.g., dose reduction due to adverse
+events/adverse reactions, temporary treatment interruption. Describe any
+dose titration. If any aids will be used, describe this as well as
+information about CE marking if this is a medical device.*
+
+### Packaging, labeling, and handling of investigational medicinal products(s)
+
+*State how investigational medicinal product(s) are packaged, labeled,
+delivered, and stored. Describe the packaging, amount of medication per
+package and where the packaging takes place. Indicate how the
+investigational medicinal product is labelled for the clinical trial
+(attach an appendix with the label to the application).*
+
+*Describe how the investigational medicinal product(s) will be delivered
+and stored. List the conditions that must be maintained during transport
+and storage such as refrigeration/room temperature, light sensitivity,
+etc. Also describe how, e.g., temperature will be controlled.*
+
+*Labelling of investigational medicinal products and auxiliary medicinal
+products shall be in accordance with Chapter X, Articles 66 to 67, Annex
+VI, Sections A to D of the
+[CTR](https://eur-lex.europa.eu/legal-content/sv/ALL/?uri=CELEX:32014R0536).*
+
+### Drug accountability and treatment compliance
+
+*Describe how traceability for investigational medicinal product(s)
+including comparator medicinal products will be documented in e.g.
+medication log, etc.*
+
+*There is a possibility of less stringent rules in terms of
+documentation of traceability for low-intervention clinical trials.*
+
+*Describe how a subject's treatment compliance will be controlled and
+defined, facilitated and documented (for example instructions, labeling,
+measurement of blood levels, whether the medication(s) is taken by the
+subject at home or is only administered by healthcare personnel, diary,
+home visits, etc.). Also describe how missed doses will be handled and
+consequences of low compliance.*
+
+### Randomization
+
+*Describe in detail how randomization will be performed and how subjects
+receive a randomization number. Also include information according to
+the example text below.*
+
+*Text suggestion:* Subjects are included/randomized consecutively as
+they are found to be eligible for inclusion in the trial. If a subject
+discontinues their participation, the subject's trial-specific code will
+not be reused and the subject will not be allowed to re-enter the trial
+again.
+
+### Blinding
+
+*Describe the process for blinding. If this is not a blinded trial, this
+section can be removed.*
+
+### Code breaking
+
+*The protocol must describe how the code is broken in emergency
+situations and who should be informed in connection with this. A clear
+definition of situations where the code may need to be broken helps
+prevent unnecessary unblinding. It is important that the code in
+emergency situations can be broken by the investigator, without the
+involvement of the sponsor. Describe how possible code break envelopes
+are stored and who will have access to this as well as how these persons
+can be reached in case of an emergency.*
+
+*If an electronic system is used, it must be clear how to break the code
+if the system does not work.*
+
+*If this is not relevant, remove this section.*
+
+*Text suggestion:* The list for breaking the code can be found at...
+
+### Auxiliary medicinal products
+
+*Medicinal products are given to subjects that are not investigational
+medicinal products should be listed. These are called auxiliary
+medicinal products and include medicinal products used for background
+treatment, challenge agents, rescue medications and other substances
+used to measure endpoints (variables). Provide justification for the
+selected dose, dosing regimen, route of administration, method of
+administration, and treatment period for all auxiliary medicinal
+products. Also indicate whether the auxiliary medicinal product has
+marketing authorization and if within the trial it will be used
+according to the terms in its approval. If this are not approved, a
+justification must be given for using this auxiliary medicinal product.*
+
+*Safety reporting for auxiliary medicinal products, which are already on
+the market, shall be carried out in accordance with Chapter 3 of Title
+IX of [Directive
+2001/83/EG](https://eur-lex.europa.eu/legal-content/sv/ALL/?uri=CELEX%3A32001L0083).*
+
+*See also recommendations of the EMA expert group available on the
+Commission\'s website EudraLex
+([link](https://ec.europa.eu/health/medicinal-products/eudralex/eudralex-volume-10_en#set-of-documents-applicable-to-clinical-trials-that-will-be-authorised-under-regulation-eu-no-5362014-once-it-becomes-applicable)).
+EudraLex - Volume 10 - Clinical trials guidelines Chapter III, Auxiliary
+Medicinal Products in Clinical Trials.*
+
+*Describe how traceability and compliance of non-market approved
+auxiliary medicinal products will be documented e.g. medication log
+etc.*
+
+### Concomitant use of other medicinal products and treatments
+
+*For other concomitant medications (non-investigational medicinal
+products or auxiliary medicinal products and other treatments), justify
+and describe permitted and unauthorised treatments and medicinal product
+use before starting the trial, during the trial and after the end of the
+trial. Assess whether anything should be listed as an exclusion
+criterion and add this to section 6.2, Exclusion criteria.*
+
+*Indicate what should be documented in the CRF regarding other
+concomitant medications (name, dose, start and stop dates, indication,
+etc.) The following text suggestion can be a part of the text under this
+heading.*
+
+*Text suggestion:* Medications considered necessary for the safety and
+well-being of the subject may be provided at the discretion of the
+investigators, unless otherwise specified in the exclusion criteria.
+Concomitant medication should be recorded in the Case Report Form (CRF).
+
+### Destruction
+
+*Describe routines for how investigational medicinal product(s) shall be
+destroyed (if applicable). This also includes auxiliary medicinal
+products that do not have marketing authorization.*
+
+### Treatment after trial end
+
+*Describe any continued treatment of subjects after the trial end, e.g.,
+if the subject returns to previous treatments, if the subject receives
+no further treatment, if the subject continues treatment with the
+investigational medicinal product (note that this may require approval
+by the Swedish Medical Products Agency).*
+
+## Methods for measurement of endpoints for clinical efficacy and safety
+
+### Methods for measurement of endpoints for clinical efficacy
+
+*This section describes measurements and endpoints (variables)
+associated with primary and secondary objectives to demonstrate the
+effect of treatment through, e.g., different types of analyses and
+measurements such as X-ray, analysis of blood samples, measurements of
+tumor size, and questionnaires. Describe methods as well as approaches
+to sample collection and when the different measurements will be
+performed. State where any analyses will be performed. State whether
+biological material will be stored in the biobank and routines for this.
+See also section 5.3.3, Biobank.*
+
+#### **Primary endpoint**
+
+*Describe the primary endpoint (variable) as precisely as possible.
+Include information about how the primary variable will be measured:
+e.g. type of sample, method used and eventual responsible laboratory.
+State whether the analysis will be performed continuously during the
+trial or after completion of subject enrollment.*
+
+#### **Secondary endpoints** 
+
+*Describe the secondary endpoints (variables) as precisely as possible.
+Include information about how the secondary endpoints (variables) will
+be measured: e.g. type of sample, method used and eventual responsible
+laboratory. State whether the analysis will be performed continuously
+during the trial or after completion of subject enrollment.*
+
+### Methods for measurement of endpoints for clinical safety
+
+*This paragraph may be included as part of the other paragraphs under
+8.1. Describe the endpoint(s) (variables) for clinical safety as
+precisely as possible. Include information about how the endpoint(s)
+will be measured: e.g. type of sample, method used and eventual
+responsible laboratory. State whether the analysis will be performed
+continuously during the trial or after completion of subject
+enrollment.*
+
+*Describe any measures for handling deviations in section 9.3, Reporting
+and registration of Adverse Events.*
+
+## Handling of Adverse Events
+
+*Explain which adverse events (AE) and serious adverse events (SAE) will
+be reported during the trial (compare with the Investigator's Brochure
+for non-approved investigational medicinal products or SPC for approved
+medications used according to the approved indication). Carefully
+consider what should and should not be reported, and under which time
+period of the trial that AE/SAE shall be reported. If the disease itself
+causes certain symptoms, hospitalization, etc., these conditions can be
+given as exceptions for what shall **[not]{.underline}** be reported as
+an AE, SAE, or SUSAR.*
+
+*AE and SAE are followed up until they are fully evaluated or no longer
+considered clinically non-significant by the principal investigator
+(described in section 9.2.1, Assessment of causal relationship, and
+section 9.4, Follow-up of Adverse Events). Note that persistent adverse
+events are classified as serious.*
+
+### Definitions
+
+#### **Adverse Event (AE)**
+
+*Text suggestion:* Adverse Event (AE): Any untoward medical occurrence
+in a clinical trial subject administered a medicinal product and, which
+does not necessarily have a causal relationship with the treatment, can
+be an unfavorable and unintended sign (including an abnormal laboratory
+discovery), symptom or disease temporally associated with the use of the
+investigational medicinal product, whether or not related to the
+investigational medicinal product.
+
+#### **Adverse Reaction (AR)**
+
+*Keep relevant selections and delete other sections.*
+
+*Text suggestion:* In the pre-approval clinical experience with a new
+medicinal product or new use of a medicinal product, and particularly as
+the therapeutic dose(s) may not be established, all noxious and
+unintended reactions to the medicinal product related to any dose should
+be considered an adverse reaction (AR). The phrase "reaction" to a
+medicinal product means that the causal relationship between the medical
+product and an adverse event is at least a reasonable possibility, that
+is the relationship cannot be ruled out.
+
+#### **Serious Adverse Event (SAE)**
+
+Serious adverse event (SAE): Any untoward medical occurrence that at any
+dose:
+
+-   leads to death
+
+-   is life-threatening
+
+-   requires inpatient hospitalization or prolongation of existing
+    hospitalization
+
+-   results in persistent or significant disability or incapacity
+
+-   results in a congenital anomaly/malformation
+
+Medical and scientific assessment will be made to determine if an event
+is "serious" and whether it would prompt reporting in other situations,
+for example important medical events that may not be directly
+life-threatening or result in death or hospitalization but may
+compromise the study subject or may require intervention to prevent one
+of the other results set forth in the definitions above. These should
+also normally be considered as SAEs.
+
+#### **Suspected Unexpected Serious Adverse Reaction (SUSAR)**
+
+SUSAR: A reaction/event that is unexpected, serious, and suspected to be
+caused by the treatment, i.e. adverse reactions that are not included in
+the Investigator's Brochure (IB) or SPC.
+
+### Assessment of Adverse Events (AE)
+
+#### **Assessment of causal relationship** 
+
+*Text suggestion:* The investigator is responsible for determining
+whether there is a causal relationship between the AE/SAE and use of the
+investigational medicinal product.
+
+Consideration should be given to whether there is a reasonable
+possibility of establishing a causal relationship between the adverse
+event and the investigational medicinal product based on the analysis of
+the available evidence.
+
+All AE can be categorized as either likely related, possibly related,
+unlikely related or not related, in accordance with the definitions
+below:
+
+**Likely related**: Clinical event, including abnormal results from
+laboratory analyses, occurring within a reasonable time after
+administration of the intervention/investigational medicinal product. It
+is unlikely that the event can be attributed to underlying disease or
+other medications but is most likely caused by the investigational
+medicinal product and its emergence is reasonable in relationship with
+use of the investigational medicinal product.
+
+**Possibly related**: Clinical event, including abnormal results from
+laboratory analyses, occurring within a reasonable time after
+administration of the intervention/investigational medicinal product.
+The event could be explained by the investigational medicinal product
+and its emergence is reasonable in relationship with use of the
+investigational medicinal product, but there is insufficient information
+to determine the relationship. The event could be explained by an
+underlying disease or other medications.
+
+**Unlikely related**: Clinical event, including abnormal responses from
+laboratory tests, unlikely to be related to the
+intervention/investigational medicinal product and can be reasonably
+explained by other medication or underlying disease.
+
+**Not related**: Clinical event, including abnormal results from
+laboratory analyses, that is not reasonably related to the use of the
+intervention/investigational medicinal product.
+
+Those AEs which are suspected of having a causal relationship to the
+investigational medicinal product will be followed up until the subject
+has recovered or is well taken care of and on the way to good recovery
+(see also section 9.4, Follow-up of Adverse Events).
+
+If the reporting investigator does not provide any information on
+causality, the sponsor should consult with the reporting investigator
+and encourage the expression of a position on this issue. The sponsor
+must take into account the assessment of causality provided by the
+investigator. If the sponsor disagrees with the investigator\'s
+assessment of causality, both the investigator\'s and the sponsor\'s
+views should be included in the report.
+
+#### **Assessment of intensity**
+
+*In addition to assessing the causal relationship between administration
+of the investigational medicinal product and AE, an assessment of the
+intensity of the event is required. The following classifications can be
+used:*
+
+Each adverse event shall be classified by an investigator as mild,
+moderate or severe.
+
+**Mild:** The adverse event is relatively tolerable and transient in
+nature but does not affect the subject's normal life.
+
+**Moderate**: The adverse event causes deterioration of function but
+does not affect health. The event can be sufficiently unpleasant and
+interferes with normal activities but does not completely obstruct them.
+
+**Severe**: The adverse event causes deterioration of function or work
+ability or poses a health risk to the subject.
+
+*Assessment of intensity is generally made by the reporting
+investigator.*
+
+*Common Terminology Criteria for Adverse Event (CTCAE) is another way to
+classify intensity according to a five-point scale.*
+
+#### **Assessment of seriousness**
+
+The investigator is responsible for assessing the seriousness (serious
+or non-serious). If the adverse event is considered serious, this should
+be reported as a serious adverse event (SAE) by the investigator to the
+sponsor. See also section 9.3.2, Reporting of Serious Adverse Events
+(SAE).
+
+### Reporting and registration of Adverse Events
+
+-   *The investigator should register and document adverse event or
+    abnormal laboratory responses identified in the protocol as critical
+    for safety assessment and report them to the sponsor according to
+    the reporting requirements and within the time periods specified in
+    the protocol.*
+
+-   *Less stringent rules from registration and reporting requirements
+    may be granted in low-intervention clinical trials (for definition
+    see cover page) after a thorough risk analysis.*
+
+-   *The sponsor should maintain a detailed register of all adverse
+    event reported by the investigator.*
+
+-   *Describe how AE/SAE are captured, e.g., that trial subjects at each
+    contact with the investigator/nurse will be asked about how they
+    have been feeling since the previous visit or describe if another
+    way is used to capture adverse event in the trial.*
+
+-   *Describe where AE/SAE are registered. Normally, they are registered
+    primarily in the subject's medical records. Describe how these will
+    be registered in the trial's CRF, reporting forms or worksheets, and
+    where registrations of severity and causality are made, since this
+    is not always done in the medical record.*
+
+-   *Also describe AEs which do not need to be documented and reported
+    as AEs. If this is not indicated, all adverse medical events should
+    be collected as AEs in, e.g., a diary or otherwise.*
+
+-   *Describe here during which time period adverse events are intended
+    to be followed, e.g., from trial start or from start of treatment
+    with the investigational medicinal product to XX weeks after the
+    last dose.*
+
+-   *All reported adverse events that have not been resolved by the end
+    of the trial should be followed up. How, when, and for how long this
+    follow-up will last should be described, e.g., telephone contact or
+    visit to the study site approximately XX weeks after the last visit
+    in the trial. The follow-up and the time for the follow-up
+    visit/contact are adapted to each individual trial.*
+
+-   ***Assessment of causal relationship (between AE/SAE and
+    investigational medicinal product), whether the AE is considered to
+    be an SAE or not, shall be made by a licensed physician.***
+
+*Text suggestion:* At each trial visit, adverse events (AE) are
+registered, starting after *trial start/or from start of treatment with
+the investigational medicinal product,* up to and including *X* *weeks*
+after the subject has ended their treatment with the investigational
+medicinal product. All AE that occurs during the trial and which are
+observed by the investigator/trial nurse or reported by the subject will
+be registered in the CRF regardless of whether they are related to the
+investigational medicinal product or not. Assessment of causal
+relationship, severity, and whether the AE is considered to be an SAE
+will be made by the investigator directly in the *CRF/on a
+trial-specific worksheet*. At minimum for each AE/SAE, a description of
+the event is recorded (diagnosis/symptom if diagnosis is missing), start
+and stop dates, causal relationship, severity, if the AE is considered
+to be an SAE, measures and outcome.
+
+The following symptoms are clearly related to the process and the
+expected course of the condition and therefore will not be reported as
+AE:
+
+Example:
+
+*Expected adverse events based on knowledge of the disease in question
+and expected clinical course.*
+
+#### **Reporting of Adverse Events (AE)**
+
+*Text suggestion:* All AE shall be registered in the CRF within
+*\<\<indicate time frame\>\> as indicated above (section 9.3, Reporting
+and registration of Adverse Events)*.
+
+#### **Reporting of Serious Adverse Events (SAE)**
+
+*Text suggestion:* Serious adverse events (SAE) are reported to the
+sponsor on a special SAE form within 24 hours of the investigator being
+informed of the SAE.
+
+Follow-up information describing the outcome and handling of the SAE is
+reported as soon as this information is available. The original should
+be kept in the Investigator Site File.
+
+*Provide details about the reporting procedure for SAE. Include
+reporting times, what will happen upon receipt of an SAE, who will
+review what is reported and who will assess whether the adverse event
+was expected for the investigational medicinal product or not (this is
+done using the reference safety information). The processes for
+receiving, confirming, and reviewing of reported SAEs should be
+described. Reviewing of SAEs must occur in due time, with consideration
+of the reporting times for a potential SUSAR.*
+
+*Add information about SAEs that should not be reported.*
+
+*Text suggestion:* Based on knowledge of the disease in question and
+expected clinical course, some events that are otherwise serious are not
+considered as SAEs in this trial. The following is a list of SAEs that
+shall not be reported as SAEs:
+
+**Example:**
+
+1.  *Expected events based on the knowledge of the disease in question
+    and expected clinical course.*
+
+2.  *If a trial subject is hospitalized with a documented cancer-related
+    problem, this will not be reported as an SAE.*
+
+#### **Reporting of Suspected Unexpected Serious Adverse Reactions (SUSAR)**
+
+*In investigator-initiated trials where non-commercial sponsors lack the
+possibility to report SUSAR directly in the EudraVigilance database, the
+Swedish Medical Products Agency can help with this when a SUSAR occurs
+in Sweden. However, this must be clearly justified in the cover letter
+to the application. Reporting then takes place via the [CIOMS
+form](https://cioms.ch/wp-content/uploads/2017/05/cioms-form1.pdf) which
+is sent to the Swedish Medical Products Agency via Eudralink. Since
+these reports contain personal data, they should not be sent to the
+Swedish Medical Products Agency via normal email.*
+
+*The reference safety information provides the basis for assessing
+whether the adverse reaction is unexpected or not.*
+
+*SUSARs should, if possible, be reported unblinded, that is, should
+state to which trial medicinal product the subject had a reaction. The
+investigator should only unblind the treatment allocation for a subject
+if unblinding is relevant to the subject\'s safety. Unblinded data
+should only be available to persons who need to participate in safety
+reporting to the regulatory authority and Data Safety Monitoring Boards
+(DSMBs) or to persons performing ongoing safety evaluations during the
+clinical trial. Placebo should only be reported if it is suspected that
+any component of the placebo treatment has caused the reaction.*
+
+*Text suggestion:* Those SAE which are assessed by sponsor to be SUSAR
+are reported via a [CIOMS
+form](https://cioms.ch/wp-content/uploads/2017/05/cioms-form1.pdf) to
+the EudraVigilance database / Swedish Medical Products Agency according
+to the specified time frames.
+
+SUSAR that are fatal or life-threatening are reported as soon as
+possible and no later than 7 days after the serious adverse event has
+become known to the sponsor. Relevant follow-up information is sent
+thereafter within an additional 8 days. Other SUSAR are reported as soon
+as possible and no later than 15 days after they have come to the
+sponsor's knowledge.
+
+*Multicentre trials:* Information about SUSAR occurring during the trial
+is compiled by the sponsor and sent to the principal investigators at
+all participating sites. *In order to preserve the integrity of the
+trial, it is recommended that reporting of SUSAR to investigators in a
+blinded study is made without unblinding, that is, without specifying
+which investigational medicinal product the subject received. Describe
+how the reporting will be done.*
+
+### Follow-up of Adverse Events
+
+*Describe the follow-up of trial subjects who have been affected by
+adverse events (AE/SAE) (until the adverse event is
+resolved/stable/persistent) and measures in case of unacceptable adverse
+events (dose adjustment, treatment interruption, withdrawal of subject
+from the trial). Describe follow-up of subjects with regards to safety
+after the trial is completed.*
+
+### Independent Data Monitoring Committee
+
+*If the clinical trial involves an extended risk or if the trial is
+performed over a long time period and is divided into different blinded
+treatment groups, an external independent (of the sponsor and
+investigator) data monitoring committee should evaluate the decoded
+results.*
+
+*Remove this section if not applicable.*
+
+### Annual Safety Report (ASR)
+
+*For investigational medicinal products other than placebo, the sponsor
+must submit an annual report on the safety of each investigational
+medicinal product used in a clinical trial. This is done in the CTIS.
+The safety report should be written according to the format Development
+Safety Update Report, (DSUR).*
+
+*The safety report defines for which time period the report applies and
+a list of all SAE that have occurred, as well as possible SUSAR. A
+summary assessment of the safety situation for the subjects and a
+benefit/risk evaluation for the trial must also be included. The ASR
+should also be accompanied by the RSI in force at the start date of the
+report. If significant changes in the RSI have occurred during the
+reporting period, these should be listed in the ASR.*
+
+*The annual report should contain only aggregated and anonymised data.*
+
+*The obligation to submit a safety report starts when a clinical trial
+is authorised and ends when the last clinical trial conducted by the
+sponsor with the investigational medicinal product is completed.*
+
+### Procedures in case of emergencies, overdose or pregnancy
+
+*Medication errors, pregnancy and uses other than those specified in the
+CTP, including misuse and abuse of the investigational medicinal
+product, shall be subject to the same reporting obligations as adverse
+reactions.*
+
+*If an unforeseen event is likely to have a serious impact on the
+benefit/risk relationship, the sponsor and investigator should take
+appropriate Urgent Safety Measures (USM) necessary to protect the
+subjects. Examples of such measures are to temporarily suspend the
+clinical trial or to introduce supplementary monitoring measures. The
+sponsor should, via CTIS, inform the concerned Member States about the
+event and the measures taken. Notification must be made as soon as
+possible, but no later than seven days after the measures have been
+taken.*
+
+*If a subject who participates in a clinical trial becomes pregnant,
+this person must be followed up until the birth has taken place. If the
+fetus/child has any congenital malformation, this must be reported as a
+serious adverse event (SAE).*
+
+*Information about pregnancy does not need to be included in the trial
+if it is not applicable for the included subjects.*
+
+### Reference Safety Information
+
+*The reference safety information forms the basis for assessing whether
+the adverse reaction is unexpected.*
+
+*Specify the document (SPC, IB) to be used for reference safety
+information in assessment of whether an adverse event (AE) is expected.*
+
+*The location of reference safety information shall be cited in the
+cover letter for the application.*
+
+## Statistics
+
+*This statistics section provides general guidelines, i.e. not
+everything is applicable to all trials. It is not necessary to use all
+sub-sections and some sub-sections can be deleted and/or new ones
+added.*
+
+### Analysis population
+
+-   *Define the subjects that will be included in the analyses, e.g.,
+    state if the analyses will apply intention-to-treat (ITT) or per
+    protocol (PP).*
+
+-   *Specify whether sensitivity analyses of the main analyses will be
+    performed, i.e. examining the sensitivity of an ITT analysis with
+    help of a complementary PP analysis.*
+
+### Statistical analyses
+
+#### **Statistical methods**
+
+-   *Provide a general description of the descriptive/summary
+    statistics.*
+
+-   *Describe the statistical methods that will be used to answer the
+    primary and secondary objectives and clarify the underlying
+    statistical models. State which covariates (and any stratifications)
+    will be adjusted for in the analyses. Any subgroup analyses must be
+    specified.*
+
+-   *State any transformations of variables and justification for this.*
+
+-   *State how the trial results will be reported, e.g., a relative
+    treatment effect with associated 95% confidence interval and
+    p-value.*
+
+-   *State if one- or two-sided tests of statistical significance will
+    be used. Justify the use of one-sided tests in particular.*
+
+-   *If hypothesis testing is not appropriate, an alternative process
+    for arriving at statistical conclusions should be provided.*
+
+#### **Drop-outs**
+
+-   *Specify how drop-outs and missing values will be handled. For
+    planned imputation of missing values, the method for this must be
+    stated.*
+
+-   *State how any deviations from the original statistical analysis
+    plan will be reported.*
+
+### Adjustment of significance and confidence interval 
+
+-   *Indicate possible tests for multiple comparisons. Adjustment should
+    always be considered for multiple primary outcomes. Specify details
+    of any adjustment procedures or provide an explanation for why
+    adjustment is not considered necessary.*
+
+### Sample size calculations
+
+-   *State the total number of subjects needed for the trial. Sample
+    size calculations should be performed for all primary outcome
+    variables (in the case of several). In the case of multicentre
+    trials, the number of subjects at each site should be stated.*
+
+-   *State and motivate the effect size (e.g., group differences,
+    standard deviations) that sample size calculation builds upon,
+    usually the smallest clinically relevant effect.*
+
+-   *Specify in detail the assumptions on which the sample size is
+    based. Specify in particular:*
+
+    -   *method by which the sample size is calculated*
+
+    -   *significance level*
+
+    -   *desired power*
+
+    -   *compensation for expected drop-outs*
+
+    -   *handling of any corrections for multiple comparisons*
+
+### Interim analysis (if relevant)
+
+-   *A description of the statistical methods to be applied.*
+
+-   *Time points for interim analyses.*
+
+-   *Criteria for trial termination.*
+
+-   *Potential need for recalculation of sample size.*
+
+## Quality Control and Quality Assurance
+
+*In a clinical trial for medicinal products the sponsor is responsible
+for Quality Control (monitoring) and Quality Assurance (auditing). An
+independent review (monitoring) should be carried out for all clinical
+trials for medicinal products. The sponsor is responsible for appointing
+a monitor and for the quality throughout the trial; design, conduct,
+data collection, evaluation, reporting, and archiving. Methods used
+should be proportionate in relation to the trial's risks.*
+
+*There may be less stringent rules for low-intervention clinical trials
+(see cover page), e.g. limited monitoring requirements.*
+
+### Quality Assurance and Sponsor oversight
+
+*In this section, describe which quality assurance systems the trial
+will have to ensure and control the quality as well as the sponsor's
+methods for having oversight of the trial's quality. For example,
+communication plan, training of trial personnel, working manuals,
+meetings, central/local monitoring, audits, etc.*
+
+*The sponsor's quality-related work must be based on a risk analysis of
+the trial as a whole: design, conduct, data collection, evaluation,
+reporting and archiving.*
+
+*To enable monitoring and auditing, the protocol or other written
+agreement must specify that the investigators allow trial-related
+monitoring, auditing, and regulatory inspections by providing direct
+access to the CRF, subject's medical record and other source data and
+other trial-specific documentation. Similarly, this also must be
+apparent to the subjects in the Subject Information and Informed Consent
+Form.*
+
+*The sponsor is responsible for the trial's monitoring plan, which
+should be based on the identified risks, follow-up of risks during the
+trial and timeliness of the monitoring plan.*
+
+### Monitoring
+
+*In order to fulfill the EU regulation on clinical trials on medicinal
+products for human use, 536/2014 and ICH-GCP, an independent monitor
+should be appointed to, via monitoring, ensure the subjects' safety and
+integrity are satisfied and check that reported personal data is
+reliable and of high quality.*
+
+*Briefly describe how the independent review (monitoring) will be
+performed before, during, and after the trial. Details are
+advantageously described in a separate monitoring plan.*
+
+*Describe which levels of quality control can be applied, e.g., what is
+monitored centrally and what is monitored on site. See above.*
+
+*Describe generally here how deviations from the protocol or regulations
+that occur at the site will be documented and handled (significant
+deviations should be reported in the final report to the authorities).
+Details shall be described in a separate monitoring plan. See also
+section*
+[11.4](file:///\\RSFS080\hem0$\227130\Webbprojektet\Mallar\Tillfälligt\Prövningsprotokoll%20med%20hjälptext-Mall-eng_v.%202022-05-25.docx#_Deviations,_serious_breaches)*.*
+
+*The minimum level for quality control is that the following can be
+verified:*
+
+-   *that subjects exist*
+
+-   *that informed consent has been signed prior to execution of any
+    trial-specific actions*
+
+-   *that subjects are included according to the protocol's inclusion
+    and exclusion criteria*
+
+-   *that the trial's main parameters and safety reporting are handled
+    correctly*
+
+*Other tasks for a monitor include verifying that the trial's essential
+documents are complete (according to chapter 8, ICH-GCP (E6(R2)).*
+
+*Text suggestion:* The trial will be monitored by an independent monitor
+before the trial begins, during conducting the trial, and after the
+trial has been completed. This is to ensure that the trial is carried
+out according to the protocol and that data is collected, documented,
+and reported according to ICH-GCP and applicable ethical and regulatory
+requirements. Monitoring is performed as per the trial's monitoring plan
+and is intended to ensure that the subject's rights, safety, and
+well-being are met and that data in the CRF are complete, correct, and
+consistent with the source data.
+
+### Source data
+
+*Refer to, and indicate in the site-specific source data reference
+document of the trial site, the location of the source data for each
+variable. The CRF may in specific cases be defined as the source data
+for specific endpoints (variables) that are not recorded elsewhere, in
+which case the data are recorded directly in the CRF.*
+
+*Also describe that the monitor has access to medical records and source
+data after secrecy agreements have been signed by the responsible party
+at the site and by the monitor. Subjects have provided consent by
+signing the Subject Information and Informed Consent Form where this is
+specified.*
+
+*Text suggestion:* The investigator must keep source documents for each
+subject in the trial. A document describing what has been classified as
+source data in the trial (source data reference document) should be
+included in the Investigator Site File (ISF). The investigator must
+ensure that all source documents are accessible for monitoring and other
+quality control activities.
+
+Source data is defined before trial start at each individual site and
+can, in cases where source data is not registered in another document,
+consist of the CRF. This should be decided in consultation with the
+monitor and clearly stated in the source data reference document.
+
+Access to trial-related documentation, such as subjects\' medical
+records, CRFs, other source data and other trial documentation will be
+provided for monitoring and auditing purposes. Access to subjects\'
+medical records will require a confidentiality agreement to be signed by
+the person in charge of the medical records at the trial site and by the
+monitor and auditor, if applicable. Access will also be granted in the
+context of regulatory inspections.
+
+### Deviations, serious breaches and other reporting obligations
+
+*The protocol should describe how deviations or serious breaches from
+Clinical Trials Regulation, the approved trial protocol, ICH-GCP and
+other regulations, directly affect, or with high likelihood could
+affect, the safety of subjects and their rights or the reliability and
+robustness of the data generated in the trial. In addition, the protocol
+needs to describe how the investigators should report suspected serious
+breaches to the sponsor.*
+
+*Serious breaches should be assessed by the sponsor and without undue
+delay but at the latest within 7 days be reported by the sponsor to the
+Swedish Medical Products Agency via CTIS. See also section 13,
+Substantial changes to the trial.*
+
+*Link to Guideline for the notification of serious breaches of
+Regulation (EU) No 536/2014 or the clinical trial protocol:
+<https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-notification-serious-breaches-regulation-eu-no-536/2014-clinical-trial-protocol_en.pdf>*
+
+*The sponsor should notify the relevant Member States, via CTIS, of any
+unexpected events that may affect the benefit/risk relationship of a
+trial but are not suspected unexpected serious adverse reactions. This
+should be done without undue delay, but no later than 15 days after the
+sponsor becomes aware of the event.*
+
+*Text suggestion*: The responsible investigator shall, without delay,
+report to the sponsor any serious breaches and deviations from the trial
+protocol, ICH-GCP and other regulations that significantly and directly
+affect, or with high likelihood could affect, the subjects' safety and
+integrity or the reliability and robustness of the data generated in the
+trial. The sponsor should assess the suspected serious breach and the
+consequences of deviations that have occurred, and, without undue delay
+but no later than 7 days (from knowledge) report these to the Swedish
+Medical Products Agency via CTIS.
+
+Other unexpected events that may affect the benefit/risk relationship
+must be reported via CTIS without undue delay, but no later than 15 days
+after the sponsor becomes aware of the event.
+
+Minor deviations that do not affect subjects' integrity or safety, nor
+significantly affect the trial's scientific value, are documented in the
+trial documentation of the principal investigator and the sponsor and
+appropriate measures shall be taken. The deviations must be recorded in
+the clinical trial report.
+
+### Audits and inspections 
+
+*Text suggestion:* Authorized representatives for the sponsor and
+Competent Authorities (CA) may carry out audits or inspections at the
+trial site, including source data verification. The investigator must
+ensure that all source documents are available for audits and
+inspections. The purpose of an audit or inspection is to systematically
+and independently review all trial-related activities and documents, to
+determine whether these activities were performed, registered, analyzed
+and reported correctly according to protocol, ICH- GCP and applicable
+regulations.
+
+## Ethics
+
+### Compliance to the protocol, ICH-GCP and regulations
+
+*Text suggestion*: The trial will be performed in compliance with this
+clinical trial protocol, the EU regulation on clinical trials on
+medicinal products for human use (536/2014), the Declaration of
+Helsinki, ICH-GCP (Good Clinical Practice), and current national
+regulations governing this clinical trial. This is to ensure the safety
+and integrity of the trial subjects as well as the quality of the data
+collected.
+
+### Ethical review of the trial
+
+*Describe the procedure for approval of the final clinical trial
+protocol and informed consent form.* *Application for permission for a
+clinical trial on medicinal products from the Swedish Medical Products
+Agency and the Swedish Ethical Review Authority is made via CTIS. The
+Swedish Medical Products Agency has an obligation to forward the
+application documents to the Swedish Ethical Review Authority. The
+Swedish Ethical Review Authority submits its opinion on the application
+back to the Swedish Medical Products Agency.*
+
+*Text suggestion*: The final protocol for clinical trials on medicinal
+products must be approved, as a part of the application for a permit for
+clinical trials via CTIS, by both the Swedish Ethical Review Authority
+and the Swedish Medical Products Agency before the trial can be
+conducted. The final version of the informed consent form and other
+information provided to subjects, must be approved or given a written
+positive opinion by the Swedish Ethical Review Authority. The authority
+must be informed via CTIS of any changes in the trial protocol in
+accordance with current requirements. *See also section 13, Substantial
+changes to the trial.*
+
+### Procedure for obtaining informed consent
+
+*Describe the procedure for how information is given to trial subjects
+and how consent is obtained. For vulnerable groups see information on
+the Swedish Medical Products Agency website
+([link](https://www.lakemedelsverket.se/sv/tillstand-godkannande-och-kontroll/klinisk-provning/lakemedel-for-manniskor/provningsforordning-536-2014/forsokspersoner-och-informerat-samtycke-enligt-forordning-536-2014))
+and Chapter V of the
+[CTR](https://eur-lex.europa.eu/legal-content/sv/ALL/?uri=CELEX:32014R0536).*
+
+*Remember to adapt and describe the procedure based on whether the
+subject is a child. In trials where minors participate, the consent of
+both parents (legal representatives of the minor) must be obtained.
+According to the Medicines Act, a minor who has reached the age of 15
+must also give his or her informed consent to participate in the
+clinical trial of a medicinal product, provided that the minor
+understands the implications of the trial for him or her. In Sweden, a
+minor means a person younger than 18 years of age.*
+
+*The principal investigator (or the person to whom the task has been
+delegated) must provide both oral and written information to the
+intended subject regarding what participation in the trial entails. Keep
+in mind that in a clinical trial for investigational medicinal products,
+informed consent must be obtained by a licensed physician.*
+
+*A copy of the subject information as well as the signed informed
+consent form shall be provided to the subject.*
+
+*If the subject information changes during the trial execution, the
+subject has the right to once again decide whether he/she would like to
+continue their participation. This occurs by allowing the subject to
+sign a revised subject information and informed consent form.*
+
+*Text suggestion*: The principal investigator at each site shall ensure
+that the subject is given full and adequate oral and written information
+about the trial, its purpose, any risks and benefits as well as
+inclusion and exclusion criteria. Subjects must also be informed that
+they are free to discontinue their participation in the trial at any
+time without having to provide a reason. Subjects should be given the
+opportunity to ask questions and be allowed time to consider the
+provided information. If the person chooses to participate, both the
+subject and the investigator shall sign the informed consent form. A
+copy of the subject information as well as the informed consent form
+shall be provided to the subject. The subject's signed and dated
+informed consent must be obtained before any trial-specific activity is
+performed. Each subject who participates in the trial will be identified
+by a subject number on a subject identification list. The subject agrees
+that monitors, auditors, and inspectors may have access to their medical
+records and other source data. If new information is added to the trial,
+the subject has the right to reconsider whether he/she will continue
+their participation.
+
+### Data protection
+
+*The General Data Protection Regulation (GDPR) has strengthened the data
+subject's rights and given increased responsibility to those responsible
+for data collection. This means that when collecting research data, it
+is necessary to decide whether the data collection is legal, correct,
+appropriate, that integrity and confidentiality are considered and that
+no more information than necessary is collected, as well as that no more
+persons than necessarily have access to the data. There should be a
+lawful ground for data collection, which for research is for public
+interest.*
+
+*The personal data controller is obliged to take measures to ensure that
+the GDPR regulation is followed, to describe built-in data protection
+features and security when processing and to report personal data
+breaches.*
+
+*Appropriate technical and organisational measures shall be taken to
+protect the personal data and processed information from unauthorised
+access, disclosure, dissemination, alteration or destruction and from
+accidental loss, in particular where the processing involves the
+transmission of data over a network.*
+
+*Text suggestion:* If any part of the data is processed by another
+organization, inside or outside the EU, appropriate agreements and/or
+other appropriate protective measures are taken to ensure that the data
+processing is performed in accordance with the provisions of the General
+Data Protection Regulation (GDPR) and other relevant legislation, before
+any data transfer takes place.
+
+In the information provided to subjects, subjects will be fully informed
+about how their trial data will be collected, used and disclosed. The
+content of the informed consent form complies with relevant integrity
+and data protection legislation. The subject information and the
+informed consent form will explain how trial data are stored to maintain
+confidentiality in accordance with national data legislation *(please
+describe how data is stored and which data security measures are
+taken).* All information processed by the sponsor will be pseudonymized
+*and identified with \<\<Trial code/Trial ID/Initials\>\>*.
+
+The informed consent form will also explain that for verification of the
+data, representatives delegated by the sponsor, as well as relevant
+authorities, may require access to parts of medical records or trial
+records that are relevant to the trial, including the subject's medical
+history.
+
+### Insurances
+
+*Here it should be explained how subjects are insured throughout the
+trial. Check if subjects are insured through the Swedish patient
+insurance and whether Swedish pharmaceutical insurance is valid for the
+investigational medicinal product(s). Alternatively, discuss with your
+organization if there are existing insurance policies.*
+
+*Swedish Patient Insurance (Patientskadeförsäkring): The Swedish
+healthcare regions have signed a patient insurance with Landstingens
+Ömsesidiga Försäkringsbolag, Löf. Check what applies to medical research
+at [www.lof.se](http://www.lof.se/).*
+
+*Swedish Pharmaceutical Insurance (Läkemedelsförsäkring): All marketed
+investigational medicinal products do not automatically have a Swedish
+Pharmaceutical Insurance. Check if the product is covered by the drug
+insurance at [lff.se](https://lff.se/) and that the insurance also
+covers clinical trials.*
+
+## Substantial changes to the trial
+
+*This section describes how to handle substantial changes in the trial.
+Substantial changes include changes that:*
+
+-   *may affect the safety or rights of the subjects,*
+
+-   *can change the reliability and robustness of the data generated in
+    the clinical trial, or*
+
+-   *are significant for any other reason, such as the addition of a
+    trial site or a change of the principal investigator*
+
+*Substantial changes to the clinical trial protocol may not be
+implemented before authorisation has been granted by the relevant
+authority via CTIS. It is the responsibility of the sponsor to assess
+whether a change is substantial or not. For examples of what are
+considered substantial and non-substantial amendments, see the European
+Commission\'s CTR Questions and Answers document
+([link](https://ec.europa.eu/health/medicinal-products/eudralex/eudralex-volume-10_en#set-of-documents-applicable-to-clinical-trials-that-will-be-authorised-under-regulation-eu-no-5362014-once-it-becomes-applicable),
+Chapter V, EudraLex - Volume 10 - Clinical trials guidelines).*
+
+*The investigator must not make any deviation from or change of the
+protocol, except when it is necessary to eliminate an immediate risk to
+the trial subjects, or where the changes only include logistical or
+administrative aspects of the trial (e.g., change of telephone number).
+Other deviations/changes besides the abovementioned required agreement
+with the sponsor and documented authoritative opinion regarding the
+amendment from relevant authorities. See also section 11.4, Deviations
+or serious breaches.*
+
+*Text suggestion:* Substantial changes to the signed clinical trial
+protocol are only possible through approved protocol amendments and by
+agreement between the sponsor and the principal investigator.
+
+In the event that substantial changes to the protocol which may affect
+the safety, rights of subjects or the reliability and robustness of data
+generated need to be implemented during the course of the trial,
+permission from the relevant authority via application in CTIS should be
+obtained before implementing the change. This includes the addition of a
+new trial site or a change of the principal investigator at the trial
+site.
+
+Non-substantial changes should be continuously recorded and entered in
+CTIS.
+
+## Collection, handling, and archiving of data
+
+*From the protocol it must be clear how the data will be collected.
+Describe which other types of data collection documents, in addition to
+the CRF, are used, e.g.: diaries, quality of life questionnaires, health
+economics, different patient-reported outcomes measures, etc. Describe
+how corrections will occur and by whom, that there will be an
+independent copy of the CRF with the investigator when the trial is
+completed, and how other trial documentation is stored and who has
+access to it. The sponsor and investigator must archive the information
+in the Trial Master File for at least 25 years after the end of the
+clinical trial, providing that a longer archiving period follows from
+other parts of the law. The sponsor and investigator can also agree that
+the documents shall be archived for a longer period. The Swedish
+Archives Act (Arkivlagen) applies to archiving of research material. For
+clinical trials in ATMP (Advanced Therapy Medicinal Product), the
+archiving period is 30 years according to GCP specific for ATMP.*
+
+*The sponsor and the investigator shall keep a Clinical trial master
+file with documentation for the whole trial. The clinical trial master
+file shall at all times contain the essential documents relating to that
+clinical trial which allow verification of the conduct of a clinical
+trial and the quality of the data generated, taking into account all
+characteristics of the clinical trial, including in particular whether
+the clinical trial is a low-intervention clinical trial. It shall be
+readily available, and directly accessible upon request, to the Member
+States.*
+
+*The clinical trial master file kept by the investigator and that kept
+by the sponsor may have a different content if this is justified by the
+different nature of the responsibilities of the investigator and the
+sponsor. The principal investigator shall keep an Investigator Site File
+(part of the Clinical Trial Master File) with all trial documentation
+for the site. The files should have relevant content according to the
+trial and follow ICH-GCP chapter 8 "Essential documents". The principal
+investigator will store the trial site's data, subject identification
+list, original of the subject information sheet and obtained trial
+consent inaccessible to unauthorized persons, but such that trial
+subjects can be identified by those responsible for the trial. This
+information must not be stored at the sponsor.*
+
+*For information about data protection see section 12.4, Data
+protection.*
+
+*Text suggestion:*
+
+Subjects who participate in the trial are coded with a trial-specific
+identification number. All subjects are registered in a subject
+identification list (subject enrolment and identification list) that
+connects the subject's name and personal number with a subject
+number/trial identification number.
+
+All data will be registered, managed, and stored in a manner that
+enables correct reporting, interpretation, and verification. The
+complete Trial Master File, as well as source documents, will be
+archived for at least *25* years after the trial is completed. Source
+data in the medical records system are stored and archived in accordance
+with national regulations.
+
+### Case Report Form 
+
+*All information related to the clinical trial should be recorded,
+processed, handled and stored by the sponsor or investigator, as
+appropriate, so that it can be accurately reported, interpreted and
+controlled, while protecting the subjects\' medical records and personal
+data in accordance with applicable personal data protection law.*
+
+*Text suggestion:*
+
+A Case Report Form (CRF) is used for data collection. *Describe which
+type of CRF will be used (eCRF or paper CRF).* The investigator must
+ensure that data is registered and any corrections in the CRF are made
+as stated in the clinical trial protocol and in accordance with the
+instructions. The investigator must ensure that the registered data is
+correct, complete, and that reporting takes place according to the
+timelines that have been predefined and agreed. The investigator signs
+the completed CRF. A copy of the completed CRF will be archived at the
+study site.
+
+## Notification of trial completion, reporting, and publication
+
+*The sponsor must notify, via CTIS, each concerned Member State that a
+clinical trial involving that Member State has been terminated.
+Notification must also be made when a trial has been terminated in all
+participating EU countries and also when termination has occurred in all
+participating third countries. The notification must be made within 15
+days.*
+
+*Within one year of the completion of the clinical trial in all Member
+States, the sponsor must submit a summary of the results of the clinical
+trial to CTIS, regardless of the outcome of the trial.*
+
+*Guidance on content can be found in the CTR
+([Link](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX%3A32014R0536)),
+Annex IV. It should be accompanied by a summary written in a way that is
+understandable to lay people. The content of the summary is given in CTR
+([Link](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX%3A32014R0536)),
+Annex V.*
+
+*For clinical trials involving children, the above summaries must be
+submitted within six months of the end of the trial. This shortened
+deadline of six months applies to sponsors who are marketing
+authorisation holders for the medicinal product.*
+
+*If the trial is submitted for marketing authorization of an
+investigational medicinal product, the applicant for marketing
+authorisation must also, in addition to the summary of results, submit
+the full clinical trial report to CTIS within 30 days of the decision
+being taken.*
+
+*In addition to submitting a summary of the results to CTIS a complete
+report with individual data shall be available from the sponsor on
+request or for any inspections by the Swedish Medical Products Agency
+throughout the entire retention period. A published article is not to be
+equated with a summary of a report. The report must contain sufficient
+information so that the Swedish Medical Products Agency can make an
+evaluation.*
+
+*In addition to submitting a summary of the results to CTIS, a full
+clinical trial report with individual data shall be completed by the
+sponsor and provided to Principal investigators. The clinical trial
+report shall be archived in the Trial Master File by the sponsor and by
+the principal investigator at each site, in their Investigator Site
+Files, throughout the entire retention period, and available on request
+for inspections by the authorities. The clinical trial report must
+contain sufficient information so that the Swedish Medical Products
+Agency or other authorities can make a complete evaluation of the trial
+conduct and the results. A published article is not to be equated with
+the summary report to CTIS or the full clinical trial report.*
+
+*The sponsor is responsible for the compilation of statistical analyses
+and their presentation to involved principal investigators. These
+analyses may be the basis for a manuscript for publication.*
+
+*If the results are summarized in a manuscript with the purpose to
+publish in a scientific journal, it is recommended that the EU trial
+number is stated at the end of the abstract. This clearly documents that
+the trial has been published in advance and meets the requirements from
+ICMJE (International Committee for Medical Journal Editors) that are set
+for publications in medical science journals.*
+
+*If a clinical trial is suspended or prematurely terminated due to a
+change in the risk-benefit balance, for reasons of subject safety, this
+must be notified to the Member States concerned through CTIS. The
+notification should be made as soon as possible, but not later than 15
+days after the clinical trial was suspended or terminated prematurely.
+The reasons for such action and follow-up measures must be provided. The
+resumption of a clinical trial after its temporary interruption due to a
+change in the benefit/risk balance is considered a substantial
+modification.*
+
+*Interruptions that do not affect the benefit/risk relationship must be
+notified, via CTIS, within 15 days, stating the reason for the
+interruption. Notification of restart shall be made, via CTIS, within 15
+days.See also section* *5.4,* *End of Trial, as well as section* *6.4,*
+*Withdrawal criteria.*
+
+*Text suggestion:*
+
+End of the trial is reported in CTIS at the latest 15 days after
+completion.
+
+Within one year of trial completion, a clinical study report is
+completed, and a summary of the clinical trial results must be reported
+in CTIS, including a summary for lay people.
+
+## References
+
+*Literature referenced in the text is listed here. The list should be
+sorted in the order in which it is referred to in the protocol. For
+example, the Vancouver system can be used.*
+
+## Attachments
+
+*These could include, for example, validated self-report scales,
+questionnaires, diaries, etc. All attachments should have a version
+number and be dated.*
