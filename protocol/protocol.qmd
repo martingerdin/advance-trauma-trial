@@ -306,7 +306,7 @@ In-hospital data collection will be conducted under a waiver of informed consent
 ## Trial Period
 2024-10-01 to 2029-10-01
 
-## Background and rationale
+# Background and rationale
 
 *Provide a summary of the background of the trial, including
 justification for why the proposed trial is relevant and/or necessary to
@@ -323,7 +323,7 @@ information to the clinical trial.*
 the design of the clinical trial, and if so, describe their
 involvement.*
 
-## Benefit-risk evaluation 
+# Benefit-risk evaluation 
 
 *The benefits of the trial should be weighed against the risks for the
 subjects. Risks can be divided into those with causal relationship with
@@ -387,7 +387,7 @@ Informed Consent Form (ICF).*
 -   *Benefit-risk rationale, concluding that it is ethical to perform
     the trial and that the benefits justify the risks.*
 
-## Trial objectives
+# Trial objectives
 
 *Objectives or purpose = describe why the trial is done and what you
 want to accomplish with the trial. Note that the connection should be
@@ -406,7 +406,7 @@ objective", "secondary objective", "primary endpoint (variable)", and
 and questionnaires can be referred to under section 8.1, Methods for
 measurement of endpoints for clinical efficacy.*
 
-### Primary objective
+## Primary objective
 
 *Describe the primary objective (there should only be one).*
 
@@ -415,14 +415,14 @@ blood-pressure lowering effect of drug x with drug y.*
 
 *Text suggestion:* The primary objective of this trial is to...
 
-### Secondary objective(s)
+## Secondary objective(s)
 
 *Describe eventual secondary objective(s). These should be as few as
 possible (e.g., AE, subgroup analyses, quality of life, etc.).*
 
 *Text suggestion:* The secondary objective of this trial is to...
 
-### Primary endpoint (variable)
+## Primary outcome (variable)
 
 *The method by which the primary endpoint is measured. The primary
 endpoint is described in more detail in section 8.1.1, Primary endpoint
@@ -431,15 +431,15 @@ endpoint is described in more detail in section 8.1.1, Primary endpoint
 *Text suggestion:* Primary variable: *Blood pressure measured 30 hours
 after administration of the investigational medicinal product.*
 
-### Secondary endpoint (variables)
+### Secondary outcomes (variables)
 
 *Describe what will be measured for the secondary endpoints. Secondary
 endpoints (variables) are described in more detail in section 8.1.2,
 Secondary endpoints (variables).*
 
-## Trial design and procedures
+# Trial design and procedures
 
-### Overall trial design 
+## Overall trial design 
 
 *The trial should be designed so that the data obtained can answer the
 scientific questions.*
@@ -482,7 +482,7 @@ Treatment A and B during visits 3 and 4, evaluation during the fourth
 visit, and finally, end of treatment during the fifth
 visit.](media/image3.png){width="6.358333333333333in" height="5.325in"}
 
-### Procedures and flow chart
+## Procedures and flow chart
 
 *Describe all trial-related procedure(s) (e.g. ECG, sampling,
 examinations, AE reporting, etc) the subject undergoes during each
@@ -554,57 +554,11 @@ or four are present during visits 2 and 3.
 *\*Randomization can be done at, e.g., the screening visit or visit 1;
 adjust the table for the trial.*
 
-### Biological sampling procedures
+## Biological sampling procedures
 
-*A description of the procedures to comply with the applicable rules for
-the collection, storage and future use of biological samples from
-subjects, if applicable, unless specified in a separate document.*
+This trial does not include biological sampling.
 
-#### **Handling, storage, and destruction of biological samples**
-
-*Specify sampling, sampling volumes, analytical methods (including
-information about method validation) and where the analyses will be
-performed. Check if the lab is accredited or which quality standards
-should be met for the chosen analysis.*
-
-*Detailed sampling and handling procedures are described in a separate
-document.*
-
-#### **Total volume of blood per subject** 
-
-*Text suggestion:* The total volume of blood taken from each subject
-during the trial is a maximum of *\<\<volume\>\>* ml.
-
-#### **Biobank**
-
-*If a sample is taken within the healthcare system for research
-purposes, it is covered by the Swedish Biobank Act, see exemptions
-below.*
-
-*There is an exemption for samples taken for research that will not be
-saved in the biobank: The Swedish Biobank Act is not applicable to
-samples which are intended for research, and which are analyzed within
-six months after sampling date and destroyed immediately after analysis.
-Both conditions must be met. For more information see link (in Swedish):
-<http://biobanksverige.se/forandring-i-biobankslagen-januari-2019>.*
-
-*Researchers uncertain about whether a sample in the trial is covered by
-the exemption rule are advised to contact the region's biobank
-coordinator or a regional biobank center for advice.*
-
-*According to CTR, a biobank application must be submitted to
-<kliniskaprovningar@biobanksverige.se> in parallel with the clinical
-trial application in CTIS. For more information see
-<https://biobanksverige.se/forskning/klinisk-provning/>*
-
-*Text suggestion:* All samples taken in this trial are registered in a
-biobank at *\<\<Name of biobank\>\>* and handled according to the
-current biobank laws and regulations. The samples are
-coded/pseudonymized to protect the subject´s identity. All samples and
-the identification/code list are stored securely and separately to
-prevent access by unauthorized persons.
-
-### End of Trial
+## End of Trial
 
 *Provide a clear and unambiguous indication of what constitutes the end
 of the trial and, if it is not the date of the last visit of the last
@@ -778,74 +732,11 @@ instruction text below states investigational medicinal products, the
 corresponding information also needs to be provided for any comparator
 medicinal products.*
 
-### Description of investigational medicinal product(s)
+## Description of investigational medicinal product(s)
 
-*Describe all investigational medicinal product(s) in detail. State the
-name, manufacturer, formulation, restrictions, treatment time with the
-drug, allowable treatment interruption, etc.*
+This trial does not include any investigational medicinal products.
 
-*Describe whether investigational medicinal products are authorised for
-sale and whether they are to be used in accordance with the terms of the
-marketing authorisation.*
-
-*In multicentre trials involving several EU countries and where the
-trade name of the medicinal product varies within the EU, only the
-active substance or ATC code should be provided.*
-
-*Indicate what is used as a control/comparator (standard treatment) or
-placebo.*
-
-*Describe how the investigational medicinal product(s) are provided and
-the responsibilities associated with it: Are drugs used from the
-clinic's shelf, ordered from the pharmacy, provided by the manufacturer,
-or prescribed? Describe also the responsibilities associated with
-administration.*
-
-### Dose and administration
-
-*Describe rationale for the basis of the chosen dose, dosing regimen,
-administration route and method, administration instructions (e.g., with
-food) and the treatment period. Describe the situations where possible
-change of dose may be relevant, e.g., dose reduction due to adverse
-events/adverse reactions, temporary treatment interruption. Describe any
-dose titration. If any aids will be used, describe this as well as
-information about CE marking if this is a medical device.*
-
-### Packaging, labeling, and handling of investigational medicinal products(s)
-
-*State how investigational medicinal product(s) are packaged, labeled,
-delivered, and stored. Describe the packaging, amount of medication per
-package and where the packaging takes place. Indicate how the
-investigational medicinal product is labelled for the clinical trial
-(attach an appendix with the label to the application).*
-
-*Describe how the investigational medicinal product(s) will be delivered
-and stored. List the conditions that must be maintained during transport
-and storage such as refrigeration/room temperature, light sensitivity,
-etc. Also describe how, e.g., temperature will be controlled.*
-
-*Labelling of investigational medicinal products and auxiliary medicinal
-products shall be in accordance with Chapter X, Articles 66 to 67, Annex
-VI, Sections A to D of the
-[CTR](https://eur-lex.europa.eu/legal-content/sv/ALL/?uri=CELEX:32014R0536).*
-
-### Drug accountability and treatment compliance
-
-*Describe how traceability for investigational medicinal product(s)
-including comparator medicinal products will be documented in e.g.
-medication log, etc.*
-
-*There is a possibility of less stringent rules in terms of
-documentation of traceability for low-intervention clinical trials.*
-
-*Describe how a subject's treatment compliance will be controlled and
-defined, facilitated and documented (for example instructions, labeling,
-measurement of blood levels, whether the medication(s) is taken by the
-subject at home or is only administered by healthcare personnel, diary,
-home visits, etc.). Also describe how missed doses will be handled and
-consequences of low compliance.*
-
-### Randomization
+## Randomization
 
 *Describe in detail how randomization will be performed and how subjects
 receive a randomization number. Also include information according to
@@ -857,12 +748,12 @@ discontinues their participation, the subject's trial-specific code will
 not be reused and the subject will not be allowed to re-enter the trial
 again.
 
-### Blinding
+## Blinding
 
 *Describe the process for blinding. If this is not a blinded trial, this
 section can be removed.*
 
-### Code breaking
+## Code breaking
 
 *The protocol must describe how the code is broken in emergency
 situations and who should be informed in connection with this. A clear
@@ -880,36 +771,11 @@ if the system does not work.*
 
 *Text suggestion:* The list for breaking the code can be found at...
 
-### Auxiliary medicinal products
+## Auxiliary medicinal products
 
-*Medicinal products are given to subjects that are not investigational
-medicinal products should be listed. These are called auxiliary
-medicinal products and include medicinal products used for background
-treatment, challenge agents, rescue medications and other substances
-used to measure endpoints (variables). Provide justification for the
-selected dose, dosing regimen, route of administration, method of
-administration, and treatment period for all auxiliary medicinal
-products. Also indicate whether the auxiliary medicinal product has
-marketing authorization and if within the trial it will be used
-according to the terms in its approval. If this are not approved, a
-justification must be given for using this auxiliary medicinal product.*
+This trial does not include any auxiliary medicinal products.
 
-*Safety reporting for auxiliary medicinal products, which are already on
-the market, shall be carried out in accordance with Chapter 3 of Title
-IX of [Directive
-2001/83/EG](https://eur-lex.europa.eu/legal-content/sv/ALL/?uri=CELEX%3A32001L0083).*
-
-*See also recommendations of the EMA expert group available on the
-Commission\'s website EudraLex
-([link](https://ec.europa.eu/health/medicinal-products/eudralex/eudralex-volume-10_en#set-of-documents-applicable-to-clinical-trials-that-will-be-authorised-under-regulation-eu-no-5362014-once-it-becomes-applicable)).
-EudraLex - Volume 10 - Clinical trials guidelines Chapter III, Auxiliary
-Medicinal Products in Clinical Trials.*
-
-*Describe how traceability and compliance of non-market approved
-auxiliary medicinal products will be documented e.g. medication log
-etc.*
-
-### Concomitant use of other medicinal products and treatments
+## Concomitant use of other medicinal products and treatments
 
 *For other concomitant medications (non-investigational medicinal
 products or auxiliary medicinal products and other treatments), justify
@@ -928,13 +794,7 @@ well-being of the subject may be provided at the discretion of the
 investigators, unless otherwise specified in the exclusion criteria.
 Concomitant medication should be recorded in the Case Report Form (CRF).
 
-### Destruction
-
-*Describe routines for how investigational medicinal product(s) shall be
-destroyed (if applicable). This also includes auxiliary medicinal
-products that do not have marketing authorization.*
-
-### Treatment after trial end
+## Treatment after trial end
 
 *Describe any continued treatment of subjects after the trial end, e.g.,
 if the subject returns to previous treatments, if the subject receives
@@ -956,7 +816,7 @@ performed. State where any analyses will be performed. State whether
 biological material will be stored in the biobank and routines for this.
 See also section 5.3.3, Biobank.*
 
-#### **Primary endpoint**
+#### Primary outcome
 
 *Describe the primary endpoint (variable) as precisely as possible.
 Include information about how the primary variable will be measured:
@@ -964,7 +824,7 @@ e.g. type of sample, method used and eventual responsible laboratory.
 State whether the analysis will be performed continuously during the
 trial or after completion of subject enrollment.*
 
-#### **Secondary endpoints** 
+#### Secondary outcomes
 
 *Describe the secondary endpoints (variables) as precisely as possible.
 Include information about how the secondary endpoints (variables) will
@@ -1370,17 +1230,6 @@ serious adverse event (SAE).*
 *Information about pregnancy does not need to be included in the trial
 if it is not applicable for the included subjects.*
 
-### Reference Safety Information
-
-*The reference safety information forms the basis for assessing whether
-the adverse reaction is unexpected.*
-
-*Specify the document (SPC, IB) to be used for reference safety
-information in assessment of whether an adverse event (AE) is expected.*
-
-*The location of reference safety information shall be cited in the
-cover letter for the application.*
-
 ## Statistics
 
 *This statistics section provides general guidelines, i.e. not
@@ -1486,7 +1335,7 @@ should be proportionate in relation to the trial's risks.*
 *There may be less stringent rules for low-intervention clinical trials
 (see cover page), e.g. limited monitoring requirements.*
 
-### Quality Assurance and Sponsor oversight
+## Quality Assurance and Sponsor oversight
 
 *In this section, describe which quality assurance systems the trial
 will have to ensure and control the quality as well as the sponsor's
@@ -1510,7 +1359,7 @@ Form.*
 should be based on the identified risks, follow-up of risks during the
 trial and timeliness of the monitoring plan.*
 
-### Monitoring
+## Monitoring
 
 *In order to fulfill the EU regulation on clinical trials on medicinal
 products for human use, 536/2014 and ICH-GCP, an independent monitor
@@ -1559,7 +1408,7 @@ and is intended to ensure that the subject's rights, safety, and
 well-being are met and that data in the CRF are complete, correct, and
 consistent with the source data.
 
-### Source data
+## Source data
 
 *Refer to, and indicate in the site-specific source data reference
 document of the trial site, the location of the source data for each
@@ -1593,7 +1442,7 @@ the person in charge of the medical records at the trial site and by the
 monitor and auditor, if applicable. Access will also be granted in the
 context of regulatory inspections.
 
-### Deviations, serious breaches and other reporting obligations
+## Deviations, serious breaches and other reporting obligations
 
 *The protocol should describe how deviations or serious breaches from
 Clinical Trials Regulation, the approved trial protocol, ICH-GCP and
@@ -1638,7 +1487,7 @@ trial documentation of the principal investigator and the sponsor and
 appropriate measures shall be taken. The deviations must be recorded in
 the clinical trial report.
 
-### Audits and inspections 
+## Audits and inspections 
 
 *Text suggestion:* Authorized representatives for the sponsor and
 Competent Authorities (CA) may carry out audits or inspections at the
@@ -1905,7 +1754,7 @@ archived for at least *25* years after the trial is completed. Source
 data in the medical records system are stored and archived in accordance
 with national regulations.
 
-### Case Report Form 
+## Case Report Form 
 
 *All information related to the clinical trial should be recorded,
 processed, handled and stored by the sponsor or investigator, as
@@ -1925,7 +1774,7 @@ timelines that have been predefined and agreed. The investigator signs
 the completed CRF. A copy of the completed CRF will be archived at the
 study site.
 
-## Notification of trial completion, reporting, and publication
+# Notification of trial completion, reporting, and publication
 
 *The sponsor must notify, via CTIS, each concerned Member State that a
 clinical trial involving that Member State has been terminated.
@@ -2012,7 +1861,7 @@ Within one year of trial completion, a clinical study report is
 completed, and a summary of the clinical trial results must be reported
 in CTIS, including a summary for lay people.
 
-## References
+# References
 
 *Literature referenced in the text is listed here. The list should be
 sorted in the order in which it is referred to in the protocol. For
