@@ -12,4 +12,5 @@ meta.analysis <- conduct_meta_analysis()
 attach(meta.analysis)
 
 ## Get pilot study results
-preliminary.results <- get_preliminary_results(use.saved = FALSE)
+preliminary.results <- get_preliminary_results(use.saved = TRUE)
+attach(preliminary.results)

@@ -181,7 +181,7 @@ Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care o
 **Acronym**
 
 **Rationale**
-Trauma is a massive global health issue [@GBD2018; @GBD2020]. Many training programmes have been developed to help physicians in the initial management of trauma patients [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular of these programmes and have been used to train over one million physicians worldwide [@acsAtls2018]. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. Multiple systematic reviews emphasise the need for such trials [@Mohammad2013; @Jayaraman2014; @Jin2021].
+Trauma is a massive global health issue [@injuries2020; @GBD2020]. Many training programmes have been developed to help physicians in the initial management of trauma patients [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular of these programmes and have been used to train over one million physicians worldwide [@acsAtls2018]. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. Multiple systematic reviews emphasise the need for such trials [@Mohammad2013; @Jayaraman2014; @Jin2021].
 
 **Aim**
 To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
