@@ -1,4 +1,11 @@
 global_variables <- function() {
+    ## Define functions
+    `%m+%` <- lubridate::`%m+%`
+    ymd <- lubridate::ymd
+    month <- lubridate::month
+    year <- lubridate::year
+
+    ## Define global variables
     trial.start.date <- "2024-01-01"
     regulatory.approval.months <- 4
     ethical.approval.months <- 6
@@ -12,7 +19,9 @@ global_variables <- function() {
     min.intervention.months <- 4
     transition.months <- 1
     transition.overlap.months <- 0
-    total.months <- min.standard.care.months + sequences * (transition.months - transition.overlap.months) + min.intervention.months
+    total.months <- min.standard.care.months +
+        sequences * (transition.months - transition.overlap.months) +
+        min.intervention.months
     patient.enrollment.months <- total.months
     final.patient.follow.up.date <- ymd(trial.start.date) %m+%
         months(ethical.approval.months) %m+%
@@ -26,6 +35,8 @@ global_variables <- function() {
     )
     clusters.per.sequence <- clusters / batches / sequences
     sample.size <- clusters * observations.per.month * (total.months - transition.months)
+
+    ## Return global variables
     global.variables <- list(
         trial.start.date = trial.start.date,
         regulatory.approval.months = regulatory.approval.months,
