@@ -10,6 +10,11 @@ format:
     toc-depth: 3
     number-sections: true
     fig-caption: true
+  docx:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    fig-caption: true
 ---
 
 ```{r setup, include=FALSE}
@@ -281,77 +286,17 @@ knitr::include_graphics(
 )
 ```
 
-## Procedures and flow chart
+## Procedures
 
-*Describe all trial-related procedure(s) (e.g. ECG, sampling,
-examinations, AE reporting, etc) the subject undergoes during each
-visit. Include a table that summarizes the activities during each visit,
-see example in Table X.*
+@tbl-procedures shows an overview of trial procedures. Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. They will then approach eligible patients or their caregivers to provide study information and obtain informed consent for out of hospital data collection. They will also inform patients that they can opt out of in-hospital data collection. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
-*Describe any pre-screening procedures planned for the trial.*
+```{r procedures}
+#| echo: false
+#| label: tbl-procedures
+#| tbl-cap: "Overview of trial procedures"
 
-*Keep in mind that it must be a physician who checks the
-inclusion/exclusion criteria and obtains the informed consent.*
-
-*Also define the visit window, i.e., how much a follow-up visit may vary
-in time.*
-
-*Example table:*
-
-*Table X* Flow chart
-
-+-----------------+--------------+-----------+-----------+-----------+
-| Procedure       | *Screening*  | *Visit 1* | *Visit 2* | *Visit 3* |
-|                 |              |           |           |           |
-|                 | *Day/Week x  | *         | *Day/Week | *Day/Week |
-|                 | Inclusion    | Baseline* | x (±10    | x (±10    |
-|                 | visit*       |           | days)*    | days)*    |
-+=================+==============+===========+===========+===========+
-| *Incl/exclusion | √            |           |           |           |
-| criteria*       |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *Informed       | √            |           |           |           |
-| consent*        |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *Medical        | √            |           |           |           |
-| history/        |              |           |           |           |
-| concomitant     |              |           |           |           |
-| medications*    |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *Randomization* | √\*          | √\*       |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *Instructions   |              | √         |           |           |
-| for handling    |              |           |           |           |
-| the medicinal   |              |           |           |           |
-| product(s)*     |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *Fill out       |              | √         | √         | √         |
-| EQ-5D*          |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *X-ray (CT)*    |              |           | √         | √         |
-+-----------------+--------------+-----------+-----------+-----------+
-| *Adverse Events |              | √         | √         | √         |
-| (AE & SAE)*     |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-| *End of Trial*  |              |           |           | √         |
-+-----------------+--------------+-----------+-----------+-----------+
-|                 |              |           |           |           |
-+-----------------+--------------+-----------+-----------+-----------+
-
-: A table with five columns and ten rows. The columns are marked in the
-following order: Procedure; Screening Day/Week x Inclusion visit; Visit
-1 Baseline; Visit 2 Day/Week x (±10 days); Visit 3 Day/Week x (±10
-days). The information found in the rows in the first column is:
-Incl/exclusion criteria; Informed consent; Medical history/concomitant
-medications; Randomization; Instructions for handling the medicinal
-product(s); Fill out EQ-5D; X-ray (CT); Adverse Events (AE & SAE); End
-of Trial; Some of the fields in the table are either blank or contain a
-check mark. For example, the first four procedures are present during
-the screening, the next four during the first visit, and the final three
-or four are present during visits 2 and 3.
-
-*\*Randomization can be done at, e.g., the screening visit or visit 1;
-adjust the table for the trial.*
+create_patient_procedure_table()
+```
 
 ## Biological sampling procedures
 
