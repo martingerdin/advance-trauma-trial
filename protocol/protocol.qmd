@@ -286,9 +286,76 @@ knitr::include_graphics(
 )
 ```
 
+## Cluster selection
+
+### Eligiibility criteria
+
+**Clusters** must meet the following criteria:
+
+- baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
+- provides general surgery, imaging and blood banking services around the clock; and
+- no more than 25% of physicians providing initial trauma care trained in any trauma life support programme.
+
+### Screening
+
+## Patient participants selection
+
+### Eligiibility criteria
+
+**Patients participants** must meet the following criteria:
+
+- age of at least 15 years;
+- present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
+- admitted or died between arrival at the hospital and admission;
+- transferred from the emergency department of a participating hospital to another hospital for admission; and
+- trauma occurred less than 48 hours before arrival at the hospital.
+
+### Screening
+
+Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. They will then approach eligible patients or their caregivers to provide study information and obtain informed consent for out of hospital data collection. They will also inform patients that they can opt out of in-hospital data collection. Patients who present during the clinical research coordinator's working hours will be approached in person. Patients who present outside of working hours will be approached by phone. Phone numbers will be extracted from the emergency department registers.
+
+### Withdrawal criteria
+
+*Specify criteria for when and how subjects can/must be prematurely
+taken out of the trial.*
+
+-   *The subject may choose to discontinue the trial at any time*
+
+-   *The principal investigator or safety committee can terminate a
+    subject's participation (due to, e.g., non-tolerable adverse
+    events/adverse reactions, pregnancy, etc.)*
+
+-   *A concerned Competent Authority can terminate the trial.*
+
+*Describe the care of trial subjects who prematurely discontinue the
+trial (e.g., continued treatment, examinations).*
+
+*Describe how data will be handled for subjects who discontinue the
+trial prematurely. Specify if a closing visit will be performed or if
+other follow-up is planned (e.g., overall survival).*
+
+*It should also be clarified whether a subject who has discontinued the
+trial will/can be replaced to achieve the desired number of included
+subjects and, if so, in which case/how this will be done.*
+
+*If an exclusion criterion applies throughout the trial, this should
+also be stated.*
+
+*See also section 5.4, End of Trial, and section 15, Notification of
+trial completion, reporting, and publication.*
+
+*Example text:\
+*Subjects can discontinue their participation in the trial at any time
+without any consequence to his/her continued treatment. The
+investigator/sponsor can at any time terminate the trial for a subject
+due to, e.g., unacceptable adverse events/adverse reactions or because
+the subject does not follow procedures in the clinical trial protocol.
+If the subject discontinues the trial, follow-up of this subject will be
+performed according to the clinic's routine.
+
 ## Procedures
 
-@tbl-procedures shows an overview of trial procedures. Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. They will then approach eligible patients or their caregivers to provide study information and obtain informed consent for out of hospital data collection. They will also inform patients that they can opt out of in-hospital data collection. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
+@tbl-procedures shows an overview of trial procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
 ```{r procedures}
 #| echo: false
@@ -304,54 +371,16 @@ This trial does not include biological sampling.
 
 ## End of Trial
 
-*Provide a clear and unambiguous indication of what constitutes the end
-of the trial and, if it is not the date of the last visit of the last
-subject, a specification of the estimated end date of the trial.*
-
-*If treatment of the subjects who completed the trial differs from
-normal clinical practice, this should be stated. This can, for example,
-mean that the trial subjects should receive the investigational
-medicinal product after the trial ends -- if so, describe how this will
-be done (see section 7.10, Treatment after trial end).*
-
-*See also section 6.4, Withdrawal criteria, and section 15, Notification
-of trial completion, reporting, and publication.*
-
-*If a clinical trial is suspended or terminated prematurely due to a
-change in the benefit/risk balance, for reasons of subject safety, this
-should be notified to the concerned Member States via CTIS. The
-notification should be made as soon as possible, but no later than 15
-days after the clinical trial was suspended or terminated prematurely.
-The reasons for such action and follow-up measures should be provided.
-The resumption of a clinical trial after it has been temporarily
-suspended due to a change in the benefit/risk balance is considered to
-be a substantial modification.*
-
-*Text suggestion:*
-
-The trial ends when the last subject has completed the last follow-up
-(or if this is not relevant give the estimate completion date instead).
-
+The trial ends when the last patient participant has completed the last follow-up.
 The trial may be prematurely terminated if it this is necessary for
 safety reasons affecting the risk-benefit balance or if the recruitment
 of subjects cannot be met within reasonable time limits. If the trial is
 prematurely terminated or suspended, the investigator should immediately
 inform the subjects about this and ensure appropriate treatment and
-follow-up. The Swedish Medical Products Agency should be informed as
-soon as possible via CTIS, but no later than 15 days after trial
-suspension.
+follow-up. Decisions on premature termination are taken by the sponsor.
 
-Decisions on premature termination are taken by the sponsor.
 
-## Subject selection
 
-*A description of the groups and subgroups of subjects to be enrolled in
-the clinical trial, including, where applicable, groups of subjects with
-special needs (e.g. age, gender, healthy volunteers, subjects with rare
-or very rare diseases). A justification of the gender and age
-distribution of the subjects if a certain gender or age group is not
-enrolled or is underrepresented in the clinical trial, an explanation of
-the reasons and a justification of these exclusion criteria.*
 
 ### Inclusion criteria
 
@@ -417,53 +446,6 @@ the following criteria are met:
 
 -   .
 
-### Screening
-
-*Describe the process for screening and inclusion. Also provide
-information about whether and when re-screening is allowed.*
-
-*Text suggestion:* Subject eligibility (that subjects fulfill all
-inclusion criteria and do not meet any exclusion criteria) is
-established before inclusion, treatment, or randomization.
-
-### Withdrawal criteria
-
-*Specify criteria for when and how subjects can/must be prematurely
-taken out of the trial.*
-
--   *The subject may choose to discontinue the trial at any time*
-
--   *The principal investigator or safety committee can terminate a
-    subject's participation (due to, e.g., non-tolerable adverse
-    events/adverse reactions, pregnancy, etc.)*
-
--   *A concerned Competent Authority can terminate the trial.*
-
-*Describe the care of trial subjects who prematurely discontinue the
-trial (e.g., continued treatment, examinations).*
-
-*Describe how data will be handled for subjects who discontinue the
-trial prematurely. Specify if a closing visit will be performed or if
-other follow-up is planned (e.g., overall survival).*
-
-*It should also be clarified whether a subject who has discontinued the
-trial will/can be replaced to achieve the desired number of included
-subjects and, if so, in which case/how this will be done.*
-
-*If an exclusion criterion applies throughout the trial, this should
-also be stated.*
-
-*See also section 5.4, End of Trial, and section 15, Notification of
-trial completion, reporting, and publication.*
-
-*Example text:\
-*Subjects can discontinue their participation in the trial at any time
-without any consequence to his/her continued treatment. The
-investigator/sponsor can at any time terminate the trial for a subject
-due to, e.g., unacceptable adverse events/adverse reactions or because
-the subject does not follow procedures in the clinical trial protocol.
-If the subject discontinues the trial, follow-up of this subject will be
-performed according to the clinic's routine.
 
 ## Trial treatments
 
