@@ -7,39 +7,43 @@ create_patient_procedure_table <- function() {
 
     ## Define utility function to create follow up schedule
     create_follow_up_schedule <- function(screening = FALSE,
-                                          follow.up.1.daily = FALSE,
-                                          follow.up.2.24.hours = FALSE,
-                                          follow.up.3.discharge = FALSE,
-                                          follow.up.4.30.days = FALSE,
-                                          follow.up.5.90.days = FALSE,
+                                          follow.up.daily = FALSE,
+                                          follow.up.24.hours = FALSE,
+                                          follow.up.discharge = FALSE,
+                                          follow.up.7.days.discharge = FALSE,
+                                          follow.up.30.days = FALSE,
+                                          follow.up.90.days = FALSE,
                                           return.only.labels = FALSE) {
         ## Check arguments
         assert_that(is.logical(screening))
-        assert_that(is.logical(follow.up.1.daily))
-        assert_that(is.logical(follow.up.2.24.hours))
-        assert_that(is.logical(follow.up.3.discharge))
-        assert_that(is.logical(follow.up.4.30.days))
-        assert_that(is.logical(follow.up.5.90.days))
+        assert_that(is.logical(follow.up.daily))
+        assert_that(is.logical(follow.up.24.hours))
+        assert_that(is.logical(follow.up.discharge))
+        assert_that(is.logical(follow.up.7.days.discharge))
+        assert_that(is.logical(follow.up.30.days))
+        assert_that(is.logical(follow.up.90.days))
         assert_that(is.logical(return.only.labels))
 
         ## Create schedule
         schedule <- c(
             screening = ifelse(screening, "√", ""),
-            follow.up.1.daily = ifelse(follow.up.1.daily, "√", ""),
-            follow.up.2.24.hours = ifelse(follow.up.2.24.hours, "√", ""),
-            follow.up.3.discharge = ifelse(follow.up.3.discharge, "√", ""),
-            follow.up.4.30.days = ifelse(follow.up.4.30.days, "√", ""),
-            follow.up.5.90.days = ifelse(follow.up.5.90.days, "√", "")
+            follow.up.daily = ifelse(follow.up.daily, "√", ""),
+            follow.up.24.hours = ifelse(follow.up.24.hours, "√", ""),
+            follow.up.discharge = ifelse(follow.up.discharge, "√", ""),
+            follow.up.7.days.discharge = ifelse(follow.up.7.days.discharge, "√", ""),
+            follow.up.30.days = ifelse(follow.up.30.days, "√", ""),
+            follow.up.90.days = ifelse(follow.up.90.days, "√", "")
         )
 
         ## Define labels
         labels <- c(
             screening = "Screening",
-            follow.up.1.daily = "Daily",
-            follow.up.2.24.hours = "24 hours",
-            follow.up.3.discharge = "Discharge",
-            follow.up.4.30.days = "30 days",
-            follow.up.5.90.days = "90 days"
+            follow.up.daily = "Daily",
+            follow.up.24.hours = "24 hours",
+            follow.up.discharge = "Discharge",
+            follow.up.7.days.discharge = "Within 7 days of discharge",
+            follow.up.30.days = "30 days",
+            follow.up.90.days = "90 days"
         )
 
         ## Stop if the names of the schedule and labels do not match
@@ -63,25 +67,26 @@ create_patient_procedure_table <- function() {
         "Baseline data collection" = create_follow_up_schedule(screening = TRUE),
         "Injury data collection" = create_follow_up_schedule(
             screening = TRUE,
-            follow.up.1.daily = TRUE
+            follow.up.daily = TRUE
         ),
         "Mortality data collection" = create_follow_up_schedule(
             screening = TRUE,
-            follow.up.1.daily = TRUE,
-            follow.up.2.24.hours = TRUE,
-            follow.up.3.discharge = TRUE,
-            follow.up.4.30.days = TRUE,
-            follow.up.5.90.days = TRUE
+            follow.up.daily = TRUE,
+            follow.up.24.hours = TRUE,
+            follow.up.discharge = TRUE,
+            follow.up.30.days = TRUE,
+            follow.up.90.days = TRUE
         ),
         "EQ-5D/WHODAS" = create_follow_up_schedule(
-            follow.up.4.30.days = TRUE,
-            follow.up.5.90.days = TRUE
+            follow.up.7.days.discharge = TRUE,
+            follow.up.30.days = TRUE,
+            follow.up.90.days = TRUE
         ),
         "Return to work" = create_follow_up_schedule(
-            follow.up.4.30.days = TRUE,
-            follow.up.5.90.days = TRUE
+            follow.up.30.days = TRUE,
+            follow.up.90.days = TRUE
         ),
-        "End of Trial" = create_follow_up_schedule(follow.up.5.90.days = TRUE)
+        "End of Trial" = create_follow_up_schedule(follow.up.90.days = TRUE)
     )
 
     procedure.data <- as.data.frame(do.call(rbind, procedure.list))

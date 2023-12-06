@@ -298,6 +298,12 @@ knitr::include_graphics(
 
 ### Screening
 
+The research team will compile a list of potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen clusters for eligibility based on the criteria above. The data sources for screening will be hospital records and interviews with hospital staff. The screening will be standardised using a cluster screening form[^todo:screening-form] and logged in a cluster screening log[^todo:screening-log].
+
+[^todo:screening-form]: **TODO** We need to create a form that we can use to screen clusters.
+
+[^todo:screening-log]: **TODO** We need to create a log that we can use to log the screening process.
+
 ## Patient participants selection
 
 ### Eligiibility criteria
@@ -316,42 +322,8 @@ Clinical research coordinators will screen patient participants either as they a
 
 ### Withdrawal criteria
 
-*Specify criteria for when and how subjects can/must be prematurely
-taken out of the trial.*
-
--   *The subject may choose to discontinue the trial at any time*
-
--   *The principal investigator or safety committee can terminate a
-    subject's participation (due to, e.g., non-tolerable adverse
-    events/adverse reactions, pregnancy, etc.)*
-
--   *A concerned Competent Authority can terminate the trial.*
-
-*Describe the care of trial subjects who prematurely discontinue the
-trial (e.g., continued treatment, examinations).*
-
-*Describe how data will be handled for subjects who discontinue the
-trial prematurely. Specify if a closing visit will be performed or if
-other follow-up is planned (e.g., overall survival).*
-
-*It should also be clarified whether a subject who has discontinued the
-trial will/can be replaced to achieve the desired number of included
-subjects and, if so, in which case/how this will be done.*
-
-*If an exclusion criterion applies throughout the trial, this should
-also be stated.*
-
-*See also section 5.4, End of Trial, and section 15, Notification of
-trial completion, reporting, and publication.*
-
-*Example text:\
-*Subjects can discontinue their participation in the trial at any time
-without any consequence to his/her continued treatment. The
-investigator/sponsor can at any time terminate the trial for a subject
-due to, e.g., unacceptable adverse events/adverse reactions or because
-the subject does not follow procedures in the clinical trial protocol.
-If the subject discontinues the trial, follow-up of this subject will be
-performed according to the clinic's routine.
+Patient participants can choose to withdraw their consent to out of hospital follow up at any time. If they withdray their consent to out of hospital follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time. Withdrawal of consent to out of hospital follow up or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be
+performed according to the participating hospitals routine.
 
 ## Procedures
 
@@ -371,154 +343,38 @@ This trial does not include biological sampling.
 
 ## End of Trial
 
-The trial ends when the last patient participant has completed the last follow-up.
-The trial may be prematurely terminated if it this is necessary for
-safety reasons affecting the risk-benefit balance or if the recruitment
-of subjects cannot be met within reasonable time limits. If the trial is
-prematurely terminated or suspended, the investigator should immediately
-inform the subjects about this and ensure appropriate treatment and
+The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and
 follow-up. Decisions on premature termination are taken by the sponsor.
 
+### Intervention and control treatment
 
+The intervention will be ATLS® training. The control will be standard care, meaning no formal trauma life support training. We will train the physicians that initially resuscitate and provide trauma care during the first hour after patient arrival at the emergency department. These physicians can be casualty medical officers, surgical residents, or emergency medicine residents, depending on the setup at each participating centre. The training will occur during the transition phase in each cluster. We will train the number of physicians needed to reach the required patient sample size.
 
+**Advanced Trauma Life Support® (ATLS®) [@acsAtls2018]** is a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. The programme was developed by the Committee of Trauma of the American College of Surgeons. The course includes intial treatment and resuscitation, triage and interfacility transfers. Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
 
-### Inclusion criteria
+**Standard care** varies across hospitals in India, but trauma patients are initially managed by casualty medical officers, surgical residents, or emergency medicine residents. They are mainly first- or second-year residents who resuscitate patients, perform interventions and refer patients for imaging or other investigations. Compared with other settings where a trauma team approach is adopted, nurses and other healthcare professionals are only involved to a limited extent during the initial management. 
 
-*Only pre-defined inclusion, exclusion, and withdrawal criteria can be
-used in the trial. Inclusion criteria often include signed informed
-consent, age, disease, symptoms, possibly requirements for negative
-pregnancy test, contraception use during the trial. If fertile women are
-to be included, see
-document,"[Antikonceptionsrekommendationer](https://www.lakemedelsverket.se/sv/tillstand-godkannande-och-kontroll/klinisk-provning/lakemedel-for-manniskor/antikonception-preventivmetoder)"
-(in Swedish), on the Swedish Medical Product Agency's website.*
-
-*Note that all inclusion criteria are written so that they can be
-answered with a" Yes".*
-
-*Text suggestion:* To be included in the trial, subjects must meet the
-following criteria:
-
--   The subject has given their written consent to participate in the
-    trial.
-
--   *For female subjects of fertile age, adequate contraception should
-    be used, specify which methods. A negative pregnancy test can
-    eventually be a requirement, specify requirement/type of pregnancy
-    test. Contraceptive requirements may also apply to male subjects.*
-
-### Exclusion criteria
-
-*State the criteria that the subject cannot meet in order to be included
-in the trial, with respect to the subject's safety or something that may
-interfere with the trial results.*
-
-*Check that all contraindications for the investigational medicinal
-product in the SPC/IB are included.*
-
-*The following exclusion criteria are commonly included in trials:*
-
--   *Contraindications*
-
--   *Concomitant medications*
-
--   *Known or suspected allergies against any product included in the
-    trial*
-
--   *Pregnancy, breastfeeding, or planned pregnancy*
-
--   *Mental inability, reluctance or language difficulties that result
-    in difficulty understanding the meaning of participation in the
-    trial*
-
--   *Treatment or disease which, according to the investigator, can
-    affect treatment or trial results*
-
--   *Participation or recent participation in a clinical trial with a
-    investigational medicinal product (specify how recently, usually 30
-    days). Previous participation in this trial.*
-
-*Text suggestion:* Subjects must not be included in this trial if any of
-the following criteria are met:
-
--   .
-
--   .
-
--   .
-
-
-## Trial treatments
-
-*The term investigational medicinal product includes medicinal products
-used as comparators (placebo or active medicinal product). The same
-requirements apply to comparator medicinal products as to the medicinal
-products under investigation. Comparator medicinal products should
-therefore be described in a similar way in this section, i.e. when the
-instruction text below states investigational medicinal products, the
-corresponding information also needs to be provided for any comparator
-medicinal products.*
-
-## Description of investigational medicinal product(s)
+## Description of investigational medicinal products
 
 This trial does not include any investigational medicinal products.
 
 ## Randomization
 
-*Describe in detail how randomization will be performed and how subjects
-receive a randomization number. Also include information according to
-the example text below.*
+We will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches[^todo:randomisation]. Randomisation will be stratified by geographical region and anticipated cluster size. 
 
-*Text suggestion:* Subjects are included/randomized consecutively as
-they are found to be eligible for inclusion in the trial. If a subject
-discontinues their participation, the subject's trial-specific code will
-not be reused and the subject will not be allowed to re-enter the trial
-again.
+[^todo:randomisation]: **TODO** Add details on software used to randomise clusters.
 
 ## Blinding
 
-*Describe the process for blinding. If this is not a blinded trial, this
-section can be removed.*
-
-## Code breaking
-
-*The protocol must describe how the code is broken in emergency
-situations and who should be informed in connection with this. A clear
-definition of situations where the code may need to be broken helps
-prevent unnecessary unblinding. It is important that the code in
-emergency situations can be broken by the investigator, without the
-involvement of the sponsor. Describe how possible code break envelopes
-are stored and who will have access to this as well as how these persons
-can be reached in case of an emergency.*
-
-*If an electronic system is used, it must be clear how to break the code
-if the system does not work.*
-
-*If this is not relevant, remove this section.*
-
-*Text suggestion:* The list for breaking the code can be found at...
+It is not possible to blind a stepped-wedge trial, because all clusters receive the intervention. 
 
 ## Auxiliary medicinal products
 
 This trial does not include any auxiliary medicinal products.
 
-## Concomitant use of other medicinal products and treatments
+## Concomitant use of other medications or treatments
 
-*For other concomitant medications (non-investigational medicinal
-products or auxiliary medicinal products and other treatments), justify
-and describe permitted and unauthorised treatments and medicinal product
-use before starting the trial, during the trial and after the end of the
-trial. Assess whether anything should be listed as an exclusion
-criterion and add this to section 6.2, Exclusion criteria.*
-
-*Indicate what should be documented in the CRF regarding other
-concomitant medications (name, dose, start and stop dates, indication,
-etc.) The following text suggestion can be a part of the text under this
-heading.*
-
-*Text suggestion:* Medications considered necessary for the safety and
-well-being of the subject may be provided at the discretion of the
-investigators, unless otherwise specified in the exclusion criteria.
-Concomitant medication should be recorded in the Case Report Form (CRF).
+Medications or treatments considered necessary for the safety and well-being of the subject may be provided at the discretion of the investigators, unless otherwise specified in the exclusion criteria.
 
 ## Treatment after trial end
 
@@ -528,58 +384,25 @@ no further treatment, if the subject continues treatment with the
 investigational medicinal product (note that this may require approval
 by the Swedish Medical Products Agency).*
 
-## Methods for measurement of endpoints for clinical efficacy and safety
+## Outcomes
 
-### Methods for measurement of endpoints for clinical efficacy
+### Primary outcome
 
-*This section describes measurements and endpoints (variables)
-associated with primary and secondary objectives to demonstrate the
-effect of treatment through, e.g., different types of analyses and
-measurements such as X-ray, analysis of blood samples, measurements of
-tumor size, and questionnaires. Describe methods as well as approaches
-to sample collection and when the different measurements will be
-performed. State where any analyses will be performed. State whether
-biological material will be stored in the biobank and routines for this.
-See also section 5.3.3, Biobank.*
+The primary outcome will be in-hospital mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records or by calling the patient or a patient representative. Data on this outcome will be collected continuously during the trial. We chose this outcome as the primary outcome because it is an outcome of clinical and patient importance with very low missing data rates (`r rates.missing.data["in.hospital.mortality"]`%) in our pilot study. We will also be able to compare our findings with previous research.
 
-#### Primary outcome
+### Secondary outcomes
 
-*Describe the primary endpoint (variable) as precisely as possible.
-Include information about how the primary variable will be measured:
-e.g. type of sample, method used and eventual responsible laboratory.
-State whether the analysis will be performed continuously during the
-trial or after completion of subject enrollment.*
+- All cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department. Data on this outcome will be collected from patient hospital records or by calling the patient or a patient representative.
+- Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
+- Poor functional outcome within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the EQ5D3L domains of mobility, self-care, usual activities, and pain/discomfort, with poor functional outcome defined as being confined to bed, unable to bath or dress oneself, unable to perform usual activities, or having extreme pain or discomfort [^question:whodas];
+- Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
+- In-hospital pulmonary, septic, or renal complications [^question:complications].
 
-#### Secondary outcomes
+[^question:whodas] **Question:** Should we measure functional outcome/disability with WHODAS instead?
+    
+[^question:complications] **Question:** Should we remove complications because they are too difficult to measure?
 
-*- Should we measure functional outcome/disability with WHODAS instead?*
-*- Should we remove complications because they are too difficult to measure?*
-
-- all cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department;
-- quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L;
-- poor functional outcome within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the EQ5D3L domains of mobility, self-care, usual activities, and pain/discomfort, with poor functional outcome defined as being confined to bed, unable to bath or dress oneself, unable to perform usual activities, or having extreme pain or discomfort;
-- return to work at 30 days and three months after arrival at the emergency department; and
-- in-hospital pulmonary, septic, or renal complications.
-
-*Describe the secondary endpoints (variables) as precisely as possible.
-Include information about how the secondary endpoints (variables) will
-be measured: e.g. type of sample, method used and eventual responsible
-laboratory. State whether the analysis will be performed continuously
-during the trial or after completion of subject enrollment.*
-
-### Methods for measurement of endpoints for clinical safety
-
-*This paragraph may be included as part of the other paragraphs under
-8.1. Describe the endpoint(s) (variables) for clinical safety as
-precisely as possible. Include information about how the endpoint(s)
-will be measured: e.g. type of sample, method used and eventual
-responsible laboratory. State whether the analysis will be performed
-continuously during the trial or after completion of subject
-enrollment.*
-
-*Describe any measures for handling deviations in section 9.3, Reporting
-and registration of Adverse Events.*
-
+<!--
 ## Handling of Adverse Events
 
 *Explain which adverse events (AE) and serious adverse events (SAE) will
@@ -907,8 +730,9 @@ resolved/stable/persistent) and measures in case of unacceptable adverse
 events (dose adjustment, treatment interruption, withdrawal of subject
 from the trial). Describe follow-up of subjects with regards to safety
 after the trial is completed.*
+-->
 
-### Independent Data Monitoring Committee
+## Independent Data Monitoring Committee
 
 *If the clinical trial involves an extended risk or if the trial is
 performed over a long time period and is divided into different blinded
@@ -917,53 +741,6 @@ investigator) data monitoring committee should evaluate the decoded
 results.*
 
 *Remove this section if not applicable.*
-
-### Annual Safety Report (ASR)
-
-*For investigational medicinal products other than placebo, the sponsor
-must submit an annual report on the safety of each investigational
-medicinal product used in a clinical trial. This is done in the CTIS.
-The safety report should be written according to the format Development
-Safety Update Report, (DSUR).*
-
-*The safety report defines for which time period the report applies and
-a list of all SAE that have occurred, as well as possible SUSAR. A
-summary assessment of the safety situation for the subjects and a
-benefit/risk evaluation for the trial must also be included. The ASR
-should also be accompanied by the RSI in force at the start date of the
-report. If significant changes in the RSI have occurred during the
-reporting period, these should be listed in the ASR.*
-
-*The annual report should contain only aggregated and anonymised data.*
-
-*The obligation to submit a safety report starts when a clinical trial
-is authorised and ends when the last clinical trial conducted by the
-sponsor with the investigational medicinal product is completed.*
-
-### Procedures in case of emergencies, overdose or pregnancy
-
-*Medication errors, pregnancy and uses other than those specified in the
-CTP, including misuse and abuse of the investigational medicinal
-product, shall be subject to the same reporting obligations as adverse
-reactions.*
-
-*If an unforeseen event is likely to have a serious impact on the
-benefit/risk relationship, the sponsor and investigator should take
-appropriate Urgent Safety Measures (USM) necessary to protect the
-subjects. Examples of such measures are to temporarily suspend the
-clinical trial or to introduce supplementary monitoring measures. The
-sponsor should, via CTIS, inform the concerned Member States about the
-event and the measures taken. Notification must be made as soon as
-possible, but no later than seven days after the measures have been
-taken.*
-
-*If a subject who participates in a clinical trial becomes pregnant,
-this person must be followed up until the birth has taken place. If the
-fetus/child has any congenital malformation, this must be reported as a
-serious adverse event (SAE).*
-
-*Information about pregnancy does not need to be included in the trial
-if it is not applicable for the included subjects.*
 
 ## Statistics
 
@@ -1096,26 +873,6 @@ trial and timeliness of the monitoring plan.*
 
 ## Monitoring
 
-*In order to fulfill the EU regulation on clinical trials on medicinal
-products for human use, 536/2014 and ICH-GCP, an independent monitor
-should be appointed to, via monitoring, ensure the subjects' safety and
-integrity are satisfied and check that reported personal data is
-reliable and of high quality.*
-
-*Briefly describe how the independent review (monitoring) will be
-performed before, during, and after the trial. Details are
-advantageously described in a separate monitoring plan.*
-
-*Describe which levels of quality control can be applied, e.g., what is
-monitored centrally and what is monitored on site. See above.*
-
-*Describe generally here how deviations from the protocol or regulations
-that occur at the site will be documented and handled (significant
-deviations should be reported in the final report to the authorities).
-Details shall be described in a separate monitoring plan. See also
-section*
-[11.4](file:///\\RSFS080\hem0$\227130\Webbprojektet\Mallar\Tillfälligt\Prövningsprotokoll%20med%20hjälptext-Mall-eng_v.%202022-05-25.docx#_Deviations,_serious_breaches)*.*
-
 *The minimum level for quality control is that the following can be
 verified:*
 
@@ -1131,17 +888,9 @@ verified:*
     correctly*
 
 *Other tasks for a monitor include verifying that the trial's essential
-documents are complete (according to chapter 8, ICH-GCP (E6(R2)).*
+documents are complete (according to chapter 8, ICH-GCP (E6(R2)).*[^todo:monitoring]
 
-*Text suggestion:* The trial will be monitored by an independent monitor
-before the trial begins, during conducting the trial, and after the
-trial has been completed. This is to ensure that the trial is carried
-out according to the protocol and that data is collected, documented,
-and reported according to ICH-GCP and applicable ethical and regulatory
-requirements. Monitoring is performed as per the trial's monitoring plan
-and is intended to ensure that the subject's rights, safety, and
-well-being are met and that data in the CRF are complete, correct, and
-consistent with the source data.
+[^todo:monitoring]: **TODO TGI** Add a section on monitoring.
 
 ## Source data
 
@@ -1326,68 +1075,20 @@ their participation.
 
 ### Data protection
 
-*The General Data Protection Regulation (GDPR) has strengthened the data
-subject's rights and given increased responsibility to those responsible
-for data collection. This means that when collecting research data, it
-is necessary to decide whether the data collection is legal, correct,
-appropriate, that integrity and confidentiality are considered and that
-no more information than necessary is collected, as well as that no more
-persons than necessarily have access to the data. There should be a
-lawful ground for data collection, which for research is for public
-interest.*
+We will ensure that appropriate agreements and/or other appropriate protective measures are taken to ensure that the data processing is performed in accordance with the provisions of the  relevant legislation, before any data transfer takes place.
 
-*The personal data controller is obliged to take measures to ensure that
-the GDPR regulation is followed, to describe built-in data protection
-features and security when processing and to report personal data
-breaches.*
+In the information provided to subjects, subjects will be fully informed about how their trial data will be collected, used and disclosed. The content of the informed consent form complies with relevant integrity and data protection legislation. The subject information and the
+informed consent form will explain how trial data are stored to maintain confidentiality in accordance with national data legislation *(please describe how data is stored and which data security measures are taken).* All information processed by the sponsor will be pseudonymized.
 
-*Appropriate technical and organisational measures shall be taken to
-protect the personal data and processed information from unauthorised
-access, disclosure, dissemination, alteration or destruction and from
-accidental loss, in particular where the processing involves the
-transmission of data over a network.*
-
-*Text suggestion:* If any part of the data is processed by another
-organization, inside or outside the EU, appropriate agreements and/or
-other appropriate protective measures are taken to ensure that the data
-processing is performed in accordance with the provisions of the General
-Data Protection Regulation (GDPR) and other relevant legislation, before
-any data transfer takes place.
-
-In the information provided to subjects, subjects will be fully informed
-about how their trial data will be collected, used and disclosed. The
-content of the informed consent form complies with relevant integrity
-and data protection legislation. The subject information and the
-informed consent form will explain how trial data are stored to maintain
-confidentiality in accordance with national data legislation *(please
-describe how data is stored and which data security measures are
-taken).* All information processed by the sponsor will be pseudonymized
-*and identified with \<\<Trial code/Trial ID/Initials\>\>*.
-
-The informed consent form will also explain that for verification of the
-data, representatives delegated by the sponsor, as well as relevant
-authorities, may require access to parts of medical records or trial
-records that are relevant to the trial, including the subject's medical
+The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the subject's medical
 history.
 
 ### Insurances
 
 *Here it should be explained how subjects are insured throughout the
-trial. Check if subjects are insured through the Swedish patient
-insurance and whether Swedish pharmaceutical insurance is valid for the
-investigational medicinal product(s). Alternatively, discuss with your
-organization if there are existing insurance policies.*
+trial.*[^todo:insurance]
 
-*Swedish Patient Insurance (Patientskadeförsäkring): The Swedish
-healthcare regions have signed a patient insurance with Landstingens
-Ömsesidiga Försäkringsbolag, Löf. Check what applies to medical research
-at [www.lof.se](http://www.lof.se/).*
-
-*Swedish Pharmaceutical Insurance (Läkemedelsförsäkring): All marketed
-investigational medicinal products do not automatically have a Swedish
-Pharmaceutical Insurance. Check if the product is covered by the drug
-insurance at [lff.se](https://lff.se/) and that the insurance also
-covers clinical trials.*
+[^todo:insurance]: **TODO: TGI** Please add information about insurance.
 
 # Substantial changes to the trial
 
@@ -1436,6 +1137,8 @@ Non-substantial changes should be continuously recorded and entered in
 CTIS.
 
 # Collection, handling, and archiving of data
+
+Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. Paper-based CRFs will be securely stored on-site and uploaded to project servers using a VPN with two-factor authentication. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published and was reviewed by Karolinska Institutet (https://doi.org/10.5281/zenodo.7748764).
 
 *From the protocol it must be clear how the data will be collected.
 Describe which other types of data collection documents, in addition to
