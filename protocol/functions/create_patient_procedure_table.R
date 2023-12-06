@@ -97,7 +97,7 @@ create_patient_procedure_table <- function() {
     procedure.table <- gt(procedure.data) |>
         tab_spanner(
             label = "Follow up",
-            columns = c("Daily", "24 hours", "Discharge", "30 days", "90 days")
+            columns = c("Daily", "24 hours", "Discharge", "Within 7 days of discharge", "30 days", "90 days")
         ) |>
         tab_footnote(
             footnote = c(

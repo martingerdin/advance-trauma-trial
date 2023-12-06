@@ -54,54 +54,67 @@ create_trial_design_flowchart <- function(clusters = 60,
     assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
 
     ## Generate plot data
-    plot.data <- get_trial_design_data(clusters = clusters,
-                                       sequences = sequences,
-                                       batches = batches,
-                                       min.standard.care.months = min.standard.care.months,
-                                       min.intervention.months = min.intervention.months, 
-                                       batches.overlap.months = batches.overlap.months, 
-                                       transition.months = transition.months,
-                                       transition.overlap.months = transition.overlap.months,
-                                       total.months = total.months)
-    clusters.per.batch <- with(plot.data, clusters/batches)
+    plot.data <- get_trial_design_data(
+        clusters = clusters,
+        sequences = sequences,
+        batches = batches,
+        min.standard.care.months = min.standard.care.months,
+        min.intervention.months = min.intervention.months,
+        batches.overlap.months = batches.overlap.months,
+        transition.months = transition.months,
+        transition.overlap.months = transition.overlap.months,
+        total.months = total.months
+    )
+    clusters.per.batch <- with(plot.data, clusters / batches)
 
     ## Create plot
-    color.blind.palette <- c("#999999", "#E69F00", "#56B4E9", "#009E73",
-                             "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+    color.blind.palette <- c(
+        "#999999", "#E69F00", "#56B4E9", "#009E73",
+        "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
+    )
     trial.design.figure <- ggplot(plot.data, aes(y = cluster, yend = cluster, x = start, xend = end, color = phase)) +
         geom_segment(linewidth = 1) +
         scale_color_manual(values = color.blind.palette) +
-        scale_y_continuous(breaks = seq(1, 60),
-                           guide = guide_axis(n.dodge = 2),
-                           sec.axis = sec_axis(trans = ~.,
-                                               breaks = seq(clusters.per.batch/2,
-                                                            by = clusters.per.batch,
-                                                            length.out = batches),
-                                               labels = 1:batches,
-                                               name = "Batch")) +
+        scale_y_continuous(
+            breaks = seq(1, 60),
+            guide = guide_axis(n.dodge = 2),
+            sec.axis = sec_axis(
+                trans = ~.,
+                breaks = seq(clusters.per.batch / 2,
+                    by = clusters.per.batch,
+                    length.out = batches
+                ),
+                labels = 1:batches,
+                name = "Batch"
+            )
+        ) +
         scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
         theme_bw() +
         labs(x = "Study month", y = "Cluster", color = "Phase")
 
     ## Save figure
     if (save) {
-        file.name <- paste0("trial-design-figure-",
-                            clusters, "-clusters-",
-                            sequences, "-sequences-",
-                            batches, "-batches-",
-                            batches.overlap.months, "-batches-overlap-",
-                            min.standard.care.months, "-min-standard-care-",
-                            min.intervention.months, "-min-intervention-",
-                            transition.months, "-transition-months-",
-                            transition.overlap.months, "-transition-overlap.pdf")
+        file.name <- paste0(
+            "trial-design-figure-",
+            clusters, "-clusters-",
+            sequences, "-sequences-",
+            batches, "-batches-",
+            batches.overlap.months, "-batches-overlap-",
+            min.standard.care.months, "-min-standard-care-",
+            min.intervention.months, "-min-intervention-",
+            transition.months, "-transition-months-",
+            transition.overlap.months, "-transition-overlap.pdf"
+        )
         ggsave(file.name, trial.design.figure, width = 18, height = 9, units = "cm")
     }
-    
+
     ## Return figure
-    if (return.figure)
-        return (trial.design.figure)
+    if (return.figure) {
+        return(trial.design.figure)
+    }
 
     ## Return file name
-    if (!return.figure)
-        return (file.name)
+    if (!return.figure) {
+        return(file.name)
+    }
 }

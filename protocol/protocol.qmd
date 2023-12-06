@@ -1,8 +1,9 @@
 ---
-title: "Clinical Trial Protocol"
-subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+subtitle: "Clinical Trial Protocol v0.1.0"
+title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
 bibliography: bibliography.bib
 csl: nature.csl
+date: "2023-12-06"
 format: 
   pdf:
     documentclass: scrartcl
@@ -29,17 +30,13 @@ Clinical Trials Registry-India ID:
 
 ClinicalTrials.gov ID:
 
-Version number: 0.9
-
-Date: 2023-12-04
-
 Sponsor: Karolinska Institutet
 
 Co-sponsor: The George Institute for Global Health, India
 
-Principal Investigator: Martin Gerdin Wärnberg
-
 \newpage
+
+<!--
 
 # Roles and Contact information
 
@@ -177,6 +174,8 @@ rows as needed.*
                      seriousness is not consistent with the information on
                      the product in the RSI.
   --------------------------------------------------------------------------
+
+-->
 
 \newpage
 
@@ -346,7 +345,7 @@ This trial does not include biological sampling.
 The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and
 follow-up. Decisions on premature termination are taken by the sponsor.
 
-### Intervention and control treatment
+## Intervention and control treatment
 
 The intervention will be ATLS® training. The control will be standard care, meaning no formal trauma life support training. We will train the physicians that initially resuscitate and provide trauma care during the first hour after patient arrival at the emergency department. These physicians can be casualty medical officers, surgical residents, or emergency medicine residents, depending on the setup at each participating centre. The training will occur during the transition phase in each cluster. We will train the number of physicians needed to reach the required patient sample size.
 
@@ -354,35 +353,33 @@ The intervention will be ATLS® training. The control will be standard care, mea
 
 **Standard care** varies across hospitals in India, but trauma patients are initially managed by casualty medical officers, surgical residents, or emergency medicine residents. They are mainly first- or second-year residents who resuscitate patients, perform interventions and refer patients for imaging or other investigations. Compared with other settings where a trauma team approach is adopted, nurses and other healthcare professionals are only involved to a limited extent during the initial management. 
 
-## Description of investigational medicinal products
+### Description of investigational medicinal products
 
 This trial does not include any investigational medicinal products.
 
+### Auxiliary medicinal products
+
+This trial does not include any auxiliary medicinal products.
+
+### Concomitant use of other medications or treatments
+
+Medications or treatments considered necessary for the safety and well-being of the subject may be provided at the discretion of the investigators, unless otherwise specified in the exclusion criteria.
+
 ## Randomization
 
-We will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches[^todo:randomisation]. Randomisation will be stratified by geographical region and anticipated cluster size. 
+We will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches[^todo:randomisation]. Randomisation will be stratified by geographical region and anticipated cluster size[^question:stratified-randomisation]. 
 
 [^todo:randomisation]: **TODO** Add details on software used to randomise clusters.
+
+[^question:stratified-randomisation]: **Question:** Is it still relevant to stratify by geographical region and anticipated cluster size in the stepped-wedge design?
 
 ## Blinding
 
 It is not possible to blind a stepped-wedge trial, because all clusters receive the intervention. 
 
-## Auxiliary medicinal products
-
-This trial does not include any auxiliary medicinal products.
-
-## Concomitant use of other medications or treatments
-
-Medications or treatments considered necessary for the safety and well-being of the subject may be provided at the discretion of the investigators, unless otherwise specified in the exclusion criteria.
-
 ## Treatment after trial end
 
-*Describe any continued treatment of subjects after the trial end, e.g.,
-if the subject returns to previous treatments, if the subject receives
-no further treatment, if the subject continues treatment with the
-investigational medicinal product (note that this may require approval
-by the Swedish Medical Products Agency).*
+When the trial ends, the intervention will have been implemented in all clusters.
 
 ## Outcomes
 
@@ -734,118 +731,70 @@ after the trial is completed.*
 
 ## Independent Data Monitoring Committee
 
-*If the clinical trial involves an extended risk or if the trial is
-performed over a long time period and is divided into different blinded
-treatment groups, an external independent (of the sponsor and
-investigator) data monitoring committee should evaluate the decoded
-results.*
+An independent data and monitoring board, comprising four external members, will review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics.[^todo:idmc]
 
-*Remove this section if not applicable.*
+[^todo:idmc]: **TODO** Identify four members of the independent data monitoring committee.
 
 ## Statistics
 
-*This statistics section provides general guidelines, i.e. not
-everything is applicable to all trials. It is not necessary to use all
-sub-sections and some sub-sections can be deleted and/or new ones
-added.*
+### General principles
 
-### Analysis population
+We will conduct all analysis by modified intention to treat. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. We will not adjust for multiplicity of analyses because none of the secondary outcomes will be singularly more important. All secondary outcomes will be interpreted with due consideration for how all are affected by the intervention. We will use a two-sided significance level of 5% and estimate 95% confidence intervals. We will report time-adjusted within-cluster correlations for all outcomes with 95% confidence intervals. The primary subgroup analyses will be based on geographical region because demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results[^question:batch-region]. Additional subgroup analyses will include age, sex, and clinical cohorts with blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury.
 
--   *Define the subjects that will be included in the analyses, e.g.,
-    state if the analyses will apply intention-to-treat (ITT) or per
-    protocol (PP).*
+[^question:batch-region]: **Question:** Should batches be based on regions, i.e. should all clusters in a batch be from the same region? For logistical reasons it would be easier to have clusters from different regions in the same batch.
 
--   *Specify whether sensitivity analyses of the main analyses will be
-    performed, i.e. examining the sensitivity of an ITT analysis with
-    help of a complementary PP analysis.*
+### Analysis models
 
-### Statistical analyses
+All analyses will consider the clustered nature of the design. For the primary and binary secondary outcomes, we will use mixed effects binomial regression with a log-link to estimate the relative risk, and a binomial model with identity link to estimate the risk difference [@Li2020]. We will develop non-convergence plans. We will use the Kenward and Roger small sample correction to correct for the potential inflation of the type-I error caused by a small number of clusters. We will adjust for temporal confounding because the design is a stepped-wedge trial. To allow for the randomisation by batches, a different secular trend will be included for each batch. We will use similar model-based approaches for continuous secondary <!--, count and prevalence--> outcomes. In a sensitivity analysis we will explore whether models with more complicated correlation structures are a better fit. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures that might be plausible. 
 
-#### **Statistical methods**
+### Additional sensitivity analyses
 
--   *Provide a general description of the descriptive/summary
-    statistics.*
-
--   *Describe the statistical methods that will be used to answer the
-    primary and secondary objectives and clarify the underlying
-    statistical models. State which covariates (and any stratifications)
-    will be adjusted for in the analyses. Any subgroup analyses must be
-    specified.*
-
--   *State any transformations of variables and justification for this.*
-
--   *State how the trial results will be reported, e.g., a relative
-    treatment effect with associated 95% confidence interval and
-    p-value.*
-
--   *State if one- or two-sided tests of statistical significance will
-    be used. Justify the use of one-sided tests in particular.*
-
--   *If hypothesis testing is not appropriate, an alternative process
-    for arriving at statistical conclusions should be provided.*
-
-#### **Drop-outs**
-
--   *Specify how drop-outs and missing values will be handled. For
-    planned imputation of missing values, the method for this must be
-    stated.*
-
--   *State how any deviations from the original statistical analysis
-    plan will be reported.*
-
-### Adjustment of significance and confidence interval 
-
--   *Indicate possible tests for multiple comparisons. Adjustment should
-    always be considered for multiple primary outcomes. Specify details
-    of any adjustment procedures or provide an explanation for why
-    adjustment is not considered necessary.*
+To additionally explore whether the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using a spline function. Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine whether the results are sensitive to the assumption of no intervention by cluster interaction. We will also extend models to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. A fully adjusted covariate analysis will additionally adjust for age, sex, mechanism of injury, and trauma severity, which are individual-level covariates of known prognostic importance. 
 
 ### Sample size calculations
 
--   *State the total number of subjects needed for the trial. Sample
-    size calculations should be performed for all primary outcome
-    variables (in the case of several). In the case of multicentre
-    trials, the number of subjects at each site should be stated.*
+```{r sample-size}
+#| echo: false
+#| include: false
+get_design_matrix(
+    clusters = clusters,
+    sequences = sequences,
+    batches = batches,
+    min.standard.care.months = min.standard.care.months,
+    min.intervention.months = min.intervention.months,
+    batches.overlap.months = batches.overlap.months,
+    transition.months = transition.months,
+    transition.overlap.months = transition.overlap.months,
+    total.months = total.months
+)
+```
 
--   *State and motivate the effect size (e.g., group differences,
-    standard deviations) that sample size calculation builds upon,
-    usually the smallest clinically relevant effect.*
+With `r clusters` clusters and a total sample size of `r sample.size` our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance [@Hemming2020Feb; @Martin2016; @Korevaar2021]. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work.
 
--   *Specify in detail the assumptions on which the sample size is
-    based. Specify in particular:*
+<!--
+```{r power-curves}
+#| echo: false
+#| warning: false
+#| label: fig-power-curves
+#| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). A) Shows power curves assuming a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. B) Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training."
 
-    -   *method by which the sample size is calculated*
+combine_power_curves(list.files(pattern = "curvedata"))
+knitr::include_graphics("./combined-power-curves.pdf")
 
-    -   *significance level*
+```
 
-    -   *desired power*
+-->
 
-    -   *compensation for expected drop-outs*
+### Interim analysis
 
-    -   *handling of any corrections for multiple comparisons*
-
-### Interim analysis (if relevant)
-
--   *A description of the statistical methods to be applied.*
-
--   *Time points for interim analyses.*
-
--   *Criteria for trial termination.*
-
--   *Potential need for recalculation of sample size.*
+There will be two interim analyses, one after the first batch has completed the trial and one after half of the batches have completed the trial. The primary purpose of the interim analyses will be to assess the safety of the intervention, and assess if there is a significant increase in the primary outcome after ATLS^®^ training. The interim analyses will be conducted by the independent data monitoring committee. The independent data monitoring committee will use the Haybittle-Peto boundary to assess statistical significance, and will recommend stopping the trial if the p-value is less than 0.001. The secondary purpose of the interim analyses will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The final purpose of the interim analysis will be to assess if sample size calculations should be revised. The independent data monitoring committee will not have access to the trial's data before the interim analyses.
 
 ## Quality Control and Quality Assurance
 
-*In a clinical trial for medicinal products the sponsor is responsible
-for Quality Control (monitoring) and Quality Assurance (auditing). An
-independent review (monitoring) should be carried out for all clinical
-trials for medicinal products. The sponsor is responsible for appointing
-a monitor and for the quality throughout the trial; design, conduct,
-data collection, evaluation, reporting, and archiving. Methods used
-should be proportionate in relation to the trial's risks.*
-
 *There may be less stringent rules for low-intervention clinical trials
-(see cover page), e.g. limited monitoring requirements.*
+(see cover page), e.g. limited monitoring requirements.*[^todo:quality-control]
+
+[^todo:quality-control]: **TODO TGI** Add a section on quality control.
 
 ## Quality Assurance and Sponsor oversight
 
@@ -869,7 +818,9 @@ Form.*
 
 *The sponsor is responsible for the trial's monitoring plan, which
 should be based on the identified risks, follow-up of risks during the
-trial and timeliness of the monitoring plan.*
+trial and timeliness of the monitoring plan.*[^todo:quality-assurance]
+
+[^todo:quality-assurance]: **TODO TGI** Add a section on quality assurance.
 
 ## Monitoring
 
@@ -894,6 +845,9 @@ documents are complete (according to chapter 8, ICH-GCP (E6(R2)).*[^todo:monitor
 
 ## Source data
 
+**More information will be added here**
+
+<!--
 *Refer to, and indicate in the site-specific source data reference
 document of the trial site, the location of the source data for each
 variable. The CRF may in specific cases be defined as the source data
@@ -926,154 +880,37 @@ the person in charge of the medical records at the trial site and by the
 monitor and auditor, if applicable. Access will also be granted in the
 context of regulatory inspections.
 
+-->
+
 ## Deviations, serious breaches and other reporting obligations
 
-*The protocol should describe how deviations or serious breaches from
-Clinical Trials Regulation, the approved trial protocol, ICH-GCP and
-other regulations, directly affect, or with high likelihood could
-affect, the safety of subjects and their rights or the reliability and
-robustness of the data generated in the trial. In addition, the protocol
-needs to describe how the investigators should report suspected serious
-breaches to the sponsor.*
-
-*Serious breaches should be assessed by the sponsor and without undue
-delay but at the latest within 7 days be reported by the sponsor to the
-Swedish Medical Products Agency via CTIS. See also section 13,
-Substantial changes to the trial.*
-
-*Link to Guideline for the notification of serious breaches of
-Regulation (EU) No 536/2014 or the clinical trial protocol:
-<https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-notification-serious-breaches-regulation-eu-no-536/2014-clinical-trial-protocol_en.pdf>*
-
-*The sponsor should notify the relevant Member States, via CTIS, of any
-unexpected events that may affect the benefit/risk relationship of a
-trial but are not suspected unexpected serious adverse reactions. This
-should be done without undue delay, but no later than 15 days after the
-sponsor becomes aware of the event.*
-
-*Text suggestion*: The responsible investigator shall, without delay,
-report to the sponsor any serious breaches and deviations from the trial
-protocol, ICH-GCP and other regulations that significantly and directly
-affect, or with high likelihood could affect, the subjects' safety and
-integrity or the reliability and robustness of the data generated in the
-trial. The sponsor should assess the suspected serious breach and the
-consequences of deviations that have occurred, and, without undue delay
-but no later than 7 days (from knowledge) report these to the Swedish
-Medical Products Agency via CTIS.
-
-Other unexpected events that may affect the benefit/risk relationship
-must be reported via CTIS without undue delay, but no later than 15 days
-after the sponsor becomes aware of the event.
-
-Minor deviations that do not affect subjects' integrity or safety, nor
-significantly affect the trial's scientific value, are documented in the
+The responsible investigator shall, without delay, report to the sponsor any serious breaches and deviations from the trial protocol, ICH-GCP and other regulations that significantly and directly affect, or with high likelihood could affect, the subjects' safety and integrity or the reliability and robustness of the data generated in the trial. The sponsor should assess the suspected serious breach and the consequences of deviations that have occurred. Minor deviations that do not affect subjects' integrity or safety, nor significantly affect the trial's scientific value, are documented in the
 trial documentation of the principal investigator and the sponsor and
 appropriate measures shall be taken. The deviations must be recorded in
 the clinical trial report.
 
 ## Audits and inspections 
 
-*Text suggestion:* Authorized representatives for the sponsor and
-Competent Authorities (CA) may carry out audits or inspections at the
-trial site, including source data verification. The investigator must
-ensure that all source documents are available for audits and
-inspections. The purpose of an audit or inspection is to systematically
-and independently review all trial-related activities and documents, to
-determine whether these activities were performed, registered, analyzed
-and reported correctly according to protocol, ICH- GCP and applicable
-regulations.
+Authorized representatives for the sponsor and Competent Authorities (CA) may carry out audits or inspections at the trial site, including source data verification. The investigator must ensure that all source documents are available for audits and inspections. The purpose of an audit or inspection is to systematically and independently review all trial-related activities and documents, to determine whether these activities were performed, registered, analyzed and reported correctly according to protocol, ICH- GCP and applicable regulations.
 
-## Ethics
+# Ethics
 
-### Compliance to the protocol, ICH-GCP and regulations
+## Compliance to the protocol, ICH-GCP and regulations
 
-*Text suggestion*: The trial will be performed in compliance with this
-clinical trial protocol, the EU regulation on clinical trials on
-medicinal products for human use (536/2014), the Declaration of
-Helsinki, ICH-GCP (Good Clinical Practice), and current national
-regulations governing this clinical trial. This is to ensure the safety
-and integrity of the trial subjects as well as the quality of the data
+The trial will be performed in compliance with this clinical trial protocol, the Declaration of Helsinki, ICH-GCP (Good Clinical Practice), and current national regulations governing this clinical trial. This is to ensure the safety and integrity of the trial subjects as well as the quality of the data
 collected.
 
-### Ethical review of the trial
+## Ethical review of the trial
 
-It will not be possible for patients to opt out from being subjected to the intervention, because the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training.
-- We will apply for a waiver of informed consent from the ethical review boards at the participating hospitals. We do this because the target population will often have reduced decisional capacity at the time of data collection and the nature of the intervention is such that they can not refuse receiving it.
+The final protocol will be submitted for ethical review at all participating hospitals as well as the Swedish Ethical Review Atuhortiy. 
 
-Our research measure up to these issues for the following reasons. First, it cannot be conducted using informed consent because the cohort of patients with severe trauma is the group most likely to benefit from improvements in early management and it is therefore crucial to include this population. 
+## Procedure for obtaining informed consent
 
-*Describe the procedure for approval of the final clinical trial
-protocol and informed consent form.* *Application for permission for a
-clinical trial on medicinal products from the Swedish Medical Products
-Agency and the Swedish Ethical Review Authority is made via CTIS. The
-Swedish Medical Products Agency has an obligation to forward the
-application documents to the Swedish Ethical Review Authority. The
-Swedish Ethical Review Authority submits its opinion on the application
-back to the Swedish Medical Products Agency.*
+We will apply for a waiver of informed consent from the ethical review boards at the participating hospitals for collection of in-hospital data including outcomes that are considered routinly collected data. We do this because it will not be possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training. All patients will however be informed about the study and will be given the opportunity have their data deleted. 
 
-*Text suggestion*: The final protocol for clinical trials on medicinal
-products must be approved, as a part of the application for a permit for
-clinical trials via CTIS, by both the Swedish Ethical Review Authority
-and the Swedish Medical Products Agency before the trial can be
-conducted. The final version of the informed consent form and other
-information provided to subjects, must be approved or given a written
-positive opinion by the Swedish Ethical Review Authority. The authority
-must be informed via CTIS of any changes in the trial protocol in
-accordance with current requirements. *See also section 13, Substantial
-changes to the trial.*
+Clinical research coordinators will obtain informed consent from patients or a patient representative for out of hospital follow up and collection of data on quality of life, functional outcome, and return to work. The clinical research coordinators will approach patients or patient representatives for consent in person if a patient is screened during the clinical research coordinators working hours. For patients arriving outside of the clinical research coordinators working hours, the clinical research coordinators will approach patients or patient representatives for consent by phone. 
 
-### Procedure for obtaining informed consent
-
-*Describe the procedure for how information is given to trial subjects
-and how consent is obtained. For vulnerable groups see information on
-the Swedish Medical Products Agency website
-([link](https://www.lakemedelsverket.se/sv/tillstand-godkannande-och-kontroll/klinisk-provning/lakemedel-for-manniskor/provningsforordning-536-2014/forsokspersoner-och-informerat-samtycke-enligt-forordning-536-2014))
-and Chapter V of the
-[CTR](https://eur-lex.europa.eu/legal-content/sv/ALL/?uri=CELEX:32014R0536).*
-
-*Remember to adapt and describe the procedure based on whether the
-subject is a child. In trials where minors participate, the consent of
-both parents (legal representatives of the minor) must be obtained.
-According to the Medicines Act, a minor who has reached the age of 15
-must also give his or her informed consent to participate in the
-clinical trial of a medicinal product, provided that the minor
-understands the implications of the trial for him or her. In Sweden, a
-minor means a person younger than 18 years of age.*
-
-*The principal investigator (or the person to whom the task has been
-delegated) must provide both oral and written information to the
-intended subject regarding what participation in the trial entails. Keep
-in mind that in a clinical trial for investigational medicinal products,
-informed consent must be obtained by a licensed physician.*
-
-*A copy of the subject information as well as the signed informed
-consent form shall be provided to the subject.*
-
-*If the subject information changes during the trial execution, the
-subject has the right to once again decide whether he/she would like to
-continue their participation. This occurs by allowing the subject to
-sign a revised subject information and informed consent form.*
-
-*Text suggestion*: The principal investigator at each site shall ensure
-that the subject is given full and adequate oral and written information
-about the trial, its purpose, any risks and benefits as well as
-inclusion and exclusion criteria. Subjects must also be informed that
-they are free to discontinue their participation in the trial at any
-time without having to provide a reason. Subjects should be given the
-opportunity to ask questions and be allowed time to consider the
-provided information. If the person chooses to participate, both the
-subject and the investigator shall sign the informed consent form. A
-copy of the subject information as well as the informed consent form
-shall be provided to the subject. The subject's signed and dated
-informed consent must be obtained before any trial-specific activity is
-performed. Each subject who participates in the trial will be identified
-by a subject number on a subject identification list. The subject agrees
-that monitors, auditors, and inspectors may have access to their medical
-records and other source data. If new information is added to the trial,
-the subject has the right to reconsider whether he/she will continue
-their participation.
-
-### Data protection
+## Data protection
 
 We will ensure that appropriate agreements and/or other appropriate protective measures are taken to ensure that the data processing is performed in accordance with the provisions of the  relevant legislation, before any data transfer takes place.
 
@@ -1083,7 +920,7 @@ informed consent form will explain how trial data are stored to maintain confide
 The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the subject's medical
 history.
 
-### Insurances
+## Insurances
 
 *Here it should be explained how subjects are insured throughout the
 trial.*[^todo:insurance]
@@ -1092,54 +929,13 @@ trial.*[^todo:insurance]
 
 # Substantial changes to the trial
 
-*This section describes how to handle substantial changes in the trial.
-Substantial changes include changes that:*
-
--   *may affect the safety or rights of the subjects,*
-
--   *can change the reliability and robustness of the data generated in
-    the clinical trial, or*
-
--   *are significant for any other reason, such as the addition of a
-    trial site or a change of the principal investigator*
-
-*Substantial changes to the clinical trial protocol may not be
-implemented before authorisation has been granted by the relevant
-authority via CTIS. It is the responsibility of the sponsor to assess
-whether a change is substantial or not. For examples of what are
-considered substantial and non-substantial amendments, see the European
-Commission\'s CTR Questions and Answers document
-([link](https://ec.europa.eu/health/medicinal-products/eudralex/eudralex-volume-10_en#set-of-documents-applicable-to-clinical-trials-that-will-be-authorised-under-regulation-eu-no-5362014-once-it-becomes-applicable),
-Chapter V, EudraLex - Volume 10 - Clinical trials guidelines).*
-
-*The investigator must not make any deviation from or change of the
-protocol, except when it is necessary to eliminate an immediate risk to
-the trial subjects, or where the changes only include logistical or
-administrative aspects of the trial (e.g., change of telephone number).
-Other deviations/changes besides the abovementioned required agreement
-with the sponsor and documented authoritative opinion regarding the
-amendment from relevant authorities. See also section 11.4, Deviations
-or serious breaches.*
-
-*Text suggestion:* Substantial changes to the signed clinical trial
-protocol are only possible through approved protocol amendments and by
-agreement between the sponsor and the principal investigator.
-
-In the event that substantial changes to the protocol which may affect
-the safety, rights of subjects or the reliability and robustness of data
-generated need to be implemented during the course of the trial,
-permission from the relevant authority via application in CTIS should be
-obtained before implementing the change. This includes the addition of a
-new trial site or a change of the principal investigator at the trial
-site.
-
-Non-substantial changes should be continuously recorded and entered in
-CTIS.
+Substantial changes to the signed clinical trial protocol are only possible through approved protocol amendments and by agreement between the sponsor and the principal investigator.
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. Paper-based CRFs will be securely stored on-site and uploaded to project servers using a VPN with two-factor authentication. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published and was reviewed by Karolinska Institutet (https://doi.org/10.5281/zenodo.7748764).
+Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. Paper-based CRFs will be securely stored on-site and uploaded to project servers using a VPN with two-factor authentication. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764).
 
+<!--
 *From the protocol it must be clear how the data will be collected.
 Describe which other types of data collection documents, in addition to
 the CRF, are used, e.g.: diaries, quality of life questionnaires, health
@@ -1197,8 +993,13 @@ archived for at least *25* years after the trial is completed. Source
 data in the medical records system are stored and archived in accordance
 with national regulations.
 
+-->
+
 # Case Report Form 
 
+**More information will be added here**
+
+<!--
 *All information related to the clinical trial should be recorded,
 processed, handled and stored by the sponsor or investigator, as
 appropriate, so that it can be accurately reported, interpreted and
@@ -1217,8 +1018,13 @@ timelines that have been predefined and agreed. The investigator signs
 the completed CRF. A copy of the completed CRF will be archived at the
 study site.
 
+-->
+
 # Notification of trial completion, reporting, and publication
 
+**More information will be added here**
+
+<!--
 *The sponsor must notify, via CTIS, each concerned Member State that a
 clinical trial involving that Member State has been terminated.
 Notification must also be made when a trial has been terminated in all
@@ -1304,14 +1110,16 @@ Within one year of trial completion, a clinical study report is
 completed, and a summary of the clinical trial results must be reported
 in CTIS, including a summary for lay people.
 
+-->
+
 # References
 
-*Literature referenced in the text is listed here. The list should be
-sorted in the order in which it is referred to in the protocol. For
-example, the Vancouver system can be used.*
+<!--
 
 # Attachments
 
 *These could include, for example, validated self-report scales,
 questionnaires, diaries, etc. All attachments should have a version
 number and be dated.*
+
+-->
