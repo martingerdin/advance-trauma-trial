@@ -15,3 +15,7 @@ TGI, Vivek. Discuss next steps.
 ## 2023-12-04
 
 TGI, Abhinav. Discuss budget and data collection.
+
+## 2023-12-07
+
+Core. Discuss protocol, eligibility criteria, sites for first batch.
