@@ -245,6 +245,10 @@ We consider these risks weighed up by the potential direct benefit for the parti
 
 To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
 
+# Regulatory approvals and trial registration
+
+This trial will be submitted to the Health Ministry Screening Committee at the Indian Council for Medical Research for their approval, and registered with Clinical Trials Registry-India and ClinicalTrials.gov. 
+
 # Trial design and procedures
 
 ## Overall trial design 
@@ -296,7 +300,7 @@ The research team will compile a list of potentially eligible clusters and reach
 
 ## Patient participants selection
 
-### Eligiibility criteria
+### Eligibility criteria
 
 **Patients participants** must meet the following criteria:
 
@@ -312,8 +316,7 @@ Clinical research coordinators will screen patient participants either as they a
 
 ### Withdrawal criteria
 
-Patient participants can choose to withdraw their consent to out of hospital follow up at any time. If they withdray their consent to out of hospital follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time. Withdrawal of consent to out of hospital follow up or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be
-performed according to the participating hospitals routine.
+Patient participants can choose to withdraw their consent to out of hospital follow up at any time. If they withdraw their consent to out of hospital follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time. Withdrawal of consent to out of hospital follow up or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
 
 ## Procedures
 
@@ -821,53 +824,14 @@ documents are complete (according to chapter 8, ICH-GCP (E6(R2)).*[^todo:monitor
 
 [^todo:monitoring]: **TODO TGI** Add a section on monitoring.
 
-## Source data
-
-**More information will be added here**
-
-<!--
-*Refer to, and indicate in the site-specific source data reference
-document of the trial site, the location of the source data for each
-variable. The CRF may in specific cases be defined as the source data
-for specific endpoints (variables) that are not recorded elsewhere, in
-which case the data are recorded directly in the CRF.*
-
-*Also describe that the monitor has access to medical records and source
-data after secrecy agreements have been signed by the responsible party
-at the site and by the monitor. Subjects have provided consent by
-signing the Subject Information and Informed Consent Form where this is
-specified.*
-
-*Text suggestion:* The investigator must keep source documents for each
-subject in the trial. A document describing what has been classified as
-source data in the trial (source data reference document) should be
-included in the Investigator Site File (ISF). The investigator must
-ensure that all source documents are accessible for monitoring and other
-quality control activities.
-
-Source data is defined before trial start at each individual site and
-can, in cases where source data is not registered in another document,
-consist of the CRF. This should be decided in consultation with the
-monitor and clearly stated in the source data reference document.
-
-Access to trial-related documentation, such as subjects\' medical
-records, CRFs, other source data and other trial documentation will be
-provided for monitoring and auditing purposes. Access to subjects\'
-medical records will require a confidentiality agreement to be signed by
-the person in charge of the medical records at the trial site and by the
-monitor and auditor, if applicable. Access will also be granted in the
-context of regulatory inspections.
-
--->
-
-## Deviations, serious breaches and other reporting obligations
+# Deviations, serious breaches and other reporting obligations
 
 The responsible investigator shall, without delay, report to the sponsor any serious breaches and deviations from the trial protocol, ICH-GCP and other regulations that significantly and directly affect, or with high likelihood could affect, the subjects' safety and integrity or the reliability and robustness of the data generated in the trial. The sponsor should assess the suspected serious breach and the consequences of deviations that have occurred. Minor deviations that do not affect subjects' integrity or safety, nor significantly affect the trial's scientific value, are documented in the
 trial documentation of the principal investigator and the sponsor and
 appropriate measures shall be taken. The deviations must be recorded in
 the clinical trial report.
 
-## Audits and inspections 
+# Audits and inspections 
 
 Authorized representatives for the sponsor and Competent Authorities (CA) may carry out audits or inspections at the trial site, including source data verification. The investigator must ensure that all source documents are available for audits and inspections. The purpose of an audit or inspection is to systematically and independently review all trial-related activities and documents, to determine whether these activities were performed, registered, analyzed and reported correctly according to protocol, ICH- GCP and applicable regulations.
 
@@ -880,7 +844,7 @@ collected.
 
 ## Ethical review of the trial
 
-The final protocol will be submitted for ethical review at all participating hospitals as well as the Swedish Ethical Review Atuhortiy. 
+The final protocol will be submitted for ethical review at all participating hospitals, where possible, as well as the Swedish Ethical Review Atuhortiy.
 
 ## Procedure for obtaining informed consent
 
@@ -890,20 +854,21 @@ Clinical research coordinators will obtain informed consent from patients or a p
 
 ## Data protection
 
-We will ensure that appropriate agreements and/or other appropriate protective measures are taken to ensure that the data processing is performed in accordance with the provisions of the  relevant legislation, before any data transfer takes place.
+We will ensure that appropriate agreements and/or other appropriate protective measures are taken to ensure that the data processing is performed in accordance with the provisions of the relevant legislation, before any data transfer takes place.
 
-In the information provided to subjects, subjects will be fully informed about how their trial data will be collected, used and disclosed. The content of the informed consent form complies with relevant integrity and data protection legislation. The subject information and the
-informed consent form will explain how trial data are stored to maintain confidentiality in accordance with national data legislation *(please describe how data is stored and which data security measures are taken).* All information processed by the sponsor will be pseudonymized.
+In the study information provided to patient participants, they will be fully informed about how their trial data will be collected, used and disclosed. The study information and the informed consent form will explain how trial data are stored to maintain confidentiality in accordance with national data legislation[^todo:describe-data-protection]. All information processed by the sponsor will be pseudonymized.
 
-The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the subject's medical
+The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the patient participant's medical
 history.
 
-## Insurances
+[^todo:describe-data-protection]: **TODO:** Describe data protection mechanisms, or cross-reference the section on "Collection, handling and archiving of data"
+
+# Insurances
 
 *Here it should be explained how subjects are insured throughout the
 trial.*[^todo:insurance]
 
-[^todo:insurance]: **TODO: TGI** Please add information about insurance.
+[^todo:insurance]: **TODO TGI:** Please add information about insurance.
 
 # Substantial changes to the trial
 
@@ -911,7 +876,29 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. Paper-based CRFs will be securely stored on-site and uploaded to project servers using a VPN with two-factor authentication. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764).
+Clinical research coordinators will collect data using a paper based Case Record Form (CRF)[^todo:crf], which is then transferred to an electronic CRF (eCRF).  Paper-based CRFs will be securely stored on-site and archived for as long as required by local regulations, but at least 10 years. Access to the eCRF is provided using a Virtual Private Network with two-factor authentication[^todo:check-data-management]. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764). 
+
+[^todo:crf]: **TODO:** Create a CRF template and attach.
+
+[^todo:check-data-management]: **TODO TGI:** Please check that this is correct.
+
+## Source data
+
+The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded. 
+
+The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as
+source data in the trial (source data reference document) should be included in the Investigator Site File (ISF)[^todo:create-isf]. The investigator must ensure that all source documents are accessible for monitoring and other quality control activities.
+
+Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document.
+
+Access to trial-related documentation, such as patient participants' medical
+records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access to patient participants' medical records will require a confidentiality agreement to be signed by the person in charge of the medical records at the trial site and by the monitor and auditor, if applicable. Access will also be granted in the context of regulatory inspections.[^todo:check-confidentiality-agreement]
+
+[^todo:create-isf]: **TODO:** Create an ISF template.
+
+[^todo:check-confidentiality-agreement]: **TODO TGI:** Please check that this applies.
+
+## Variables {#sec-variables}
 
 ```{r data}
 #| echo: false
@@ -980,30 +967,13 @@ with national regulations.
 
 -->
 
-# Case Report Form 
+# Trial Organization
 
 **More information will be added here**
 
-<!--
-*All information related to the clinical trial should be recorded,
-processed, handled and stored by the sponsor or investigator, as
-appropriate, so that it can be accurately reported, interpreted and
-controlled, while protecting the subjects\' medical records and personal
-data in accordance with applicable personal data protection law.*
+# Funding
 
-*Text suggestion:*
-
-A Case Report Form (CRF) is used for data collection. *Describe which
-type of CRF will be used (eCRF or paper CRF).* The investigator must
-ensure that data is registered and any corrections in the CRF are made
-as stated in the clinical trial protocol and in accordance with the
-instructions. The investigator must ensure that the registered data is
-correct, complete, and that reporting takes place according to the
-timelines that have been predefined and agreed. The investigator signs
-the completed CRF. A copy of the completed CRF will be archived at the
-study site.
-
--->
+- Swedish Research Council (reg. no. 2023-03128)
 
 # Notification of trial completion, reporting, and publication
 

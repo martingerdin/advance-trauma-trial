@@ -8,7 +8,7 @@ create_data_section <- function() {
         type.list <- split(type.data, type.data$variable)
         type.list <- type.list[unique(type.data$variable)]
         paste0(
-            "## ", stringr::str_to_title(variable.type), "\n\n",
+            "### ", stringr::str_to_title(variable.type), "\n\n",
             paste0(unlist(lapply(type.list, function(variable) {
                 paste0(
                     "- **", variable$variable, "**",
