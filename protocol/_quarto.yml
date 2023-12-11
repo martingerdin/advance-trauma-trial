@@ -1,0 +1,9 @@
+toc: true
+toc-depth: 3
+number-sections: true
+fig-caption: true
+
+format: 
+  pdf:
+    documentclass: scrartcl
+  docx: default
