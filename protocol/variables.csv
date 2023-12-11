@@ -23,10 +23,10 @@ emergency department data, Date and time of referral or transfer for admission a
 hospital data, Date and time of admission to the participating centre, , Medical records/interview
 hospital data, Type of admitting ward, , Medical records
 hospital data, "Date, time and type of any surgical procedure", "A surgical procedure is defined as any procedure performed in the operating room, interventional radiology suite, or at the bedside, requiring general or regional anesthesia, coded using ", Medical records
+hospital data, "Date and time of any transfusion, type of blood product, and number of units transfused", , Medical records
 hospital data, "Date and time of intensive care unit admission and discharge", , Medical records
 hospital data, "Date and time of discharge from the participating centre, and the discharge destination", , Medical records
 injury data, "Injury, the modality used to diagnose the injury, and the date and time when the injury was first registered", "Coded using the International Classification of Diseases - 10th Revision (ICD-10)", Medical records
-transfusion data, "Date and time of transfusion, type of blood product, and number of units transfused", , Medical records
 outcomes, "Pulmonary complication", "**Definition needed**", Medical records
 outcomes, "Septic complication", "**Definition needed**", Medical records
 outcomes, "Renal complication", "An increase in serum creatinine of at least 1.5 times compared to the first recorded creatinine, within 7 days of arrival to the participating centre, or the need for renal replacement theraphy", Medical records

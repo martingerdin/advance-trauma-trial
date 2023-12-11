@@ -1,21 +1,12 @@
 ---
-subtitle: "Clinical Trial Protocol v0.1.0"
 title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+subtitle: |
+  | Clinical Trial Protocol 
+  | Version {{< var version >}}
+  |
+  | {{< var date >}}
 bibliography: bibliography.bib
 csl: nature.csl
-date: "2023-12-06"
-format: 
-  pdf:
-    documentclass: scrartcl
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    fig-caption: true
-  docx:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    fig-caption: true
 ---
 
 ```{r setup, include=FALSE}
@@ -922,13 +913,11 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 
 Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. Paper-based CRFs will be securely stored on-site and uploaded to project servers using a VPN with two-factor authentication. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764).
 
-## Baseline data
-
-```{r baseline-data}
+```{r data}
 #| echo: false
+#| results: "asis"
 
-
-baseline.data.table <- 
+cat(create_data_section())
 ```
 
 <!--
