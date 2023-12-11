@@ -282,12 +282,13 @@ knitr::include_graphics(
 
 ## Cluster selection
 
-### Eligiibility criteria
+### Eligibility criteria
 
 **Clusters** must meet the following criteria:
 
-- baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
-- provides general surgery, imaging and blood banking services around the clock; and
+- admits or refers/transfers for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
+- receives no more than 25% of trauma patients as referrals/transfers from other hospitals;
+- provides surgical and orthopaedic emergency services around the clock; and
 - no more than 25% of physicians providing initial trauma care trained in any trauma life support programme.
 
 ### Screening
@@ -300,15 +301,22 @@ The research team will compile a list of potentially eligible clusters and reach
 
 ## Patient participants selection
 
-### Eligibility criteria
+### Inclusion criteria
 
 **Patients participants** must meet the following criteria:
 
 - age of at least 15 years;
 - present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
 - admitted or died between arrival at the hospital and admission;
-- transferred from the emergency department of a participating hospital to another hospital for admission; and
+- referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
 - trauma occurred less than 48 hours before arrival at the hospital.
+
+### Exclusion criteria
+
+**Patients participants** are excluded if they meet the following criteria:
+
+- present with isolated limb injuries; or
+- are directly admitted to a ward without being seen by a physician in the emergency department.
 
 ### Screening
 
