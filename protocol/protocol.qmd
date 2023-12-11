@@ -406,11 +406,7 @@ The primary outcome will be in-hospital mortality within 30 days of arrival at t
 
 ## Handling of Adverse and Safety Events
 
-
-
-
-
-*Explain which adverse events (AE) and serious adverse events (SAE) will
+<!--*Explain which adverse events (AE) and serious adverse events (SAE) will
 be reported during the trial (compare with the Investigator's Brochure
 for non-approved investigational medicinal products or SPC for approved
 medications used according to the approved indication). Carefully
@@ -424,7 +420,7 @@ an AE, SAE, or SUSAR.*
 considered clinically non-significant by the principal investigator
 (described in section 9.2.1, Assessment of causal relationship, and
 section 9.4, Follow-up of Adverse Events). Note that persistent adverse
-events are classified as serious.*
+events are classified as serious.*-->
 
 ### Definitions
 
@@ -925,6 +921,15 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 # Collection, handling, and archiving of data
 
 Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. Paper-based CRFs will be securely stored on-site and uploaded to project servers using a VPN with two-factor authentication. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764).
+
+## Baseline data
+
+```{r baseline-data}
+#| echo: false
+
+
+baseline.data.table <- 
+```
 
 <!--
 *From the protocol it must be clear how the data will be collected.
