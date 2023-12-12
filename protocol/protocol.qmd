@@ -1,10 +1,6 @@
 ---
 title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-subtitle: |
-  | Clinical Trial Protocol 
-  | Version {{< var version >}}
-  |
-  | {{< var date >}}
+subtitle: "Clinical Trial Protocol  \nVersion {{< var version >}}  \n{{< var date >}}"
 bibliography: bibliography.bib
 csl: nature.csl
 ---
@@ -218,7 +214,7 @@ Each year, 4.3 million people die from trauma [@injuries2020]. Among people aged
 
 Several trauma life support training programmes have been developed to improve the early management of patients in the hospital by providing a structured framework for assessment and treatment [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. The proprietary Advanced Trauma Life Support^®^ (ATLS^®^) is the most established trauma life support training programme and more than one million physicians in over 80 countries have been trained in the programme since the first course in 1978 [@acsAtls2018]. In the US and many other countries training in ATLS^®^ is virtually mandatory for trauma care physicians [@ACS2022]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020].
 
-There are three randomised controlled studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. We conducted an updated systematic review for project (unpublished), and estimated a pooled risk ratio of `r pooled.rr` (95% CI `r pooled.ci`) from  `r number_to_text(number.identified.studies)` heterogeneous (I^2^ `r I2`) retrospective or small studies on the effect of ATLS on mortality (Figure \@ref(fig:forest-plot)) `r pooled.studies.citation`. No study assessed functional outcomes.
+There are three randomised controlled studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. We conducted an updated systematic review for project (unpublished), and estimated a pooled risk ratio of `r pooled.rr` (95% CI `r pooled.ci`) from  `r number_to_text(number.identified.studies)` heterogeneous (I^2^ `r I2`) retrospective or small studies on the effect of ATLS on mortality (see @fig-forest-plot) `r pooled.studies.citation`. No study assessed functional outcomes.
 
 We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) that we conducted between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial. We published the protocol for this pilot study [@GerdinWärnberg2022]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India (unpublished data) and shows that it is feasible to conduct the proposed trial with a high recruitment rate (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
 
@@ -229,6 +225,7 @@ We performed a systematic literature search in the Medline, Embase, Cochrane, We
 
 ```{r forest-plot}
 #| echo: false
+#| label: fig-forest-plot
 #| fig.cap: "Summary of the updated system review. The forest plot shows the effect of ATLS on mortality. Abbreviations: RR, risk ratio; CI, confidence interval; ATLS, Advanced Trauma Life Support; I^2^, heterogeneity."
 knitr::include_graphics("forest-plot.pdf")
 ```
@@ -253,7 +250,7 @@ This trial will be submitted to the Health Ministry Screening Committee at the I
 
 ## Overall trial design 
 
-We will conduct a batched stepped-wedge cluster randomised controlled trial (see Figure \@ref(fig:trial-design)). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be a tertiary hospital in India. We will conduct this trial in India because physicians providing initial trauma care in India are not routinely trained in ATLS^®^ or similar programmes.
+We will conduct a batched stepped-wedge cluster randomised controlled trial (see @fig-trial-design). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be a tertiary hospital in India. We will conduct this trial in India because physicians providing initial trauma care in India are not routinely trained in ATLS^®^ or similar programmes.
 
 We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)`. 
 
@@ -263,6 +260,7 @@ We use the cluster randomised design because the intervention cannot be randomis
 
 ```{r trial-design}
 #| echo: false
+#| label: fig-trial-design
 #| fig.cap: "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
 #| fig.align: "center"
 #| message: FALSE
@@ -330,9 +328,9 @@ Patient participants can choose to withdraw their consent to out of hospital fol
 
 @tbl-procedures shows an overview of trial procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
-```{r procedures}
-#| echo: false
+```{r tbl-procedures}
 #| label: tbl-procedures
+#| echo: FALSE
 #| tbl-cap: "Overview of trial procedures"
 
 create_patient_procedure_table()
