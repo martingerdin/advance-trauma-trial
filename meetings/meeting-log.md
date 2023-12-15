@@ -19,3 +19,7 @@ TGI, Abhinav. Discuss budget and data collection.
 ## 2023-12-07
 
 Core. Discuss protocol, eligibility criteria, sites for first batch.
+
+## 2023-12-13
+
+Core/Trial management group. Discuss protocol, screening process.
