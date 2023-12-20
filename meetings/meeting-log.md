@@ -23,3 +23,7 @@ Core. Discuss protocol, eligibility criteria, sites for first batch.
 ## 2023-12-13
 
 Core/Trial management group. Discuss protocol, screening process.
+
+## 2023-12-20
+
+TGI, Abhinav, Samriddhi and Monty. Discuss project activity plan.
