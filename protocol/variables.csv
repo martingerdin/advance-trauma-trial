@@ -27,10 +27,10 @@ hospital data, "Date and time of any transfusion, type of blood product, and num
 hospital data, "Date and time of intensive care unit admission and discharge", , Medical records
 hospital data, "Date and time of discharge from the participating centre, and the discharge destination", , Medical records
 injury data, "Injury, the modality used to diagnose the injury, and the date and time when the injury was first registered", "Coded using the International Classification of Diseases - 10th Revision (ICD-10)", Medical records
-outcomes, "Pulmonary complication", "**Definition needed**", Medical records
-outcomes, "Septic complication", "**Definition needed**", Medical records
-outcomes, "Renal complication", "An increase in serum creatinine of at least 1.5 times compared to the first recorded creatinine, within 7 days of arrival to the participating centre, or the need for renal replacement theraphy", Medical records
 outcomes, "Date and time of death", , Medical records/interview
 outcomes, Quality of life, "The EuroQol 5 Dimensions 3 Levels (EQ-5D-3L) questionnaire will be used to assess quality of life within 7 days of discharge, and at 30 and 90 days after arrival to the participating centre", Interview
-outcomes, Disability, "The World Health Organization Disability Assessment Schedule (WHODAS) questionnaire will be used to assess disability within 7 days of discharge, and at 30 and 90 days after arrival to the participating centre", Interview
+outcomes, Disability, "The World Health Organization Disability Assessment Schedule 2.0 (WHODAS 2.0) questionnaire will be used to assess disability within 7 days of discharge, and at 30 and 90 days after arrival to the participating centre", Interview
 outcomes, Return to work, "Assessed at 30 and 90 days after arrival to the participating centre", Interview
+safety events, "Prolonged mechanical ventilation (> 7 days)", "Assessed during hospital stay", Medical records
+safety events, "Initiation of renal replacement therapy", "Assessed during hospital stay", Medical records
+safety events, "Prolonged (> 2 days) or renewed (restart after at least 2 days without) use of vasopressors such as norepinephrine or vasopressin", "Assessed during hospital stay", Medical records

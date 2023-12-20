@@ -69,7 +69,7 @@ create_patient_procedure_table <- function() {
             screening = TRUE,
             follow.up.daily = TRUE
         ),
-        "Complications data collection" = create_follow_up_schedule(
+        "Assessment of safety events" = create_follow_up_schedule(
             follow.up.daily = TRUE
         ),
         "Mortality data collection" = create_follow_up_schedule(

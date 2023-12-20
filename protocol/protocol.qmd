@@ -180,7 +180,7 @@ Trauma is a massive global health issue [@injuries2020; @GBD2020]. Many training
 To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
 
 **Primary Outcome**
-In-hospital mortality within 30 days of arrival at the emergency department.
+All-cause mortality within 30 days of arrival at the emergency department.
 
 **Trial Design**
 Batched stepped-wedge cluster randomised trial in India.
@@ -193,7 +193,7 @@ Adult trauma patients presenting to the emergency department of a participating 
 
 **Eligibility Criteria**
 
-*Cluster* will be hospitals with a baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months, that provide general surgery, imaging and blood banking services around the clock, and where no more than 25% of initial trauma care providers trained in any trauma life support training programme.
+*Cluster* will be hospitals with a baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months, that provides surgery and orthopaedic emergency services around the clock, and where no more than 25% of initial trauma care providers trained in a formalised trauma life support training programme.
 
 *Patients* will at least 15 years old, who present to the emergency department of participating hospitals with a history of trauma occuring less than 48 hours before arrival, and who are admitted or die between and admission, or who are transferred from the emergency department of a participating hospital to another hospital for admission.
 
@@ -282,19 +282,17 @@ knitr::include_graphics(
 
 ### Inclusion criteria
 
-**Clusters** must meet the following criteria[^note:clusters]:
+**Clusters** must meet the following criteria:
 
 - admits or refers/transfers for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
 - provides surgical and orthopaedic emergency services around the clock; and
 - no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
 
-[^note:clusters]:  
-
 ### Exclusion criteria
 
 **Clusters** are excluded if they meet any of the following criteria:
 
-- plan to implement or implements a formalised trauma life support training programme[^note:concurrent-training-programmes] during the trial period; or
+- plan to implement or implements a formalised trauma life support training programme [^note:concurrent-training-programmes] during the trial period; or
 - plan to implement or implements other major interventions[^note:major-interventions] that affects trauma care during the trial period.
 
 [^note:concurrent-training-programmes]: These include but are not limited to the National Emergency Life Support (NELS) programme, the Basic Trauma Life Support (BTLS) programme, the Pre-Hospital Trauma Life Support (PHTLS) programme, the Trauma Nursing Core Course (TNCC) and the Advanced Trauma Care for Nurses (ATCN) programme.
@@ -777,21 +775,19 @@ get_design_matrix(
 )
 ```
 
-With `r clusters` clusters and a total sample size of `r sample.size` our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance [@Hemming2020Feb; @Martin2016; @Korevaar2021]. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work.
+With `r clusters` clusters and a total sample size of `r sample.size` our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training (see @fig-power-curves). This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance [@Hemming2020Feb; @Martin2016; @Korevaar2021]. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work.
 
-<!--
 ```{r power-curves}
 #| echo: false
 #| warning: false
 #| label: fig-power-curves
-#| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). A) Shows power curves assuming a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. B) Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training."
+#| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). **A)** Shows power curves assuming a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. **B)** Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC."
 
-combine_power_curves(list.files(pattern = "curvedata"))
+combine_power_curves(rev(list.files(pattern = "curvedata")))
 knitr::include_graphics("./combined-power-curves.pdf")
 
 ```
 
--->
 
 ### Interim analysis
 
