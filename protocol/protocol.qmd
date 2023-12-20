@@ -280,22 +280,32 @@ knitr::include_graphics(
 
 ## Cluster selection
 
-### Eligibility criteria
+### Inclusion criteria
 
-**Clusters** must meet the following criteria:
+**Clusters** must meet the following criteria[^note:clusters]:
 
 - admits or refers/transfers for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
-- receives no more than 25% of trauma patients as referrals/transfers from other hospitals;
 - provides surgical and orthopaedic emergency services around the clock; and
-- no more than 25% of physicians providing initial trauma care trained in any trauma life support programme.
+- no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
+
+[^note:clusters]:  
+
+### Exclusion criteria
+
+**Clusters** are excluded if they meet any of the following criteria:
+
+- plan to implement or implements a formalised trauma life support training programme[^note:concurrent-training-programmes] during the trial period; or
+- plan to implement or implements other major interventions[^note:major-interventions] that affects trauma care during the trial period.
+
+[^note:concurrent-training-programmes]: These include but are not limited to the National Emergency Life Support (NELS) programme, the Basic Trauma Life Support (BTLS) programme, the Pre-Hospital Trauma Life Support (PHTLS) programme, the Trauma Nursing Core Course (TNCC) and the Advanced Trauma Care for Nurses (ATCN) programme.
+
+[^note:major-interventions]: These include but are not limited to implementing of a trauma team approach, opening a trauma centre and  implementing a trauma quality improvement programme.
 
 ### Screening
 
-The research team will compile a list of potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen clusters for eligibility based on the criteria above. The data sources for screening will be hospital records and interviews with hospital staff. The screening will be standardised using a cluster screening form[^todo:screening-form] and logged in a cluster screening log[^todo:screening-log].
+The research team will compile a list of potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen clusters for eligibility based on the criteria above. The data sources for screening will be hospital records and interviews with hospital staff. The screening will be standardised using a cluster screening instrument (see Appendix @sec-appendix-cluster-screening-instrument) in REDCap and logged in the associated REDCap database.
 
-[^todo:screening-form]: **TODO** We need to create a form that we can use to screen clusters.
-
-[^todo:screening-log]: **TODO** We need to create a log that we can use to log the screening process.
+We will strive to include clusters that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will therefore discuss each eligible centre individually in the trial management group before deciding whether to include it in the trial. To avoid excluding centres we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include clusters that plan to implement this programme during the trial period.
 
 ## Patient participants selection
 
@@ -349,7 +359,7 @@ follow-up. Decisions on premature termination are taken by the sponsor.
 
 The intervention will be ATLS® training. The control will be standard care, meaning no formal trauma life support training. We will train the physicians that initially resuscitate and provide trauma care during the first hour after patient arrival at the emergency department. These physicians can be casualty medical officers, surgical residents, or emergency medicine residents, depending on the setup at each participating centre. The training will occur during the transition phase in each cluster. We will train the number of physicians needed to reach the required patient sample size.
 
-**Advanced Trauma Life Support® (ATLS®) [@acsAtls2018]** is a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. The programme was developed by the Committee of Trauma of the American College of Surgeons. The course includes intial treatment and resuscitation, triage and interfacility transfers. Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
+**Advanced Trauma Life Support^®^ (ATLS^®^) [@acsAtls2018]** is a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. The programme was developed by the Committee of Trauma of the American College of Surgeons. The course includes intial treatment and resuscitation, triage and interfacility transfers. Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
 
 **Standard care** varies across hospitals in India, but trauma patients are initially managed by casualty medical officers, surgical residents, or emergency medicine residents. They are mainly first- or second-year residents who resuscitate patients, perform interventions and refer patients for imaging or other investigations. Compared with other settings where a trauma team approach is adopted, nurses and other healthcare professionals are only involved to a limited extent during the initial management. 
 
@@ -393,18 +403,12 @@ The primary outcome will be in-hospital mortality within 30 days of arrival at t
 
 - All cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department. Data on this outcome will be collected from patient hospital records or by calling the patient or a patient representative.
 - Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
-- Poor functional outcome within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the EQ5D3L domains of mobility, self-care, usual activities, and pain/discomfort, with poor functional outcome defined as being confined to bed, unable to bath or dress oneself, unable to perform usual activities, or having extreme pain or discomfort [^question:whodas];
+- Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
 - Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
 - Length of emergency department stay. Data on this outcome will be collected from patient hospital records.
 - Length of hospital stay. Data on this outcome will be collected from patient hospital records.
 - Intensive care unit admission. Data on this outcome will be collected from patient hospital records.
 - Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.
-- In-hospital pulmonary, septic, or renal complications [^question:complications].
-
-[^question:whodas] **Question:** Should we measure functional outcome/disability with WHODAS instead?
-    
-[^question:complications] **Question:** Should we remove complications because they are too difficult to measure?
-
 
 ## Handling of Adverse and Safety Events
 
@@ -432,17 +436,12 @@ Any untoward medical occurrence in a clinical trial subject and, which does not 
 
 #### Serious Adverse Event
 
-Any untoward medical occurrence in a trial subject that:
+Any untoward medical occurrence in a trial participant that:
 
 -   leads to death
-
 -   is life-threatening
-
--   requires inpatient hospitalization or prolongation of existing
-    hospitalization
-
+-   requires inpatient hospitalization or prolongation of existing hospitalization
 -   results in persistent or significant disability or incapacity
-
 -   results in a congenital anomaly/malformation
 
 #### Safety Event
@@ -451,11 +450,19 @@ Any unexpected serious complication that might occur as a consequence of the tri
 
 ### Reporting and Assessment of Adverse and Safety Events
 
-In alignment with other current trials including critically ill patients [@STEPCARE2023], we will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and we already collect many of these events, for example mortality and complications, outcomes as part of our outcomes. 
+In alignment with other current trials including critically ill patients [@STEPCARE2023], we will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and we already collect many of these events, for example mortality, as part of our outcomes. 
 
-We will only report safety events, if they are life-threatening, prolong hospitalisation or result in meaningful harm to the participant. We cannot pre-define a comprehensive list of events that can be considered safety events, but the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of safety events could include missed injuries or missed investigations, which could be expected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
+We will only report safety events, if they are life-threatening, prolong hospitalisation or result in meaningful harm to the participant. We cannot pre-define a comprehensive list of events that can be considered safety events, but will actively assess the presence of the following safety events:
 
-All potential safety events will be recorded in the CRF and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Safety Monitoring Board. 
+- Prolonged mechanical ventilation (> 7 days)
+- Initiation of renal replacement therapy
+- Prolonged (> 2 days) or renewed (restart after at least 2 days without) use of vasopressors such as norepinephrine or vasopressin
+
+These events are considered safety events because they suggest pulmonary, renal, septic or bleeding complications and an increase in their occurrence following ATLS^®^ training could indicate that the intervention is harmful. These events therefore need to be tracked during the standard care phase as well as the intervention phase, but will only be considered indicative of harm related to the intervention if they occur more often during the intervention phase than during the standard care phase. 
+
+We will also report any other safety events that we identify during the trial, and the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of such safety events could include missed injuries or missed investigations, which could be suspected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
+
+All safety events will be recorded in the CRF and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Safety Monitoring Board. 
 
 ### Follow up of Safety Events
 
@@ -1091,6 +1098,9 @@ in CTIS, including a summary for lay people.
 
 # References
 
+::: {#refs}
+:::
+
 <!--
 
 # Attachments
@@ -1100,3 +1110,14 @@ questionnaires, diaries, etc. All attachments should have a version
 number and be dated.*
 
 -->
+
+# Appendices {.appendix}
+
+## Cluster screening instrument {#sec-appendix-cluster-screening-instrument .appendix} 
+
+```{r cluster-screening-instrument}
+#| echo: false
+
+pages <- list.files("./appendices/cluster-screening-instrument", pattern = "pdf", full.names = TRUE)
+knitr::include_graphics(pages)
+```
