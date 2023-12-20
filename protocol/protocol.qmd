@@ -252,7 +252,7 @@ This trial will be submitted to the Health Ministry Screening Committee at the I
 
 We will conduct a batched stepped-wedge cluster randomised controlled trial (see @fig-trial-design). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be a tertiary hospital in India. We will conduct this trial in India because physicians providing initial trauma care in India are not routinely trained in ATLS^®^ or similar programmes.
 
-We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)`. 
+We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a `r number_to_text(transition.months)` month transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)`. 
 
 ## Design justification
 
@@ -315,8 +315,7 @@ We will strive to include clusters that to a large extent conducts primary resus
 
 - age of at least 15 years;
 - present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
-- admitted or died between arrival at the hospital and admission;
-- referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
+- admitted or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
 - trauma occurred less than 48 hours before arrival at the hospital.
 
 ### Exclusion criteria
@@ -332,7 +331,7 @@ Clinical research coordinators will screen patient participants either as they a
 
 ### Withdrawal criteria
 
-Patient participants can choose to withdraw their consent to out of hospital follow up at any time. If they withdraw their consent to out of hospital follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time. Withdrawal of consent to out of hospital follow up or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
+Patient participants can choose to withdraw their consent to out of hospital follow up at any time. If they withdraw their consent to out of hospital follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent to out of hospital follow up or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
 
 ## Procedures
 
@@ -357,7 +356,9 @@ follow-up. Decisions on premature termination are taken by the sponsor.
 
 ## Intervention and control treatment
 
-The intervention will be ATLS® training. The control will be standard care, meaning no formal trauma life support training. We will train the physicians that initially resuscitate and provide trauma care during the first hour after patient arrival at the emergency department. These physicians can be casualty medical officers, surgical residents, or emergency medicine residents, depending on the setup at each participating centre. The training will occur during the transition phase in each cluster. We will train the number of physicians needed to reach the required patient sample size.
+The intervention will be ATLS^®^ training. The control will be standard care, meaning no formal trauma life support training. We will train the physicians that initially resuscitate and provide trauma care during the first hour after patient arrival at the emergency department. These physicians can be casualty medical officers, surgical residents, or emergency medicine residents, depending on the setup at each participating centre. The training will occur during the transition phase in each cluster. Our experience from our pilot study is that study sites adhere to the training slot alloted to them through the trial, so we judge the risk of clusters implementing ATLS^®^ before their randomised implementation sequence as very low. 
+
+We will train the number of physicians needed to reach the required patient sample size, but estimate that this will require training an average of ten physicians per cluster. If necessary, this may be implemented by training only a subset of physicians working on specific days of the week, and then collect data only during these days. This is possible because many hospitals in India organise staff their emergency departments in units, and the physicians in the same unit work together in the emergency department on the same days of the week. 
 
 **Advanced Trauma Life Support^®^ (ATLS^®^) [@acsAtls2018]** is a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. The programme was developed by the Committee of Trauma of the American College of Surgeons. The course includes intial treatment and resuscitation, triage and interfacility transfers. Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
 
@@ -373,17 +374,13 @@ This trial does not include any auxiliary medicinal products.
 
 ### Concomitant use of other medications or treatments
 
-Medications or treatments considered necessary for the safety and well-being of the subject may be provided at the discretion of the investigators, unless otherwise specified in the exclusion criteria.
+Other than implementing another formalised trauma life support training programme or other major interventions to change the care of trauma patients as specified in the exclusion criteria, concomitant use of other medications and treatments may be provided at the discretion of the investigators and will not be considered an exclusion criterion.
 
 ## Randomization
 
-We will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches[^todo:randomisation]. Randomisation will be stratified by geographical region and anticipated cluster size[^question:stratified-randomisation]. Randomisation will be conducted by an independent statistician, with the order concealed from study investigators until one month before the start of the transition date.[^question:randomisation-concealment]
+We will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches[^todo:randomisation]. Randomisation will be stratified by anticipated cluster size. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
 
-[^todo:randomisation]: **TODO** Add details on software used to randomise clusters.
-
-[^question:stratified-randomisation]: **Question:** Is it still relevant to stratify by geographical region and anticipated cluster size in the stepped-wedge design?
-
-[^question:randomisation-concealment]: **Question:** Is it logistically feasible to conceal the randomisation order until one month before the start of the transition date? We need to book ATLS training slots in advance.
+[^todo:randomisation]: **TODO** Add details on software and methods used to randomise clusters.
 
 ## Blinding
 
@@ -397,11 +394,12 @@ When the trial ends, the intervention will have been implemented in all clusters
 
 ### Primary outcome
 
-The primary outcome will be in-hospital mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records or by calling the patient or a patient representative. Data on this outcome will be collected continuously during the trial. We chose this outcome as the primary outcome because it is an outcome of clinical and patient importance with very low missing data rates (`r rates.missing.data["in.hospital.mortality"]`%) in our pilot study. We will also be able to compare our findings with previous research.
+The primary outcome will be all-cause mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records or by calling the patient or a patient representative. Data on this outcome will be collected continuously during the trial. We chose this outcome as the primary outcome because it is an outcome of clinical and patient importance with very low missing data rates (`r rates.missing.data["in.hospital.mortality"]`%) in our pilot study. We will also be able to compare our findings with previous research.
 
 ### Secondary outcomes
 
-- All cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department. Data on this outcome will be collected from patient hospital records or by calling the patient or a patient representative.
+- All cause mortality within 24 hours and three months of arrival at the emergency department. Data on this outcome will be collected from patient hospital records or by calling the patient or a patient representative.
+- In-hospital mortality within 30 days of arrival at the emergency department. Data on this outcome will be collected from patient hospital records. 
 - Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
 - Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
 - Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
@@ -727,7 +725,7 @@ after the trial is completed.*
 
 ## Independent Data Safety Monitoring Committee
 
-An independent Data Safety Monitoring Committee, comprising four external members, will review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. They will also review the results of interim analyses and review safety events reported by the trial management group. The Data Safety Monitoring Committee can at any time, based on its reviews, recommend to terminate the trial.[^todo:idmc]
+An independent Data Safety Monitoring Committee, comprising four external members, will review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. They will also review the results of interim analysis of outcomes and review safety events reported by the trial management group. The Data Safety Monitoring Committee can at any time, based on its reviews, recommend to terminate the trial.[^todo:idmc]
 
 [^todo:idmc]: **TODO** Identify four members of the independent Data Safety Monitoring committee.
 
@@ -737,7 +735,7 @@ An independent Data Safety Monitoring Committee, comprising four external member
 
 We will conduct all analysis by modified intention to treat. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. We will not adjust for multiplicity of analyses because none of the secondary outcomes will be singularly more important. However, all secondary outcomes will be interpreted with due consideration for how all are affected by the intervention without putting any undue emphasis on a single outcome that might be statistically significant but where all others appear to have remained unchanged. 
 
-We will use a two-sided significance level of 5% and estimate 95% confidence intervals. The primary subgroup analyses will be based on geographical region because demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results[^question:batch-region]. Additional subgroup analyses will include age, sex, and clinical cohorts with blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury.
+We will use a two-sided significance level of 5% and estimate 95% confidence intervals. The primary subgroup analyses will be based on geographical region because demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results[^question:batch-region]. Additional subgroup analyses will include age across the groups older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021]; sex; and the clinical cohorts blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury.
 
 [^question:batch-region]: **Note:** Batches will not be based on regions because it will be logistically more feasible to include clusters from different regions in each batch. 
 
@@ -745,11 +743,11 @@ We will use a two-sided significance level of 5% and estimate 95% confidence int
 
 There are a number of requirements for the analysis model. Firstly, all analysis will consider the clustered nature of the design. Secondly, as the trial has only `r clusters` clusters, it will be essential that the model allows for a correction due to the small number of clusters. Thirdly, as the design is a stepped-wedge study, we will adjust for temporal confounding using categorical effects for period of the study (month). Full details on how each of these will be undertaken, with justification is provided below [@Li2020]. 
 
-For binary outcomes, a mixed effects binomial regression with a log-link will be used to estimate the relative risk; and a binomial model with identity link used to estimate the risk difference, with estimation using REML. In the case of non-convergence of the binomial model with a log-link, a Poisson model with robust standard errors will be fitted. If the binomial model with the identity link does not converge then only a relative risk will be reported. If neither the log or identify link converge we will use the logistic link and report odds ratios. 
+For binary outcomes, a mixed effects binomial regression with a logit link will be used to estimate the odds ratio; and a binomial model with identity link used to estimate the risk difference. These models will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). If the binomial model with the identity link does not converge then only a odds ratio will be reported. 
 
 We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used. In a sensitivity analysis we will explore if models with more complicated correlation structures are a better fit to the data. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures which might be plausible.
 
-To this end we will additionally fit generalised linear mixed models (with same link functions and fixed effects as described above) to include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)). To allow for the randomisation by batches, a different secular trend will be included for each batch (interaction between batch and period).  For continuous, count and prevalence outcomes similar model-based approaches will be used. 
+To this end we will additionally fit generalised linear mixed models (with same link functions and fixed effects as described above) to include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)). To allow for the randomisation by batches, a different secular trend will be included for each batch (interaction between batch and period). For continuous, count and prevalence outcomes similar model-based approaches will be used but with appropriate links and distribution functions, using transformations where appropriate. 
 
 ### Additional sensitivity analyses
 
@@ -797,7 +795,7 @@ knitr::include_graphics("./combined-power-curves.pdf")
 
 ### Interim analysis
 
-There will be two interim analyses, one after the first batch has completed the trial and one after half of the batches have completed the trial. The primary purpose of the interim analyses will be to assess the safety of the intervention, and assess if there is a significant increase in the primary outcome after ATLS^®^ training. The interim analyses will be conducted by the independent Data Safety Monitoring committee. The independent Data Safety Monitoring committee will use the Haybittle-Peto boundary to assess statistical significance, and will recommend stopping the trial if the p-value is less than 0.001. The secondary purpose of the interim analyses will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The final purpose of the interim analysis will be to assess if sample size calculations should be revised. The independent Data Safety Monitoring committee will not have access to the trial's data before the interim analyses.
+There will be one interim analyses after half of the batches have completed the trial. The purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The final purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included.The interim analyses will be assessed by the independent Data Safety Monitoring committee.
 
 ## Quality Control and Quality Assurance
 
