@@ -27,3 +27,10 @@ Core/Trial management group. Discuss protocol, screening process.
 ## 2023-12-20
 
 TGI, Abhinav, Samriddhi and Monty. Discuss project activity plan.
+
+## 2023-12-21
+
+Johan Jarl. Health economy.
+
+## 2023-12-22
+Trial management group. Discuss protocol, screening process.
