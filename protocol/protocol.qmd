@@ -923,6 +923,8 @@ records, CRFs, other source data and other trial documentation will be provided 
 
 ## Variables {#sec-variables}
 
+**If we want to be able to do a cost-effectiveness analysis, then we also need to collect data on who does what for how long, capture changes in expensive procedures and investigations, capture health care utilisation after discharge, in-formal care (who does the caring, when and for how long), and productivity losses. There may be instruments for this already, or we can adapt existing instruments. To capture potential equity aspects we also need socioeconomic information on the patients**
+
 ```{r data}
 #| echo: false
 #| results: "asis"
