@@ -1,0 +1,224 @@
+---
+title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: Initiating A Cluster Randomised Trial"
+bibliography: bibliography.bib
+csl: nature.csl
+link-citations: yes
+output:
+    bookdown::pdf_document2:
+      toc: false
+      number_sections: true
+      latex_engine: xelatex
+      keep_tex: true
+      includes:
+        in_header: "preamble.tex"
+geometry: margin=2.5cm
+mainfont: Arial 
+fontsize: 11pt
+---
+
+\pagestyle{fancy}
+
+```{r set-up, echo = FALSE, include = FALSE}
+noacsr::source_all_functions()
+source("main.R")
+meta.analysis <- conduct_meta_analysis()
+attach(meta.analysis)
+preliminary.results <- get_preliminary_results(use.saved = TRUE)
+attach(preliminary.results)
+```
+
+# Summary and Objectives
+
+Trauma is a global health issue [@injuries2020; @GBD2020]. Many training programmes have been developed to help physicians in the early care of trauma patients, but high quality evidence on the effects of implementing these programmes on patient outcomes is missing [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. With the support of the Laerdal Foundation and the Swedish Research Council we conducted a pilot and feasibility study in India comparing the effects of the two most widely used trauma life support training programmes, the Advanced Trauma Life Support^®^ (ATLS^®^) and the Primary Trauma Care (PTC) programmes, on patient outcomes [@GerdinWärnberg2022]. This pilot showed that a full scale trial is feasible, but that the full scale trial should focus on ATLS^®^ using a stepped wedge design and include a careful local adaption of how ATLS^®^ is implemented. We have now planned this full scale trial and here we apply for funding for 18 months with the objectives to:
+
+1. finalise local adaptation, implementation and data collection methods; and
+2. initiate the full scale trial in two hospitals.
+
+# Background Information
+
+Each year, 4.3 million people die from trauma [@injuries2020]. In the age group 10-49 years trauma is the largest cause of disability adjusted life years [@GBD2020]. Most preventable trauma deaths are caused by clinical judgement errors during early care including airway management and haemorrhage control [@Roy2017]. The Advanced Trauma Life Support^®^ (ATLS^®^) is the most established trauma life support training programme aiming to improve early hospital trauma care, and more than one million physicians in over 80 countries have been trained in ATLS^®^ since the first course in 1978 [@acsAtls2018]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020]. Three randomised controlled studies show that ATLS® improves knowledge and clinical skills [@Mohammad2013], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ or similar programmes improve patient outcomes [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. We conducted an updated systematic review (Text box 1) and estimated a pooled risk ratio of `r pooled.rr` (95% CI `r pooled.ci`) from  `r number_to_text(number.identified.studies)` heterogeneous (I^2^ `r I2`) observational studies on the effect of ATLS on mortality (Figure \@ref(fig:forest-plot)), indicating that ATLS® training may have an effect on mortality, but that the quality of evidence is poor. 
+
+\begin{textbox}
+\begin{mdframed}[frametitle={Text box 1: Systematic Review}, nobreak=true, backgroundcolor=blue!10]
+We performed a systematic literature search in the Medline, Embase, Cochrane, Web of Science, CINAHL and Google Scholar databases (PROSPERO ID CRD42022373977). The last search was conducted on November 11, 2022. We developed the search strategy in Medline (Ovid) in collaboration with librarians at the Karolinska Institutet University Library. We limited the search to English language articles, searched all databases from inception, and screened a total of 7896 records. We used a random effects model to pool estimates across studies.
+\end{mdframed}
+\end{textbox}
+
+```{r forest-plot, echo = FALSE, fig.cap="Systematic review on the effect of Advanced Trauma Life Support^®^ training on in-hospital mortality. A Risk Ratio (RR) less than 1 indicates that ATLS^®^ training reduces in-hospital mortality. Abbreviations: CI Confidence Interval."}
+knitr::include_graphics("forest-plot.pdf")
+```
+
+# Clinical Significance of Preliminary Studies
+
+```{r, echo=FALSE, include=FALSE}
+number.hospitals <- length(
+    unique(unlist(list(titco = c("sskm", "ltmgh", "kem", "jpnatc"),
+                       taft = c("sskm", "mamc", "stjohns", "jj"),
+                       ttris = c("kbbh", "sskm", "mamc"),
+                       tern = c("kem", "ltmgh", "cooper", "medica", "nrs", "mc", "pgi"))))
+    )
+```
+
+This application was developed jointly by the parties participating in the Trauma life support training Effectiveness Research Network ([tern.network](https://www.tern.network)). We have conducted multicentre trauma research in India since 2013 ([titco.org](https://www.titco.org)), including the pilot study (ClinicalTrials.gov NCT05417243) between `r start.date` and `r end.date`, for which we published the protocol [@GerdinWärnberg2022]. Since 2013, we have collected data from  `r scales::comma(number.total.patients)` patients across `r number.hospitals` hospitals, out of which `r scales::comma(number.eligible.patients)` patients fit the eligibility criteria of this trial. Among eligible patients the average in-hospital mortality is `r to_percent(rate.in.hospital.mortality)`%. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India (unpublished data) and shows that it is feasible to conduct the proposed trial with a high recruitment rate (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%). We conducted 19 semi-structured interviews with trauma patients, caregivers, and community representatives (unpublished data) to involve patients in the planning of this trial and to understand which outcomes they perceive as important. The interviews showed high acceptability of our research and emphasised the importance of better recovery before discharge and functional outcomes at and after discharge, including pain, mobility and self-care activities. The interviews also highlighted return to work as an important outcome.
+
+# Experimental Design
+
+```{r, echo = FALSE, include = FALSE}
+## Define global variables
+trial.start.date <- "2024-01-01"
+regulatory.approval.months <- 4
+ethical.approval.months <- 6
+follow.up.months <- 3
+clusters <- 30
+observations.per.month <- 12
+sequences <- 5
+batches <- 6
+batches.overlap.months <- 6
+min.standard.care.months <- 4
+min.intervention.months <- 4
+transition.months <- 1
+transition.overlap.months <- 0
+total.months <- min.standard.care.months + sequences * (transition.months - transition.overlap.months) + min.intervention.months
+patient.enrollment.months <- total.months
+final.patient.follow.up.date <- ymd(trial.start.date) %m+%
+    months(ethical.approval.months) %m+%
+    months(batches * total.months - (batches - 1) * batches.overlap.months) %m+%
+    months(follow.up.months)
+wrap.up.months <- round(as.numeric(difftime(ymd("2028-12-31"), final.patient.follow.up.date))/30.5)
+final.patient.follow.up <- paste0(month(final.patient.follow.up.date, label = TRUE, abbr = FALSE),
+                                  " ",
+                                  year(final.patient.follow.up.date))
+clusters.per.sequence <- clusters/batches/sequences
+```
+
+We plan to conduct a batched stepped-wedge cluster randomised controlled trial comparing the effects of ATLS^®^ with standard care. Based on our pilot study, we decided to compare only ATLS^®^ with standard care because including both ATLS^®^ and PTC in a three-armed trial would require a substantially larger number of clusters and in choosing between ATLS^®^ and PTC, ATLS^®^ is the most established and widely available programme. Our pilot also showed that the costs associated with training physicians in ATLS^®^ and PTC were the same. In this application, we apply for funding to initiate the trial in two hospitals so that we can finalise local adaptation, implementation and data collection methods, but we describe the full scale trial below. 
+
+## Trial design
+
+We report our research plan according to the Consolidated Standards Of Reporting Trials (CONSORT) extension for stepped-wedge cluster randomised controlled trials [@Hemming2018]. The trial will be registered with the Clinical Trials Registry of India and ClinicalTrials.gov. The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be a tertiary hospital in India. We will conduct this trial in India because of 1) our established collaboration with Indian institutions and experience in conducting multicentre studies in this setting, and 2) physicians in India are not routinely trained in ATLS® or similar programmes. In the full scale trial, we plan to roll out ATLS^®^ to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch (see Figure \@ref(fig:trial-design)). The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` clusters randomised to each implementation sequence. All clusters will transition through three phases:
+
+1. **Standard care phase (minimum `r number_to_text(min.standard.care.months)` months)**, during which we will collect baseline data and locally adapt the implementation of ATLS^®^ 
+2. **Transition phase (`r number_to_text(transition.months)` month)**, during which the training is delivered 
+3. **Intervention phase (minimum `r number_to_text(min.intervention.months)` months)**, during which the effects of training are measured
+
+The total duration of these three phases will be `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. 
+
+<!-- Use studies from Mohammad2013 to justify attrition and length of post training follow up -->
+
+## Design justification
+
+We use the cluster randomised design because the intervention cannot be randomised at the individual patient level. We use the stepped-wedge design for two reasons. First, this design is statistically more efficient than the parallel cluster design when the number of clusters is limited. Second, the stepped-wedge design is likely to enhance participation and engagement because all clusters receive the intervention. The batched stepped-wedge design further improves feasibility as it does not require all clusters to start at the same time, and it is robust to potential delays in cluster recruitment [@Kasza2022]. 
+
+<!-- Add details according to CONSORT: "Description and diagram of trial design including definition of cluster, **number of sequences**, **number of clusters randomised to each sequence**, number of periods, duration of time between each step, and whether the participants assessed in different periods are the same people, different people, or a mixture."-->
+
+<!-- Add citations to previous SW-CRCT -->
+
+```{r trial-design, message = FALSE, echo = FALSE, fig.align = "centre", fig.cap = "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."}
+knitr::include_graphics(
+           create_trial_design_flowchart(clusters = clusters, sequences = sequences, batches = batches,
+                                         min.standard.care.months = min.standard.care.months,
+                                         min.intervention.months = min.intervention.months,
+                                         batches.overlap.months = batches.overlap.months,
+                                         transition.months = transition.months,
+                                         transition.overlap.months = transition.overlap.months,
+                                         return.figure = FALSE)
+       )
+```
+
+## Participants
+
+Because this is a cluster randomised trial, we have eligibility criteria both on the cluster, i.e. hospital, and individual patient levels.
+
+**Clusters** must meet the following criteria:
+
+- tertiary hospitals;
+- baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
+- provides general surgery, neurosurgery, imaging and blood banking services around the clock; and
+- no more than 25%<!-- Do we need to revise this number?--> of initial trauma care providers trained in any trauma life support programme.
+
+**Patients participants** must meet the following criteria:
+
+- age of at least 15 years;
+- present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter 20 as the reason for presenting;
+- admitted or died between arrival at the hospital and admission;
+- transferred from the emergency department of a participating hospital to another hospital for admission; and
+- trauma occurred less than 48 hours before arrival at the hospital.
+
+## Intervention and control treatment
+
+The intervention will be locally adapted implementation of ATLS® training. The control will be standard care, meaning no formal trauma life support training. We will train the physicians that initially resuscitate and provide trauma care during the first hour after patient arrival at the emergency department. These physicians can be casualty medical officers, surgical residents, or emergency medicine residents, depending on the setup at each participating centre, and our pilot study showed that careful local adaption and implementation of the training is needed. To achieve this local adaption and implementation, we will conduct direct observations and workshops following implementation science methodology during the standard care phase in each hospital. The ATLS® training will then occur during the transition phase in each cluster. 
+
+**Advanced Trauma Life Support® (ATLS®) [@acsAtls2018]** is a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. The programme was developed by the Committee of Trauma of the American College of Surgeons. The course includes intial treatment and resuscitation, triage and interfacility transfers. Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation. Physicians will be trained in an accredited ATLS® training facility in India. 
+
+**Standard care** varies across hospitals in India, but trauma patients are initially managed by casualty medical officers, surgical residents, or emergency medicine residents. They are mainly first- or second-year residents who resuscitate patients, perform interventions and refer patients for imaging or other investigations. Compared with other settings where a trauma team approach is adopted, nurses and other healthcare professionals are only involved to a limited extent during the initial management. 
+
+## Outcomes
+
+We chose outcomes that we judged as clinically important and that patients, their caregivers and community representatives perceived as important in our interviews with them. <!-- We also searched the Core Outcome Measures in Effectiveness Trials (COMET) Initiative's database and reviewed two recent core outcome sets [@Gelbard2023; @HerreraEscobar2022] -->
+
+**Primary outcome** will be in-hospital mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records. We chose this outcome as the primary outcome because it is an outcome of clinical and patient importance with very low missing data rates (`r rates.missing.data["in.hospital.mortality"]`%) in our pilot study. We will also be able to compare our findings with previous research.
+
+**Secondary outcomes**  will be as follows:
+<!-- Add outcomes at 12 months if possible -->
+
+- all cause mortality within 24 hours, 30 days, and three months of arrival at the emergency department;
+- quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L;
+- poor functional outcome within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the EQ5D3L domains of mobility, self-care, usual activities, and pain/discomfort, with poor functional outcome defined as being confined to bed, unable to bath or dress oneself, unable to perform usual activities, or having extreme pain or discomfort;
+- return to work at 30 days and three months after arrival at the emergency department; and
+- in-hospital pulmonary, septic, or renal complications.
+
+## Randomisation
+
+In the full scale trial, we will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches. Both hospitals included in this initiation phase will form a pilot batch.
+
+## Data collection and management
+
+Clinical research coordinators will collect data, screen patients using emergency department records, and obtain informed consent for post-discharge follow-up. The data management plan is published and was reviewed by Karolinska Institutet (https://doi.org/10.5281/zenodo.7748764).
+
+## Data analysis and statistics
+
+<!--
+*Modern methods often generate complex data. Describe how you plan to analyse data collected in the project, and the statistical methods you will be using. If the project covers clinical studies, please include a power analysis.*
+-->
+
+All analysis in the full scale trial will be by modified intention to treat and consider the clustered nature of the design. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. For the primary and binary secondary outcomes, we will use mixed effects binomial regression with a log-link to estimate the relative risk, and a binomial model with identity link to estimate the risk difference. We will use a two-sided significance level of 5% and estimate 95% confidence intervals. 
+
+## Power analysis
+
+<!--
+Based on our pilot study and previous research in this setting, we assume that our primary outcome will occur in <-- Add data -> of participants during standard care. We judge that a 5% unit absolute reduction in the primary endpoint would be clinically meaningful and to detect this difference with 90% power we need to enrol 60 clusters, based on a fixed cluster size of 100 participants and an intra-cluster correlation coefficient estimated from our pilot study and previous research of 0.2. Based on our previous work, three months will be enough to enrol 100 patients per cluster, including loss to follow up. With three months before the intervention and three months after the intervention we will enrol a total of 200 patients per cluster, coming to a total sample size of 12000 patients. 
+-->
+
+```{r, echo = FALSE, include = FALSE}
+proportion.primary.outcome.control <- rates.per.study$TERN$composite.outcome
+proportion.primary.outcome.intervention <- proportion.primary.outcome.control * 0.8
+proportion.in.hospital.mortality.control <- rate.in.hospital.mortality
+proportion.in.hospital.mortality.intervention <- rate.in.hospital.mortality * 0.8
+sample.size <- clusters * observations.per.month * (total.months - transition.months)
+```
+
+With `r clusters` clusters and a total sample size of `r scales::comma(sample.size)` the full scale trial will have ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome from 20% under standard care to 15% after ATLS® training. This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work.
+
+## Project organisation
+
+<!--
+*Clarify how you and any participating researchers will contribute to the implementation of the project. Explain in particular how the time allocated by you (that is, your activity level) as project leader is suitable for the task, including the relationship with your other research undertakings. Describe and explain the competences and roles of the participating researchers in the project, and also any other researchers or equivalent who are important for the implementation of the project.*
+-->
+
+This is a collaborative project between researchers, clinicians, and institutions in Sweden, India, and the United Kingdom, including the Karolinska Institutet (KI) in Sweden, The George Institute for Global Health (TGI) in India and University of Birmingham (UoB) in the UK. KI will be the trial sponsor, maintain the overall responsibility for the  trial, store the trial data and conduct the data analyses. TGI will coordinate the project activities in India, including approvals, data collection, ATLS® training, and monitoring. UoB will provide trial design, analysis and implementation science expertise.
+
+<!--
+*Provide the following information also. If a heading is not relevant to your application, please state this under the heading.*
+-->
+
+## Ethical considerations
+
+We will apply for ethical approval from each participating hospital as well as from the Ethical Review Authority in Sweden. We assess the short term risks as minimal, because the intervention involves training physicians in a well established trauma life support programme and the data collection rely  on data from participants' hospital records or interviews. We will not perform any invasive measurements or procedures as part of the data collection. The short term risks of integrity violations and data leakage are weighed up by the potential direct benefit for the participants in the intervention phase and by the potential for improved care for the trauma patient population.
+
+# Duration of study
+
+The total duration will be 18 months. We will first obtain regulatory and ethical approvals during the first four months. We will then initiate the full scale trial and data collection in two hospitals during the remaining 14 months, which would involve enrolling `r observations.per.month * total.months * 2` patients.
+
+# Relevant References
+
+

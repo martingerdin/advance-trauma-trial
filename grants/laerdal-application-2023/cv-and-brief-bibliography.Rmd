@@ -1,0 +1,443 @@
+---
+## Compile with
+## Rscript -e "rmarkdown::render('cv-and-publication-list.Rmd')"
+output:
+    bookdown::pdf_document2:
+      toc: false
+      number_sections: false
+      latex_engine: xelatex
+geometry: margin=2.5cm
+mainfont: Arial 
+fontsize: 11pt
+header-includes:
+- \usepackage{fancyhdr}
+- \usepackage{setspace}
+- \usepackage{titlesec}
+- \renewcommand{\baselinestretch}{1.0}
+- \titlespacing{\section}{0em}{0.75em}{0.5em}
+- \titlespacing{\subsection}{0em}{0.75em}{0.5em}
+- \titlespacing{\subsubsection}{0em}{0.75em}{0.5em}
+- \titlespacing{\subsubsubsection}{0em}{0.75em}{0.5em}
+- \setlength{\parskip}{0.5em}
+- \pagestyle{fancy}
+---
+
+\fancyhead[CO,CE]{Martin Gerdin Wärnberg's CV and Brief Bibliography}
+\fancyhead[LO,LE]{}
+\fancyhead[RO,RE]{}
+
+CV
+==
+
+Birth data
+----------
+27 January 1988
+
+Address 
+-------
+Tulegatan 47  
+SE-113 53 Stockholm  
+
+Current Work Addresses
+----------------------
+Department of Global Public Health  
+Karolinska Institutet  
+SE-171 77 Stockholm  
+
+Function Perioperative Medicine and Intensive Care  
+Karolinska University Hospital in Solna  
+SE-171 76 Stockholm
+
+Phone and email
+---------------
++46 708 539 598
+
+martin.gerdin\@ki.se, martin.gerdin-warnberg@regionstockholm.se, martingerdin\@gmail.com
+
+Affiliations
+------------
+Department of Global Public Health, Karolinska Institutet, Stockholm, Sweden.
+
+Function Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna, Sweden.
+
+Docent-level Competence (Associate Professorship)
+-------------------------------------------------
+Clinical Epidemiology, 2020; Karolinska Institutet.
+
+Doctoral Degree
+---------------
+Medical Sciences (PhD), 2015; The risk of dying: predicting early mortality in urban Indian hospitals; Johan von Schreeb, Göran Tomson, Max Petzold, Li Felländer-Tsai; Karolinska Institutet; Available from: <https://openarchive.ki.se/xmlui/handle/10616/44832>.
+
+Degree
+------
+Medicine (MD), 2014; Karolinska Institutet.
+
+Postdoc Appointment
+--------------------
+2018 -- 2023; Department of Global Public Health, Karolinska
+Institutet, Stockholm, Sweden; Cecilia Stålsby Lundborg.
+
+Current Positions
+-----------------
+Principal Researcher 15% (full-time position, but 85% leave of absence because of clinical duties); Department of Global Public Health, Karolinska Institutet.
+
+Resident in Anaesthesia and Intensive Care 100%; August 2020 -- Present; Karolinska University Hospital in Solna.
+
+Prior Positions 
+---------------
+Postdoc 15-100%; May 2018 -- March 2023; Department of Global Public Health, Karolinska Institutet.
+
+Researcher 50-100%; November 2015 -- May 2018; Department of Public Health Sciences, Karolinska Institutet.
+
+Medical research intern (Forskar-AT) 100%; August 2015 -- March 2018; Fulfilled criteria for license to practice 2018-03-04; Karolinska University Hospital in Huddinge.
+
+PhD student 100%; May 2012 -- November 2015; Department of Public Health Sciences, Karolinska Institutet.
+
+Junior doctor (underläkare) 100%; June 2014 -- August 2015; Department of Orthopaedic Surgery, Karolinska University Hospital, Huddinge, Sweden.
+
+Research assistant 25-100%; August 2010 -- May 2012; Department of Public Health Sciences, Karolinska Institutet.
+
+Research Grants Awarded in Competition as Principal Investigator 
+----------------------------------------------------------------
+Combining Human and Artificial Intelligence to Improve Trauma Care Outcomes (Reg no. SLS-973387); June 2022 - June 2024; 200 000 SEK; Swedish Society of Medicine (Svenska Läkaresällskapets).
+
+A Pilot Multi-center Cluster Randomized Trial to Compare The Effect of Trauma Life Support Training Programs on Patient and Provider Outcomes (Reg no. 2021-0048); December 2021 - December 2022; 220 000 SEK; Laerdal Foundation.
+
+Does trauma life support training improve patient outcomes? Establishing a network of Swedish and Indian researchers (Reg no. 2020-03779); January 2021 - December 2022; 790 020 SEK; Swedish Research Council (Vetenskapsrådet).
+
+Does institutional implementation of audit filters reduce mortality in adult trauma patients? (Reg no. 2016-02041); January 2017 - December 2021 (extended to July 2023 due to Covid-19); 4 000 000 SEK; Sweden Research Council (Vetenskapsrådet).
+
+Improving trauma triage; January 2017 - December 2019; 3 000 000 SEK; Swedish National Board of Health and Welfare (Socialstyrelsen).
+
+Time Deducted from Active Research Time
+---------------------------------------
+Parental leave; May 2019 -- April 2020, 11 months, 85%. 
+
+Parental leave; September 2018 -- March 2019, 6 months, 85%.
+
+Clinical rotation in primary care (part of AT); August 2017 -- March 2018, 6 months, full time 
+
+Clinical rotation in psychiatry (part of AT); November 2016 -- February 2017, 3 months, full time. 
+
+Clinical rotation in surgery, anesthesia, and orthopedics (part of AT); April 2016 -- August 2016, 4.5 months, full time. 
+
+Clinical rotation in internal medicine (part of AT); August 2015 -- January 2016, 4.5 months, full time.
+
+Other Relevant Courses
+----------------------
+Teaching and learning in higher education, 2018, Karolinska Institutet.
+
+Good clinical practice, 2018, Karolinska Trial Alliance, Stockholm, Sweden.
+
+Introductory doctoral supervision course, 2017, Karolinska Institutet.
+
+PhD Supervision
+---------------
+
+Jonatan Attergrim; Main supervisor; Expected to defend in 2027; Department of Global Public Health, Karolinska Institutet.
+
+Johanna Berg; Main supervisor; Expected to defend in 2024; Department of Global Public Health, Karolinska Institutet.
+
+Lukas Berglund; Co-supervisor; Expected to defend in 2024; Department of Clinical Science, Innovation and Technology, Karolinska Institutet.
+
+Uzma Rahim Khan; Main supervisor; Defended in October 2022; Department of Global Public Health, Karolinska Institutet.
+
+Siddarth David; Main supervisor; Defended in May 2022; Department of  Global Public Health, Karolinska Institutet.
+
+Educational Experience
+----------------------
+Course leader Degree Project Master Programme in Global Health; September 2017 -- Present; Department of Global Public Health, Karolinska Institutet.
+
+Language Skills
+---------------
+Fluent in written and spoken English and Swedish.
+
+References
+----------
+Available upon request.
+
+Brief Bibliography
+==================
+
+1. David S, Roy N, Lundborg CS, **Gerdin Wärnberg M**, Solomon
+   H. 'Coming home does not mean that the injury has gone'-exploring
+   the lived experience of socioeconomic and quality of life outcomes
+   in post-discharge trauma patients in urban India. *Glob Public
+   Health*. 2022 Nov;17(11):3022-3042. doi:
+   10.1080/17441692.2022.2036217.
+
+   *In this qualitative interview study, we found that participants
+   had needs unmet by the healthcare system even late after the
+   injury. I assisted with designing the study, interpreting the
+   findings, and provided input during the writing of the paper.*
+
+2. Pendleton AA, Sarang B, Mohan M, Raykar N, **Gerdin Wärnberg M**,
+   Khajanchi M, Dharap S, Fitzgerald M, Sharma N, Soni KD, O'Reilly G,
+   Bhandarkar P, Misra M, Mathew J, Jarwani B, Howard T, Gupta A,
+   Cameron P, Bhoi S, Roy N. A cohort study of differences in trauma
+   outcomes between females and males at four Indian Urban Trauma
+   Centers. *Injury*. 2022 Sep;53(9):3052-3058. doi:
+   10.1016/j.injury.2022.07.022.
+
+   *This paper shows that female and male trauma patients have similar
+   odds of mortality within 24 hours and 30 days after arrival to
+   hospital in the setting of our proposed trial. I conducted part of
+   the data analysis and provided input on the write up of the paper.*
+
+3. Berg J, Alvesson HM, Roy N, Ekelund U, Bains L, Chatterjee S,
+   Bhattacharjee PK, David S, Gupta S, Kamble J, Khajanchi M, Lal P,
+   Malhotra V, Meher R, Mishra A, Mohan LN, Petzold M, Saxena R,
+   Shrivastava P, Singh R, Soni KD, Sural S, **Gerdin Wärnberg
+   M**. Perceived usefulness of trauma audit filters in urban India: a
+   mixed-methods multicentre Delphi study comparing filters from the
+   WHO and low and middle-income countries. *BMJ Open*. 2022 Jun
+   9;12(6):e059948. doi: 10.1136/bmjopen-2021-059948.
+
+   *This paper is part of an interrupted time series trial,
+   funded by the Swedish Research Council (Dnr 2016-02041), assessing
+   the effectiveness of implementing trauma audit filters on mortality
+   in adult trauma patients in urban India. I was the senior author on
+   this paper.*
+
+4. **Gerdin Wärnberg M**, Berg J, Bhandarkar P, Chatterjee A,
+   Chatterjee S, Chintamani C, Felländer-Tsai L, Gadgil A, Ghag G,
+   Hasselberg M, Juillard C, Khajanchi M, Kizhakke Veetil D, Kumar V,
+   Kundu D, Mishra A, Patil P, Roy N, Roy A, David S, Singh R, Solomon
+   H, Soni KD, Strömmer L, Tandon M; Trauma life support training
+   Effectiveness Research Network (TERN) collaborators. A pilot
+   multicentre cluster randomised trial to compare the effect of
+   trauma life support training programmes on patient and provider
+   outcomes. *BMJ Open*. 2022 Apr 18;12(4):e057504. doi:
+   10.1136/bmjopen-2021-057504.
+
+   *This is the published protocol of the pilot study that was part of
+   our Swedish Research Council Network Grant (Dnr. 2020-03779,
+   www.tern.network, ClinicalTrials.gov NCT05417243), and on which the
+   current application is based. I led the planning and writing up of
+   this paper.*
+
+5. David SD, Aroke A, Roy N, Solomon H, Lundborg CS, **Gerdin Wärnberg
+   M**. Measuring socioeconomic outcomes in trauma patients up to one
+   year post-discharge: A systematic review and
+   meta-analysis. *Injury*. 2022 Feb;53(2):272-285. doi:
+   10.1016/j.injury.2021.10.012.
+
+   *We found than one-third (36%) of patients had not returned to work
+   even a year after discharge. Those who did return to work took more
+   than 3 months to do so. We also found that older adults and females
+   tended to have poorer outcomes. I was the senior author on this
+   paper.*
+
+6. David SD, Roy N, Solomon H, Lundborg CS, **Gerdin Wärnberg
+   M**. Measuring post-discharge socioeconomic and quality of life
+   outcomes in trauma patients: a scoping review. *J Patient Rep
+   Outcomes*. 2021 Aug 9;5(1):68. doi: 10.1186/s41687-021-00346-6.
+ 
+   *We identified quality of life, return to work, social support,
+   cost, and participation as the main outcomes studied in
+   post-discharge trauma patients, which was important in finalising
+   the outcomes for our proposed trial. I was the senior author on
+   this paper.*
+
+7. Sarang B, Bhandarkar P, Raykar N, O'Reilly GM, Soni KD, **Gerdin
+   Wärnberg M**, Khajanchi M, Dharap S, Cameron P, Howard T, Gadgil A,
+   Jarwani B, Mohan M, Bhoi S, Roy N. Associations of On-arrival Vital
+   Signs with 24-hour In-hospital Mortality in Adult Trauma Patients
+   Admitted to Four Public University Hospitals in Urban India: A
+   Prospective Multi-Centre Cohort Study. *Injury*. 2021 Feb
+   26:S0020-1383(21)00178-9. doi: 10.1016/j.injury.2021.02.075.
+
+   *This paper confirms the associations of vital sign derangements
+   and early mortality in the setting of the proposed trial, and
+   highlights the need for interventions that target the causes of
+   these derangements. I assisted in the analysis and the
+   interpretation of findings, and provided input during the writing
+   of the paper.*
+
+8. Khajanchi M, Kumar V, Wärnberg Gerdin L, Roy N, **Gerdin Wärnberg
+   M**. Prevalence of a Definitive Airway in Severe Traumatic Brain
+   Injury patients received at four Urban Public University Hospitals
+   in India -- a Cohort Study. *Inj Prev*. 2019
+   Oct;25(5):428-432. doi: 10.1136/injuryprev-2018-042826.
+
+   *This paper shows that airway management represent a major
+   opportunity for improvement in the setting of the proposed trial,
+   as only 15% of patients with a severe traumatic brain injury who
+   were transferred between hospitals had a definitive airway placed
+   before transfer. I was the senior author on this paper.*
+
+9. Mansourati M, Kumar V, Khajanchi M, Saha ML, Dharap S, Seger R,
+    **Gerdin Wärnberg M**. Mortality following surgery for trauma in
+    an Indian trauma cohort. *Br J Surg*. 2018.
+
+   *This paper shows that mortality following trauma surgery is
+   as high as 23% in the setting of the proposed trial, and that
+   abdominal and vascular surgery are associated with the highest
+   risks. I was the senior author on this paper.*
+
+10. Roy N, **Gerdin M**, Ghosh S, Gupta A, Kumar V, Khajanchi M, et
+    al. 30-Day In-hospital Trauma Mortality in Four Urban University
+    Hospitals Using an Indian Trauma Registry. *World J Surg*. 2016
+    Jun 24;40(6):1299--307.
+
+    *We showed that the 30-day mortality in adult trauma patients in
+    the setting of our proposed was around 20%. I assisted during data
+    analysis and provided input during the writing of the paper.*  
+
+Relevant publications from 2015–2023
+====================================
+
+1. Aroke A, Rohini D, Sarang B, David S, O'Reilly G, Raykar N,
+   Khajanchi M, Attergrim J, Dev Soni K, Naveen S, Mohan M, Gadgil A,
+   Roy N, **Gerdin Wärnberg M**. Profile and Triage Validity of Trauma
+   Patients Triaged Green: A Prospective Cohort Study from a Secondary
+   Care Hospital in India. BMJ Open. 2023 May 8;13(5):e065036. doi:
+   10.1136/bmjopen-2022-065036.
+2. Kapanadze G, Berg J, Sun Y, **Gerdin Wärnberg M**. Facilitators and
+   barriers impacting in-hospital Trauma Quality Improvement Program
+   (TQIP) implementation across country income levels: a scoping
+   review. *BMJ Open*. 2023 Feb 17;13(2):e068219. doi:
+   10.1136/bmjopen-2022-068219.
+3. **Gerdin Wärnberg M**, Berg J, Bhandarkar P, Chatterjee A,
+   Chatterjee S, Chintamani C, Felländer-Tsai L, Gadgil A, Ghag G,
+   Hasselberg M, Juillard C, Khajanchi M, Kizhakke Veetil D, Kumar V,
+   Kundu D, Mishra A, Patil P, Roy N, Roy A, David S, Singh R, Solomon
+   H, Soni KD, Strömmer L, Tandon M; Trauma life support training
+   Effectiveness Research Network (TERN) collaborators. A pilot
+   multicentre cluster randomised trial to compare the effect of
+   trauma life support training programmes on patient and provider
+   outcomes. BMJ Open. 2022 Apr 18;12(4):e057504. doi:
+   10.1136/bmjopen-2021-057504.
+4. David SD, Roy N, Solomon H, Lundborg CS, **Gerdin Wärnberg
+   M**. Measuring post-discharge socioeconomic and quality of life
+   outcomes in trauma patients: a scoping review. *J Patient Rep
+   Outcomes*. 2021 Aug 9;5(1):68. doi: 10.1186/s41687-021-00346-6. 
+5. David S, Roy N, Lundborg CS, **Gerdin Wärnberg M**, Solomon
+   H. 'Coming home does not mean that the injury has gone'-exploring
+   the lived experience of socioeconomic and quality of life outcomes
+   in post-discharge trauma patients in urban India. *Glob Public
+   Health*. 2022 Nov;17(11):3022-3042. doi:
+   10.1080/17441692.2022.2036217.
+6. Pendleton AA, Sarang B, Mohan M, Raykar N, **Gerdin Wärnberg M**,
+   Khajanchi M, Dharap S, Fitzgerald M, Sharma N, Soni KD, O'Reilly G,
+   Bhandarkar P, Misra M, Mathew J, Jarwani B, Howard T, Gupta A,
+   Cameron P, Bhoi S, Roy N. A cohort study of differences in trauma
+   outcomes between females and males at four Indian Urban Trauma
+   Centers. *Injury*. 2022 Sep;53(9):3052-3058. doi:
+   10.1016/j.injury.2022.07.022.
+7. Khan UR, Razzak JA, Jooma R, **Gerdin Wärnberg M**. Association of
+   age and severe injury in young motorcycle riders: A cross-sectional
+   study from Karachi, Pakistan. *Injury*. 2022
+   Sep;53(9):3019-3024. doi: 10.1016/j.injury.2022.04.017.
+8. Kayambankadzanja RK, Schell CO, **Gerdin Wärnberg M**, Tamras T,
+   Mollazadegan H, Holmberg M, Alvesson HM, Baker T. Towards
+   definitions of critical illness and critical care using concept
+   analysis. *BMJ Open*. 2022 Sep 5;12(9):e060972. doi:
+   10.1136/bmjopen-2022-060972.
+9. Berg J, Alvesson HM, Roy N, Ekelund U, Bains L, Chatterjee S,
+   Bhattacharjee PK, David S, Gupta S, Kamble J, Khajanchi M, Lal P,
+   Malhotra V, Meher R, Mishra A, Mohan LN, Petzold M, Saxena R,
+   Shrivastava P, Singh R, Soni KD, Sural S, **Gerdin Wärnberg
+   M**. Perceived usefulness of trauma audit filters in urban India: a
+   mixed-methods multicentre Delphi study comparing filters from the
+   WHO and low and middle-income countries. *BMJ Open*. 2022 Jun
+   9;12(6):e059948. doi: 10.1136/bmjopen-2021-059948.
+10. Banerjee N, Sharma N, Soni KD, Bansal V, Mahajan A, Khajanchi M,
+   **Gerdin Wärnberg M**, Roy N. Are home environment injuries more
+   fatal in children and the elderly? *Injury*. 2022
+   Jun;53(6):1987-1993. doi: 10.1016/j.injury.2022.03.050.
+11. Khan UR, Razzak J, **Gerdin Wärnberg M**. Association of
+   adolescents' independent mobility with road traffic injuries in
+   Karachi, Pakistan: a cross-sectional study. *BMJ Open*. 2022 Mar
+   22;12(3):e057206. doi: 10.1136/bmjopen-2021-057206.
+12. David SD, Aroke A, Roy N, Solomon H, Lundborg CS, **Gerdin Wärnberg
+   M**. Measuring socioeconomic outcomes in trauma patients up to one
+   year post-discharge: A systematic review and
+   meta-analysis. *Injury*. 2022 Feb;53(2):272-285. doi:
+   10.1016/j.injury.2021.10.012.
+13. Sarang B, Raykar N, Gadgil A, Mishra G, **Gerdin Wärnberg M**,
+   Rattan A, Khajanchi M, Soni KD, Mohan M, Sharma N, Kumar V, Kv D,
+   Roy N; Towards Improved Trauma Care Outcomes TITCO-India. Outcomes
+   of Renal Trauma in Indian Urban Tertiary Healthcare Centres: A
+   Multicentre Cohort Study. *World J Surg*. 2021 Aug 21. doi:
+   10.1007/s00268-021-06293-z.
+14. Larsson A, Berg J, Gellerfors M, **Gerdin Wärnberg M**. The
+    advanced machine learner XGBoost did not reduce prehospital trauma
+    mistriage compared with logistic regression: a simulation
+    study. *BMC Med Inform Decis Mak*. 2021 Jun 21;21(1):192. doi:
+    10.1186/s12911-021-01558-y.
+15. Sarang B, Bhandarkar P, Raykar N, O'Reilly GM, Soni KD, **Gerdin
+    Wärnberg M**, Khajanchi M, Dharap S, Cameron P, Howard T, Gadgil
+    A, Jarwani B, Mohan M, Bhoi S, Roy N. Associations of On-arrival
+    Vital Signs with 24-hour In-hospital Mortality in Adult Trauma
+    Patients Admitted to Four Public University Hospitals in Urban
+    India: A Prospective Multi-Centre Cohort Study. *Injury*. 2021 Feb
+    26:S0020-1383(21)00178-9. doi: 10.1016/j.injury.2021.02.075.
+16. Khan UR, Razzak JA, **Gerdin Wärnberg M**. Global trends in
+    adolescents' road traffic injury mortality, 1990-2019. *Arch Dis
+    Child*. 2021 Feb 17:archdischild-2020-319184. doi:
+    10.1136/archdischild-2020-319184.
+17. Henriksson M, D. Saulnier, D, Berg J, **Gerdin Wärnberg M**. The
+    transfer of clinical prediction models for early trauma care had
+    uncertain effects on mistriage. *Journal of Clinical
+    Epidemiology*.  Dec 2020; 120:66-73.
+18. Wärnberg Gerdin L, Khajanchi M, Kumar V, Roy N, Saha ML, Soni KD,
+    **Gerdin Wärnberg M**. Comparison of emergency department trauma
+    triage performance of clinicians and clinical prediction models: a
+    cohort study in India. *BMJ Open*. 2020 Feb 1;10(2):e032900.
+19. Laytin AD, Clarke D, **Gerdin Wärnberg M**, Kong VY, Bruce JL,
+    Laing G, et al. The search for a simple injury score to reliably
+    discriminate the risk of in-hospital mortality in South
+    Africa. *Surgery*. 2020 Feb 21;
+20. Kizhakke Veetil D, Kumar V, Khajanchi M, **Gerdin Wärnberg M**. A
+    multicentre observational cohort study of the 24 hour and 30 day
+    in hospital mortality of pediatric and adult trauma patients - an
+    Indian urban tertiary care perspective. *J Pediatr Surg*. 2019
+    Jul;54(7):1421-1426. doi: 10.1016/j.jpedsurg.2018.10.101.
+21. Attergrim J, Claeson A, Dharap S, Gupta A, Khajanchi M, Kumar V,
+    Sterner M, **Gerdin Wärnberg M**. Predicting mortality with the
+    international classification of disease injury severity score
+    using survival risk ratios derived from an Indian trauma
+    population: a cohort study. *PLoS One*. June 27, 2018.
+22. Sterner M, Claeson A, Attergrim J, Khajanchi M, Kumar V, **Gerdin
+    Wärnberg M**. Both the multiplicative and single-worst-injury
+    international classification of diseases injury severity score
+    (ICISS) underperform in urban Indian hospitals. *Trauma*. June 2018.
+23. Khajanchi M, Kumar V, Wärnberg Gerdin L, Roy N, **Gerdin Wärnberg
+    M**. Prevalence of a Definitive Airway in Severe Traumatic Brain
+    Injury patients received at four Urban Public University Hospitals
+    in India -- a Cohort Study. *Inj Prev*. 2019
+    Oct;25(5):428-432. doi: 10.1136/injuryprev-2018-042826.
+24. Claeson A, Sterner M, Attergrim J, Khajanchi M, Kumar V, Saha ML,
+    **Gerdin Wärnberg M**. Assessment of the predictive value of ICISS
+    for trauma mortality in urban India. *Journal of Surgical
+    Research*.  2018;229:357---64.
+25. Mansourati M, Kumar V, Khajanchi M, Saha ML, Dharap S, Seger R,
+    **Gerdin Wärnberg M**. Mortality following surgery for trauma in
+    an Indian trauma cohort. *Br J Surg*. 2018.
+26. Laytin AD, Dicker RA, **Gerdin M**, Roy N, Sarang B, Kumar V, et
+    al. Comparing traditional and novel injury scoring systems in a
+    U.S. level-I trauma center: an opportunity for improved injury
+    surveillance in low- and middle-income countries. *J Surg
+    Res*. 2017;215:60--6.
+27. Massenburg BB, Veetil DK, Raykar NP, Agrawal A, Roy N, **Gerdin
+    M**. A systematic review of quantitative research on traumatic
+    brain injury in India. *Neurol India*. 2016;65(2):305--14.
+28. Roy N, **Gerdin M**, Schneider E, Kizhakke Veetil DK, Khajanchi M,
+    Kumar V, et al. Validation of international trauma scoring systems
+    in urban trauma centres in India. *Injury*. 2016
+    Nov;47(11):2459--64.
+29. **Gerdin M**, Roy N, Felländer-Tsai L, Tomson G, von Schreeb J,
+    Petzold M, et al. Traumatic transfers: calibration is adversely
+    affected when prediction models are transferred between trauma
+    care contexts in India and the United States. *J Clin
+    Epidemiol*. 2016 Jun;74:177--86.
+30. Roy N, **Gerdin M**, Ghosh S, Gupta A, Kumar V, Khajanchi M, et
+    al. 30-Day In-hospital Trauma Mortality in Four Urban University
+    Hospitals Using an Indian Trauma Registry. *World J Surg*. 2016
+    Jun 24;40(6):1299--307.
+31. **Gerdin M**, Roy N, Khajanchi M, Kumar V, Felländer-Tsai L,
+    Petzold M, et al. Validation of a novel prediction model for early
+    mortality in adult trauma patients in three public university
+    hospitals in urban India. *BMC Emerg Med*. 2016 Dec 22;16(1):15.
+
