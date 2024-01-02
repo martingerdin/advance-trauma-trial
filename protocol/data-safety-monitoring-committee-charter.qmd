@@ -1,0 +1,86 @@
+---
+title: Data Safety Monitoring Committee (DSMC) Charter
+subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+---
+
+# Introduction
+Background: Brief overview of the clinical trial's purpose and significance.
+Objective of the DSMC: To monitor trial data for each batch, assessing various aspects to ensure the safety of participants, the integrity of the data, and the ethical conduct of the trial.
+
+# DSMC Composition
+
+## Members
+
+Comprising four external members with expertise in clinical trial management, biostatistics, medical ethics, and the relevant clinical field.
+
+## Selection Process
+
+Members are independently selected, ensuring no conflicts of interest with trial sponsors or management.
+
+## Roles and Responsibilities
+
+The Chairperson coordinates the committee, ensuring effective review of data and adherence to the charter.
+
+# Meetings
+
+## Frequency
+
+Meetings to coincide with the completion of each data batch.
+
+## Format
+
+Flexible to accommodate in-person or virtual meetings.
+
+## Reporting
+
+Documenting and communicating outcomes and recommendations to the trial steering committee.
+
+# Data Review Process
+
+## Data Quality and Completeness
+
+Regular review of data for accuracy and completeness.
+
+## Recruitment and Follow-up Rates
+
+Assess cluster performance in recruitment and track loss to follow-up rates.
+
+## External Factors
+
+Evaluate external factors potentially impacting trial validity.
+
+## Interim Analysis
+
+Review results of interim analyses, focusing on safety and efficacy outcomes.
+
+## Safety Monitoring
+
+Scrutinize safety events reported by the trial management group.
+
+# Decision-Making Criteria
+
+## Stopping Rules
+
+Criteria for recommending trial termination, including unacceptable safety risks, compelling evidence of efficacy or inefficacy, or compromised trial validity.
+
+## Recommendations
+
+Process for making and communicating recommendations to the trial steering committee.
+
+# Confidentiality
+
+## Data Handling
+
+Ensuring strict confidentiality and integrity in data handling.
+
+## Conflict of Interest
+
+Procedures to identify and manage any conflicts of interest.
+
+# Charter Amendments
+
+Procedure for Modifications: Defined process for any necessary amendments to the charter.
+
+# Appendices
+
+Relevant Documents: Including trial protocol, statistical analysis plan, and interim analysis plan.
