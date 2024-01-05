@@ -3,9 +3,20 @@ title: Data Safety Monitoring Committee (DSMC) Charter
 subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
 ---
 
-# Introduction
-Background: Brief overview of the clinical trial's purpose and significance.
-Objective of the DSMC: To monitor trial data for each batch, assessing various aspects to ensure the safety of participants, the integrity of the data, and the ethical conduct of the trial.
+```{r setup}
+#| echo: FALSE
+
+noacsr::source_all_functions()
+attach(global_variables())
+```
+
+# Synopsis
+
+{{< include synopsis.qmd >}}
+
+# Objective of the DSMC
+
+To monitor trial data for each batch, assessing various aspects to ensure the safety of participants, the integrity of the data, and the ethical conduct of the trial.
 
 # DSMC Composition
 
@@ -25,7 +36,7 @@ The Chairperson coordinates the committee, ensuring effective review of data and
 
 ## Frequency
 
-Meetings to coincide with the completion of each data batch.
+Meetings to coincide with the completion of data collection for each batch, so `r number_to_text(batches)` meetings in total during the trial period of `r number_to_text(ceiling(total.months/12))` years.
 
 ## Format
 
@@ -33,7 +44,7 @@ Flexible to accommodate in-person or virtual meetings.
 
 ## Reporting
 
-Documenting and communicating outcomes and recommendations to the trial steering committee.
+Documenting and communicating outcomes and recommendations to the trial management group.
 
 # Data Review Process
 
@@ -41,9 +52,9 @@ Documenting and communicating outcomes and recommendations to the trial steering
 
 Regular review of data for accuracy and completeness.
 
-## Recruitment and Follow-up Rates
+## Inclusion and Follow-up Rates
 
-Assess cluster performance in recruitment and track loss to follow-up rates.
+Assess cluster performance in inclusion of patients participants and track loss to follow-up rates.
 
 ## External Factors
 
@@ -51,7 +62,7 @@ Evaluate external factors potentially impacting trial validity.
 
 ## Interim Analysis
 
-Review results of interim analyses, focusing on safety and efficacy outcomes.
+Review results of interim analyses. There will be one interim analysis after half of the batches have completed the trial. The first purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The second purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included.
 
 ## Safety Monitoring
 
@@ -61,7 +72,7 @@ Scrutinize safety events reported by the trial management group.
 
 ## Stopping Rules
 
-Criteria for recommending trial termination, including unacceptable safety risks, compelling evidence of efficacy or inefficacy, or compromised trial validity.
+The DSMC should recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The DSMC should also recommend stopping the trial if there is a safety concern based on the reporting of safety events.
 
 ## Recommendations
 

@@ -1,0 +1,37 @@
+**Title**
+Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
+
+<!-- **Acronym** -->
+
+**Rationale**
+Trauma is a massive global health issue. Many training programmes have been developed to help physicians in the initial management of trauma patients. Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular of these programmes and have been used to train over one million physicians worldwide. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes. Multiple systematic reviews emphasise the need for such trials.
+
+**Aim**
+To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
+
+**Primary Outcome**
+All-cause mortality within 30 days of arrival at the emergency department.
+
+**Trial Design**
+Batched stepped-wedge cluster randomised trial in India.
+
+**Trial Population**
+Adult trauma patients presenting to the emergency department of a participating hospital.
+
+**Sample Size** 
+`r number_to_text(clusters)` clusters and `r number_to_text(sample.size)` patients.
+
+**Eligibility Criteria**
+
+*Cluster* will be hospitals with a baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months, that provides surgery and orthopaedic emergency services around the clock, and where no more than 25% of initial trauma care providers trained in a formalised trauma life support training programme.
+
+*Patients* will at least 15 years old, who present to the emergency department of participating hospitals with a history of trauma occuring less than 48 hours before arrival, and who are admitted or die between and admission, or who are transferred from the emergency department of a participating hospital to another hospital for admission.
+
+**Intervention** 
+The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
+
+**Ethical Considerations** 
+We will approach for informed consent for follow up once they are admitted or telephonically if they are transferred. In-hospital data collection from medical records will be conducted under a waiver of informed consent. Patients will be informed about the trial and their right to opt out of data collection. Patients will be informed that they can withdraw their data from the trial at any time before final analysis of the data.
+
+**Trial Period**
+2024-10-01 to 2029-10-01

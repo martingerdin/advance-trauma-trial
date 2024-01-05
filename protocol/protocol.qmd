@@ -168,43 +168,7 @@ rows as needed.*
 
 # Synopsis
 
-**Title**
-Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
-
-<!-- **Acronym** -->
-
-**Rationale**
-Trauma is a massive global health issue [@injuries2020; @GBD2020]. Many training programmes have been developed to help physicians in the initial management of trauma patients [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021]. Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular of these programmes and have been used to train over one million physicians worldwide [@acsAtls2018]. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021]. Multiple systematic reviews emphasise the need for such trials [@Mohammad2013; @Jayaraman2014; @Jin2021].
-
-**Aim**
-To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
-
-**Primary Outcome**
-All-cause mortality within 30 days of arrival at the emergency department.
-
-**Trial Design**
-Batched stepped-wedge cluster randomised trial in India.
-
-**Trial Population**
-Adult trauma patients presenting to the emergency department of a participating hospital.
-
-**Sample Size** 
-`r number_to_text(clusters)` clusters and `r number_to_text(sample.size)` patients.
-
-**Eligibility Criteria**
-
-*Cluster* will be hospitals with a baseline admission rate of at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months, that provides surgery and orthopaedic emergency services around the clock, and where no more than 25% of initial trauma care providers trained in a formalised trauma life support training programme.
-
-*Patients* will at least 15 years old, who present to the emergency department of participating hospitals with a history of trauma occuring less than 48 hours before arrival, and who are admitted or die between and admission, or who are transferred from the emergency department of a participating hospital to another hospital for admission.
-
-**Intervention** 
-The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
-
-**Ethical Considerations** 
-We will approach for informed consent for follow up once they are admitted or telephonically if they are transferred. In-hospital data collection from medical records will be conducted under a waiver of informed consent. Patients will be informed about the trial and their right to opt out of data collection. Patients will be informed that they can withdraw their data from the trial at any time before final analysis of the data.
-
-**Trial Period**
-2024-10-01 to 2029-10-01
+{{< include synopsis.qmd >}}
 
 \newpage
 
@@ -244,8 +208,7 @@ To compare the effects of ATLS^®^ training with standard care on outcomes in ad
 
 # Regulatory approvals and trial registration
 
-This trial will be submitted to the Health Ministry Screening Committee at the Indian Council for Medical Research for their approval, and registered with Clinical Trials Registry-India and ClinicalTrials.gov. 
-
+This trial will be submitted to the Health Ministry Screening Committee at the Indian Council for Medical Research for their approval, and registered with Clinical Trials Registry-India and ClinicalTrials.gov. We will apply for ethical approvals from each participating hospital, The George Institute for Global Health in India and the Swedish Ethical Review Authority.
 # Trial design and procedures
 
 ## Overall trial design 
@@ -376,7 +339,7 @@ Other than implementing another formalised trauma life support training programm
 
 ## Randomization
 
-We will assign clusters to batches as they are found to be eligible and receive ethical approval, and will randomise the clusters to intervention implementation sequences within batches[^todo:randomisation]. Randomisation will be stratified by anticipated cluster size. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
+We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from different regions to optimize trial logistics. We will randomize the clusters alloted to each batch to the different intervention implementation sequences within that batch[^todo:randomisation]. We will balance the randomization within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomization. We will conceal the randomization order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
 
 [^todo:randomisation]: **TODO** Add details on software and methods used to randomise clusters.
 
@@ -791,7 +754,7 @@ knitr::include_graphics("./combined-power-curves.pdf")
 
 ### Interim analysis
 
-There will be one interim analyses after half of the batches have completed the trial. The purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The final purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included.The interim analyses will be assessed by the independent Data Safety Monitoring committee.
+There will be one interim analyses after half of the batches have completed the trial. The first purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The second purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included. The interim analyses will be assessed by the independent Data Safety Monitoring committee.
 
 ## Quality Control and Quality Assurance
 
@@ -867,11 +830,11 @@ collected.
 
 ## Ethical review of the trial
 
-The final protocol will be submitted for ethical review at all participating hospitals, where possible, as well as the Swedish Ethical Review Atuhortiy.
+The final protocol will be submitted for ethical review at all participating hospitals, where possible, as well as the The George Institute for Global Health in India and Swedish Ethical Review Atuhortiy.
 
 ## Procedure for obtaining informed consent
 
-We will apply for a waiver of informed consent from the ethical review boards at the participating hospitals for collection of data from medical records including outcomes that are considered routinly collected data. We do this because it will not be possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training. All patients will however be informed about the study and will be given the opportunity have their data deleted before final data analysis. 
+We will apply for a waiver of informed consent for collection of data from medical records including outcomes that are considered routinly collected data. We do this because it will not be possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training. All patients will however be informed about the study and will be given the opportunity have their data deleted before final data analysis. 
 
 Clinical research coordinators will obtain informed consent from patients or a patient representative for follow up through interveiews. The clinical research coordinators will approach patients or patient representatives for consent in person after admission. If a patient is transferred to another hospital before the patient has had an opportunity to consent, then the clinical research coordinators will contact the patient or patient representative by phone.
 
