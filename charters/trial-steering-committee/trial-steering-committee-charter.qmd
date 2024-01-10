@@ -1,0 +1,19 @@
+---
+title: Trial Steering Committee Charter
+subtitle:
+---
+
+# Introduction
+
+This document is designed to outline the composition, mandate, duties, powers, decision-making processes, and interactions of the Trial Steering Committee (TSC) for this study. It will detail the scheduling of meetings, the ways in which information will be communicated to and from the TSC, as well as the regularity and structure of meetings, and how the TSC will coordinate with other committees involved in the trial.
+
+# Trial Synopsis
+
+{{< include ../../protocol/synopsis.qmd >}}
+
+# Roles and Responsibilities
+
+# Early in the trial
+
+All prospective independent members of the Trial Steering Committee (TSC) should review the trial protocol prior to the start of participant enrollment. At that time, the trial will also have been evaluated by the Sponsor and Coordinator, examined by other trial committees, and assessed by a research ethics committee. Should a prospective independent TSC member have significant concerns about any aspect of the trial, such as the protocol, operational details, or ethical issues, they must communicate these concerns to the Trial Management Group. While TSC members are expected to offer critical oversight of the trial as it progresses, they should also be supportive of the trial's objectives and methodologies.
+
