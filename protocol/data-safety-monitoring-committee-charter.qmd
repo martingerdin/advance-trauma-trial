@@ -1,5 +1,5 @@
 ---
-title: Data Safety Monitoring Committee (DSMC) Charter
+title: Data Monitoring Committee (DMC) Charter
 subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
 ---
 
@@ -10,41 +10,49 @@ noacsr::source_all_functions()
 attach(global_variables())
 ```
 
+# Introduction
+
+The purpose of this charter is to define the responsibilities of the Data Monitoring Committee (DMC), detail membership requirements, describe the data to be reviewed, delineate the meeting process, and outline the considerations and policies of the DMC.
+
 # Synopsis
 
 {{< include synopsis.qmd >}}
 
-# Objective of the DSMC
+# DMC Objective
 
-To monitor trial data for each batch, assessing various aspects to ensure the safety of participants, the integrity of the data, and the ethical conduct of the trial.
+The DMC will act in an expert, independent advisory capacity to monitor trial data for each batch, assessing various aspects to ensure the safety of participants, the integrity of the data, and the ethical conduct of the trial.
 
-# DSMC Composition
+# DMC Responsibilities
 
-## Members
+The DMC’s responsibilities are to: 
+- Review the research protocol, study information, informed consent documents, and plans for data safety and monitoring prior to the start of the trial.
+- Monitor trial data for each batch to ensure the safety of participants, the integrity of the data, and the ethical conduct of the trial.
+- Review the results of interim analyses and make recommendations to the trial steering committee regarding the continuation, modification, or termination of the trial.
+- Scrutinize safety events reported by the trial management group.
+- Evaluate external factors potentially impacting trial validity.
+- Operate according to the procedures described in this charter and all procedures of the DMC.   
 
-Comprising four external members with expertise in clinical trial management, biostatistics, medical ethics, and the relevant clinical field.
+# DMC Members
 
-## Selection Process
+The Data Monitoring Committee (DMC) will consist of four external experts specializing in clinical trial management, biostatistics, medical ethics, and the pertinent clinical area. The committee will have a Chair, who should have previous experience as a DMC member and/or Chair and must commit to serving as Chair for the entire study period.
 
-Members are independently selected, ensuring no conflicts of interest with trial sponsors or management.
+The selection of DMC members is a collaborative process involving the trial management group and the DMC Chair. All members must agree to remain part of the DMC for the study's full duration and adhere to the conflict of interest guidelines outlined in this charter.
 
-## Roles and Responsibilities
+While DMC members are generally expected to serve throughout the study, should a member be unable to continue, the circumstances will be recorded, and a new member with equivalent skills and experience will be chosen by the trial management group to fill the vacancy.
 
-The Chairperson coordinates the committee, ensuring effective review of data and adherence to the charter.
+# Conflict of Interest
+
+Members of the Data Monitoring Committee (DMC) must maintain a clear and unbiased stance with regard to the sponsor and the trial management group to ensure objective evaluation of the study data as described below:
+
+- Members of the DMC should have no conflicts of interest, whether actual or perceived, that might affect the conduct, results, or implications of the study. This includes, but is not limited to, employment with the study sponsor, financial interest in the sponsor, involvement in study management or execution, or interaction with study participants during routine clinical care.
+- DMC members should not participate in any other concurrent studies that might present a conflict of interest, especially those competing or related to the study at hand. It's essential for members to reveal and disclose any simultaneous involvement in other DMCs related to similar, related, or competing products.
+- It is crucial for DMC members to be independent from entities like the study sponsor, Institutional Review Boards (IRBs), regulatory authorities, and the study's principal investigator. Individuals closely associated with the study investigators are not suitable to serve on the DMC.
+
+All members must declare any potential conflicts of interest before commencing their role in the DMC. 
 
 # Meetings
 
-## Frequency
-
-Meetings to coincide with the completion of data collection for each batch, so `r number_to_text(batches)` meetings in total during the trial period of `r number_to_text(ceiling(total.months/12))` years.
-
-## Format
-
-Flexible to accommodate in-person or virtual meetings.
-
-## Reporting
-
-Documenting and communicating outcomes and recommendations to the trial management group.
+The DMC meetings will coincide with the completion of data collection for each batch, so `r number_to_text(batches)` meetings in total during the trial period of `r number_to_text(ceiling(total.months/12))` years. The format is flexible to accommodate in-person or virtual meetings. The DMC chair may convene additional meetings to review safety and any other aspect of the study.  
 
 # Data Review Process
 
@@ -66,31 +74,67 @@ Review results of interim analyses. There will be one interim analysis after hal
 
 ## Safety Monitoring
 
-Scrutinize safety events reported by the trial management group.
+The DMC will review safety events, as defined below, continuously as reported by the trial management group.
+
+In alignment with other current trials including critically ill patients, this trial will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and for example mortality is collected as part of the outcomes. 
+
+Instead the presence of the following safety events, if they are life-threatening, prolong hospitalisation or result in meaningful harm to the participant, wil
+
+A comprehensive list of events that can be considered safety events cannot be pre-specified, but the presence of the following safety events will actively assessed:
+
+- Prolonged mechanical ventilation (> 7 days)
+- Initiation of renal replacement therapy
+- Prolonged (> 2 days) or renewed (restart after at least 2 days without) use of vasopressors such as norepinephrine or vasopressin
+
+These events are considered safety events because they suggest pulmonary, renal, septic or bleeding complications and an increase in their occurrence following ATLS^®^ training could indicate that the intervention is harmful. 
+
+These events therefore need to be tracked during the standard care phase as well as the intervention phase, but will only be considered indicative of harm related to the intervention if they occur more often during the intervention phase than during the standard care phase. 
+
+Any other safety events that are identified by the clinical research coordinators or local investigators during the trial will also be reported, for example include missed injuries or missed investigations, which could be suspected if certain injuries or investigations are identified or conducted more often during the standard care phase than during the intervention phase.
+
+All safety events will be recorded in the CRF and reported to the trial management group within 24 hours of its occurrence. The trial management group will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Monitoring Board. 
+
+# Reporting to the DMC
+
+The trial management group will provide the DMC with a report for each batch, including the following information:
+
+- Number of clusters included in the batch
+- Number of clusters dropping out in the batch
+- Number of potentially eligible participants screened in the batch
+- Number of participants who did not consent to out of hospital follow up in the batch
+- Number of participants included in the batch
+- Number of participants lost to follow-up in the batch
+- Summary statistics of included clusters and patient participants, including outcomes and missing data
+- Adherence to randomisation schedule and reasons for non-adherence
+- Protocol deviations
+- Proposed protocol amendments
+- Safety events
+
+Reports to the DMC will be provided without revealing the identify of the included hospitals and clusters. The trial management group will submit the report to the DMC at least two weeks before the scheduled meeting.
 
 # Decision-Making Criteria
 
 ## Stopping Rules
 
-The DSMC should recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The DSMC should also recommend stopping the trial if there is a safety concern based on the reporting of safety events.
+The DMC should recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The DMC should also recommend stopping the trial if there is a safety concern based on the reporting of safety events.
 
 ## Recommendations
 
-Process for making and communicating recommendations to the trial steering committee.
+Decisions on recommendations by the DMC will be determined through a formal vote, achieving consensus by a majority. Should the votes be evenly divided, the Chair of the DMC will make the final decision.
+
+# Reporting to the Trial Management Group
+
+Following each meeting, the DMC will provide a written report to the trial management group detailing the minutes of the meeting and the DMC's recommendations. If no recommendations are made, the report may simply state, “The DMC recommends that the study continue as planned”. If the trial management group accepts the recommendations of the DMC, the trial management group will be responsible for implementing the actions in response. In the event the study must be amended, this will be the responsible of the trial management group. 
+
+If the trial management group rejects the DMC’s recommendations, the trial management group must provide the DMC with a written explanation of their decision and supporting rationale within 7 days. If the DMC has recommended that the study be stopped but the trial management group decides to continue the study, the trial management group will inform all concerned regulatory authorities of its decision to continue the study despite the DMC’s recommendation.  
 
 # Confidentiality
 
-## Data Handling
-
-Ensuring strict confidentiality and integrity in data handling.
-
-## Conflict of Interest
-
-Procedures to identify and manage any conflicts of interest.
+All aspects of the Data Monitoring Committee's (DMC) work — including documents, conversations, and actions — are considered confidential. Members of the DMC should use this information solely for the purpose of executing the DMC's duties. There should be no disclosure of the DMC's internal discussions or advice, whether in writing or verbally, unless such communication is necessary for the DMC to carry out its duties. Individual DMC member must uphold the secrecy of study details when interacting with anyone outside the DMC.
 
 # Charter Amendments
 
-Procedure for Modifications: Defined process for any necessary amendments to the charter.
+This DMC charter can be amended as needed during the course of the study. All amendments will be documented with sequential version numbers and revision dates, and will be recorded in the DMC reports. 
 
 # Appendices
 
