@@ -1,11 +1,13 @@
 ---
-title: Trial Steering Committee Charter
+title: Trial Steering Committee Charter[^source]
 subtitle:
 ---
 
+[^source]: This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02).
+
 # Introduction
 
-This document is designed to outline the composition, mandate, duties, powers, decision-making processes, and interactions of the Trial Steering Committee (TSC) for this study. It will detail the scheduling of meetings, the ways in which information will be communicated to and from the TSC, as well as the regularity and structure of meetings, and how the TSC will coordinate with other committees involved in the trial.
+The purpose of this document is to outline the composition, terms of reference, duties, powers, decision-making processes and interactions of the Trial Steering Committee (TSC) for this trial. It will detail the scheduling of meetings, how information will be communicated to and from the TSC, the regularity and structure of meetings, and how the TSC will coordinate with other committees involved in the trial.
 
 # Trial Synopsis
 
@@ -13,7 +15,68 @@ This document is designed to outline the composition, mandate, duties, powers, d
 
 # Roles and Responsibilities
 
+The TSC's responsibility is to oversee the trial and offer guidance to the Trial Management Group (TMG) through its independent Chairman. The specific roles are:
+
+- Providing expert supervision of the trial;
+- Keeping all non-public trial information confidential;
+- Deciding on the trial's future progression, based on recommendations from the Data Monitoring Committee (DMC) and the TMG;
+- Evaluating regular trial reports from the TMG;
+- Overseeing the completion of CRFs and advising on TMG's future strategies for satisfactory completion;
+- Monitoring follow-up rates and assessing TMG's strategies to address any issues;
+- Sanctioning any changes to the protocol when necessary;
+- Approving TMG's proposals for alterations in the trial's design, including new substudies;
+- Supervising the prompt disclosure of trial findings;
+- Providing input on the policy for publication;
+- Approving and giving feedback on the main trial manuscript.
+
 # Early in the trial
 
-All prospective independent members of the Trial Steering Committee (TSC) should review the trial protocol prior to the start of participant enrollment. At that time, the trial will also have been evaluated by the Sponsor and Coordinator, examined by other trial committees, and assessed by a research ethics committee. Should a prospective independent TSC member have significant concerns about any aspect of the trial, such as the protocol, operational details, or ethical issues, they must communicate these concerns to the Trial Management Group. While TSC members are expected to offer critical oversight of the trial as it progresses, they should also be supportive of the trial's objectives and methodologies.
+All prospective independent members of the Trial Steering Committee (TSC) should review the trial protocol prior to the start of participant enrollment. At that time, the trial will also have been evaluated by the Sponsor and Coordinator, examined by other trial committees, and assessed by a research ethics committee. Should a prospective independent TSC member have significant concerns about any aspect of the trial, such as the protocol, operational details, or ethical issues, they must communicate these concerns to the Trial Management Group. While TSC members are expected to offer critical oversight of the trial as it progresses, they should also be supportive of the trial's objectives and methodologies. TSC members will not be asked to formally sign a contract.
 
+# Composition
+
+The majority of members of the TSC, including the Chair, should be independent of the trial. Non-independent members will also be part of the TSC. The Chair should have previous experience of serving on trial committees and experience of Chairing meetings, and should be able to facilitate and summarise discussions. There will be a facilitator who is a member of either the Sponsor or the Coordinator. The Facilitator will be responsible for arranging meetings of the TSC, coordinating reports, producing and circulating minutes and action points.
+
+# Relationships
+
+The TSC will be responsible for overseeing the trial and will be accountable to the Sponsor and Coordinator. The TSC will receive reports from the TMG and DMC, and will provide advice to the TMG. The TSC will not be involved in the day-to-day running of the trial. No payments will be made to TSC members for their time.
+
+Any competing interests, both real or potential, should be disclosed.  These are not restricted to financial matters – involvement in other trials or intellectual investment could be relevant.  Although members may well be able to act objectively despite such connections, complete disclosure enhances credibility.  
+
+# Organisation of meetings 
+
+The TSC will meet virtually at least yearly. At the request of the TSC or TMG, interim meetings will be organised. Some trial issues will need to be dealt with by email between meetings. TSC members should be prepared for such instances. Effort will be made for all members to attend. Presence will usually be limited to the TSC members, observers from the Sponsor and/or Coordinator and the Facilitator.  Other attendees may be invited for all or part of the meeting by the TSC. The observers are not members of the TSC but may be invited to provide expert input; other observers will be at the discretion of the TSC and the Facilitator but may include members of the TMG other than the PI.
+
+If an independent member does not attend a meeting or provide comments when requested between meetings, it should be ensured that the independent member is available for the next meeting.  If an independent member does not attend the next meeting or provide comments when next requested, they should be asked if they wish to remain part of the TSC.  If an independent member does not attend a third meeting, strong consideration should be given to replacing this member.
+
+# Trial documentation and procedures 
+
+A short report will be prepared by the trial team following a standard template. This report will include completion rates of CRF's, follow-up rates, and any other relevant information. The report will be circulated to the TSC at least 2 weeks prior to the meeting. The TSC will review the report and provide feedback to the TMG. The TSC will also receive reports from the DMC and will provide feedback to the TMG. 
+
+# Decision making
+
+After reviewing the relevant reports, possible decision from the TSC includes:
+
+- No action required, the trial continues as planned;
+- Approving or suggesting changes to the trial protocol;
+- Stopping the trial early based on a recommendation from the DMC;
+
+Every effort should be made to reach a consensus. If a consensus cannot be reached, a vote will be taken. The Chair will have the casting vote. The TSC will be able to make recommendations to the Sponsor and Coordinator.
+
+The TSC is quorate if at least two of the independent members are present, including the chair, and the principal investigator.
+
+# Reporting
+
+The TSC will report their decisions (via the Facilitator) to the TMG who will be responsible for implementing any actions resulting. The TSC may also provide feedback to the DMC and, where appropriate, to the Sponsor and/or Coordinator. Notes of key points and actions will be made by the Facilitator and circulated to the TSC within 1 week of the meeting. The TSC Chair will sign off the final version of minutes or notes.
+
+The TSC is the oversight body for the trial.  However, the TSC should have good reason before deciding not to accept requests from the TMG and recommendations from the DMC.  If there are serious problems or concerns with the TSC decision following an DMC recommendation, a joint meeting of the TSC and DMC should be held.  The information to be shown would depend upon the action proposed and each committees’ concerns.  
+
+Depending on the reason for the disagreement confidential data and/or data by trial and may have to be revealed to all or some of those attending such a meeting: this would be minimised where possible.  The meeting would be Chaired by an external expert who is not directly involved with the trial.
+
+# After the trial 
+
+The TSC will oversee the timely analysis, writing up and publication of the main trial results.  The independent members of the TSC will have the opportunity to read and comment on the proposed main publications of trial data prior to submission and abstracts and presentations during the trial. This review may be concurrent to that of the trial investigators and DMC.  
+
+# Amendments
+
+This TSC charter can be amended as needed during the course of the study. All amendments will be documented with sequential version numbers and revision dates, and will be recorded in the TSC notes. 
