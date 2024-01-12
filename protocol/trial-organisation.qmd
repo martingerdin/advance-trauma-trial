@@ -1,0 +1,72 @@
+---
+title: Trial Organisation
+
+---
+
+# Trial Committees and Groups
+
+## Trial team
+
+### Responsibility
+
+To run the day to day businesses of the trial.
+
+### Composition
+
+Includes the project manager, principal investigator and co-investigators as needed. 
+
+### Relationships
+
+Reports to the TMG, TSC and DMC.
+
+### Meeting frequencies
+
+As often as needed, often weekly or bi-weekly.
+
+## Trial Management Group (TMG)
+
+### Responsibility
+
+Implement actions and decisions made by the TSC and DMC. Suggest protocol amendments to the TSC.
+
+### Composition
+
+### Relationships
+
+### Meeting frequencies
+
+## Trial Steering Committee (TSC)
+
+### Responsibility
+
+The TSC's responsibility is to oversee the trial and offer guidance to the TMG.
+
+### Composition
+
+A majority of independent members, including a chair, and a minority of members with a direct interest in the trial, including the principal investigator. The chair should be independent of the trial, the sponsor, and the coordinator.
+
+### Relationships
+
+Receives reports from the trial team and DMC.
+
+### Meeting frequencies
+
+Yearly, but may be more frequent if needed.
+
+## Data Monitoring Committee (DMC)
+
+### Responsibility
+
+To continuously monitoring trial data to ensure participant safety, data integrity, and ethical conduct. 
+
+### Composition
+
+Four external experts specializing in clinical trial management, biostatistics, medical ethics, and the pertinent clinical area.
+
+### Relationships
+
+Reports to the TSC. Receives reports from the trial team.
+
+### Meeting frequencies
+
+After the completion of each batch, but may be more frequent if needed.
