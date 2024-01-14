@@ -242,9 +242,36 @@ knitr::include_graphics(
 )
 ```
 
+## Eligibility criteria
+
+Our trial include eligibility criteria on three levels: hospitals, clusters and patient participants. We include eligibility on both the hospital and cluster level to facilitate the screening process.
+
+## Hospital selection
+
+Hospitals will be secondary or tertiary hospitals providing trauma care in India.
+
+### Inclusions criteria
+
+**Hospitals** must meet the following criteria:
+
+- admit or refer/transfer for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
+- provide surgical and orthopaedic emergency services around the clock; and
+- have no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
+
+### Exclusion criteria
+
+**Hospitals** are excluded if they meet any of the following criteria:
+
+- the hospital of the cluster implements a formalised trauma life support training programme [^note:concurrent-training-programmes] during the trial period; or
+- the hospital of the cluster plan to implement or implements other major interventions[^note:major-interventions] that affects trauma care during the trial period.
+
+[^note:concurrent-training-programmes]: These include but are not limited to the National Emergency Life Support (NELS) programme, the Basic Trauma Life Support (BTLS) programme, the Pre-Hospital Trauma Life Support (PHTLS) programme, the Trauma Nursing Core Course (TNCC) and the Advanced Trauma Care for Nurses (ATCN) programme.
+
+[^note:major-interventions]: These include but are not limited to implementing of a trauma team approach, opening a trauma centre and  implementing a trauma quality improvement programme.
+
 ## Cluster selection
 
-Clusters are one or more units of physicians providing initial trauma care in the emergency department of tertiary hospitals in India.
+Clusters are one or more units of physicians providing initial trauma care in the emergency department of secondary or tertiary hospitals in India.
 
 ### Inclusion criteria
 
@@ -253,17 +280,6 @@ Clusters are one or more units of physicians providing initial trauma care in th
 - admits or refers/transfers for admission at least 12 patients with trauma per month for at least the last six months, meaning that the hospital of the cluster should admit or refer for admission 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
 - the hospital of the cluster provides surgical and orthopaedic emergency services around the clock; and
 - no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
-
-### Exclusion criteria
-
-**Clusters** are excluded if they meet any of the following criteria:
-
-- the hospital of the cluster plan to implement or implements a formalised trauma life support training programme [^note:concurrent-training-programmes] during the trial period; or
-- the hospital of the cluster plan to implement or implements other major interventions[^note:major-interventions] that affects trauma care during the trial period.
-
-[^note:concurrent-training-programmes]: These include but are not limited to the National Emergency Life Support (NELS) programme, the Basic Trauma Life Support (BTLS) programme, the Pre-Hospital Trauma Life Support (PHTLS) programme, the Trauma Nursing Core Course (TNCC) and the Advanced Trauma Care for Nurses (ATCN) programme.
-
-[^note:major-interventions]: These include but are not limited to implementing of a trauma team approach, opening a trauma centre and  implementing a trauma quality improvement programme.
 
 ### Screening
 
