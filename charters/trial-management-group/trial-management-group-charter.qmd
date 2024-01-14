@@ -1,0 +1,118 @@
+---
+title: Trial Management Group Charter
+subtitle:  "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+abstract: This document is based on the MRC CTU Template Trial Management Group Charter (version 3.01).
+toc: true
+format: 
+  pdf:
+    documentclass: scrartcl
+  docx: default
+---
+
+
+```{r setup}
+#| echo: FALSE
+
+noacsr::source_all_functions()
+attach(global_variables())
+```
+
+# Introduction
+
+The purpose of this document is to describe the membership, terms of reference, roles, responsibilities, authority, decision-making and relationships of the Trial Management Group (TMG) for the this trial, including the timing of meetings, frequency and format of meetings and relationships with other trial committees and groups.
+
+# Trial synopsis
+
+{{< include ../../shared-assets/synopsis.qmd >}}
+
+# Special considerations
+
+{{< include ../../shared-assets/special-considerations.qmd >}}
+
+# Roles and responsibilities
+
+To manage the trial, including the clinical and practical aspects.
+The specific roles of the TMG members will be to:
+- attend TMG meetings and advise on availability for future TMG meetings;
+- input into and comment on the protocol and case report forms;
+- allow contact details to be included in the protocol;
+- promote the trial;
+- screen hospitals and clusters for participation in the trial;
+- develop strategies to encourage inclusion of patient participants and address any issues with inclusion at each trial centre;
+- be involved in the day-to-day running of the trial by supporting the principal investigator and trial team;
+- maintain confidentiality of any trial information that is not in the public domain;
+- respond to trial correspondence and any questions in a timely fashion; 
+- encourage completion of case report forms (CRFs) and monitor reported CRF completion rates;
+- monitor and assess safety events;
+- input into the meetings of the Trial Steering Committee (TSC), if appropriate;
+- input into the meetings of the Data Monitoring Committee (IDMC), when appropriate;
+- provide responses to any issues or concerns raised by TSC;
+- consider the implications of any recommendations made by the DMC and accepted by the TSC;
+- be aware of accumulating external evidence and assess its impact and relevance; and
+- input into the interpretation and writing up of the trial results.
+
+# Before or early in the trial
+
+The TMG will finalise the protcol and initiate screening of hospitals and clusters for participation in the trial. 
+
+TMG members will not formally sign a contract.  
+
+# Composition
+
+Membership will provide broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator.  The TMG will include the following members:
+
+- Members will be listed here
+
+The Principal Investigator will be a member of the TSC and must attend all TSC meetings. The Principal Investigator should be available to attend DMC meetings. The other TMG members will not usually be expected to routinely attend TSC or DMC meetings but may attend sessions when necessary and appropriate. The vice-Chair will assume the responsibilities of the Chair when the Chair is not available.
+
+# Relationships
+
+The responsibilities of each trial committee are summarised in Table X and visualised in Figure X. 
+
+# Organisation of meetings
+
+The TMG will meet monthly to every six months, depending on the intensity of the trial. It is expected that more meetings are required early and late in the trial. The meetings will be primarily virtual and will be organised by the trial team. On all issues, every effort should be made to achieve consensus. The role of the Chair is to summarise discussions and encourage consensus; it is therefore best for the Chair to give their own opinion last. The TMG is quorate if the Chair and at least four other members are present.
+
+Members will be expected to send apologies in advance of any meeting they cannot attend.  If a member neither attends nor sends apologies for a meeting, every effort will be made to ensure their availability for the next meeting.  If a member does not attend nor send apologies for the following meeting, they will be asked if they wish to remain part of the TMG. If a member does not attend a third meeting in a row, they will be removed from the TMG, unless there are particular extenuating circumstances.
+
+# Reporting
+
+The TMG will be provided with reports of inclusion rates baseline characteristics, follow-up rates, CRF return and completeness rates, and safety data. The TMG will also be provided with reports of any other relevant information, such as external evidence that may impact on the trial.
+
+A standard report template will be used to provide information to the TSC.Additional information may be sent from the TMG to the TSC by writing via the TSC Facilitator. A short summary of each meeting with any action points clearly marked will be made. The TMG Chair will sign off these notes. The notes will be kept by the Sponsor and Coordinator.
+
+The TSC is the oversight body for the trial.  If the TMG has serious problems or concerns with a TSC decision a meeting of these groups will be held. The information to be shown would depend upon the action proposed and the TSC’s or TMG’s concerns.  Depending on the reason for the disagreement particularly sensitive trial data may have to be revealed to all or some of those attending such a meeting. The meeting would be Chaired by the DMC Chair or an external expert who is not directly involved with the trial.
+
+# Decision-making
+
+The TMG is responsible for the day-to-day running of the trial and can make decisions appropriate to this role.  However, the TSC is the oversight body for the trial.
+
+## TMG to TSC
+
+The TMG should refer to the TSC in some instances.  The following are examples:
+
+- Request for additional interim analyses owing to concerns raised by external evidence;
+- Stopping inclusion due to slow inclusion; 
+- Modifying target inclusion, or pre-analysis follow-up, based on any change to the assumptions underlying the original trial sample size calculation (but not on any emerging differences);
+- Proposing substantial changes to the protocol, patient information sheet, eligibility criteria and other trial documentation; and
+- Request for endorsement for the early presentation of results.
+
+## TMG to DMC 
+The TMG can make recommendations to the DMC.  Possible recommendations from the TMG to the IDMC could include:
+
+- Proposal of extra analyses for review by IDMC; and
+- Addition of new trial sites.
+
+## TMG alone
+
+Without referral to other committees, the TMG can:
+
+- Propose strategies for dealing with poor inclusion rates, data quality or compliance with CRFs and/or follow-up schedules according to consistency checks or site monitoring reports.
+
+# After the trial
+
+At the end of the trial there will be meetings of the TMG to discuss the final data. The core of the Writing Committee will be drawn from the TMG. TMG members will promptly return comments on any circulated drafts. The DMC and TSC members may be invited to give advice about data presentation and interpretation. Regardless of the authorship policy of the trial, TMG members will be named and their affiliations listed in the main report, unless they explicitly request otherwise.
+
+# Amendments
+
+Amendments to the TMG Charter will be made by the TMG and approved by the TSC. Amendments to the TMG Charter will be reported to the TSC and DMC.

@@ -1,9 +1,20 @@
 ---
-title: Trial Steering Committee Charter[^source]
+title: Trial Steering Committee Charter
 subtitle:  "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+abstract: This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02).
+toc: true
+format: 
+  pdf:
+    documentclass: scrartcl
+  docx: default
 ---
 
-[^source]: This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02).
+```{r setup}
+#| echo: FALSE
+
+noacsr::source_all_functions()
+attach(global_variables())
+```
 
 # Introduction
 
@@ -11,7 +22,7 @@ The purpose of this document is to outline the composition, terms of reference, 
 
 # Trial Synopsis
 
-{{< include ../../protocol/synopsis.qmd >}}
+{{< include ../../shared-assets/synopsis.qmd >}}
 
 # Special considerations
 

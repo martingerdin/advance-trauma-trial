@@ -16,7 +16,7 @@ The purpose of this charter is to define the responsibilities of the Data Monito
 
 # Synopsis
 
-{{< include synopsis.qmd >}}
+{{< include ../../shared-assets/synopsis.qmd >}}
 
 # DMC Objective
 
