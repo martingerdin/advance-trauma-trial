@@ -4,7 +4,7 @@ Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care o
 <!-- **Acronym** -->
 
 **Rationale**
-Trauma is a massive global health issue. Many training programmes have been developed to help physicians in the initial management of trauma patients. Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular of these programmes and have been used to train over one million physicians worldwide. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes. Multiple systematic reviews emphasise the need for such trials.
+Trauma is a massive global health issue. Many training programmes have been developed to help physicians in the initial management of trauma patients. Among these programmes, Advanced Trauma Life Support^®^ (ATLS^®^) is the most popular, having trained over one million physicians worldwide. Despite its widespread use, there are no controlled trials showing that ATLS^®^ improves patient outcomes. Multiple systematic reviews emphasise the need for such trials.
 
 **Aim**
 To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
@@ -31,7 +31,7 @@ Adult trauma patients presenting to the emergency department of a participating 
 The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
 
 **Ethical Considerations** 
-We will approach for informed consent for follow up once they are admitted or telephonically if they are transferred. In-hospital data collection from medical records will be conducted under a waiver of informed consent. Patients will be informed about the trial and their right to opt out of data collection. Patients will be informed that they can withdraw their data from the trial at any time before final analysis of the data.
+We will use an opt-out consent approach, in which consent is presumed unless actively declined. Note that consent here refers to consent to data collection, as it will not be possible for patients to opt out from being subjected to the intervention. This approach is justified because the trial can be considered to involve only minimal risk and the data collection is non-invasive and mostly involve extracting routinely collected data from medical records. Patient participants will be informed about the study and their right to opt out once they are admitted or telephonically if they are transferred. Patients will be informed that they can withdraw their data from the trial at any time before final analysis of the data.
 
 **Trial Period**
-2024-10-01 to 2029-10-01
+October 1, 2024, to September 30, 2029

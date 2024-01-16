@@ -17,9 +17,9 @@ Clinical Trials Registry-India ID:
 
 ClinicalTrials.gov ID:
 
-Sponsor: Karolinska Institutet
+Coordinator:
 
-Co-sponsor: The George Institute for Global Health, India
+Sponsor: 
 
 \newpage
 
@@ -168,7 +168,7 @@ rows as needed.*
 
 # Synopsis
 
-{{< include synopsis.qmd >}}
+{{< include ../shared-assets/synopsis.qmd >}}
 
 \newpage
 
@@ -208,7 +208,7 @@ To compare the effects of ATLS^®^ training with standard care on outcomes in ad
 
 # Regulatory approvals and trial registration
 
-This trial will be submitted to the Health Ministry Screening Committee at the Indian Council for Medical Research for their approval, and registered with Clinical Trials Registry-India and ClinicalTrials.gov. We will apply for ethical approvals from each participating hospital, The George Institute for Global Health in India and the Swedish Ethical Review Authority.
+We will submit this trial to the Health Ministry Screening Committee at the Indian Council for Medical Research for their approval. We will apply for ethical approvals from each participating hospital, The George Institute for Global Health in India and the Swedish Ethical Review Authority. We will register this trial with Clinical Trials Registry-India and ClinicalTrials.gov.
 
 # Trial design and procedures
 
@@ -216,7 +216,7 @@ This trial will be submitted to the Health Ministry Screening Committee at the I
 
 We will conduct a batched stepped-wedge cluster randomised controlled trial (see @fig-trial-design). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be at least one unit of physicians performing initial resuscitation of trauma patients in the emergency department of tertiary hospitals in India. The number of units that we will train in each hospital will depend on the sizes of these units and the volumes of patients that they see. If more than one unit is trained in the same hospital these units will be considered one unit for the purpose of randomization. We choose this approach for two reasons: 1) it will not be logistically or financially feasible to train all physician in a given hospital; and 2) we need to balance cluster size with the number of clusters. We will conduct this trial in India because physicians providing initial trauma care in India are so far not routinely trained in ATLS^®^ or similar programmes.
 
-We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a `r number_to_text(transition.months)` month transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)`. 
+We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a `r number_to_text(transition.months)` month transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)` months. 
 
 ## Design justification
 
@@ -256,7 +256,7 @@ Hospitals will be secondary or tertiary hospitals providing trauma care in India
 
 - admit or refer/transfer for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
 - provide surgical and orthopaedic emergency services around the clock; and
-- have no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
+- have at most 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme, like ATLS^®^ or Primary Trauma Care (PTC).
 
 ### Exclusion criteria
 
@@ -309,20 +309,27 @@ Patient participants are adult trauma patients who presents to the emergency dep
 
 ### Screening
 
-Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. Once the patient is admitted, they will approach eligible patients or their representatives to provide study information and obtain informed consent for follow up. They will also inform patients that they can opt out of in-hospital data collection. Patients who are transferred before they have had an opportunity to consent will be contacted by phone. Phone numbers will be extracted from the emergency department registers.
+Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. Once the patient is admitted, the clinical research coordinators will approach eligible patients or their representatives to provide study information and inform participants that they can opt out from the study at any time before final analysis. Patients who are transferred before they have had an opportunity to be informed about the study will be contacted by phone. Phone numbers will be extracted from the emergency department registers, and will be securely held only by the clinical research coordinators at each sites
 
 ### Withdrawal criteria
 
-Patient participants can choose to withdraw their consent to follow up at any time. If they withdraw their consent to follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent to follow up or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
+Patient participants can choose to withdraw their consent at any time before the final analysis. If they withdraw their consent the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
 
 ## Procedures
 
 @tbl-procedures shows an overview of trial procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
-```{r tbl-procedures}
-#| label: tbl-procedures
+<!-- This is a hack to get the cross-reference to work. -->
+
+| |
+|-|
+| |
+
+: Overview of trial procedures {#tbl-procedures}
+
+```{r}
 #| echo: FALSE
-#| tbl-cap: "Overview of trial procedures"
+#| message: FALSE
 
 create_patient_procedure_table()
 ```
@@ -333,8 +340,7 @@ This trial does not include biological sampling.
 
 ## End of Trial
 
-The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and
-follow-up. Decisions on premature termination are taken by the sponsor.
+The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and follow-up. Decisions on premature termination are taken by the Trial Steering Committee and Trial Management Group.
 
 ## Intervention and control treatment
 
@@ -779,64 +785,27 @@ There will be one interim analyses after half of the batches have completed the 
 
 ## Quality Control and Quality Assurance
 
-*There may be less stringent rules for low-intervention clinical trials
-(see cover page), e.g. limited monitoring requirements.*[^todo:quality-control]
-
-[^todo:quality-control]: **TODO TGI** Add a section on quality control.
+The George Institute for Global Health - India will ensure proper conduct of the trial through quality control measures including on-site training of personnel, standard operating procedures, ongoing quality metrics assessment, review of missing data and outliers, and round-the-clock availability of coordinating center personnel and Principal Investigators. The trial will strictly follow ICH GCP principles, Indian regulations, and George Institute procedures. The trial operations staff from the George Institute India will train local investigators, and trial site staff, before the trial, with continuous documentation in the site master file. All documentation will be stored securely and retained according to regulatory requirements. 
 
 ## Quality Assurance and Sponsor oversight
 
-*In this section, describe which quality assurance systems the trial
-will have to ensure and control the quality as well as the sponsor's
-methods for having oversight of the trial's quality. For example,
-communication plan, training of trial personnel, working manuals,
-meetings, central/local monitoring, audits, etc.*
+The Trial Management Group and Trial Team, comprising key project leaders and managers, will play a pivotal role in ensuring the highest standards of quality assurance and effective sponsor oversight throughout the trial. These groups will be responsible for facilitating consistent communication, maintaining fidelity in study implementation, and overseeing the quality of data collection. 
 
-*The sponsor's quality-related work must be based on a risk analysis of
-the trial as a whole: design, conduct, data collection, evaluation,
-reporting and archiving.*
+To achieve these objectives, the groups will implement a comprehensive communication plan and provide extensive training to site personnel. The training will cover not only the study protocol but also practical aspects of various systems, supplemented by both written and electronic materials designed to educate study and clinical emergency staff.
 
-*To enable monitoring and auditing, the protocol or other written
-agreement must specify that the investigators allow trial-related
-monitoring, auditing, and regulatory inspections by providing direct
-access to the CRF, subject's medical record and other source data and
-other trial-specific documentation. Similarly, this also must be
-apparent to the subjects in the Subject Information and Informed Consent
-Form.*
+The trial's quality assurance systems will be meticulously designed based on a thorough risk analysis. A key component of our quality assurance strategy will include the development and implementation of detailed operational manuals and regular meetings. These tools and interactions will ensure that all trial personnel will be used to uphold the trial's quality standards.
 
-*The sponsor is responsible for the trial's monitoring plan, which
-should be based on the identified risks, follow-up of risks during the
-trial and timeliness of the monitoring plan.*[^todo:quality-assurance]
-
-[^todo:quality-assurance]: **TODO TGI** Add a section on quality assurance.
+Central to our oversight approach will be a comprehensive monitoring and auditing plan. This plan will be tailored based on the identified risks associated with the trial. Through these comprehensive measures, the trial management group, in conjunction with the hospital staff, will ensure that the trial is conducted with the utmost rigor, adhering to the highest standards of quality assurance and effective sponsor oversight.
 
 ## Monitoring
 
-*The minimum level for quality control is that the following can be
-verified:*
+We will implement a multi-tiered monitoring strategy, including centralized data consistency checks, statistical monitoring, and selective on-site evaluations. Key integrity measures include source data verification, data entry validation, and regular audits. Any protocol deviations will be thoroughly documented, with serious breaches promptly addressed to ensure data integrity
 
--   *that subjects exist*
-
--   *that informed consent has been signed prior to execution of any
-    trial-specific actions*
-
--   *that subjects are included according to the protocol's inclusion
-    and exclusion criteria*
-
--   *that the trial's main parameters and safety reporting are handled
-    correctly*
-
-*Other tasks for a monitor include verifying that the trial's essential
-documents are complete (according to chapter 8, ICH-GCP (E6(R2)).*[^todo:monitoring]
-
-[^todo:monitoring]: **TODO TGI** Add a section on monitoring.
+Monitors from coordinating centres will assist investigators in maintaining high ethical, scientific, technical, and regulatory quality. Monitoring visits will review protocol adherence, participant recruitment, adverse event reporting, compliance with study procedures, and regulatory adherence. Regular remote monitoring of the web-based database will be conducted to ensure data integrity, using validation and consistency rules and regular data cleaning.
 
 # Deviations, serious breaches and other reporting obligations
 
-The responsible investigator shall, without delay, report to the sponsor any serious breaches and deviations from the trial protocol, ICH-GCP and other regulations that significantly and directly affect, or with high likelihood could affect, the subjects' safety and integrity or the reliability and robustness of the data generated in the trial. The sponsor should assess the suspected serious breach and the consequences of deviations that have occurred. Minor deviations that do not affect subjects' integrity or safety, nor significantly affect the trial's scientific value, are documented in the
-trial documentation of the principal investigator and the sponsor and
-appropriate measures shall be taken. The deviations must be recorded in
-the clinical trial report.
+The responsible investigator shall, without delay, report to the sponsor any serious breaches and deviations from the trial protocol, ICH-GCP and other regulations that significantly and directly affect, or with high likelihood could affect, the subjects' safety and integrity or the reliability and robustness of the data generated in the trial. The sponsor should assess the suspected serious breach and the consequences of deviations that have occurred. Minor deviations that do not affect subjects' integrity or safety, nor significantly affect the trial's scientific value, are documented in the trial documentation of the principal investigator and the sponsor and appropriate measures shall be taken. The deviations must be recorded in the clinical trial report.
 
 # Audits and inspections 
 
@@ -853,17 +822,19 @@ collected.
 
 The final protocol will be submitted for ethical review at all participating hospitals, where possible, as well as the The George Institute for Global Health in India and Swedish Ethical Review Atuhortiy.
 
-## Procedure for obtaining informed consent
+## Procedure for obtaining consent
 
-We will apply for a waiver of informed consent for collection of data from medical records including outcomes that are considered routinly collected data. We do this because it will not be possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training. All patients will however be informed about the study and will be given the opportunity have their data deleted before final data analysis. 
+We will use an opt-out consent approach, in which consent is presumed unless actively declined. Note that the consent here refers to consent for data collection, because it will not be possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training.
 
-Clinical research coordinators will obtain informed consent from patients or a patient representative for follow up through interveiews. The clinical research coordinators will approach patients or patient representatives for consent in person after admission. If a patient is transferred to another hospital before the patient has had an opportunity to consent, then the clinical research coordinators will contact the patient or patient representative by phone.
+This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive and mostly rely on extraction of routinely collected data from medical records. Clinical research coordinators will inform patient participants about the study and they will be given the opportunity have their data deleted before final data analysis. 
+
+The clinical research coordinators will approach patients or patient representatives to provide this information in person after admission. If a patient is transferred to another hospital before the patient has had an opportunity to receive the study information, then the clinical research coordinators will contact the patient or patient representative by phone.
 
 ## Data protection
 
 We will ensure that appropriate agreements and/or other appropriate protective measures are taken to ensure that the data processing is performed in accordance with the provisions of the relevant legislation, before any data transfer takes place.
 
-In the study information provided to patient participants, they will be fully informed about how their trial data will be collected, used and disclosed. The study information and the informed consent form will explain how trial data are stored to maintain confidentiality in accordance with national data legislation[^todo:describe-data-protection]. All information processed by the sponsor will be pseudonymized.
+In the study information provided to patient participants, they will be fully informed about how their trial data will be collected, used and disclosed. The study information will explain how trial data are stored to maintain confidentiality in accordance with national data legislation[^todo:describe-data-protection]. All information processed by the sponsor will be pseudonymized.
 
 The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the patient participant's medical
 history.
@@ -898,8 +869,7 @@ source data in the trial (source data reference document) should be included in 
 
 Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document.
 
-Access to trial-related documentation, such as patient participants' medical
-records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access to patient participants' medical records will require a confidentiality agreement to be signed by the person in charge of the medical records at the trial site and by the monitor and auditor, if applicable. Access will also be granted in the context of regulatory inspections.[^todo:check-confidentiality-agreement]
+Access to trial-related documentation, such as patient participants' medical records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access to patient participants' medical records will require a confidentiality agreement to be signed by the person in charge of the medical records at the trial site and by the monitor and auditor, if applicable. Access will also be granted in the context of regulatory inspections.[^todo:check-confidentiality-agreement]
 
 [^todo:create-isf]: **TODO:** Create an ISF template.
 
