@@ -23,6 +23,8 @@ Adult trauma patients presenting to the emergency department of a participating 
 
 **Eligibility Criteria**
 
+*Hospitals* are secondary or tertiary hospitals in India that admit or refer/transfer for admission at least 400 patients with trauma per year. 
+
 *Clusters* are one or more units of physicians providing initial trauma care in the emergency department of tertiary hospitals in India.
 
 *Patients participants* are adult trauma patients who presents to the emergency department of participating hospitals and are admitted or transferred for admission.
