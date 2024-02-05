@@ -32,6 +32,7 @@ The purpose of this document is to describe the membership, terms of reference, 
 # Roles and responsibilities
 
 To manage the trial, including the clinical and practical aspects.
+
 The specific roles of the TMG members will be to:
 - attend TMG meetings and advise on availability for future TMG meetings;
 - input into and comment on the protocol and case report forms;
@@ -39,7 +40,7 @@ The specific roles of the TMG members will be to:
 - promote the trial;
 - screen hospitals and clusters for participation in the trial;
 - develop strategies to encourage inclusion of patient participants and address any issues with inclusion at each trial centre;
-- be involved in the day-to-day running of the trial by supporting the principal investigator and trial team;
+- be involved in the day-to-day running of the trial by supporting the trial team;
 - maintain confidentiality of any trial information that is not in the public domain;
 - respond to trial correspondence and any questions in a timely fashion; 
 - encourage completion of case report forms (CRFs) and monitor reported CRF completion rates;
@@ -79,9 +80,11 @@ Members will be expected to send apologies in advance of any meeting they cannot
 
 The TMG will be provided with reports of inclusion rates baseline characteristics, follow-up rates, CRF return and completeness rates, and safety data. The TMG will also be provided with reports of any other relevant information, such as external evidence that may impact on the trial.
 
-A standard report template will be used to provide information to the TSC.Additional information may be sent from the TMG to the TSC by writing via the TSC Facilitator. A short summary of each meeting with any action points clearly marked will be made. The TMG Chair will sign off these notes. The notes will be kept by the Sponsor and Coordinator.
+A standard report template will be used to provide information to the TSC. Additional information may be sent from the TMG to the TSC by writing via the TSC Facilitator. A short summary of each meeting with any action points clearly marked will be made. The TMG Chair will sign off these notes. The notes will be kept by the Sponsor and Coordinator.
 
-The TSC is the oversight body for the trial.  If the TMG has serious problems or concerns with a TSC decision a meeting of these groups will be held. The information to be shown would depend upon the action proposed and the TSC’s or TMG’s concerns.  Depending on the reason for the disagreement particularly sensitive trial data may have to be revealed to all or some of those attending such a meeting. The meeting would be Chaired by the DMC Chair or an external expert who is not directly involved with the trial.
+The TSC is the oversight body for the trial. If the TMG has serious problems or concerns with a TSC decision a meeting of these groups will be held. The information to be shown would depend upon the action proposed and the TSC’s or TMG’s concerns. 
+
+Depending on the reason for the disagreement particularly sensitive trial data may have to be revealed to all or some of those attending such a meeting. The meeting would be Chaired by the DMC Chair or an external expert who is not directly involved with the trial.
 
 # Decision-making
 
@@ -97,8 +100,9 @@ The TMG should refer to the TSC in some instances.  The following are examples:
 - Proposing substantial changes to the protocol, patient information sheet, eligibility criteria and other trial documentation; and
 - Request for endorsement for the early presentation of results.
 
-## TMG to DMC 
-The TMG can make recommendations to the DMC.  Possible recommendations from the TMG to the IDMC could include:
+## TMG to DMC
+
+The TMG can make recommendations to the DMC. Possible recommendations from the TMG to the IDMC could include:
 
 - Proposal of extra analyses for review by IDMC; and
 - Addition of new trial sites.
