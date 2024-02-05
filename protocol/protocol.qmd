@@ -854,7 +854,7 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data using a paper based Case Record Form (CRF)[^todo:crf], which is then transferred to an electronic CRF (eCRF).  Paper-based CRFs will be securely stored on-site and archived for as long as required by local regulations, but at least 10 years. Access to the eCRF is provided using a Virtual Private Network with two-factor authentication[^todo:check-data-management]. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764). 
+Clinical research coordinators will collect data using a paper based Case Record Form (CRF)[^todo:crf], which is then transferred to an electronic CRF (eCRF). Paper-based CRFs will be securely stored on-site and archived for as long as required by local regulations, but at least 10 years. Access to the eCRF is provided using a Virtual Private Network with two-factor authentication[^todo:check-data-management]. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764). 
 
 [^todo:crf]: **TODO:** Create a CRF template and attach.
 
@@ -948,7 +948,7 @@ with national regulations.
 
 # Trial Organization
 
-**More information will be added here**
+{{< include ../shared-assets/trial-organization.qmd >}}
 
 # Funding
 
