@@ -172,6 +172,10 @@ rows as needed.*
 
 \newpage
 
+# Special considerations
+
+{{< include ../shared-assets/special-considerations.qmd >}}
+
 # Background and rationale
 
 Each year, 4.3 million people die from trauma [@injuries2020]. Among people aged 10-24 and 25-49 years trauma is the largest cause of disability adjusted life years [@GBD2020]. Most deaths from trauma occur within the first 24-48 hours  [@Rauf2019]. Traumatic brain injury and exsanguination are the most common causes of trauma deaths [@Roy2017; @Callcut2019]. Most preventable trauma deaths are caused by clinical judgement errors during initial resuscitation or early care including airway management and haemorrhage control, even though the deaths occur later during the hospital stay [@Roy2017; @Ghorbani2018].
@@ -948,11 +952,12 @@ with national regulations.
 
 # Trial Organization
 
-{{< include ../shared-assets/trial-organization.qmd >}}
+{{< include ../shared-assets/trial-organisation.qmd >}}
 
 # Funding
 
 - Swedish Research Council (reg. no. 2023-03128)
+- Laerdal Foundation (reg. no. 2023-0297)
 
 # Notification of trial completion, reporting, and publication
 
