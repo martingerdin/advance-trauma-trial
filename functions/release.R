@@ -1,22 +1,31 @@
-release <- function(major = FALSE, minor = TRUE, patch = FALSE) {
-    ## Define borrowed functions
+release <- function(major = NULL, minor = NULL, patch = NULL) {
+    # Define borrowed functions
     assert_that <- assertthat::assert_that
     `%>%` <- magrittr::`%>%`
 
-    ## Check arguments
+    # Prompt for confirmation and set patch to TRUE and major and minor to FALSE if all are NULL
+    if (is.null(major) && is.null(minor) && is.null(patch)) {
+        message <- "No version increment specified. Increment patch version?"
+        patch <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
+        major <- FALSE
+        minor <- FALSE
+    }
+
+    # Check arguments
     assert_that(major || minor || patch, msg = "At least one of major, minor or patch must be TRUE")
+
     assert_that(!(major && minor), msg = "major and minor cannot both be TRUE")
     assert_that(!(major && patch), msg = "major and patch cannot both be TRUE")
     assert_that(!(minor && patch), msg = "minor and patch cannot both be TRUE")
 
-    ## Read current version from _variables.yml
+    # Read current version from _variables.yml
     description <- yaml::read_yaml("_variables.yml")
     version <- description$version %>%
         stringr::str_split("\\.") %>%
         unlist() %>%
         as.numeric()
 
-    ## Increment version
+    # Increment version
     if (major) {
         version[1] <- version[1] + 1
         version[2] <- 0
@@ -29,15 +38,15 @@ release <- function(major = FALSE, minor = TRUE, patch = FALSE) {
     }
     new.version.string <- paste0(version[1], ".", version[2], ".", version[3])
 
-    ## Update version
+    # Update version
     description$version <- new.version.string
 
-    ## Update date
+    # Update date
     description$date <- as.character(lubridate::today())
 
-    ## Write description
+    # Write description
     yaml::write_yaml(description, "_variables.yml")
 
-    ## Compile protocol
+    # Compile protocol
     quarto::quarto_render("protocol.qmd", output_format = "all")
 }

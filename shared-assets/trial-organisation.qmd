@@ -10,6 +10,7 @@ flowchart
     TSC[<b>Trial Steering Committee</b><hr>Oversees the trial and<br>offers guidance to the TMG]
     DMC[<b>Data Monitoring Committee</b><hr>Monitors trial data to ensure<br>participant safety, data integrity,<br>and ethical conduct]
     TT <--> TMG
+    TMG --> DMC
     TT --> DMC
     TT --> TSC
     TSC --> TMG
@@ -77,7 +78,7 @@ Yearly, but may be more frequent if needed.
 
 #### Responsibility
 
-To continuously monitoring trial data to ensure participant safety, data integrity, and ethical conduct. 
+To review results of interim analyses, safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics.
 
 #### Composition
 

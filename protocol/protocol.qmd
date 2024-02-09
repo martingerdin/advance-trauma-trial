@@ -164,17 +164,15 @@ rows as needed.*
 
 -->
 
-\newpage
+# Changelog
+
+**After version 1.0.0 is approved, all major and minor version updates to the protocol will be documented here. A full changelog will also be kept separately, that documents all "patch" updates as well (for example spelling and grammar edits).**
 
 # Synopsis
 
 {{< include ../shared-assets/synopsis.qmd >}}
 
 \newpage
-
-# Special considerations
-
-{{< include ../shared-assets/special-considerations.qmd >}}
 
 # Background and rationale
 
@@ -273,6 +271,10 @@ Hospitals will be secondary or tertiary hospitals providing trauma care in India
 
 [^note:major-interventions]: These include but are not limited to implementing of a trauma team approach, opening a trauma centre and  implementing a trauma quality improvement programme.
 
+### Screening
+
+The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-sec-appendix-hospital-screening-interveiew-instrument). To avoid excluding centres we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019]. 
+
 ## Cluster selection
 
 Clusters are one or more units of physicians providing initial trauma care in the emergency department of secondary or tertiary hospitals in India.
@@ -287,9 +289,7 @@ Clusters are one or more units of physicians providing initial trauma care in th
 
 ### Screening
 
-The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above. The data sources for screening will be hospital records and interviews with hospital staff. The screening will be standardised using a cluster screening instrument (see Appendix @sec-appendix-cluster-screening-instrument) in REDCap and logged in the associated REDCap database.
-
-We will strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will therefore discuss each eligible centre individually in the trial management group before deciding whether to include it in the trial. To avoid excluding centres we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period.
+The screening of clusters is part of the hospital screening process. 
 
 ## Patient participants selection
 
@@ -452,7 +452,7 @@ These events are considered safety events because they suggest pulmonary, renal,
 
 We will also report any other safety events that we identify during the trial, and the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of such safety events could include missed injuries or missed investigations, which could be suspected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
 
-All safety events will be recorded in the CRF and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Safety Monitoring Board. 
+All safety events will be recorded in the CRF and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Monitoring Committee. 
 
 ### Follow up of Safety Events
 
@@ -715,12 +715,6 @@ from the trial). Describe follow-up of subjects with regards to safety
 after the trial is completed.*
 -->
 
-## Independent Data Safety Monitoring Committee
-
-An independent Data Safety Monitoring Committee, comprising four external members, will review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. They will also review the results of interim analysis of outcomes and review safety events reported by the trial management group. The Data Safety Monitoring Committee can at any time, based on its reviews, recommend to terminate the trial.[^todo:idmc]
-
-[^todo:idmc]: **TODO** Identify four members of the independent Data Safety Monitoring committee.
-
 ## Statistics
 
 ### General principles
@@ -782,16 +776,15 @@ knitr::include_graphics("./combined-power-curves.pdf")
 
 ```
 
-
 ### Interim analysis
 
-There will be one interim analyses after half of the batches have completed the trial. The first purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The second purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included. The interim analyses will be assessed by the independent Data Safety Monitoring committee.
+There will be one interim analyses after half of the batches have completed the trial. The first purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The second purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included. The interim analyses will be assessed by the Data Monitoring Committee.
 
 ## Quality Control and Quality Assurance
 
 The George Institute for Global Health - India will ensure proper conduct of the trial through quality control measures including on-site training of personnel, standard operating procedures, ongoing quality metrics assessment, review of missing data and outliers, and round-the-clock availability of coordinating center personnel and Principal Investigators. The trial will strictly follow ICH GCP principles, Indian regulations, and George Institute procedures. The trial operations staff from the George Institute India will train local investigators, and trial site staff, before the trial, with continuous documentation in the site master file. All documentation will be stored securely and retained according to regulatory requirements. 
 
-## Quality Assurance and Sponsor oversight
+## Quality Assurance and Oversight
 
 The Trial Management Group and Trial Team, comprising key project leaders and managers, will play a pivotal role in ensuring the highest standards of quality assurance and effective sponsor oversight throughout the trial. These groups will be responsible for facilitating consistent communication, maintaining fidelity in study implementation, and overseeing the quality of data collection. 
 
@@ -843,7 +836,7 @@ In the study information provided to patient participants, they will be fully in
 The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the patient participant's medical
 history.
 
-[^todo:describe-data-protection]: **TODO:** Describe data protection mechanisms, or cross-reference the section on "Collection, handling and archiving of data"
+[^todo:describe-data-protection]: **TODO TGI:** Describe data protection mechanisms, or cross-reference the section on "Collection, handling and archiving of data"
 
 # Insurances
 
@@ -858,30 +851,23 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data using a paper based Case Record Form (CRF)[^todo:crf], which is then transferred to an electronic CRF (eCRF). Paper-based CRFs will be securely stored on-site and archived for as long as required by local regulations, but at least 10 years. Access to the eCRF is provided using a Virtual Private Network with two-factor authentication[^todo:check-data-management]. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764). 
-
-[^todo:crf]: **TODO:** Create a CRF template and attach.
+Clinical research coordinators will collect data using a paper based Case Record Form (CRF) (see Appendix @sec-appendix-case-record-form), which is then transferred to an electronic CRF (eCRF). Paper-based CRFs will be securely stored on-site and archived for as long as required by local regulations, but at least 10 years. Access to the eCRF is provided using a Virtual Private Network with two-factor authentication[^todo:check-data-management]. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764). 
 
 [^todo:check-data-management]: **TODO TGI:** Please check that this is correct.
 
 ## Source data
 
-The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded. 
-
-The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as
-source data in the trial (source data reference document) should be included in the Investigator Site File (ISF)[^todo:create-isf]. The investigator must ensure that all source documents are accessible for monitoring and other quality control activities.
-
-Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document.
+The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded.  The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as source data in the trial (source data reference document) will be included in the Investigator Site File (ISF). The investigator must ensure that all source documents are accessible for monitoring and other quality control activities. Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document.
 
 Access to trial-related documentation, such as patient participants' medical records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access to patient participants' medical records will require a confidentiality agreement to be signed by the person in charge of the medical records at the trial site and by the monitor and auditor, if applicable. Access will also be granted in the context of regulatory inspections.[^todo:check-confidentiality-agreement]
-
-[^todo:create-isf]: **TODO:** Create an ISF template.
 
 [^todo:check-confidentiality-agreement]: **TODO TGI:** Please check that this applies.
 
 ## Variables {#sec-variables}
 
+<!--
 **If we want to be able to do a cost-effectiveness analysis, then we also need to collect data on who does what for how long, capture changes in expensive procedures and investigations, capture health care utilisation after discharge, in-formal care (who does the caring, when and for how long), and productivity losses. There may be instruments for this already, or we can adapt existing instruments. To capture potential equity aspects we also need socioeconomic information on the patients**
+-->
 
 ```{r data}
 #| echo: false
@@ -959,9 +945,24 @@ with national regulations.
 - Swedish Research Council (reg. no. 2023-03128)
 - Laerdal Foundation (reg. no. 2023-0297)
 
+# Special considerations
+
+{{< include ../shared-assets/special-considerations.qmd >}}
+
 # Notification of trial completion, reporting, and publication
 
-**More information will be added here**
+The trial will be reported to the Funders within a year of completion. The results of the trial will also be prepared as manuscripts for publication. Authorship on trial manuscripts will be based on the International Committee of Medical Journal Editors (ICMJE) criteria [@icmje_2024]: 
+
+> - Substantial contributions to the conception or design of the work; or the acquisition, analysis, or interpretation of data for the work; AND
+> - Drafting the work or reviewing it critically for important intellectual content; AND
+> - Final approval of the version to be published; AND
+> - Agreement to be accountable for all aspects of the work in ensuring that questions related to the accuracy or integrity of any part of the work are appropriately investigated and resolved.
+>
+> In addition to being accountable for the parts of the work done, an author should be able to identify which co-authors are responsible for specific other parts of the work. In addition, authors should have confidence in the integrity of the contributions of their co-authors.
+
+The most recent version of the ICMJE criteria will be adhered to. We will also use the ICMJE criteria for non-author contributorship.
+
+Before work on a trial manuscript is initiated, a writing group will be formed and first and last authors will be designated. This writing group will be formed by discussion in the Trial Management Group. 
 
 <!--
 *The sponsor must notify, via CTIS, each concerned Member State that a
@@ -1068,11 +1069,15 @@ number and be dated.*
 
 # Appendices {.appendix}
 
-## Cluster screening instrument {#sec-appendix-cluster-screening-instrument .appendix} 
+## Initial hospital screening instrument {#sec-appendix-hospital-screening-instrument .appendix} 
 
-```{r cluster-screening-instrument}
+```{r hospital-screening-instrument}
 #| echo: false
 
-pages <- list.files("./appendices/cluster-screening-instrument", pattern = "pdf", full.names = TRUE)
+pages <- list.files("./appendices/hospital-screening-instrument", pattern = "pdf", full.names = TRUE)
 knitr::include_graphics(pages)
 ```
+
+## In-depth hospital screening interview instrument {#sec-appendix-hospital-screening-interveiew-instrument .appendix} 
+
+## Case Record Form {#sec-appendix-case-record-form .appendix}
