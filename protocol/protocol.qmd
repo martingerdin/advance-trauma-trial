@@ -829,21 +829,15 @@ The clinical research coordinators will approach patients or patient representat
 
 ## Data protection
 
-We will ensure that appropriate agreements and/or other appropriate protective measures are taken to ensure that the data processing is performed in accordance with the provisions of the relevant legislation, before any data transfer takes place.
+All data will be handled according to the Indian Council of Medical Research's guidelines and standard operating procedures of the George Institute for Global Health India on data security and protection. Trial data will be shared via the trial electronic Case Record Form (eCRF) throughout the trial. The data will be held on a secure server. All investigators and trial site staff involved in this trial must comply with the requirements of the ICMR Guidelines on data security and protection. The participant information sheet provided to participants, will inform them how:
 
-In the study information provided to patient participants, they will be fully informed about how their trial data will be collected, used and disclosed. The study information will explain how trial data are stored to maintain confidentiality in accordance with national data legislation[^todo:describe-data-protection]. All information processed by the sponsor will be pseudonymized.
-
-The study information will also explain that for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the patient participant's medical
-history.
-
-[^todo:describe-data-protection]: **TODO TGI:** Describe data protection mechanisms, or cross-reference the section on "Collection, handling and archiving of data"
+- the trial data will be collected, used and disclosed;
+- how trial data are stored to maintain confidentiality in accordance with national data legislation; and
+- for verification of the data, representatives delegated by the sponsor, as well as relevant authorities, may require access to parts of medical records or trial records that are relevant to the trial, including the patient participant's medical history.
 
 # Insurances
 
-*Here it should be explained how subjects are insured throughout the
-trial.*[^todo:insurance]
-
-[^todo:insurance]: **TODO TGI:** Please add information about insurance.
+The George Institute for Global Health, India is responsible for ensuring that any insurance cover required to cover the set-up, management and conduct of the study in India has been obtained. The George Institute for Global Health, India is also responsible for ensuring that India Sites have been obtained and/or will obtain insurance prior to the opening of the study in India and shall be maintained for the duration of the study and for an appropriate period thereafter.  This includes being responsible for ensuring that there is appropriate insurance for the duration of the study to cover against claims for compensation by participants arising out of their participation in the trial in India. Compensation in case of injury or death will be provided by the George Institute for Global Health, India according to the regulations outlined in rules 39, 40 and 42 of the New Drugs and Clinical Rules (2019).  x
 
 # Substantial changes to the trial
 
@@ -851,17 +845,11 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data using a paper based Case Record Form (CRF) (see Appendix @sec-appendix-case-record-form), which is then transferred to an electronic CRF (eCRF). Paper-based CRFs will be securely stored on-site and archived for as long as required by local regulations, but at least 10 years. Access to the eCRF is provided using a Virtual Private Network with two-factor authentication[^todo:check-data-management]. Access is granted by the project PI or authorized delegates. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. The data management plan is published (https://doi.org/10.5281/zenodo.7748764). 
-
-[^todo:check-data-management]: **TODO TGI:** Please check that this is correct.
+Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here https://doi.org/10.5281/zenodo.7748764. 
 
 ## Source data
 
-The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded.  The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as source data in the trial (source data reference document) will be included in the Investigator Site File (ISF). The investigator must ensure that all source documents are accessible for monitoring and other quality control activities. Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document.
-
-Access to trial-related documentation, such as patient participants' medical records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access to patient participants' medical records will require a confidentiality agreement to be signed by the person in charge of the medical records at the trial site and by the monitor and auditor, if applicable. Access will also be granted in the context of regulatory inspections.[^todo:check-confidentiality-agreement]
-
-[^todo:check-confidentiality-agreement]: **TODO TGI:** Please check that this applies.
+The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded. The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as source data in the trial (source data reference document) will be included in the Investigator Site File (ISF). The investigator must ensure that all source documents are accessible for monitoring and other quality control activities. Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document. Access to trial-related documentation, such as patient participants' medical records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access will also be granted in the context of regulatory inspections.
 
 ## Variables {#sec-variables}
 
