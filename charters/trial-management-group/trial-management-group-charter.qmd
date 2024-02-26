@@ -1,7 +1,7 @@
 ---
-title: Trial Management Group Charter
-subtitle:  "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-abstract: This document is based on the MRC CTU Template Trial Management Group Charter (version 3.01).
+title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+subtitle:  "Trial Management Group Charter  \nVersion 0.1.0  \n2024-02-26"
+abstract: "This document is based on the MRC CTU Template Trial Management Group Charter (version 3.01)"
 toc: true
 format: 
   pdf:
@@ -9,13 +9,20 @@ format:
   docx: default
 ---
 
-
 ```{r setup}
 #| echo: FALSE
 
 noacsr::source_all_functions()
 attach(global_variables())
 ```
+
+\newpage
+
+# Changelog
+
+**After version 1.0.0 is approved, all major and minor version updates to the charter will be documented here.**
+
+\newpage
 
 # Introduction
 
@@ -29,11 +36,28 @@ The purpose of this document is to describe the membership, terms of reference, 
 
 {{< include ../../shared-assets/special-considerations.qmd >}}
 
+# Trial organisation {#sec-trial-organisation}
+
+```{r}
+#| echo: false
+#| include: false
+
+system("mmdc -i ../shared-assets/trial-organisation-overview-figure.mmd -o ../shared-assets/trial-organisation-overview-figure.png")
+```
+
+::: {#fig-organisation-overview}
+
+![](../../shared-assets/trial-organisation-overview-figure.png){width="60%"}
+
+Trial organisation overview.
+:::
+
+{{< include ../../shared-assets/trial-organisation.qmd >}}
+
 # Roles and responsibilities
 
-To manage the trial, including the clinical and practical aspects.
+To manage the trial, including the clinical and practical aspects. The specific roles of the TMG members will be to:
 
-The specific roles of the TMG members will be to:
 - attend TMG meetings and advise on availability for future TMG meetings;
 - input into and comment on the protocol and case report forms;
 - allow contact details to be included in the protocol;
@@ -68,7 +92,7 @@ The Principal Investigator will be a member of the TSC and must attend all TSC m
 
 # Relationships
 
-The responsibilities of each trial committee are summarised in Table X and visualised in Figure X. 
+The responsibilities of each trial committee are summarised in @sec-trial-organisation and in @fig-organization-overview.
 
 # Organisation of meetings
 

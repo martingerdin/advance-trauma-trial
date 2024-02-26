@@ -1,4 +1,4 @@
-Trial management and oversight is governed by four trial committees and groups: the Trial Team (TT), the Trial Management Group (TMG), the Trial Steering Committee (TSC) and the Data Monitoring Committee (DMC). These groups are briefly described below and their relationships are shown in @fig-organization-overview. Details about each committee and group are available in their respective charter.
+Trial management and oversight is governed by four trial committees and groups: the Trial Team (TT), the Trial Management Group (TMG), the Trial Steering Committee (TSC) and the Data Monitoring Committee (DMC). These groups are briefly described below and their relationships are shown in @fig-organisation-overview. Details about each committee and group are available in their respective charter.
 
 ## Trial team
 
