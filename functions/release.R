@@ -9,6 +9,10 @@ release <- function(major = NULL, minor = NULL, patch = NULL) {
         patch <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
         major <- FALSE
         minor <- FALSE
+    } else {
+        major <- ifelse(is.null(major), FALSE, major)
+        minor <- ifelse(is.null(minor), FALSE, minor)
+        patch <- ifelse(is.null(patch), FALSE, patch)
     }
 
     # Check arguments

@@ -168,6 +168,8 @@ rows as needed.*
 
 **After version 1.0.0 is approved, all major and minor version updates to the protocol will be documented here. A full changelog will also be kept separately, that documents all "patch" updates as well (for example spelling and grammar edits).**
 
+\newpage
+
 # Synopsis
 
 {{< include ../shared-assets/synopsis.qmd >}}
@@ -273,7 +275,7 @@ Hospitals will be secondary or tertiary hospitals providing trauma care in India
 
 ### Screening
 
-The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-sec-appendix-hospital-screening-interveiew-instrument). To avoid excluding centres we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019]. 
+The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-screening-interview-instrument). To avoid excluding centres we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019]. 
 
 ## Cluster selection
 
@@ -323,7 +325,7 @@ Patient participants can choose to withdraw their consent at any time before the
 
 @tbl-procedures shows an overview of trial procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
-<!-- This is a hack to get the cross-reference to work. -->
+<!-- This is a hack to get the cross-reference to work in word output 
 
 | |
 |-|
@@ -331,12 +333,22 @@ Patient participants can choose to withdraw their consent at any time before the
 
 : Overview of trial procedures {#tbl-procedures}
 
+-->
+
+\begingroup
+\fontsize{8pt}{10pt}\selectfont
+\addtolength{\tabcolsep}{-3pt}
+
 ```{r}
+#| label: tbl-procedures
+#| tbl-cap: "Overview of trial procedures"
 #| echo: FALSE
 #| message: FALSE
 
 create_patient_procedure_table()
 ```
+
+\endgroup
 
 ## Biological sampling procedures
 
@@ -452,7 +464,7 @@ These events are considered safety events because they suggest pulmonary, renal,
 
 We will also report any other safety events that we identify during the trial, and the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of such safety events could include missed injuries or missed investigations, which could be suspected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
 
-All safety events will be recorded in the CRF and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Monitoring Committee. 
+All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Monitoring Committee. 
 
 ### Follow up of Safety Events
 
@@ -829,7 +841,7 @@ The clinical research coordinators will approach patients or patient representat
 
 ## Data protection
 
-All data will be handled according to the Indian Council of Medical Research's guidelines and standard operating procedures of the George Institute for Global Health India on data security and protection. Trial data will be shared via the trial electronic Case Record Form (eCRF) throughout the trial. The data will be held on a secure server. All investigators and trial site staff involved in this trial must comply with the requirements of the ICMR Guidelines on data security and protection. The participant information sheet provided to participants, will inform them how:
+All data will be handled according to the Indian Council of Medical Research's guidelines and standard operating procedures of the George Institute for Global Health India on data security and protection. Trial data will be shared via the trial electronic CRF (eCRF) throughout the trial.  The eCRF will be accessible via VPN with a two-factor authentication and the data will be held on a secure server. All investigators and trial site staff involved in this trial must comply with the requirements of the ICMR Guidelines on data security and protection. The participant information sheet provided to participants, will inform them how:
 
 - the trial data will be collected, used and disclosed;
 - how trial data are stored to maintain confidentiality in accordance with national data legislation; and
@@ -925,6 +937,20 @@ with national regulations.
 -->
 
 # Trial Organization
+
+```{r}
+#| echo: false
+#| include: false
+
+system("mmdc -i ../shared-assets/trial-organisation-overview-figure.mmd -o ../shared-assets/trial-organisation-overview-figure.png")
+```
+
+::: {#fig-organization-overview}
+
+![](../shared-assets/trial-organisation-overview-figure.png){width="60%"}
+
+Trial organization overview.
+:::
 
 {{< include ../shared-assets/trial-organisation.qmd >}}
 
@@ -1066,6 +1092,13 @@ pages <- list.files("./appendices/hospital-screening-instrument", pattern = "pdf
 knitr::include_graphics(pages)
 ```
 
-## In-depth hospital screening interview instrument {#sec-appendix-hospital-screening-interveiew-instrument .appendix} 
+## In-depth hospital screening interview instrument {#sec-appendix-hospital-screening-interview-instrument .appendix} 
+
+```{r hospital-screening-interview-instrument}
+#| echo: false
+
+pages <- list.files("./appendices/hospital-screening-interview-instrument", pattern = "pdf", full.names = TRUE)
+knitr::include_graphics(pages)
+```
 
 ## Case Record Form {#sec-appendix-case-record-form .appendix}

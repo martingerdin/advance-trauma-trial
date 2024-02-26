@@ -7,4 +7,8 @@ link-bibliography: false
 format: 
   pdf:
     documentclass: scrartcl
+    include-in-header: 
+      text: |
+        \usepackage{pdflscape} 
   docx: default
+  html: default
