@@ -59,5 +59,5 @@ release <- function(major = NULL, minor = NULL, patch = NULL) {
         stringr::str_remove("/.git")
     path <- file.path(base.git.path, "atls-vs-standard-care-trial")
     git2r::add(repo = ".", path = path)
-    git2r::commit(repo = ".", message = paste0("Release protocol version", new.version.string))
+    git2r::commit(repo = ".", message = paste0("Release protocol version ", new.version.string))
 }
