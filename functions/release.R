@@ -53,4 +53,11 @@ release <- function(major = NULL, minor = NULL, patch = NULL) {
 
     # Compile protocol
     quarto::quarto_render("protocol.qmd", output_format = "all")
+
+    # Commit changes
+    base.git.path <- git2r::discover_repository(".") %>%
+        stringr::str_remove("/.git")
+    path <- file.path(base.git.path, "atls-vs-standard-care-trial")
+    git2r::add(repo = ".", path = path)
+    git2r::commit(repo = ".", message = paste0("Release protocol version", new.version.string))
 }
