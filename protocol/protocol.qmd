@@ -13,13 +13,14 @@ source("main.R")
 
 **ATLS^®^ vs Standard Care in Adult Trauma Patients**
 
-Clinical Trials Registry-India ID:
-
-ClinicalTrials.gov ID:
-
-Coordinator:
-
-Sponsor: 
+|||
+|-|-|
+| Clinical Trials Registry-India ID | |
+| ClinicalTrials.gov ID | |
+| Project Leader | Karolinska Institutet, Sweden (**KI**) |
+| Study Coordinator | The George Institute for Global Health, India (**TGI**)|
+| Study Chair | Martin Gerdin Wärnberg (KI, [martin.gerdin@ki.se](mailto:martin.gerdin@ki.se)) |
+| Study Co-Chair | Vivekanand Jha (TGI, [vjha@georgeinstitute.org.in](vjha@georgeinstitute.org.in)) |
 
 \newpage
 
@@ -857,7 +858,7 @@ Substantial changes to the signed clinical trial protocol are only possible thro
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here https://doi.org/10.5281/zenodo.7748764. 
+Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764). 
 
 ## Source data
 

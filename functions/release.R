@@ -1,10 +1,10 @@
-release <- function(major = NULL, minor = NULL, patch = NULL) {
+release <- function(major = NULL, minor = NULL, patch = NULL, recompile.only = FALSE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
     `%>%` <- magrittr::`%>%`
 
     # Prompt for confirmation and set patch to TRUE and major and minor to FALSE if all are NULL
-    if (is.null(major) && is.null(minor) && is.null(patch)) {
+    if (is.null(major) && is.null(minor) && is.null(patch) && recompile.only == FALSE) {
         message <- "No version increment specified. Increment patch version?"
         patch <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
         major <- FALSE
@@ -16,11 +16,12 @@ release <- function(major = NULL, minor = NULL, patch = NULL) {
     }
 
     # Check arguments
-    assert_that(major || minor || patch, msg = "At least one of major, minor or patch must be TRUE")
+    assert_that(major || minor || patch || recompile.only, msg = "At least one of major, minor, patch or recompile.only must be TRUE")
 
     assert_that(!(major && minor), msg = "major and minor cannot both be TRUE")
     assert_that(!(major && patch), msg = "major and patch cannot both be TRUE")
     assert_that(!(minor && patch), msg = "minor and patch cannot both be TRUE")
+    assert_that(!(recompile.only && (major || minor || patch)), msg = "recompile.only cannot be TRUE if major, minor or patch are TRUE")
 
     # Read current version from _variables.yml
     description <- yaml::read_yaml("_variables.yml")
@@ -28,28 +29,32 @@ release <- function(major = NULL, minor = NULL, patch = NULL) {
         stringr::str_split("\\.") %>%
         unlist() %>%
         as.numeric()
+    new.version.string <- paste0(version, collapse = ".")
 
-    # Increment version
-    if (major) {
-        version[1] <- version[1] + 1
-        version[2] <- 0
-        version[3] <- 0
-    } else if (minor) {
-        version[2] <- version[2] + 1
-        version[3] <- 0
-    } else if (patch) {
-        version[3] <- version[3] + 1
+    # Update version unless recompile.only is TRUE
+    if (!recompile.only) {
+        # Increment version
+        if (major) {
+            version[1] <- version[1] + 1
+            version[2] <- 0
+            version[3] <- 0
+        } else if (minor) {
+            version[2] <- version[2] + 1
+            version[3] <- 0
+        } else if (patch) {
+            version[3] <- version[3] + 1
+        }
+        new.version.string <- paste0(version, collapse = ".")
+
+        # Update version
+        description$version <- new.version.string
+
+        # Update date
+        description$date <- as.character(lubridate::today())
+
+        # Write description
+        yaml::write_yaml(description, "_variables.yml")
     }
-    new.version.string <- paste0(version[1], ".", version[2], ".", version[3])
-
-    # Update version
-    description$version <- new.version.string
-
-    # Update date
-    description$date <- as.character(lubridate::today())
-
-    # Write description
-    yaml::write_yaml(description, "_variables.yml")
 
     # Compile protocol
     quarto::quarto_render("protocol.qmd", output_format = "all")
