@@ -1,0 +1,14 @@
+toc: true
+toc-depth: 3
+number-sections: true
+fig-caption: true
+link-bibliography: false
+
+format: 
+  pdf:
+    documentclass: scrartcl
+    include-in-header: 
+      text: |
+        \usepackage{pdflscape} 
+  docx: default
+  html: default

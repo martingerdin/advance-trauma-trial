@@ -6,8 +6,9 @@ flowchart
     TSC[<b>Trial Steering Committee</b><hr>Oversees the trial and<br>offers guidance to the TMG]
     DMC[<b>Data Monitoring Committee</b><hr>Monitors trial data to ensure<br>participant safety, data integrity,<br>and ethical conduct]
     TT <--> TMG
-    TMG --> DMC
     TT --> DMC
     TT --> TSC
+    TMG --> DMC
+    TMG --> TSC
     TSC --> TMG
     DMC --> TSC

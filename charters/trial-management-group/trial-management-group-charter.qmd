@@ -1,12 +1,7 @@
 ---
 title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-subtitle:  "Trial Management Group Charter  \nVersion 0.1.0  \n2024-02-26"
+subtitle:  "Trial Management Group Charter  \nVersion {{< var version >}}  \n{{< var date >}}"
 abstract: "This document is based on the MRC CTU Template Trial Management Group Charter (version 3.01)"
-toc: true
-format: 
-  pdf:
-    documentclass: scrartcl
-  docx: default
 ---
 
 ```{r setup}
@@ -36,13 +31,13 @@ The purpose of this document is to describe the membership, terms of reference, 
 
 {{< include ../../shared-assets/special-considerations.qmd >}}
 
-# Trial organisation {#sec-trial-organisation}
+# Trial organisation overview {#sec-trial-organisation}
 
 ```{r}
 #| echo: false
 #| include: false
 
-system("mmdc -i ../shared-assets/trial-organisation-overview-figure.mmd -o ../shared-assets/trial-organisation-overview-figure.png")
+system("mmdc -i ../../shared-assets/trial-organisation-overview-figure.mmd -o ../../shared-assets/trial-organisation-overview-figure.png")
 ```
 
 ::: {#fig-organisation-overview}
@@ -56,21 +51,21 @@ Trial organisation overview.
 
 # Roles and responsibilities
 
-To manage the trial, including the clinical and practical aspects. The specific roles of the TMG members will be to:
+To role of the TMG is to manage the trial, including the clinical and practical aspects. The specific roles of the TMG members will be to:
 
 - attend TMG meetings and advise on availability for future TMG meetings;
 - input into and comment on the protocol and case report forms;
-- allow contact details to be included in the protocol;
+- allow contact details to be included in this TMG charter;
 - promote the trial;
 - screen hospitals and clusters for participation in the trial;
 - develop strategies to encourage inclusion of patient participants and address any issues with inclusion at each trial centre;
-- be involved in the day-to-day running of the trial by supporting the trial team;
+- be involved in the day-to-day running of the trial by supporting the Trial Team;
 - maintain confidentiality of any trial information that is not in the public domain;
 - respond to trial correspondence and any questions in a timely fashion; 
 - encourage completion of case report forms (CRFs) and monitor reported CRF completion rates;
 - monitor and assess safety events;
 - input into the meetings of the Trial Steering Committee (TSC), if appropriate;
-- input into the meetings of the Data Monitoring Committee (IDMC), when appropriate;
+- input into the meetings of the Data Monitoring Committee (DMC), when appropriate;
 - provide responses to any issues or concerns raised by TSC;
 - consider the implications of any recommendations made by the DMC and accepted by the TSC;
 - be aware of accumulating external evidence and assess its impact and relevance; and
@@ -78,21 +73,21 @@ To manage the trial, including the clinical and practical aspects. The specific 
 
 # Before or early in the trial
 
-The TMG will finalise the protcol and initiate screening of hospitals and clusters for participation in the trial. 
+The TMG will finalise the protcol and screen hospitals and clusters for participation in the trial. 
 
 TMG members will not formally sign a contract.  
 
 # Composition
 
-Membership will provide broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator.  The TMG will include the following members:
+TMG members will provide broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator. The TMG includes the following members:
 
 - Members will be listed here
 
-The Principal Investigator will be a member of the TSC and must attend all TSC meetings. The Principal Investigator should be available to attend DMC meetings. The other TMG members will not usually be expected to routinely attend TSC or DMC meetings but may attend sessions when necessary and appropriate. The vice-Chair will assume the responsibilities of the Chair when the Chair is not available.
+The Principal Investigator is also a member of the TSC and must attend all TSC meetings. The Principal Investigator should be available to attend DMC meetings. The other TMG members will not usually be expected to routinely attend TSC or DMC meetings but may attend sessions when necessary and appropriate. The vice-Chair will assume the responsibilities of the Chair when the Chair is not available.
 
 # Relationships
 
-The responsibilities of each trial committee are summarised in @sec-trial-organisation and in @fig-organization-overview.
+The responsibilities of each trial committee are summarised in @sec-trial-organisation and in @fig-organisation-overview.
 
 # Organisation of meetings
 

@@ -19,8 +19,7 @@ source("main.R")
 | ClinicalTrials.gov ID | |
 | Project Leader | Karolinska Institutet, Sweden (**KI**) |
 | Study Coordinator | The George Institute for Global Health, India (**TGI**)|
-| Study Chair | Martin Gerdin Wärnberg (KI, [martin.gerdin@ki.se](mailto:martin.gerdin@ki.se)) |
-| Study Co-Chair | Vivekanand Jha (TGI, [vjha@georgeinstitute.org.in](vjha@georgeinstitute.org.in)) |
+| Principal Investigator | Martin Gerdin Wärnberg (KI, [martin.gerdin@ki.se](mailto:martin.gerdin@ki.se)) |
 
 \newpage
 
@@ -355,7 +354,7 @@ create_patient_procedure_table()
 
 This trial does not include biological sampling.
 
-## End of Trial
+## End of trial
 
 The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and follow-up. Decisions on premature termination are taken by the Trial Steering Committee and Trial Management Group.
 
@@ -413,7 +412,7 @@ The primary outcome will be all-cause mortality within 30 days of arrival at the
 - Intensive care unit admission. Data on this outcome will be collected from patient hospital records.
 - Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.
 
-## Handling of Adverse and Safety Events
+## Handling of adverse and safety events
 
 <!--*Explain which adverse events (AE) and serious adverse events (SAE) will
 be reported during the trial (compare with the Investigator's Brochure
@@ -433,11 +432,11 @@ events are classified as serious.*-->
 
 ### Definitions
 
-#### Adverse Event
+#### Adverse event
 
 Any untoward medical occurrence in a clinical trial subject and, which does not necessarily have a causal relationship with the treatment, can be an unfavorable and unintended sign (including an abnormal laboratory discovery), symptom or disease temporally associated with the inclusion in the trial, whether or not related to the trial.
 
-#### Serious Adverse Event
+#### Serious adverse event
 
 Any untoward medical occurrence in a trial participant that:
 
@@ -447,11 +446,11 @@ Any untoward medical occurrence in a trial participant that:
 -   results in persistent or significant disability or incapacity
 -   results in a congenital anomaly/malformation
 
-#### Safety Event
+#### Safety event
 
 Any unexpected serious complication that might occur as a consequence of the trial and that are not part of the natural history of trauma.
 
-### Reporting and Assessment of Adverse and Safety Events
+### Reporting and assessment of adverse and safety events
 
 In alignment with other current trials including critically ill patients [@STEPCARE2023], we will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and we already collect many of these events, for example mortality, as part of our outcomes. 
 
@@ -467,7 +466,7 @@ We will also report any other safety events that we identify during the trial, a
 
 All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Monitoring Committee. 
 
-### Follow up of Safety Events
+### Follow up of safety events
 
 All safety events should be followed up by the local investigator until they are fully evaluated. 
 
@@ -793,11 +792,11 @@ knitr::include_graphics("./combined-power-curves.pdf")
 
 There will be one interim analyses after half of the batches have completed the trial. The first purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The second purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included. The interim analyses will be assessed by the Data Monitoring Committee.
 
-## Quality Control and Quality Assurance
+## Quality control and quality assurance
 
 The George Institute for Global Health - India will ensure proper conduct of the trial through quality control measures including on-site training of personnel, standard operating procedures, ongoing quality metrics assessment, review of missing data and outliers, and round-the-clock availability of coordinating center personnel and Principal Investigators. The trial will strictly follow ICH GCP principles, Indian regulations, and George Institute procedures. The trial operations staff from the George Institute India will train local investigators, and trial site staff, before the trial, with continuous documentation in the site master file. All documentation will be stored securely and retained according to regulatory requirements. 
 
-## Quality Assurance and Oversight
+## Quality assurance and oversight
 
 The Trial Management Group and Trial Team, comprising key project leaders and managers, will play a pivotal role in ensuring the highest standards of quality assurance and effective sponsor oversight throughout the trial. These groups will be responsible for facilitating consistent communication, maintaining fidelity in study implementation, and overseeing the quality of data collection. 
 
@@ -937,7 +936,7 @@ with national regulations.
 
 -->
 
-# Trial Organization
+# Trial organisation
 
 ```{r}
 #| echo: false
@@ -946,11 +945,11 @@ with national regulations.
 system("mmdc -i ../shared-assets/trial-organisation-overview-figure.mmd -o ../shared-assets/trial-organisation-overview-figure.png")
 ```
 
-::: {#fig-organization-overview}
+::: {#fig-organisation-overview}
 
 ![](../shared-assets/trial-organisation-overview-figure.png){width="60%"}
 
-Trial organization overview.
+Trial organisation overview.
 :::
 
 {{< include ../shared-assets/trial-organisation.qmd >}}

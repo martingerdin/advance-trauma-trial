@@ -2,73 +2,73 @@ Trial management and oversight is governed by four trial committees and groups: 
 
 ## Trial team
 
-#### Responsibility
+**Responsibility**
 
 To run the trial on a day-to-day basis, maintain trial databases, randomise clusters, ensuring complete and correct data, preparing reports for meetings (including those of the TMG, TSC and DMC) and dealing with research governance and, if appropriate, regulatory matters.
 
-#### Composition
+**Composition**
 
 Includes the project manager, clinical research associates, principal investigator and co-investigators as needed. 
 
-#### Relationships
+**Relationships**
 
 Reports to the TMG, TSC and DMC. Operationalises decisions made by the TMG.
 
-#### Meeting frequencies
+**Meeting frequencies**
 
 As often as needed, often weekly or bi-weekly.
 
 ## Trial Management Group (TMG)
 
-#### Responsibility
+**Responsibility**
 
 To manage the trial, including its clinical and practical aspects.
 
-#### Composition
+**Composition**
 
 Includes members with broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator.  
 
-#### Relationships
+**Relationships**
 
 Receives reports from TT. Provides input to the TSC and DMC. Implements decisions made by the TSC.
 
-#### Meeting frequencies
+**Meeting frequencies**
 
 Monthly to every six months.
 
 ## Trial Steering Committee (TSC)
 
-#### Responsibility
+**Responsibility**
 
 The TSC's responsibility is to oversee the trial and offer guidance to the TMG.
 
-#### Composition
+**Composition**
 
 A majority of independent members, including a chair, and a minority of members with a direct interest in the trial, including the principal investigator. The chair should be independent of the trial, the sponsor, and the coordinator.
 
-#### Relationships
+**Relationships**
 
 Receives reports from the trial team and DMC.
 
-#### Meeting frequencies
+**Meeting frequencies**
 
 Yearly, but may be more frequent if needed.
 
 ## Data Monitoring Committee (DMC)
 
-#### Responsibility
+**Responsibility**
 
 To review results of interim analyses, safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics.
 
-#### Composition
+**Composition**
 
 Four external experts specializing in clinical trial management, biostatistics, medical ethics, and the pertinent clinical area.
 
-#### Relationships
+**Relationships**
 
 Reports to the TSC. Receives reports from the TT.
 
-#### Meeting frequencies
+**Meeting frequencies**
 
 After the completion of each batch, but may be more frequent if needed.
 
