@@ -79,11 +79,36 @@ TMG members will not formally sign a contract.
 
 # Composition
 
-TMG members will provide broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator. The TMG includes the following members:
+TMG members will provide broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator. The Principal Investigator is also a member of the TSC and must attend all TSC meetings. The Principal Investigator should be available to attend DMC meetings. The other TMG members will not usually be expected to routinely attend TSC or DMC meetings but may attend sessions when necessary and appropriate. The vice-Chair will assume the responsibilities of the Chair when the Chair is not available. 
 
-- Members will be listed here
+The TMG includes the following members:
 
-The Principal Investigator is also a member of the TSC and must attend all TSC meetings. The Principal Investigator should be available to attend DMC meetings. The other TMG members will not usually be expected to routinely attend TSC or DMC meetings but may attend sessions when necessary and appropriate. The vice-Chair will assume the responsibilities of the Chair when the Chair is not available.
+**Martin Gerdin Wärnberg** (Principal Investigator, Chair)
+
+*Associate professor of clinical epidemiology*
+
+1. Department of Global Public Health, Karolinska Institutet, Sweden
+2. Function Perioperative Medicine and Intensive Care, Karolinska University Hospital, Sweden
+
+**Karla Hemming**
+
+*Professor of biostatistics*
+
+Institute of Applied Health Research, University of Birmingham, UK
+
+**Lovisa Strömmer**
+
+*Associate professor of surgery and senior consultant*
+
+1. Department of Clinical Science, Intervention and Technology, Karolinska Institutet, Sweden
+2. ME Trauma Emergency surgery, Orthopaedics, Emergency and Reparative Medicine, Karolinska University Hospital, Sweden
+
+**Johanna Berg**
+
+*Doctoral student and emergency physician*
+
+1. Department of Global Public Health, Karolinska Institutet, Sweden
+2. Department of Emergency and Internal Medicine, Skane University Hospital, Malmo, Sweden.
 
 # Relationships
 
