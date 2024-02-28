@@ -252,7 +252,7 @@ Our trial include eligibility criteria on three levels: hospitals, clusters and 
 
 ## Hospital selection
 
-Hospitals will be secondary or tertiary hospitals providing trauma care in India.
+Hospitals will be secondary or tertiary hospitals providing trauma care in India. Hospital will be the unit of randomisation.
 
 ### Inclusions criteria
 
@@ -279,14 +279,13 @@ The trial management group will compile a list of hospitals with potentially eli
 
 ## Cluster selection
 
-Clusters are one or more units of physicians providing initial trauma care in the emergency department of secondary or tertiary hospitals in India.
+Clusters are one or more units of physicians providing initial trauma care in the emergency department of secondary or tertiary hospitals in India. These units already exist in the hospitals and rotate through the emergency department on specific days of the week.
 
 ### Inclusion criteria
 
 **Clusters** must meet the following criteria:
 
-- admits or refers/transfers for admission at least 12 patients with trauma per month for at least the last six months, meaning that the hospital of the cluster should admit or refer for admission 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
-- the hospital of the cluster provides surgical and orthopaedic emergency services around the clock; and
+- admits or refers/transfers for admission at least 12 patients with trauma per month for at least the last six months; and
 - no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
 
 ### Screening
@@ -302,9 +301,10 @@ Patient participants are adult trauma patients who presents to the emergency dep
 **Patients participants** must meet the following criteria:
 
 - age of at least 15 years;
+- trauma occurred less than 48 hours before arrival at the hospital;
 - present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
 - admitted or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
-- trauma occurred less than 48 hours before arrival at the hospital.
+- managed by a participating cluster in the emergency department.
 
 ### Exclusion criteria
 
@@ -315,7 +315,7 @@ Patient participants are adult trauma patients who presents to the emergency dep
 
 ### Screening
 
-Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. Once the patient is admitted, the clinical research coordinators will approach eligible patients or their representatives to provide study information and inform participants that they can opt out from the study at any time before final analysis. Patients who are transferred before they have had an opportunity to be informed about the study will be contacted by phone. Phone numbers will be extracted from the emergency department registers, and will be securely held only by the clinical research coordinators at each sites
+Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. The patients or their representatives will receive written information about the study before they are discharged, including about their right to opt out at any time before final analysis. Phone numbers for out of hospital follow up will be extracted from the emergency department registers, and will be securely held only by the clinical research coordinators at each sites.
 
 ### Withdrawal criteria
 
@@ -398,7 +398,7 @@ When the trial ends, the intervention will have been implemented in all clusters
 
 ### Primary outcome
 
-The primary outcome will be all-cause mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records, by calling the patient or a patient representative, or if the patient has been transferred to another hospital by contacting the hospital to which the patient was transferred. Data on this outcome will be collected continuously during the trial. We chose this outcome as the primary outcome because it is an outcome of clinical and patient importance with very low missing data rates (`r rates.missing.data["in.hospital.mortality"]`%) in our pilot study. We will also be able to compare our findings with previous research.
+The primary outcome will be all-cause mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records, by calling the patient or a patient representative, or if the patient has been transferred to another hospital by contacting the hospital to which the patient was transferred. Data on this outcome will be collected continuously during the trial. We chose this outcome as the primary outcome instead of in-hospital mortality because in-hospital mortality would not capture deaths in patients who are transferred to another hospital for admission. 
 
 ### Secondary outcomes
 
@@ -790,7 +790,11 @@ knitr::include_graphics("./combined-power-curves.pdf")
 
 ### Interim analysis
 
-There will be one interim analyses after half of the batches have completed the trial. The first purpose of this interim analysis will be to assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. The second purpose of the interim analysis will be to assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included. The interim analyses will be assessed by the Data Monitoring Committee.
+There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the Data Monitoring Committee. The purposes of this interim analysis will be to:
+
+- assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes;
+- assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included; and
+- compare characteristics across intervention conditions to monitor for differential recruitment/ascertainment across the study arms.
 
 ## Quality control and quality assurance
 
