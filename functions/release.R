@@ -1,4 +1,4 @@
-release <- function(file.name, major = NULL, minor = NULL, patch = NULL, recompile.only = FALSE, commit = TRUE) {
+release <- function(file.name, major = NULL, minor = NULL, patch = NULL, recompile.only = FALSE, commit = TRUE, tag = TRUE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
     `%>%` <- magrittr::`%>%`
@@ -71,12 +71,20 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, recompi
         stringr::str_remove(".qmd") %>%
         stringr::str_to_lower()
 
-    # Commit changes
+    # Commit changes and tag release
     if (commit) {
         base.git.path <- git2r::discover_repository(".") %>%
             stringr::str_remove("/.git")
         path <- file.path(base.git.path, "atls-vs-standard-care-trial")
         git2r::add(repo = ".", path = path)
         git2r::commit(repo = ".", message = paste0("Release ", document.name, " version ", new.version.string))
+
+        if (tag) {
+            git2r::tag(
+                repo = ".",
+                tag = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
+                message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
+            )
+        }
     }
 }
