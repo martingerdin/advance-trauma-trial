@@ -382,7 +382,7 @@ Other than implementing another formalised trauma life support training programm
 
 ## Randomization
 
-We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomize the clusters alloted to each batch to the different intervention implementation sequences within that batch[^randomization]. We will balance the randomization within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomization. We will conceal the randomization order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
+We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomize the clusters alloted to each batch to the different intervention implementation sequences within that batch[^randomization]. We will balance the randomization within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomization. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomization order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
 
 [^randomization]: Randomization will be done using bespoke code from previous trials.
 
@@ -794,7 +794,7 @@ There will be one interim analyses after half of the batches have completed the 
 
 - assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes;
 - assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included; and
-- compare characteristics across intervention conditions to monitor for differential recruitment/ascertainment across the study arms.
+- compare characteristics across intervention conditions to monitor for differential recruitment/ascertainment between intervention and control.
 
 ## Quality control and quality assurance
 
