@@ -41,5 +41,5 @@ Trial management group. Discuss protocol, screening process.
 ## 2024-02-09
 TGI. Progress, feedback structure.
 
-## 2024-02-15
+## 2024-03-11
 TMG. Decide on protocol version 1.0.

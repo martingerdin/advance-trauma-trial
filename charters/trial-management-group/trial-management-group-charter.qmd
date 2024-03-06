@@ -81,7 +81,44 @@ TMG members will not formally sign a contract.
 
 TMG members will provide broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator. The Principal Investigator is also a member of the TSC and must attend all TSC meetings. The Principal Investigator should be available to attend DMC meetings. The other TMG members will not usually be expected to routinely attend TSC or DMC meetings but may attend sessions when necessary and appropriate. The vice-Chair will assume the responsibilities of the Chair when the Chair is not available. 
 
-The TMG includes the following members:
+The TMG includes the following members, in alphabetical order by surname, with their roles and affiliations:
+
+**Anurag Mishra**
+
+*Professor of surgery*
+
+Department of Surgery, Maulana Azad Medical College, India.
+
+**Debojit Basak**
+
+*Project Research Scientist*
+
+Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, India
+
+**Abhinav Bassi**
+
+*Senior Research Fellow and Operations Lead*
+
+The George Institute for Global Health, India
+
+**Johanna Berg**
+
+*Doctoral student and emergency physician*
+
+1. Department of Global Public Health, Karolinska Institutet, Sweden
+2. Department of Emergency and Internal Medicine, Skane University Hospital, Sweden
+
+**Shamita Chatterjee**
+
+*Professor of surgery*
+
+Department of Surgery, Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, India
+
+**Kapil Dev Soni**
+
+*Professor of critical and intensive care*
+
+All India Institute of Medical Sciences, India
 
 **Martin Gerdin Wärnberg** (Principal Investigator, Chair)
 
@@ -96,6 +133,37 @@ The TMG includes the following members:
 
 Institute of Applied Health Research, University of Birmingham, UK
 
+**Monty Khajanchi**
+
+*Assistant professor of surgery*
+
+Department of Surgery, King Edward Memorial Hospital, India
+
+**Vivekanand Jha**
+
+*Executive Director*
+
+1. The George Institute for Global Health, India
+2. Faculty of Medicine, Imperial College London, UK
+
+**Samriddhi Ranjan**
+
+*Project Manager*
+
+The George Institute for Global Health, India
+
+**Nobhojit Roy**
+
+*Honorary Fellow*
+
+The George Institute of Global Health, India
+
+**Rajdeep Singh**
+
+*Professor of surgery*
+
+Department of Surgery, Maulana Azad Medical College, India
+
 **Lovisa Strömmer**
 
 *Associate professor of surgery and senior consultant*
@@ -103,12 +171,11 @@ Institute of Applied Health Research, University of Birmingham, UK
 1. Department of Clinical Science, Intervention and Technology, Karolinska Institutet, Sweden
 2. ME Trauma Emergency surgery, Orthopaedics, Emergency and Reparative Medicine, Karolinska University Hospital, Sweden
 
-**Johanna Berg**
+**Li Felländer-Tsai**
 
-*Doctoral student and emergency physician*
+*Professor of orthopaedic surgery*
 
-1. Department of Global Public Health, Karolinska Institutet, Sweden
-2. Department of Emergency and Internal Medicine, Skane University Hospital, Malmo, Sweden.
+Department of Clinical Science, Intervention and Technology, Karolinska Institutet, Sweden
 
 # Relationships
 

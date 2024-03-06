@@ -319,7 +319,7 @@ Clinical research coordinators will screen patient participants either as they a
 
 ### Withdrawal criteria
 
-Patient participants can choose to withdraw their consent at any time before the final analysis. If they withdraw their consent the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
+Patient participants can choose to withdraw their consent for follow up at any time before the final analysis. If they withdraw their consent for follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
 
 ## Procedures
 
@@ -837,11 +837,12 @@ The final protocol will be submitted for ethical review at all participating hos
 
 ## Procedure for obtaining consent
 
-We will use an opt-out consent approach, in which consent is presumed unless actively declined. Note that the consent here refers to consent for data collection, because it will not be possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in trauma life support, and these physicians cannot be expected to temporarily forget their training.
+In this trial, consent refers to consent for data collection. It is not possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in ATLS^®^, and these physicians cannot be expected to temporarily forget their training. Patient participants will be included in this trial under the following modes of informed consent:
 
-This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive and mostly rely on extraction of routinely collected data from medical records. Clinical research coordinators will inform patient participants about the study and they will be given the opportunity have their data deleted before final data analysis. 
-
-The clinical research coordinators will approach patients or patient representatives to provide this information in person after admission. If a patient is transferred to another hospital before the patient has had an opportunity to receive the study information, then the clinical research coordinators will contact the patient or patient representative by phone.
+- Opt out consent for **in-hospital data collection**. Consent for in-hospital data collection by interview or extraction of routinely collected information from medical records will be presumed unless actively declined. This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive. The patients or their legally authorized representative will be provided with written information about the study on their arrival at the hospital. 
+- Opt in consent for **follow-up data collection**. Informed consent for follow-up data collection by telephonic interviews will be actively sought from patient participants or their legally authorized representative. The clinical research coordinators will approach patients or patient representatives to obtain consent after admission. The consent will be written for patient participants who are admitted to the hospital and verbal for participants who are transferred or discharged before the clinical research coordinators have had an opportunity to approach them. The verbal consent will be audio recorded.
+- Opt in assent for **follow-up data collection** for participants who are minors. Informed assent for follow-up data collection by telephonic interviews will be obtained from participants who are minors, in addition to consent from their guardian or legally authorized representative.
+- Waiver of informed consent for patients who are unconscious or otherwise unable to provide consent and do not have a legally authorized representative. This group represents the most severly injured patients and they have to be included to make the trial representative of the entire population of trauma patients. Patients participants who regain consciousness will be informed about the study and asked for consent for follow-up data collection.
 
 ## Data protection
 
