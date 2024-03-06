@@ -81,8 +81,8 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, recompi
 
         if (tag) {
             git2r::tag(
-                repo = ".",
-                tag = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
+                object = ".",
+                name = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
                 message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
             )
         }
