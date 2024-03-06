@@ -79,12 +79,12 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, recompi
         git2r::add(repo = ".", path = path)
         git2r::commit(repo = ".", message = paste0("Release ", document.name, " version ", new.version.string))
 
-        if (tag) {
-            git2r::tag(
-                object = ".",
-                name = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
-                message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
-            )
-        }
+        ## if (tag) {
+        ##    git2r::tag(
+        ##        object = ".",
+        ##        name = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
+        ##        message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
+        ##    )
+        ## }
     }
 }
