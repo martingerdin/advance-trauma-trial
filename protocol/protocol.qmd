@@ -16,7 +16,7 @@ source("main.R")
 |||
 |-|-|
 | Clinical Trials Registry-India ID | |
-| ClinicalTrials.gov ID | |
+| ClinicalTrials.gov ID | NCT06321419 |
 | Project Leader | Karolinska Institutet, Sweden (**KI**) |
 | Study Coordinator | The George Institute for Global Health, India (**TGI**)|
 | Principal Investigator | Martin Gerdin Wärnberg (KI, [martin.gerdin@ki.se](mailto:martin.gerdin@ki.se)) |
@@ -356,7 +356,7 @@ This trial does not include biological sampling.
 
 ## End of trial
 
-The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and follow-up. Decisions on premature termination are taken by the Trial Steering Committee and Trial Management Group.
+The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and follow-up. Decisions on premature termination are taken by the Joint Trial Steering and Data Monitoring Committee and Trial Management Group.
 
 ## Intervention and control treatment
 
@@ -464,7 +464,7 @@ These events are considered safety events because they suggest pulmonary, renal,
 
 We will also report any other safety events that we identify during the trial, and the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of such safety events could include missed injuries or missed investigations, which could be suspected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
 
-All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Data Monitoring Committee. 
+All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Joint Trial Steering and Data Monitoring Committee. 
 
 ### Follow up of safety events
 
@@ -790,7 +790,7 @@ knitr::include_graphics("./combined-power-curves.pdf")
 
 ### Interim analysis
 
-There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the Data Monitoring Committee. The purposes of this interim analysis will be to:
+There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the Joint Trial Steering and Data Monitoring Committee. The purposes of this interim analysis will be to:
 
 - assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes;
 - assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included; and
@@ -812,9 +812,7 @@ Central to our oversight approach will be a comprehensive monitoring and auditin
 
 ## Monitoring
 
-We will implement a multi-tiered monitoring strategy, including centralized data consistency checks, statistical monitoring, and selective on-site evaluations. Key integrity measures include source data verification, data entry validation, and regular audits. Any protocol deviations will be thoroughly documented, with serious breaches promptly addressed to ensure data integrity
-
-Monitors from coordinating centres will assist investigators in maintaining high ethical, scientific, technical, and regulatory quality. Monitoring visits will review protocol adherence, participant recruitment, adverse event reporting, compliance with study procedures, and regulatory adherence. Regular remote monitoring of the web-based database will be conducted to ensure data integrity, using validation and consistency rules and regular data cleaning.
+We will implement a multi-tiered monitoring strategy, including centralized data consistency checks, statistical monitoring, and selective on-site evaluations. Key integrity measures include source data verification, data entry validation, and regular audits. Any protocol deviations will be thoroughly documented, with serious breaches promptly addressed to ensure data integrity. Monitors from coordinating centres will assist investigators in maintaining high ethical, scientific, technical, and regulatory quality. Monitoring visits will review protocol adherence, participant recruitment, adverse event reporting, compliance with study procedures, and regulatory adherence. Regular remote monitoring of the web-based database will be conducted to ensure data integrity, using validation and consistency rules and regular data cleaning. The Trial Team and Trial Management Group will monitor baseline characteristics, opt-in consent rates and differential opt-in consent rates across trial arms, follow-up rates, CRF return and completeness rates, and safety data.
 
 # Deviations, serious breaches and other reporting obligations
 
