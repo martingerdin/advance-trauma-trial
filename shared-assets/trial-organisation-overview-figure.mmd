@@ -1,14 +1,10 @@
 flowchart
     %%{init:{'flowchart':{'nodeSpacing': 50,'rankSpacing': 50,'curve': 'basis'}, 'themeVariables':{'darkMode': true, 'fontSize': '11pt'}}}%%
     direction TB
-    TT[<b>Trial Team</b><hr>Runs the trial on a day-to-day basis]
-    TMG[<b>Trial Management Group</b><hr>Implements actions and decisions<br>made by the TSC and DMC]
-    TSC[<b>Trial Steering Committee</b><hr>Oversees the trial and<br>offers guidance to the TMG]
-    DMC[<b>Data Monitoring Committee</b><hr>Monitors trial data to ensure<br>participant safety, data integrity,<br>and ethical conduct]
+    TT["<b>Trial Team (TT)</b><hr>Runs the trial on a day-to-day basis"]
+    TMG["<b>Trial Management Group (TMG)</b><hr>Implements actions and decisions<br>made by the TSDMC"]
+    JTSDMC["<b>Joint Trial Steering and Data Monitoring Committee (TSCDM)</b><hr>Oversees the trial, monitors trial data to ensure<br> participant safety, data integrity, and ethical<br> conduct, and offers guidance to the TMG"]
     TT <--> TMG
-    TT --> DMC
-    TT --> TSC
-    TMG --> DMC
-    TMG --> TSC
-    TSC --> TMG
-    DMC --> TSC
+    TT --> JTSDMC
+    TMG --> JTSDMC
+    JTSDMC --> TMG

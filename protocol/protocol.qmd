@@ -1,16 +1,21 @@
 ---
 title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-subtitle: "Clinical Trial Protocol  \nVersion {{< var version >}}  \n{{< var date >}}"
+subtitle: "Clinical Trial Protocol  \nVersion {{< var version >}}, {{< var date >}}"
+titlepage-theme: 
+  title-fontsize: 20
+  title-fontstyle: "uppercase"
+  title-space-after: "0.1\\textheight"
+  subtitle-fontstyle: ["Large"]
 bibliography: bibliography.bib
 csl: nature.csl
 ---
-
 ```{r setup, include=FALSE}
 source("main.R")
 ```
 
 \newpage
 
+<!--
 **ATLS^®^ vs Standard Care in Adult Trauma Patients**
 
 |||
@@ -22,6 +27,8 @@ source("main.R")
 | Principal Investigator | Martin Gerdin Wärnberg (KI, [martin.gerdin@ki.se](mailto:martin.gerdin@ki.se)) |
 
 \newpage
+
+-->
 
 <!--
 
@@ -195,7 +202,7 @@ We performed a systematic literature search in the Medline, Embase, Cochrane, We
 #| echo: false
 #| label: fig-forest-plot
 #| fig.cap: "Summary of the updated system review. The forest plot shows the effect of ATLS on mortality. Abbreviations: RR, risk ratio; CI, confidence interval; ATLS, Advanced Trauma Life Support; I^2^, heterogeneity."
-knitr::include_graphics("forest-plot.pdf")
+knitr::include_graphics("forest-plot.png")
 ```
 
 # Benefit-risk evaluation 
@@ -241,7 +248,8 @@ knitr::include_graphics(
         batches.overlap.months = batches.overlap.months,
         transition.months = transition.months,
         transition.overlap.months = transition.overlap.months,
-        return.figure = FALSE
+        return.figure = FALSE,
+        device = "png"
     )
 )
 ```
@@ -303,7 +311,7 @@ Patient participants are adult trauma patients who presents to the emergency dep
 - age of at least 15 years;
 - trauma occurred less than 48 hours before arrival at the hospital;
 - present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
-- admitted or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
+- admitted, or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
 - managed by a participating cluster in the emergency department.
 
 ### Exclusion criteria
@@ -319,7 +327,7 @@ Clinical research coordinators will screen patient participants either as they a
 
 ### Withdrawal criteria
 
-Patient participants can choose to withdraw their consent for follow up at any time before the final analysis. If they withdraw their consent for follow up the clinical research coordinator will not contact them for additional follow ups. They can also choose to have the data collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
+Patient participants can choose to withdraw their consent for collection of non-routinely recorded data at any time before the final analysis. If they withdraw their consent for this data collection the clinical research coordinator will not collect any more of this data, which also means that no further follow-ups will be conducted. They can also choose to have the data already collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
 
 ## Procedures
 
@@ -336,7 +344,7 @@ Patient participants can choose to withdraw their consent for follow up at any t
 -->
 
 \begingroup
-\fontsize{8pt}{10pt}\selectfont
+\fontsize{10pt}{11pt}\selectfont
 \addtolength{\tabcolsep}{-3pt}
 
 ```{r}
@@ -783,8 +791,8 @@ With `r clusters` clusters and a total sample size of `r sample.size` our study 
 #| label: fig-power-curves
 #| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). **A)** Shows power curves assuming a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. **B)** Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC."
 
-combine_power_curves(rev(list.files(pattern = "curvedata")))
-knitr::include_graphics("./combined-power-curves.pdf")
+combine_power_curves(rev(list.files(pattern = "curvedata")), device = "png")
+knitr::include_graphics("./combined-power-curves.png")
 
 ```
 
@@ -835,12 +843,11 @@ The final protocol will be submitted for ethical review at all participating hos
 
 ## Procedure for obtaining consent
 
-In this trial, consent refers to consent for data collection. It is not possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in ATLS^®^, and these physicians cannot be expected to temporarily forget their training. Patient participants will be included in this trial under the following modes of informed consent:
+In this trial, consent refers to consent for data collection. It is not possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in ATLS^®^, and these physicians cannot be expected to temporarily forget their training. Patient participants will be included in this trial under the following modes of consent:
 
-- Opt out consent for **in-hospital data collection**. Consent for in-hospital data collection by interview or extraction of routinely collected information from medical records will be presumed unless actively declined. This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive. The patients or their legally authorized representative will be provided with written information about the study on their arrival at the hospital. 
-- Opt in consent for **follow-up data collection**. Informed consent for follow-up data collection by telephonic interviews will be actively sought from patient participants or their legally authorized representative. The clinical research coordinators will approach patients or patient representatives to obtain consent after admission. The consent will be written for patient participants who are admitted to the hospital and verbal for participants who are transferred or discharged before the clinical research coordinators have had an opportunity to approach them. The verbal consent will be audio recorded.
-- Opt in assent for **follow-up data collection** for participants who are minors. Informed assent for follow-up data collection by telephonic interviews will be obtained from participants who are minors, in addition to consent from their guardian or legally authorized representative.
-- Waiver of informed consent for patients who are unconscious or otherwise unable to provide consent and do not have a legally authorized representative. This group represents the most severly injured patients and they have to be included to make the trial representative of the entire population of trauma patients. Patients participants who regain consciousness will be informed about the study and asked for consent for follow-up data collection.
+- Opt out consent for **routinely collected data**. Consent for collection of routinely recorded data by interview or extraction of information from medical records will be presumed unless actively declined. This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive. The patients or their legally authorized representative will be provided with written information about the study on their arrival at the hospital. The variables assumed to be routinely collected are listed in @sec-variables.
+- Opt in consent and assent for **non-routinely recorded data**. Informed consent for non-routinely recorded data will be actively sought from patient participants or their legally authorized representative. For participants who are between 15 and 18 years of age we will obtain both the assent of the participant as well as the consent of their guardian or legally authorized representative. The clinical research coordinators will approach patient participants and their representatives after admission. The consent and assent will be written for patient participants who are admitted to the hospital and verbal for participants who are transferred or discharged before the clinical research coordinators have had an opportunity to approach them. The verbal consent will be audio recorded. The variables assument not to be routinely collected are also listed in @sec-variables.
+- Waiver of informed consent for patients who are unconscious or otherwise unable to provide consent and do not have a legally authorized representative. This group represents the most severly injured patients and they have to be included to make the trial representative of the entire population of trauma patients. Patients participants who regain consciousness will be informed about the study and asked for consent for collection of non-routinely collected data.
 
 ## Data protection
 
@@ -1105,3 +1112,19 @@ knitr::include_graphics(pages)
 ```
 
 ## Case Record Form {#sec-appendix-case-record-form .appendix}
+
+```{r case-record-form}
+#| echo: false
+
+download.destination <- "../case-record-form/instrument-pdfs"
+if (!dir.exists(download.destination)) {
+    stop("The instrument directory does not exist")
+}
+download_instrument_pdfs(download.destination = download.destination)
+system("pdfseparate ../case-record-form/instrument-pdfs/all-instruments.pdf ../case-record-form/instrument-pdfs/pages/all-instruments-%d.pdf")
+pages <- list.files("../case-record-form/instrument-pdfs/pages", pattern = "pdf", full.names = TRUE)
+
+# Extract page number from file name and sort
+pages <- pages[order(as.numeric(gsub(".*-(\\d+).pdf", "\\1", basename(pages))))]
+knitr::include_graphics(pages)
+```

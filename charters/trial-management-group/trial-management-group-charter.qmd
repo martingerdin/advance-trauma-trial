@@ -83,11 +83,11 @@ TMG members will provide broad expertise appropriate to the trial. The TMG will 
 
 The TMG includes the following members, in alphabetical order by surname, with their roles and affiliations:
 
-**Anurag Mishra**
+**Girish D Bakhshi**
 
 *Professor of surgery*
 
-Department of Surgery, Maulana Azad Medical College, India.
+Department of Surgery, Grant Govt. Medical College & Sir J. J. Group of Hospitals, India
 
 **Debojit Basak**
 
@@ -133,18 +133,24 @@ All India Institute of Medical Sciences, India
 
 Institute of Applied Health Research, University of Birmingham, UK
 
-**Monty Khajanchi**
-
-*Assistant professor of surgery*
-
-Department of Surgery, King Edward Memorial Hospital, India
-
 **Vivekanand Jha**
 
 *Executive Director*
 
 1. The George Institute for Global Health, India
 2. Faculty of Medicine, Imperial College London, UK
+
+**Monty Khajanchi**
+
+*Assistant professor of surgery*
+
+Department of Surgery, King Edward Memorial Hospital, India
+
+**Anurag Mishra**
+
+*Professor of surgery*
+
+Department of Surgery, Maulana Azad Medical College, India.
 
 **Samriddhi Ranjan**
 
@@ -189,7 +195,7 @@ Members will be expected to send apologies in advance of any meeting they cannot
 
 # Reporting
 
-The TMG will be provided with reports of inclusion rates baseline characteristics, follow-up rates, CRF return and completeness rates, and safety data. The TMG will also be provided with reports of any other relevant information, such as external evidence that may impact on the trial.
+The TMG will be provided with reports of inclusion rates baseline characteristics, opt-in consent rates and differential opt-in consent rates across trial arms, follow-up rates, CRF return and completeness rates, and safety data. The TMG will also be provided with reports of any other relevant information, such as external evidence that may impact on the trial.
 
 A standard report template will be used to provide information to the TSC. Additional information may be sent from the TMG to the TSC by writing via the TSC Facilitator. A short summary of each meeting with any action points clearly marked will be made. The TMG Chair will sign off these notes. The notes will be kept by the Sponsor and Coordinator.
 

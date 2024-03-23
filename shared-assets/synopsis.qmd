@@ -33,7 +33,7 @@ Adult trauma patients presenting to the emergency department of a participating 
 The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
 
 **Ethical Considerations** 
-We will use an opt-out consent approach for in-hospital data collection, in which consent is presumed unless actively declined. We will obtain informed consent for out of hospital follow up. Patients who are unconscious or lack a legally authorized representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection, as it will not be possible for patients to opt out from being subjected to the intervention. This approach is justified because the trial can be considered to involve only minimal risk and the data collection is non-invasive and mostly involve extracting routinely collected data from medical records.
+We will use an opt-out consent approach for collection of routinely recorded data. We will obtain informed consent for collection of non-routinely recorded data, such as quality of life and disability outcomes. Patients who are unconscious or lack a legally authorized representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection.
 
 **Trial Period**
 October 1, 2024, to September 30, 2029

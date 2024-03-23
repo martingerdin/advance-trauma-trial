@@ -31,6 +31,7 @@
 #'     figure. Defaults. to TRUE.
 #' @param save Logical. If TRUE the trial design figure is saved to
 #'     disk. Defaults to TRUE.
+#' @param device Character. The device to save the figure to. Defaults to "pdf".
 create_trial_design_flowchart <- function(clusters = 60,
                                           sequences = 5,
                                           batches = 6,
@@ -41,7 +42,8 @@ create_trial_design_flowchart <- function(clusters = 60,
                                           transition.overlap.months = 1,
                                           total.months = 8,
                                           return.figure = TRUE,
-                                          save = TRUE) {
+                                          save = TRUE,
+                                          device = "pdf") {
     ## Load packages
     library(ggplot2)
 
@@ -103,7 +105,7 @@ create_trial_design_flowchart <- function(clusters = 60,
             min.standard.care.months, "-min-standard-care-",
             min.intervention.months, "-min-intervention-",
             transition.months, "-transition-months-",
-            transition.overlap.months, "-transition-overlap.pdf"
+            transition.overlap.months, "-transition-overlap.", device
         )
         ggsave(file.name, trial.design.figure, width = 18, height = 9, units = "cm")
     }

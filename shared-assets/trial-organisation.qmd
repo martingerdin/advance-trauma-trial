@@ -1,4 +1,4 @@
-Trial management and oversight is governed by four trial committees and groups: the Trial Team (TT), the Trial Management Group (TMG), the Trial Steering Committee (TSC) and the Data Monitoring Committee (DMC). These groups are briefly described below and their relationships are shown in @fig-organisation-overview. Details about each committee and group are available in their respective charter.
+Trial management and oversight is governed by three trial committees and groups: the Trial Team (TT), the Trial Management Group (TMG), the Joint Trial Steering and Data Monitoring Committee (TSDMC). These groups are briefly described below and their relationships are shown in @fig-organisation-overview. Details about each committee and group are available in their respective charter.
 
 ## Trial team
 
@@ -12,7 +12,7 @@ Includes the project manager, clinical research associates, principal investigat
 
 **Relationships**
 
-Reports to the TMG, TSC and DMC. Operationalises decisions made by the TMG.
+Reports to the TMG and TSDMC. Operationalises decisions made by the TMG.
 
 **Meeting frequencies**
 
@@ -30,45 +30,29 @@ Includes members with broad expertise appropriate to the trial. The TMG will be 
 
 **Relationships**
 
-Receives reports from TT. Provides input to the TSC and DMC. Implements decisions made by the TSC.
+Receives reports from TT. Provides input to the TSDMC. Implements decisions made by the TSDMC.
 
 **Meeting frequencies**
 
 Monthly to every six months.
 
-## Trial Steering Committee (TSC)
+## Joint Trial Steering and Data Monitoring Committee (TSDMC)
 
 **Responsibility**
 
-The TSC's responsibility is to oversee the trial and offer guidance to the TMG.
+The TSDMC's responsibility is to oversee the trial, review results of interim analyses and safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. This committee also offer guidance to the TMG.
 
 **Composition**
 
-A majority of independent members, including a chair, and a minority of members with a direct interest in the trial, including the principal investigator. The chair should be independent of the trial, the sponsor, and the coordinator.
+A majority of independent members, including a chair and three additional external experts specializing in the clinical area, biostatistics, medical ethics, and a community or patient representative, as well as and a minority of members with a direct interest in the trial, including the principal investigator. The chair should be independent of the trial, and the coordinating institutions Karolinska Institutet and The George Institute for Global Health.
 
 **Relationships**
 
-Receives reports from the trial team and DMC.
+Receives reports from the trial team and TMG.
 
 **Meeting frequencies**
 
-Yearly, but may be more frequent if needed.
+Yearly, or after the completion of each batch, whichever comes first, but may be more frequent if needed.
 
-## Data Monitoring Committee (DMC)
 
-**Responsibility**
-
-To review results of interim analyses, safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics.
-
-**Composition**
-
-Four external experts specializing in clinical trial management, biostatistics, medical ethics, and the pertinent clinical area.
-
-**Relationships**
-
-Reports to the TSC. Receives reports from the TT.
-
-**Meeting frequencies**
-
-After the completion of each batch, but may be more frequent if needed.
 
