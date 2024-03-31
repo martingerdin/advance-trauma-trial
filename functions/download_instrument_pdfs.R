@@ -1,4 +1,5 @@
 download_instrument_pdfs <- function(download.destination = getwd()) {
+    library(dotenv)
     token <- Sys.getenv("REDCAP_API_TOKEN")
     url <- "https://redcap.georgeinstitute.org.in/api/"
     response <- httr2::request(url) |>

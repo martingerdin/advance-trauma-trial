@@ -72,7 +72,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, recompi
         stringr::str_to_lower()
 
     # Commit changes and tag release
-    if (commit) {
+    if (commit && !recompile.only) {
         base.git.path <- git2r::discover_repository(".") %>%
             stringr::str_remove("/.git")
         path <- file.path(base.git.path, "atls-vs-standard-care-trial")
