@@ -1,0 +1,20 @@
+toc: true
+toc-depth: 3
+number-sections: true
+fig-caption: true
+link-bibliography: false
+
+format:
+  titlepage-pdf:
+    titlepage: classic-lined
+    documentclass: scrartcl
+    number-sections: true 
+    include-in-header: 
+      text: |
+        \usepackage{scrlayer-scrpage}
+        \usepackage{lastpage}
+        \lohead{ATLS vs Standard Care Trial SAP}
+        \rohead{ClinicalTrials.gov ID NCT06321419}
+        \cfoot{\thepage\ of \pageref{LastPage} }
+  docx: default
+  html: default

@@ -1,0 +1,136 @@
+---
+title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+subtitle: "Statistical Analysis Plan  \nVersion {{< var version >}}, {{< var date >}}"
+titlepage-theme: 
+  title-fontsize: 20
+  title-fontstyle: "uppercase"
+  title-space-after: "0.1\\textheight"
+  subtitle-fontstyle: ["Large"]
+bibliography: bibliography.bib
+csl: nature.csl
+---
+
+```{r setup}
+#| echo: FALSE
+
+noacsr::source_all_functions()
+attach(global_variables())
+```
+
+{{< pagebreak >}}
+
+# Administrative information
+
+## Study identifiers
+
+```{r}
+#| echo: FALSE
+
+protocol.variables <- yaml::read_yaml("../protocol/_variables.yml")
+```
+
+- Protocol version `r protocol.variables$version` dated `r protocol.variables$date`
+- ClinicalTrials.gov ID NCT06321419
+- Clinical Trial Registry - India 
+
+## Changelog
+
+Once version 1.0.0 is finalised, this section will be updated with a changelog.
+
+<!--
+
+| Version | Date       | Details | 
+|---------|------------|---------|
+
+-->
+
+## Contributors
+
+
+| Name and  ORCID | Affiliation | Role |
+|-----------------|-------------|------|
+| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet | Principal Investigator |
+
+{{< pagebreak >}}
+
+# Trial synopsis
+
+{{< include ../shared-assets/synopsis.qmd >}}
+
+{{< pagebreak >}}
+
+# Special considerations
+
+{{< include ../shared-assets/special-considerations.qmd >}}
+
+{{< pagebreak >}}
+
+# Statistical analysis
+
+## Design
+
+This is a batched stepped-wedge cluster randomised trial, composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+
+## Statistical hypotheses
+
+Our primary statistical hypotheses are:
+
+- **Null hypothesis**: There is no difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the odds ratio (OR) for ATLS^®^ vs standard care would be 1.
+- **Alternative hypothesis**: There is a difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the OR for ATLS^®^ vs standard care would be different from 1. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS^®^ group compared to those randomised to the standard care group.
+
+## Statistical principles
+
+### Statistical software
+
+We will use the R Statistical Software for all analyses [@R].
+
+### Levels of statistical significance and confidence
+
+We will not perform any formal hypothesis testing as part of our planned interim analyses. We will use a two-sided significance level of 0.05 for all analyses, and we will report 95% confidence intervals (CI) for all estimates. We will not adjust for multiple testing because no secondary outcome is regarded as singularly more important.
+
+## Analysis populations
+
+The unit of randomisation is the hospital, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+
+## Baseline analyses
+
+### Cluster characteristics
+
+We will describe cluster characteristics including location and size using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables.
+
+### Patient characteristics
+
+We will describe patient characteristics at baseline per treatment group and overall using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables. We will not adjust for clustering when presenting baseline characteristics.
+
+## Analysis of the primary outcome
+
+The primary outcomes is 30-day in-hospital mortality and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa. 
+
+### Main analysis
+
+We will use a mixed effects binomial model (@eq-mixed-effects-binomial) with a logit link to estimate the OR. We will also use an identity link used to estimate the risk difference. These models will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). If the binomial model with the identity link does not converge then only a odds ratio will be reported. We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997].
+
+$$
+\text{Pr}(Y_{bkti} = 1) = \beta_{bt} + \theta X_{bkt} + \alpha_{bkt} 
+$$ {#eq-mixed-effects-binomial}
+
+Where:
+
+- $\text{Pr}(Y_{bkti} = 1)$ is the probability of death for patient $i = 1, \dotsc,m$ in cluster $k = 1, \dotsc, `r clusters`$ in period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$.
+- $\beta_{bt}$ is the fixed effect of period $t$ in batch $b$, i.e. there is a separate period effect for each batch, so that there is a total of `r batches * (total.months - 1)` period effects.
+- $\theta$ is the fixed effect of intervention exposure, i.e. the effect of ATLS^®^ exposure on the probability of death.
+- $X_{bkt}$ is the treatment arm for patient $i$ in cluster $k$ in period $t$, with $X_{bkt} = 1$ for ATLS^®^ and $X_{bkt} = 0$ for standard care.
+- $\alpha_{bkt}$ is the random effect of cluster $k$ in period $t$ in batch $b$, i.e. there is a separate cluster effect for each cluster in each period in each batch.
+
+We will present the effect of ATLS^®^ exposure as an OR of mortality with an associated 95% CI, using the standard care arm as the reference. We will also present the risk difference with a 95% CI.  We will balance the randomization within each batch on cluster size, defined as expected monthly volume of eligible patient participants, and will therefore not adjust the main analysis for cluster size.
+
+### Adjusted analyses
+
+### Subgroup analyses
+
+### Treatment of missing data
+
+## Analysis of secondary outcomes
+
+
+
