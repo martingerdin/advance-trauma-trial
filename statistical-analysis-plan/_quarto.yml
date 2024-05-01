@@ -1,6 +1,7 @@
 toc: true
 toc-depth: 3
 number-sections: true
+number-depth: 3
 fig-caption: true
 link-bibliography: false
 

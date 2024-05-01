@@ -69,7 +69,7 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 
 ## Design
 
-This is a batched stepped-wedge cluster randomised trial, composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+This is a batched stepped-wedge cluster randomised trial, composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
 
 ## Statistical hypotheses
 
@@ -106,9 +106,9 @@ We will describe patient characteristics at baseline per treatment group and ove
 
 The primary outcomes is 30-day in-hospital mortality and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa. 
 
-### Main analysis
+### Main analysis: mixed effects binomial model with logit link
 
-We will use a mixed effects binomial model with a logit link to estimate the OR (@eq-logit-model). This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997].
+We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). 
 
 $$
 \text{logit}(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
@@ -125,21 +125,157 @@ Where:
 
 We will present the effect of ATLS^®^ exposure as an OR of mortality with an associated 95% CI, using the standard care arm as the reference. We will also present the risk difference with a 95% CI.  We will balance the randomization within each batch on cluster size, defined as expected monthly volume of eligible patient participants, and will therefore not adjust the main analysis for cluster size.
 
-## Sensitivity analyses
+### Sensitivity analyses
 
-We will also use an identity link used to estimate the risk difference. This model will also be fitted using RSPL. If the binomial model with the identity link does not converge then only a odds ratio will be reported. 
+The sensitivity analyses will be conducted to assess the robustness of the main analysis results to different model specifications. We will first model the primary outcome using an identity link function to estimate the risk difference instead of the OR. Henceforth, each additional sensitivity analyses will be operationalised using two separate models, one with the logit link and one with the identity link. We will first explore more complex correlation structures. We will then model time using a spline function. Finally, we will conduct a fully adjusted covariate analysis.
+
+#### Model with identify link
+We will use an identity link used to estimate the risk difference, meaning that the coefficient will be interpreted as the difference in the probability of death between the ATLS^®^ and standard care arms. We will present the risk difference with a 95% CI. This model is specified in @eq-identity-model and will also be fitted using RSPL. If the binomial model with the identity link does not converge then only a odds ratio will be reported. 
 
 $$
 \text{Pr}(Y_{bkti} = 1) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
 $$ {#eq-identity-model}
 
+#### Models with different correlation structure
+
+We will explore if models with more complicated correlation structures are a better fit to the data. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures which might be plausible. First, we will include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)), described in @eq-ar1.
+
+$$
+\alpha_{bk, t} = \rho \alpha_{bk, t-1} + \epsilon_{t}, \quad \epsilon_{t} \sim N(0, \sigma^2_\alpha)
+$$ {#eq-ar1}
+
+Where:
+
+- $\alpha_{bk, t}$ is the random effect of cluster $k$ in period $t$ in batch $b$.
+- $\rho$ is the correlation between the random effects of two consecutive periods, the period $t$ and the period $t-1$.
+- $\epsilon_{t}$ is the error term for period $t$, which is assumed to be normally distributed with mean 0 and variance $\sigma^2_\alpha$.
+
+To allow for the randomisation by batches, we will also include a different secular trend for each batch as a random effect interaction term between batch and period. The full model is specified in @eq-logit-ar1.
+
+$$
+g(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk,t} + \gamma_{bkt} + \delta_{bt}
+$$ {#eq-logit-ar1}
+
+Where:
+
+- $g(\cdot)$ is the link function.
+- $\alpha_{bk,t}$ is the is the updated random effect of cluster $k$ in batch $b$ in period $t$ with the AR(1) correlation structure.
+- $\delta_{bt}$ is the random effect of batch $b$ in period $t$.
+
+<!-- 
+Need to be updated
+```{r}
+#| echo: FALSE
+#| include: FALSE
+#| eval: FALSE
+
+library(nlme)
+
+# Assuming `data` is your DataFrame with the necessary columns
+# Fit the model
+model <- nmle::gls(
+    fixed = outcome ~ period + intervention + batch,
+    data = data,
+    correlation = corAR1(form = ~ 1 | cluster_id),
+    weights = varIdent(form = ~ 1 | period)
+)
+
+# Check the summary
+summary(model)
+```
+-->
+
+#### Models with random cluster by intervention effects
+
+Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. The model is specified in @eq-logit-random-cluster-intervention.
+
+$$
+g(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
+$$ {#eq-logit-random-cluster-intervention}
+
+Where:
+
+- $u_{bk}$ is the random effect of cluster $k$ by intervention interaction.
+
+#### Models with time modelled with a spline function
+
+We will further explore the potential for a time-varying treatment effect [@kenny_analysis_2022]. To explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using natural cubic splines with knots at the equally spaced time points 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in @eq-spline-model.
+
+$$
+g(\text{Pr}(Y_{bkti} = 1)) = \beta_0 + \sum_{j=1}^5 \beta_j S_j(t, \{3, 6, 9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$
+
+Where:
+
+- $S_j(t, \{3, 6, 9\})$ is the natural cubic spline basis functions with knots placed at times 3, 6 and 9.
+- $\beta_j$ is the coefficient for the $j$-th spline basis function.
+
+#### Models exploring lag and weaning effects
+
+Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
+
+$$
+g(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \theta_{\text{int}} X_{bkt} \times T_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$ {#eq-lag-weaning-model}
+
+Where:
+
+- $\theta_{\text{int}}$ is the coefficient for the interaction between treatment and time since first treated.
+- $T_{bkt}$ is the number of periods since first treated.
+
 ### Adjusted analyses
+
+Fully adjusted covariate analysis will additionally adjust for:
+
+- Age
+- Sex
+- Systolic blood pressure
+- Glasgow Coma Scale
+- Injury Severity Score
+- Mechanism of injury
+
+These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in @eq-logit-model and @eq-identity-model as fixed effects.
 
 ### Subgroup analyses
 
+We will perform the following subgroup analyses:
+
+- geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;
+- age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021;
+- sex, using the levels male and female;
+- clinical cohorts, defined as blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts; and
+- cluster size.
+
+These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-logit-model and @eq-identity-model.
+
 ### Treatment of missing data
+
+We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10% then we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, then we will handle missing data using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations.
 
 ## Analysis of secondary outcomes
 
+### All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department
 
+We will use the model with the logit link specified in @eq-logit-model and the model with the identity link specified in @eq-identity-model to estimate the OR and risk difference for these mortality outcomes.
+
+### Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department
+
+Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each domain is rated on a scale from 1 to 5. 
+
+
+as well as a visual analogue scale (VAS) for self-rated quality of life.
+
+
+
+#### 
+
+- Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data from a stratified random sample (site and period) of patient participants. The sampling will be  designed so that is maximises statistical efficiency.
+- Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected from a stratified random sample of participants.
+- Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
+- Length of emergency department stay. Data on this outcome will be collected from patient hospital records.
+- Length of hospital stay. Data on this outcome will be collected from patient hospital records.
+- Intensive care unit admission. Data on this outcome will be collected from patient hospital records.
+- Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.
+
+For continuous, count and prevalence outcomes similar model-based approaches will be used but with appropriate links and distribution functions, using transformations where appropriate.
 
