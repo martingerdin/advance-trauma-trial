@@ -20,7 +20,7 @@ attach(global_variables())
 
 The purpose of this document is to outline the composition, terms of reference, duties, powers, decision-making processes and interactions of the Trial Steering Committee (TSC) for this trial. It will detail the scheduling of meetings, how information will be communicated to and from the TSC, the regularity and structure of meetings, and how the TSC will coordinate with other committees involved in the trial.
 
-# Trial Synopsis
+# Trial synopsis
 
 {{< include ../../shared-assets/synopsis.qmd >}}
 
@@ -28,7 +28,7 @@ The purpose of this document is to outline the composition, terms of reference, 
 
 {{< include ../../shared-assets/special-considerations.qmd >}}
 
-# Roles and Responsibilities
+# Roles and responsibilities
 
 The TSC's responsibility is to oversee the trial and offer guidance to the Trial Management Group (TMG) through its independent Chairman. The specific roles are:
 

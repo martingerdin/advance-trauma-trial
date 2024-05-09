@@ -173,7 +173,11 @@ rows as needed.*
 
 # Changelog
 
-**After version 1.0.0 is approved, all major and minor version updates to the protocol will be documented here. A full changelog will also be kept separately, that documents all "patch" updates as well (for example spelling and grammar edits).**
+| Version | Date       | Details | 
+|---------|------------|---------|
+| 1.1.0   | 2024-05-09 | Updated the primary outcome to in-hospital mortality and spelling corrections. The primary outcome was updated following a voting procedure in the Trial Management Group.    |
+
+: {tbl-colwidths="[10, 15, 75]"}
 
 \newpage
 
@@ -406,12 +410,11 @@ When the trial ends, the intervention will have been implemented in all clusters
 
 ### Primary outcome
 
-The primary outcome will be all-cause mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records, by calling the patient or a patient representative, or if the patient has been transferred to another hospital by contacting the hospital to which the patient was transferred. Data on this outcome will be collected continuously during the trial. We chose this outcome as the primary outcome instead of in-hospital mortality because in-hospital mortality would not capture deaths in patients who are transferred to another hospital for admission. 
+The primary outcome will be in-hospital mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records. If the patient has been transferred to another hospital, the clinical research coordinators will collect data on this outcome by calling the patient or a patient representative, or by contacting the hospital to which the patient was transferred. Data on this outcome will be collected continuously during the trial. 
 
 ### Secondary outcomes
 
-- All cause mortality within 24 hours and three months of arrival at the emergency department. Data on this outcome will be collected in the same way as for the primary outcome.
-- In-hospital mortality within 30 days of arrival at the emergency department. Data on this outcome will be collected in the same way as for the primary outcome. 
+- All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department. Data on this outcome will be collected in the same way as for the primary outcome.
 - Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data from a stratified random sample (site and period) of patient participants. The sampling will be  designed so that is maximises statistical efficiency.
 - Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected from a stratified random sample of participants.
 - Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
@@ -759,7 +762,7 @@ To this end we will additionally fit generalised linear mixed models (with same 
 
 To additionally explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using a spline function. Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. 
 
-This will allow us to different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as waning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. A fully adjusted covariate analysis will additionally adjust for a set of pre-specified individual-level covariates of known prognostic importance. 
+This will allow us to different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. A fully adjusted covariate analysis will additionally adjust for a set of pre-specified individual-level covariates of known prognostic importance. 
 
 ### Estimation and reporting of within cluster correlations
 
@@ -783,13 +786,13 @@ get_design_matrix(
 )
 ```
 
-With `r clusters` clusters and a total sample size of `r sample.size` our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training (see @fig-power-curves). This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance [@Hemming2020Feb; @Martin2016; @Korevaar2021]. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work. 
+With `r clusters` clusters and a total sample size of `r sample.size` our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS^®^ training (see @fig-power-curves). This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance [@Hemming2020Feb; @Martin2016; @Korevaar2021]. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work. 
 
 ```{r power-curves}
 #| echo: false
 #| warning: false
 #| label: fig-power-curves
-#| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). **A)** Shows power curves assuming a reduction in the primary outcome from 20% under standard care to 15% after ATLS^®^ training. **B)** Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC."
+#| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). **A)** Shows power curves assuming a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS^®^ training. **B)** Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC."
 
 combine_power_curves(rev(list.files(pattern = "curvedata")), device = "png")
 knitr::include_graphics("./combined-power-curves.png")

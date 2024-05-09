@@ -10,7 +10,7 @@ Trauma is a massive global health issue. Many training programmes have been deve
 To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
 
 **Primary Outcome**
-All-cause mortality within 30 days of arrival at the emergency department.
+In-hospital mortality within 30 days of arrival at the emergency department.
 
 **Trial Design**
 Batched stepped-wedge cluster randomised trial in India.
