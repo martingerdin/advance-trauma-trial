@@ -104,18 +104,19 @@ We will describe patient characteristics at baseline per treatment group and ove
 
 ## Analysis of the primary outcome
 
-The primary outcomes is 30-day in-hospital mortality and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa. 
+The primary outcomes is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa. 
 
 ### Main analysis: mixed effects binomial model with logit link
 
 We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). 
 
 $$
-\text{logit}(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
+\text{logit}(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
 $$ {#eq-logit-model}
 
 Where:
 
+- $\mu$ is the intercept, representing the baseline log-odds of the outcome when all predictors are zero.
 - $\text{Pr}(Y_{bkti} = 1)$ is the probability of death for patient $i = 1, \dotsc,m$ in cluster $k = 1, \dotsc, `r clusters`$ in period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$.
 - $\beta_{bt}$ is the fixed effect of period $t$ in batch $b$, i.e. there is a separate period effect for each batch, so that there is a total of `r batches * (total.months - 1)` period effects.
 - $\theta$ is the fixed effect of intervention exposure, i.e. the effect of ATLS^®^ exposure on the probability of death.
@@ -133,8 +134,12 @@ The sensitivity analyses will be conducted to assess the robustness of the main 
 We will use an identity link used to estimate the risk difference, meaning that the coefficient will be interpreted as the difference in the probability of death between the ATLS^®^ and standard care arms. We will present the risk difference with a 95% CI. This model is specified in @eq-identity-model and will also be fitted using RSPL. If the binomial model with the identity link does not converge then only a odds ratio will be reported. 
 
 $$
-\text{Pr}(Y_{bkti} = 1) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
+\text{Pr}(Y_{bkti} = 1) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
 $$ {#eq-identity-model}
+
+Where:
+
+- $\mu$ is the intercept, representing the baseline probability of the outcome when all predictors are zero.
 
 #### Models with different correlation structure
 
@@ -146,14 +151,14 @@ $$ {#eq-ar1}
 
 Where:
 
-- $\alpha_{bk, t}$ is the random effect of cluster $k$ in period $t$ in batch $b$.
 - $\rho$ is the correlation between the random effects of two consecutive periods, the period $t$ and the period $t-1$.
+- $\alpha_{bk, t}$ is the random effect of cluster $k$ in period $t$ in batch $b$.
 - $\epsilon_{t}$ is the error term for period $t$, which is assumed to be normally distributed with mean 0 and variance $\sigma^2_\alpha$.
 
 To allow for the randomisation by batches, we will also include a different secular trend for each batch as a random effect interaction term between batch and period. The full model is specified in @eq-logit-ar1.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk,t} + \gamma_{bkt} + \delta_{bt}
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk,t} + \gamma_{bkt} + \delta_{bt}
 $$ {#eq-logit-ar1}
 
 Where:
@@ -190,7 +195,7 @@ summary(model)
 Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. The model is specified in @eq-logit-random-cluster-intervention.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
 $$ {#eq-logit-random-cluster-intervention}
 
 Where:
@@ -202,8 +207,8 @@ Where:
 We will further explore the potential for a time-varying treatment effect [@kenny_analysis_2022]. To explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using natural cubic splines with knots at the equally spaced time points 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in @eq-spline-model.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \beta_0 + \sum_{j=1}^5 \beta_j S_j(t, \{3, 6, 9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
-$$
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \sum_{j=1}^5 \beta_j S_j(t, \{3, 6, 9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$ {#eq-spline-model}
 
 Where:
 
@@ -215,7 +220,7 @@ Where:
 Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \beta_{bt} + \theta X_{bkt} + \theta_{\text{int}} X_{bkt} \times T_{bkt} + \alpha_{bk} + \gamma_{bkt}
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \theta_{\text{int}} X_{bkt} \times T_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-lag-weaning-model}
 
 Where:
@@ -243,7 +248,7 @@ We will perform the following subgroup analyses:
 - geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;
 - age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021;
 - sex, using the levels male and female;
-- clinical cohorts, defined as blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts; and
+- clinical cohorts, defined as blunt multisystem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts; and
 - cluster size.
 
 These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-logit-model and @eq-identity-model.
@@ -260,22 +265,48 @@ We will use the model with the logit link specified in @eq-logit-model and the m
 
 ### Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department
 
-Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each domain is rated on a scale from 1 to 5. 
+Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a likert scale from 1 to 5. There is also a visual analogue scale (VAS) for self-rated quality of life, ranging from 0 to 100. For each of the five dimensions we will use a mixed effects ordinal model as specified in @eq-ordinal-model. 
 
+$$
+\text{logit}(\text{Pr}(Y_{bkti} \leq j)) = \mu_j + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$ {#eq-ordinal-model}
 
-as well as a visual analogue scale (VAS) for self-rated quality of life.
+Where:
 
+- $\mu_j$ is the intercept for the $j$-th category of the EQ5D dimension ($j$ = 1, 2, 3, 4, 5).
 
+The VAS will be analysed using a linear mixed effects model as specified in @eq-linear-model.
 
-#### 
+$$
+\text{VAS}_{bkti} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti}, \quad \epsilon_{bkti} \sim N(0, \sigma^2)
+$$ {#eq-linear-model}
 
-- Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data from a stratified random sample (site and period) of patient participants. The sampling will be  designed so that is maximises statistical efficiency.
-- Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected from a stratified random sample of participants.
-- Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
-- Length of emergency department stay. Data on this outcome will be collected from patient hospital records.
-- Length of hospital stay. Data on this outcome will be collected from patient hospital records.
-- Intensive care unit admission. Data on this outcome will be collected from patient hospital records.
-- Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.
+Where:
 
-For continuous, count and prevalence outcomes similar model-based approaches will be used but with appropriate links and distribution functions, using transformations where appropriate.
+- $\epsilon_{bkti}$ is the error term for patient $i$ in cluster $k$ in period $t$ in batch $b$, assumed to be normally distributed with mean 0 and variance $\sigma^2$.
 
+### Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department
+
+We will measure disability using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0) [@ustun_measuring_2010]. This tool assesses six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each domain is rated on a likert scale from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme difficulties. We will analyse each domain separately using a mixed effects ordinal model as specified in @eq-ordinal-model. We will also calculate a WHODAS 2.0 summary score using the method referred to as the "complex scoring" method. This method involves summing the item scores within each of the six domains, then summing the scores of all domains, and finally transforming the total score to a 0-100 scale. We will analyse the summary score using a linear mixed effects model as specified in @eq-linear-model.
+
+### Return to work at 30 days and three months after arrival at the emergency department
+
+We will analyse return to work as a dichotomous variable using a mixed effects binomial model with a logit link as specified in @eq-logit-model.
+
+### Length of emergency department stay
+
+We will analyse length of emergency department stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+
+### Length of hospital stay
+
+We will analyse length of hospital stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+
+### Intensive care unit admission
+
+We will analyse intensive care unit admission as a dichotomous variable using a mixed effects binomial model with a logit link as specified in @eq-logit-model.
+
+### Length of intensive care unit stay
+
+We will analyse length of intensive care unit stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+
+# References
