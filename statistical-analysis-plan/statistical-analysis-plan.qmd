@@ -69,14 +69,18 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 
 ## Design
 
-This is a batched stepped-wedge cluster randomised trial, composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters`. The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
 
 ## Statistical hypotheses
 
 Our primary statistical hypotheses are:
 
 - **Null hypothesis**: There is no difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the odds ratio (OR) for ATLS^®^ vs standard care would be 1.
-- **Alternative hypothesis**: There is a difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the OR for ATLS^®^ vs standard care would be different from 1. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS^®^ group compared to those randomised to the standard care group.
+- **Alternative hypothesis**: There is an absolute difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care of at least 5% units, meaning that the OR for ATLS^®^ vs standard care would be different from 1. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS^®^ group compared to those randomised to the standard care group.
+
+## Sample size calculations
+
+{{< include ../shared-assets/sample-size-calculations.qmd >}}
 
 ## Statistical principles
 
@@ -90,7 +94,7 @@ We will not perform any formal hypothesis testing as part of our planned interim
 
 ## Analysis populations
 
-The unit of randomisation is the hospital, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses. We will not do a per protocol or safety analysis. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ## Baseline analyses
 
@@ -100,7 +104,7 @@ We will describe cluster characteristics including location and size using frequ
 
 ### Patient characteristics
 
-We will describe patient characteristics at baseline per treatment group and overall using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables. We will not adjust for clustering when presenting baseline characteristics.
+We will describe patient characteristics at baseline, meaning all pre-training periods, per treatment group and overall using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables. We will not adjust for clustering when presenting baseline characteristics.
 
 ## Analysis of the primary outcome
 
@@ -108,7 +112,9 @@ The primary outcomes is in-hospital mortality within 30 days of arrival at the e
 
 ### Main analysis: mixed effects binomial model with logit link
 
-We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). 
+We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure[^calendar-time]. The primary analysis will allow for clustering as a random cluster and random cluster by period effect, both assumed to follow a normal distribution. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). 
+
+[^calendar-time]: **Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
 
 $$
 \text{logit}(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
@@ -116,13 +122,15 @@ $$ {#eq-logit-model}
 
 Where:
 
-- $\mu$ is the intercept, representing the baseline log-odds of the outcome when all predictors are zero.
 - $\text{Pr}(Y_{bkti} = 1)$ is the probability of death for patient $i = 1, \dotsc,m$ in cluster $k = 1, \dotsc, `r clusters`$ in period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$.
-- $\beta_{bt}$ is the fixed effect of period $t$ in batch $b$, i.e. there is a separate period effect for each batch, so that there is a total of `r batches * (total.months - 1)` period effects.
+- $\mu$ is the intercept, representing the baseline log-odds of the outcome when all predictors are 1.
+- $\beta_{bt}$ is the fixed effect of period $t$ in batch $b$, i.e. there is a separate period effect for each batch, so that there is a total of `r batches * (total.months - 1)` period effects.[^many-parameters]
 - $\theta$ is the fixed effect of intervention exposure, i.e. the effect of ATLS^®^ exposure on the probability of death.
 - $X_{bkt}$ is the treatment arm for patient $i$ in cluster $k$ in period $t$, with $X_{bkt} = 1$ for ATLS^®^ and $X_{bkt} = 0$ for standard care.
 - $\alpha_{bk}$ is the random effect of cluster $k$ in batch $b$, i.e. the random effect of cluster.
 - $\gamma_{bkt}$ is the random effect of cluster $k$ in period $t$ in batch $b$, i.e. the random effect of cluster by period.
+
+[^many-parameters]: **Question:** The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?
 
 We will present the effect of ATLS^®^ exposure as an OR of mortality with an associated 95% CI, using the standard care arm as the reference. We will also present the risk difference with a 95% CI.  We will balance the randomization within each batch on cluster size, defined as expected monthly volume of eligible patient participants, and will therefore not adjust the main analysis for cluster size.
 
@@ -243,7 +251,9 @@ These are known individual-level prognostic factors for the primary outcome. The
 
 ### Subgroup analyses
 
-We will perform the following subgroup analyses:
+We will perform the following subgroup analyses[^subgroup-analysis]:
+
+[^subgroup-analysis]: **Question:** Are we exploring too many subgroups?
 
 - geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;
 - age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021;

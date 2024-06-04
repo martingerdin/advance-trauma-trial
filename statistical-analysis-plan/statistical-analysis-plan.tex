@@ -208,7 +208,7 @@ Cluster Randomised Trial}
 }
 \makeatother
 \subtitle{Statistical Analysis Plan\\
-Version 0.1.0, 2024-05-13}
+Version 0.2.0, 2024-06-04}
 \author{}
 \date{}
 
@@ -240,7 +240,7 @@ Trauma Patient Outcomes: A Cluster Randomised Trial}}}\par
 \vspace{\betweentitlesubtitle}
 {
 {\Large{\nohyphens{Statistical Analysis Plan\\
-Version 0.1.0, 2024-05-13}}}\par
+Version 0.2.0, 2024-06-04}}}\par
 }}
 \newcommand{\titlepagetitleblock}{
 \rule{\textwidth}{0.4pt} % Thin horizontal rule
@@ -342,7 +342,7 @@ Version 0.1.0, 2024-05-13}}}\par
 \setcounter{page}{1}
 
 %%%%% end titlepage extension code
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, breakable, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, enhanced, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -497,13 +497,14 @@ additional funding and amended ethical approvals.
 \hypertarget{design}{%
 \subsection{Design}\label{design}}
 
-This is a batched stepped-wedge cluster randomised trial, composed of 6
-batches of identical 12-period 5-sequence design, with one cluster being
-assigned to each sequence of each batch\textsuperscript{1}. Each period
-is one month, and each cluster will be in the trial for a total of 13
-months. The intervention will be implemented during a one-month
-transition period, which will be excluded from the analysis. There will
-be an overlap of 6 months between successive batches.
+This is a batched stepped-wedge cluster randomised trial, including a
+total of 30. The trial will be composed of 6 batches of identical
+12-period 5-sequence design, with one cluster being assigned to each
+sequence of each batch\textsuperscript{1}. Each period is one month, and
+each cluster will be in the trial for a total of 13 months. The
+intervention will be implemented during a one-month transition period,
+which will be excluded from the analysis. There will be an overlap of 6
+months between successive batches.
 
 \hypertarget{statistical-hypotheses}{%
 \subsection{Statistical hypotheses}\label{statistical-hypotheses}}
@@ -518,16 +519,55 @@ Our primary statistical hypotheses are:
   ATLS\textsuperscript{®} and standard care, meaning that the odds ratio
   (OR) for ATLS\textsuperscript{®} vs standard care would be 1.
 \item
-  \textbf{Alternative hypothesis}: There is a difference in the primary
-  outcome of 30-day in-hospital mortality between those randomised to
-  ATLS\textsuperscript{®} and standard care, meaning that the OR for
-  ATLS\textsuperscript{®} vs standard care would be different from 1.
-  Our expectation, based on our pilot study and review of the
-  literature, is that the OR will be less than 1, indicating lower odds
-  of 30-day in-hospital mortality among those randomised to
-  ATLS\textsuperscript{®} group compared to those randomised to the
-  standard care group.
+  \textbf{Alternative hypothesis}: There is an absolute difference in
+  the primary outcome of 30-day in-hospital mortality between those
+  randomised to ATLS\textsuperscript{®} and standard care of at least
+  5\% units, meaning that the OR for ATLS\textsuperscript{®} vs standard
+  care would be different from 1. Our expectation, based on our pilot
+  study and review of the literature, is that the OR will be less than
+  1, indicating lower odds of 30-day in-hospital mortality among those
+  randomised to ATLS\textsuperscript{®} group compared to those
+  randomised to the standard care group.
 \end{itemize}
+
+\hypertarget{sample-size-calculations}{%
+\subsection{Sample size calculations}\label{sample-size-calculations}}
+
+With 30 clusters and a total sample size of 4320 our study has
+\textasciitilde90\% power across different combinations of cluster
+autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a
+reduction in the primary outcome of in-hospital mortality within 30 days
+from 20\% under standard care to 15\% after ATLS\textsuperscript{®}
+training (see Figure~\ref{fig-power-curves}). This effect is a
+conservative estimate and the reduction equals a risk ratio of 0.75,
+which would be clinically important while also being consistent with our
+pilot study and updated systematic review. We allowed for the clustered
+design and assumed an ICC of 0.02, but considered sensitivity across the
+range 0.01-0.05\textsuperscript{2,3}, and a CAC of 0.9 but considered
+sensitivity across the range 0.8-1.0, based on our pilot study and
+current guidance\textsuperscript{4--6}. We included the CAC to allow for
+variation in clustering over time. We assume that each cluster will
+contribute approximately 12 observations per month to the analysis,
+based on our previous work.
+
+\begin{figure}
+
+{\centering \includegraphics{./combined-power-curves.png}
+
+}
+
+\caption{\label{fig-power-curves}Power curves for different combinations
+of cluster autocorrelations (CAC) and intra-cluster correlations (ICC).
+\textbf{A)} Shows power curves assuming a reduction in the primary
+outcome of in-hospital mortality within 30 days from 20\% under standard
+care to 15\% after ATLS\textsuperscript{®} training. \textbf{B)} Shows
+power curves assuming a reduction in the primary outcome from 10\% under
+standard care to 7.5\% after ATLS\textsuperscript{®} training. Under
+this scenario, we would need to increase the sample size per month to
+around 30 observations to achieve 90\% powere under most combinations of
+CAC and ICC.}
+
+\end{figure}
 
 \hypertarget{statistical-principles}{%
 \subsection{Statistical principles}\label{statistical-principles}}
@@ -536,7 +576,7 @@ Our primary statistical hypotheses are:
 \subsubsection{Statistical software}\label{statistical-software}}
 
 We will use the R Statistical Software for all
-analyses\textsuperscript{2}.
+analyses\textsuperscript{7}.
 
 \hypertarget{levels-of-statistical-significance-and-confidence}{%
 \subsubsection{Levels of statistical significance and
@@ -551,16 +591,18 @@ outcome is regarded as singularly more important.
 \hypertarget{analysis-populations}{%
 \subsection{Analysis populations}\label{analysis-populations}}
 
-The unit of randomisation is the hospital, but the unit of analysis is
-the individual patient. The group allocation for a patient depends on
-the period in which the patient was admitted to the hospital, and
-patients will be considered exposed to the intervention if they were
+The unit of randomisation is the hospital, because all units trained in
+the same hospital will be treated as one cluster, but the unit of
+analysis is the individual patient. The group allocation for a patient
+depends on the period in which the patient was admitted to the hospital,
+and patients will be considered exposed to the intervention if they were
 admitted to the hospital at any time point following the transition
 period. We will use an intention-to-treat approach for all analyses. We
-will use a CONSORT diagram to display the flow of hospitals, clusters
-and patients through the trial. We will report the study according to
-the CONSORT guidelines for stepped-wedge randomised
-trials\textsuperscript{3}.
+will not do a per protocol or safety analysis. We will use a CONSORT
+diagram to display the flow of hospitals, clusters and patients through
+the trial. We will present cluster level summaries of the intervention
+effect. We will report the study according to the CONSORT guidelines for
+stepped-wedge randomised trials\textsuperscript{8}.
 
 \hypertarget{baseline-analyses}{%
 \subsection{Baseline analyses}\label{baseline-analyses}}
@@ -576,11 +618,11 @@ continuous variables.
 \hypertarget{patient-characteristics}{%
 \subsubsection{Patient characteristics}\label{patient-characteristics}}
 
-We will describe patient characteristics at baseline per treatment group
-and overall using frequencies and percentages for discrete variables and
-means, standard deviations, medians and interquartile ranges (Q1-Q3) for
-continuous variables. We will not adjust for clustering when presenting
-baseline characteristics.
+We will describe patient characteristics at baseline, meaning all
+pre-training periods, per treatment group and overall using frequencies
+and percentages for discrete variables and means, standard deviations,
+medians and interquartile ranges (Q1-Q3) for continuous variables. We
+will not adjust for clustering when presenting baseline characteristics.
 
 \hypertarget{analysis-of-the-primary-outcome}{%
 \subsection{Analysis of the primary
@@ -599,13 +641,16 @@ versa.
 link}\label{main-analysis-mixed-effects-binomial-model-with-logit-link}}
 
 We will use a mixed effects binomial model with a logit link to estimate
-the OR. We will include fixed effects for period and a fixed effect for
-intervention exposure. The primary analysis will allow for clustering by
-as a random cluster and random cluster by period effect. The full model
-is specified in Equation~\ref{eq-logit-model}. To correct the potential
+the OR. We will include fixed effects for period as a categorical
+variable and a fixed effect for intervention exposure\footnote{\textbf{Question:}
+  Should we adjust for calendar time because the last batch will be two
+  years later than the first batch?}. The primary analysis will allow
+for clustering as a random cluster and random cluster by period effect,
+both assumed to follow a normal distribution. The full model is
+specified in Equation~\ref{eq-logit-model}. To correct the potential
 inflation of the type I error rate due to small number of clusters, the
 Kenward and Roger small sample correction will be
-used\textsuperscript{4}. This model will be fitted using residual
+used\textsuperscript{9}. This model will be fitted using residual
 pseudo-likelihood estimation based on linearization with
 subject-specific expansion (RSPL).
 
@@ -618,16 +663,18 @@ Where:
 \begin{itemize}
 \tightlist
 \item
-  \(\mu\) is the intercept, representing the baseline log-odds of the
-  outcome when all predictors are zero.
-\item
   \(\text{Pr}(Y_{bkti} = 1)\) is the probability of death for patient
   \(i = 1, \dotsc,m\) in cluster \(k = 1, \dotsc, 30\) in period
   \(t = 1, \dotsc, 12\) in batch \(b = 1, \dotsc, 6\).
 \item
+  \(\mu\) is the intercept, representing the baseline log-odds of the
+  outcome when all predictors are 1.
+\item
   \(\beta_{bt}\) is the fixed effect of period \(t\) in batch \(b\),
   i.e.~there is a separate period effect for each batch, so that there
-  is a total of 72 period effects.
+  is a total of 72 period effects.\footnote{\textbf{Question:} The model
+    will estimate some 78 parameters. Is this a problem considering the
+    low number of participants per period?}
 \item
   \(\theta\) is the fixed effect of intervention exposure, i.e.~the
   effect of ATLS\textsuperscript{®} exposure on the probability of
@@ -771,8 +818,8 @@ Where:
 function}\label{models-with-time-modelled-with-a-spline-function}}
 
 We will further explore the potential for a time-varying treatment
-effect\textsuperscript{5}. To explore if the fixed period effect is both
-parsimonious and adequate to represent the extent of any underlying
+effect\textsuperscript{10}. To explore if the fixed period effect is
+both parsimonious and adequate to represent the extent of any underlying
 secular trend, we will model the time effect using natural cubic splines
 with knots at the equally spaced time points 3, 6 and 9. This will
 result in five spline basis functions, because the natural cubic splines
@@ -855,7 +902,8 @@ fixed effects.
 \hypertarget{subgroup-analyses}{%
 \subsubsection{Subgroup analyses}\label{subgroup-analyses}}
 
-We will perform the following subgroup analyses:
+We will perform the following subgroup analyses\footnote{\textbf{Question:}
+  Are we exploring too many subgroups?}:
 
 \begin{itemize}
 \tightlist
@@ -867,7 +915,7 @@ We will perform the following subgroup analyses:
 \item
   age groups, defined as older adolescents (15-19 years), young adults
   (20-24 years), adults (25-59 years), and older adults (60 years and
-  older) {[}\textsuperscript{6};
+  older) {[}\textsuperscript{11};
 \item
   sex, using the levels male and female;
 \item
@@ -961,7 +1009,7 @@ and three months of arrival at the emergency
 department}\label{disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department}}
 
 We will measure disability using the WHO Disability Assessment Schedule
-2.0 (WHODAS 2.0)\textsuperscript{7}. This tool assesses six domains of
+2.0 (WHODAS 2.0)\textsuperscript{12}. This tool assesses six domains of
 functioning: cognition, mobility, self-care, getting along, life
 activities, and participation. Each domain is rated on a likert scale
 from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme
@@ -1026,37 +1074,71 @@ Equation~\ref{eq-linear-model}.
 design: A design robust to delays in cluster recruitment. \emph{Stat
 Med} \textbf{41}, 3627--3641 (2022).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-R}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-Campbell2005}{}}%
 \CSLLeftMargin{2. }%
+\CSLRightInline{Campbell, M. K. \emph{et al.} Determinants of the
+intracluster correlation coefficient in cluster randomized trials: The
+case of implementation research. \emph{Clinical Trials} \textbf{2},
+99--107 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Eldridge2015}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Eldridge, S. M. \emph{et al.} How big should the pilot
+study for my cluster randomised trial be? \emph{Stat Methods Med Res}
+\textbf{25}, 1039--1056 (2015).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Hemming2020Feb}{}}%
+\CSLLeftMargin{4. }%
+\CSLRightInline{Hemming, K. \emph{et al.} A tutorial on sample size
+calculation for multiple-period cluster randomized parallel, cross-over
+and stepped-wedge trials using the shiny CRT calculator. \emph{Int J
+Epidemiol} \textbf{49}, 979--995 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Martin2016}{}}%
+\CSLLeftMargin{5. }%
+\CSLRightInline{Martin, J. \emph{et al.} Intra-cluster and inter-period
+correlation coefficients for cross-sectional cluster randomised
+controlled trials for type-2 diabetes in UK primary care. \emph{Trials}
+\textbf{17}, (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Korevaar2021}{}}%
+\CSLLeftMargin{6. }%
+\CSLRightInline{Korevaar, E. \emph{et al.} Intra-cluster correlations
+from the CLustered OUtcome dataset bank to inform the design of
+longitudinal cluster trials. \emph{Clinical Trials} \textbf{18},
+529--540 (2021).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-R}{}}%
+\CSLLeftMargin{7. }%
 \CSLRightInline{R Core Team. \emph{R: A language and environment for
 statistical computing}. (R Foundation for Statistical Computing, 2023).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-Hemming2018}{}}%
-\CSLLeftMargin{3. }%
+\CSLLeftMargin{8. }%
 \CSLRightInline{Hemming, K. \emph{et al.} Reporting of stepped wedge
 cluster randomised trials: Extension of the CONSORT 2010 statement with
 explanation and elaboration. \emph{BMJ} k1614 (2018).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kenward_small_1997}{}}%
-\CSLLeftMargin{4. }%
+\CSLLeftMargin{9. }%
 \CSLRightInline{Kenward, M. G. \emph{et al.} Small {Sample} {Inference}
 for {Fixed} {Effects} from {Restricted} {Maximum} {Likelihood}.
 \emph{Biometrics} \textbf{53}, 983--997 (1997).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-kenny_analysis_2022}{}}%
-\CSLLeftMargin{5. }%
+\CSLLeftMargin{10. }%
 \CSLRightInline{Kenny, A. \emph{et al.} Analysis of stepped wedge
 cluster randomized trials in the presence of a time-varying treatment
 effect. \emph{Statistics in medicine} 10.1002/sim.9511 (2022).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-Diaz2021}{}}%
-\CSLLeftMargin{6. }%
+\CSLLeftMargin{11. }%
 \CSLRightInline{Diaz, T. \emph{et al.} A call for standardised
 age-disaggregated health data. \emph{The Lancet Healthy Longevity}
 \textbf{2}, e436--e443 (2021).}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ustun_measuring_2010}{}}%
-\CSLLeftMargin{7. }%
+\CSLLeftMargin{12. }%
 \CSLRightInline{Ustun, T. B. \emph{et al.} \emph{Measuring {Health} and
 {Disability}: {Manual} for {WHO} {Disability} {Assessment} {Schedule}
 ({WHODAS} 2.0)}. (World Health Organization, 2010).}

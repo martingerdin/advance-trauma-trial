@@ -1,0 +1,12 @@
+With `r clusters` clusters and a total sample size of `r sample.size` our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS^®^ training (see @fig-power-curves). This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance [@Hemming2020Feb; @Martin2016; @Korevaar2021]. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately `r observations.per.month` observations per month to the analysis, based on our previous work. 
+
+```{r power-curves}
+#| echo: false
+#| warning: false
+#| label: fig-power-curves
+#| fig.cap: "Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). **A)** Shows power curves assuming a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS^®^ training. **B)** Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS^®^ training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC."
+
+combine_power_curves(rev(list.files(path = "../shared-assets/", pattern = "curvedata", full.names = TRUE)), device = "png")
+knitr::include_graphics("./combined-power-curves.png")
+
+```
