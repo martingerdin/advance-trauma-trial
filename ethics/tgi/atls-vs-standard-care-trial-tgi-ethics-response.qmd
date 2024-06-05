@@ -1,0 +1,24 @@
+---
+format: docx
+---
+
+1. The committee sought clarification whether the hospitals with specialised manpower to be involved in this project have the necessary infrastructure commensurate with the ATLS facility?
+
+We will only include hospitals that are familiar with managing trauma patients, as determined by the site feasibility screening and a detailed interview with prospective investigators. All ATLS training will be conducted at accredited ATLS training centers, which in most cases will be located separately from the hospitals that participate in the trial. The ATLS training centers are equipped with the necessary infrastructure to provide the training, and the training will be conducted by certified ATLS instructors. The hospitals that participate in the trial will not be required to have any specific infrastructure beyond what is required to manage trauma patients in general.
+
+2. The committee wanted to know in case favourable outcome towards ATLS training is achieved after initial phases of trial whether the trial will be stopped to extend the outcome to the other study arms of the project? Would interim analysis involve capturing this information? The research team is advised to send in detailed randomisation and interim analysis plan.
+
+Because this is a stepped-wedged trial, all hospitals will eventually receive the intervention, but the time point when they will do so will be randomised. We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomize the clusters alloted to each batch to the different intervention implementation sequences within that batch, with one hospital being randomised to each sequence. We will balance the randomisation within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomisation. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomization order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
+
+There will be one interim analyses after half of the batches have completed the trial, but this will not be powered to detect an intervention effect. Instead, the purposes of this interim analysis will be to:
+
+- assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes. We will assess adherence to the randomisation schedule by comparing when hospitals were supposed to enter the transition period and conduct the training with when they actually did so. We will assess missing data for all outcomes and by comparing the proportion of missing data between intervention and control groups;
+- assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included. This will be done by estimating the proportion of patients with the primary outcome in the standard care group, as well as the total number of patients included per period, and comparing these with the assumptions made in the sample size calculations. If they differ substantially, we will revise the sample size calculations and plan to include more clusters in the trial;
+- compare characteristics across intervention conditions to monitor for differential recruitment/ascertainment between intervention and control. We will achieve this by comparing the characteristics of patients in the intervention and control groups to ensure that the randomisation has been successful and that the groups are balanced on important characteristics.
+
+3. The committee wanted to know how will other aspect be controlled, like non- functional equipment, type of nursing care provided, or other facilities provided towards the trauma patient during the intervention trial?
+
+Because of the pragmatic nature of the trial, we will not control these factors, but because of the randomised design, we expect that these factors will be balanced between the intervention and control groups.
+
+4. The committee directed that a more comprehensive statement for compensation policy is required within the project proposal keeping in mind various possibilities in the event of the death/injury/disability of a patient under care during the trial and sought clarification about the basic minimum compensation that should be in place.
+
