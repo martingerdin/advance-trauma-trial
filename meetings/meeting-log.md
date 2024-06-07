@@ -46,3 +46,6 @@ TMG. Decide on protocol version 1.0.
 
 ## 2024-04-15
 TMG. Update on ethics and regulatory approvals. Discussion on additional sites.
+
+## 2024-05-15
+TMG. Update on ethics. Discussion on ATLS adherence.

@@ -175,6 +175,7 @@ rows as needed.*
 
 | Version | Date       | Details | 
 |---------|------------|---------|
+| 1.2.0   | ? | Added details on measuring ATLS adherence. |
 | 1.1.0   | 2024-05-09 | Updated the primary outcome to in-hospital mortality and spelling corrections. The primary outcome was updated following a voting procedure in the Trial Management Group.    |
 
 : {tbl-colwidths="[10, 15, 75]"}
