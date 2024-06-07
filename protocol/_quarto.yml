@@ -12,6 +12,7 @@ format:
     include-in-header: 
       text: |
         \usepackage{scrlayer-scrpage}
+        \usepackage{soul}
         \usepackage{lastpage}
         \lohead{ATLS vs Standard Care Trial Protocol}
         \rohead{ClinicalTrials.gov ID NCT06321419}

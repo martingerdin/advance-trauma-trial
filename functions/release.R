@@ -9,7 +9,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     assert_that(file.exists(file.name), msg = paste0("File ", file.name, " does not exist"))
 
     # Read current version from _variables.yml
-    description <- yaml::read_yaml("test._variables.yml")
+    description <- yaml::read_yaml("_variables.yml")
     current.version <- description$version
     version <- current.version |>
         stringr::str_split("\\.|\\-") |>
@@ -25,21 +25,6 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         message <- paste0("The current version is pre-release version ", current.version, ". Increment the pre-release version?")
         pre.release <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
     }
-
-    # if (current.pre.release && !pre.release && !recompile.only) {
-    #     new.version.string <- paste0(version[1:3], collapse = ".")
-    #     message <- paste0(
-    #         "The current version is ",
-    #         current.version, ". ",
-    #         "Do you want to release version ",
-    #         new.version.string,
-    #         "?"
-    #     )
-    #     release.new.version <- utils::menu(c("Yes", "Abort"), title = message, graphics = FALSE) == 1
-    #     if (!release.new.version) {
-    #         stop("Release aborted")
-    #     }
-    # }
 
     # If the current version is not a pre-release and it is not indicated whether this new version should be, then check
     if (is.null(pre.release) && !recompile.only) {
@@ -148,11 +133,11 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         description$date <- as.character(lubridate::today())
 
         # Write description
-        yaml::write_yaml(description, "test._variables.yml")
+        yaml::write_yaml(description, "_variables.yml")
     }
 
     # Compile file
-    # quarto::quarto_render(file.name, output_format = "all")
+    quarto::quarto_render(file.name, output_format = "all")
 
     # Use file.name to define a document.name that can be used in the commit message
     document.name <- stringr::str_replace_all(file.name, "-", " ") |>
@@ -160,23 +145,23 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         stringr::str_to_lower()
 
     # Commit changes and tag release
-    # if (commit && !recompile.only) {
-    #     version.indicator.string <- ifelse(pre.release, "pre-release", "release")
-    #     base.git.path <- git2r::discover_repository(".") |>
-    #         stringr::str_remove("/.git")
-    #     path <- file.path(base.git.path, "atls-vs-standard-care-trial")
-    #     git2r::add(repo = ".", path = path)
-    #     git2r::commit(
-    #         repo = ".",
-    #         message = paste0("Release ", document.name, " ", version.indicator.string, " ", new.version.string)
-    #     )
+    if (commit && !recompile.only) {
+        version.indicator.string <- ifelse(pre.release, "pre-release", "release")
+        base.git.path <- git2r::discover_repository(".") |>
+            stringr::str_remove("/.git")
+        path <- file.path(base.git.path, "atls-vs-standard-care-trial")
+        git2r::add(repo = ".", path = path)
+        git2r::commit(
+            repo = ".",
+            message = paste0("Release ", document.name, " ", version.indicator.string, " ", new.version.string)
+        )
 
-    #     ## if (tag) {
-    #     ##    git2r::tag(
-    #     ##        object = ".",
-    #     ##        name = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
-    #     ##        message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
-    #     ##    )
-    #     ## }
-    # }
+        #     ## if (tag) {
+        #     ##    git2r::tag(
+        #     ##        object = ".",
+        #     ##        name = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
+        #     ##        message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
+        #     ##    )
+        #     ## }
+    }
 }

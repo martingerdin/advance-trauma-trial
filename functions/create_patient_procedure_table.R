@@ -57,6 +57,9 @@ create_patient_procedure_table <- function() {
         "Study information" = create_follow_up_schedule(screening = TRUE),
         "Informed consent" = create_follow_up_schedule(screening = TRUE),
         "Baseline data collection" = create_follow_up_schedule(screening = TRUE),
+        "ATLS adherence" = create_follow_up_schedule(
+            screening = TRUE
+        ),
         "ED data collection" = create_follow_up_schedule(
             follow.up.discharge = TRUE
         ),
@@ -113,6 +116,15 @@ create_patient_procedure_table <- function() {
             locations = cells_body(
                 columns = "Procedure",
                 rows = procedure.data$Procedure %in% c("Study information", "Informed consent")
+            )
+        ) |>
+        tab_footnote(
+            footnote = c(
+                "ATLS adherence will be assessed by observing the care provided to a random sample of patient participants."
+            ),
+            locations = cells_body(
+                columns = "Procedure",
+                rows = procedure.data$Procedure %in% c("ATLS adherence")
             )
         ) |>
         tab_footnote(
