@@ -90,17 +90,20 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
             version[3] <- version[3] + 1
         }
         new.version.string <- paste0(version, collapse = ".")
+        version.type <- "Version"
     }
 
     # If the current version isn't a pre-release and the new version is a pre-release, then set the pre-release version to 1
     if (!recompile.only && !current.pre.release && pre.release) {
         new.version.string <- paste0(new.version.string, "-1")
+        version.type <- "Pre-release version"
     }
 
     # If the current version is a pre-release and the new version is a pre-release, then increment the pre-release version
     if (!recompile.only && current.pre.release && pre.release) {
         version[4] <- version[4] + 1
         new.version.string <- paste0(paste0(version[1:3], collapse = "."), "-", version[4])
+        version.type <- "Pre-release version"
     }
 
     # Ask for confirmation
@@ -131,6 +134,9 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
 
         # Update date
         description$date <- as.character(lubridate::today())
+
+        # Update version type
+        description$version_type <- version.type
 
         # Write description
         yaml::write_yaml(description, "_variables.yml")

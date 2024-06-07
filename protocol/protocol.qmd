@@ -1,6 +1,6 @@
 ---
 title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-subtitle: "Clinical Trial Protocol  \nVersion {{< var version >}}, {{< var date >}}"
+subtitle: "Clinical Trial Protocol  \n{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 titlepage-theme: 
   title-fontsize: 20
   title-fontstyle: "uppercase"
