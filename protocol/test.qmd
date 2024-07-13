@@ -1,0 +1,35 @@
+---
+title: Test
+format: pdf
+---
+
++---------+------------+------------------------------------------------------------------+
+| Version | Date       | Details                                                          | 
++=========+============+==================================================================+
+| 1.2.0   | ?          | - Added details on measuring ATLS adherence                      |
+|         |            | - Clarified the section describing the consent process           |
+|         |            | - Fixed minor issues with how the variables were listed          |
+|         |            | - Indicated non-routinely recorded data in the list of variables |
+|         |            | - Added Contributors section                                     |
++---------+------------+------------------------------------------------------------------+
+|         |            |                                                                  |
++---------+------------+------------------------------------------------------------------+
+| 1.1.0   | 2024-05-09 | Updated the primary outcome to in-hospital mortality and spelling|
+|         |            | corrections. The primary outcome was updated following a voting  |
+|         |            | procedure in the Trial Management Group.                         |
++---------+------------+------------------------------------------------------------------+
+
+: {tbl-colwidths="[10, 15, 75]"}
+
+
++-----------+-----------+--------------------+
+| Fruit     | Price     | Advantages         |
++===========+===========+====================+
+| Bananas   | $1.34     | - built-in wrapper |
+|           |           | - bright color     |
++-----------+-----------+--------------------+
+| Oranges   | $2.10     | - cures scurvy     |
+|           |           | - tasty            |
++-----------+-----------+--------------------+
+
+: Sample grid table.

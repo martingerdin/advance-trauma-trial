@@ -46,7 +46,6 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 
 ## Contributors
 
-
 | Name and  ORCID | Affiliation | Role |
 |-----------------|-------------|------|
 | Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet | Principal Investigator |

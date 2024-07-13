@@ -13,7 +13,7 @@ csl: nature.csl
 source("main.R")
 ```
 
-\newpage
+{{< pagebreak >}}
 
 <!--
 **ATLS^®^ vs Standard Care in Adult Trauma Patients**
@@ -26,7 +26,7 @@ source("main.R")
 | Study Coordinator | The George Institute for Global Health, India (**TGI**)|
 | Principal Investigator | Martin Gerdin Wärnberg (KI, [martin.gerdin@ki.se](mailto:martin.gerdin@ki.se)) |
 
-\newpage
+{{< pagebreak >}}
 
 -->
 
@@ -85,7 +85,7 @@ unless they otherwise agree in a written agreement.*
 | data management.*                 |                                  |
 +-----------------------------------+----------------------------------+
 
-\newpage
+{{< pagebreak >}}
 
 # List of used acronyms and abbreviations 
 
@@ -173,20 +173,59 @@ rows as needed.*
 
 # Changelog
 
-| Version | Date       | Details | 
-|---------|------------|---------|
-| 1.2.0   | ? | Added details on measuring ATLS adherence. |
-| 1.1.0   | 2024-05-09 | Updated the primary outcome to in-hospital mortality and spelling corrections. The primary outcome was updated following a voting procedure in the Trial Management Group.    |
++---------+------------+------------------------------------------------------------------+
+| Version | Date       | Details                                                          | 
++=========+============+==================================================================+
+| 1.2.0   | ?          | - Added details on measuring ATLS adherence                      |
+|         |            | - Clarified the section describing the consent process           |
+|         |            | - Fixed minor issues with how the variables were listed          |
+|         |            | - Indicated non-routinely recorded data in the list of variables |
+|         |            | - Added Contributors section                                     |
++---------+------------+------------------------------------------------------------------+
+|         |            |                                                                  |
++---------+------------+------------------------------------------------------------------+
+| 1.1.0   | 2024-05-09 | Updated the primary outcome to in-hospital mortality and spelling|
+|         |            | corrections. The primary outcome was updated following a voting  |
+|         |            | procedure in the Trial Management Group.                         |
++---------+------------+------------------------------------------------------------------+
 
 : {tbl-colwidths="[10, 15, 75]"}
 
-\newpage
+
+{{< pagebreak >}}
+
+# Contributors
+
+| Name and  ORCID | Affiliation | Role |
+|-----------------|-------------|------|
+| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet, Stockholm, Sweden | Principal Investigator, TMG chair and TT member |
+| Girish D Bakhshi `r insert_orcid_link("0000-0001-9542-4428")` | Grant Govt. Medical College & Sir J. J. Group of Hospitals, Mumbai, India | TMG member |
+| Debojit Basak `r insert_orcid_link("90000-0002-8378-9689")` | Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, Kolkata, India | TMG member |
+| Abhinav Bassi `r insert_orcid_link("0000-0003-0750-9179")` |  The George Institute for Global Health, New Delhi, India | TMG and TT member |
+| Johanna Berg `r insert_orcid_link("0000-0001-7553-7337")` | Karolinska Institutet, Stockholm, Sweden | TMG member |
+| Shamita Chatterjee `r insert_orcid_link("0000-0002-9460-108X")` | Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, Kolkata, India | TMG member |
+| Kapil Dev Soni `r insert_orcid_link("0000-0003-1214-4119")` | All India Institute of Medical Sciences, New Delhi, India | TMG member |
+| Karla Hemming `r insert_orcid_link("0000-0002-2226-6550")` | University of Birmingham, Birmingham, UK | TMG member |
+| Vivekanand Jha `r insert_orcid_link("0000-0002-8015-9470")` | The George Institute for Global Health, New Delhi, India | TMG member |
+| Monty Khajanchi `r insert_orcid_link("0000-0002-0898-6391")` | King Edward Memorial Hospital, Mumbai, India | TMG and TT member |
+| Anurag Mishra `r insert_orcid_link("0000-0002-2302-0632")` | Maulana Azad Medical College, New Delhi, India | TMG member |
+| Samriddhi Ranjan `r insert_orcid_link("0000-0002-4277-6662")`| The George Institute for Global Health, New Delhi, India | TMG and TT member |
+| Nobhojit Roy `r insert_orcid_link("0000-0003-2022-7416")` | The George Institute for Global Health, New Delhi, India | TMG and TT member |
+| Rajdeep Singh `r insert_orcid_link("0000-0001-6593-2624")` | Maulana Azad Medical College, New Delhi, India | TMG member |
+| Lovisa Strömmer `r insert_orcid_link("0000-0001-5424-7111")` | Karolinska Institutet, Stockholm, Sweden | TMG member |
+| Li Felländer-Tsai `r insert_orcid_link("0000-0003-0693-6080")` | Karolinska Institutet, Stockholm, Sweden | TMG member |
+
+: {tbl-colwidths="[35,45,20]"}
+
+Abbreviations: TMG, Trial Management Group; TT, Trial Team.
+
+{{< pagebreak >}}
 
 # Synopsis
 
 {{< include ../shared-assets/synopsis.qmd >}}
 
-\newpage
+{{< pagebreak >}}
 
 # Background and rationale
 
@@ -369,7 +408,7 @@ This trial does not include biological sampling.
 
 ## End of trial
 
-The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and follow-up. Decisions on premature termination are taken by the Joint Trial Steering and Data Monitoring Committee and Trial Management Group.
+The trial ends when the last patient participant has completed the last follow-up. The trial may be prematurely terminated if it this is necessary for safety reasons affecting the risk-benefit balance or if the recruitment of subjects cannot be met within reasonable time limits. If the trial is prematurely terminated or suspended, the investigator should immediately inform the subjects about this and ensure appropriate treatment and follow-up. Decisions on premature termination are taken by the joint Trial Steering and Data Monitoring Committee and Trial Management Group.
 
 ## Intervention and control treatment
 
@@ -477,7 +516,7 @@ These events are considered safety events because they suggest pulmonary, renal,
 
 We will also report any other safety events that we identify during the trial, and the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of such safety events could include missed injuries or missed investigations, which could be suspected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
 
-All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the Joint Trial Steering and Data Monitoring Committee. 
+All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the joint Trial Steering and Data Monitoring Committee. 
 
 ### Follow up of safety events
 
@@ -792,7 +831,7 @@ get_design_matrix(
 
 ### Interim analysis
 
-There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the Joint Trial Steering and Data Monitoring Committee. The purposes of this interim analysis will be to:
+There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the joint Trial Steering and Data Monitoring Committee. The purposes of this interim analysis will be to:
 
 - assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes;
 - assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included; and
@@ -837,11 +876,11 @@ The final protocol will be submitted for ethical review at all participating hos
 
 ## Procedure for obtaining consent
 
-In this trial, consent refers to consent for data collection. It is not possible for patients to opt out from being subjected to the intervention, as the intervention is delivered at the cluster level and involves training physicians in ATLS^®^, and these physicians cannot be expected to temporarily forget their training. Patient participants will be included in this trial under the following modes of consent:
+In this trial, consent refers to data collection, as patients cannot opt out of the intervention. This is because the intervention is implemented at the cluster level, involving training physicians in ATLS^®^. It is unreasonable to expect these physicians to temporarily disregard their training. Patient participants will be included in this trial under the following modes of consent:
 
-- Opt out consent for **routinely collected data**. Consent for collection of routinely recorded data by interview or extraction of information from medical records will be presumed unless actively declined. This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive. The patients or their legally authorized representative will be provided with written information about the study on their arrival at the hospital. The variables assumed to be routinely collected are listed in @sec-variables.
+- Opt out consent for **routinely recorded data**. Consent for collection of routinely recorded data by interview or extraction of information from medical records will be presumed unless actively declined. This approach is justified because the trial can be considered minimal risk and because data collection will be non-invasive. The patients or their legally authorized representative will be provided with written information about the study on their arrival at the hospital. The variables assumed to be routinely recorded are listed in @sec-variables.
 - Opt in consent and assent for **non-routinely recorded data**. Informed consent for non-routinely recorded data will be actively sought from patient participants or their legally authorized representative. For participants who are between 15 and 18 years of age we will obtain both the assent of the participant as well as the consent of their guardian or legally authorized representative. The clinical research coordinators will approach patient participants and their representatives after admission. The consent and assent will be written for patient participants who are admitted to the hospital and verbal for participants who are transferred or discharged before the clinical research coordinators have had an opportunity to approach them. The verbal consent will be audio recorded.
-- Waiver of informed consent for patients who are unconscious or otherwise unable to provide consent and do not have a legally authorized representative. This group represents the most severly injured patients and they have to be included to make the trial representative of the entire population of trauma patients. Patients participants who regain consciousness will be informed about the study and asked for consent for collection of non-routinely collected data.
+- Waiver of informed consent for patients who are unconscious or otherwise unable to provide consent and do not have a legally authorized representative. This group represents the most severly injured patients and they have to be included to make the trial representative of the entire population of trauma patients. Patients participants who regain consciousness will be informed about the study and asked for consent for collection of non-routinely recorded data.
 
 ## Data protection
 

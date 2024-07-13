@@ -36,7 +36,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     if (is.null(major) &&
         is.null(minor) &&
         is.null(patch) &&
-        (pre.release ||
+        (pre.release &&
             !current.pre.release) &&
         !recompile.only) {
         message <- "No version increment specified. Increment patch version?"

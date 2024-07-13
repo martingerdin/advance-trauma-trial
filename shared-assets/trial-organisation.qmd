@@ -1,4 +1,4 @@
-Trial management and oversight is governed by three trial committees and groups: the Trial Team (TT), the Trial Management Group (TMG), the Joint Trial Steering and Data Monitoring Committee (TSDMC). These groups are briefly described below and their relationships are shown in @fig-organisation-overview. Details about each committee and group are available in their respective charter.
+Trial management and oversight is governed by three trial committees and groups: the Trial Team (TT), the Trial Management Group (TMG), the joint Trial Steering and Data Monitoring Committee (SDMC). These groups are briefly described below and their relationships are shown in @fig-organisation-overview. Details about each committee and group are available in their respective charter.
 
 ## Trial team
 
@@ -30,17 +30,17 @@ Includes members with broad expertise appropriate to the trial. The TMG will be 
 
 **Relationships**
 
-Receives reports from TT. Provides input to the TSDMC. Implements decisions made by the TSDMC.
+Receives reports from TT. Provides input to the SDMC. Implements decisions made by the SDMC.
 
 **Meeting frequencies**
 
 Monthly to every six months.
 
-## Joint Trial Steering and Data Monitoring Committee (TSDMC)
+## Joint Trial Steering and Data Monitoring Committee (SDMC)
 
 **Responsibility**
 
-The TSDMC's responsibility is to oversee the trial, review results of interim analyses and safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. This committee also offer guidance to the TMG.
+The SDMC's responsibility is to oversee the trial, review results of interim analyses and safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. This committee also offer guidance to the TMG.
 
 **Composition**
 

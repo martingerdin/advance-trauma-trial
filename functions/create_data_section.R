@@ -9,11 +9,15 @@ create_data_section <- function() {
         form.data <- variables.list[[form.name]]
         form.list <- split(form.data, form.data$field_label)
         form.list <- form.list[unique(form.data$field_label)]
-        instrument.heading <- paste0("### ", stringr::str_to_sentence(stringr::str_replace_all(form.name, "_", " ")))
+        instrument.heading <- form.name |>
+            stringr::str_remove("_v\\d+_dated\\d{2}[a-zA-Z]{3}\\d{2}") |>
+            stringr::str_replace_all("_", " ") |>
+            stringr::str_to_sentence() |>
+            paste0("### ", . = _)
         instrument.items <- unlist(lapply(form.list, function(variable) {
             paste0(
                 "- **", gsub("<.*?>", "", variable$field_label), "** ",
-                variable$Field.Note, "\n",
+                variable$field_note, "\n",
                 if (any(c("checkbox", "radio", "dropdown") %in% variable$field_type)) {
                     variable.levels <- unlist(strsplit(
                         variable$select_choices_or_calculations,
@@ -28,7 +32,8 @@ create_data_section <- function() {
                     ), collapse = "\n")
                 } else if (any("yesno" %in% variable$field_type)) {
                     paste0("  1. Yes\n  2. No")
-                }
+                },
+                "\n"
             )
         }))
         # instrument.items <- paste0(unique(instrument.items), collapse = "\n")
