@@ -1,7 +1,7 @@
 ---
 title: "Joint Trial Steering and Data Monitoring Committee Charter"
 subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial" 
-author: "{{< var version >}}, {{< var date >}}"
+author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 ---
 
 <!-- Suggested members:
