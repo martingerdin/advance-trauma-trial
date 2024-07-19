@@ -1,11 +1,7 @@
 ---
-title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-subtitle: "Clinical Trial Protocol  \n{{< var version_type >}} {{< var version >}}, {{< var date >}}"
-titlepage-theme: 
-  title-fontsize: 20
-  title-fontstyle: "uppercase"
-  title-space-after: "0.1\\textheight"
-  subtitle-fontstyle: ["Large"]
+title: "Clinical Trial Protocol"
+subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
+author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 bibliography: bibliography.bib
 csl: nature.csl
 ---
@@ -171,7 +167,9 @@ rows as needed.*
 
 -->
 
-# Changelog
+# Administrative information
+
+## Changelog
 
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          | 
@@ -180,7 +178,7 @@ rows as needed.*
 |         |            | - Clarified the section describing the consent process           |
 |         |            | - Fixed minor issues with how the variables were listed          |
 |         |            | - Indicated non-routinely recorded data in the list of variables |
-|         |            | - Added Contributors section                                     |
+|         |            | - Added Administrative information section with contributors     |
 +---------+------------+------------------------------------------------------------------+
 |         |            |                                                                  |
 +---------+------------+------------------------------------------------------------------+
@@ -191,10 +189,12 @@ rows as needed.*
 
 : {tbl-colwidths="[10, 15, 75]"}
 
+## Study identifiers
 
-{{< pagebreak >}}
+- ClinicalTrials.gov identifier: [NCT06321419](https://clinicaltrials.gov/ct2/show/NCT06321419)
+- Clinical Trials Registry - India identifier: Not yet assigned.
 
-# Contributors
+## Contributors
 
 {{< include ../shared-assets/contributors.qmd >}}
 

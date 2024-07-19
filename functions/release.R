@@ -36,8 +36,8 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     if (is.null(major) &&
         is.null(minor) &&
         is.null(patch) &&
-        (pre.release &&
-            !current.pre.release) &&
+        ((is.null(pre.release) || pre.release) &&
+            (is.null(current.pre.release) || !current.pre.release)) &&
         !recompile.only) {
         message <- "No version increment specified. Increment patch version?"
         patch <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
@@ -47,6 +47,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         major <- ifelse(is.null(major), FALSE, major)
         minor <- ifelse(is.null(minor), FALSE, minor)
         patch <- ifelse(is.null(patch), FALSE, patch)
+        pre.release <- ifelse(is.null(pre.release), FALSE, pre.release)
     }
 
     # Check additional arguments
@@ -146,11 +147,32 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     quarto::quarto_render(file.name, output_format = "all")
 
     # Use file.name to define a document.name that can be used in the commit message
-    document.name <- stringr::str_replace_all(file.name, "-", " ") |>
-        stringr::str_remove(".qmd") |>
-        stringr::str_to_lower()
+    document.name <- file.name |>
+        stringr::str_remove(paste0(".", tools::file_ext(file.name)))
+
+    # Create a release name that includes the version number and date
+    release.document.name <- paste0(document.name, "-v", new.version.string, "-", description$date)
+
+    # Move compiled files to the release folder
+    dir.create("releases", showWarnings = FALSE)
+    new.version.dir.name <- paste0("v", new.version.string, "-", description$date)
+    dir.create(file.path("releases", new.version.dir.name), showWarnings = FALSE)
+    files.to.move <- fs::dir_ls(".",
+        type = "file",
+        glob = paste0(document.name, "*")
+    ) |>
+        stringr::str_subset("html|pdf|docx")
+    for (file in files.to.move) {
+        fs::file_copy(
+            file,
+            file.path("releases", new.version.dir.name, paste0(release.document.name, ".", tools::file_ext(file))),
+            overwrite = TRUE
+        )
+    }
 
     # Commit changes and tag release
+    release.string <- stringr::str_replace_all(document.name, "-", " ") |>
+        stringr::str_to_lower()
     if (commit && !recompile.only) {
         version.indicator.string <- ifelse(pre.release, "pre-release version", "version")
         base.git.path <- git2r::discover_repository(".") |>
@@ -159,7 +181,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         git2r::add(repo = ".", path = path)
         git2r::commit(
             repo = ".",
-            message = paste0("Release ", document.name, " ", version.indicator.string, " ", new.version.string)
+            message = paste0("Release ", release.string, " ", version.indicator.string, " ", new.version.string)
         )
 
         #     ## if (tag) {
