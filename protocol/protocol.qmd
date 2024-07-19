@@ -196,28 +196,7 @@ rows as needed.*
 
 # Contributors
 
-| Name and  ORCID | Affiliation | Role |
-|-----------------|-------------|------|
-| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet, Stockholm, Sweden | Principal Investigator, TMG chair and TT member |
-| Girish D Bakhshi `r insert_orcid_link("0000-0001-9542-4428")` | Grant Govt. Medical College & Sir J. J. Group of Hospitals, Mumbai, India | TMG member |
-| Debojit Basak `r insert_orcid_link("90000-0002-8378-9689")` | Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, Kolkata, India | TMG member |
-| Abhinav Bassi `r insert_orcid_link("0000-0003-0750-9179")` |  The George Institute for Global Health, New Delhi, India | TMG and TT member |
-| Johanna Berg `r insert_orcid_link("0000-0001-7553-7337")` | Karolinska Institutet, Stockholm, Sweden | TMG member |
-| Shamita Chatterjee `r insert_orcid_link("0000-0002-9460-108X")` | Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, Kolkata, India | TMG member |
-| Kapil Dev Soni `r insert_orcid_link("0000-0003-1214-4119")` | All India Institute of Medical Sciences, New Delhi, India | TMG member |
-| Karla Hemming `r insert_orcid_link("0000-0002-2226-6550")` | University of Birmingham, Birmingham, UK | TMG member |
-| Vivekanand Jha `r insert_orcid_link("0000-0002-8015-9470")` | The George Institute for Global Health, New Delhi, India | TMG member |
-| Monty Khajanchi `r insert_orcid_link("0000-0002-0898-6391")` | King Edward Memorial Hospital, Mumbai, India | TMG and TT member |
-| Anurag Mishra `r insert_orcid_link("0000-0002-2302-0632")` | Maulana Azad Medical College, New Delhi, India | TMG member |
-| Samriddhi Ranjan `r insert_orcid_link("0000-0002-4277-6662")`| The George Institute for Global Health, New Delhi, India | TMG and TT member |
-| Nobhojit Roy `r insert_orcid_link("0000-0003-2022-7416")` | The George Institute for Global Health, New Delhi, India | TMG and TT member |
-| Rajdeep Singh `r insert_orcid_link("0000-0001-6593-2624")` | Maulana Azad Medical College, New Delhi, India | TMG member |
-| Lovisa Strömmer `r insert_orcid_link("0000-0001-5424-7111")` | Karolinska Institutet, Stockholm, Sweden | TMG member |
-| Li Felländer-Tsai `r insert_orcid_link("0000-0003-0693-6080")` | Karolinska Institutet, Stockholm, Sweden | TMG member |
-
-: {tbl-colwidths="[35,45,20]"}
-
-Abbreviations: TMG, Trial Management Group; TT, Trial Team.
+{{< include ../shared-assets/contributors.qmd >}}
 
 {{< pagebreak >}}
 
@@ -996,6 +975,60 @@ Trial organisation overview.
 :::
 
 {{< include ../shared-assets/trial-organisation.qmd >}}
+
+## Trial team
+
+**Responsibility**
+
+To run the trial on a day-to-day basis, maintain trial databases, randomise clusters, ensuring complete and correct data, preparing reports for meetings (including those of the TMG and SDMC) and dealing with research governance and, if appropriate, regulatory matters.
+
+**Composition**
+
+Includes the project manager, clinical research associates, principal investigator and co-investigators as needed. 
+
+**Relationships**
+
+Reports to the TMG and SDMC. Operationalises decisions made by the TMG.
+
+**Meeting frequencies**
+
+As often as needed, often weekly or bi-weekly.
+
+## Trial Management Group (TMG)
+
+**Responsibility**
+
+To manage the trial, including its clinical and practical aspects.
+
+**Composition**
+
+Includes members with broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator.  
+
+**Relationships**
+
+Receives reports from TT. Provides input to the SDMC. Implements decisions made by the SDMC.
+
+**Meeting frequencies**
+
+Monthly to every six months.
+
+## Joint Trial Steering and Data Monitoring Committee (SDMC)
+
+**Responsibility**
+
+The SDMC's responsibility is to oversee the trial, review results of interim analyses and safety events reported by the TMG, and review trial data for each batch, assessing data quality, completeness, cluster performance in recruitment and loss to follow-up rates, and external factors affecting trial validity, safety, or ethics. This committee also offer guidance to the TMG.
+
+**Composition**
+
+A majority of independent members, including a chair and three additional external experts specializing in the clinical area, biostatistics, and a community or patient representative, as well as and a minority of members with a direct interest in the trial, including the principal investigator. The chair should be independent of the trial, and the coordinating institutions Karolinska Institutet and The George Institute for Global Health.
+
+**Relationships**
+
+Receives reports from the trial team and TMG.
+
+**Meeting frequencies**
+
+After the completion of each batch, but may be more frequent if needed.
 
 # Funding
 

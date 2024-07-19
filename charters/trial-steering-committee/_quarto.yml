@@ -1,0 +1,27 @@
+toc: true
+toc-depth: 3
+number-sections: true
+fig-caption: true
+link-bibliography: false
+titlepage-theme:
+  title-fontsize: 15
+  subtitle-fontstyle: ["bfseries"]
+  subtitle-fontsize: 20
+  footer-fontstyle: ["textrm"]
+abstract: "This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02) and the MRC CTU Template Independent Data Monitoring Committee Charter (version 2.01)."
+format:
+  titlepage-pdf:
+    titlepage: classic-lined
+    titlepage-footer: "This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02) and the MRC CTU Template Independent Data Monitoring Committee Charter (version 2.01)."
+    documentclass: scrartcl
+    number-sections: true 
+    include-in-header: 
+      text: |
+        \usepackage{scrlayer-scrpage}
+        \usepackage{soul}
+        \usepackage{lastpage}
+        \lohead{ATLS vs Standard Care SDMC Charter}
+        \rohead{ClinicalTrials.gov ID NCT06321419}
+        \cfoot{\thepage\ of \pageref{LastPage} }
+  docx: default
+  html: default

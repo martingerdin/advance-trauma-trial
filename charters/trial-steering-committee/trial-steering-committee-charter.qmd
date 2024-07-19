@@ -1,12 +1,7 @@
 ---
-title: Trial Steering Committee Charter
-subtitle:  "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-abstract: This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02).
-toc: true
-format: 
-  pdf:
-    documentclass: scrartcl
-  docx: default
+title: "Joint Trial Steering and Data Monitoring Committee Charter"
+subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial" 
+author: "{{< var version >}}, {{< var date >}}"
 ---
 
 <!-- Suggested members:
@@ -26,82 +21,234 @@ noacsr::source_all_functions()
 attach(global_variables())
 ```
 
+# Administrative information
+
+## Changelog
+
+**This changelog will record all changes made to this document following version 1.0.0**  
+
++---------+------------+------------------------------------------------------------------+
+| Version | Date       | Details                                                          | 
++=========+============+==================================================================+
+|         |            |                                                                  |
++---------+------------+------------------------------------------------------------------+
+
+## Study identifiers
+
+- ClinicalTrials.gov identifier: [NCT06321419](https://clinicaltrials.gov/ct2/show/NCT06321419)
+- Clinical Trials Registry - India identifier: Not yet assigned.
+
+## Contributors
+
+{{< include ../../shared-assets/contributors.qmd >}}
+
+## Trial organisation
+
+```{r}
+#| echo: false
+#| include: false
+
+system("mmdc -i ../../shared-assets/trial-organisation-overview-figure.mmd -o ../../shared-assets/trial-organisation-overview-figure.png")
+```
+
+::: {#fig-organisation-overview}
+
+![](../../shared-assets/trial-organisation-overview-figure.png){width="60%"}
+
+Trial organisation overview.
+:::
+
+{{< include ../../shared-assets/trial-organisation.qmd >}}
+
 # Introduction
 
-The purpose of this document is to outline the composition, terms of reference, duties, powers, decision-making processes and interactions of the Trial Steering Committee (TSC) for this trial. It will detail the scheduling of meetings, how information will be communicated to and from the TSC, the regularity and structure of meetings, and how the TSC will coordinate with other committees involved in the trial.
+The purpose of this document is to describe the membership, terms of reference, roles, responsibilities, authority, decision-making and relationships of the joint Trial Steering and Data Monitoring Committee (SDMC) for this trial, including the timing of meetings, methods of providing information to and from the SDMC, frequency and format of meetings, statistical issues and relationships with other committees.
 
-# Trial synopsis
+## Trial synopsis
 
 {{< include ../../shared-assets/synopsis.qmd >}}
 
-# Special considerations
+## Special considerations
 
 {{< include ../../shared-assets/special-considerations.qmd >}}
 
 # Roles and responsibilities
 
-The TSC's responsibility is to oversee the trial and offer guidance to the Trial Management Group (TMG) through its independent Chairman. The specific roles are:
+The SDMC's responsibility is to oversee and safeguard the trial and the trial participants, monitor the main outcome measures including safety and efficacy, and monitor the overall conduct of the trial. The SDMC also should receive and review information on the progress and accruing data of this trial and provide advice on the conduct of the trial to the Trial Management Group (TMG). The specific roles of the SDMC are detailed below.
 
-- Providing expert supervision of the trial;
-- Keeping all non-public trial information confidential;
-- Deciding on the trial's future progression, based on recommendations from the Data Monitoring Committee (DMC) and the TMG;
-- Evaluating regular trial reports from the TMG;
-- Overseeing the completion of CRFs and advising on TMG's future strategies for satisfactory completion;
-- Monitoring follow-up rates and assessing TMG's strategies to address any issues;
-- Sanctioning any changes to the protocol when necessary;
-- Approving TMG's proposals for alterations in the trial's design, including new substudies;
-- Supervising the prompt disclosure of trial findings;
-- Providing input on the policy for publication;
+## Expert supervision and monitoring
+- Providing expert supervision of the trial.
+- Monitoring recruitment figures, follow-up rates, and losses to follow-up.
+- Monitoring compliance with the protocol by investigators.
+- Assessing data quality, including completeness, and encouraging the collection of high-quality data.
+- Overseeing the completion of CRFs and advising on TMG's future strategies for satisfactory completion.
+- Reviewing interim analyses including main outcomes and safety data.
+- Assessing the impact and relevance of external evidence.
+- Monitoring planned sample size assumptions, preferably with regards to:
+  - a priori assumptions about the control arm outcome; and/or
+  - emerging differences in clinically relevant subgroups.
+
+## Advising and approving changes
+- Sanctioning any changes to the protocol proposed by the TMG (e.g., to design, inclusion criteria, trial endpoints, or sample size).
+- Approving TMG's proposals for new substudies.
+- Suggesting additional data analyses if necessary.
+
+## Decision making on trial continuation
+- Deciding whether to recommend that the trial continues to recruit participants or whether recruitment should be terminated either for everyone or for some treatment groups and/or some participant subgroups.
+- Deciding whether trial follow-up should be stopped earlier.
+
+## Oversight of trial completion and findings
+- Supervising the prompt disclosure of trial findings.
+- Providing input on the policy for publication.
 - Approving and giving feedback on the main trial manuscript.
+
+## Confidentiality and appropriateness
+- Maintaining confidentiality of all trial information that is not in the public domain.
+- Monitoring the continuing appropriateness of patient information.
 
 # Early in the trial
 
-All prospective independent members of the Trial Steering Committee (TSC) should review the trial protocol prior to the start of participant enrollment. At that time, the trial will also have been evaluated by the Sponsor and Coordinator, examined by other trial committees, and assessed by a research ethics committee. Should a prospective independent TSC member have significant concerns about any aspect of the trial, such as the protocol, operational details, or ethical issues, they must communicate these concerns to the Trial Management Group. While TSC members are expected to offer critical oversight of the trial as it progresses, they should also be supportive of the trial's objectives and methodologies. TSC members will not be asked to formally sign a contract.
+All potential SDMC members should have sight of the protocol before agreeing to join the committee. Before recruitment begins the trial will have undergone review by the TMG and research ethics committees. 
+
+Therefore, if a potential SDMC member has major reservations about the trial (e.g. the protocol or the logistics) they may decide not to accept the invitation to join. 
+
+SDMC members should be independent and constructively critical of the ongoing trial, but also supportive of aims and methods of the trial. 
+
+The SDMC will first meet within one year of enrolment commencing, to discuss the protocol, the trial, the analysis plan, future meetings, and to have the opportunity to clarify any aspects with the Principal Investigator (PI) and TMG.
+
+SDMC members will not formally sign a contract but will formally register their assent to join the group by confirming (1) that they agree to be on the SDMC and (2) that they agree with the contents of this Charter. Any competing interests should be declared at the same time. 
+
+A positive reply including potential competing interests to the invitation email will be taken as formal agreement to join the SDMC.
 
 # Composition
 
-The majority of members of the TSC, including the Chair, should be independent of the trial. Non-independent members will also be part of the TSC. The Chair should have previous experience of serving on trial committees and experience of Chairing meetings, and should be able to facilitate and summarise discussions. There will be a facilitator who is a member of either the Sponsor or the Coordinator. The Facilitator will be responsible for arranging meetings of the TSC, coordinating reports, producing and circulating minutes and action points.
+The majority of members of the SDMC, including the Chair, are independent of the trial. Non-independent members will also be part of the SDMC. 
+
+The Chair should have previous experience of serving on trial committees and experience of Chairing meetings, and should be able to facilitate and summarise discussions. 
+
+There will be an additional Facilitator who will be responsible for arranging meetings of the SDMC, coordinating reports, producing and circulating minutes and action points.
+
+The SDMC membership will include a statistician to provide independent statistical expertise, especially with regards to interpretation of accumulating data and guidance through the report. The statistician will not prepare the SDMC report.
+
+The TT will have overall responsibility for the production of the report to the SDMC and the trial statistician will participate in SDMC meetings, guiding the SDMC through the report, participating in SDMC discussions and, on some occasions, taking notes.
+
+The PI is a member of the SDMC but will, at the request of the Chair or other independent members, abstain from participating in certain parts of or entire meetings. Other members of the TMG are not expected to participate in the SDMC meetings, but may be invited by the SDMC Chair to observe, provide information or answer questions.
+
+The members of the SDMC for this trial are, in alphabetical order by surname, with their roles and affiliations:
+
+**Martin Gerdin Wärnberg** (Principal Investigator, Non-independent Member)
+
+*Associate professor of clinical epidemiology*
+
+1. Department of Global Public Health, Karolinska Institutet, Sweden
+2. Function Perioperative Medicine and Intensive Care, Karolinska University Hospital, Sweden
+
+**Samriddhi Ranjan** (Facilitator, Non-independent Member)
+
+*Project Manager*
+
+The George Institute for Global Health, India
 
 # Relationships
 
-The TSC will be responsible for overseeing the trial and will be accountable to the Sponsor and Coordinator. The TSC will receive reports from the TMG and DMC, and will provide advice to the TMG. The TSC will not be involved in the day-to-day running of the trial. No payments will be made to TSC members for their time.
+The SDMC will receive reports from the TMG, and will provide advice to the TMG. The SDMC will not be involved in the day-to-day running of the trial. No payments will be made to SDMC members for their time.
 
-Any competing interests, both real or potential, should be disclosed.  These are not restricted to financial matters – involvement in other trials or intellectual investment could be relevant.  Although members may well be able to act objectively despite such connections, complete disclosure enhances credibility.  
+Any competing interests, both real or potential, should be disclosed. These are not restricted to financial matters – involvement in other trials or intellectual investment could be relevant. Although members may well be able to act objectively despite such connections, complete disclosure enhances credibility.  
 
 # Organisation of meetings 
 
-The TSC will meet virtually at least yearly. At the request of the TSC or TMG, interim meetings will be organised. Some trial issues will need to be dealt with by email between meetings. TSC members should be prepared for such instances. Effort will be made for all members to attend. Presence will usually be limited to the TSC members, observers from the Sponsor and/or Coordinator and the Facilitator.  Other attendees may be invited for all or part of the meeting by the TSC. The observers are not members of the TSC but may be invited to provide expert input; other observers will be at the discretion of the TSC and the Facilitator but may include members of the TMG other than the PI.
+The SDMC meetings will coincide with the completion of data collection for each batch, so `r number_to_text(batches)` meetings in total during the trial period of `r number_to_text(ceiling(total.months/12))` years. The format is primarily virtual. The Facilitator will arrange the meetings and invite SDMC members. The SDMC chair may convene additional meetings to review safety and any other aspect of the study. 
 
-If an independent member does not attend a meeting or provide comments when requested between meetings, it should be ensured that the independent member is available for the next meeting.  If an independent member does not attend the next meeting or provide comments when next requested, they should be asked if they wish to remain part of the TSC.  If an independent member does not attend a third meeting, strong consideration should be given to replacing this member.
+If an independent member does not attend a meeting or provide comments when requested between meetings, it should be ensured that the independent member is available for the next meeting.  If an independent member does not attend the next meeting or provide comments when next requested, they should be asked if they wish to remain part of the SDMC. If an independent member does not attend a third meeting, strong consideration should be given to replacing this member.
 
 # Trial documentation and procedures 
 
-A short report will be prepared by the trial team following a standard template. This report will include completion rates of CRF's, follow-up rates, and any other relevant information. The report will be circulated to the TSC at least 2 weeks prior to the meeting. The TSC will review the report and provide feedback to the TMG. The TSC will also receive reports from the DMC and will provide feedback to the TMG. 
+A report will be prepared by the TT and approved by the TMG after the completion of data collection for each batch, before being shared with the SDMC. The report will follow a standard template. The report will be circulated to the SDMC at least 2 weeks prior to the meeting. The SDMC will review the report and provide feedback to the TMG.
+
+The report to the SDMC will include the following information:
+
+- Number of clusters included in the batch
+- Number of clusters dropping out in the batch
+- Number of potentially eligible participants screened in the batch
+- Number of participants who did not consent to out of hospital follow up in the batch
+- Number of participants included in the batch
+- Number of participants lost to follow-up in the batch
+- Summary statistics of included clusters and patient participants, including outcomes and missing data
+- Adherence to randomisation schedule and reasons for non-adherence
+- Number of physicians trained in ATLS^®^ in each hospital in the batch
+- Protocol deviations
+- Proposed protocol amendments
+- Safety events
+- Relevant external evidence
+
+Relevant external evidence, proposed trial design and protocol changes, and any new substudies will be detailed. Proposed updates on sample size calculations and statistical assumptions, patient information and consent processes, and trial timelines and milestones will be provided. 
+
+Identification and circulation of external evidence (e.g. from other trials/ systematic reviews) is not the responsibility of the SDMC members. The PI and the TT will collate any such information for presentation during the meeting.
+
+## Interim Analysis
+
+There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the joint Trial Steering and Data Monitoring Committee. The purposes of this interim analysis will be to:
+
+- assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes;
+- assess if sample size calculations should be revised, primarily by increasing the number of clusters to be included; and
+- compare characteristics across intervention conditions to monitor for differential recruitment/ascertainment between intervention and control.
+
+## Safety monitoring
+
+The SDMC will review safety events, as defined below, continuously as reported by the TMG.
+
+In alignment with other current trials including critically ill patients, this trial will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and for example mortality is collected as part of the outcomes. 
+
+Instead the presence of the following safety events, if they are life-threatening, prolong hospitalisation or result in meaningful harm to the participant, wil
+
+A comprehensive list of events that can be considered safety events cannot be pre-specified, but the presence of the following safety events will actively assessed:
+
+- Prolonged mechanical ventilation (> 7 days)
+- Initiation of renal replacement therapy
+- Prolonged (> 2 days) or renewed (restart after at least 2 days without) use of vasopressors such as norepinephrine or vasopressin
+
+These events are considered safety events because they suggest pulmonary, renal, septic or bleeding complications and an increase in their occurrence following ATLS^®^ training could indicate that the intervention is harmful. 
+
+These events therefore need to be tracked during the standard care phase as well as the intervention phase, but will only be considered indicative of harm related to the intervention if they occur more often during the intervention phase than during the standard care phase. 
+
+Any other safety events that are identified by the clinical research coordinators or local investigators during the trial will also be reported, for example include missed injuries or missed investigations, which could be suspected if certain injuries or investigations are identified or conducted more often during the standard care phase than during the intervention phase.
+
+All safety events will be recorded in the CRF and reported to the TMG within 24 hours of its occurrence. The TMG will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the SDMC. 
 
 # Decision making
 
-After reviewing the relevant reports, possible decision from the TSC includes:
+After reviewing the relevant reports, possible decision from the SDMC includes:
 
-- No action required, the trial continues as planned;
-- Approving or suggesting changes to the trial protocol;
-- Stopping the trial early based on a recommendation from the DMC;
+- No action needed, trial continues as planned;
+-	Early stopping due, for example, to the trial not being feasible (for example if clusters fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes), or if there is a safety concern based on the reporting of safety events;
+-	Stopping recruitment within a subgroup (care should be taken if this is not a pre-specified subgroup);
+-	Extending recruitment (based on actual control arm response rates being different to predicted rather than on emerging differences);
+-	Extending follow-up;
+- Proposing or commenting on proposed protocol changes; and
+-	Commenting on Statistical Analysis Plan. 
 
-Every effort should be made to reach a consensus. If a consensus cannot be reached, a vote will be taken. The Chair will have the casting vote. The TSC will be able to make recommendations to the Sponsor and Coordinator.
+The Chair is to summarise discussions and encourage consensus; it is usually best for the Chair to give their own opinion last. Every effort should be made to reach a consensus. If a consensus cannot be reached, a vote will be taken. The Chair will have the casting vote.
 
-The TSC is quorate if at least two of the independent members are present, including the chair, and the principal investigator.
+Efforts should be made to ensure that all members can attend. The SDMC is quorate if at least the independent chair and the statistician, as well as the PI and trial statistician, are present. The PI will not participate in the decision-making process if the Chair or other independent members request this, and will not vote on stopping the trial early.
+
+If the SDMC is considering recommending major action after a meeting in which some of the independent SDMC members could not attend, the SDMC Chair should communicate with the absent members as soon after the meeting as possible to check they agree.  If they do not, a further meeting should be arranged with the full SDMC.
+
+SDMC members who will not be able to attend the meeting may pass comments to the SDMC Chair for consideration during the discussions.
+
+If a member does not attend a meeting, it should be ensured that the member is available for the next meeting.  If a member does not attend the following meeting, they should be asked if they wish to remain part of the SDMC.  If a member does not attend a third meeting, they should be replaced.
 
 # Reporting
 
-The TSC will report their decisions (via the Facilitator) to the TMG who will be responsible for implementing any actions resulting. The TSC may also provide feedback to the DMC and, where appropriate, to the Sponsor and/or Coordinator. Notes of key points and actions will be made by the Facilitator and circulated to the TSC within 1 week of the meeting. The TSC Chair will sign off the final version of minutes or notes.
+The SDMC will report their decisions via the Facilitator to the TMG who will be responsible for implementing any actions resulting. Notes of key points and actions will be made by the Facilitator and circulated to the SDMC within 1 week of the meeting. The SDMC Chair will sign off the final version of minutes or notes.
 
-The TSC is the oversight body for the trial.  However, the TSC should have good reason before deciding not to accept requests from the TMG and recommendations from the DMC.  If there are serious problems or concerns with the TSC decision following an DMC recommendation, a joint meeting of the TSC and DMC should be held.  The information to be shown would depend upon the action proposed and each committees’ concerns.  
+The SDMC is the oversight body for the trial. However, the SDMC should have good reason before deciding not to accept requests from the TMG.  If there are serious problems or concerns with the SDMC decision following an DMC recommendation, a joint meeting of the SDMC and DMC should be held. The information to be shown would depend upon the action proposed and each committees’ concerns.  
 
-Depending on the reason for the disagreement confidential data and/or data by trial and may have to be revealed to all or some of those attending such a meeting: this would be minimised where possible.  The meeting would be Chaired by an external expert who is not directly involved with the trial.
+Depending on the reason for the disagreement data may have to be revealed to all or some of those attending such a meeting: this would be minimised where possible. The meeting would be Chaired by an external expert who is not directly involved with the trial.
 
 # After the trial 
 
-The TSC will oversee the timely analysis, writing up and publication of the main trial results.  The independent members of the TSC will have the opportunity to read and comment on the proposed main publications of trial data prior to submission and abstracts and presentations during the trial. This review may be concurrent to that of the trial investigators and DMC.  
+The SDMC will oversee the timely analysis, writing up and publication of the main trial results.  The independent members of the SDMC will have the opportunity to read and comment on the proposed main publications of trial data prior to submission and abstracts and presentations during the trial. This review may be concurrent to that of the trial investigators and SDMC.  
 
 # Amendments
 
-This TSC charter can be amended as needed during the course of the study. All amendments will be documented with sequential version numbers and revision dates, and will be recorded in the TSC notes. 
+This SDMC charter can be amended as needed during the course of the study. All amendments will be documented with sequential version numbers and revision dates, and will be recorded in the SDMC notes. 
