@@ -1,0 +1,37 @@
+---
+# This document was compiled from the protocol directory after moving the _quarto.yml to another directory.
+format: pdf
+bibliography: bibliography.bib
+csl: nature.csl
+---
+
+```{r setup, include=FALSE}
+source("main.R")
+```
+
+# Summary of ATLS efficacy and impact on patient outcomes
+
+There are `r number_to_text(number.identified.studies)` observational studies of the association between ATLS and patient mortality `r pooled.studies.citation`, summarised in @fig-forest-plot. The pooled risk ratio is `r pooled.rr` (95% CI `r pooled.ci`), indicating that ATLS may reduce mortality. 
+
+One observational study from 1993 has assessed the association between ATLS and disability and found that ATLS was associated with a reduced risk of disability, but did not specify how disability was assessed [@Ali1993]. 
+
+Other functional outcomes have not been assessed. No randomised controlled trials or high quality quasi-experimental studies on the efficacy of ATLS in terms of patient outcomes have been conducted, as found in multiple systematic reviews [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021].
+
+```{r forest-plot}
+#| echo: false
+#| label: fig-forest-plot
+#| fig.cap: "Summary of studies on the association between ATLS and patient mortality. Abbreviations: RR, risk ratio; CI, confidence interval; ATLS, Advanced Trauma Life Support; I^2^, heterogeneity."
+knitr::include_graphics("forest-plot.png")
+```
+
+# Aim of proposed study
+
+The proposed study aims to establish the effects of ATLS on patient outcomes, specifically mortality, quality of life (measured using EQ5D), disability (measured using WHODAS 2.0), return to work and length of hospital stay, as compared to standard care.
+
+# Rationale
+
+- ATLS is the most widely used trauma life support training programme that has been shown to be associated with reduced mortality in observational studies.
+- However, the evidence is limited to observational studies, which are prone to bias and confounding.
+- There is a lack of high-quality evidence from randomised controlled trials or quasi-experimental studies on the efficacy of ATLS in terms of patient outcomes.
+
+# References
