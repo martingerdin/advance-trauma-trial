@@ -41,5 +41,7 @@ create_data_section <- function() {
     })), collapse = "\n")
     data.section <- stringr::str_replace_all(data.section, "whodas 20", "(WHODAS 2.0)")
     data.section <- stringr::str_replace_all(data.section, "eq5d5l", "(EQ5D5L)")
+    data.section <- stringr::str_replace_all(data.section, stringr::coll("Atls"), "ATLS")
+    data.section <- stringr::str_replace_all(data.section, stringr::coll("Lar"), "LAR")
     return(data.section)
 }

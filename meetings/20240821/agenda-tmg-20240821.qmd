@@ -1,0 +1,24 @@
+---
+subtitle: Trial Management Group meeting, 21th August 2024
+title: ATLS® vs standard care trial
+reference-doc: ../reference-doc.docx
+format: docx
+---
+
+# Members present
+
+# Members excused
+
+# Agenda
+
+1. Update on ethics and regulatory applications
+
+2. Discussion on how to handle consent for ATLS adherence observations
+
+3. Decision on new protocol version given the discussion on consent (see attached protocol pre-release version 1.2.0-6)
+
+4. Update on joint trial steering and data monitoring committee
+
+5. Additional points
+
+# Notes and decisions

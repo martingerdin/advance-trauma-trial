@@ -17,7 +17,7 @@ format:
         \usepackage{scrlayer-scrpage}
         \usepackage{soul}
         \usepackage{lastpage}
-        \lohead{ATLS vs Standard Care Trial Protocol}
+        \lohead{ADVANCE TRAUMA Trial Protocol}
         \rohead{ClinicalTrials.gov ID NCT06321419}
         \cfoot{\thepage\ of \pageref{LastPage} }
   docx: default
