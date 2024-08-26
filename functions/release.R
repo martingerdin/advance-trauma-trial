@@ -94,6 +94,11 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         version.type <- "Version"
     }
 
+    # Set version type if the new version is not a pre-release but the current version is a pre-release
+    if (!recompile.only && !pre.release && current.pre.release) {
+        version.type <- "Version"
+    }
+
     # If the current version isn't a pre-release and the new version is a pre-release, then set the pre-release version to 1
     if (!recompile.only && !current.pre.release && pre.release) {
         new.version.string <- paste0(new.version.string, "-1")

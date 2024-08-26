@@ -1,0 +1,16 @@
+The following hospitals and principal investigators have agreed to participate in the trial:
+
+| Hospital | Principal investigator | 
+|-----------------|-------------|
+| IPGME&R and SSKM Hospital, Kolkata, India | 
+| H.B.T. Medical College & Dr. R.N. Cooper Municipal General Hospital, Mumbai, India |
+| All India Institute of Medical Sciences, Mangalagiri, India |
+| Christian Medical College and Hospital Ludhiana, India |
+| Rajawadi Hospital, Mumbai, India |
+| Government Medical College & Hospital, Chandigarh, India |
+| Himalayan Institute of Medical Sciences, Uttarakhand, India |
+
+
+: {tbl-colwidths="[50,50]"}
+
+Abbreviations: TMG, Trial Management Group; TT, Trial Team.
