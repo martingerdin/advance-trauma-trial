@@ -46,9 +46,12 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 
 ## Contributors
 
+<!--
 | Name and  ORCID | Affiliation | Role |
 |-----------------|-------------|------|
 | Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet | Principal Investigator |
+
+-->
 
 {{< pagebreak >}}
 
@@ -69,6 +72,10 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 ## Design
 
 This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters`. The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+
+## Randomisation of clusters
+
+<!-- Need to add how clusters will be randomised -->
 
 ## Statistical hypotheses
 
