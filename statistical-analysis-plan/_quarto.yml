@@ -4,7 +4,10 @@ number-sections: true
 number-depth: 3
 fig-caption: true
 link-bibliography: false
-
+titlepage-theme:
+  title-fontsize: 15
+  subtitle-fontstyle: ["bfseries"]
+  subtitle-fontsize: 20
 format:
   titlepage-pdf:
     titlepage: classic-lined

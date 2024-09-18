@@ -182,10 +182,9 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         version.indicator.string <- ifelse(pre.release, "pre-release version", "version")
         base.git.path <- git2r::discover_repository(".") |>
             stringr::str_remove("/.git")
-        path <- file.path(base.git.path, "atls-vs-standard-care-trial")
-        git2r::add(repo = ".", path = path)
         git2r::commit(
             repo = ".",
+            all = TRUE,
             message = paste0("Release ", release.string, " ", version.indicator.string, " ", new.version.string)
         )
 

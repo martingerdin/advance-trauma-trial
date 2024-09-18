@@ -1,11 +1,10 @@
 ---
-title: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial"
-subtitle: "Statistical Analysis Plan  \nVersion {{< var version >}}, {{< var date >}}"
-titlepage-theme: 
-  title-fontsize: 20
-  title-fontstyle: "uppercase"
-  title-space-after: "0.1\\textheight"
-  subtitle-fontstyle: ["Large"]
+title: "Statistical Analysis Plan"
+subtitle: | 
+  | ADVANCE TRAUMA
+  |
+  | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
+author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 bibliography: bibliography.bib
 csl: nature.csl
 ---
@@ -29,9 +28,9 @@ attach(global_variables())
 protocol.variables <- yaml::read_yaml("../protocol/_variables.yml")
 ```
 
-- Protocol version `r protocol.variables$version` dated `r protocol.variables$date`
-- ClinicalTrials.gov ID NCT06321419
-- Clinical Trial Registry - India 
+-   Protocol version `r protocol.variables$version` dated `r protocol.variables$date`
+-   ClinicalTrials.gov ID NCT06321419
+-   Clinical Trial Registry - India
 
 ## Changelog
 
@@ -47,9 +46,9 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 ## Contributors
 
 <!--
-| Name and  ORCID | Affiliation | Role |
-|-----------------|-------------|------|
-| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet | Principal Investigator |
+| Name and ORCID                                                      | Affiliation           | Role                   |
+|--------------------------------|------------------------|-----------------|
+| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")` | Karolinska Institutet | Principal Investigator |
 
 -->
 
@@ -77,12 +76,16 @@ This is a batched stepped-wedge cluster randomised trial, including a total of `
 
 <!-- Need to add how clusters will be randomised -->
 
+We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomise the clusters alloted to each batch to the different intervention implementation sequences within that batch[^randomisation]. We will balance the randomisation within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomisation. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
+
+[^randomisation]: **Question:** Karla and James, can you please provide more details on how the randomisation will be done?
+
 ## Statistical hypotheses
 
 Our primary statistical hypotheses are:
 
-- **Null hypothesis**: There is no difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the odds ratio (OR) for ATLS^®^ vs standard care would be 1.
-- **Alternative hypothesis**: There is an absolute difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care of at least 5% units, meaning that the OR for ATLS^®^ vs standard care would be different from 1. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS^®^ group compared to those randomised to the standard care group.
+-   **Null hypothesis**: There is no difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the odds ratio (OR) for ATLS^®^ vs standard care would be 1.
+-   **Alternative hypothesis**: There is an absolute difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care of at least 5% units, meaning that the OR for ATLS^®^ vs standard care would be different from 1. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS^®^ group compared to those randomised to the standard care group.
 
 ## Sample size calculations
 
@@ -112,15 +115,21 @@ We will describe cluster characteristics including location and size using frequ
 
 We will describe patient characteristics at baseline, meaning all pre-training periods, per treatment group and overall using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables. We will not adjust for clustering when presenting baseline characteristics.
 
+## Interim analysis
+
+There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the joint Trial Steering and Data Monitoring Committee. The interim analysis will include the baseline analyses including the frequencies and proportions of the primary outcome in the intervention and control arms. We will recalculate the sample size based on the observed period sizes and the observed effect size, using the Shiny CRT Calculator [@Hemming2020Feb]. In the revised sample size calculation, we will assume an ICC of 0.02, but consider sensitivity across the range 0.01-0.05 [@Campbell2005; @Eldridge2015], and a CAC of 0.9, but consider sensitivity across the range 0.8-1.0 [@Hemming2020Feb; @Martin2016; @Korevaar2021]. These assumptions are the same as in the original sample size calculation. We will not perform any formal hypothesis testing as part of our planned interim analyses.
+
 ## Analysis of the primary outcome
 
-The primary outcomes is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa. 
+The primary outcomes is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR \< 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa.
 
 ### Main analysis: mixed effects binomial model with logit link
 
-We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure[^calendar-time]. The primary analysis will allow for clustering as a random cluster and random cluster by period effect, both assumed to follow a normal distribution. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). 
+We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure[^calendar-time]. The primary analysis will allow for clustering as a random cluster and random cluster by period effect[^simplify-random-effects-structure], both assumed to follow a normal distribution. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997][^kenward-and-roger]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL).
 
 [^calendar-time]: **Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
+[^simplify-random-effects-structure]: **Question:** Just a thought: keep in mind the complexity of the random effects structure; if it leads to convergence problems or overfitting, should we consider simplifying the random effects?
+[^kenward-and-roger]: **Questions about Kenward and Roger small sample correction:** 1. What clusters do we consider here? Doctors? Patients? Hospitals? 2. Why use this method and not eg. bootstrapping? I thought Kenward and Roger was primarly used for linear mixed models and not for binary outcomes? 
 
 $$
 \text{logit}(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
@@ -128,24 +137,25 @@ $$ {#eq-logit-model}
 
 Where:
 
-- $\text{Pr}(Y_{bkti} = 1)$ is the probability of death for patient $i = 1, \dotsc,m$ in cluster $k = 1, \dotsc, `r clusters`$ in period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$.
-- $\mu$ is the intercept, representing the baseline log-odds of the outcome when all predictors are 1.
-- $\beta_{bt}$ is the fixed effect of period $t$ in batch $b$, i.e. there is a separate period effect for each batch, so that there is a total of `r batches * (total.months - 1)` period effects.[^many-parameters]
-- $\theta$ is the fixed effect of intervention exposure, i.e. the effect of ATLS^®^ exposure on the probability of death.
-- $X_{bkt}$ is the treatment arm for patient $i$ in cluster $k$ in period $t$, with $X_{bkt} = 1$ for ATLS^®^ and $X_{bkt} = 0$ for standard care.
-- $\alpha_{bk}$ is the random effect of cluster $k$ in batch $b$, i.e. the random effect of cluster.
-- $\gamma_{bkt}$ is the random effect of cluster $k$ in period $t$ in batch $b$, i.e. the random effect of cluster by period.
+-   $\text{Pr}(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc,m$ in cluster $k = 1, \dotsc, `r clusters`$ during period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$.
+-   $\mu$: the intercept, representing the baseline log-odds of the outcome when all predictors are set to 1.
+-   $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, accounting for a separate period effect for each batch, so that there is a total of `r batches * (total.months - 1)` period effects.[^low-number-of-participants]
+-   $\theta$: the fixed effect of intervention exposure, representing the effect of ATLS® exposure on the probability of death.
+-   $X_{bkt}$: the treatment arm indicator for patient $i$ in cluster $k$ during period $t$ in batch $b$, with $X_{bkt} = 1$ for ATLS^®^ and $X_{bkt} = 0$ for standard care.
+-   $\alpha_{bk}$: the random effect of cluster $k$ in batch $b$, representing the variability in outcomes between different clusters (hospitals) across batches.
+-   $\gamma_{bkt}$: the random effect of cluster $k$ in period $t$ in batch $b$, accounting for the random variation within clusters across periods and batches, including potential interaction effects between clusters and time.
 
-[^many-parameters]: **Question:** The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?
+[^low-number-of-participants]: **Question:** The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?
 
-We will present the effect of ATLS^®^ exposure as an OR of mortality with an associated 95% CI, using the standard care arm as the reference. We will also present the risk difference with a 95% CI.  We will balance the randomization within each batch on cluster size, defined as expected monthly volume of eligible patient participants, and will therefore not adjust the main analysis for cluster size.
+We will present the effect of ATLS^®^ exposure as an odds ratio (OR) for mortality with an associated 95% CI, using the standard care arm as the reference. Additionally, we will present the risk difference with a 95% CI. The randomization within each batch will be balanced based on cluster size, defined as the expected monthly volume of eligible patient participants. Therefore, no further adjustment for cluster size will be made in the main analysis.
 
 ### Sensitivity analyses
 
 The sensitivity analyses will be conducted to assess the robustness of the main analysis results to different model specifications. We will first model the primary outcome using an identity link function to estimate the risk difference instead of the OR. Henceforth, each additional sensitivity analyses will be operationalised using two separate models, one with the logit link and one with the identity link. We will first explore more complex correlation structures. We will then model time using a spline function. Finally, we will conduct a fully adjusted covariate analysis.
 
 #### Model with identify link
-We will use an identity link used to estimate the risk difference, meaning that the coefficient will be interpreted as the difference in the probability of death between the ATLS^®^ and standard care arms. We will present the risk difference with a 95% CI. This model is specified in @eq-identity-model and will also be fitted using RSPL. If the binomial model with the identity link does not converge then only a odds ratio will be reported. 
+
+We will use an identity link used to estimate the risk difference, meaning that the coefficient will be interpreted as the difference in the probability of death between the ATLS^®^ and standard care arms. We will present the risk difference with a 95% CI. This model is specified in @eq-identity-model and will also be fitted using RSPL. If the binomial model with the identity link does not converge then only a odds ratio will be reported.
 
 $$
 \text{Pr}(Y_{bkti} = 1) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
@@ -153,7 +163,7 @@ $$ {#eq-identity-model}
 
 Where:
 
-- $\mu$ is the intercept, representing the baseline probability of the outcome when all predictors are zero.
+-   $\mu$: the intercept, representing the baseline probability of the outcome when all predictors are zero.
 
 #### Models with different correlation structure
 
@@ -165,9 +175,9 @@ $$ {#eq-ar1}
 
 Where:
 
-- $\rho$ is the correlation between the random effects of two consecutive periods, the period $t$ and the period $t-1$.
-- $\alpha_{bk, t}$ is the random effect of cluster $k$ in period $t$ in batch $b$.
-- $\epsilon_{t}$ is the error term for period $t$, which is assumed to be normally distributed with mean 0 and variance $\sigma^2_\alpha$.
+-   $\rho$: the correlation between the random effects of two consecutive periods, the period $t$ and the period $t-1$, reflecting how outcomes in one period are correlated with outcomes in the previous period within the same cluster.
+-   $\alpha_{bk, t}$: the random effect of cluster $k$ in period $t$ in batch $b$. This represents the variation in the outcome that is specific to each cluster and period, accounting for time-related effects.
+-   $\epsilon_{t}$ is the error term for period $t$, which is assumed to be normally distributed with mean 0 and variance $\sigma^2_\alpha$.
 
 To allow for the randomisation by batches, we will also include a different secular trend for each batch as a random effect interaction term between batch and period. The full model is specified in @eq-logit-ar1.
 
@@ -177,9 +187,9 @@ $$ {#eq-logit-ar1}
 
 Where:
 
-- $g(\cdot)$ is the link function.
-- $\alpha_{bk,t}$ is the is the updated random effect of cluster $k$ in batch $b$ in period $t$ with the AR(1) correlation structure.
-- $\delta_{bt}$ is the random effect of batch $b$ in period $t$.
+-   $g(\cdot)$: the link function.
+-   $\alpha_{bk,t}$: the updated random effect of cluster $k$ in batch $b$ during period $t$ with the AR(1) correlation structure. This accounts for correlation between adjacent periods in the same cluster.
+-   $\delta_{bt}$: the random effect of batch $b$ during period $t$, which captures any variability across different batches over time.
 
 <!-- 
 Need to be updated
@@ -214,7 +224,9 @@ $$ {#eq-logit-random-cluster-intervention}
 
 Where:
 
-- $u_{bk}$ is the random effect of cluster $k$ by intervention interaction.
+-   $u_{bk}$: the random effect of cluster $k$ by intervention interaction.
+-   $X_{bkt}$: the treatment arm indicator for patient $i$ in cluster $k$ during period $t$.
+-   \$u\_{bk} \\times X\_{bkt} \$: the random interaction effect between the intervention and cluster $k$.
 
 #### Models with time modelled with a spline function
 
@@ -226,12 +238,12 @@ $$ {#eq-spline-model}
 
 Where:
 
-- $S_j(t, \{3, 6, 9\})$ is the natural cubic spline basis functions with knots placed at times 3, 6 and 9.
-- $\beta_j$ is the coefficient for the $j$-th spline basis function.
+-   $S_j(t, \{3, 6, 9\})$: the natural cubic spline basis functions with knots placed at times 3, 6 and 9.
+-   $\beta_j$: the coefficient for the $j$-th spline basis function.
 
 #### Models exploring lag and weaning effects
 
-Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
+Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade). This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
 
 $$
 g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \theta_{\text{int}} X_{bkt} \times T_{bkt} + \alpha_{bk} + \gamma_{bkt}
@@ -239,39 +251,59 @@ $$ {#eq-lag-weaning-model}
 
 Where:
 
-- $\theta_{\text{int}}$ is the coefficient for the interaction between treatment and time since first treated.
-- $T_{bkt}$ is the number of periods since first treated.
+-   $\theta_{\text{int}}$ is the coefficient for the interaction between treatment and time since first treated.
+-   $T_{bkt}$ is the number of periods since first treated.
 
 ### Adjusted analyses
 
-Fully adjusted covariate analysis will additionally adjust for:
+Fully adjusted covariate analysis will additionally adjust for[^additional-covariates]:
 
-- Age
-- Sex
-- Systolic blood pressure
-- Glasgow Coma Scale
-- Injury Severity Score
-- Mechanism of injury
+-   Age
+-   Sex
+-   Systolic blood pressure
+-   Glasgow Coma Scale
+-   Injury Severity Score
+-   Mechanism of injury
 
 These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in @eq-logit-model and @eq-identity-model as fixed effects.
 
+[^additional-covariates]: **Questions:** 1. Should we adjust for calendar time because the last batch will be two years later than the first batch? 2. Should we add it as covariate in the list above? 3. Should it be continuous (e.g., months since the study started) or categorical calendar time (if you expect non-linear trends or stepwise changes over years)? 4. Should we analyse Time Since Admission? Depending on the nature of the trauma, the time since patient admission might also influence outcomes, especially if the timing of interventions or care decisions plays a critical role. Eg. time from admission to surgery.
+
 ### Subgroup analyses
 
-We will perform the following subgroup analyses[^subgroup-analysis]:
+We will perform the following subgroup analyses[^too-many-subgroups]:
 
-[^subgroup-analysis]: **Question:** Are we exploring too many subgroups?
+[^too-many-subgroups]: **Question:** Are we exploring too many subgroups?
 
-- geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;
-- age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021;
-- sex, using the levels male and female;
-- clinical cohorts, defined as blunt multisystem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts; and
-- cluster size.
+-   geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;
+-   age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) \[@Diaz2021;
+-   sex, using the levels male and female;
+-   clinical cohorts, defined as blunt multisystem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts; and
+-   cluster size (number of patients per hospital)
 
 These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-logit-model and @eq-identity-model.
 
 ### Treatment of missing data
 
-We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10% then we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, then we will handle missing data using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations.
+We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10%, we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, we will handle missing data depending on the missing data mechanism. If the data are missing at random (MAR), we will perform multiple imputation using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations. If there is evidence that the data are missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
+
+<!-- 
+Thoughts on missing data: 
+
+Check nature of missing data, 
+If MCAR, complete case analysis is generally acceptable, as there would be no systematic differences between those with and without missing data. 
+If MAR, then MICE is appropriate.
+If MNAR, MICE may not fully address the missingness. In such cases, a sensitivity analysis exploring MNAR models might be useful (e.g., pattern mixture models or selection models).
+
+Perhaps to strengthen the missing data plan, we could consider adding a few lines:
+
+If there is evidence that the data is missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
+
+----
+
+Let us discuss this further.
+
+-->
 
 ## Analysis of secondary outcomes
 
@@ -281,7 +313,7 @@ We will use the model with the logit link specified in @eq-logit-model and the m
 
 ### Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department
 
-Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a likert scale from 1 to 5. There is also a visual analogue scale (VAS) for self-rated quality of life, ranging from 0 to 100. For each of the five dimensions we will use a mixed effects ordinal model as specified in @eq-ordinal-model. 
+Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a likert scale from 1 to 5. There is also a visual analogue scale (VAS) for self-rated quality of life, ranging from 0 to 100. For each of the five dimensions we will use a mixed effects ordinal model as specified in @eq-ordinal-model.
 
 $$
 \text{logit}(\text{Pr}(Y_{bkti} \leq j)) = \mu_j + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
@@ -289,7 +321,7 @@ $$ {#eq-ordinal-model}
 
 Where:
 
-- $\mu_j$ is the intercept for the $j$-th category of the EQ5D dimension ($j$ = 1, 2, 3, 4, 5).
+-   $\mu_j$: the intercept for the $j$-th category of the EQ5D dimension ($j$ = 1, 2, 3, 4, 5).
 
 The VAS will be analysed using a linear mixed effects model as specified in @eq-linear-model.
 
@@ -299,7 +331,7 @@ $$ {#eq-linear-model}
 
 Where:
 
-- $\epsilon_{bkti}$ is the error term for patient $i$ in cluster $k$ in period $t$ in batch $b$, assumed to be normally distributed with mean 0 and variance $\sigma^2$.
+-   $\epsilon_{bkti}$: the error term for patient $i$ in cluster $k$ in period $t$ in batch $b$, assumed to be normally distributed with mean 0 and variance $\sigma^2$.
 
 ### Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department
 
