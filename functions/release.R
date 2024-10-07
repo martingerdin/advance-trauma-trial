@@ -77,6 +77,11 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         new.version.string <- paste0(version[1:3], collapse = ".")
     }
 
+    # If the current version is just recompiled, then the new version is the current version
+    if (recompile.only) {
+        new.version.string <- current.version
+    }
+
     # Bump version if recompile.only is FALSE, and the current version is not a pre-release, or if the current version is a pre-release and pre.release is TRUE
     if (!recompile.only && !current.pre.release) {
         # Increment version
