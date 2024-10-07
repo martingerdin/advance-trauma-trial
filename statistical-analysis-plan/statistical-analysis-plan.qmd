@@ -68,9 +68,43 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 
 # Statistical analysis
 
+# Aim and objectives
+
+## Aim
+
+To compare the effects of ATLS^®^ training with standard care on outcomes in adult trauma patients.
+
+## Objectives
+
+- To estimate the effects of ATLS^®^ training on 30-day in-hospital mortality compared to standard care.
+- To assess the robustness of the main analysis results to different model specifications through sensitivity analyses.
+- To estimate the effects of ATLS^®^ training on secondary outcomes compared to standard care.
+- To explore the effects of ATLS^®^ training on subgroups of patients compared to standard care.
+
 ## Design
 
-This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters`. The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` (see @trial-design). The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence design, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+
+```{r trial-design}
+#| echo: false
+#| label: fig-trial-design
+#| fig.cap: "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
+#| fig.align: "center"
+#| message: FALSE
+
+knitr::include_graphics(
+    create_trial_design_flowchart(
+        clusters = clusters, sequences = sequences, batches = batches,
+        min.standard.care.months = min.standard.care.months,
+        min.intervention.months = min.intervention.months,
+        batches.overlap.months = batches.overlap.months,
+        transition.months = transition.months,
+        transition.overlap.months = transition.overlap.months,
+        return.figure = FALSE,
+        device = "png"
+    )
+)
+```
 
 ## Randomisation of clusters
 
@@ -79,6 +113,10 @@ This is a batched stepped-wedge cluster randomised trial, including a total of `
 We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomise the clusters alloted to each batch to the different intervention implementation sequences within that batch[^randomisation]. We will balance the randomisation within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomisation. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
 
 [^randomisation]: **Question:** Karla and James, can you please provide more details on how the randomisation will be done?
+
+## Outcomes
+
+{{< include ../shared-assets/outcomes.qmd >}}
 
 ## Statistical hypotheses
 
@@ -103,7 +141,7 @@ We will not perform any formal hypothesis testing as part of our planned interim
 
 ## Analysis populations
 
-The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses. We will not do a per protocol or safety analysis. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses, according to the planned date of transition from standard care. We might consider a per protocol analysis if cluster deviate considerably from the planned date of transition, using the actual date of transition as the cut-off point. We will report the results of the per protocol analysis as a sensitivity analysis. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ## Baseline analyses
 
@@ -256,16 +294,16 @@ Where:
 
 ### Adjusted analyses
 
-Fully adjusted covariate analysis will additionally adjust for[^additional-covariates]:
+Fully adjusted covariate analysis will additionally adjust for[^additional-covariates] (expected % missing data in parentheses):
 
--   Age
--   Sex
--   Systolic blood pressure
--   Glasgow Coma Scale
--   Injury Severity Score
--   Mechanism of injury
+-   Age (<5%)
+-   Sex (<5%)
+-   Systolic blood pressure (25%)
+-   Glasgow Coma Scale (25%)
+-   Injury Severity Score (10%)
+-   Mechanism of injury (10%)
 
-These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in @eq-logit-model and @eq-identity-model as fixed effects.
+These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in @eq-logit-model and @eq-identity-model as fixed effects. We will model the continuous covariates assuming linear effects.
 
 [^additional-covariates]: **Questions:** 1. Should we adjust for calendar time because the last batch will be two years later than the first batch? 2. Should we add it as covariate in the list above? 3. Should it be continuous (e.g., months since the study started) or categorical calendar time (if you expect non-linear trends or stepwise changes over years)? 4. Should we analyse Time Since Admission? Depending on the nature of the trauma, the time since patient admission might also influence outcomes, especially if the timing of interventions or care decisions plays a critical role. Eg. time from admission to surgery.
 
@@ -356,5 +394,23 @@ We will analyse intensive care unit admission as a dichotomous variable using a 
 ### Length of intensive care unit stay
 
 We will analyse length of intensive care unit stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+
+### Adherence to ATLS^®^ principles during initial patient resuscitation
+
+We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the proportion of steps completed, with 100% adherence defined as completing all 14 steps. We will analyse adherence using a mixed-effects beta regression model with a logit link as specified in @eq-beta-model.
+
+$$
+\text{logit}(\text{E}(Y_{bkti})) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$ {#eq-beta-model}
+
+Where:
+
+-   $\text{E}(Y_{bkti})$: The expected proportion of completed ATLS steps for patient $i$ in cluster $k$ during period $t$ in batch $b$.
+-   $\mu$: The intercept, representing the baseline log-odds of completing ATLS steps when all predictors are set to 1.
+-   $\beta_{bt}$: The fixed effect of period $t$ in batch $b$, allowing for different period effects for each batch.
+-   $\theta$: The fixed effect of ATLS exposure, representing the effect of the intervention on adherence to ATLS principles.
+-   $X_{bkt}$: The treatment arm indicator for patient $i$ in cluster $k$ during period $t$ in batch $b$ (1 for ATLS, 0 for standard care).
+-   $\alpha_{bk}$: The random effect of cluster $k$ in batch $b$, capturing variability in adherence across clusters (hospitals).
+-   $\gamma_{bkt}$: The random effect of cluster $k$ in period $t$ within batch $b$, accounting for within-cluster variability across time periods and batches.
 
 # References

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Version 0.3.0, 2024-09-18">
+
+<title>Statistical Analysis Plan</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="statistical-analysis-plan_files/libs/clipboard/clipboard.min.js"></script>
+<script src="statistical-analysis-plan_files/libs/quarto-html/quarto.js"></script>
+<script src="statistical-analysis-plan_files/libs/quarto-html/popper.min.js"></script>
+<script src="statistical-analysis-plan_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="statistical-analysis-plan_files/libs/quarto-html/anchor.min.js"></script>
+<link href="statistical-analysis-plan_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="statistical-analysis-plan_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="statistical-analysis-plan_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="statistical-analysis-plan_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="statistical-analysis-plan_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#administrative-information" id="toc-administrative-information" class="nav-link active" data-scroll-target="#administrative-information"><span class="header-section-number">1</span> Administrative information</a>
+  <ul class="collapse">
+  <li><a href="#study-identifiers" id="toc-study-identifiers" class="nav-link" data-scroll-target="#study-identifiers"><span class="header-section-number">1.1</span> Study identifiers</a></li>
+  <li><a href="#changelog" id="toc-changelog" class="nav-link" data-scroll-target="#changelog"><span class="header-section-number">1.2</span> Changelog</a></li>
+  <li><a href="#contributors" id="toc-contributors" class="nav-link" data-scroll-target="#contributors"><span class="header-section-number">1.3</span> Contributors</a></li>
+  </ul></li>
+  <li><a href="#trial-synopsis" id="toc-trial-synopsis" class="nav-link" data-scroll-target="#trial-synopsis"><span class="header-section-number">2</span> Trial synopsis</a></li>
+  <li><a href="#special-considerations" id="toc-special-considerations" class="nav-link" data-scroll-target="#special-considerations"><span class="header-section-number">3</span> Special considerations</a>
+  <ul class="collapse">
+  <li><a href="#funding" id="toc-funding" class="nav-link" data-scroll-target="#funding"><span class="header-section-number">3.1</span> Funding</a></li>
+  <li><a href="#potential-amendments" id="toc-potential-amendments" class="nav-link" data-scroll-target="#potential-amendments"><span class="header-section-number">3.2</span> Potential amendments</a></li>
+  </ul></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis"><span class="header-section-number">4</span> Statistical analysis</a>
+  <ul class="collapse">
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design"><span class="header-section-number">4.1</span> Design</a></li>
+  <li><a href="#randomisation-of-clusters" id="toc-randomisation-of-clusters" class="nav-link" data-scroll-target="#randomisation-of-clusters"><span class="header-section-number">4.2</span> Randomisation of clusters</a></li>
+  <li><a href="#statistical-hypotheses" id="toc-statistical-hypotheses" class="nav-link" data-scroll-target="#statistical-hypotheses"><span class="header-section-number">4.3</span> Statistical hypotheses</a></li>
+  <li><a href="#sample-size-calculations" id="toc-sample-size-calculations" class="nav-link" data-scroll-target="#sample-size-calculations"><span class="header-section-number">4.4</span> Sample size calculations</a></li>
+  <li><a href="#statistical-principles" id="toc-statistical-principles" class="nav-link" data-scroll-target="#statistical-principles"><span class="header-section-number">4.5</span> Statistical principles</a>
+  <ul class="collapse">
+  <li><a href="#statistical-software" id="toc-statistical-software" class="nav-link" data-scroll-target="#statistical-software"><span class="header-section-number">4.5.1</span> Statistical software</a></li>
+  <li><a href="#levels-of-statistical-significance-and-confidence" id="toc-levels-of-statistical-significance-and-confidence" class="nav-link" data-scroll-target="#levels-of-statistical-significance-and-confidence"><span class="header-section-number">4.5.2</span> Levels of statistical significance and confidence</a></li>
+  </ul></li>
+  <li><a href="#analysis-populations" id="toc-analysis-populations" class="nav-link" data-scroll-target="#analysis-populations"><span class="header-section-number">4.6</span> Analysis populations</a></li>
+  <li><a href="#baseline-analyses" id="toc-baseline-analyses" class="nav-link" data-scroll-target="#baseline-analyses"><span class="header-section-number">4.7</span> Baseline analyses</a>
+  <ul class="collapse">
+  <li><a href="#cluster-characteristics" id="toc-cluster-characteristics" class="nav-link" data-scroll-target="#cluster-characteristics"><span class="header-section-number">4.7.1</span> Cluster characteristics</a></li>
+  <li><a href="#patient-characteristics" id="toc-patient-characteristics" class="nav-link" data-scroll-target="#patient-characteristics"><span class="header-section-number">4.7.2</span> Patient characteristics</a></li>
+  </ul></li>
+  <li><a href="#interim-analysis" id="toc-interim-analysis" class="nav-link" data-scroll-target="#interim-analysis"><span class="header-section-number">4.8</span> Interim analysis</a></li>
+  <li><a href="#analysis-of-the-primary-outcome" id="toc-analysis-of-the-primary-outcome" class="nav-link" data-scroll-target="#analysis-of-the-primary-outcome"><span class="header-section-number">4.9</span> Analysis of the primary outcome</a>
+  <ul class="collapse">
+  <li><a href="#main-analysis-mixed-effects-binomial-model-with-logit-link" id="toc-main-analysis-mixed-effects-binomial-model-with-logit-link" class="nav-link" data-scroll-target="#main-analysis-mixed-effects-binomial-model-with-logit-link"><span class="header-section-number">4.9.1</span> Main analysis: mixed effects binomial model with logit link</a></li>
+  <li><a href="#sensitivity-analyses" id="toc-sensitivity-analyses" class="nav-link" data-scroll-target="#sensitivity-analyses"><span class="header-section-number">4.9.2</span> Sensitivity analyses</a></li>
+  <li><a href="#adjusted-analyses" id="toc-adjusted-analyses" class="nav-link" data-scroll-target="#adjusted-analyses"><span class="header-section-number">4.9.3</span> Adjusted analyses</a></li>
+  <li><a href="#subgroup-analyses" id="toc-subgroup-analyses" class="nav-link" data-scroll-target="#subgroup-analyses"><span class="header-section-number">4.9.4</span> Subgroup analyses</a></li>
+  <li><a href="#treatment-of-missing-data" id="toc-treatment-of-missing-data" class="nav-link" data-scroll-target="#treatment-of-missing-data"><span class="header-section-number">4.9.5</span> Treatment of missing data</a></li>
+  </ul></li>
+  <li><a href="#analysis-of-secondary-outcomes" id="toc-analysis-of-secondary-outcomes" class="nav-link" data-scroll-target="#analysis-of-secondary-outcomes"><span class="header-section-number">4.10</span> Analysis of secondary outcomes</a>
+  <ul class="collapse">
+  <li><a href="#all-cause-mortality-within-24-hours-30-days-and-three-months-of-arrival-at-the-emergency-department" id="toc-all-cause-mortality-within-24-hours-30-days-and-three-months-of-arrival-at-the-emergency-department" class="nav-link" data-scroll-target="#all-cause-mortality-within-24-hours-30-days-and-three-months-of-arrival-at-the-emergency-department"><span class="header-section-number">4.10.1</span> All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department</a></li>
+  <li><a href="#quality-of-life-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department" id="toc-quality-of-life-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department" class="nav-link" data-scroll-target="#quality-of-life-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department"><span class="header-section-number">4.10.2</span> Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department</a></li>
+  <li><a href="#disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department" id="toc-disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department" class="nav-link" data-scroll-target="#disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department"><span class="header-section-number">4.10.3</span> Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department</a></li>
+  <li><a href="#return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department" id="toc-return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department" class="nav-link" data-scroll-target="#return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department"><span class="header-section-number">4.10.4</span> Return to work at 30 days and three months after arrival at the emergency department</a></li>
+  <li><a href="#length-of-emergency-department-stay" id="toc-length-of-emergency-department-stay" class="nav-link" data-scroll-target="#length-of-emergency-department-stay"><span class="header-section-number">4.10.5</span> Length of emergency department stay</a></li>
+  <li><a href="#length-of-hospital-stay" id="toc-length-of-hospital-stay" class="nav-link" data-scroll-target="#length-of-hospital-stay"><span class="header-section-number">4.10.6</span> Length of hospital stay</a></li>
+  <li><a href="#intensive-care-unit-admission" id="toc-intensive-care-unit-admission" class="nav-link" data-scroll-target="#intensive-care-unit-admission"><span class="header-section-number">4.10.7</span> Intensive care unit admission</a></li>
+  <li><a href="#length-of-intensive-care-unit-stay" id="toc-length-of-intensive-care-unit-stay" class="nav-link" data-scroll-target="#length-of-intensive-care-unit-stay"><span class="header-section-number">4.10.8</span> Length of intensive care unit stay</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="statistical-analysis-plan.pdf"><i class="bi bi-file-pdf"></i>PDF (titlepage)</a></li><li><a href="statistical-analysis-plan.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Statistical Analysis Plan</h1>
+<p class="subtitle lead"></p><p>ADVANCE TRAUMA<br>
+<br>
+Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial</p><p></p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Version 0.3.0, 2024-09-18 </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div style="page-break-after: always;"></div>
+<section id="administrative-information" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Administrative information</h1>
+<section id="study-identifiers" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="study-identifiers"><span class="header-section-number">1.1</span> Study identifiers</h2>
+<ul>
+<li>Protocol version 1.2.0 dated 2024-08-26</li>
+<li>ClinicalTrials.gov ID NCT06321419</li>
+<li>Clinical Trial Registry - India</li>
+</ul>
+</section>
+<section id="changelog" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="changelog"><span class="header-section-number">1.2</span> Changelog</h2>
+<p>Once version 1.0.0 is finalised, this section will be updated with a changelog.</p>
+<!--
+
+| Version | Date       | Details | 
+|---------|------------|---------|
+
+-->
+</section>
+<section id="contributors" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="contributors"><span class="header-section-number">1.3</span> Contributors</h2>
+<!--
+| Name and ORCID                                                      | Affiliation           | Role                   |
+|--------------------------------|------------------------|-----------------|
+| Martin Gerdin Wärnberg [![](ORCIDiD_icon16x16.png){height=16 width=16}](https://orcid.org/0000-0001-6069-4794) | Karolinska Institutet | Principal Investigator |
+
+-->
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="trial-synopsis" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Trial synopsis</h1>
+<p><strong>Title</strong> Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial</p>
+<!-- **Acronym** -->
+<p><strong>Rationale</strong> Trauma is a massive global health issue. Many training programmes have been developed to help physicians in the initial management of trauma patients. Among these programmes, Advanced Trauma Life Support<sup>®</sup> (ATLS<sup>®</sup>) is the most popular, having trained over one million physicians worldwide. Despite its widespread use, there are no controlled trials showing that ATLS<sup>®</sup> improves patient outcomes. Multiple systematic reviews emphasise the need for such trials.</p>
+<p><strong>Aim</strong> To compare the effects of ATLS<sup>®</sup> training with standard care on outcomes in adult trauma patients.</p>
+<p><strong>Primary Outcome</strong> In-hospital mortality within 30 days of arrival at the emergency department.</p>
+<p><strong>Trial Design</strong> Batched stepped-wedge cluster randomised trial in India.</p>
+<p><strong>Trial Population</strong> Adult trauma patients presenting to the emergency department of a participating hospital.</p>
+<p><strong>Sample Size</strong> 30 clusters and 4320 patients.</p>
+<p><strong>Eligibility Criteria</strong></p>
+<p><em>Hospitals</em> are secondary or tertiary hospitals in India that admit or refer/transfer for admission at least 400 patients with trauma per year.</p>
+<p><em>Clusters</em> are one or more units of physicians providing initial trauma care in the emergency department of tertiary hospitals in India.</p>
+<p><em>Patients participants</em> are adult trauma patients who presents to the emergency department of participating hospitals and are admitted or transferred for admission.</p>
+<p><strong>Intervention</strong> The intervention will be ATLS<sup>®</sup> training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS<sup>®</sup> training facility in India.</p>
+<p><strong>Ethical Considerations</strong> We will use an opt-out consent approach for collection of routinely recorded data. We will obtain informed consent for collection of non-routinely recorded data, such as quality of life and disability outcomes. Patients who are unconscious or lack a legally authorized representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection.</p>
+<p><strong>Trial Period</strong> October 1, 2024, to September 30, 2029</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="special-considerations" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Special considerations</h1>
+<section id="funding" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="funding"><span class="header-section-number">3.1</span> Funding</h2>
+<p>This trial is not yet fully funded. The Trial Management Group has decided to proceed with the trial with the expectation that additional funding will be secured. The Trial Steering Committee will be informed of the funding status at each meeting. If funding is not secured, the trial will be stopped. This will likely result in an underpowered trial. The justification for this decision is that the intervention is considered standard of care in many countries and the data collection is considered minimal risk. There is therefore a very small risk of harm to patient participants, but a potential direct benefit to those patient participants who receive the intervention. The benefit-risk ratio is therefore considered to be favourable, even in the case of an underpowered trial.</p>
+</section>
+<section id="potential-amendments" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="potential-amendments"><span class="header-section-number">3.2</span> Potential amendments</h2>
+<p>There are ongoing discussions about re-framing the trial as a hybrid effectiveness-implementation trial and include a cost-effectiveness analysis. This would involve adding additional data collection to assess the implementation and costs of the intervention. This would involve additional funding and amended ethical approvals.</p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="statistical-analysis" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Statistical analysis</h1>
+<section id="design" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="design"><span class="header-section-number">4.1</span> Design</h2>
+<p>This is a batched stepped-wedge cluster randomised trial, including a total of 30. The trial will be composed of 6 batches of identical 12-period 5-sequence design, with one cluster being assigned to each sequence of each batch<span class="citation" data-cites="Kasza2022"><sup><a href="#ref-Kasza2022" role="doc-biblioref">1</a></sup></span>. Each period is one month, and each cluster will be in the trial for a total of 13 months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of 6 months between successive batches.</p>
+</section>
+<section id="randomisation-of-clusters" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="randomisation-of-clusters"><span class="header-section-number">4.2</span> Randomisation of clusters</h2>
+<!-- Need to add how clusters will be randomised -->
+<p>We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomise the clusters alloted to each batch to the different intervention implementation sequences within that batch<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. We will balance the randomisation within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomisation. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS<sup>®</sup> training need to be made in advance.</p>
+</section>
+<section id="statistical-hypotheses" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="statistical-hypotheses"><span class="header-section-number">4.3</span> Statistical hypotheses</h2>
+<p>Our primary statistical hypotheses are:</p>
+<ul>
+<li><strong>Null hypothesis</strong>: There is no difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS<sup>®</sup> and standard care, meaning that the odds ratio (OR) for ATLS<sup>®</sup> vs standard care would be 1.</li>
+<li><strong>Alternative hypothesis</strong>: There is an absolute difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS<sup>®</sup> and standard care of at least 5% units, meaning that the OR for ATLS<sup>®</sup> vs standard care would be different from 1. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS<sup>®</sup> group compared to those randomised to the standard care group.</li>
+</ul>
+</section>
+<section id="sample-size-calculations" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sample-size-calculations"><span class="header-section-number">4.4</span> Sample size calculations</h2>
+<p>With 30 clusters and a total sample size of 4320 our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS<sup>®</sup> training (see <a href="#fig-power-curves">Figure&nbsp;1</a>). This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05<span class="citation" data-cites="Campbell2005 Eldridge2015"><sup><a href="#ref-Campbell2005" role="doc-biblioref">2</a>,<a href="#ref-Eldridge2015" role="doc-biblioref">3</a></sup></span>, and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance<span class="citation" data-cites="Hemming2020Feb Martin2016 Korevaar2021"><sup><a href="#ref-Hemming2020Feb" role="doc-biblioref">4</a>–<a href="#ref-Korevaar2021" role="doc-biblioref">6</a></sup></span>. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately 12 observations per month to the analysis, based on our previous work.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-power-curves" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="./combined-power-curves.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). <strong>A)</strong> Shows power curves assuming a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS<sup>®</sup> training. <strong>B)</strong> Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS<sup>®</sup> training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-principles" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="statistical-principles"><span class="header-section-number">4.5</span> Statistical principles</h2>
+<section id="statistical-software" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="statistical-software"><span class="header-section-number">4.5.1</span> Statistical software</h3>
+<p>We will use the R Statistical Software for all analyses<span class="citation" data-cites="R"><sup><a href="#ref-R" role="doc-biblioref">7</a></sup></span>.</p>
+</section>
+<section id="levels-of-statistical-significance-and-confidence" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="levels-of-statistical-significance-and-confidence"><span class="header-section-number">4.5.2</span> Levels of statistical significance and confidence</h3>
+<p>We will not perform any formal hypothesis testing as part of our planned interim analyses. We will use a two-sided significance level of 0.05 for all analyses, and we will report 95% confidence intervals (CI) for all estimates. We will not adjust for multiple testing because no secondary outcome is regarded as singularly more important.</p>
+</section>
+</section>
+<section id="analysis-populations" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="analysis-populations"><span class="header-section-number">4.6</span> Analysis populations</h2>
+<p>The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses. We will not do a per protocol or safety analysis. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials<span class="citation" data-cites="Hemming2018"><sup><a href="#ref-Hemming2018" role="doc-biblioref">8</a></sup></span>.</p>
+</section>
+<section id="baseline-analyses" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="baseline-analyses"><span class="header-section-number">4.7</span> Baseline analyses</h2>
+<section id="cluster-characteristics" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="cluster-characteristics"><span class="header-section-number">4.7.1</span> Cluster characteristics</h3>
+<p>We will describe cluster characteristics including location and size using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables.</p>
+</section>
+<section id="patient-characteristics" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="patient-characteristics"><span class="header-section-number">4.7.2</span> Patient characteristics</h3>
+<p>We will describe patient characteristics at baseline, meaning all pre-training periods, per treatment group and overall using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables. We will not adjust for clustering when presenting baseline characteristics.</p>
+</section>
+</section>
+<section id="interim-analysis" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="interim-analysis"><span class="header-section-number">4.8</span> Interim analysis</h2>
+<p>There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the joint Trial Steering and Data Monitoring Committee. The interim analysis will include the baseline analyses including the frequencies and proportions of the primary outcome in the intervention and control arms. We will recalculate the sample size based on the observed period sizes and the observed effect size, using the Shiny CRT Calculator<span class="citation" data-cites="Hemming2020Feb"><sup><a href="#ref-Hemming2020Feb" role="doc-biblioref">4</a></sup></span>. In the revised sample size calculation, we will assume an ICC of 0.02, but consider sensitivity across the range 0.01-0.05<span class="citation" data-cites="Campbell2005 Eldridge2015"><sup><a href="#ref-Campbell2005" role="doc-biblioref">2</a>,<a href="#ref-Eldridge2015" role="doc-biblioref">3</a></sup></span>, and a CAC of 0.9, but consider sensitivity across the range 0.8-1.0<span class="citation" data-cites="Hemming2020Feb Martin2016 Korevaar2021"><sup><a href="#ref-Hemming2020Feb" role="doc-biblioref">4</a>–<a href="#ref-Korevaar2021" role="doc-biblioref">6</a></sup></span>. These assumptions are the same as in the original sample size calculation. We will not perform any formal hypothesis testing as part of our planned interim analyses.</p>
+</section>
+<section id="analysis-of-the-primary-outcome" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="analysis-of-the-primary-outcome"><span class="header-section-number">4.9</span> Analysis of the primary outcome</h2>
+<p>The primary outcomes is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS<sup>®</sup> and standard care arms, with an OR &lt; 1 indicating lower odds of death in the ATLS<sup>®</sup> arm compared to the standard care arm and vice versa.</p>
+<section id="main-analysis-mixed-effects-binomial-model-with-logit-link" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="main-analysis-mixed-effects-binomial-model-with-logit-link"><span class="header-section-number">4.9.1</span> Main analysis: mixed effects binomial model with logit link</h3>
+<p>We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The primary analysis will allow for clustering as a random cluster and random cluster by period effect<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, both assumed to follow a normal distribution. The full model is specified in <a href="#eq-logit-model">Equation&nbsp;1</a>. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [<span class="citation" data-cites="kenward_small_1997"><sup><a href="#ref-kenward_small_1997" role="doc-biblioref">9</a></sup></span>]<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL).</p>
+<p><span id="eq-logit-model"><span class="math display">\[
+\text{logit}(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+\tag{1}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\text{Pr}(Y_{bkti} = 1)\)</span>: the probability of death for patient <span class="math inline">\(i = 1, \dotsc,m\)</span> in cluster <span class="math inline">\(k = 1, \dotsc, 30\)</span> during period <span class="math inline">\(t = 1, \dotsc, 12\)</span> in batch <span class="math inline">\(b = 1, \dotsc, 6\)</span>.</li>
+<li><span class="math inline">\(\mu\)</span>: the intercept, representing the baseline log-odds of the outcome when all predictors are set to 1.</li>
+<li><span class="math inline">\(\beta_{bt}\)</span>: the fixed effect of period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, accounting for a separate period effect for each batch, so that there is a total of 72 period effects.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li><span class="math inline">\(\theta\)</span>: the fixed effect of intervention exposure, representing the effect of ATLS® exposure on the probability of death.</li>
+<li><span class="math inline">\(X_{bkt}\)</span>: the treatment arm indicator for patient <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(k\)</span> during period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, with <span class="math inline">\(X_{bkt} = 1\)</span> for ATLS<sup>®</sup> and <span class="math inline">\(X_{bkt} = 0\)</span> for standard care.</li>
+<li><span class="math inline">\(\alpha_{bk}\)</span>: the random effect of cluster <span class="math inline">\(k\)</span> in batch <span class="math inline">\(b\)</span>, representing the variability in outcomes between different clusters (hospitals) across batches.</li>
+<li><span class="math inline">\(\gamma_{bkt}\)</span>: the random effect of cluster <span class="math inline">\(k\)</span> in period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, accounting for the random variation within clusters across periods and batches, including potential interaction effects between clusters and time.</li>
+</ul>
+<p>We will present the effect of ATLS<sup>®</sup> exposure as an odds ratio (OR) for mortality with an associated 95% CI, using the standard care arm as the reference. Additionally, we will present the risk difference with a 95% CI. The randomization within each batch will be balanced based on cluster size, defined as the expected monthly volume of eligible patient participants. Therefore, no further adjustment for cluster size will be made in the main analysis.</p>
+</section>
+<section id="sensitivity-analyses" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="sensitivity-analyses"><span class="header-section-number">4.9.2</span> Sensitivity analyses</h3>
+<p>The sensitivity analyses will be conducted to assess the robustness of the main analysis results to different model specifications. We will first model the primary outcome using an identity link function to estimate the risk difference instead of the OR. Henceforth, each additional sensitivity analyses will be operationalised using two separate models, one with the logit link and one with the identity link. We will first explore more complex correlation structures. We will then model time using a spline function. Finally, we will conduct a fully adjusted covariate analysis.</p>
+<section id="model-with-identify-link" class="level4">
+<h4 class="anchored" data-anchor-id="model-with-identify-link">Model with identify link</h4>
+<p>We will use an identity link used to estimate the risk difference, meaning that the coefficient will be interpreted as the difference in the probability of death between the ATLS<sup>®</sup> and standard care arms. We will present the risk difference with a 95% CI. This model is specified in <a href="#eq-identity-model">Equation&nbsp;2</a> and will also be fitted using RSPL. If the binomial model with the identity link does not converge then only a odds ratio will be reported.</p>
+<p><span id="eq-identity-model"><span class="math display">\[
+\text{Pr}(Y_{bkti} = 1) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+\tag{2}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span>: the intercept, representing the baseline probability of the outcome when all predictors are zero.</li>
+</ul>
+</section>
+<section id="models-with-different-correlation-structure" class="level4">
+<h4 class="anchored" data-anchor-id="models-with-different-correlation-structure">Models with different correlation structure</h4>
+<p>We will explore if models with more complicated correlation structures are a better fit to the data. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures which might be plausible. First, we will include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)), described in <a href="#eq-ar1">Equation&nbsp;3</a>.</p>
+<p><span id="eq-ar1"><span class="math display">\[
+\alpha_{bk, t} = \rho \alpha_{bk, t-1} + \epsilon_{t}, \quad \epsilon_{t} \sim N(0, \sigma^2_\alpha)
+\tag{3}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\rho\)</span>: the correlation between the random effects of two consecutive periods, the period <span class="math inline">\(t\)</span> and the period <span class="math inline">\(t-1\)</span>, reflecting how outcomes in one period are correlated with outcomes in the previous period within the same cluster.</li>
+<li><span class="math inline">\(\alpha_{bk, t}\)</span>: the random effect of cluster <span class="math inline">\(k\)</span> in period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>. This represents the variation in the outcome that is specific to each cluster and period, accounting for time-related effects.</li>
+<li><span class="math inline">\(\epsilon_{t}\)</span> is the error term for period <span class="math inline">\(t\)</span>, which is assumed to be normally distributed with mean 0 and variance <span class="math inline">\(\sigma^2_\alpha\)</span>.</li>
+</ul>
+<p>To allow for the randomisation by batches, we will also include a different secular trend for each batch as a random effect interaction term between batch and period. The full model is specified in <a href="#eq-logit-ar1">Equation&nbsp;4</a>.</p>
+<p><span id="eq-logit-ar1"><span class="math display">\[
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk,t} + \gamma_{bkt} + \delta_{bt}
+\tag{4}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(g(\cdot)\)</span>: the link function.</li>
+<li><span class="math inline">\(\alpha_{bk,t}\)</span>: the updated random effect of cluster <span class="math inline">\(k\)</span> in batch <span class="math inline">\(b\)</span> during period <span class="math inline">\(t\)</span> with the AR(1) correlation structure. This accounts for correlation between adjacent periods in the same cluster.</li>
+<li><span class="math inline">\(\delta_{bt}\)</span>: the random effect of batch <span class="math inline">\(b\)</span> during period <span class="math inline">\(t\)</span>, which captures any variability across different batches over time.</li>
+</ul>
+<!-- 
+Need to be updated
+
+
+
+
+
+
+
+-->
+</section>
+<section id="models-with-random-cluster-by-intervention-effects" class="level4">
+<h4 class="anchored" data-anchor-id="models-with-random-cluster-by-intervention-effects">Models with random cluster by intervention effects</h4>
+<p>Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. The model is specified in <a href="#eq-logit-random-cluster-intervention">Equation&nbsp;5</a>.</p>
+<p><span id="eq-logit-random-cluster-intervention"><span class="math display">\[
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
+\tag{5}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(u_{bk}\)</span>: the random effect of cluster <span class="math inline">\(k\)</span> by intervention interaction.</li>
+<li><span class="math inline">\(X_{bkt}\)</span>: the treatment arm indicator for patient <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(k\)</span> during period <span class="math inline">\(t\)</span>.</li>
+<li>$u_{bk} \times X_{bkt} $: the random interaction effect between the intervention and cluster <span class="math inline">\(k\)</span>.</li>
+</ul>
+</section>
+<section id="models-with-time-modelled-with-a-spline-function" class="level4">
+<h4 class="anchored" data-anchor-id="models-with-time-modelled-with-a-spline-function">Models with time modelled with a spline function</h4>
+<p>We will further explore the potential for a time-varying treatment effect<span class="citation" data-cites="kenny_analysis_2022"><sup><a href="#ref-kenny_analysis_2022" role="doc-biblioref">10</a></sup></span>. To explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using natural cubic splines with knots at the equally spaced time points 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in <a href="#eq-spline-model">Equation&nbsp;6</a>.</p>
+<p><span id="eq-spline-model"><span class="math display">\[
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \sum_{j=1}^5 \beta_j S_j(t, \{3, 6, 9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+\tag{6}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(S_j(t, \{3, 6, 9\})\)</span>: the natural cubic spline basis functions with knots placed at times 3, 6 and 9.</li>
+<li><span class="math inline">\(\beta_j\)</span>: the coefficient for the <span class="math inline">\(j\)</span>-th spline basis function.</li>
+</ul>
+</section>
+<section id="models-exploring-lag-and-weaning-effects" class="level4">
+<h4 class="anchored" data-anchor-id="models-exploring-lag-and-weaning-effects">Models exploring lag and weaning effects</h4>
+<p>Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade). This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in <a href="#eq-lag-weaning-model">Equation&nbsp;7</a>.</p>
+<p><span id="eq-lag-weaning-model"><span class="math display">\[
+g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \theta_{\text{int}} X_{bkt} \times T_{bkt} + \alpha_{bk} + \gamma_{bkt}
+\tag{7}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\theta_{\text{int}}\)</span> is the coefficient for the interaction between treatment and time since first treated.</li>
+<li><span class="math inline">\(T_{bkt}\)</span> is the number of periods since first treated.</li>
+</ul>
+</section>
+</section>
+<section id="adjusted-analyses" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="adjusted-analyses"><span class="header-section-number">4.9.3</span> Adjusted analyses</h3>
+<p>Fully adjusted covariate analysis will additionally adjust for<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>:</p>
+<ul>
+<li>Age</li>
+<li>Sex</li>
+<li>Systolic blood pressure</li>
+<li>Glasgow Coma Scale</li>
+<li>Injury Severity Score</li>
+<li>Mechanism of injury</li>
+</ul>
+<p>These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in <a href="#eq-logit-model">Equation&nbsp;1</a> and <a href="#eq-identity-model">Equation&nbsp;2</a> as fixed effects.</p>
+</section>
+<section id="subgroup-analyses" class="level3" data-number="4.9.4">
+<h3 data-number="4.9.4" class="anchored" data-anchor-id="subgroup-analyses"><span class="header-section-number">4.9.4</span> Subgroup analyses</h3>
+<p>We will perform the following subgroup analyses<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>:</p>
+<ul>
+<li>geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;</li>
+<li>age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [<span class="citation" data-cites="Diaz2021"><sup><a href="#ref-Diaz2021" role="doc-biblioref">11</a></sup></span>;</li>
+<li>sex, using the levels male and female;</li>
+<li>clinical cohorts, defined as blunt multisystem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts; and</li>
+<li>cluster size (number of patients per hospital)</li>
+</ul>
+<p>These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in <a href="#eq-logit-model">Equation&nbsp;1</a> and <a href="#eq-identity-model">Equation&nbsp;2</a>.</p>
+</section>
+<section id="treatment-of-missing-data" class="level3" data-number="4.9.5">
+<h3 data-number="4.9.5" class="anchored" data-anchor-id="treatment-of-missing-data"><span class="header-section-number">4.9.5</span> Treatment of missing data</h3>
+<p>We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10%, we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, we will handle missing data depending on the missing data mechanism. If the data are missing at random (MAR), we will perform multiple imputation using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations. If there is evidence that the data are missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.</p>
+
+<!-- 
+Thoughts on missing data: 
+
+Check nature of missing data, 
+If MCAR, complete case analysis is generally acceptable, as there would be no systematic differences between those with and without missing data. 
+If MAR, then MICE is appropriate.
+If MNAR, MICE may not fully address the missingness. In such cases, a sensitivity analysis exploring MNAR models might be useful (e.g., pattern mixture models or selection models).
+
+Perhaps to strengthen the missing data plan, we could consider adding a few lines:
+
+If there is evidence that the data is missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
+
+----
+
+Let us discuss this further.
+
+-->
+</section>
+</section>
+<section id="analysis-of-secondary-outcomes" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="analysis-of-secondary-outcomes"><span class="header-section-number">4.10</span> Analysis of secondary outcomes</h2>
+<section id="all-cause-mortality-within-24-hours-30-days-and-three-months-of-arrival-at-the-emergency-department" class="level3" data-number="4.10.1">
+<h3 data-number="4.10.1" class="anchored" data-anchor-id="all-cause-mortality-within-24-hours-30-days-and-three-months-of-arrival-at-the-emergency-department"><span class="header-section-number">4.10.1</span> All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department</h3>
+<p>We will use the model with the logit link specified in <a href="#eq-logit-model">Equation&nbsp;1</a> and the model with the identity link specified in <a href="#eq-identity-model">Equation&nbsp;2</a> to estimate the OR and risk difference for these mortality outcomes.</p>
+</section>
+<section id="quality-of-life-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department" class="level3" data-number="4.10.2">
+<h3 data-number="4.10.2" class="anchored" data-anchor-id="quality-of-life-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department"><span class="header-section-number">4.10.2</span> Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department</h3>
+<p>Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a likert scale from 1 to 5. There is also a visual analogue scale (VAS) for self-rated quality of life, ranging from 0 to 100. For each of the five dimensions we will use a mixed effects ordinal model as specified in <a href="#eq-ordinal-model">Equation&nbsp;8</a>.</p>
+<p><span id="eq-ordinal-model"><span class="math display">\[
+\text{logit}(\text{Pr}(Y_{bkti} \leq j)) = \mu_j + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+\tag{8}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\mu_j\)</span>: the intercept for the <span class="math inline">\(j\)</span>-th category of the EQ5D dimension (<span class="math inline">\(j\)</span> = 1, 2, 3, 4, 5).</li>
+</ul>
+<p>The VAS will be analysed using a linear mixed effects model as specified in <a href="#eq-linear-model">Equation&nbsp;9</a>.</p>
+<p><span id="eq-linear-model"><span class="math display">\[
+\text{VAS}_{bkti} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti}, \quad \epsilon_{bkti} \sim N(0, \sigma^2)
+\tag{9}\]</span></span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\epsilon_{bkti}\)</span>: the error term for patient <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(k\)</span> in period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, assumed to be normally distributed with mean 0 and variance <span class="math inline">\(\sigma^2\)</span>.</li>
+</ul>
+</section>
+<section id="disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department" class="level3" data-number="4.10.3">
+<h3 data-number="4.10.3" class="anchored" data-anchor-id="disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department"><span class="header-section-number">4.10.3</span> Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department</h3>
+<p>We will measure disability using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0)<span class="citation" data-cites="ustun_measuring_2010"><sup><a href="#ref-ustun_measuring_2010" role="doc-biblioref">12</a></sup></span>. This tool assesses six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each domain is rated on a likert scale from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme difficulties. We will analyse each domain separately using a mixed effects ordinal model as specified in <a href="#eq-ordinal-model">Equation&nbsp;8</a>. We will also calculate a WHODAS 2.0 summary score using the method referred to as the “complex scoring” method. This method involves summing the item scores within each of the six domains, then summing the scores of all domains, and finally transforming the total score to a 0-100 scale. We will analyse the summary score using a linear mixed effects model as specified in <a href="#eq-linear-model">Equation&nbsp;9</a>.</p>
+</section>
+<section id="return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department" class="level3" data-number="4.10.4">
+<h3 data-number="4.10.4" class="anchored" data-anchor-id="return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department"><span class="header-section-number">4.10.4</span> Return to work at 30 days and three months after arrival at the emergency department</h3>
+<p>We will analyse return to work as a dichotomous variable using a mixed effects binomial model with a logit link as specified in <a href="#eq-logit-model">Equation&nbsp;1</a>.</p>
+</section>
+<section id="length-of-emergency-department-stay" class="level3" data-number="4.10.5">
+<h3 data-number="4.10.5" class="anchored" data-anchor-id="length-of-emergency-department-stay"><span class="header-section-number">4.10.5</span> Length of emergency department stay</h3>
+<p>We will analyse length of emergency department stay as a continuous variable using a linear mixed effects model as specified in <a href="#eq-linear-model">Equation&nbsp;9</a>.</p>
+</section>
+<section id="length-of-hospital-stay" class="level3" data-number="4.10.6">
+<h3 data-number="4.10.6" class="anchored" data-anchor-id="length-of-hospital-stay"><span class="header-section-number">4.10.6</span> Length of hospital stay</h3>
+<p>We will analyse length of hospital stay as a continuous variable using a linear mixed effects model as specified in <a href="#eq-linear-model">Equation&nbsp;9</a>.</p>
+</section>
+<section id="intensive-care-unit-admission" class="level3" data-number="4.10.7">
+<h3 data-number="4.10.7" class="anchored" data-anchor-id="intensive-care-unit-admission"><span class="header-section-number">4.10.7</span> Intensive care unit admission</h3>
+<p>We will analyse intensive care unit admission as a dichotomous variable using a mixed effects binomial model with a logit link as specified in <a href="#eq-logit-model">Equation&nbsp;1</a>.</p>
+</section>
+<section id="length-of-intensive-care-unit-stay" class="level3" data-number="4.10.8">
+<h3 data-number="4.10.8" class="anchored" data-anchor-id="length-of-intensive-care-unit-stay"><span class="header-section-number">4.10.8</span> Length of intensive care unit stay</h3>
+<p>We will analyse length of intensive care unit stay as a continuous variable using a linear mixed effects model as specified in <a href="#eq-linear-model">Equation&nbsp;9</a>.</p>
+</section>
+</section>
+</section>
+<section id="references" class="level1 unnumbered" data-number="5">
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">5 References</h2><div id="refs" class="references csl-bib-body" data-line-spacing="2" role="list">
+<div id="ref-Kasza2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Kasza, J. <em>et al.</em> The batched stepped wedge design: A design robust to delays in cluster recruitment. <em>Stat Med</em> <strong>41</strong>, 3627–3641 (2022).</div>
+</div>
+<div id="ref-Campbell2005" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Campbell, M. K. <em>et al.</em> Determinants of the intracluster correlation coefficient in cluster randomized trials: The case of implementation research. <em>Clinical Trials</em> <strong>2</strong>, 99–107 (2005).</div>
+</div>
+<div id="ref-Eldridge2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Eldridge, S. M. <em>et al.</em> How big should the pilot study for my cluster randomised trial be? <em>Stat Methods Med Res</em> <strong>25</strong>, 1039–1056 (2015).</div>
+</div>
+<div id="ref-Hemming2020Feb" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Hemming, K. <em>et al.</em> A tutorial on sample size calculation for multiple-period cluster randomized parallel, cross-over and stepped-wedge trials using the shiny CRT calculator. <em>Int J Epidemiol</em> <strong>49</strong>, 979–995 (2020).</div>
+</div>
+<div id="ref-Martin2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Martin, J. <em>et al.</em> Intra-cluster and inter-period correlation coefficients for cross-sectional cluster randomised controlled trials for type-2 diabetes in UK primary care. <em>Trials</em> <strong>17</strong>, (2016).</div>
+</div>
+<div id="ref-Korevaar2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Korevaar, E. <em>et al.</em> Intra-cluster correlations from the CLustered OUtcome dataset bank to inform the design of longitudinal cluster trials. <em>Clinical Trials</em> <strong>18</strong>, 529–540 (2021).</div>
+</div>
+<div id="ref-R" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">R Core Team. <em>R: A language and environment for statistical computing</em>. (R Foundation for Statistical Computing, 2023).</div>
+</div>
+<div id="ref-Hemming2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Hemming, K. <em>et al.</em> Reporting of stepped wedge cluster randomised trials: Extension of the CONSORT 2010 statement with explanation and elaboration. <em>BMJ</em> k1614 (2018).</div>
+</div>
+<div id="ref-kenward_small_1997" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Kenward, M. G. <em>et al.</em> Small <span>Sample</span> <span>Inference</span> for <span>Fixed</span> <span>Effects</span> from <span>Restricted</span> <span>Maximum</span> <span>Likelihood</span>. <em>Biometrics</em> <strong>53</strong>, 983–997 (1997).</div>
+</div>
+<div id="ref-kenny_analysis_2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Kenny, A. <em>et al.</em> Analysis of stepped wedge cluster randomized trials in the presence of a time-varying treatment effect. <em>Statistics in medicine</em> 10.1002/sim.9511 (2022).</div>
+</div>
+<div id="ref-Diaz2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Diaz, T. <em>et al.</em> A call for standardised age-disaggregated health data. <em>The Lancet Healthy Longevity</em> <strong>2</strong>, e436–e443 (2021).</div>
+</div>
+<div id="ref-ustun_measuring_2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Ustun, T. B. <em>et al.</em> <em>Measuring <span>Health</span> and <span>Disability</span>: <span>Manual</span> for <span>WHO</span> <span>Disability</span> <span>Assessment</span> <span>Schedule</span> (<span>WHODAS</span> 2.0)</em>. (World Health Organization, 2010).</div>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><strong>Question:</strong> Karla and James, can you please provide more details on how the randomisation will be done?<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><strong>Question:</strong> Should we adjust for calendar time because the last batch will be two years later than the first batch?<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><strong>Question:</strong> Just a thought: keep in mind the complexity of the random effects structure; if it leads to convergence problems or overfitting, should we consider simplifying the random effects?<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><strong>Questions about Kenward and Roger small sample correction:</strong> 1. What clusters do we consider here? Doctors? Patients? Hospitals? 2. Why use this method and not eg. bootstrapping? I thought Kenward and Roger was primarly used for linear mixed models and not for binary outcomes?<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><strong>Question:</strong> The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><strong>Questions:</strong> 1. Should we adjust for calendar time because the last batch will be two years later than the first batch? 2. Should we add it as covariate in the list above? 3. Should it be continuous (e.g., months since the study started) or categorical calendar time (if you expect non-linear trends or stepwise changes over years)? 4. Should we analyse Time Since Admission? Depending on the nature of the trauma, the time since patient admission might also influence outcomes, especially if the timing of interventions or care decisions plays a critical role. Eg. time from admission to surgery.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><strong>Question:</strong> Are we exploring too many subgroups?<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
