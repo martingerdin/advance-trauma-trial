@@ -1,8 +1,8 @@
 ---
-subtitle: Trial Management Group meeting, 21th August 2024
-title: ATLS® vs standard care trial (ADVANCE TRAUMA)
+subtitle: Trial Management Group meeting, October 11th 2024
+title: ADVANCE TRAUMA
 reference-doc: ../reference-doc.docx
-format: docx
+format: pdf
 ---
 
 # Members present
@@ -35,13 +35,13 @@ format: docx
 
 # Agenda
 
-1. Update on ethics and regulatory applications
+1. Introduction of new members
 
-2. Discussion on how to handle consent for ATLS adherence observations
+2. Update on site progress
 
-3. Decision on new protocol version given the discussion on consent (see attached protocol pre-release version 1.2.0-6)
+3. Presentation of Joint Steering and Data Monitoring Committee
 
-4. Update on joint trial steering and data monitoring committee
+4. Roll out meeting with site PIs and Clinical Research Coordinators on October 19th 
 
 5. Additional points
 

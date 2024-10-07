@@ -55,3 +55,9 @@ TMG. Update on ethics. Discussion on ATLS adherence.
 
 ## 2024-07-18
 TMG. Update on ethics. Discussion on ATLS adherence.
+
+## 2024-08-21
+TMG. Update on ethics. Discussion on ATLS adherence.
+
+## 2024-10-11
+TMG. Update on progress, roll out meeting and SDMC.
