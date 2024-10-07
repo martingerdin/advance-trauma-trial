@@ -1,7 +1,11 @@
 ---
 title: "Joint Trial Steering and Data Monitoring Committee Charter"
-subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial" 
+subtitle: | 
+  | ADVANCE TRAUMA
+  |
+  | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
 author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
+abstract: "This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02) and the MRC CTU Template Independent Data Monitoring Committee Charter (version 2.01)."
 ---
 
 <!-- Suggested members:
@@ -35,8 +39,7 @@ attach(global_variables())
 
 ## Study identifiers
 
-- ClinicalTrials.gov identifier: [NCT06321419](https://clinicaltrials.gov/ct2/show/NCT06321419)
-- Clinical Trials Registry - India identifier: Not yet assigned.
+{{< include ../../shared-assets/study-identifiers.qmd >}}
 
 ## Contributors
 
@@ -136,18 +139,31 @@ The PI is a member of the SDMC but will, at the request of the Chair or other in
 
 The members of the SDMC for this trial are, in alphabetical order by surname, with their roles and affiliations:
 
+**Ganesan Karthikeyan** (Chair, Independent Member)
+
+*Clinical, interventional cardiologist and a Professor of Cardiology at All India Institute of Medical Sciences, New Delhi, India*
+
+**Richard Hooper** (Independent Member, Statistician)
+
+*Professor of Medical Statistics at Queen Mary University of London, UK*
+
+**Kathryn Chu** (Independent Member, Clinical expert)
+
+*Director and Professor of Global Surgery at ​​​​​​​​​​​​Centre for Global Surgery​​, Stellenbosch University, South Africa*
+
+**Elamurugan TP** (Independent Member, Clinical expert)
+
+*Additional Professor of Surgery and Associate Dean at Jawaharlal Institute of Postgraduate Medical Education and Research, Puducherry, India*
+
+**Sai Kulkarni** (Independent Member, Lay person representative)
+
 **Martin Gerdin Wärnberg** (Principal Investigator, Non-independent Member)
 
-*Associate professor of clinical epidemiology*
-
-1. Department of Global Public Health, Karolinska Institutet, Sweden
-2. Function Perioperative Medicine and Intensive Care, Karolinska University Hospital, Sweden
+*Associate professor of clinical epidemiology at Karolinska Institutet, Stockholm, Sweden*
 
 **Samriddhi Ranjan** (Facilitator, Non-independent Member)
 
-*Project Manager*
-
-The George Institute for Global Health, India
+*Project Manager, The George Institute for Global Health, India*
 
 # Relationships
 
