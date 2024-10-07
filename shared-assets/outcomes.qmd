@@ -1,0 +1,15 @@
+### Primary outcome
+
+The primary outcome will be in-hospital mortality within 30 days of arrival at the emergency department. Clinical research coordinators will extract information on death from patient hospital records. If the patient has been transferred to another hospital, the clinical research coordinators will collect data on this outcome by calling the patient or a patient representative, or by contacting the hospital to which the patient was transferred. Data on this outcome will be collected continuously during the trial. 
+
+### Secondary outcomes
+
+- All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department. Data on this outcome will be collected in the same way as for the primary outcome.
+- Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data from a stratified random sample (site and period) of patient participants. The sampling will be  designed so that is maximises statistical efficiency.
+- Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected from a stratified random sample of participants.
+- Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.
+- Length of emergency department stay. Data on this outcome will be collected from patient hospital records.
+- Length of hospital stay. Data on this outcome will be collected from patient hospital records.
+- Intensive care unit admission. Data on this outcome will be collected from patient hospital records.
+- Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.
+- Adherence to ATLS^®^ principles during initial patient resuscitation, up to one hour after the physician has first seen the patient. This assessment will be done using a 14 item checklist covering the key steps of the ATLS^®^ primary survey,which was modelled based on previous work on ATLS^®^ adherence [@aukstakalnis_impact_2024]. We will consider completion of all 14 steps as 100% adherence. We will collect this data by observing the care of a random sample of patients. The sampling will be designed so that is maximises statistical efficiency. The clinical research coordinators collecting the data will be trained by participating in an ATLS^®^ course as observers, prior to the start of the trial.
