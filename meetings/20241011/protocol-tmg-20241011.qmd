@@ -11,27 +11,24 @@ format: pdf
 -   Samriddhi Ranjan (SR)
 -   Monty Khajanchi (MK)
 -   Li Felländer-Tsai (LFT)
--   Nobhojit Roy (NR)
--   Debojit Basak (DB)
 -   Johanna Berg (JB)
--   Karla Hemming (KH)
+-   Kapil Dev Soni (KDS)
+-   Shamita Chatterjee (SC)
+-   Rajdeep Singh (RS)
+-   Prashant Kharat (PK)
 
 # Members excused
 
--   Kapil Dev Soni (KDS)
+-   Nobhojit Roy (NR)
+-   Debojit Basak (DB)
+-   Karla Hemming (KH)
 -   Abhinav Bassi (AB)
 -   Lovisa Strömmer (LS)
 -   Girish D Bakhshi (GB)
--   Shamita Chatterjee (SC)
 -   Anurag Mishra (AM)
--   Rajdeep Singh (RS)
 -   Vivekanand Jha (VJ)
 
 # Additional attendees
-
-- Anshul Kushwaha (TGI intern)
-- Gunjan Tripathi (TGI intern) 
-- Prashant Kharat (Trial Team member, TGI)
 
 # Agenda
 
@@ -47,18 +44,29 @@ format: pdf
 
 # Notes and decisions
 
-1. The process of completing the Clinical Trial Agreements is ongoing. We have also started identifying prospective Clinical Research Coordinators and residents for training. We have received one more ethical approval from CMC Ludiana. The current status of ethical applications for the hospitals participating in the first batch is:
+1. Anna Olofsson, biostatistician from Karolinska Institutet who will be the trial statistician, introduced herself. 
 
-    - Government Medical College & Hospital, Chandigarh: Approval received.
-    - Himalayan Institute of Medical Sciences: Approval received.
-    - Christian Medical College and Hospital Ludhiana: Approval received.
-    - H.B.T. Medical College & Dr. R.N. Cooper Municipal General Hospital: Awaiting IRB meeting, submission ready. 
-    - IPGMER & SSKM Hospital: Preparing for submission.
+2. We have received ethical approval from four of the five sites in the first batch, and have received a positive response from the fifth site. The sites participating in the first batch are:
 
-2. We discussed how to handle consent for ATLS adherence observations. We decided to include consent for these observations as part of the opt-out and waiver procedures of the trial, same as for the routinely collected data.
+    - Government Medical College & Hospital, Chandigarh.
+    - Himalayan Institute of Medical Sciences, Dehradun.
+    - Christian Medical College and Hospital, Ludhiana.
+    - H.B.T. Medical College & Dr. R.N. Cooper Municipal General Hospital, Mumbai.
+    - IPGMER & SSKM Hospital, Kolkata.
 
-3. We decided to approve the current version of the protocol, with the addition of the consent for ATLS adherence observations.
+3. The members of the Joint Trial Steering and Data Monitoring Committee are:
 
-4. Four members have been finalised for the joint trial steering and data monitoring committee. We are still looking for a patient representative. SR will check with the TGI team if they have any suggestions. MK will reach out to KDS to see if he has any suggestions from AIIMS.
+- Ganesan Karthikeyan (Chair, Independent Member). Clinical, interventional cardiologist and a Professor of Cardiology at All India Institute of Medical Sciences, New Delhi, India.
+- Richard Hooper (Independent Member, Statistician). Professor of Medical Statistics at Queen Mary University of London, UK.
+- Kathryn Chu (Independent Member, Clinical expert). Director and Professor of Global Surgery at Centre for Global Surgery, Stellenbosch
+University, South Africa.
+- Elamurugan TP (Independent Member, Clinical expert). Additional Professor of Surgery and Associate Dean at Jawaharlal Institute of Postgraduate Medical Education and Research, Puducherry, India.
+- Sai Kulkarni (Independent Member, Lay representative).
 
-5. There were no additional points. New meeting dates will be circulated soon.
+4. There will be an information and site initation meeting with site investigators and clinical research coordinators on October 19th. The meeting will be held virtually. A link will be sent out to all participants.
+
+5. Additional points:
+
+- We discussed the logistics involved in training residents in ATLS, as well as how to select whom to train. The intention is to maximize the density of trained residents present in the emergency department when the participating units are on call. There have been some misunderstanding regarding this goal of the training, so many sites have attempted to select one or two residents per unit, rather than all residents in the same unit. We will clarify this with the sites. In addition, we know that in most sites residents rotate between different units at fixed intervals, so to accommodate this, we will not train all ten residents (we have budgeted for an average of ten residents per site) at the same time. If possible, we will instead keep a couple of slots per site, so that we can train residents that get shifted into the unit after the initial training.
+- We also clarified that we will follow a unit throughout the trial, rather than specific residents. This means that in most sites, the residents will not be the same when the trial ends as when it started. 
+- We discussed that the clinical research coordinators need to conduct the ATLS observership before the trial starts. We hope to conduct this observership for as many as possible between October 17 and 18 in Mumbai, but two sited may not have their CRCs ready by then. We will therefore have to find alternative course centres for them, and can only start the trial once they are trained.

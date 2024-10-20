@@ -21,4 +21,6 @@ format: pdf
 
 5. Additional points
 
+- Training residents
+
 # Notes and decisions
