@@ -1,4 +1,4 @@
-create_patient_procedure_table <- function(save.to.disk = FALSE) {
+create_patient_procedure_table <- function() {
     # Load packages
     library(gt)
 
@@ -155,9 +155,6 @@ create_patient_procedure_table <- function(save.to.disk = FALSE) {
             )
         )
 
-    ## Return follow up table and notes
-    if (save.to.disk) {
-        gtsave(procedure.table, "patient-procedure-table.html")
-    }
+    # Return follow up table and notes
     return(procedure.table)
 }
