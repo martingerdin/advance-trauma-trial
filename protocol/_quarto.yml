@@ -21,4 +21,5 @@ format:
         \rohead{ClinicalTrials.gov ID NCT06321419}
         \cfoot{\thepage\ of \pageref{LastPage} }
   docx: default
-  html: default
+  html:
+    minimal: true
