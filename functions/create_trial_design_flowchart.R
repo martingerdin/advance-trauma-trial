@@ -24,9 +24,13 @@
 #'     overlap between the end of the standard care phase and the
 #'     beginning of the transition phase. Must be a length 1 numeric
 #'     value greater than or equal to 0. Default is 1.
+#' @param start.month Numeric. The month to start the trial. Must be a
+#'     length 1 numeric value greater than or equal to 0. Default is 0.
 #' @param total.months Numeric. Total length of the batch in
 #'     months. Must be a length 1 numeric value greater than
 #'     0. Default is 8.
+#' @param staircase Logical. Whether to draw a staircase design.
+#'     Default is FALSE.
 #' @param return.figure Logical. If TRUE the function returns the
 #'     figure. Defaults. to TRUE.
 #' @param save Logical. If TRUE the trial design figure is saved to
@@ -40,7 +44,9 @@ create_trial_design_flowchart <- function(clusters = 60,
                                           batches.overlap.months = 0,
                                           transition.months = 2,
                                           transition.overlap.months = 1,
+                                          start.month = 0,
                                           total.months = 8,
+                                          staircase = FALSE,
                                           return.figure = TRUE,
                                           save = TRUE,
                                           device = "pdf") {
@@ -54,6 +60,8 @@ create_trial_design_flowchart <- function(clusters = 60,
     assertthat::assert_that(is.numeric(batches.overlap.months) && length(batches.overlap.months) == 1 && batches.overlap.months >= 0)
     assertthat::assert_that(is.numeric(transition.months) && length(transition.months) == 1 && transition.months > 0)
     assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
+    assertthat::assert_that(is.numeric(start.month) && length(start.month) == 1 && start.month >= 0)
+    assertthat::assert_that(is.logical(staircase) && length(staircase) == 1)
 
     ## Generate plot data
     plot.data <- get_trial_design_data(
@@ -65,7 +73,9 @@ create_trial_design_flowchart <- function(clusters = 60,
         batches.overlap.months = batches.overlap.months,
         transition.months = transition.months,
         transition.overlap.months = transition.overlap.months,
-        total.months = total.months
+        total.months = total.months,
+        start.month = start.month,
+        staircase = staircase
     )
     clusters.per.batch <- with(plot.data, clusters / batches)
 

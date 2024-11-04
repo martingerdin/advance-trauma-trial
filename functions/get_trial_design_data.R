@@ -26,10 +26,14 @@
 #'     overlap between transitions periods across clusters. Must be a
 #'     length 1 numeric value. A negative overlap means that there
 #'     will be a gap between transition periods. Default is 1.
+#' @param start.month Numeric. The month to start the trial. Must be a
+#'     length 1 numeric value greater than or equal to 0. Default is 0.
 #' @param total.months Numeric. Total length of the batch in
 #'     months. Must be a length 1 numeric value greater than
 #'     0. Default is 8.
-#' 
+#' @param staircase Logical. Whether to draw a staircase design.
+#'     Default is FALSE.
+#'
 #' @return A data.frame containing the trial design data.
 #'
 #' @examples
@@ -45,46 +49,64 @@ get_trial_design_data <- function(clusters = 60,
                                   batches.overlap.months = 0,
                                   transition.months = 2,
                                   transition.overlap.months = 1,
-                                  total.months = 8) {
-    ## Check arguments
-    assertthat::assert_that(is.numeric(clusters) && length(clusters) == 1 && clusters > 0)
-    assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
-    assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
-    assertthat::assert_that(is.numeric(batches.overlap.months) && length(batches.overlap.months) == 1 && batches.overlap.months >= 0)
-    assertthat::assert_that(is.numeric(transition.months) && length(transition.months) == 1 && transition.months > 0)
-    assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
-    assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
+                                  start.month = 0,
+                                  total.months = 8,
+                                  staircase = FALSE) {
+  ## Check arguments
+  assertthat::assert_that(is.numeric(clusters) && length(clusters) == 1 && clusters > 0)
+  assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
+  assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
+  assertthat::assert_that(is.numeric(batches.overlap.months) && length(batches.overlap.months) == 1 && batches.overlap.months >= 0)
+  assertthat::assert_that(is.numeric(transition.months) && length(transition.months) == 1 && transition.months > 0)
+  assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
+  assertthat::assert_that(is.numeric(start.month) && length(start.month) == 1 && start.month >= 0)
+  assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
+  assertthat::assert_that(is.logical(staircase) && length(staircase) == 1)
 
-    ## Create trial design data
-    total.months <- min.standard.care.months + sequences * (transition.months - transition.overlap.months) + transition.overlap.months + min.intervention.months
-    clusters.per.batch <- clusters/batches
-    trial.design.data <- do.call(rbind, lapply(1:batches, function(batch) {
-        start.cluster <- if(batch == 1) 1 else batch*clusters.per.batch - clusters.per.batch + 1
-        batch.data <- data.frame(cluster = start.cluster:(start.cluster + clusters.per.batch - 1))
-        batch.data$sequence <- rep(1:sequences, each = clusters.per.batch/sequences)
-        batch.data$batch <- batch
-        standard.care.start <- if(batch == 1) 0 else (batch - 1) * total.months - (batch - 1) * batches.overlap.months
-        batch.data$standard.care.start <- standard.care.start 
-        batch.data$transition.start <- rep(seq(standard.care.start + min.standard.care.months,
-                                               by = transition.months - transition.overlap.months,
-                                               length.out = sequences),
-                                           each = clusters.per.batch/sequences)
-        batch.data$standard.care.end <- batch.data$transition.start
-        batch.data$transition.end <- batch.data$transition.start + transition.months
-        batch.data$intervention.start <- batch.data$transition.end
-        batch.data$intervention.end <- max(batch.data$transition.end) + min.intervention.months
-        long.batch.data <- reshape(batch.data,
-                                   idvar = "cluster",
-                                   timevar = "phase",
-                                   times = c("Standard care", "Transition", "Intervention"),
-                                   varying = list(c("standard.care.start",
-                                                    "transition.start",
-                                                    "intervention.start"),
-                                                  c("standard.care.end",
-                                                    "transition.end",
-                                                    "intervention.end")),
-                                   v.names = c("start", "end"),
-                                   direction = "long")
-    }))
-    return (trial.design.data)
-} 
+  ## Create trial design data
+  total.months <- min.standard.care.months + sequences * (transition.months - transition.overlap.months) + transition.overlap.months + min.intervention.months
+  clusters.per.batch <- clusters / batches
+  trial.design.data <- do.call(rbind, lapply(1:batches, function(batch) {
+    start.cluster <- if (batch == 1) 1 else batch * clusters.per.batch - clusters.per.batch + 1
+    batch.data <- data.frame(cluster = start.cluster:(start.cluster + clusters.per.batch - 1))
+    batch.data$sequence <- rep(1:sequences, each = clusters.per.batch / sequences)
+    batch.data$batch <- batch
+    standard.care.start <- if (batch == 1) start.month else (batch - 1) * total.months - (batch - 1) * batches.overlap.months
+    batch.data$standard.care.start <- standard.care.start
+    batch.data$transition.start <- rep(
+      seq(standard.care.start + min.standard.care.months,
+        by = transition.months - transition.overlap.months,
+        length.out = sequences
+      ),
+      each = clusters.per.batch / sequences
+    )
+    batch.data$standard.care.end <- batch.data$transition.start
+    batch.data$transition.end <- batch.data$transition.start + transition.months
+    batch.data$intervention.start <- batch.data$transition.end
+    batch.data$intervention.end <- max(batch.data$transition.end) + min.intervention.months
+    if (staircase) {
+      batch.data$standard.care.start <- batch.data$standard.care.end - min.standard.care.months
+      batch.data$intervention.end <- batch.data$intervention.start + min.intervention.months
+    }
+    reshape(batch.data,
+      idvar = "cluster",
+      timevar = "phase",
+      times = c("Standard care", "Transition", "Intervention"),
+      varying = list(
+        c(
+          "standard.care.start",
+          "transition.start",
+          "intervention.start"
+        ),
+        c(
+          "standard.care.end",
+          "transition.end",
+          "intervention.end"
+        )
+      ),
+      v.names = c("start", "end"),
+      direction = "long"
+    )
+  }))
+  return(trial.design.data)
+}
