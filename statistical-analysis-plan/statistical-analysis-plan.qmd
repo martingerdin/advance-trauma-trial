@@ -171,11 +171,10 @@ The primary outcomes is in-hospital mortality within 30 days of arrival at the e
 
 #### Mixed effects binomial model with logit link
 
-We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure[^calendar-time]. The primary analysis will allow for clustering as a random cluster and random cluster by period effect[^simplify-random-effects-structure], both assumed to follow a normal distribution. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [@kenward_small_1997][^kenward-and-roger]. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL).
+We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure[^calendar-time]. The primary analysis will allow for clustering as a random cluster and random cluster by period effect[^simplify-random-effects-structure], both assumed to follow a normal distribution. The full model is specified in @eq-logit-model. To correct the potential inflation of the type I error rate due to small number of clusters, a correction for a small number of clusters will be applied, but the correction that will be selected will be based on the best available evidence available closer to the time, and it may differ for the outcomes collected via the complete and incomplete designs. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL).
 
 [^calendar-time]: **Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
 [^simplify-random-effects-structure]: **Question:** Just a thought: keep in mind the complexity of the random effects structure; if it leads to convergence problems or overfitting, should we consider simplifying the random effects?
-[^kenward-and-roger]: **Questions about Kenward and Roger small sample correction:** AO is reading up on the optimal way to do small sample correction for binary outcomes in a stepped-wedge cluster randomised trial.
 
 $$
 \text{logit}(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} 
