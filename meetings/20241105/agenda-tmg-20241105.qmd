@@ -1,0 +1,70 @@
+---
+subtitle: Trial Management Group Meeting, November 5, 2024
+title: ADVANCE TRAUMA
+format: pdf
+---
+
+```{r}
+#| echo: false
+#| include: false
+
+# Source all functions
+function.files <- list.files("../../functions",
+    pattern = "\\.R$",
+    full.names = TRUE
+)
+for (function.file in function.files) source(function.file)
+
+# Attach global variables
+attach(global_variables())
+```
+
+# Members Present
+
+# Members Excused
+
+# Agenda
+
+1. **Update on trial progress**
+   - Current status
+   - Anticipated start date
+
+2. **Plan for collecting adherence, quality of life, disability and return to work outcomes**
+    <!-- - See @fig-nested-staircase. The number and frequency of shifts per month will be decided based on the number of patients per cluster and month. -->
+
+<!--
+```{r nested-staircase}
+#| echo: false
+#| label: fig-nested-staircase
+#| fig.cap: "Nested staircase design for collecting adherence, quality of life, disability and return to work outcomes. Lines represent the duration of patient enrolment across clusters and phases. Data collection for these outcomes will happen three months before and three months after the training. During these months, we need to include at least 4 patients per cluster and month for adherence and 6 patients per cluster and month for quality of life, disability and return to work outcomes."
+#| fig.align: "center"
+#| message: FALSE
+
+knitr::include_graphics(
+    create_trial_design_flowchart(
+        clusters = clusters, sequences = sequences, batches = batches,
+        min.standard.care.months = 3,
+        min.intervention.months = 3,
+        batches.overlap.months = 3,
+        start.month = 1,
+        transition.months = transition.months,
+        transition.overlap.months = transition.overlap.months,
+        staircase = TRUE,
+        return.figure = FALSE,
+        device = "png"
+    )
+)
+```
+-->
+
+3. **Discussion on batch 2 sites**
+   - Current candidate sites:
+      - Nilratan Sircar Medical College & Hospital, Kolkata
+      - Dayanand Medical College & Hospital, Ludhiana
+      - PGIMER, Chandigarh?
+      - Sion Hospital, Mumbai?
+      - KEM Hospital, Mumbai?
+
+4. **Additional points**
+
+# Notes and Decisions
