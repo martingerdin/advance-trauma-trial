@@ -14,6 +14,8 @@ format:
     number-sections: true 
     include-in-header: 
       text: |
+        \usepackage{typearea}
+        \usepackage{lscape}
         \usepackage{scrlayer-scrpage}
         \usepackage{soul}
         \usepackage{lastpage}
