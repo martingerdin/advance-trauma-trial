@@ -29,8 +29,10 @@
 #' @param total.months Numeric. Total length of the batch in
 #'     months. Must be a length 1 numeric value greater than
 #'     0. Default is 8.
-#' @param staircase Logical. Whether to draw a staircase design.
-#'     Default is FALSE.
+#' @param staircase.months Numeric. Number of months before and after
+#'     the transition phase to include in the staircase design. Must be
+#'     a length 1 numeric value greater than or equal to 0. Default is
+#'     0.
 #' @param return.figure Logical. If TRUE the function returns the
 #'     figure. Defaults. to TRUE.
 #' @param save Logical. If TRUE the trial design figure is saved to
@@ -46,7 +48,7 @@ create_trial_design_flowchart <- function(clusters = 60,
                                           transition.overlap.months = 1,
                                           start.month = 0,
                                           total.months = 8,
-                                          staircase = FALSE,
+                                          staircase.months = 0,
                                           return.figure = TRUE,
                                           save = TRUE,
                                           device = "pdf") {
@@ -61,7 +63,7 @@ create_trial_design_flowchart <- function(clusters = 60,
     assertthat::assert_that(is.numeric(transition.months) && length(transition.months) == 1 && transition.months > 0)
     assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
     assertthat::assert_that(is.numeric(start.month) && length(start.month) == 1 && start.month >= 0)
-    assertthat::assert_that(is.logical(staircase) && length(staircase) == 1)
+    assertthat::assert_that(is.numeric(staircase.months) && length(staircase.months) == 1 && staircase.months >= 0)
 
     ## Generate plot data
     plot.data <- get_trial_design_data(
@@ -75,34 +77,89 @@ create_trial_design_flowchart <- function(clusters = 60,
         transition.overlap.months = transition.overlap.months,
         total.months = total.months,
         start.month = start.month,
-        staircase = staircase
+        staircase.months = staircase.months
     )
     clusters.per.batch <- with(plot.data, clusters / batches)
 
     ## Create plot
-    color.blind.palette <- c(
-        "#999999", "#E69F00", "#56B4E9", "#009E73",
-        "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
-    )
-    trial.design.figure <- ggplot(plot.data, aes(y = cluster, yend = cluster, x = start, xend = end, color = phase)) +
-        geom_segment(linewidth = 1) +
-        scale_color_manual(values = color.blind.palette) +
-        scale_y_continuous(
-            breaks = seq(1, 60),
-            guide = guide_axis(n.dodge = 2),
-            sec.axis = sec_axis(
-                trans = ~.,
-                breaks = seq(clusters.per.batch / 2,
-                    by = clusters.per.batch,
-                    length.out = batches
+    if (staircase.months > 0) {
+        # Filter data to only show relevant phases in legend
+        legend.data <- subset(plot.data, phase %in% c("Pre-transition staircase", "Transition", "Post-transition staircase"))
+
+        # Create main plot with all data in gray except staircase periods
+        trial.design.figure <- ggplot() +
+            # Add gray segments for standard care and intervention
+            geom_segment(
+                data = subset(plot.data, phase %in% c("Standard care", "Intervention")),
+                aes(y = cluster, yend = cluster, x = start, xend = end),
+                color = "#999999", linewidth = 1
+            ) +
+            # Add colored segments for transition and staircase periods
+            geom_segment(
+                data = legend.data,
+                aes(y = cluster, yend = cluster, x = start, xend = end, color = phase),
+                linewidth = 1
+            ) +
+            scale_color_manual(
+                values = c(
+                    "Pre-transition staircase" = "black",
+                    "Transition" = "#E69F00",
+                    "Post-transition staircase" = "black"
                 ),
-                labels = 1:batches,
-                name = "Batch"
-            )
-        ) +
-        scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
-        theme_bw() +
-        labs(x = "Study month", y = "Cluster", color = "Phase")
+                breaks = c(
+                    "Pre-transition staircase",
+                    "Transition",
+                    "Post-transition staircase"
+                )
+            ) +
+            scale_y_continuous(
+                breaks = seq(1, 60),
+                guide = guide_axis(n.dodge = 2),
+                sec.axis = sec_axis(
+                    trans = ~.,
+                    breaks = seq(clusters.per.batch / 2,
+                        by = clusters.per.batch,
+                        length.out = batches
+                    ),
+                    labels = 1:batches,
+                    name = "Batch"
+                )
+            ) +
+            scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
+            theme_bw() +
+            labs(x = "Study month", y = "Cluster", color = "Phase")
+    } else {
+        trial.design.figure <- ggplot(plot.data, aes(y = cluster, yend = cluster, x = start, xend = end, color = phase)) +
+            geom_segment(linewidth = 1) +
+            scale_color_manual(
+                values = c(
+                    "Standard care" = "#999999",
+                    "Transition" = "#E69F00",
+                    "Intervention" = "#999999"
+                ),
+                breaks = c(
+                    "Standard care",
+                    "Transition",
+                    "Intervention"
+                )
+            ) +
+            scale_y_continuous(
+                breaks = seq(1, 60),
+                guide = guide_axis(n.dodge = 2),
+                sec.axis = sec_axis(
+                    trans = ~.,
+                    breaks = seq(clusters.per.batch / 2,
+                        by = clusters.per.batch,
+                        length.out = batches
+                    ),
+                    labels = 1:batches,
+                    name = "Batch"
+                )
+            ) +
+            scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
+            theme_bw() +
+            labs(x = "Study month", y = "Cluster", color = "Phase")
+    }
 
     ## Save figure
     if (save) {

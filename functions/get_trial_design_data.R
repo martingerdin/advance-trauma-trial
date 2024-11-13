@@ -31,8 +31,10 @@
 #' @param total.months Numeric. Total length of the batch in
 #'     months. Must be a length 1 numeric value greater than
 #'     0. Default is 8.
-#' @param staircase Logical. Whether to draw a staircase design.
-#'     Default is FALSE.
+#' @param staircase.months Numeric. Number of months before and after
+#'     the transition phase to include in the staircase design. Must be
+#'     a length 1 numeric value greater than or equal to 0. Default is
+#'     0.
 #'
 #' @return A data.frame containing the trial design data.
 #'
@@ -51,7 +53,7 @@ get_trial_design_data <- function(clusters = 60,
                                   transition.overlap.months = 1,
                                   start.month = 0,
                                   total.months = 8,
-                                  staircase = FALSE) {
+                                  staircase.months = 0) {
   ## Check arguments
   assertthat::assert_that(is.numeric(clusters) && length(clusters) == 1 && clusters > 0)
   assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
@@ -61,7 +63,7 @@ get_trial_design_data <- function(clusters = 60,
   assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
   assertthat::assert_that(is.numeric(start.month) && length(start.month) == 1 && start.month >= 0)
   assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
-  assertthat::assert_that(is.logical(staircase) && length(staircase) == 1)
+  assertthat::assert_that(is.numeric(staircase.months) && length(staircase.months) == 1 && staircase.months >= 0)
 
   ## Create trial design data
   total.months <- min.standard.care.months + sequences * (transition.months - transition.overlap.months) + transition.overlap.months + min.intervention.months
@@ -84,29 +86,57 @@ get_trial_design_data <- function(clusters = 60,
     batch.data$transition.end <- batch.data$transition.start + transition.months
     batch.data$intervention.start <- batch.data$transition.end
     batch.data$intervention.end <- max(batch.data$transition.end) + min.intervention.months
-    if (staircase) {
-      batch.data$standard.care.start <- batch.data$standard.care.end - min.standard.care.months
-      batch.data$intervention.end <- batch.data$intervention.start + min.intervention.months
+    if (staircase.months > 0) {
+      batch.data$pre.transition.staircase.start <- batch.data$standard.care.end - staircase.months
+      batch.data$pre.transition.staircase.end <- batch.data$standard.care.end
+      batch.data$post.transition.staircase.start <- batch.data$transition.end
+      batch.data$post.transition.staircase.end <- batch.data$transition.end + staircase.months
     }
-    reshape(batch.data,
-      idvar = "cluster",
-      timevar = "phase",
-      times = c("Standard care", "Transition", "Intervention"),
-      varying = list(
-        c(
-          "standard.care.start",
-          "transition.start",
-          "intervention.start"
+    if (staircase.months > 0) {
+      reshape(batch.data,
+        idvar = "cluster",
+        timevar = "phase",
+        times = c("Standard care", "Transition", "Intervention", "Pre-transition staircase", "Post-transition staircase"),
+        varying = list(
+          c(
+            "standard.care.start",
+            "transition.start",
+            "intervention.start",
+            "pre.transition.staircase.start",
+            "post.transition.staircase.start"
+          ),
+          c(
+            "standard.care.end",
+            "transition.end",
+            "intervention.end",
+            "pre.transition.staircase.end",
+            "post.transition.staircase.end"
+          )
         ),
-        c(
-          "standard.care.end",
-          "transition.end",
-          "intervention.end"
-        )
-      ),
-      v.names = c("start", "end"),
-      direction = "long"
-    )
+        v.names = c("start", "end"),
+        direction = "long"
+      )
+    } else {
+      reshape(batch.data,
+        idvar = "cluster",
+        timevar = "phase",
+        times = c("Standard care", "Transition", "Intervention"),
+        varying = list(
+          c(
+            "standard.care.start",
+            "transition.start",
+            "intervention.start"
+          ),
+          c(
+            "standard.care.end",
+            "transition.end",
+            "intervention.end"
+          )
+        ),
+        v.names = c("start", "end"),
+        direction = "long"
+      )
+    }
   }))
   return(trial.design.data)
 }
