@@ -8,12 +8,19 @@ author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 abstract: "This document is based on the MRC CTU Template Trial Steering Committee Charter (version 1.02) and the MRC CTU Template Independent Data Monitoring Committee Charter (version 2.01)."
 ---
 
+
 <!-- Suggested members:
 
-1.	Ganesan Karthikeyan (chair) - Clinical, interventional cardiologist and a Professor of Cardiology at All India Institute of Medical Sciences, New Delhi.
-2.	Richard Hooper - Professor of Medical Statistics at Queen Mary University of London
-Lynn More?
-Kathrine Chu?
+Comments after first SDMC meeting:
+Risk
+- Training before randomisation
+- Not blinded
+- Selection of participants
+- Batches can start at different times
+
+Fidelity of the intervention
+
+Lag time
 
 -->	
 
@@ -137,7 +144,7 @@ The TT will have overall responsibility for the production of the report to the 
 
 The PI is a member of the SDMC but will, at the request of the Chair or other independent members, abstain from participating in certain parts of or entire meetings. Other members of the TMG are not expected to participate in the SDMC meetings, but may be invited by the SDMC Chair to observe, provide information or answer questions.
 
-The members of the SDMC for this trial are, in alphabetical order by surname, with their roles and affiliations:
+The members of the SDMC for this trial are:
 
 **Ganesan Karthikeyan** (Chair, Independent Member)
 
