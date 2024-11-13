@@ -51,6 +51,7 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 | Anna Olofsson (AO) `r insert_orcid_link("0000-0002-9460-108X")`                 | Karolinska Institutet                    | Statistician, TMG member   |
 | Karla Hemming (KH) `r insert_orcid_link("0000-0002-2226-6550")`                 | University of Birmingham, Birmingham, UK | Statistician, TMG member   |
 | James Martin (JM) `r insert_orcid_link("0000-0002-6949-4200")`                  | University of Birmingham, Birmingham, UK | Statistician               |
+| Jessica Kasza `r insert_orcid_link("0000-0002-8940-0136")`                      | Monash University, Melbourne, Australia | Statistician               |
 
 {{< pagebreak >}}
 
