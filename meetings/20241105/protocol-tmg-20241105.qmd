@@ -62,6 +62,7 @@ knitr::include_graphics(
       - PGIMER, Chandigarh?
       - Sion Hospital, Mumbai?
       - KEM Hospital, Mumbai?
+      - AIIMS Bhubaneshwar can be tapped, if necessary.
 
 4. **Additional points**
 
