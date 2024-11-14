@@ -9,6 +9,7 @@ titlepage-theme:
   subtitle-fontsize: 20
 format:
   titlepage-pdf:
+    keep-tex: true
     titlepage: classic-lined
     documentclass: scrartcl
     number-sections: true 
@@ -16,12 +17,14 @@ format:
       text: |
         \usepackage{typearea}
         \usepackage{lscape}
+        \usepackage{afterpage}
+        \usepackage{changepage}
         \usepackage{scrlayer-scrpage}
         \usepackage{soul}
         \usepackage{lastpage}
         \lohead{ADVANCE TRAUMA Trial Protocol}
         \rohead{ClinicalTrials.gov ID NCT06321419}
         \cfoot{\thepage\ of \pageref{LastPage} }
-  docx: default
-  html:
-    minimal: true
+#  docx: default
+#  html:
+#    minimal: true

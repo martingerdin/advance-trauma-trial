@@ -2,6 +2,7 @@
 library(lubridate)
 library(noacsr)
 library(dotenv)
+library(gt)
 noacsr::source_all_functions()
 
 ## Attach global variables

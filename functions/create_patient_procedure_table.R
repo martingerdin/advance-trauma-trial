@@ -1,7 +1,4 @@
 create_patient_procedure_table <- function() {
-    # Load packages
-    library(gt)
-
     # Define borrowed functions
     assert_that <- assertthat::assert_that
 

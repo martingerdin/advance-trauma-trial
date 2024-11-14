@@ -377,19 +377,9 @@ Patient participants can choose to withdraw their consent for collection of non-
 
 -->
 
-<!-- changing the orientation to landscape, thank you https://stackoverflow.com/questions/74229798/create-a-multiple-page-orientation-in-a-single-quarto-pdf-output --------------------------------- -->
-
-\newpage
-
-\KOMAoptions{paper=landscape,pagesize}
-\recalctypearea
-\newgeometry{vmargin=2cm,left=2cm,right=2cm}
-
-<!--
 \begingroup
 \fontsize{10pt}{11pt}\selectfont
 \addtolength{\tabcolsep}{-3pt}
--->
 
 ```{r}
 #| label: tbl-procedures
@@ -397,20 +387,11 @@ Patient participants can choose to withdraw their consent for collection of non-
 #| echo: FALSE
 #| message: FALSE
 
-create_patient_procedure_table()
+create_patient_procedure_table() |>
+    as_raw_html()
 ```
 
-<!--
 \endgroup
--->
-
-\newpage
-
-<!--% changing the orientation to portrait again -------------------------- -->
-
-\KOMAoptions{paper=portrait,pagesize}
-\recalctypearea
-
 
 ## Biological sampling procedures
 
