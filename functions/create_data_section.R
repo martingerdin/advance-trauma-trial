@@ -14,7 +14,7 @@ create_data_section <- function() {
             stringr::str_replace_all("_", " ") |>
             stringr::str_to_sentence() |>
             paste0("### ", . = _)
-        instrument.items <- unlist(lapply(form.list, function(variable) {
+        instrument.items <- unique(unlist(lapply(form.list, function(variable) {
             paste0(
                 "- **", gsub("<.*?>", "", variable$field_label), "** ",
                 variable$field_note, "\n",
@@ -35,8 +35,7 @@ create_data_section <- function() {
                 },
                 "\n"
             )
-        }))
-        # instrument.items <- paste0(unique(instrument.items), collapse = "\n")
+        })))
         paste0(instrument.heading, "\n\n", paste0(instrument.items, collapse = "\n"))
     })), collapse = "\n")
     data.section <- stringr::str_replace_all(data.section, "whodas 20", "(WHODAS 2.0)")
