@@ -10,7 +10,7 @@ create_data_section <- function() {
         form.list <- split(form.data, form.data$field_label)
         form.list <- form.list[unique(form.data$field_label)]
         instrument.heading <- form.name |>
-            stringr::str_remove("_v\\d+_dated\\d{2}[a-zA-Z]{3}\\d{2}") |>
+            stringr::str_remove("_v\\d+") |>
             stringr::str_replace_all("_", " ") |>
             stringr::str_to_sentence() |>
             paste0("### ", . = _)
