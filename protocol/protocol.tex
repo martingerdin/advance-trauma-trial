@@ -52,7 +52,6 @@
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
-\usepackage{multirow}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -99,6 +98,11 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
 \usepackage{typearea}
 \usepackage{lscape}
 \usepackage{afterpage}
@@ -358,7 +362,7 @@ Randomised Trial}}}\par
 \setcounter{page}{1}
 
 %%%%% end titlepage extension code
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, sharp corners, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, sharp corners, breakable, enhanced, frame hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -974,9 +978,11 @@ will be performed according to the participating hospitals routine.
 \hypertarget{procedures}{%
 \subsection{Procedures}\label{procedures}}
 
-Table~\ref{tbl-procedures} shows an overview of trial procedures.
-Clinical research coordinators will follow up patients daily until
-discharge to capture injury information. They will also follow up
+Table~\ref{tbl-procedures-baseline} shows an overview of trial
+procedures before and during patient admission, and
+Table~\ref{tbl-procedures-followup} shows an overview of trial follow-up
+procedures. Clinical research coordinators will follow up patients daily
+until discharge to capture injury information. They will also follow up
 patients at 24 hours, 30 days and 90 days after arrival to the emergency
 department to capture mortality outcomes, and at 30 days and 90 days
 after arrival to the emergency department to capture functional outcomes
@@ -988,64 +994,59 @@ up patients by phone.
 \fontsize{10pt}{11pt}\selectfont
 \addtolength{\tabcolsep}{-3pt}
 
-\hypertarget{tbl-procedures}{}
-\begin{longtable}[]{@{}llllllll@{}}
-\caption{\label{tbl-procedures}Overview of trial
-procedures}\tabularnewline
-\toprule\noalign{}
-\multirow{2}{*}{Procedure} & \multirow{2}{*}{Screening} &
-\multirow{2}{*}{Consenting} & \multirow{2}{*}{Initial assessment} &
-\multirow{2}{*}{In-hospital care} &
-\multicolumn{3}{>{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 4\tabcolsep}@{}}{%
-{Follow up}} \\
-& & & & & Within 7 days of discharge & 30 days & 90 days \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\multirow{2}{*}{Procedure} & \multirow{2}{*}{Screening} &
-\multirow{2}{*}{Consenting} & \multirow{2}{*}{Initial assessment} &
-\multirow{2}{*}{In-hospital care} &
-\multicolumn{3}{>{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 4\tabcolsep}@{}}{%
-{Follow up}} \\
-& & & & & Within 7 days of discharge & 30 days & 90 days \\
-\midrule\noalign{}
-\endhead
-\midrule\noalign{}
-\multicolumn{8}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 14\tabcolsep}@{}}{%
-{\textsuperscript{1}} Clinical research coordinators will inform patient
-participants about the study, including that they are free to withdraw
-their data from the study at any time, and approach them for informed
-consent for collection of non-routinely recorded data in person or
-telephonically.} \\
-\multicolumn{8}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 14\tabcolsep}@{}}{%
-{\textsuperscript{2}} ATLS adherence will be assessed by observing the
-care provided to a random sample of patient participants.} \\
-\multicolumn{8}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 14\tabcolsep}@{}}{%
-{\textsuperscript{3}} Emergency Department} \\
-\multicolumn{8}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0000} + 14\tabcolsep}@{}}{%
-{\textsuperscript{4}} Will be ascertained daily from when the patient
-participant arrive to hospital until they leave the hospital, are
-discharged or die.} \\
-\bottomrule\noalign{}
-\endlastfoot
-Eligibility criteria & √ & & & & & & \\
-Study information{\textsuperscript{1}} & & √ & & & & & \\
-Informed consent{\textsuperscript{1}} & & √ & & & & & \\
-Baseline data collection & & & √ & & & & \\
-Prehospital data collection & & & √ & & & & \\
-ATLS adherence{\textsuperscript{2}} & & & √ & & & & \\
-ED data collection{\textsuperscript{3}} & & & √ & & & & \\
-Hospital data collection & & & & √ & & & \\
-Surgery data collection{\textsuperscript{4}} & & & & √ & & & \\
-Imaging data collection{\textsuperscript{4}} & & & & √ & & & \\
-Transfusion data collection{\textsuperscript{4}} & & & & √ & & & \\
-Injury data collection{\textsuperscript{4}} & & & & √ & & & \\
-Mortality data collection{\textsuperscript{4}} & & & & √ & √ & √ & √ \\
-Assessment of safety events{\textsuperscript{4}} & & & & √ & & & \\
-EQ-5D/WHODAS & & & & & √ & √ & √ \\
-Return to work & & & & & & √ & √ \\
-End of study & & & & & & & √ \\
+\hypertarget{tbl-procedures-baseline}{}
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lllll}
+\caption{\label{tbl-procedures-baseline}Overview of trial procedures before and during patient admission }\tabularnewline
+
+\toprule
+Procedure & Screening & Consenting & Initial assessment & In-hospital care \\ 
+\midrule\addlinespace[2.5pt]
+Eligibility criteria & √ &  &  &  \\ 
+Study information\textsuperscript{\textit{1}} &  & √ &  &  \\ 
+Informed consent\textsuperscript{\textit{1}} &  & √ &  &  \\ 
+Baseline data collection &  &  & √ &  \\ 
+Prehospital data collection &  &  & √ &  \\ 
+ATLS adherence\textsuperscript{\textit{2}} &  &  & √ &  \\ 
+ED data collection\textsuperscript{\textit{3}} &  &  & √ &  \\ 
+Hospital data collection &  &  &  & √ \\ 
+Surgery data collection &  &  &  & √ \\ 
+Imaging data collection &  &  &  & √ \\ 
+Transfusion data collection &  &  &  & √ \\ 
+Injury data collection &  &  &  & √ \\ 
+Mortality data collection &  &  &  & √ \\ 
+Assessment of safety events &  &  &  & √ \\ 
+\bottomrule
 \end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}Clinical research coordinators will inform patient participants about the study, including that they are free to withdraw their data from the study at any time, and approach them for informed consent for collection of non-routinely recorded data in person or telephonically.\\
+\textsuperscript{\textit{2}}ATLS adherence will be assessed by observing the care provided to a random sample of patient participants.\\
+\textsuperscript{\textit{3}}Emergency Department\\
+\end{minipage}
+
+\endgroup
+
+\begingroup
+\fontsize{10pt}{11pt}\selectfont
+\addtolength{\tabcolsep}{-3pt}
+
+\hypertarget{tbl-procedures-followup}{}
+\setlength{\LTpost}{0mm}
+\begin{longtable}{llll}
+\caption{\label{tbl-procedures-followup}Overview of trial follow-up procedures }\tabularnewline
+
+\toprule
+Procedure & Within 7 days of discharge & 30 days & 90 days \\ 
+\midrule\addlinespace[2.5pt]
+Mortality data collection\textsuperscript{\textit{1}} & √ & √ & √ \\ 
+EQ-5D/WHODAS & √ & √ & √ \\ 
+Return to work &  & √ & √ \\ 
+End of study &  &  & √ \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}Will be ascertained daily from when the patient participant arrive to hospital until they leave the hospital, are discharged or die.\\
+\end{minipage}
 
 \endgroup
 

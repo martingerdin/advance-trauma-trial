@@ -365,7 +365,7 @@ Patient participants can choose to withdraw their consent for collection of non-
 
 ## Procedures
 
-@tbl-procedures shows an overview of trial procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
+@tbl-procedures-baseline shows an overview of trial procedures before and during patient admission, and @tbl-procedures-followup shows an overview of trial follow-up procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
 <!-- This is a hack to get the cross-reference to work in word output 
 
@@ -382,13 +382,27 @@ Patient participants can choose to withdraw their consent for collection of non-
 \addtolength{\tabcolsep}{-3pt}
 
 ```{r}
-#| label: tbl-procedures
-#| tbl-cap: "Overview of trial procedures"
+#| label: tbl-procedures-baseline
+#| tbl-cap: "Overview of trial procedures before and during patient admission"
 #| echo: FALSE
 #| message: FALSE
 
-create_patient_procedure_table() |>
-    as_raw_html()
+create_patient_procedure_table()$baseline.table
+```
+
+\endgroup
+
+\begingroup
+\fontsize{10pt}{11pt}\selectfont
+\addtolength{\tabcolsep}{-3pt}
+
+```{r}
+#| label: tbl-procedures-followup
+#| tbl-cap: "Overview of trial follow-up procedures"
+#| echo: FALSE
+#| message: FALSE
+
+create_patient_procedure_table()$followup.table
 ```
 
 \endgroup

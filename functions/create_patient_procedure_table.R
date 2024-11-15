@@ -109,19 +109,26 @@ create_patient_procedure_table <- function() {
     procedure.data <- rbind(data.frame(Procedure = rownames(procedure.data), procedure.data))
     names(procedure.data) <- c("Procedure", create_follow_up_schedule(return.only.labels = TRUE))
 
-    ## Create table
-    procedure.table <- gt(procedure.data) |>
-        tab_spanner(
-            label = "Follow up",
-            columns = c("Within 7 days of discharge", "30 days", "90 days")
-        ) |>
+    # Split the columns for the two tables
+    baseline.columns <- c("Procedure", "Screening", "Consenting", "Initial assessment", "In-hospital care")
+    followup.columns <- c("Procedure", "Within 7 days of discharge", "30 days", "90 days")
+
+    # Create baseline and followup datasets, filtering for rows with any data
+    baseline.data <- procedure.data[, baseline.columns]
+    baseline.data <- baseline.data[rowSums(baseline.data[, -1] != "") > 0, ] # exclude Procedure column from check
+
+    followup.data <- procedure.data[, followup.columns]
+    followup.data <- followup.data[rowSums(followup.data[, -1] != "") > 0, ] # exclude Procedure column from check
+
+    ## Create baseline table
+    baseline.table <- gt(baseline.data) |>
         tab_footnote(
             footnote = c(
                 "Clinical research coordinators will inform patient participants about the study, including that they are free to withdraw their data from the study at any time, and approach them for informed consent for collection of non-routinely recorded data in person or telephonically."
             ),
             locations = cells_body(
                 columns = "Procedure",
-                rows = procedure.data$Procedure %in% c("Study information", "Informed consent")
+                rows = baseline.data$Procedure %in% c("Study information", "Informed consent")
             )
         ) |>
         tab_footnote(
@@ -130,7 +137,7 @@ create_patient_procedure_table <- function() {
             ),
             locations = cells_body(
                 columns = "Procedure",
-                rows = procedure.data$Procedure %in% c("ATLS adherence")
+                rows = baseline.data$Procedure %in% c("ATLS adherence")
             )
         ) |>
         tab_footnote(
@@ -139,19 +146,25 @@ create_patient_procedure_table <- function() {
             ),
             locations = cells_body(
                 columns = "Procedure",
-                rows = procedure.data$Procedure %in% c("ED data collection")
+                rows = baseline.data$Procedure %in% c("ED data collection")
             )
-        ) |>
+        )
+
+    ## Create follow-up table
+    followup.table <- gt(followup.data) |>
         tab_footnote(
             footnote = c(
                 "Will be ascertained daily from when the patient participant arrive to hospital until they leave the hospital, are discharged or die."
             ),
             locations = cells_body(
                 columns = "Procedure",
-                rows = procedure.data$Procedure %in% c("Surgery data collection", "Imaging data collection", "Transfusion data collection", "Injury data collection", "Mortality data collection", "Assessment of safety events")
+                rows = followup.data$Procedure %in% c("Surgery data collection", "Imaging data collection", "Transfusion data collection", "Injury data collection", "Mortality data collection", "Assessment of safety events")
             )
         )
 
-    # Return follow up table and notes
-    return(procedure.table)
+    # Return both tables as a list
+    return(list(
+        baseline.table = baseline.table,
+        followup.table = followup.table
+    ))
 }
