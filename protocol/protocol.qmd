@@ -177,7 +177,7 @@ rows as needed.*
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          | 
 +=========+============+==================================================================+
-| 1.3.0   | 2024-11-13 | - Updated names of events in the table of procedures             |
+| 1.3.0   | 2024-11-15 | - Updated names of events in the table of procedures             |
 |         |            | - Added new references                                           |
 |         |            | - Added nested staircase design for measuring adherence, quality |
 |         |            |   of life, disability and return to work                         |
@@ -186,6 +186,7 @@ rows as needed.*
 |         |            | - Added contributors                                             |
 |         |            | - Removed reassessment of the sample size calculation from the   |
 |         |            |   interim analysis                                               |
+|         |            | - Revised details on measuring ATLS adherence                    |
 +---------+------------+------------------------------------------------------------------+
 | 1.2.0   | 2024-08-26 | - Added details on measuring ATLS adherence                      |
 |         |            | - Clarified the section describing the consent process           |
@@ -464,7 +465,7 @@ The primary outcome will be in-hospital mortality within 30 days of arrival at t
 - Length of hospital stay. Data on this outcome will be collected from patient hospital records.
 - Intensive care unit admission. Data on this outcome will be collected from patient hospital records.
 - Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.
-- Adherence to ATLS^®^ principles during initial patient resuscitation, up to one hour after the physician has first seen the patient. This assessment will be done using a 14 item checklist covering the key steps of the ATLS^®^ primary survey,which was modelled based on previous work on ATLS^®^ adherence [@aukstakalnis_impact_2024]. We will consider completion of all 14 steps as 100% adherence. We will collect this data by observing the care of a random sample of patients. The sampling will be designed as a nested staircase design. The clinical research coordinators collecting the data will be trained by participating in an ATLS^®^ course as observers, prior to the start of the trial.
+- Adherence to ATLS^®^ principles during initial patient resuscitation, up to one hour after the physician has first seen the patient. This assessment will be done using a 14 item checklist covering the key steps of the ATLS^®^ primary survey, which was modelled based on previous work on ATLS^®^ adherence [@aukstakalnis_impact_2024]. We will consider completion of all 14 steps as 100% adherence. The clinical research coordinators collecting the data will be trained by the trial team to do this, prior to the start of the trial. We will collect this data by observing the care of a random sample of patients. The sampling will be designed as a nested staircase design. 
 - Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data using a nested staircase design.
 - Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected using a nested staircase design.
 - Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected using a nested staircase design.
