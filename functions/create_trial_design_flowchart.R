@@ -133,8 +133,8 @@ create_trial_design_flowchart <- function(clusters = 60,
             geom_segment(linewidth = 1) +
             scale_color_manual(
                 values = c(
-                    "Standard care" = "#999999",
-                    "Transition" = "#E69F00",
+                    "Standard care" = "#E69F00",
+                    "Transition" = "#56B4E9",
                     "Intervention" = "#999999"
                 ),
                 breaks = c(
