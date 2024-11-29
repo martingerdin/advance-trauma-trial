@@ -19,6 +19,8 @@ for (function.file in function.files) source(function.file)
 attach(global_variables())
 ```
 
+<!-- These notes were never circulated because they were compiled too late. -->
+
 # Members Present
 
 # Members Excused
@@ -67,3 +69,7 @@ knitr::include_graphics(
 4. **Additional points**
 
 # Notes and Decisions
+
+1. Prashant presented the progress with each site. 
+2. We decided to collect adherence, quality of life, disability and return to work outcomes using the nested staircase design. This means that the sites will be informed about their implementation sequence three months before the start of the intervention. This was agreed to be acceptable. 
+3. We discussed the candidate sites for the second batch. 
