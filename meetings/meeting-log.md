@@ -64,3 +64,9 @@ TMG. Update on progress, roll out meeting and SDMC.
 
 ## 2024-11-05
 TMG. Update on progress, discussion on batch 2.
+
+## 2024-11-06
+First steering and data monitoring committee meeting. Approval to start the trial.
+
+## 2024-12-06
+TMG. Update on progress.
