@@ -220,6 +220,8 @@ rows as needed.*
 
 # Background and rationale
 
+<!-- Mention review by hauta_translating_2024 -->
+
 Each year, 4.3 million people die from trauma [@injuries2020]. Among people aged 10-24 and 25-49 years trauma is the largest cause of disability adjusted life years [@GBD2020]. Most deaths from trauma occur within the first 24-48 hours  [@Rauf2019]. Traumatic brain injury and exsanguination are the most common causes of trauma deaths [@Roy2017; @Callcut2019]. Most preventable trauma deaths are caused by clinical judgement errors during initial resuscitation or early care including airway management and haemorrhage control, even though the deaths occur later during the hospital stay [@Roy2017; @Ghorbani2018].
 
 Several trauma life support training programmes have been developed to improve the early management of patients in the hospital by providing a structured framework for assessment and treatment [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021; @mciver_effect_2024]. The proprietary Advanced Trauma Life Support^®^ (ATLS^®^) is the most established trauma life support training programme and more than one million physicians in over 80 countries have been trained in the programme since the first course in 1978 [@acsAtls2018]. In the US and many other countries training in ATLS^®^ is virtually mandatory for trauma care physicians [@ACS2022]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020].
@@ -276,16 +278,16 @@ We use the cluster randomised design because the intervention cannot be randomis
 #| message: FALSE
 
 knitr::include_graphics(
-    create_trial_design_flowchart(
-        clusters = clusters, sequences = sequences, batches = batches,
-        min.standard.care.months = min.standard.care.months,
-        min.intervention.months = min.intervention.months,
-        batches.overlap.months = batches.overlap.months,
-        transition.months = transition.months,
-        transition.overlap.months = transition.overlap.months,
-        return.figure = FALSE,
-        device = "png"
-    )
+  create_trial_design_flowchart(
+    clusters = clusters, sequences = sequences, batches = batches,
+    min.standard.care.months = min.standard.care.months,
+    min.intervention.months = min.intervention.months,
+    batches.overlap.months = batches.overlap.months,
+    transition.months = transition.months,
+    transition.overlap.months = transition.overlap.months,
+    return.figure = FALSE,
+    device = "png"
+  )
 )
 ```
 
@@ -821,15 +823,15 @@ We will report time adjusted within-cluster correlations for all outcomes with 9
 #| echo: false
 #| include: false
 get_design_matrix(
-    clusters = clusters,
-    sequences = sequences,
-    batches = batches,
-    min.standard.care.months = min.standard.care.months,
-    min.intervention.months = min.intervention.months,
-    batches.overlap.months = batches.overlap.months,
-    transition.months = transition.months,
-    transition.overlap.months = transition.overlap.months,
-    total.months = total.months
+  clusters = clusters,
+  sequences = sequences,
+  batches = batches,
+  min.standard.care.months = min.standard.care.months,
+  min.intervention.months = min.intervention.months,
+  batches.overlap.months = batches.overlap.months,
+  transition.months = transition.months,
+  transition.overlap.months = transition.overlap.months,
+  total.months = total.months
 )
 ```
 
@@ -1210,7 +1212,7 @@ knitr::include_graphics(pages)
 
 download.destination <- "../case-record-form/instrument-pdfs"
 if (!dir.exists(download.destination)) {
-    stop("The instrument directory does not exist")
+  stop("The instrument directory does not exist")
 }
 download_instrument_pdfs(download.destination = download.destination)
 system("pdfseparate ../case-record-form/instrument-pdfs/all-instruments.pdf ../case-record-form/instrument-pdfs/pages/all-instruments-%d.pdf")
