@@ -70,3 +70,6 @@ First steering and data monitoring committee meeting. Approval to start the tria
 
 ## 2024-12-06
 TMG. Update on progress.
+
+## 2025-03-12
+TMG. Trial started. Update on progress.
