@@ -9,7 +9,8 @@ systematic_review_data <- function() {
             non.atls.n = 6734,
             non.atls.died = 128,
             atls.n = 1431,
-            atls.died = 57),
+            atls.died = 57
+        ),
         vanOlden2004 = list(
             study = "van Olden et al. 2004",
             design = "Prospective cohort",
@@ -19,7 +20,8 @@ systematic_review_data <- function() {
             non.atls.n = 31,
             non.atls.died = 15,
             atls.n = 31,
-            atls.died = 10),
+            atls.died = 10
+        ),
         Vestrup1988 = list(
             study = "Vestrup et al. 1988",
             design = "Retrospective cohort",
@@ -29,7 +31,8 @@ systematic_review_data <- function() {
             non.atls.n = 50,
             non.atls.died = 13,
             atls.n = 71,
-            atls.died = 14),
+            atls.died = 14
+        ),
         Ariyanayagam1992 = list(
             study = "Ariyanayagam et al. 1992",
             design = "Retrospective cohort",
@@ -39,7 +42,8 @@ systematic_review_data <- function() {
             non.atls.n = 13739,
             non.atls.died = 637,
             atls.n = 9132,
-            atls.died = 430),
+            atls.died = 430
+        ),
         Ali1993 = list(
             study = "Ali et al. 1993",
             design = "Retrospective cohort",
@@ -49,7 +53,8 @@ systematic_review_data <- function() {
             non.atls.n = 413,
             non.atls.died = 279,
             atls.n = 400,
-            atls.died = 134),
+            atls.died = 134
+        ),
         Olson2001 = list(
             study = "Olson et al. 2001",
             design = "Retrospective cohort",
@@ -59,7 +64,8 @@ systematic_review_data <- function() {
             non.atls.n = 506,
             non.atls.died = 33,
             atls.n = 512,
-            atls.died = 43),
+            atls.died = 43
+        ),
         Wang2010 = list(
             study = "Wang et al. 2010",
             design = "Retrospective cohort",
@@ -69,7 +75,8 @@ systematic_review_data <- function() {
             non.atls.n = 438,
             non.atls.died = 87,
             atls.n = 382,
-            atls.died = 62),
+            atls.died = 62
+        ),
         Petroze2014 = list(
             study = "Petroze et al. 2014",
             design = "Prospective cohort",
@@ -79,7 +86,8 @@ systematic_review_data <- function() {
             non.atls.n = 798,
             non.atls.died = 70,
             atls.n = 575,
-            atls.died = 36),
+            atls.died = 36
+        ),
         Hashmi2013 = list(
             study = "Hashmi et al. 2013",
             design = "Retrospective study",
@@ -89,7 +97,8 @@ systematic_review_data <- function() {
             non.atls.n = 421,
             non.atls.died = 41,
             atls.n = 806,
-            atls.died = 40),
+            atls.died = 40
+        ),
         Bellanova2016 = list(
             study = "Bellanova et al. 2016",
             design = "Cohort study",
@@ -99,5 +108,29 @@ systematic_review_data <- function() {
             non.atls.n = 98,
             non.atls.died = 9,
             atls.n = 132,
-            atls.died = 5))
+            atls.died = 5
+        ),
+        Magnone2016 = list(
+            study = "Magnone et al. 2016",
+            design = "Retrospective cohort",
+            year = 2016,
+            outcome = "24 hours",
+            eligibility = "ISS > 15",
+            non.atls.n = 198,
+            non.atls.died = 28,
+            atls.n = 141,
+            atls.died = 10
+        ),
+        kamau_impact_2024 = list(
+            study = "Kamau et al. 2024",
+            design = "Retrospective matched case-control",
+            year = 2024,
+            outcome = "24 hours",
+            eligibility = "ISS ≥ 16",
+            non.atls.n = 81,
+            non.atls.died = 14,
+            atls.n = 81,
+            atls.died = 5
+        )
+    )
 }

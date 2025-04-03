@@ -170,6 +170,12 @@ rows as needed.*
 
 -->
 
+# Visual abstract
+
+![Visual abstract](/visual-abstract.png)
+
+{{< pagebreak >}}
+
 # Administrative information
 
 ## Changelog
@@ -177,6 +183,9 @@ rows as needed.*
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          | 
 +=========+============+==================================================================+
+| 1.4.0   | ?          | - Updated systematic review results and references               |
+|         |            | - Added visual abstract                                          |
++---------+------------+------------------------------------------------------------------+
 | 1.3.0   | 2024-11-15 | - Updated names of events in the table of procedures             |
 |         |            | - Added new references                                           |
 |         |            | - Added nested staircase design for measuring adherence, quality |
@@ -233,7 +242,7 @@ We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT
 To involve patients and the public in the planning of this trial we conducted 19 semi-structured interviews with trauma patients, caregivers, and community representatives (unpublished data). The aim of these interviews was to understand their views on the trial and important outcomes and the interviews showed high acceptability of our research and emphasised the importance of better recovery before discharge and functional outcomes at and after discharge, including pain, mobility and self-care activities. The interviews also highlighted return to work as an important outcome.
 
 ## Updated systematic review
-We performed a systematic literature search in the Medline, Embase, Cochrane, Web of Science, CINAHL and Google Scholar databases (PROSPERO ID CRD42022373977). The last search was conducted on November 11, 2022. We developed the search strategy in Medline (Ovid) in collaboration with librarians at the Karolinska Institutet University Library. We limited the search to English language articles, searched all databases from inception, and screened a total of 7896 records. We used a random effects model to pool estimates across studies.
+We perform systematic literature searches in collaboration with the Karolinska Institutet University Library, using Medline, Embase, Cochrane, Web of Science, Global Health, CINAHL and Google Scholar databases (PROSPERO ID CRD42022373977). The last search was conducted on January 22, 2025. We developed the search strategy in Medline (Ovid), limited the search to English language articles, searched all databases from inception, and screened a total of 10,429 records. We used a random effects model to pool estimates across studies.
 
 ```{r forest-plot}
 #| echo: false
