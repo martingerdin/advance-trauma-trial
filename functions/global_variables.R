@@ -19,6 +19,7 @@ global_variables <- function() {
     min.intervention.months <- 4
     transition.months <- 1
     transition.overlap.months <- 0
+    staircase.months <- 3
     total.months <- min.standard.care.months +
         sequences * (transition.months - transition.overlap.months) +
         min.intervention.months
@@ -51,6 +52,7 @@ global_variables <- function() {
         min.intervention.months = min.intervention.months,
         transition.months = transition.months,
         transition.overlap.months = transition.overlap.months,
+        staircase.months = staircase.months,
         total.months = total.months,
         patient.enrollment.months = patient.enrollment.months,
         final.patient.follow.up.date = final.patient.follow.up.date,
