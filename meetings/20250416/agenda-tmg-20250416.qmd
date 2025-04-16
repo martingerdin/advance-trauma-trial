@@ -1,0 +1,26 @@
+---
+subtitle: Trial Management Group Meeting, April 16, 2025
+title: ADVANCE TRAUMA
+format: pdf
+---
+
+# Agenda
+
+1. **Batch 1 updates**
+   - Patient inclusions
+   - Summary data (see next page)
+   - ATLS training
+
+2. **Batch 2 updates**
+   - Anticipated sites
+
+3. **Batch 3 updates**
+
+3. **Additional points**
+
+```{r}
+#| echo: false
+#| out-width: 100%
+knitr::include_graphics("summary-data.pdf")
+```
+

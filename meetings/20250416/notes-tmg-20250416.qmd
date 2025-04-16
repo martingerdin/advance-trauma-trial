@@ -1,0 +1,45 @@
+---
+subtitle: Trial Management Group Meeting, March 12, 2025
+title: ADVANCE TRAUMA
+format: pdf
+---
+
+# Members Present
+
+-   Martin Gerdin Wärnberg (chair) (MGW)
+-   Samriddhi Ranjan (SR)
+-   Kapil Dev Soni (KDS)
+-   Shamita Chatterjee (SC)
+-   Debojit Basak (DB)
+-   Li Felländer-Tsai (LFT)
+-   Prashant Kharat (PK)
+-   Nobhojit Roy (NR)
+-   Anna Olofsson (AO)
+
+# Members Excused
+
+-   Monty Khajanchi (MK)
+-   Rajdeep Singh (RS)
+-   Johanna Berg (JB)
+-   Karla Hemming (KH)
+-   Abhinav Bassi (AB)
+-   Lovisa Strömmer (LS)
+-   Girish D Bakhshi (GB)
+-   Anurag Mishra (AM)
+-   Vivekanand Jha (VJ)
+
+# Agenda
+
+1. **Batch 1 updates**
+   - Patient inclusions
+   - Summary data (see next page)
+   - ATLS training
+
+2. **Batch 2 updates**
+   - Anticipated sites
+
+3. **Batch 3 updates**
+
+3. **Additional points**
+
+# Notes and Decisions
