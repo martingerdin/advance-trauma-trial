@@ -7,7 +7,8 @@ download_instrument_pdfs <- function(download.destination = getwd()) {
             token = token,
             binary = TRUE,
             content = "pdf",
-            returnFormat = "json"
+            returnFormat = "json",
+            compactDisplay = "true"
         ) |>
         httr2::req_perform()
     result <- response |>

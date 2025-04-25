@@ -172,7 +172,7 @@ rows as needed.*
 
 # Visual abstract
 
-![Visual abstract](/visual-abstract.png)
+![Visual abstract](../shared-assets/visual-abstract-small.png)
 
 {{< pagebreak >}}
 
@@ -185,6 +185,11 @@ rows as needed.*
 +=========+============+==================================================================+
 | 1.4.0   | ?          | - Updated systematic review results and references               |
 |         |            | - Added visual abstract                                          |
+|         |            | - Added details on the nested staircase design for measuring     |
+|         |            |   adherence, quality of life and disability                      |
+|         |            | - Removed return to work as a secondary outcome to be measured   |
+|         |            |   using the nested staircase design, this should be measured     |
+|         |            |   using the main stepped-wedge design                            |
 +---------+------------+------------------------------------------------------------------+
 | 1.3.0   | 2024-11-15 | - Updated names of events in the table of procedures             |
 |         |            | - Added new references                                           |
@@ -287,6 +292,7 @@ We use the cluster randomised design because the intervention cannot be randomis
 #| fig.cap: "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
 #| fig.align: "center"
 #| message: FALSE
+#| warning: FALSE
 
 knitr::include_graphics(
   create_trial_design_flowchart(
@@ -411,10 +417,6 @@ Patient participants can choose to withdraw their consent for collection of non-
 
 -->
 
-\begingroup
-\fontsize{10pt}{11pt}\selectfont
-\addtolength{\tabcolsep}{-3pt}
-
 ```{r}
 #| label: tbl-procedures-baseline
 #| tbl-cap: "Overview of trial procedures before and during patient admission"
@@ -424,12 +426,6 @@ Patient participants can choose to withdraw their consent for collection of non-
 create_patient_procedure_table()$baseline.table
 ```
 
-\endgroup
-
-\begingroup
-\fontsize{10pt}{11pt}\selectfont
-\addtolength{\tabcolsep}{-3pt}
-
 ```{r}
 #| label: tbl-procedures-followup
 #| tbl-cap: "Overview of trial follow-up procedures"
@@ -438,8 +434,6 @@ create_patient_procedure_table()$baseline.table
 
 create_patient_procedure_table()$followup.table
 ```
-
-\endgroup
 
 ## Biological sampling procedures
 
@@ -941,90 +935,9 @@ The George Institute for Global Health, India is responsible for ensuring that a
 
 Substantial changes to the signed clinical trial protocol are only possible through approved protocol amendments and by agreement between the sponsor and the principal investigator.
 
-# Collection, handling, and archiving of data
-
-Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764). 
-
-## Source data
-
-The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded. The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as source data in the trial (source data reference document) will be included in the Investigator Site File (ISF). The investigator must ensure that all source documents are accessible for monitoring and other quality control activities. Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document. Access to trial-related documentation, such as patient participants' medical records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access will also be granted in the context of regulatory inspections.
-
-## Variables {#sec-variables}
-
-<!--
-**If we want to be able to do a cost-effectiveness analysis, then we also need to collect data on who does what for how long, capture changes in expensive procedures and investigations, capture health care utilisation after discharge, in-formal care (who does the caring, when and for how long), and productivity losses. There may be instruments for this already, or we can adapt existing instruments. To capture potential equity aspects we also need socioeconomic information on the patients**
--->
-
-```{r data}
-#| echo: false
-#| results: "asis"
-
-cat(create_data_section())
-```
-
-<!--
-*From the protocol it must be clear how the data will be collected.
-Describe which other types of data collection documents, in addition to
-the CRF, are used, e.g.: diaries, quality of life questionnaires, health
-economics, different patient-reported outcomes measures, etc. Describe
-how corrections will occur and by whom, that there will be an
-independent copy of the CRF with the investigator when the trial is
-completed, and how other trial documentation is stored and who has
-access to it. The sponsor and investigator must archive the information
-in the Trial Master File for at least 25 years after the end of the
-clinical trial, providing that a longer archiving period follows from
-other parts of the law. The sponsor and investigator can also agree that
-the documents shall be archived for a longer period. The Swedish
-Archives Act (Arkivlagen) applies to archiving of research material. For
-clinical trials in ATMP (Advanced Therapy Medicinal Product), the
-archiving period is 30 years according to GCP specific for ATMP.*
-
-*The sponsor and the investigator shall keep a Clinical trial master
-file with documentation for the whole trial. The clinical trial master
-file shall at all times contain the essential documents relating to that
-clinical trial which allow verification of the conduct of a clinical
-trial and the quality of the data generated, taking into account all
-characteristics of the clinical trial, including in particular whether
-the clinical trial is a low-intervention clinical trial. It shall be
-readily available, and directly accessible upon request, to the Member
-States.*
-
-*The clinical trial master file kept by the investigator and that kept
-by the sponsor may have a different content if this is justified by the
-different nature of the responsibilities of the investigator and the
-sponsor. The principal investigator shall keep an Investigator Site File
-(part of the Clinical Trial Master File) with all trial documentation
-for the site. The files should have relevant content according to the
-trial and follow ICH-GCP chapter 8 "Essential documents". The principal
-investigator will store the trial site's data, subject identification
-list, original of the subject information sheet and obtained trial
-consent inaccessible to unauthorized persons, but such that trial
-subjects can be identified by those responsible for the trial. This
-information must not be stored at the sponsor.*
-
-*For information about data protection see section 12.4, Data
-protection.*
-
-*Text suggestion:*
-
-Subjects who participate in the trial are coded with a trial-specific
-identification number. All subjects are registered in a subject
-identification list (subject enrolment and identification list) that
-connects the subject's name and personal number with a subject
-number/trial identification number.
-
-All data will be registered, managed, and stored in a manner that
-enables correct reporting, interpretation, and verification. The
-complete Trial Master File, as well as source documents, will be
-archived for at least *25* years after the trial is completed. Source
-data in the medical records system are stored and archived in accordance
-with national regulations.
-
--->
-
 # Trial organisation
 
-```{r}
+```{r create-trial-organisation-overview-figure}
 #| echo: false
 #| include: false
 
@@ -1205,6 +1118,88 @@ completed, and a summary of the clinical trial results must be reported
 in CTIS, including a summary for lay people.
 
 -->
+
+# Collection, handling, and archiving of data
+
+Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764). 
+
+## Source data
+
+The source data for each variable is given in @sec-variables. Whenever medical records are the source data, this includes imaging and lab reports. Whenever an interview is given as the source, the CRF will constitute the source data, as this is where the responses to questions will be recorded. The local investigator must keep source documents for each patient participant in the trial. A document describing what has been classified as source data in the trial (source data reference document) will be included in the Investigator Site File (ISF). The investigator must ensure that all source documents are accessible for monitoring and other quality control activities. Source data is further defined before trial start at each individual site and can, in cases where source data is not registered in another document, consist of the CRF. This should be decided in consultation with the monitor and clearly stated in the source data reference document. Access to trial-related documentation, such as patient participants' medical records, CRFs, other source data and other trial documentation will be provided for monitoring and auditing purposes. Access will also be granted in the context of regulatory inspections.
+
+## Variables {#sec-variables}
+
+<!--
+**If we want to be able to do a cost-effectiveness analysis, then we also need to collect data on who does what for how long, capture changes in expensive procedures and investigations, capture health care utilisation after discharge, in-formal care (who does the caring, when and for how long), and productivity losses. There may be instruments for this already, or we can adapt existing instruments. To capture potential equity aspects we also need socioeconomic information on the patients**
+-->
+
+```{r data}
+#| echo: false
+#| results: "asis"
+
+cat(create_data_section())
+```
+
+<!--
+*From the protocol it must be clear how the data will be collected.
+Describe which other types of data collection documents, in addition to
+the CRF, are used, e.g.: diaries, quality of life questionnaires, health
+economics, different patient-reported outcomes measures, etc. Describe
+how corrections will occur and by whom, that there will be an
+independent copy of the CRF with the investigator when the trial is
+completed, and how other trial documentation is stored and who has
+access to it. The sponsor and investigator must archive the information
+in the Trial Master File for at least 25 years after the end of the
+clinical trial, providing that a longer archiving period follows from
+other parts of the law. The sponsor and investigator can also agree that
+the documents shall be archived for a longer period. The Swedish
+Archives Act (Arkivlagen) applies to archiving of research material. For
+clinical trials in ATMP (Advanced Therapy Medicinal Product), the
+archiving period is 30 years according to GCP specific for ATMP.*
+
+*The sponsor and the investigator shall keep a Clinical trial master
+file with documentation for the whole trial. The clinical trial master
+file shall at all times contain the essential documents relating to that
+clinical trial which allow verification of the conduct of a clinical
+trial and the quality of the data generated, taking into account all
+characteristics of the clinical trial, including in particular whether
+the clinical trial is a low-intervention clinical trial. It shall be
+readily available, and directly accessible upon request, to the Member
+States.*
+
+*The clinical trial master file kept by the investigator and that kept
+by the sponsor may have a different content if this is justified by the
+different nature of the responsibilities of the investigator and the
+sponsor. The principal investigator shall keep an Investigator Site File
+(part of the Clinical Trial Master File) with all trial documentation
+for the site. The files should have relevant content according to the
+trial and follow ICH-GCP chapter 8 "Essential documents". The principal
+investigator will store the trial site's data, subject identification
+list, original of the subject information sheet and obtained trial
+consent inaccessible to unauthorized persons, but such that trial
+subjects can be identified by those responsible for the trial. This
+information must not be stored at the sponsor.*
+
+*For information about data protection see section 12.4, Data
+protection.*
+
+*Text suggestion:*
+
+Subjects who participate in the trial are coded with a trial-specific
+identification number. All subjects are registered in a subject
+identification list (subject enrolment and identification list) that
+connects the subject's name and personal number with a subject
+number/trial identification number.
+
+All data will be registered, managed, and stored in a manner that
+enables correct reporting, interpretation, and verification. The
+complete Trial Master File, as well as source documents, will be
+archived for at least *25* years after the trial is completed. Source
+data in the medical records system are stored and archived in accordance
+with national regulations.
+
+-->
+
 
 # References
 

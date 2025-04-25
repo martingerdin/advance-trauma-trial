@@ -13,6 +13,13 @@ format: pdf
 
 2. **Batch 2 updates**
    - Anticipated sites
+     - Sion Hospital, Mumbai
+     - KEM Hospital, Mumbai
+     - Holy Family Hospital, Delhi
+     - Dayanand Medical College, Ludhiana
+     - Assam Medical College, Dibrugar?
+     - PGIMS, Rohtak?
+     - PGIMER, Chandigarh?
 
 3. **Batch 3 updates**
 

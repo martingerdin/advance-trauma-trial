@@ -82,6 +82,7 @@ create_trial_design_flowchart <- function(clusters = 60,
     clusters.per.batch <- with(plot.data, clusters / batches)
 
     ## Create plot
+    color.palette <- unname(colors())
     if (staircase.months > 0) {
         # Filter data to only show relevant phases in legend
         legend.data <- subset(plot.data, phase %in% c("Pre-transition staircase", "Transition", "Post-transition staircase"))
@@ -91,8 +92,8 @@ create_trial_design_flowchart <- function(clusters = 60,
             # Add gray segments for standard care and intervention
             geom_segment(
                 data = subset(plot.data, phase %in% c("Standard care", "Intervention")),
-                aes(y = cluster, yend = cluster, x = start, xend = end),
-                color = "#999999", linewidth = 1
+                aes(y = cluster, yend = cluster, x = start, xend = end, color = "Main stepped-wedge patient inclusion period"),
+                linewidth = 1
             ) +
             # Add colored segments for transition and staircase periods
             geom_segment(
@@ -102,11 +103,13 @@ create_trial_design_flowchart <- function(clusters = 60,
             ) +
             scale_color_manual(
                 values = c(
-                    "Pre-transition staircase" = "black",
-                    "Transition" = "#E69F00",
-                    "Post-transition staircase" = "black"
+                    "Main stepped-wedge patient inclusion period" = "#999999",
+                    "Pre-transition staircase" = color.palette[1],
+                    "Transition" = color.palette[2],
+                    "Post-transition staircase" = color.palette[3]
                 ),
                 breaks = c(
+                    "Main stepped-wedge patient inclusion period",
                     "Pre-transition staircase",
                     "Transition",
                     "Post-transition staircase"
@@ -127,15 +130,22 @@ create_trial_design_flowchart <- function(clusters = 60,
             ) +
             scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
             theme_bw() +
+            theme(
+                legend.position = "bottom",
+                legend.box = "vertical",
+                legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
+                legend.spacing.y = unit(0.1, "cm")
+            ) +
+            guides(color = guide_legend(nrow = 2)) +
             labs(x = "Study month", y = "Cluster", color = "Phase")
     } else {
         trial.design.figure <- ggplot(plot.data, aes(y = cluster, yend = cluster, x = start, xend = end, color = phase)) +
             geom_segment(linewidth = 1) +
             scale_color_manual(
                 values = c(
-                    "Standard care" = "#E69F00",
-                    "Transition" = "#56B4E9",
-                    "Intervention" = "#999999"
+                    "Standard care" = color.palette[1],
+                    "Transition" = color.palette[2],
+                    "Intervention" = color.palette[3]
                 ),
                 breaks = c(
                     "Standard care",
@@ -158,6 +168,13 @@ create_trial_design_flowchart <- function(clusters = 60,
             ) +
             scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
             theme_bw() +
+            theme(
+                legend.position = "bottom",
+                legend.box = "vertical",
+                legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
+                legend.spacing.y = unit(0.1, "cm")
+            ) +
+            guides(color = guide_legend(nrow = 2)) +
             labs(x = "Study month", y = "Cluster", color = "Phase")
     }
 
@@ -172,9 +189,11 @@ create_trial_design_flowchart <- function(clusters = 60,
             min.standard.care.months, "-min-standard-care-",
             min.intervention.months, "-min-intervention-",
             transition.months, "-transition-months-",
-            transition.overlap.months, "-transition-overlap.", device
+            transition.overlap.months, "-transition-overlap.",
+            staircase.months, "-staircase-months.",
+            device
         )
-        ggsave(file.name, trial.design.figure, width = 18, height = 9, units = "cm")
+        ggsave(file.name, trial.design.figure, width = 15, height = 9, units = "cm")
     }
 
     ## Return figure

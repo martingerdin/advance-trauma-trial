@@ -44,10 +44,14 @@ create_power_curve <- function(curve.data.file) {
         )
     )
 
+    ## Get color palette
+    color.palette <- unname(colors())
+
     ## Create power curve
     power.curve <- ggplot(curve.data.long, aes(x = xtmp, y = value, colour = Legend, linetype = Legend)) +
         geom_line() +
         ylim(0.2, 1.0) +
+        scale_color_manual(values = color.palette) +
         labs(
             x = "Cluster size (per period)",
             y = "Power"

@@ -1,3 +1,25 @@
+#' Create data section
+#'
+#' This function downloads the data dictionary and formats it into a markdown section
+#' describing all data collection instruments and their fields.
+#'
+#' @return A character string containing formatted markdown text describing the data
+#'     collection instruments and fields. The text is organized by form, with each
+#'     form as a level 3 heading followed by bullet points for each field. For
+#'     fields with categorical options (checkbox, radio, dropdown), the options are
+#'     listed as sub-bullets. Common abbreviations like WHODAS, EQ5D5L, ATLS and
+#'     LAR are properly formatted.
+#'
+#' @details The function:
+#' 1. Downloads the data dictionary
+#' 2. Removes whitespace from all fields
+#' 3. Filters out "specify other" fields and descriptive fields
+#' 4. Groups fields by form
+#' 5. For each form:
+#'    - Creates a heading from the form name
+#'    - Lists each field with its label and note
+#'    - For categorical fields, lists all options
+#' 6. Formats common abbreviations
 create_data_section <- function() {
     data.dictionary <- download_data_dictionary()
     data.dictionary[] <- lapply(data.dictionary, trimws)

@@ -1,5 +1,5 @@
 ---
-subtitle: Trial Management Group Meeting, March 12, 2025
+subtitle: Trial Management Group Meeting, April 16, 2025
 title: ADVANCE TRAUMA
 format: pdf
 ---
@@ -7,39 +7,64 @@ format: pdf
 # Members Present
 
 -   Martin Gerdin Wärnberg (chair) (MGW)
--   Samriddhi Ranjan (SR)
 -   Kapil Dev Soni (KDS)
 -   Shamita Chatterjee (SC)
 -   Debojit Basak (DB)
 -   Li Felländer-Tsai (LFT)
 -   Prashant Kharat (PK)
--   Nobhojit Roy (NR)
--   Anna Olofsson (AO)
-
-# Members Excused
-
 -   Monty Khajanchi (MK)
 -   Rajdeep Singh (RS)
 -   Johanna Berg (JB)
+-   Anurag Mishra (AM)
+-   Vivekanand Jha (VJ)
+
+# Members Excused
+
+-   Samriddhi Ranjan (SR)
+-   Nobhojit Roy (NR)
+-   Anna Olofsson (AO)
 -   Karla Hemming (KH)
 -   Abhinav Bassi (AB)
 -   Lovisa Strömmer (LS)
 -   Girish D Bakhshi (GB)
--   Anurag Mishra (AM)
--   Vivekanand Jha (VJ)
 
 # Agenda
 
 1. **Batch 1 updates**
    - Patient inclusions
-   - Summary data (see next page)
+   - Summary data (see the last page of these notes)
    - ATLS training
 
 2. **Batch 2 updates**
    - Anticipated sites
+     - Sion Hospital, Mumbai
+     - KEM Hospital, Mumbai
+     - Holy Family Hospital, Delhi
+     - Dayanand Medical College, Ludhiana
+     - Assam Medical College, Dibrugar?
+     - PGIMS, Rohtak?
+     - PGIMER, Chandigarh?
 
 3. **Batch 3 updates**
 
 3. **Additional points**
 
 # Notes and Decisions
+
+1. **Batch 1 updates**
+  - Overall the inclusion rates are looking good, but one center has a very low inclusion rate. This is due to an issue with recruiting the clinical research coordinator (CRC) at the site. Now the CRC is recruited however and we expect inclusion rates to improve. 
+  - We discussed the summary data from the first month of data collection. There are differences in the the patient cohorts at the different sites, but we would expect these differences to even out over time and batches. In the first batch one center has a considerably younger population and we discussed that the team at TGI can reach out to the PI to understand the reasons for this. JB suggested that we should include summary information about the injury data being collected, as this has been problematic in previous studies. We agreed to add this information to the summary data being circulated before the TMG meetings.
+  - The team at TGI is in contact with the training centers.
+
+2. **Batch 2 updates**. Four sites are finalised for the second batch of hospitals and ethical applications and clinical trial agreements are being negotiated with these sites. We need a fifth site and are in contact with several potential sites. We have decided to approach multiple sites in parallel and assign them to batches as they are finalised. PK said that some sites that have initially expressed interest have been difficult to get in contact with again. VK suggested that we should approach these sites through our senior clinical collaborators, to build the relationship before the contact is handed over to the trial team.
+
+3. **Batch 3 updates**. We have not yet finalised the sites for the third batch, but sites that are interested and have been approached for the second batch will be considered for this batch. We also discussed the geographical distribution of the sites and so far we are missing representation from the central and south parts of India.
+
+4. **Additional points**.
+  - SC asked about the time frame for when sites are informed about the timing of the training, and we are currently informing sites three months in advance.
+  
+```{r}
+#| echo: false
+#| out-width: 100%
+knitr::include_graphics("summary-data.pdf")
+```
