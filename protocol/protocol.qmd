@@ -183,7 +183,7 @@ rows as needed.*
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          | 
 +=========+============+==================================================================+
-| 1.4.0   | ?          | - Updated systematic review results and references               |
+| 1.4.0   | 2025-04-30 | - Updated systematic review results and references               |
 |         |            | - Added visual abstract                                          |
 |         |            | - Added details on the nested staircase design for measuring     |
 |         |            |   adherence, quality of life and disability                      |
