@@ -1,0 +1,35 @@
+---
+subtitle: Trial Management Group Meeting, May 21, 2025
+title: ADVANCE TRAUMA
+format: pdf
+---
+
+# Agenda
+
+1. **Batch 1 updates**
+   - Patient inclusions
+   - Summary data (see next page)
+   - ATLS training
+   - Nested staircase design and collection of secondary outcomes
+
+2. **Batch 2 updates**
+   - Sites
+     - Sion Hospital, Mumbai
+     - KEM Hospital, Mumbai
+     - Holy Family Hospital, Delhi
+     - Dayanand Medical College, Ludhiana
+     - Assam Medical College, Dibrugar
+
+3. **Batch 3 updates**
+     - SMHS Hospital, Government Medical College, Srinagar
+     - PGIMS, Rohtak?
+     - PGIMER, Chandigarh?
+
+3. **Additional points**
+
+```{r}
+#| echo: false
+#| out-width: 100%
+knitr::include_graphics("summary-data.pdf")
+```
+
