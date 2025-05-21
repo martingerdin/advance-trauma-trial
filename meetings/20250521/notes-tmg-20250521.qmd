@@ -7,20 +7,20 @@ format: pdf
 # Members Present
 
 -   Martin Gerdin Wärnberg (chair) (MGW)
--   Kapil Dev Soni (KDS)
--   Shamita Chatterjee (SC)
 -   Debojit Basak (DB)
--   Li Felländer-Tsai (LFT)
 -   Prashant Kharat (PK)
--   Monty Khajanchi (MK)
+-   Samriddhi Ranjan (SR)
 -   Rajdeep Singh (RS)
--   Johanna Berg (JB)
 -   Anurag Mishra (AM)
--   Vivekanand Jha (VJ)
 
 # Members Excused
 
--   Samriddhi Ranjan (SR)
+-   Johanna Berg (JB)
+-   Vivekanand Jha (VJ)
+-   Monty Khajanchi (MK)
+-   Li Felländer-Tsai (LFT)
+-   Kapil Dev Soni (KDS)
+-   Shamita Chatterjee (SC)
 -   Nobhojit Roy (NR)
 -   Anna Olofsson (AO)
 -   Karla Hemming (KH)
@@ -32,7 +32,7 @@ format: pdf
 
 1. **Batch 1 updates**
    - Patient inclusions
-   - Summary data (see next page)
+   - Summary data (see last page)
    - ATLS training
    - Nested staircase design and collection of secondary outcomes
 
@@ -49,12 +49,21 @@ format: pdf
      - PGIMS, Rohtak?
      - PGIMER, Chandigarh?
 
-3. **Additional points**
+4. **Additional points**
 
 # Notes and Decisions
 
-1. **Batch 1 updates**
+1. **Batch 1 updates** 
+  - Patient inclusions: There are two sites with lower than expected inclusion rates. For CMC Ludhiana, there was a misunderstanding about the inclusion during the nested staircase months, and then it has been very few presentations in May so far. For GMC Chandigarh, there was a delay in getting a CRC recruited, but that person is now including patients.
+  - The summary data reflects the current inclusion rates. Of note is that the number of injuries recorded is much higher in SSKM than the other sites. We have therefore arranged a couple of extra training sessions on how to record and code injuries.
+  - The first ATLS traning happens in July and the arrangments are on track.
+  - We have seen very low inclusion rates during the randomised shifts during the first staircase months. One potential reason is that the shift timings are substantially shorter than the duration of the postings of the residents. We discussed expanding the randomised shifts to 12 hours, and having morning and night shifts. An additional suggestion would be to include all patients presenting during the days of the shifts for the quality of life and disability assessments, even if the adherence data cannot be collected for all these patients. This require additional discussion.
 
+2. **Batch 2 updates** We have obtained ethical approval from Holy Family Hospital in Delhi. We are in the process of obtaining ethical approvals and completing clinical trial agreements with the other sites.
+
+3. **Batch 3 updates** We decided to schedule a screening interview with SMHS Hospital, Srinagar. The residents at PGIMS, Rohtak are already trained in ATLS. For PGIMER Chandigarh we need a new contact.
+
+4. There were no additional points.
   
 ```{r}
 #| echo: false
