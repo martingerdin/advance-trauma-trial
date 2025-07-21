@@ -27,7 +27,7 @@ Adult trauma patients presenting to the emergency department of a participating 
 
 *Clusters* are one or more units of physicians providing initial trauma care in the emergency department of tertiary hospitals in India.
 
-*Patients participants* are adult trauma patients who presents to the emergency department of participating hospitals and are admitted or transferred for admission.
+*Patients participants* are adult trauma patients who present to the emergency department of participating hospitals and are admitted or transferred for admission.
 
 **Intervention** 
 The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 

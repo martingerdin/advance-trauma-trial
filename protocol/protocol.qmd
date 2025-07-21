@@ -3,7 +3,7 @@ title: "Clinical Trial Protocol"
 subtitle: | 
   | ADVANCE TRAUMA
   |
-  | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Cluster Randomised Trial
+  | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial
 author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 bibliography: bibliography.bib
 csl: nature.csl
@@ -183,6 +183,15 @@ rows as needed.*
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          | 
 +=========+============+==================================================================+
+| 1.5.0   | 2025-06-12 | - Clarified the definition of clusters and units, based on       |
+|         |            |   discussions during the writeup of the protocol for publication |
+|         |            | - Clarified the patient exclusion criterion of isolated limb     |
+|         |            |   injury as isolated closed extremity fracture                   |
+|         |            | - Included "stepped-wedge" in the title                          |
+|         |            | - Corrected Eligibility criteria heading numbering               |
+|         |            | - Added citation for the nested staircase design                 |
+|         |            | - Revise intention to treat terminology                          |
++---------+------------+------------------------------------------------------------------+
 | 1.4.0   | 2025-04-30 | - Updated systematic review results and references               |
 |         |            | - Added visual abstract                                          |
 |         |            | - Added details on the nested staircase design for measuring     |
@@ -276,11 +285,11 @@ We will submit this trial to the Health Ministry Screening Committee at the Indi
 
 ## Overall trial design 
 
-We will conduct a batched stepped-wedge cluster randomised controlled trial (see @fig-trial-design). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. Each cluster will be at least one unit of physicians performing initial resuscitation of trauma patients in the emergency department of tertiary hospitals in India. The number of units that we will train in each hospital will depend on the sizes of these units and the volumes of patients that they see. If more than one unit is trained in the same hospital these units will be considered one unit for the purpose of randomisation. We choose this approach for two reasons: 1) it will not be logistically or financially feasible to train all physician in a given hospital; and 2) we need to balance cluster size with the number of clusters. We will conduct this trial in India because physicians providing initial trauma care in India are so far not routinely trained in ATLS^®^ or similar programmes.
+We will conduct a batched stepped-wedge cluster randomised controlled trial (see @fig-trial-design). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. In this trial, the unit of randomisation is the hospital: that is, the “clusters” randomised to the sequences of the stepped wedge design are the hospitals. Within each hospital, one or more units of physicians performing initial resuscitation of trauma patients in the emergency department will be trained. The number of units that will be trained in each hospital will depend on the sizes of these units and the volumes of patients the physicians attend. If more than one unit is trained in the same hospital, these are all considered to be part of the same cluster (i.e. hospital) for the purpose of randomisation. We choose this approach for two reasons: 1) it will not be logistically or financially feasible to train all physician in a given hospital; and 2) we need to balance cluster size with the number of clusters. We will conduct this trial in India because physicians providing initial trauma care in India are so far not routinely trained in ATLS^®^ or similar programmes.
 
 We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a `r number_to_text(transition.months)` month transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)` months.
 
-Within the main stepped-wedge design, we will nest a staircase design to measure a range of secondary outcomes (see @fig-nested-staircase-design). The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase. 
+Within the main stepped-wedge design, we will nest a staircase design to measure a range of secondary outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase. 
 
 ## Design justification
 
@@ -330,55 +339,45 @@ knitr::include_graphics(
 
 ## Eligibility criteria
 
-Our trial include eligibility criteria on three levels: hospitals, clusters and patient participants. We include eligibility on both the hospital and cluster level to facilitate the screening process.
+Our trial has eligibility criteria on the cluster and patient participant level.
 
-## Hospital selection
+### Cluster selection
 
-Hospitals will be secondary or tertiary hospitals providing trauma care in India. Hospital will be the unit of randomisation.
+Clusters will be secondary or tertiary hospitals providing trauma care in India. This will be the unit of randomisation. Within each cluster, one or more units of physicians providing initial trauma care in the emergency department will be trained. These units already exist in the hospitals and rotate through the emergency department on specific days of the week.
 
-### Inclusions criteria
+#### Inclusion criteria
 
-**Hospitals** must meet the following criteria:
+**Clusters** must meet the following criteria:
 
 - admit or refer/transfer for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
 - provide surgical and orthopaedic emergency services around the clock; and
 - have at most 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme, like ATLS^®^ or Primary Trauma Care (PTC).
 
-### Exclusion criteria
+Additionally, the units to be trained within the cluster must meet the following criteria:
+
+- admits or refers/transfers for admission at least 12 patients with trauma per month for at least the last six months; and
+- no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
+
+#### Exclusion criteria
 
 **Hospitals** are excluded if they meet any of the following criteria:
 
-- the hospital of the cluster implements a formalised trauma life support training programme [^note:concurrent-training-programmes] during the trial period; or
-- the hospital of the cluster plan to implement or implements other major interventions[^note:major-interventions] that affects trauma care during the trial period.
+- implement a formalised trauma life support training programme [^note:concurrent-training-programmes] during the trial period; or
+- plan to implement or implement other major interventions[^note:major-interventions] that affects trauma care during the trial period.
 
 [^note:concurrent-training-programmes]: These include but are not limited to the National Emergency Life Support (NELS) programme, the Basic Trauma Life Support (BTLS) programme, the Pre-Hospital Trauma Life Support (PHTLS) programme, the Trauma Nursing Core Course (TNCC) and the Advanced Trauma Care for Nurses (ATCN) programme.
 
 [^note:major-interventions]: These include but are not limited to implementing of a trauma team approach, opening a trauma centre and  implementing a trauma quality improvement programme.
 
-### Screening
+#### Screening
 
-The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-screening-interview-instrument). To avoid excluding centres we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019]. 
+The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-screening-interview-instrument). To avoid excluding hospitals we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019]. 
 
-## Cluster selection
-
-Clusters are one or more units of physicians providing initial trauma care in the emergency department of secondary or tertiary hospitals in India. These units already exist in the hospitals and rotate through the emergency department on specific days of the week.
-
-### Inclusion criteria
-
-**Clusters** must meet the following criteria:
-
-- admits or refers/transfers for admission at least 12 patients with trauma per month for at least the last six months; and
-- no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
-
-### Screening
-
-The screening of clusters is part of the hospital screening process. 
-
-## Patient participants selection
+### Patient participant selection
 
 Patient participants are adult trauma patients who presents to the emergency department of participating hospitals and are admitted or transferred for admission.
 
-### Inclusion criteria
+#### Inclusion criteria
 
 **Patients participants** must meet the following criteria:
 
@@ -386,20 +385,20 @@ Patient participants are adult trauma patients who presents to the emergency dep
 - trauma occurred less than 48 hours before arrival at the hospital;
 - present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
 - admitted, or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
-- managed by a participating cluster in the emergency department.
+- managed by a participating unit in the emergency department.
 
-### Exclusion criteria
+#### Exclusion criteria
 
 **Patients participants** are excluded if they meet the following criteria:
 
-- present with isolated limb injuries; or
+- present with isolated closed extremity fracture; or
 - are directly admitted to a ward without being seen by a physician in the emergency department.
 
-### Screening
+#### Screening
 
 Clinical research coordinators will screen patient participants either as they arrive to the emergency department or using emergency department registers. The patients or their representatives will receive written information about the study before they are discharged, including about their right to opt out at any time before final analysis. Phone numbers for out of hospital follow up will be extracted from the emergency department registers, and will be securely held only by the clinical research coordinators at each sites.
 
-### Withdrawal criteria
+#### Withdrawal criteria
 
 Patient participants can choose to withdraw their consent for collection of non-routinely recorded data at any time before the final analysis. If they withdraw their consent for this data collection the clinical research coordinator will not collect any more of this data, which also means that no further follow-ups will be conducted. They can also choose to have the data already collected about them removed from the trial at any time before final analysis of the data. Withdrawal of consent or removal of data from the trial will not affect their care in any way. If the patient participant withdraws consent, follow-up of this participant will be performed according to the participating hospitals routine.
 
@@ -821,7 +820,7 @@ after the trial is completed.*
 
 ### General principles
 
-We will conduct all analysis by modified intention to treat. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. We will not adjust for multiplicity of analyses because none of the secondary outcomes will be singularly more important. However, all secondary outcomes will be interpreted with due consideration for how all are affected by the intervention without putting any undue emphasis on a single outcome that might be statistically significant but where all others appear to have remained unchanged. 
+The primary analysis set will include all observations within clusters with available data and irrespective of the receipt of the intervention. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. We will not adjust for multiplicity of analyses because none of the secondary outcomes will be singularly more important. However, all secondary outcomes will be interpreted with due consideration for how all are affected by the intervention without putting any undue emphasis on a single outcome that might be statistically significant but where all others appear to have remained unchanged. 
 
 We will use a two-sided significance level of 5% and estimate 95% confidence intervals. The primary subgroup analyses will be based on geographical region because demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results[^question:batch-region]. Additional subgroup analyses will include age across the groups older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021]; sex; and the clinical cohorts blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury.
 
@@ -869,7 +868,7 @@ get_design_matrix(
 
 ### Interim analysis
 
-There will be one interim analyses after half of the batches have completed the trial. The interim analyses will be assessed by the joint Trial Steering and Data Monitoring Committee. The purposes of this interim analysis will be to:
+There will be one interim analysis after half of the batches have completed the trial. The interim analysis will be assessed by the joint Trial Steering and Data Monitoring Committee. The purposes of this interim analysis will be to:
 
 - assess the trial's feasibility and recommend stopping the trial if the trial is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes;
 - compare characteristics across intervention conditions to monitor for differential recruitment/ascertainment between intervention and control.

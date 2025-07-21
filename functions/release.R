@@ -1,4 +1,4 @@
-release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, recompile.only = FALSE, commit = TRUE, tag = TRUE) {
+release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, commit = TRUE, tag = TRUE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
 
@@ -7,6 +7,15 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
 
     # Check that file exists
     assert_that(file.exists(file.name), msg = paste0("File ", file.name, " does not exist"))
+
+    # Confirm the release date
+    if (!is.null(release.date)) {
+        message <- paste0("Is this the correct release date? (YYYY-MM-DD) ", release.date)
+        use.release.date <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
+        if (!use.release.date) {
+            stop("Release aborted")
+        }
+    }
 
     # Read current version from _variables.yml
     description <- yaml::read_yaml("_variables.yml")
@@ -144,7 +153,11 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         description$version <- new.version.string
 
         # Update date
-        description$date <- as.character(lubridate::today())
+        if (is.null(release.date)) {
+            description$date <- as.character(lubridate::today())
+        } else {
+            description$date <- release.date
+        }
 
         # Update version type
         description$version_type <- version.type
