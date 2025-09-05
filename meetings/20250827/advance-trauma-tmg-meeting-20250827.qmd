@@ -4,11 +4,21 @@ format:
     reference-doc: ../reference-doc.docx
 ---
 
+# Date
+
+August 27, 2025
+
 # Members present
 
 # Members not in attendance
 
 # Agenda
 
-- Update on progress
-  - Patien
+- Batch 1 patient inclusion
+- Batch 1 data review (see next page)
+- Batch 2 progress update
+- Batch 3 progress update
+- Protocol paper progress
+- Any other business
+
+# Notes and decisions
