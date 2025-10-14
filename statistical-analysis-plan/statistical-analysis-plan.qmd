@@ -107,6 +107,28 @@ knitr::include_graphics(
 )
 ```
 
+Within the main stepped-wedge design, we will nest a staircase design to measure a range of secondary outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.  
+
+```{r nested-staircase-design}
+#| echo: false
+#| label: fig-nested-staircase-design
+#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase."
+
+knitr::include_graphics(
+  create_trial_design_flowchart(
+    clusters = clusters, sequences = sequences, batches = batches,
+    min.standard.care.months = min.standard.care.months,
+    min.intervention.months = min.intervention.months,
+    batches.overlap.months = batches.overlap.months,
+    transition.months = transition.months,
+    transition.overlap.months = transition.overlap.months,
+    staircase.months = staircase.months,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
+
 ## Randomisation of clusters
 
 <!-- Need to add how clusters will be randomised -->

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Version 0.4.0, 2024-10-21">
+<meta name="author" content="Version 0.5.0, 2025-10-14">
 
 <title>Statistical Analysis Plan</title>
 <style>
@@ -147,7 +147,7 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Version 0.4.0, 2024-10-21 </p>
+             <p>Version 0.5.0, 2025-10-14 </p>
           </div>
   </div>
     
@@ -164,7 +164,7 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 <section id="study-identifiers" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="study-identifiers"><span class="header-section-number">1.1</span> Study identifiers</h2>
 <ul>
-<li><p>Protocol version 1.2.0 dated 2024-08-26</p></li>
+<li><p>Protocol version 1.5.0 dated 2025-06-12</p></li>
 <li><p>ClinicalTrials.gov identifier: <a href="https://clinicaltrials.gov/ct2/show/NCT06321419">NCT06321419</a></p></li>
 <li><p>Clinical Trials Registry - India identifier: CTRI/2024/07/071336</p></li>
 </ul>
@@ -210,6 +210,11 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 <td>University of Birmingham, Birmingham, UK</td>
 <td>Statistician</td>
 </tr>
+<tr class="odd">
+<td>Jessica Kasza <a href="https://orcid.org/0000-0002-8940-0136"><img src="ORCIDiD_icon16x16.png" width="16" height="16"></a></td>
+<td>Monash University, Melbourne, Australia</td>
+<td>Statistician</td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -228,10 +233,10 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 <p><strong>Eligibility Criteria</strong></p>
 <p><em>Hospitals</em> are secondary or tertiary hospitals in India that admit or refer/transfer for admission at least 400 patients with trauma per year.</p>
 <p><em>Clusters</em> are one or more units of physicians providing initial trauma care in the emergency department of tertiary hospitals in India.</p>
-<p><em>Patients participants</em> are adult trauma patients who presents to the emergency department of participating hospitals and are admitted or transferred for admission.</p>
+<p><em>Patients participants</em> are adult trauma patients who present to the emergency department of participating hospitals and are admitted or transferred for admission.</p>
 <p><strong>Intervention</strong> The intervention will be ATLS<sup>®</sup> training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS<sup>®</sup> training facility in India.</p>
 <p><strong>Ethical Considerations</strong> We will use an opt-out consent approach for collection of routinely recorded data. We will obtain informed consent for collection of non-routinely recorded data, such as quality of life and disability outcomes. Patients who are unconscious or lack a legally authorized representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection.</p>
-<p><strong>Trial Period</strong> October 1, 2024, to September 30, 2029</p>
+<p><strong>Trial Period</strong> February 2025, to October 2029</p>
 <div style="page-break-after: always;"></div>
 </section>
 <section id="special-considerations" class="level1" data-number="3">
@@ -268,11 +273,26 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 <h2 data-number="5.3" class="anchored" data-anchor-id="design"><span class="header-section-number">5.3</span> Design</h2>
 <p>This is a batched stepped-wedge cluster randomised trial, including a total of 30 (see <a href="#fig-trial-design">Figure&nbsp;1</a>). The trial will be composed of 6 batches of identical 12-period 5-sequence design, with one cluster being assigned to each sequence of each batch<span class="citation" data-cites="Kasza2022"><sup><a href="#ref-Kasza2022" role="doc-biblioref">1</a></sup></span>. Each period is one month, and each cluster will be in the trial for a total of 13 months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of 6 months between successive batches.</p>
 <div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `trans` argument of `sec_axis()` is deprecated as of ggplot2 3.5.0.
+ℹ Please use the `transform` argument instead.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-trial-design" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.png" class="img-fluid figure-img"></p>
+<p><img src="trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.0-staircase-months.png" class="img-fluid figure-img" width="886"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Within the main stepped-wedge design, we will nest a staircase design to measure a range of secondary outcomes (see <a href="#fig-nested-staircase-design">Figure&nbsp;2</a>)<span class="citation" data-cites="grantham_staircase_2024"><sup><a href="#ref-grantham_staircase_2024" role="doc-biblioref">2</a></sup></span>. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-nested-staircase-design" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.3-staircase-months.png" class="img-fluid figure-img" width="886"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.</figcaption>
 </figure>
 </div>
 </div>
@@ -291,17 +311,25 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 </section>
 <section id="secondary-outcomes" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="secondary-outcomes"><span class="header-section-number">5.5.2</span> Secondary outcomes</h3>
+<section id="collected-using-the-main-stepped-wedge-design" class="level4">
+<h4 class="anchored" data-anchor-id="collected-using-the-main-stepped-wedge-design">Collected using the main stepped-wedge design</h4>
 <ul>
 <li>All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department. Data on this outcome will be collected in the same way as for the primary outcome.</li>
-<li>Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data from a stratified random sample (site and period) of patient participants. The sampling will be designed so that is maximises statistical efficiency.</li>
-<li>Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected from a stratified random sample of participants.</li>
-<li>Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.</li>
 <li>Length of emergency department stay. Data on this outcome will be collected from patient hospital records.</li>
 <li>Length of hospital stay. Data on this outcome will be collected from patient hospital records.</li>
 <li>Intensive care unit admission. Data on this outcome will be collected from patient hospital records.</li>
 <li>Length of intensive care unit stay. Data on this outcome will be collected from patient hospital records.</li>
-<li>Adherence to ATLS<sup>®</sup> principles during initial patient resuscitation, up to one hour after the physician has first seen the patient. This assessment will be done using a 14 item checklist covering the key steps of the ATLS<sup>®</sup> primary survey,which was modelled based on previous work on ATLS<sup>®</sup> adherence<span class="citation" data-cites="aukstakalnis_impact_2024"><sup><a href="#ref-aukstakalnis_impact_2024" role="doc-biblioref">2</a></sup></span>. We will consider completion of all 14 steps as 100% adherence. We will collect this data by observing the care of a random sample of patients. The sampling will be designed so that is maximises statistical efficiency. The clinical research coordinators collecting the data will be trained by participating in an ATLS<sup>®</sup> course as observers, prior to the start of the trial.</li>
+<li>Return to work at 30 days and three months after arrival at the emergency department. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged.</li>
 </ul>
+</section>
+<section id="collected-using-the-nested-staircase-design" class="level4">
+<h4 class="anchored" data-anchor-id="collected-using-the-nested-staircase-design">Collected using the nested staircase design</h4>
+<ul>
+<li>Adherence to ATLS<sup>®</sup> principles during initial patient resuscitation, up to one hour after the physician has first seen the patient. This assessment will be done using a 14 item checklist covering the key steps of the ATLS<sup>®</sup> primary survey, which was modelled based on previous work on ATLS<sup>®</sup> adherence<span class="citation" data-cites="aukstakalnis_impact_2024"><sup><a href="#ref-aukstakalnis_impact_2024" role="doc-biblioref">3</a></sup></span>. We will consider completion of all 14 steps as 100% adherence. The clinical research coordinators collecting the data will be trained by the trial team to do this, prior to the start of the trial. We will collect this data by observing the care of a random sample of patients. The sampling will be designed as a nested staircase design.</li>
+<li>Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, measured by the official and validated translations of the EQ5D3L. Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. We will collect this data using a nested staircase design.</li>
+<li>Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, assessed using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome will be collected in person if the patient is still in hospital, or by phone if the patient has been discharged. This data will also be collected using a nested staircase design.</li>
+</ul>
+</section>
 </section>
 </section>
 <section id="statistical-hypotheses" class="level2" data-number="5.6">
@@ -314,23 +342,30 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 </section>
 <section id="sample-size-calculations" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="sample-size-calculations"><span class="header-section-number">5.7</span> Sample size calculations</h2>
-<p>With 30 clusters across 6 batches and a total sample size of 4320 our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS<sup>®</sup> training (see <a href="#fig-power-curves">Figure&nbsp;2</a>). This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design and assumed an ICC of 0.02, but considered sensitivity across the range 0.01-0.05<span class="citation" data-cites="Campbell2005 Eldridge2015"><sup><a href="#ref-Campbell2005" role="doc-biblioref">3</a>,<a href="#ref-Eldridge2015" role="doc-biblioref">4</a></sup></span>, and a CAC of 0.9 but considered sensitivity across the range 0.8-1.0, based on our pilot study and current guidance<span class="citation" data-cites="Hemming2020Feb Martin2016 Korevaar2021"><sup><a href="#ref-Hemming2020Feb" role="doc-biblioref">5</a>–<a href="#ref-Korevaar2021" role="doc-biblioref">7</a></sup></span>. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately 12 observations per month to the analysis, based on our previous work.</p>
+<section id="main-stepped-wedge-design-and-primary-outcome" class="level4">
+<h4 class="anchored" data-anchor-id="main-stepped-wedge-design-and-primary-outcome">Main stepped wedge design and primary outcome</h4>
+<p>With 30 clusters across 6 batches and a total sample size of 4320 our study has ~90% power across different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to detect a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS<sup>®</sup> training (see <a href="#fig-power-curves">Figure&nbsp;3</a>)<span class="citation" data-cites="Hemming2020Feb"><sup>@ <a href="#ref-Hemming2020Feb" role="doc-biblioref">4</a></sup></span>. This effect is a conservative estimate and the reduction equals a risk ratio of 0.75, which would be clinically important while also being consistent with our pilot study and updated systematic review. We allowed for the clustered design, incorporated the one month transition period, and assumed: a discrete time decay correlation structure, an ICC of 0.02 (but considered sensitivity across the range 0.01-0.05), and a CAC of 0.9 (but considered sensitivity across the range 0.8-1.0), based on our pilot study and current guidance<span class="citation" data-cites="Campbell2005 Eldridge2015 Martin2016 Korevaar2021"><sup><a href="#ref-Campbell2005" role="doc-biblioref">5</a>–<a href="#ref-Korevaar2021" role="doc-biblioref">8</a></sup></span>. We included the CAC to allow for variation in clustering over time. We assume that each cluster will contribute approximately 12 observations per month to the analysis, but allowed for substantial variation in cluster sizes, based on our previous work.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-power-curves" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="./combined-power-curves.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). <strong>A)</strong> Shows power curves assuming a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS<sup>®</sup> training. <strong>B)</strong> Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS<sup>®</sup> training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC.</figcaption>
+<p><img src="./combined-power-curves.png" class="img-fluid figure-img" width="1062"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Power curves for different combinations of cluster autocorrelations (CAC) and intra-cluster correlations (ICC). <strong>A)</strong> Shows power curves assuming a reduction in the primary outcome of in-hospital mortality within 30 days from 20% under standard care to 15% after ATLS<sup>®</sup> training. <strong>B)</strong> Shows power curves assuming a reduction in the primary outcome from 10% under standard care to 7.5% after ATLS<sup>®</sup> training. Under this scenario, we would need to increase the sample size per month to around 30 observations to achieve 90% powere under most combinations of CAC and ICC.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
+<section id="nested-staircase-design-and-secondary-outcomes" class="level4">
+<h4 class="anchored" data-anchor-id="nested-staircase-design-and-secondary-outcomes">Nested staircase design and secondary outcomes</h4>
+<p>The secondary outcomes that will be measured using the nested staircase design are adherence to ATLS<sup>®</sup> principles during initial patient resuscitation, quality of life, and disability. The expected effect of the intervention on each of these outcomes are an improvement in adherence from 50% during standard care to 70% after training<span class="citation" data-cites="lashoher_implementation_2017"><sup><a href="#ref-lashoher_implementation_2017" role="doc-biblioref"><strong>lashoher_implementation_2017?</strong></a></sup></span>, an increase in EQ5D5L health status from 70 during care to 75 after training<span class="citation" data-cites="kapitan_effect_2024"><sup><a href="#ref-kapitan_effect_2024" role="doc-biblioref"><strong>kapitan_effect_2024?</strong></a></sup></span>, and finally a decrease in disability from a baseline value of 25 during standard care to 22.5 after training<span class="citation" data-cites="higgins_psychometric_2021"><sup><a href="#ref-higgins_psychometric_2021" role="doc-biblioref"><strong>higgins_psychometric_2021?</strong></a></sup></span>. For quality of life and disability, these effects correspond to standardised effect sizes, expressed as Cohen’s d, of 0.5. With 30 clusters in total, six per sequence, for a discrete time decay correlation structure, with ICCs of 0.01 to 0.15 and a CAC of 0.8, there is &gt;80% power to detect an these effects by including four patients in each cluster in each period. Accounting for loss to follow-up, we will include at least six patients per cluster per month. These patients will be a random subset of patients included during the staircase months. The random subset will be selected using simple random sampling on the shift level, meaning that the timing of the clinical research coordinator’s shift will be randomised to cover approximately eight hours during the morning, afternoon, or night shift. Adherence to ATLS<sup>®</sup> principles, quality of life, and disability will be measured in all patients included during these shifts. In each hospital, the number of shifts that will be randomised will be determined by the volume of patients included during the months preceding the staircase months.</p>
+</section>
+</section>
 <section id="statistical-principles" class="level2" data-number="5.8">
 <h2 data-number="5.8" class="anchored" data-anchor-id="statistical-principles"><span class="header-section-number">5.8</span> Statistical principles</h2>
 <section id="statistical-software" class="level3" data-number="5.8.1">
 <h3 data-number="5.8.1" class="anchored" data-anchor-id="statistical-software"><span class="header-section-number">5.8.1</span> Statistical software</h3>
-<p>We will use the R Statistical Software for all analyses<span class="citation" data-cites="R"><sup><a href="#ref-R" role="doc-biblioref">8</a></sup></span>.</p>
+<p>We will use the R Statistical Software for all analyses<span class="citation" data-cites="R"><sup><a href="#ref-R" role="doc-biblioref">9</a></sup></span>.</p>
 </section>
 <section id="levels-of-statistical-significance-and-confidence" class="level3" data-number="5.8.2">
 <h3 data-number="5.8.2" class="anchored" data-anchor-id="levels-of-statistical-significance-and-confidence"><span class="header-section-number">5.8.2</span> Levels of statistical significance and confidence</h3>
@@ -339,7 +374,7 @@ Effects of Advanced Trauma Life Support<sup>®</sup> Training Compared to Standa
 </section>
 <section id="analysis-populations" class="level2" data-number="5.9">
 <h2 data-number="5.9" class="anchored" data-anchor-id="analysis-populations"><span class="header-section-number">5.9</span> Analysis populations</h2>
-<p>The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses, according to the planned date of transition from standard care. We might consider a per protocol analysis if cluster deviate considerably from the planned date of transition, using the actual date of transition as the cut-off point. We will report the results of the per protocol analysis as a sensitivity analysis. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials<span class="citation" data-cites="Hemming2018"><sup><a href="#ref-Hemming2018" role="doc-biblioref">9</a></sup></span>.</p>
+<p>The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The group allocation for a patient depends on the period in which the patient was admitted to the hospital, and patients will be considered exposed to the intervention if they were admitted to the hospital at any time point following the transition period. We will use an intention-to-treat approach for all analyses, according to the planned date of transition from standard care. We might consider a per protocol analysis if cluster deviate considerably from the planned date of transition, using the actual date of transition as the cut-off point. We will report the results of the per protocol analysis as a sensitivity analysis. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials<span class="citation" data-cites="Hemming2018"><sup><a href="#ref-Hemming2018" role="doc-biblioref">10</a></sup></span>.</p>
 </section>
 <section id="baseline-analyses" class="level2" data-number="5.10">
 <h2 data-number="5.10" class="anchored" data-anchor-id="baseline-analyses"><span class="header-section-number">5.10</span> Baseline analyses</h2>
@@ -367,7 +402,7 @@ We will recalculate the sample size based on the observed period sizes and the o
 <h3 data-number="5.12.1" class="anchored" data-anchor-id="main-analyses"><span class="header-section-number">5.12.1</span> Main analyses</h3>
 <section id="mixed-effects-binomial-model-with-logit-link" class="level4">
 <h4 class="anchored" data-anchor-id="mixed-effects-binomial-model-with-logit-link">Mixed effects binomial model with logit link</h4>
-<p>We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The primary analysis will allow for clustering as a random cluster and random cluster by period effect<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, both assumed to follow a normal distribution. The full model is specified in <a href="#eq-logit-model">Equation&nbsp;1</a>. To correct the potential inflation of the type I error rate due to small number of clusters, the Kenward and Roger small sample correction will be used [<span class="citation" data-cites="kenward_small_1997"><sup><a href="#ref-kenward_small_1997" role="doc-biblioref">10</a></sup></span>]<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL).</p>
+<p>We will use a mixed effects binomial model with a logit link to estimate the OR. We will include fixed effects for period as a categorical variable and a fixed effect for intervention exposure<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The primary analysis will allow for clustering as a random cluster and random cluster by period effect<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, both assumed to follow a normal distribution. The full model is specified in <a href="#eq-logit-model">Equation&nbsp;1</a>. To correct the potential inflation of the type I error rate due to small number of clusters, a correction for a small number of clusters will be applied, but the correction that will be selected will be based on the best available evidence available closer to the time, and it may differ for the outcomes collected via the complete and incomplete designs. This model will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL).</p>
 <p><span id="eq-logit-model"><span class="math display">\[
 \text{logit}(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 \tag{1}\]</span></span></p>
@@ -375,7 +410,7 @@ We will recalculate the sample size based on the observed period sizes and the o
 <ul>
 <li><span class="math inline">\(\text{Pr}(Y_{bkti} = 1)\)</span>: the probability of death for patient <span class="math inline">\(i = 1, \dotsc,m\)</span> in cluster <span class="math inline">\(k = 1, \dotsc, 30\)</span> during period <span class="math inline">\(t = 1, \dotsc, 12\)</span> in batch <span class="math inline">\(b = 1, \dotsc, 6\)</span>.</li>
 <li><span class="math inline">\(\mu\)</span>: the intercept, representing the baseline log-odds of the outcome when all predictors are set to 1.</li>
-<li><span class="math inline">\(\beta_{bt}\)</span>: the fixed effect of period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, accounting for a separate period effect for each batch, so that there is a total of 72 period effects.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li><span class="math inline">\(\beta_{bt}\)</span>: the fixed effect of period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, accounting for a separate period effect for each batch, so that there is a total of 72 period effects.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
 <li><span class="math inline">\(\theta\)</span>: the fixed effect of intervention exposure, representing the effect of ATLS® exposure on the probability of death.</li>
 <li><span class="math inline">\(X_{bkt}\)</span>: the treatment arm indicator for patient <span class="math inline">\(i\)</span> in cluster <span class="math inline">\(k\)</span> during period <span class="math inline">\(t\)</span> in batch <span class="math inline">\(b\)</span>, with <span class="math inline">\(X_{bkt} = 1\)</span> for ATLS<sup>®</sup> and <span class="math inline">\(X_{bkt} = 0\)</span> for standard care.</li>
 <li><span class="math inline">\(\alpha_{bk}\)</span>: the random effect of cluster <span class="math inline">\(k\)</span> in batch <span class="math inline">\(b\)</span>, representing the variability in outcomes between different clusters (hospitals) across batches.</li>
@@ -471,7 +506,7 @@ g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \theta_{\text{i
 </section>
 <section id="adjusted-analyses" class="level3" data-number="5.12.3">
 <h3 data-number="5.12.3" class="anchored" data-anchor-id="adjusted-analyses"><span class="header-section-number">5.12.3</span> Adjusted analyses</h3>
-<p>Fully adjusted covariate analysis will additionally adjust for<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> (expected % missing data in parentheses):</p>
+<p>Fully adjusted covariate analysis will additionally adjust for<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> (expected % missing data in parentheses):</p>
 <ul>
 <li>Age (&lt;5%)</li>
 <li>Sex (&lt;5%)</li>
@@ -484,7 +519,7 @@ g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \theta_{\text{i
 </section>
 <section id="subgroup-analyses" class="level3" data-number="5.12.4">
 <h3 data-number="5.12.4" class="anchored" data-anchor-id="subgroup-analyses"><span class="header-section-number">5.12.4</span> Subgroup analyses</h3>
-<p>We will perform the following subgroup analyses<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>:</p>
+<p>We will perform the following subgroup analyses<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>:</p>
 <ul>
 <li>geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;</li>
 <li>age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [<span class="citation" data-cites="Diaz2021"><sup><a href="#ref-Diaz2021" role="doc-biblioref">12</a></sup></span>;</li>
@@ -595,32 +630,32 @@ Let us discuss this further.
 <div id="ref-Kasza2022" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Kasza, J. <em>et al.</em> The batched stepped wedge design: A design robust to delays in cluster recruitment. <em>Stat Med</em> <strong>41</strong>, 3627–3641 (2022).</div>
 </div>
+<div id="ref-grantham_staircase_2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Grantham, K. L. <em>et al.</em> The staircase cluster randomised trial design: <span>A</span> pragmatic alternative to the stepped wedge. <em>Statistical Methods in Medical Research</em> <strong>33</strong>, 24–41 (2024).</div>
+</div>
 <div id="ref-aukstakalnis_impact_2024" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Aukstakalnis, V. <em>et al.</em> Impact of video recordings review with structured debriefings on trauma team performance: A prospective observational cohort study. <em>European Journal of Trauma and Emergency Surgery: Official Publication of the European Trauma Society</em> (2024).</div>
-</div>
-<div id="ref-Campbell2005" class="csl-entry" role="listitem">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Campbell, M. K. <em>et al.</em> Determinants of the intracluster correlation coefficient in cluster randomized trials: The case of implementation research. <em>Clinical Trials</em> <strong>2</strong>, 99–107 (2005).</div>
-</div>
-<div id="ref-Eldridge2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">Eldridge, S. M. <em>et al.</em> How big should the pilot study for my cluster randomised trial be? <em>Stat Methods Med Res</em> <strong>25</strong>, 1039–1056 (2015).</div>
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Aukstakalnis, V. <em>et al.</em> Impact of video recordings review with structured debriefings on trauma team performance: A prospective observational cohort study. <em>European Journal of Trauma and Emergency Surgery: Official Publication of the European Trauma Society</em> (2024).</div>
 </div>
 <div id="ref-Hemming2020Feb" class="csl-entry" role="listitem">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline">Hemming, K. <em>et al.</em> A tutorial on sample size calculation for multiple-period cluster randomized parallel, cross-over and stepped-wedge trials using the shiny CRT calculator. <em>Int J Epidemiol</em> <strong>49</strong>, 979–995 (2020).</div>
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Hemming, K. <em>et al.</em> A tutorial on sample size calculation for multiple-period cluster randomized parallel, cross-over and stepped-wedge trials using the shiny CRT calculator. <em>Int J Epidemiol</em> <strong>49</strong>, 979–995 (2020).</div>
+</div>
+<div id="ref-Campbell2005" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Campbell, M. K. <em>et al.</em> Determinants of the intracluster correlation coefficient in cluster randomized trials: The case of implementation research. <em>Clinical Trials</em> <strong>2</strong>, 99–107 (2005).</div>
+</div>
+<div id="ref-Eldridge2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Eldridge, S. M. <em>et al.</em> How big should the pilot study for my cluster randomised trial be? <em>Stat Methods Med Res</em> <strong>25</strong>, 1039–1056 (2015).</div>
 </div>
 <div id="ref-Martin2016" class="csl-entry" role="listitem">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Martin, J. <em>et al.</em> Intra-cluster and inter-period correlation coefficients for cross-sectional cluster randomised controlled trials for type-2 diabetes in UK primary care. <em>Trials</em> <strong>17</strong>, (2016).</div>
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Martin, J. <em>et al.</em> Intra-cluster and inter-period correlation coefficients for cross-sectional cluster randomised controlled trials for type-2 diabetes in UK primary care. <em>Trials</em> <strong>17</strong>, (2016).</div>
 </div>
 <div id="ref-Korevaar2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">Korevaar, E. <em>et al.</em> Intra-cluster correlations from the CLustered OUtcome dataset bank to inform the design of longitudinal cluster trials. <em>Clinical Trials</em> <strong>18</strong>, 529–540 (2021).</div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Korevaar, E. <em>et al.</em> Intra-cluster correlations from the CLustered OUtcome dataset bank to inform the design of longitudinal cluster trials. <em>Clinical Trials</em> <strong>18</strong>, 529–540 (2021).</div>
 </div>
 <div id="ref-R" class="csl-entry" role="listitem">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">R Core Team. <em>R: A language and environment for statistical computing</em>. (R Foundation for Statistical Computing, 2023).</div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">R Core Team. <em>R: A language and environment for statistical computing</em>. (R Foundation for Statistical Computing, 2023).</div>
 </div>
 <div id="ref-Hemming2018" class="csl-entry" role="listitem">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">Hemming, K. <em>et al.</em> Reporting of stepped wedge cluster randomised trials: Extension of the CONSORT 2010 statement with explanation and elaboration. <em>BMJ</em> k1614 (2018).</div>
-</div>
-<div id="ref-kenward_small_1997" class="csl-entry" role="listitem">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline">Kenward, M. G. <em>et al.</em> Small <span>Sample</span> <span>Inference</span> for <span>Fixed</span> <span>Effects</span> from <span>Restricted</span> <span>Maximum</span> <span>Likelihood</span>. <em>Biometrics</em> <strong>53</strong>, 983–997 (1997).</div>
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Hemming, K. <em>et al.</em> Reporting of stepped wedge cluster randomised trials: Extension of the CONSORT 2010 statement with explanation and elaboration. <em>BMJ</em> k1614 (2018).</div>
 </div>
 <div id="ref-kenny_analysis_2022" class="csl-entry" role="listitem">
 <div class="csl-left-margin">11. </div><div class="csl-right-inline">Kenny, A. <em>et al.</em> Analysis of stepped wedge cluster randomized trials in the presence of a time-varying treatment effect. <em>Statistics in medicine</em> 10.1002/sim.9511 (2022).</div>
@@ -637,10 +672,9 @@ Let us discuss this further.
 <li id="fn1"><p><strong>TODO:</strong> James gets back with a short snippet with more details on how the randomisation will be done.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p><strong>Question:</strong> Should we adjust for calendar time because the last batch will be two years later than the first batch?<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p><strong>Question:</strong> Just a thought: keep in mind the complexity of the random effects structure; if it leads to convergence problems or overfitting, should we consider simplifying the random effects?<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><strong>Questions about Kenward and Roger small sample correction:</strong> AO is reading up on the optimal way to do small sample correction for binary outcomes in a stepped-wedge cluster randomised trial.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p><strong>Question:</strong> The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><strong>Questions:</strong> 1. Should we adjust for calendar time because the last batch will be two years later than the first batch? 2. Should we add it as covariate in the list above? 3. Should it be continuous (e.g., months since the study started) or categorical calendar time (if you expect non-linear trends or stepwise changes over years)? 4. Should we analyse Time Since Admission? Depending on the nature of the trauma, the time since patient admission might also influence outcomes, especially if the timing of interventions or care decisions plays a critical role. Eg. time from admission to surgery.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p><strong>Question:</strong> Are we exploring too many subgroups?<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><strong>Question:</strong> The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><strong>Questions:</strong> 1. Should we adjust for calendar time because the last batch will be two years later than the first batch? 2. Should we add it as covariate in the list above? 3. Should it be continuous (e.g., months since the study started) or categorical calendar time (if you expect non-linear trends or stepwise changes over years)? 4. Should we analyse Time Since Admission? Depending on the nature of the trauma, the time since patient admission might also influence outcomes, especially if the timing of interventions or care decisions plays a critical role. Eg. time from admission to surgery.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><strong>Question:</strong> Are we exploring too many subgroups?<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
