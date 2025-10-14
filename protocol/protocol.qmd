@@ -5,7 +5,7 @@ subtitle: |
   |
   | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial
 author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
-bibliography: bibliography.bib
+bibliography: ../shared-assets/bibliography.bib
 csl: nature.csl
 ---
 ```{r setup, include=FALSE}
