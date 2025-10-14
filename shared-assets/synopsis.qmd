@@ -19,7 +19,7 @@ Batched stepped-wedge cluster randomised trial in India.
 Adult trauma patients presenting to the emergency department of a participating hospital.
 
 **Sample Size** 
-`r number_to_text(clusters)` clusters and `r number_to_text(sample.size)` patients.
+`r number_to_text(clusters)` clusters and at least `r number_to_text(sample.size)` patients.
 
 **Eligibility Criteria**
 
