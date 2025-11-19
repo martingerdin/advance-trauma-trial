@@ -33,6 +33,10 @@
 #'     the transition phase to include in the staircase design. Must be
 #'     a length 1 numeric value greater than or equal to 0. Default is
 #'     0.
+#' @param current.month Numeric or NULL. If provided, a vertical line
+#'     will be drawn at this month to indicate trial progress. Must be
+#'     a length 1 numeric value greater than or equal to 0. Default is
+#'     NULL (no progress line).
 #' @param return.figure Logical. If TRUE the function returns the
 #'     figure. Defaults. to TRUE.
 #' @param save Logical. If TRUE the trial design figure is saved to
@@ -49,6 +53,7 @@ create_trial_design_flowchart <- function(clusters = 60,
                                           start.month = 0,
                                           total.months = 8,
                                           staircase.months = 0,
+                                          current.month = NULL,
                                           return.figure = TRUE,
                                           save = TRUE,
                                           device = "pdf") {
@@ -64,6 +69,9 @@ create_trial_design_flowchart <- function(clusters = 60,
     assertthat::assert_that(is.numeric(transition.overlap.months) && length(transition.overlap.months) == 1)
     assertthat::assert_that(is.numeric(start.month) && length(start.month) == 1 && start.month >= 0)
     assertthat::assert_that(is.numeric(staircase.months) && length(staircase.months) == 1 && staircase.months >= 0)
+    if (!is.null(current.month)) {
+        assertthat::assert_that(is.numeric(current.month) && length(current.month) == 1 && current.month >= 0)
+    }
 
     ## Generate plot data
     plot.data <- get_trial_design_data(
@@ -89,19 +97,26 @@ create_trial_design_flowchart <- function(clusters = 60,
 
         # Create main plot with all data in gray except staircase periods
         trial.design.figure <- ggplot() +
-            # Add gray segments for standard care and intervention
-            geom_segment(
+            # Add gray rectangles for standard care and intervention
+            geom_rect(
                 data = subset(plot.data, phase %in% c("Standard care", "Intervention")),
-                aes(y = cluster, yend = cluster, x = start, xend = end, color = "Main stepped-wedge patient inclusion period"),
-                linewidth = 1
+                aes(xmin = start, xmax = end, ymin = cluster - 0.3, ymax = cluster + 0.3, fill = "Main stepped-wedge patient inclusion period")
             ) +
-            # Add colored segments for transition and staircase periods
-            geom_segment(
+            # Add colored rectangles for transition and staircase periods
+            geom_rect(
                 data = legend.data,
-                aes(y = cluster, yend = cluster, x = start, xend = end, color = phase),
-                linewidth = 1
+                aes(xmin = start + 0.1, xmax = end - 0.1, ymin = cluster - 0.4, ymax = cluster + 0.4, fill = phase),
+                alpha = 0.8
             ) +
-            scale_color_manual(
+            # Add black border to rectangles
+             geom_rect(
+                data = legend.data,
+                aes(xmin = start + 0.1, xmax = end - 0.1, ymin = cluster - 0.4, ymax = cluster + 0.4),
+                fill = NA,
+                color = "black",
+                linewidth = 0.3
+            ) +
+            scale_fill_manual(
                 values = c(
                     "Main stepped-wedge patient inclusion period" = "#999999",
                     "Pre-transition staircase" = color.palette[1],
@@ -129,6 +144,7 @@ create_trial_design_flowchart <- function(clusters = 60,
                 )
             ) +
             scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
+            (if (!is.null(current.month)) geom_vline(xintercept = current.month, linetype = "dashed", color = "red", linewidth = 1) else geom_blank()) +
             theme_bw() +
             theme(
                 legend.position = "bottom",
@@ -136,12 +152,13 @@ create_trial_design_flowchart <- function(clusters = 60,
                 legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
                 legend.spacing.y = unit(0.1, "cm")
             ) +
-            guides(color = guide_legend(nrow = 2)) +
-            labs(x = "Study month", y = "Cluster", color = "Phase")
+            guides(fill = guide_legend(nrow = 2)) +
+            labs(x = "Study month", y = "Cluster", fill = "Phase")
     } else {
-        trial.design.figure <- ggplot(plot.data, aes(y = cluster, yend = cluster, x = start, xend = end, color = phase)) +
-            geom_segment(linewidth = 1) +
-            scale_color_manual(
+        trial.design.figure <- ggplot(plot.data, aes(xmin = start + 0.1, xmax = end - 0.1, ymin = cluster - 0.3, ymax = cluster + 0.3, fill = phase)) +
+            geom_rect(alpha = 0.8) + 
+            geom_rect(fill = NA, color = "black", linewidth = 0.3) +
+            scale_fill_manual(
                 values = c(
                     "Standard care" = color.palette[1],
                     "Transition" = color.palette[2],
@@ -167,6 +184,7 @@ create_trial_design_flowchart <- function(clusters = 60,
                 )
             ) +
             scale_x_continuous(breaks = seq(0, max(plot.data$end), 2)) +
+            (if (!is.null(current.month)) geom_vline(xintercept = current.month, linetype = "dashed", color = "red", linewidth = 1) else geom_blank()) +
             theme_bw() +
             theme(
                 legend.position = "bottom",
@@ -174,10 +192,10 @@ create_trial_design_flowchart <- function(clusters = 60,
                 legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
                 legend.spacing.y = unit(0.1, "cm")
             ) +
-            guides(color = guide_legend(nrow = 2)) +
-            labs(x = "Study month", y = "Cluster", color = "Phase")
+            guides(fill = guide_legend(nrow = 1)) +
+            labs(x = "Study month", y = "Cluster", fill = "Phase")
     }
-
+         
     ## Save figure
     if (save) {
         file.name <- paste0(
