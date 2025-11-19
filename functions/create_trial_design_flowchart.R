@@ -131,7 +131,8 @@ create_trial_design_flowchart <- function(clusters = 60,
                 )
             ) +
             scale_y_continuous(
-                breaks = seq(1, 60),
+                breaks = seq(1, clusters),
+                limits = c(0.5, clusters + 0.5),
                 guide = guide_axis(n.dodge = 2),
                 sec.axis = sec_axis(
                     trans = ~.,
@@ -171,7 +172,8 @@ create_trial_design_flowchart <- function(clusters = 60,
                 )
             ) +
             scale_y_continuous(
-                breaks = seq(1, 60),
+                breaks = seq(1, clusters),
+                limits = c(0.5, clusters + 0.5),
                 guide = guide_axis(n.dodge = 2),
                 sec.axis = sec_axis(
                     trans = ~.,
@@ -195,7 +197,7 @@ create_trial_design_flowchart <- function(clusters = 60,
             guides(fill = guide_legend(nrow = 1)) +
             labs(x = "Study month", y = "Cluster", fill = "Phase")
     }
-         
+
     ## Save figure
     if (save) {
         file.name <- paste0(

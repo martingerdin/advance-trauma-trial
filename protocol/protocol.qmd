@@ -311,6 +311,7 @@ knitr::include_graphics(
     batches.overlap.months = batches.overlap.months,
     transition.months = transition.months,
     transition.overlap.months = transition.overlap.months,
+    current.month = NULL,
     return.figure = FALSE,
     device = "png"
   )
