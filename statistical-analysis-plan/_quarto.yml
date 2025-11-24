@@ -4,10 +4,12 @@ number-sections: true
 number-depth: 3
 fig-caption: true
 link-bibliography: false
+titlepage-logo: logo.png
 titlepage-theme:
   title-fontsize: 15
   subtitle-fontstyle: ["bfseries"]
   subtitle-fontsize: 20
+  elements: ["\\logoblock", "\\titleblock", "\\authorblock"] 
 format:
   titlepage-pdf:
     titlepage: classic-lined
@@ -18,9 +20,13 @@ format:
       text: |
         \usepackage{scrlayer-scrpage}
         \usepackage{lastpage}
-        \lohead{ATLS vs Standard Care Trial SAP}
+        \lohead{ADVANCE TRAUMA SAP}
         \rohead{ClinicalTrials.gov ID NCT06321419}
         \cfoot{\thepage\ of \pageref{LastPage} }
+        \usepackage{helvet}
+        \usepackage[T1]{fontenc}
+        \renewcommand{\familydefault}{phv}
+        \setkomafont{disposition}{\normalfont}
   docx: default
   html: default
   
