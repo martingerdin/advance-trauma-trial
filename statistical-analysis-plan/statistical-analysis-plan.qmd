@@ -193,15 +193,92 @@ We will recalculate the sample size based on the observed period sizes and the o
 
 ## Analysis of the primary outcome
 
-The primary outcome is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable. We will estimate the primary intervention effect as the OR of death between the ATLS^®^ and standard care arms, with an OR \< 1 indicating lower odds of death in the ATLS^®^ arm compared to the standard care arm and vice versa.
+The primary outcome is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable.
 
-### Primary analysis
+We will estimate the intervention effect as the odds ratio (OR) of death between the ATLS® and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS® arm compared to the standard care arm and vice versa. 
 
-We will use a mixed-effects binomial regression model to estimate the effect of ATLS^®^ on mortality. The model will include fixed effects for period, modelled as a categorical variable, and a fixed effect for intervention exposure. Clustering will be accounted for by including a random intercept for cluster and a random cluster-by-period effect, both assumed to follow a normal distribution. The full model is specified in @eq-primary-model.
+We will also estimate the absolute risk difference (ARD) of death between the ATLS® and standard care arms, with an ARD < 0 indicating lower risk of death in the ATLS® arm compared to the standard care arm and vice versa.
+
+We will use a mixed-effects binomial regression model to estimate the effect of ATLS® on mortality. The OR will be estimated using the logit link, and the ARD will be estimated using the identity link.
+
+The primary analysis will be based on the most complex model that converges from a prespecified sequence of models of decreasing complexity, and this model will then be subject to sensitivity analyses. 
+
+The analysis will proceed from the most complex model to progressively simpler models if convergence or numerical stability issues arise. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
+
+All models in this sequence will include a fixed effect for intervention exposure and adjust for time, although the parametrisation of time and the random effects structure may be simplified.
+
+The model sequence is defined as follows:
+
+1. **Primary model**: a model including fixed effects for period, modelled as a categorical variable with separate period effects for each batch, and a fixed effect for intervention exposure. Clustering will be accounted for by including a random intercept for cluster and a random cluster-by-period effect, both assumed to follow a normal distribution. The model is specified in @eq-primary-model.
+
+$$
+g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk + γ_bkt
+$$
+{#eq-primary-model}
+
+2. **Simplified random effects structure**: a model including fixed effects for period and intervention exposure and a random intercept for cluster only, thereby removing the random cluster-by-period effect. The model is specified in @eq-simplified-random-effects-model.
+
+$$
+g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk
+$$
+{#eq-simplified-random-effects-model}
+
+3. **Model with shared period effects**: a model in which period effects are shared across batches, with time adjusted for using a common period effect or calendar time modelled directly (e.g., as a continuous covariate or using splines), while retaining the random effects structure. The model is specified in @eq-shared-period-model.
+
+$$
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$
+{#eq-shared-period-model}
+
+4. **Combined simplified model**: a model that includes both a simplified random effects structure (random intercept for cluster only) and shared period effects. This represents the most parsimonious mixed-effects model considered acceptable for the primary analysis. The model is specified in @eq-combined-simplified-model.
+
+$$
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk}
+$$
+{#eq-combined-simplified-model}
+
+Where:
+
+- $g(\cdot)$: the link function, specified as either the logit link,
+$g(p) = \log\{p/(1-p)\}$, or the identity link, $g(p) = p$,
+depending on the estimand of interest.
+- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m$ in cluster $k = 1, \dotsc, \texttt{r clusters}$ during period $t = 1, \dotsc, \texttt{r total.months - 1}$ in batch $b = 1, \dotsc, \texttt{r batches}$.
+- $\mu$: the intercept, representing the value of the linear predictor for the reference levels of all fixed effects, with random effects equal to zero.
+- $\beta_t$: the fixed effect of period $t$, shared across batches.
+- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, accounting for a separate period effect for each batch, resulting in a total of $\texttt{r batches} \times (\texttt{total.months} - 1)$ period effects.
+- $\theta$: the fixed effect of intervention exposure; under the logit link this represents the log-odds ratio for death associated with ATLS® exposure compared with standard care, and under the identity link it represents the absolute risk difference.
+- $X_{bkt}$: the intervention exposure indicator for cluster $k$ during period $t$ in batch $b$, with $X_{bkt} = 1$ for ATLS® and $X_{bkt} = 0$ for standard care.
+- $\alpha_{bk}$: a normally distributed random effect for cluster $k$ in batch $b$, representing between-cluster (hospital-level) variability in the outcome.
+- $\gamma_{bkt}$: a normally distributed random effect for cluster $k$ in period $t$ in batch $b$, representing within-cluster variation over time and capturing cluster-specific deviations from the average period effect.
+
+Where:
+
+- $g(\cdot)$: the link function, specified as either the logit link, $g(p) = \log\{p/(1-p)\}$, or the identity link, $g(p) = p$, depending on the estimand of interest.
+- $\theta$: **the intervention effect**, represented as a fixed effect of intervention exposure (the primary estimand); under the logit link this represents the log-odds ratio for death associated with ATLS® exposure compared with standard care, and under the identity link it represents the absolute risk difference.
+- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m$ in cluster $k = 1, \dotsc, \texttt{r clusters}$ during period $t = 1, \dotsc, \texttt{r total.months - 1}$ in batch $b = 1, \dotsc, \texttt{r batches}$.
+- $\mu$: the intercept, representing the value of the linear predictor for the reference levels of all fixed effects, with random effects equal to zero.
+- $\beta_t$: the fixed effect of period $t$, shared across batches.
+- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, accounting for a separate period effect for each batch, resulting in a total of $\texttt{r batches} \times (\texttt{total.months} - 1)$ period effects.
+- $X_{bkt}$: the intervention exposure indicator for cluster $k$ during period $t$ in batch $b$, with $X_{bkt} = 1$ for ATLS® and $X_{bkt} = 0$ for standard care.
+- $\alpha_{bk}$: a normally distributed random effect for cluster $k$ in batch $b$, representing between-cluster (hospital-level) variability in the outcome.
+- $\gamma_{bkt}$: a normally distributed random effect for cluster $k$ in period $t$ in batch $b$, representing within-cluster variation over time and capturing cluster-specific deviations from the average period effect.
+
+The distributional assumptions for the random effects are specified in @eq-distributional-assumptions.
+
+$$
+\begin{aligned}
+\alpha_{bk} &\overset{\text{iid}}{\sim} \mathcal{N}(0,\sigma^2_{\alpha}), \\
+\gamma_{bkt} &\overset{\text{iid}}{\sim} \mathcal{N}(0,\sigma^2_{\gamma}), \\
+\alpha_{bk} &\perp \gamma_{bkt}.
+\end{aligned}
+$$
+{#eq-distributional-assumptions}
 
 To correct potential inflation of the type I error rate due to the small number of clusters, a small-sample correction will be applied. Our primary method will be the Kenward–Roger correction [@grantham_evaluating_2022], but this choice may be updated based on methodological developments available closer to the end of patient inclusion. The correction applied may also differ for outcomes collected via the complete stepped-wedge design and the incomplete nested staircase designs.
 
-The primary analysis model will be fitted using residual pseudo-likelihood estimation based on linearisation with subject-specific expansion (RSPL), due to its computational stability and robust performance in small-sample settings.
+All models will be fitted using residual pseudo-likelihood estimation based on linearisation with subject-specific expansion (RSPL), due to its computational stability and robust performance in small-sample settings. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
 
 <!--
 *Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
@@ -215,77 +292,6 @@ So my recommendation would be for the primary analysis to be as currently specif
 **Question:** Just a thought: keep in mind the complexity of the random effects structure; if it leads to convergence problems or overfitting, should we consider simplifying the random effects?
 
 -->
-
-$$
-g{Pr(Y_bkti = 1)} = μ + β_bt + θ X_bkt + α_bk + γ_bkt
-$$
-
-$$
-\begin{aligned}
-\alpha_{bk} &\overset{\text{iid}}{\sim} \mathcal{N}(0,\sigma^2_{\alpha}), \\
-\gamma_{bkt} &\overset{\text{iid}}{\sim} \mathcal{N}(0,\sigma^2_{\gamma}), \\
-\alpha_{bk} &\perp \gamma_{bkt}.
-\end{aligned}
-$$
-{#eq-primary-model}
-
-Where:
-
-- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m$ in cluster $k = 1, \dotsc, \texttt{r clusters}$ during period $t = 1, \dotsc, \texttt{r total.months - 1}$ in batch $b = 1, \dotsc, \texttt{r batches}$.
-- $\mu$: the intercept, representing the value of the linear predictor for the reference levels of all fixed effects, with random effects equal to zero.
-- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, accounting for a separate period effect for each batch, resulting in a total of $\texttt{r batches} \times (\texttt{total.months} - 1)$ period effects.[^low-number-of-participants]
-- $\theta$: the fixed effect of intervention exposure; under the logit link this represents the log-odds ratio for death associated with ATLS® exposure compared with standard care, and under the identity link it represents the absolute risk difference.
-- $X_{bkt}$: the intervention exposure indicator for cluster $k$ during period $t$ in batch $b$, with $X_{bkt} = 1$ for ATLS® and $X_{bkt} = 0$ for standard care.
-- $\alpha_{bk}$: a normally distributed random effect for cluster $k$ in batch $b$, representing between-cluster (hospital-level) variability in the outcome.
-- $\gamma_{bkt}$: a normally distributed random effect for cluster $k$ in period $t$ in batch $b$, representing within-cluster variation over time and capturing cluster-specific deviations from the average period effect.
-
-<!--
-[^low-number-of-participants]: **Question:** The model will estimate some 78 parameters. Is this a problem considering the low number of participants per period?
--->
-
-In all models, the link function $g(\cdot)$ will be specified as either the logit link or the identity link.
-
-When the logit link is used, the intervention effect $\theta$ will be interpreted as a log-odds ratio, and results will be presented as an odds ratio for mortality with a corresponding 95% confidence interval, using the standard care arm as the reference.
-
-When the identity link is used, $\theta$ will be interpreted as an absolute risk difference, representing the difference in the probability of death between the ATLS^®^ and standard care arms. Results will be presented as a risk difference with a 95% confidence interval.
-
-If the model with the logit link converges but the corresponding model with the identity link does not, results will be reported using the logit link only.
-
-We will not adjust the primary analysis models for cluster size, as randomisation is balanced with respect to cluster size.
-
-### Plan to handle model convergence issues
-
-If the primary analysis model does not converge or is numerically unstable, we will fit a prespecified sequence of progressively simpler models. This sequence will retain the intervention exposure term, and time will be adjusted for in all models.
-
-The following sequence will be applied:
-
-1. **Simplified random effects structure**: models including only a random intercept for cluster, thereby removing the random cluster-by-period effect. The simplified model is specified in @eq-simplified-random-effects-model.
-
-$$
-g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk}
-$$
-{#eq-simplified-random-effects-model}
-
-2. **Model with shared period effects**: a model in which period effects are shared across batches, with time adjusted for using a common period effect or calendar time modelled directly (e.g., as a continuous covariate or using splines). This alternative parametrisation of time may improve model stability, particularly as the last batch begins nearly two years after the first. The model is specified in @eq-shared-period-model.
-
-$$
-g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
-$$
-{#eq-shared-period-model}
-
-3. **Combined simplified model**: a model that includes both a simplified random effects structure (random intercept for cluster only) and shared period effects. This represents the most parsimonious mixed-effects model considered acceptable for the primary analysis. The model is specified in @eq-simplified-random-effects-model-and-shared-period-model.
-
-$$
-g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk}
-$$
-{#eq-simplified-random-effects-model-and-shared-period-model}
-
-If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
-
-The main analysis will be based on the most complex model in this sequence that converges, and this model will then be subject to sensitivity analyses.
 
 ### Sensitivity analyses
 
