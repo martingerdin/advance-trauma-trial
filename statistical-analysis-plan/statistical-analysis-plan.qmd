@@ -295,34 +295,35 @@ So my recommendation would be for the primary analysis to be as currently specif
 
 ### Sensitivity analyses
 
-The sensitivity analyses will be conducted to assess the robustness of the main analysis results to different model specifications. Each sensitivity analysis will be operationalised using two separate models, one with the logit link and one with the identity link. We will first explore more complex correlation structures. We will then model time using a spline function. Finally, we will conduct a fully adjusted covariate analysis.
-
+We will conduct sensitivity analyses to assess the robustness of the primary analysis results to different modelling assumptions. In all sensitivity analyses, the focus will be on the stability of the estimated intervention effect $\theta$. Unless otherwise stated, each sensitivity analysis will be operationalised using two separate models, one with the logit link and one with the identity link.
 
 #### Models with different correlation structure
 
-We will explore if models with more complicated correlation structures are a better fit to the data. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures which might be plausible. First, we will include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)), described in @eq-ar1.
+We will explore whether models with more complex correlation structures provide a better fit to the data. These models are not used as primary analysis models because there is limited understanding of when such models converge and how best to choose between different plausible correlation structures.
+
+First, we will consider a discrete time-decay correlation structure by specifying a random cluster effect with an autoregressive structure of order one (AR(1)), described in @eq-ar1. This parameterisation assumes that correlations between cluster-level random effects decay geometrically with increasing temporal separation between periods.
 
 $$
-\alpha_{bk, t} = \rho \alpha_{bk, t-1} + \epsilon_{t}, \quad \epsilon_{t} \sim N(0, \sigma^2_\alpha)
-$$ {#eq-ar1}
+\alpha_{bk,t} = \rho \alpha_{bk,t-1} + \epsilon_{t}, \quad \epsilon_{t} \sim \mathcal{N}(0, \sigma^2_\alpha)
+$$
+{#eq-ar1}
 
 Where:
 
--   $\rho$: the correlation between the random effects of two consecutive periods, the period $t$ and the period $t-1$, reflecting how outcomes in one period are correlated with outcomes in the previous period within the same cluster.
--   $\alpha_{bk, t}$: the random effect of cluster $k$ in period $t$ in batch $b$. This represents the variation in the outcome that is specific to each cluster and period, accounting for time-related effects.
--   $\epsilon_{t}$ is the error term for period $t$, which is assumed to be normally distributed with mean 0 and variance $\sigma^2_\alpha$.
+- $\rho$ is the correlation parameter governing the association between random effects in adjacent periods within the same cluster.
+- $\alpha_{bk,t}$ is the random effect for cluster $k$ in period $t$ in batch $b$.
+- $\epsilon_t$ is a normally distributed error term with mean 0 and variance $\sigma^2_\alpha$.
 
-To allow for the randomisation by batches, we will also include a different secular trend for each batch as a random effect interaction term between batch and period. The full model is specified in @eq-logit-ar1.
+We note that this AR(1) formulation differs slightly from alternative parameterisations used elsewhere, in which the cluster-level random effects are assumed to follow a joint multivariate normal distribution with covariances that decay as a function of the temporal distance between periods. Although both approaches aim to capture decaying correlation over time within clusters, the parameter $\rho$ in the AR(1) formulation is not directly equivalent to parameters used in other specifications and should not be interpreted interchangeably. This sensitivity analysis is intended to assess robustness of inference on the intervention effect to alternative assumptions about within-cluster temporal correlation.
+
+To account for randomisation by batches, we will additionally include a batch-by-period random effect to allow for different secular trends across batches. The full model specification is given in @eq-model-ar1.
 
 $$
 g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk,t} + \gamma_{bkt} + \delta_{bt}
-$$ {#eq-logit-ar1}
+$$ {#eq-model-ar1}
 
-Where:
+Where $\delta_{bt}$ represents a random effect for batch $b$ during period $t$, capturing between-batch variation in secular trends over time.
 
--   $g(\cdot)$: the link function.
--   $\alpha_{bk,t}$: the updated random effect of cluster $k$ in batch $b$ during period $t$ with the AR(1) correlation structure. This accounts for correlation between adjacent periods in the same cluster.
--   $\delta_{bt}$: the random effect of batch $b$ during period $t$, which captures any variability across different batches over time.
 
 <!-- 
 Need to be updated
@@ -349,43 +350,41 @@ summary(model)
 
 #### Models with random cluster by intervention effects
 
-Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. The model is specified in @eq-logit-random-cluster-intervention.
+We will extend the primary analysis model to include random cluster-by-intervention effects (with a non-zero covariance term) to examine sensitivity to the assumption of a common intervention effect across clusters. This allows the intervention effect $\theta$ to vary across clusters. The model is specified in @eq-model-random-cluster-intervention.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
-$$ {#eq-logit-random-cluster-intervention}
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
+$$
+{#eq-logit-random-cluster-intervention}
 
-Where:
-
--   $u_{bk}$: the random effect of cluster $k$ by intervention interaction.
--   $X_{bkt}$: the treatment arm indicator for patient $i$ in cluster $k$ during period $t$.
--   \$u\_{bk} \\times X\_{bkt} \$: the random interaction effect between the intervention and cluster $k$.
+Where $u_{bk}$ is a random effect capturing cluster-specific deviations from the average intervention effect.
 
 #### Models with time modelled with a spline function
 
 We will further explore the potential for a time-varying treatment effect [@kenny_analysis_2022]. To explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using natural cubic splines with knots at the equally spaced time points 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in @eq-spline-model.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \mu + \sum_{j=1}^5 \beta_j S_j(t, \{3, 6, 9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
-$$ {#eq-spline-model}
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \sum_{j=1}^{5} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$
+{#eq-spline-model}
 
-Where:
-
--   $S_j(t, \{3, 6, 9\})$: the natural cubic spline basis functions with knots placed at times 3, 6 and 9.
--   $\beta_j$: the coefficient for the $j$-th spline basis function.
+Where $S_j(t, \{3,6,9\})$ denotes the $j$th natural cubic spline basis function.
 
 #### Models exploring lag and weaning effects
 
-Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade). This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
+We will also extend the primary analysis model to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade). This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \theta_{\text{int}} X_{bkt} \times T_{bkt} + \alpha_{bk} + \gamma_{bkt}
-$$ {#eq-lag-weaning-model}
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \beta_{bt} + \theta X_{bkt}
++ \theta_{\text{int}} X_{bkt} \times T_{bkt}
++ \alpha_{bk} + \gamma_{bkt}
+$$
+{#eq-lag-weaning-model}
 
-Where:
-
--   $\theta_{\text{int}}$ is the coefficient for the interaction between treatment and time since first treated.
--   $T_{bkt}$ is the number of periods since first treated.
+Where $\theta_{\text{int}}$ represents the interaction between intervention exposure and time since first treated, and $T_{bkt}$ is the number of periods since first exposure.
 
 ### Adjusted analyses
 
