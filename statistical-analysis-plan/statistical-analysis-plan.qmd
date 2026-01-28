@@ -297,11 +297,11 @@ So my recommendation would be for the primary analysis to be as currently specif
 
 We will conduct sensitivity analyses to assess the robustness of the primary analysis results to different modelling assumptions. In all sensitivity analyses, the focus will be on the stability of the estimated intervention effect $\theta$. Unless otherwise stated, each sensitivity analysis will be operationalised using two separate models, one with the logit link and one with the identity link.
 
-#### Models with different correlation structure
+#### Models with autoregressive within-cluster correlation
 
-We will explore whether models with more complex correlation structures provide a better fit to the data. These models are not used as primary analysis models because there is limited understanding of when such models converge and how best to choose between different plausible correlation structures.
+We will explore whether models with more complex correlation structures provide a better fit to the data. These models are not used as primary analysis models because there is limited understanding of when such models converge and how best to choose between different plausible correlation structures. Instead, we include these models as sensitivity analyses.
 
-First, we will consider a discrete time-decay correlation structure by specifying a random cluster effect with an autoregressive structure of order one (AR(1)), described in @eq-ar1. This parameterisation assumes that correlations between cluster-level random effects decay geometrically with increasing temporal separation between periods.
+We will first explore whether allowing temporal correlation of outcomes within clusters affects inference on the intervention effect. Specifically, we will consider a discrete time-decay correlation structure by specifying a random cluster effect with an autoregressive structure of order one (AR(1)), described in @eq-ar1. This parameterisation assumes that correlations between cluster-level random effects decay geometrically with increasing temporal separation between periods.
 
 $$
 \alpha_{bk,t} = \rho \alpha_{bk,t-1} + \epsilon_{t}, \quad \epsilon_{t} \sim \mathcal{N}(0, \sigma^2_\alpha)
@@ -310,17 +310,21 @@ $$
 
 Where:
 
-- $\rho$ is the correlation parameter governing the association between random effects in adjacent periods within the same cluster.
+- $\rho$ is the correlation parameter governing the association between adjacent periods within the same cluster.
 - $\alpha_{bk,t}$ is the random effect for cluster $k$ in period $t$ in batch $b$.
-- $\epsilon_t$ is a normally distributed error term with mean 0 and variance $\sigma^2_\alpha$.
+- $\epsilon_t$ is a normally distributed error term.
 
-We note that this AR(1) formulation differs slightly from alternative parameterisations used elsewhere, in which the cluster-level random effects are assumed to follow a joint multivariate normal distribution with covariances that decay as a function of the temporal distance between periods. Although both approaches aim to capture decaying correlation over time within clusters, the parameter $\rho$ in the AR(1) formulation is not directly equivalent to parameters used in other specifications and should not be interpreted interchangeably. This sensitivity analysis is intended to assess robustness of inference on the intervention effect to alternative assumptions about within-cluster temporal correlation.
+We note that this AR(1) formulation differs slightly from alternative parameterisations used elsewhere in which correlations are specified through a joint covariance matrix. Although both approaches capture decaying temporal correlation, the parameter $\rho$ is not directly equivalent to parameters used in other specifications and should not be interpreted interchangeably.
 
-To account for randomisation by batches, we will additionally include a batch-by-period random effect to allow for different secular trends across batches. The full model specification is given in @eq-model-ar1.
+#### Models with batch-specific secular trends
+
+To assess sensitivity to assumptions about common secular trends across batches, we will include a random batch-by-period effect allowing each batch to follow its own time trend. This specification accounts for the randomisation by batches and permits additional between-batch heterogeneity over time. The model is specified in @eq-model-batch-trend.
 
 $$
-g(\text{Pr}(Y_{bkti} = 1)) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk,t} + \gamma_{bkt} + \delta_{bt}
-$$ {#eq-model-ar1}
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \delta_{bt}
+$$
+{#eq-model-batch-trend}
 
 Where $\delta_{bt}$ represents a random effect for batch $b$ during period $t$, capturing between-batch variation in secular trends over time.
 
@@ -350,19 +354,55 @@ summary(model)
 
 #### Models with random cluster by intervention effects
 
-We will extend the primary analysis model to include random cluster-by-intervention effects (with a non-zero covariance term) to examine sensitivity to the assumption of a common intervention effect across clusters. This allows the intervention effect $\theta$ to vary across clusters. The model is specified in @eq-model-random-cluster-intervention.
+To assess sensitivity to the assumption of a common intervention effect across clusters, we will extend the primary analysis model to allow the intervention effect to vary by cluster. Specifically, we will include a random cluster-level slope for the intervention exposure. The model is specified in @eq-model-random-cluster-intervention.
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} \times X_{bkt}
+= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} X_{bkt}
 $$
-{#eq-logit-random-cluster-intervention}
+{#eq-model-random-cluster-intervention}
 
-Where $u_{bk}$ is a random effect capturing cluster-specific deviations from the average intervention effect.
+Where:
+
+- $u_{bk} \sim \mathcal{N}(0,\sigma_u^2)$ is a random effect representing cluster-specific deviations from the average intervention effect.
+- $u_{bk}$ is assumed to be independent of the cluster random effect $\alpha_{bk}$ and the cluster-by-period random effect $\gamma_{bkt}$.
+
+#### Models with correlated random cluster-by-intervention effects
+
+We will additionally explore sensitivity to the assumption that the random cluster-by-intervention effect is independent of the other random effects in the model. In this sensitivity analysis, we will fit a model that allows the random cluster-by-intervention effect $u_{bk}$ to be correlated with both the cluster random intercept $\alpha_{bk}$ and the cluster-by-period random effect $\gamma_{bkt}$. This relaxes the independence assumptions of the random-effects structure and allows for potential associations between baseline cluster risk, cluster-specific time deviations, and cluster-specific intervention effects. The model is specified in @eq-model-correlated-random-effects.
+
+$$
+g\{\Pr(Y_{bkti} = 1)\}
+= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} X_{bkt}
+$$
+{#eq-model-correlated-random-effects}
+
+We assume a joint multivariate normal distribution for the random effects:
+
+$$
+\begin{pmatrix}
+\alpha_{bk} \\
+\gamma_{bkt} \\
+u_{bk}
+\end{pmatrix}
+\sim
+\mathcal{N}\!\left(
+\begin{pmatrix}
+0 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+\sigma^2_{\alpha} & \sigma_{\alpha\gamma} & \sigma_{\alpha u} \\
+\sigma_{\alpha\gamma} & \sigma^2_{\gamma} & \sigma_{\gamma u} \\
+\sigma_{\alpha u} & \sigma_{\gamma u} & \sigma^2_{u}
+\end{pmatrix}
+\right).
+$$
 
 #### Models with time modelled with a spline function
 
-We will further explore the potential for a time-varying treatment effect [@kenny_analysis_2022]. To explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using natural cubic splines with knots at the equally spaced time points 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in @eq-spline-model.
+We will further explore the potential for a time-varying treatment effect [@kenny_analysis_2022]. To explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model calendar time using a shared natural cubic spline basis across all batches with knots at the equally spaced time points 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in @eq-spline-model.
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
@@ -370,7 +410,11 @@ g\{\Pr(Y_{bkti} = 1)\}
 $$
 {#eq-spline-model}
 
-Where $S_j(t, \{3,6,9\})$ denotes the $j$th natural cubic spline basis function.
+Where:
+
+- $t$ denotes calendar time (period index) common to all batches.
+- $S_j(t, \{3,6,9\})$ denotes the $j$th natural cubic spline basis function, shared across batches.
+- $\beta_j$ is the coefficient for the $j$th spline basis function.
 
 #### Models exploring lag and weaning effects
 
@@ -397,15 +441,15 @@ Fully adjusted covariate analysis will additionally adjust for[^additional-covar
 -   Injury Severity Score (10%)
 -   Mechanism of injury (10%)
 
-These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in @eq-logit-model and @eq-identity-model as fixed effects. We will model the continuous covariates assuming linear effects.
+These are known individual-level prognostic factors for the primary outcome. These covariates will be included in the models specified in @eq-logit-model and @eq-identity-model as fixed effects. We will model the continuous covariates assuming linear effects. We will assume no interaction between subgroups and secular time trends, which may be evaluated in future analyses if indicated.
 
 [^additional-covariates]: **Questions:** 1. Should we adjust for calendar time because the last batch will be two years later than the first batch? 2. Should we add it as covariate in the list above? 3. Should it be continuous (e.g., months since the study started) or categorical calendar time (if you expect non-linear trends or stepwise changes over years)? 4. Should we analyse Time Since Admission? Depending on the nature of the trauma, the time since patient admission might also influence outcomes, especially if the timing of interventions or care decisions plays a critical role. Eg. time from admission to surgery.
 
 ### Subgroup analyses
 
-We will perform the following subgroup analyses[^too-many-subgroups]:
+We will perform the following subgroup analyses:
 
-[^too-many-subgroups]: **Question:** Are we exploring too many subgroups?
+<!--[^too-many-subgroups]: **Question:** Are we exploring too many subgroups?-->
 
 -   geographical region, defined using the state in which the participating hospital is located. Demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results;
 -   age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) \[@Diaz2021;
@@ -417,7 +461,7 @@ These subgroup analyses will be conducted by adding the subgroup variable and th
 
 ### Treatment of missing data
 
-We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10%, we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, we will handle missing data depending on the missing data mechanism. If the data are missing at random (MAR), we will perform multiple imputation using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations. If there is evidence that the data are missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
+We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10%, we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, we will handle missing data depending on the missing data mechanism. If the data are missing at random (MAR), we will perform multiple imputation using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations. If there is evidence that the data are missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Evidence that data are MNAR may include systematic differences in missingness across observed covariates, patterns suggestive of non-random dropout, or clinical expectations that missingness is related to unmeasured outcomes. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
 
 <!-- 
 Thoughts on missing data: 
@@ -439,72 +483,69 @@ Let us discuss this further.
 
 ## Analysis of secondary outcomes
 
+Unless otherwise stated, secondary outcomes will be analysed using the same mixed-effects modelling framework as specified for the primary outcome, including fixed effects for time and intervention exposure and random effects for cluster and cluster-by-period, with the link function and outcome distribution adapted to the scale of the outcome.
+
 ### All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department
 
-We will use the model with the logit link specified in @eq-logit-model and the model with the identity link specified in @eq-identity-model to estimate the OR and risk difference for these mortality outcomes.
+These outcomes will be analysed as dichotomous variables using the mixed-effects binomial model with the logit and identity links specified in @eq-primary-model, to estimate odds ratios and absolute risk differences.
 
-### Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department
+### Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, among survivors
 
-Quality of life will be measured by the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a likert scale from 1 to 5. There is also a visual analogue scale (VAS) for self-rated quality of life, ranging from 0 to 100. For each of the five dimensions we will use a mixed effects ordinal model as specified in @eq-ordinal-model.
+Quality of life will be measured using the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a Likert scale from 1 to 5. There is also a visual analogue scale (VAS) ranging from 0 to 100.
 
-$$
-\text{logit}(\text{Pr}(Y_{bkti} \leq j)) = \mu_j + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
-$$ {#eq-ordinal-model}
-
-Where:
-
--   $\mu_j$: the intercept for the $j$-th category of the EQ5D dimension ($j$ = 1, 2, 3, 4, 5).
-
-The VAS will be analysed using a linear mixed effects model as specified in @eq-linear-model.
+For each of the five ordinal dimensions, we will use a mixed-effects cumulative logit (proportional odds) model:
 
 $$
-\text{VAS}_{bkti} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti}, \quad \epsilon_{bkti} \sim N(0, \sigma^2)
-$$ {#eq-linear-model}
+\text{logit}\{\Pr(Y_{bkti} \leq j)\}
+= \mu_j + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$
+{#eq-ordinal-model}
 
-Where:
+Where $\mu_j$ is the intercept for the $j$th category.
 
--   $\epsilon_{bkti}$: the error term for patient $i$ in cluster $k$ in period $t$ in batch $b$, assumed to be normally distributed with mean 0 and variance $\sigma^2$.
+The VAS will be analysed as a continuous outcome using a linear mixed-effects model:
 
-### Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department
+$$
+\text{VAS}_{bkti}
+= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
+\quad \epsilon_{bkti} \sim \mathcal{N}(0,\sigma^2)
+$$
+{#eq-linear-model}
+
+### Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, among survivors
 
 We will measure disability using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0) [@ustun_measuring_2010]. This tool assesses six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each domain is rated on a likert scale from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme difficulties. We will analyse each domain separately using a mixed effects ordinal model as specified in @eq-ordinal-model. We will also calculate a WHODAS 2.0 summary score using the method referred to as the "complex scoring" method. This method involves summing the item scores within each of the six domains, then summing the scores of all domains, and finally transforming the total score to a 0-100 scale. We will analyse the summary score using a linear mixed effects model as specified in @eq-linear-model.
 
-### Return to work at 30 days and three months after arrival at the emergency department
+### Return to work at 30 days and three months after arrival at the emergency department, among survivors
 
-We will analyse return to work as a dichotomous variable using a mixed effects binomial model with a logit link as specified in @eq-logit-model.
+Return to work will be analysed as a dichotomous outcome using the mixed-effects binomial model specified in @eq-primary-model with the logit link.
 
 ### Length of emergency department stay
 
-We will analyse length of emergency department stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+Length of emergency department stay will be analysed as a continuous outcome using the linear mixed-effects model specified in @eq-linear-model.
 
 ### Length of hospital stay
 
-We will analyse length of hospital stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+Length of hospital stay will be analysed as a continuous outcome using the linear mixed-effects model specified in @eq-linear-model.
 
 ### Intensive care unit admission
 
-We will analyse intensive care unit admission as a dichotomous variable using a mixed effects binomial model with a logit link as specified in @eq-logit-model.
+Intensive care unit admission will be analysed as a dichotomous outcome using the mixed-effects binomial model specified in @eq-primary-model with the logit link.
 
 ### Length of intensive care unit stay
 
-We will analyse length of intensive care unit stay as a continuous variable using a linear mixed effects model as specified in @eq-linear-model.
+Length of intensive care unit stay will be analysed as a continuous outcome using the linear mixed-effects model specified in @eq-linear-model.
 
 ### Adherence to ATLS^®^ principles during initial patient resuscitation
 
-We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the proportion of steps completed, with 100% adherence defined as completing all 14 steps. We will analyse adherence using a mixed-effects beta regression model with a logit link as specified in @eq-beta-model.
+We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey.  Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
 
 $$
-\text{logit}(\text{E}(Y_{bkti})) = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
-$$ {#eq-beta-model}
+\text{logit}\{\mathbb{E}(Y_{bkti})\}
+= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+$$
+{#eq-beta-model}
 
-Where:
-
--   $\text{E}(Y_{bkti})$: The expected proportion of completed ATLS steps for patient $i$ in cluster $k$ during period $t$ in batch $b$.
--   $\mu$: The intercept, representing the baseline log-odds of completing ATLS steps when all predictors are set to 1.
--   $\beta_{bt}$: The fixed effect of period $t$ in batch $b$, allowing for different period effects for each batch.
--   $\theta$: The fixed effect of ATLS exposure, representing the effect of the intervention on adherence to ATLS principles.
--   $X_{bkt}$: The treatment arm indicator for patient $i$ in cluster $k$ during period $t$ in batch $b$ (1 for ATLS, 0 for standard care).
--   $\alpha_{bk}$: The random effect of cluster $k$ in batch $b$, capturing variability in adherence across clusters (hospitals).
--   $\gamma_{bkt}$: The random effect of cluster $k$ in period $t$ within batch $b$, accounting for within-cluster variability across time periods and batches.
+Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The intervention effect $\theta$ represents the difference in mean adherence on the logit scale.
 
 # References
