@@ -23,11 +23,9 @@ Adult trauma patients presenting to the emergency department of a participating 
 
 **Eligibility Criteria**
 
-*Hospitals* are secondary or tertiary hospitals in India that admit or refer/transfer for admission at least 400 patients with trauma per year. 
+*Clusters* are secondary or tertiary hospitals providing trauma care in India that admit or refer/transfer for admission at least 400 patients with trauma per year. Within each cluster, one or more units of physicians providing initial trauma care in the emergency department will be trained.
 
-*Clusters* are one or more units of physicians providing initial trauma care in the emergency department of tertiary hospitals in India.
-
-*Patients participants* are adult trauma patients who present to the emergency department of participating hospitals and are admitted or transferred for admission.
+*Participants* are adult trauma patients who present to the emergency department of participating hospitals and are admitted or transferred for admission.
 
 **Intervention** 
 The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
@@ -36,4 +34,4 @@ The intervention will be ATLS^®^ training, a proprietary 2.5 day course teachin
 We will use an opt-out consent approach for collection of routinely recorded data. We will obtain informed consent for collection of non-routinely recorded data, such as quality of life and disability outcomes. Patients who are unconscious or lack a legally authorized representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection.
 
 **Trial Period**
-February 2025, to October 2029
+February 2025 to October 2029
