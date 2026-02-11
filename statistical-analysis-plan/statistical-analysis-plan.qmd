@@ -522,11 +522,26 @@ Return to work will be analysed as a dichotomous outcome using the mixed-effects
 
 ### Length of emergency department stay
 
-Length of emergency department stay will be analysed as a continuous outcome using the linear mixed-effects model specified in @eq-linear-model.
+Length of emergency department stay will be analysed as a time-to-event outcome, defined as time from arrival at the emergency department to discharge. We will treat death as a competing event and therefore use a mixed-effects competing risks model, specifically a Fine and Gray subdistribution hazards model. The model is specified in @eq-competing-risks-model.
+
+$$
+h^{(s)}_{bk}(t)
+=
+h^{(s)}_{0}(t)
+\exp\{\theta X_{bkt} + \beta_{bt} + \alpha_{bk}\}
+$$
+{#eq-competing-risks-model}
+
+Where:
+
+- $h^{(s)}_{bk}(t)$: the subdistribution hazard for discharge at time $t$ for patients in cluster $k$ in batch $b$.
+- $h^{(s)}_{0}(t)$: the baseline subdistribution hazard function.
+- $\theta$: under the Fine–Gray model, represents the log subdistribution hazard ratio for discharge associated with ATLS® exposure.
+- All other terms are defined as in the primary analysis model.
 
 ### Length of hospital stay
 
-Length of hospital stay will be analysed as a continuous outcome using the linear mixed-effects model specified in @eq-linear-model.
+Length of hospital stay will also be analysed as a time-to-event outcome, defined as time from arrival at the emergency department to hospital discharge, using the model specified in @eq-competing-risks-model.
 
 ### Intensive care unit admission
 
@@ -534,18 +549,21 @@ Intensive care unit admission will be analysed as a dichotomous outcome using th
 
 ### Length of intensive care unit stay
 
-Length of intensive care unit stay will be analysed as a continuous outcome using the linear mixed-effects model specified in @eq-linear-model.
+Length of intensive care unit stay will also be analysed as a time-to-event outcome, defined as time from admission to the intensive care unit to discharge from the intensive care unit, using the model specified in @eq-competing-risks-model.
 
 ### Adherence to ATLS^®^ principles during initial patient resuscitation
 
 We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey.  Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
 
+We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
+
+
 $$
-\text{logit}\{\mathbb{E}(Y_{bkti})\}
+g\{\mathbb{E}(Y_{bkti})\}
 = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$
 {#eq-beta-model}
 
-Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The intervention effect $\theta$ represents the difference in mean adherence on the logit scale.
+Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The intervention effect $\theta$ represents the difference in expected adherence proportion on the logit (link) scale. Because the observed adherence proportion may take values of 0 or 1, values will be rescaled to lie in the open interval $(0,1)$ prior to fitting the beta regression model. A beta regression precision (dispersion) parameter will be estimated as part of the model.
 
 # References
