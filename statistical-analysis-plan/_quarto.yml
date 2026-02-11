@@ -23,10 +23,11 @@ format:
         \lohead{ADVANCE TRAUMA SAP}
         \rohead{ClinicalTrials.gov ID NCT06321419}
         \cfoot{\thepage\ of \pageref{LastPage} }
-        \usepackage{helvet}
         \usepackage[T1]{fontenc}
-        \renewcommand{\familydefault}{phv}
-        \setkomafont{disposition}{\normalfont}
+        \usepackage{ebgaramond}
+        \usepackage[sfdefault]{roboto}
+        \renewcommand{\familydefault}{\rmdefault}
+        \setkomafont{disposition}{\sffamily}
   docx: default
   html: default
   
