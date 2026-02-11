@@ -1,7 +1,7 @@
 toc: true
-toc-depth: 3
+toc-depth: 4
 number-sections: true
-number-depth: 3
+number-depth: 4
 fig-caption: true
 link-bibliography: false
 titlepage-logo: logo.png
