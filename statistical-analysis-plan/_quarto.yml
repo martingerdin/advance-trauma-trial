@@ -28,6 +28,7 @@ format:
         \usepackage[sfdefault]{roboto}
         \renewcommand{\familydefault}{\rmdefault}
         \setkomafont{disposition}{\sffamily}
-  docx: default
-  html: default
+        \setkomafont{pagehead}{\sffamily}
+  # docx: default
+  # html: default
   
