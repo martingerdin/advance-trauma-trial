@@ -246,10 +246,10 @@ Where:
 
 - $g(\cdot)$: the link function, specified as either the logit link, $g(p) = \log\{p/(1-p)\}$, or the identity link, $g(p) = p$, depending on the estimand of interest.
 - $\theta$: **the intervention effect**, represented as a fixed effect of intervention exposure (the primary estimand); under the logit link this represents the log-odds ratio for death associated with ATLS® exposure compared with standard care, and under the identity link it represents the absolute risk difference.
-- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m$ in cluster $k = 1, \dotsc, \texttt{r clusters}$ during period $t = 1, \dotsc, \texttt{r total.months - 1}$ in batch $b = 1, \dotsc, \texttt{r batches}$.
+- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m$ in cluster $k = 1, \dotsc, `r clusters`$ during period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$.
 - $\mu$: the intercept, representing the value of the linear predictor for the reference levels of all fixed effects, with random effects equal to zero.
 - $\beta_t$: the fixed effect of period $t$, shared across batches.
-- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, accounting for a separate period effect for each batch, resulting in a total of $\texttt{r batches} \times (\texttt{total.months} - 1)$ period effects.
+- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, accounting for a separate period effect for each batch, resulting in a total of `r batches` $\times$ (`r total.months - 1`) period effects.
 - $X_{bkt}$: the intervention exposure indicator for cluster $k$ during period $t$ in batch $b$, with $X_{bkt} = 1$ for ATLS® and $X_{bkt} = 0$ for standard care.
 - $\alpha_{bk}$: a normally distributed random effect for cluster $k$ in batch $b$, representing between-cluster (hospital-level) variability in the outcome.
 - $\gamma_{bkt}$: a normally distributed random effect for cluster $k$ in period $t$ in batch $b$, representing within-cluster variation over time and capturing cluster-specific deviations from the average period effect.

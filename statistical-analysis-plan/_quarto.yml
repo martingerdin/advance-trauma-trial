@@ -7,8 +7,10 @@ link-bibliography: false
 titlepage-logo: logo.png
 titlepage-theme:
   title-fontsize: 15
+  title-fontfamily: "Roboto"
   subtitle-fontstyle: ["bfseries"]
   subtitle-fontsize: 20
+  subtitle-fontfamily: "Quicksand"
   elements: ["\\logoblock", "\\titleblock", "\\authorblock"] 
 format:
   titlepage-pdf:
@@ -26,9 +28,11 @@ format:
         \usepackage[T1]{fontenc}
         \usepackage{ebgaramond}
         \usepackage[sfdefault]{roboto}
+        \usepackage{etoolbox}
         \renewcommand{\familydefault}{\rmdefault}
         \setkomafont{disposition}{\sffamily}
         \setkomafont{pagehead}{\sffamily}
+
   # docx: default
   # html: default
   
