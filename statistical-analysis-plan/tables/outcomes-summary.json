@@ -6,8 +6,8 @@
     "target_population": "All eligible patients (ITT)",
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
-    "potential_intercurrent_events": "Transfer; withdrawal",
-    "strategy_for_handling_intercurrent_events": "ITT; ascertain despite transfer"
+    "potential_intercurrent_events": "Loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "ITT"
   },
   {
     "outcome": "All-cause mortality within 24 hours of arrival at the emergency department",
