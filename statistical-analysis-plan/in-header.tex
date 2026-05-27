@@ -1,0 +1,46 @@
+\usepackage{scrlayer-scrpage}
+\usepackage{lastpage}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\definecolor{secondary}{HTML}{1a9dbb}
+\lohead{ADVANCE TRAUMA SAP}
+\rohead{ClinicalTrials.gov ID NCT06321419}
+\cfoot{\thepage\ of \pageref{LastPage} }
+\setmainfont{EB Garamond}
+\setsansfont{Roboto}
+\newfontfamily\robotolight{Roboto}[Weight=300]
+\setkomafont{disposition}{\sffamily}
+% Increase heading sizes so Roboto headings stand out from Garamond body text
+\setkomafont{section}{\sffamily\LARGE}
+\setkomafont{subsection}{\sffamily\Large}
+\setkomafont{subsubsection}{\sffamily\large}
+\setkomafont{paragraph}{\sffamily\large\bfseries}
+\setkomafont{pagehead}{\sffamily}
+% Title page URL on cover: clickable white text in Roboto
+\newcommand{\titlepageurl}{\href{https://www.advancetrauma.info}{\textcolor{white}{www.advancetrauma.info}}}
+% Reduce vertical space around headings
+\RedeclareSectionCommand[beforeskip=2ex plus 0.5ex minus 0.2ex,afterskip=1.5ex plus 0.2ex]{section}
+\RedeclareSectionCommand[beforeskip=1.5ex plus 0.5ex minus 0.2ex,afterskip=1ex plus 0.2ex]{subsection}
+\RedeclareSectionCommand[beforeskip=1ex plus 0.5ex minus 0.2ex,afterskip=0.5ex plus 0.2ex]{subsubsection}
+\RedeclareSectionCommand[beforeskip=0.5ex plus 0.3ex minus 0.1ex,afterskip=0.5ex plus 0.1ex]{paragraph}
+% Table of contents: font sizes per level (section = largest, then step down)
+\RedeclareSectionCommand[
+  tocentryformat=\usekomafont{disposition}\Large\bfseries,
+  toclinefill=\Large\TOCLineLeaderFill,
+  tocpagenumberformat=\usekomafont{disposition}\Large\bfseries
+]{section}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{subsection}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{subsubsection}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{paragraph}

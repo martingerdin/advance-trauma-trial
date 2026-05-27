@@ -1,0 +1,172 @@
+[
+  {
+    "outcome": "Primary outcome: In-hospital mortality within 30 days of ED arrival",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "All eligible patient participants in the main stepped-wedge trial",
+    "main_analysis_model": "Mixed-effects binomial regression with logit and identity links",
+    "effect_measure": "Odds ratio; absolute risk difference",
+    "potential_intercurrent_events": "Transfer to another hospital before outcome ascertainment; withdrawal/opt-out before final analysis",
+    "strategy_for_handling_intercurrent_events": "Treatment policy strategy: outcome will be ascertained irrespective of transfer where possible; all available primary outcome data included"
+  },
+  {
+    "outcome": "All-cause mortality within 24 hours of ED arrival",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "All eligible patient participants in the main stepped-wedge trial",
+    "main_analysis_model": "Mixed-effects binomial regression with logit and identity links",
+    "effect_measure": "Odds ratio; absolute risk difference",
+    "potential_intercurrent_events": "Loss to follow-up before ascertainment; withdrawal/opt-out",
+    "strategy_for_handling_intercurrent_events": "Treatment policy strategy using all available data"
+  },
+  {
+    "outcome": "All-cause mortality within 30 days of ED arrival",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "All eligible patient participants in the main stepped-wedge trial",
+    "main_analysis_model": "Mixed-effects binomial regression with logit and identity links",
+    "effect_measure": "Odds ratio; absolute risk difference",
+    "potential_intercurrent_events": "Loss to follow-up before ascertainment; withdrawal/opt-out",
+    "strategy_for_handling_intercurrent_events": "Treatment policy strategy using all available data"
+  },
+  {
+    "outcome": "All-cause mortality within 3 months of ED arrival",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "All eligible patient participants in the main stepped-wedge trial",
+    "main_analysis_model": "Mixed-effects binomial regression with logit and identity links",
+    "effect_measure": "Odds ratio; absolute risk difference",
+    "potential_intercurrent_events": "Loss to follow-up before ascertainment; withdrawal/opt-out",
+    "strategy_for_handling_intercurrent_events": "Treatment policy strategy using all available data"
+  },
+  {
+    "outcome": "Quality of life within 7 days of discharge",
+    "design_component": "Nested staircase",
+    "data_type": "Ordinal EQ-5D dimensions; continuous VAS",
+    "target_population": "Patients alive at the relevant follow-up time point within the nested staircase sample",
+    "main_analysis_model": "Mixed-effects cumulative logit model for EQ-5D dimensions; linear mixed-effects model for VAS",
+    "effect_measure": "Common odds ratio for ordinal dimensions; mean difference for VAS",
+    "potential_intercurrent_events": "Death before assessment; withdrawal from non-routine follow-up; loss to follow-up",
+    "strategy_for_handling_intercurrent_events": "While alive strategy: analysed among patients alive at the relevant time point; interpreted as conditional on survival"
+  },
+  {
+    "outcome": "Quality of life 30 days after ED arrival",
+    "design_component": "Nested staircase",
+    "data_type": "Ordinal EQ-5D dimensions; continuous VAS",
+    "target_population": "Patients alive at 30 days within the nested staircase sample",
+    "main_analysis_model": "Mixed-effects cumulative logit model for EQ-5D dimensions; linear mixed-effects model for VAS",
+    "effect_measure": "Common odds ratio for ordinal dimensions; mean difference for VAS",
+    "potential_intercurrent_events": "Death before 30 days; withdrawal from non-routine follow-up; loss to follow-up",
+    "strategy_for_handling_intercurrent_events": "While alive strategy"
+  },
+  {
+    "outcome": "Quality of life 3 months after ED arrival",
+    "design_component": "Nested staircase",
+    "data_type": "Ordinal EQ-5D dimensions; continuous VAS",
+    "target_population": "Patients alive at 3 months within the nested staircase sample",
+    "main_analysis_model": "Mixed-effects cumulative logit model for EQ-5D dimensions; linear mixed-effects model for VAS",
+    "effect_measure": "Common odds ratio for ordinal dimensions; mean difference for VAS",
+    "potential_intercurrent_events": "Death before 3 months; withdrawal from non-routine follow-up; loss to follow-up",
+    "strategy_for_handling_intercurrent_events": "While alive strategy"
+  },
+  {
+    "outcome": "Disability within 7 days of discharge",
+    "design_component": "Nested staircase",
+    "data_type": "Ordinal WHODAS domains; continuous summary score",
+    "target_population": "Patients alive at the relevant follow-up time point within the nested staircase sample",
+    "main_analysis_model": "Mixed-effects ordinal model for WHODAS domains; linear mixed-effects model for WHODAS summary score",
+    "effect_measure": "Common odds ratio for ordinal domains; mean difference for summary score",
+    "potential_intercurrent_events": "Death before assessment; withdrawal from non-routine follow-up; loss to follow-up",
+    "strategy_for_handling_intercurrent_events": "While alive strategy"
+  },
+  {
+    "outcome": "Disability 30 days after ED arrival",
+    "design_component": "Nested staircase",
+    "data_type": "Ordinal WHODAS domains; continuous summary score",
+    "target_population": "Patients alive at 30 days within the nested staircase sample",
+    "main_analysis_model": "Mixed-effects ordinal model for WHODAS domains; linear mixed-effects model for WHODAS summary score",
+    "effect_measure": "Common odds ratio for ordinal domains; mean difference for summary score",
+    "potential_intercurrent_events": "Death before 30 days; withdrawal from non-routine follow-up; loss to follow-up",
+    "strategy_for_handling_intercurrent_events": "While alive strategy"
+  },
+  {
+    "outcome": "Disability 3 months after ED arrival",
+    "design_component": "Nested staircase",
+    "data_type": "Ordinal WHODAS domains; continuous summary score",
+    "target_population": "Patients alive at 3 months within the nested staircase sample",
+    "main_analysis_model": "Mixed-effects ordinal model for WHODAS domains; linear mixed-effects model for WHODAS summary score",
+    "effect_measure": "Common odds ratio for ordinal domains; mean difference for summary score",
+    "potential_intercurrent_events": "Death before 3 months; withdrawal from non-routine follow-up; loss to follow-up",
+    "strategy_for_handling_intercurrent_events": "While alive strategy"
+  },
+  {
+    "outcome": "Return to work 30 days after ED arrival",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "Patients alive at 30 days for whom return to work is relevant",
+    "main_analysis_model": "Mixed-effects binomial regression with logit and identity links",
+    "effect_measure": "Odds ratio",
+    "potential_intercurrent_events": "Death before assessment; withdrawal/loss to follow-up; outcome not relevant for some participants",
+    "strategy_for_handling_intercurrent_events": "While alive / outcome-defined population strategy"
+  },
+  {
+    "outcome": "Return to work 3 months after ED arrival",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "Patients alive at 3 months for whom return to work is relevant",
+    "main_analysis_model": "Mixed-effects binomial regression with logit and identity links",
+    "effect_measure": "Odds ratio",
+    "potential_intercurrent_events": "Death before assessment; withdrawal/loss to follow-up; outcome not relevant for some participants",
+    "strategy_for_handling_intercurrent_events": "While alive / outcome-defined population strategy"
+  },
+  {
+    "outcome": "Length of emergency department stay",
+    "design_component": "Main stepped-wedge",
+    "data_type": "",
+    "target_population": "",
+    "main_analysis_model": "",
+    "effect_measure": "",
+    "potential_intercurrent_events": "",
+    "strategy_for_handling_intercurrent_events": ""
+  },
+  {
+    "outcome": "Length of hospital stay",
+    "design_component": "Main stepped-wedge",
+    "data_type": "",
+    "target_population": "",
+    "main_analysis_model": "",
+    "effect_measure": "",
+    "potential_intercurrent_events": "",
+    "strategy_for_handling_intercurrent_events": ""
+  },
+  {
+    "outcome": "Intensive care unit (ICU) admission",
+    "design_component": "Main stepped-wedge",
+    "data_type": "Binary",
+    "target_population": "All eligible patient participants in the main stepped-wedge trial",
+    "main_analysis_model": "Mixed-effects binomial regression with logit link",
+    "effect_measure": "Odds ratio",
+    "potential_intercurrent_events": "Death before ICU admission ascertainment; transfer",
+    "strategy_for_handling_intercurrent_events": "Treatment policy strategy using available data"
+  },
+  {
+    "outcome": "Length of Intensive care unit admission stay",
+    "design_component": "Main stepped-wedge",
+    "data_type": "",
+    "target_population": "",
+    "main_analysis_model": "",
+    "effect_measure": "",
+    "potential_intercurrent_events": "",
+    "strategy_for_handling_intercurrent_events": ""
+  },
+  {
+    "outcome": "Adherence to ATLS® principles during initial resuscitation",
+    "design_component": "Nested staircase",
+    "data_type": "Proportion",
+    "target_population": "Random sample of patients observed in both control and intervention periods within the nested staircase design",
+    "main_analysis_model": "Mixed-effects beta regression with logit link",
+    "effect_measure": "Difference in expected adherence proportion on the logit scale",
+    "potential_intercurrent_events": "Failure to observe resuscitation; incomplete observation window",
+    "strategy_for_handling_intercurrent_events": "Treatment policy strategy for the observed nested sample"
+  }
+]

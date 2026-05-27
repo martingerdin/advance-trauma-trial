@@ -126,16 +126,50 @@
 
 \usepackage{scrlayer-scrpage}
 \usepackage{lastpage}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\definecolor{secondary}{HTML}{1a9dbb}
 \lohead{ADVANCE TRAUMA SAP}
 \rohead{ClinicalTrials.gov ID NCT06321419}
 \cfoot{\thepage\ of \pageref{LastPage} }
-\usepackage[T1]{fontenc}
-\usepackage{ebgaramond}
-\usepackage[sfdefault]{roboto}
-\usepackage{etoolbox}
-\renewcommand{\familydefault}{\rmdefault}
+\setmainfont{EB Garamond}
+\setsansfont{Roboto}
+\newfontfamily\robotolight{Roboto}[Weight=300]
 \setkomafont{disposition}{\sffamily}
+% Increase heading sizes so Roboto headings stand out from Garamond body text
+\setkomafont{section}{\sffamily\LARGE}
+\setkomafont{subsection}{\sffamily\Large}
+\setkomafont{subsubsection}{\sffamily\large}
+\setkomafont{paragraph}{\sffamily\large\bfseries}
 \setkomafont{pagehead}{\sffamily}
+% Title page URL on cover: clickable white text in Roboto
+\newcommand{\titlepageurl}{\href{https://www.advancetrauma.info}{\textcolor{white}{www.advancetrauma.info}}}
+% Reduce vertical space around headings
+\RedeclareSectionCommand[beforeskip=2ex plus 0.5ex minus 0.2ex,afterskip=1.5ex plus 0.2ex]{section}
+\RedeclareSectionCommand[beforeskip=1.5ex plus 0.5ex minus 0.2ex,afterskip=1ex plus 0.2ex]{subsection}
+\RedeclareSectionCommand[beforeskip=1ex plus 0.5ex minus 0.2ex,afterskip=0.5ex plus 0.2ex]{subsubsection}
+\RedeclareSectionCommand[beforeskip=0.5ex plus 0.3ex minus 0.1ex,afterskip=0.5ex plus 0.1ex]{paragraph}
+% Table of contents: font sizes per level (section = largest, then step down)
+\RedeclareSectionCommand[
+  tocentryformat=\usekomafont{disposition}\Large\bfseries,
+  toclinefill=\Large\TOCLineLeaderFill,
+  tocpagenumberformat=\usekomafont{disposition}\Large\bfseries
+]{section}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{subsection}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{subsubsection}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{paragraph}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -211,7 +245,7 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Statistical Analysis Plan},
-  pdfauthor={Version 0.5.0, 2025-10-14},
+  pdfauthor={Version 0.6.0, 2026-03-04},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -232,7 +266,7 @@
 Effects of Advanced Trauma Life Support\textsuperscript{®} Training
 Compared to Standard Care on Adult Trauma Patient Outcomes: A
 Stepped-Wedge Cluster Randomised Trial}
-\author{Version 0.5.0, 2025-10-14}
+\author{Version 0.6.0, 2026-03-04}
 \date{}
 \begin{document}
 %%%%% begin titlepage extension code
@@ -280,7 +314,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 \newcommand{\affiliationstyle}[1]{{\large{#1}}}
 
 \newcommand{\titlepageauthorblock}{
-{\authorstyle{\nohyphens{Version 0.5.0, 2025-10-14}\\}}
+{\authorstyle{\nohyphens{Version 0.6.0, 2026-03-04}\\}}
 }
 
 \newcommand{\titlepageaffiliationblock}{
@@ -296,7 +330,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 {}
 }
 \newcommand{\footerstyled}{%
-{\LARGE{Version 0.6.0, 2026-03-04}}
+{\large{\textsc{}}}
 }
 \newcommand{\datestyled}{%
 {}
@@ -692,6 +726,182 @@ design}\label{collected-using-the-nested-staircase-design}
   has been discharged. This data will also be collected using a nested
   staircase design.
 \end{itemize}
+
+A summary of all outcomes, populations, effect measures, and handling of
+intercurrent events is provided in Table~\ref{tbl-outcomes-population}
+and Table~\ref{tbl-outcomes-analysis}.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2753}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0769}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1984}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4494}}@{}}
+
+\caption{\label{tbl-outcomes-population}Summary of outcomes, design
+components, data types, and target populations}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Outcome
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Design component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Data type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Target population
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Primary outcome: In-hospital mortality within 30 days of ED arrival &
+Main stepped-wedge & Binary & All eligible patient participants in the
+main stepped-wedge trial \\
+All-cause mortality within 24 hours of ED arrival & Main stepped-wedge &
+Binary & All eligible patient participants in the main stepped-wedge
+trial \\
+All-cause mortality within 30 days of ED arrival & Main stepped-wedge &
+Binary & All eligible patient participants in the main stepped-wedge
+trial \\
+All-cause mortality within 3 months of ED arrival & Main stepped-wedge &
+Binary & All eligible patient participants in the main stepped-wedge
+trial \\
+Quality of life within 7 days of discharge & Nested staircase & Ordinal
+EQ-5D dimensions; continuous VAS & Patients alive at the relevant
+follow-up time point within the nested staircase sample \\
+Quality of life 30 days after ED arrival & Nested staircase & Ordinal
+EQ-5D dimensions; continuous VAS & Patients alive at 30 days within the
+nested staircase sample \\
+Quality of life 3 months after ED arrival & Nested staircase & Ordinal
+EQ-5D dimensions; continuous VAS & Patients alive at 3 months within the
+nested staircase sample \\
+Disability within 7 days of discharge & Nested staircase & Ordinal
+WHODAS domains; continuous summary score & Patients alive at the
+relevant follow-up time point within the nested staircase sample \\
+Disability 30 days after ED arrival & Nested staircase & Ordinal WHODAS
+domains; continuous summary score & Patients alive at 30 days within the
+nested staircase sample \\
+Disability 3 months after ED arrival & Nested staircase & Ordinal WHODAS
+domains; continuous summary score & Patients alive at 3 months within
+the nested staircase sample \\
+Return to work 30 days after ED arrival & Main stepped-wedge & Binary &
+Patients alive at 30 days for whom return to work is relevant \\
+Return to work 3 months after ED arrival & Main stepped-wedge & Binary &
+Patients alive at 3 months for whom return to work is relevant \\
+Length of emergency department stay & Main stepped-wedge & & \\
+Length of hospital stay & Main stepped-wedge & & \\
+Intensive care unit (ICU) admission & Main stepped-wedge & Binary & All
+eligible patient participants in the main stepped-wedge trial \\
+Length of Intensive care unit admission stay & Main stepped-wedge & & \\
+Adherence to ATLS® principles during initial resuscitation & Nested
+staircase & Proportion & Random sample of patients observed in both
+control and intervention periods within the nested staircase design \\
+
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1414}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2079}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1518}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2079}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2911}}@{}}
+
+\caption{\label{tbl-outcomes-analysis}Summary of outcome analysis
+models, effect measures, and handling of intercurrent events}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Outcome
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Main analysis model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Effect measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Potential intercurrent events
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Strategy for handling intercurrent events
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Primary outcome: In-hospital mortality within 30 days of ED arrival &
+Mixed-effects binomial regression with logit and identity links & Odds
+ratio; absolute risk difference & Transfer to another hospital before
+outcome ascertainment; withdrawal/opt-out before final analysis &
+Treatment policy strategy: outcome will be ascertained irrespective of
+transfer where possible; all available primary outcome data included \\
+All-cause mortality within 24 hours of ED arrival & Mixed-effects
+binomial regression with logit and identity links & Odds ratio; absolute
+risk difference & Loss to follow-up before ascertainment;
+withdrawal/opt-out & Treatment policy strategy using all available
+data \\
+All-cause mortality within 30 days of ED arrival & Mixed-effects
+binomial regression with logit and identity links & Odds ratio; absolute
+risk difference & Loss to follow-up before ascertainment;
+withdrawal/opt-out & Treatment policy strategy using all available
+data \\
+All-cause mortality within 3 months of ED arrival & Mixed-effects
+binomial regression with logit and identity links & Odds ratio; absolute
+risk difference & Loss to follow-up before ascertainment;
+withdrawal/opt-out & Treatment policy strategy using all available
+data \\
+Quality of life within 7 days of discharge & Mixed-effects cumulative
+logit model for EQ-5D dimensions; linear mixed-effects model for VAS &
+Common odds ratio for ordinal dimensions; mean difference for VAS &
+Death before assessment; withdrawal from non-routine follow-up; loss to
+follow-up & While alive strategy: analysed among patients alive at the
+relevant time point; interpreted as conditional on survival \\
+Quality of life 30 days after ED arrival & Mixed-effects cumulative
+logit model for EQ-5D dimensions; linear mixed-effects model for VAS &
+Common odds ratio for ordinal dimensions; mean difference for VAS &
+Death before 30 days; withdrawal from non-routine follow-up; loss to
+follow-up & While alive strategy \\
+Quality of life 3 months after ED arrival & Mixed-effects cumulative
+logit model for EQ-5D dimensions; linear mixed-effects model for VAS &
+Common odds ratio for ordinal dimensions; mean difference for VAS &
+Death before 3 months; withdrawal from non-routine follow-up; loss to
+follow-up & While alive strategy \\
+Disability within 7 days of discharge & Mixed-effects ordinal model for
+WHODAS domains; linear mixed-effects model for WHODAS summary score &
+Common odds ratio for ordinal domains; mean difference for summary score
+& Death before assessment; withdrawal from non-routine follow-up; loss
+to follow-up & While alive strategy \\
+Disability 30 days after ED arrival & Mixed-effects ordinal model for
+WHODAS domains; linear mixed-effects model for WHODAS summary score &
+Common odds ratio for ordinal domains; mean difference for summary score
+& Death before 30 days; withdrawal from non-routine follow-up; loss to
+follow-up & While alive strategy \\
+Disability 3 months after ED arrival & Mixed-effects ordinal model for
+WHODAS domains; linear mixed-effects model for WHODAS summary score &
+Common odds ratio for ordinal domains; mean difference for summary score
+& Death before 3 months; withdrawal from non-routine follow-up; loss to
+follow-up & While alive strategy \\
+Return to work 30 days after ED arrival & Mixed-effects binomial
+regression with logit and identity links & Odds ratio & Death before
+assessment; withdrawal/loss to follow-up; outcome not relevant for some
+participants & While alive / outcome-defined population strategy \\
+Return to work 3 months after ED arrival & Mixed-effects binomial
+regression with logit and identity links & Odds ratio & Death before
+assessment; withdrawal/loss to follow-up; outcome not relevant for some
+participants & While alive / outcome-defined population strategy \\
+Length of emergency department stay & & & & \\
+Length of hospital stay & & & & \\
+Intensive care unit (ICU) admission & Mixed-effects binomial regression
+with logit link & Odds ratio & Death before ICU admission ascertainment;
+transfer & Treatment policy strategy using available data \\
+Length of Intensive care unit admission stay & & & & \\
+Adherence to ATLS® principles during initial resuscitation &
+Mixed-effects beta regression with logit link & Difference in expected
+adherence proportion on the logit scale & Failure to observe
+resuscitation; incomplete observation window & Treatment policy strategy
+for the observed nested sample \\
+
+\end{longtable}
 
 \subsection{Statistical hypotheses}\label{statistical-hypotheses}
 
@@ -1512,8 +1722,7 @@ Epidemiol} \textbf{49}, 979--995 (2020).}
 \CSLRightInline{Nakhid, Z. \emph{et al.} Effect of trauma life support
 training on patient outcomes: A systematic review and meta-analysis.
 \emph{Scandinavian Journal of Trauma, Resuscitation and Emergency
-Medicine} \textbf{Accepted for publication. Received 9 June 2025;
-accepted 5 January 2026.}, (2026).}
+Medicine} (2026).}
 
 \bibitem[\citeproctext]{ref-gerdin_warnberg_feasibility_2025}
 \CSLLeftMargin{6. }%

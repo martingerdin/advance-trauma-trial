@@ -148,6 +148,63 @@ We will assign clusters to batches as they are found to be eligible and receive 
 
 {{< include ../shared-assets/outcomes.qmd >}}
 
+A summary of all outcomes, populations, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-population and @tbl-outcomes-analysis.
+
+```{r}
+#| label: outcomes-table-data
+#| include: false
+
+outcomes.table <- jsonlite::fromJSON("tables/outcomes-summary.json")
+
+names(outcomes.table) <- c(
+  "Outcome",
+  "Design component",
+  "Data type",
+  "Target population",
+  "Main analysis model",
+  "Effect measure",
+  "Potential intercurrent events",
+  "Strategy for handling intercurrent events"
+)
+```
+
+```{r}
+#| label: tbl-outcomes-population
+#| tbl-cap: "Summary of outcomes, design components, data types, and target populations"
+#| echo: false
+#| message: false
+#| warning: false
+
+knitr::kable(
+  outcomes.table[, c(
+    "Outcome",
+    "Design component",
+    "Data type",
+    "Target population"
+  )],
+  align = "l"
+)
+```
+
+```{r}
+#| label: tbl-outcomes-analysis
+#| tbl-cap: "Summary of outcome analysis models, effect measures, and handling of intercurrent events"
+#| echo: false
+#| message: false
+#| warning: false
+
+knitr::kable(
+  outcomes.table[, c(
+    "Outcome",
+    "Main analysis model",
+    "Effect measure",
+    "Potential intercurrent events",
+    "Strategy for handling intercurrent events"
+  )],
+  align = "l"
+)
+```
+
 ## Statistical hypotheses
 
 Our primary statistical hypotheses are:
