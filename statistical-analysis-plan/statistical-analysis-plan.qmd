@@ -1,10 +1,7 @@
 ---
-title: "Statistical Analysis Plan"
-subtitle: | 
-  | ADVANCE TRAUMA
-  |
-  | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial
-author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
+title: Statistical Analysis Plan
+subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial"
+titlepage-footer: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 bibliography: ../shared-assets/bibliography.bib
 csl: nature.csl
 ---

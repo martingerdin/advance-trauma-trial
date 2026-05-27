@@ -248,7 +248,6 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Statistical Analysis Plan},
-  pdfauthor={Version 0.6.0, 2026-03-04},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -264,12 +263,10 @@
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{ADVANCE TRAUMA\\
-\strut \\
-Effects of Advanced Trauma Life Support\textsuperscript{®} Training
-Compared to Standard Care on Adult Trauma Patient Outcomes: A
+\subtitle{Effects of Advanced Trauma Life Support\textsuperscript{®}
+Training Compared to Standard Care on Adult Trauma Patient Outcomes: A
 Stepped-Wedge Cluster Randomised Trial}
-\author{Version 0.6.0, 2026-03-04}
+\author{}
 \date{}
 \begin{document}
 %%%%% begin titlepage extension code
@@ -297,11 +294,9 @@ Stepped-Wedge Cluster Randomised Trial}
 \vspace{\betweentitlesubtitle}
 {
 \fontsize{28}{30}\selectfont
-\textcolor{white}{\sffamily{\nohyphens{ADVANCE TRAUMA\\
-\strut \\
-Effects of Advanced Trauma Life Support\textsuperscript{®} Training
-Compared to Standard Care on Adult Trauma Patient Outcomes: A
-Stepped-Wedge Cluster Randomised Trial}}}\par
+\textcolor{white}{\sffamily{\nohyphens{Effects of Advanced Trauma Life
+Support\textsuperscript{®} Training Compared to Standard Care on Adult
+Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 }}
 \newcommand{\titlepagetitleblock}{
 \titleandsubtitle
@@ -312,7 +307,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 \newcommand{\affiliationstyle}[1]{{\large{#1}}}
 
 \newcommand{\titlepageauthorblock}{
-{\authorstyle{\nohyphens{Version 0.6.0, 2026-03-04}\\}}
+{\authorstyle{\\}}
 }
 
 \newcommand{\titlepageaffiliationblock}{
@@ -328,7 +323,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 {}
 }
 \newcommand{\footerstyled}{%
-{\LARGE{}}
+{\LARGE{Version 0.6.0, 2026-03-04}}
 }
 \newcommand{\datestyled}{%
 {}
@@ -356,22 +351,20 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 \vspace{1.5cm}
 }
 
-\newcommand{\authorblock}{{\titlepageauthorblock}
+\newcommand{\authorblock}{}
 
-\vspace{2\baselineskip}
-}
-
-\newcommand{\affiliationblock}{{\titlepageaffiliationblock}
-
-\vspace{1pt}
-}
+\newcommand{\affiliationblock}{}
 
 \newcommand{\logoblock}{{\includegraphics[width=0.4\textwidth]{logo.png}}
 
 \vspace{1cm}
 }
 
-\newcommand{\footerblock}{}
+\newcommand{\footerblock}{\textcolor{white}{\titlepagefooterfont
+\titlepagefooterblock}
+
+\vspace{0pt}
+}
 
 \newcommand{\dateblock}{}
 
