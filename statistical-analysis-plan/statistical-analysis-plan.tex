@@ -227,6 +227,7 @@
 \usetikzlibrary{fadings}
 \usepackage[pagecolor=none]{pagecolor}
 
+\usepackage[pagecolor=none]{pagecolor}
 
 % Set the titlepage font families
 
@@ -235,6 +236,8 @@
 
 
 
+\usepackage{fontspec}
+\newfontfamily{\titlepagefooterfont}{Roboto}
 
 
 
@@ -287,29 +290,24 @@ Stepped-Wedge Cluster Randomised Trial}
 
 \newcommand{\titleandsubtitle}{
 % Title and subtitle
-{\fontsize{15}{18.0}\selectfont
-{\uppercase{\nohyphens{Statistical Analysis Plan}}}\par
+{\fontsize{32}{38.4}\selectfont
+\textcolor{white}{\bfseries{\nohyphens{Statistical Analysis Plan}}}\par
 }%
 
 \vspace{\betweentitlesubtitle}
 {
-\fontsize{20}{24.0}\selectfont
-{\bfseries{\nohyphens{ADVANCE TRAUMA\\
+\fontsize{28}{30}\selectfont
+\textcolor{white}{\sffamily{\nohyphens{ADVANCE TRAUMA\\
 \strut \\
 Effects of Advanced Trauma Life Support\textsuperscript{®} Training
 Compared to Standard Care on Adult Trauma Patient Outcomes: A
 Stepped-Wedge Cluster Randomised Trial}}}\par
 }}
 \newcommand{\titlepagetitleblock}{
-\rule{\textwidth}{0.4pt} % Thin horizontal rule
-\vspace{0.025\textheight} % Whitespace between the top rules and title
-
 \titleandsubtitle
-
-\vspace{0.025\textheight} 
-\rule{0.3\textwidth}{0.4pt} % Short horizontal rule under the title
 }
-\newcommand{\authorstyle}[1]{{\Large{#1}}}
+
+\newcommand{\authorstyle}[1]{{\textbf{#1}}}
 
 \newcommand{\affiliationstyle}[1]{{\large{#1}}}
 
@@ -330,7 +328,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 {}
 }
 \newcommand{\footerstyled}{%
-{\large{\textsc{}}}
+{\LARGE{}}
 }
 \newcommand{\datestyled}{%
 {}
@@ -349,13 +347,13 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 
 %set up blocks so user can specify order
 \newcommand{\titleblock}{\newlength{\betweentitlesubtitle}
-\setlength{\betweentitlesubtitle}{\baselineskip}
+\setlength{\betweentitlesubtitle}{0.5cm}
 {
 \titlepagetitlefont
 {\titlepagetitleblock}
 }
 
-\vspace{0.1\textheight}
+\vspace{1.5cm}
 }
 
 \newcommand{\authorblock}{{\titlepageauthorblock}
@@ -368,7 +366,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 \vspace{1pt}
 }
 
-\newcommand{\logoblock}{{\includegraphics[width=0.25\textheight]{logo.png}}
+\newcommand{\logoblock}{{\includegraphics[width=0.4\textwidth]{logo.png}}
 
 \vspace{1cm}
 }
@@ -378,6 +376,8 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 \newcommand{\dateblock}{}
 
 \newcommand{\headerblock}{}
+\colorlet{pgcolor}{secondary}
+\pagecolor{pgcolor}\afterpage{\nopagecolor}
 
 \thispagestyle{empty} % no page numbers on titlepages
 
@@ -393,7 +393,17 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 
 \titleblock
 
-\authorblock
+\vfill
+
+\footerblock
+
+\textcolor{white}{\hrule}
+
+\par
+
+\vspace*{0.5cm}
+
+\bgroup\LARGE\sffamily\titlepageurl\egroup
 \par
 
 \end{minipage}\ifthenelse{\equal{}{right} \OR \equal{}{leftright} }{
