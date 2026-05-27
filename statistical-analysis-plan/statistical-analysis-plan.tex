@@ -793,6 +793,18 @@ trial \\
 All-cause mortality within 3 months of ED arrival & Main stepped-wedge &
 Binary & All eligible patient participants in the main stepped-wedge
 trial \\
+Length of emergency department stay & Main stepped-wedge & & \\
+Length of hospital stay & Main stepped-wedge & & \\
+Intensive care unit (ICU) admission & Main stepped-wedge & Binary & All
+eligible patient participants in the main stepped-wedge trial \\
+Length of Intensive care unit admission stay & Main stepped-wedge & & \\
+Return to work 30 days after ED arrival & Main stepped-wedge & Binary &
+Patients alive at 30 days for whom return to work is relevant \\
+Return to work 3 months after ED arrival & Main stepped-wedge & Binary &
+Patients alive at 3 months for whom return to work is relevant \\
+Adherence to ATLS® principles during initial resuscitation & Nested
+staircase & Proportion & Random sample of patients observed in both
+control and intervention periods within the nested staircase design \\
 Quality of life within 7 days of discharge & Nested staircase & Ordinal
 EQ-5D dimensions; continuous VAS & Patients alive at the relevant
 follow-up time point within the nested staircase sample \\
@@ -811,18 +823,6 @@ nested staircase sample \\
 Disability 3 months after ED arrival & Nested staircase & Ordinal WHODAS
 domains; continuous summary score & Patients alive at 3 months within
 the nested staircase sample \\
-Return to work 30 days after ED arrival & Main stepped-wedge & Binary &
-Patients alive at 30 days for whom return to work is relevant \\
-Return to work 3 months after ED arrival & Main stepped-wedge & Binary &
-Patients alive at 3 months for whom return to work is relevant \\
-Length of emergency department stay & Main stepped-wedge & & \\
-Length of hospital stay & Main stepped-wedge & & \\
-Intensive care unit (ICU) admission & Main stepped-wedge & Binary & All
-eligible patient participants in the main stepped-wedge trial \\
-Length of Intensive care unit admission stay & Main stepped-wedge & & \\
-Adherence to ATLS® principles during initial resuscitation & Nested
-staircase & Proportion & Random sample of patients observed in both
-control and intervention periods within the nested staircase design \\
 
 \end{longtable}
 
@@ -875,6 +875,25 @@ binomial regression with logit and identity links & Odds ratio; absolute
 risk difference & Loss to follow-up before ascertainment;
 withdrawal/opt-out & Treatment policy strategy using all available
 data \\
+Length of emergency department stay & & & & \\
+Length of hospital stay & & & & \\
+Intensive care unit (ICU) admission & Mixed-effects binomial regression
+with logit link & Odds ratio & Death before ICU admission ascertainment;
+transfer & Treatment policy strategy using available data \\
+Length of Intensive care unit admission stay & & & & \\
+Return to work 30 days after ED arrival & Mixed-effects binomial
+regression with logit and identity links & Odds ratio & Death before
+assessment; withdrawal/loss to follow-up; outcome not relevant for some
+participants & While alive / outcome-defined population strategy \\
+Return to work 3 months after ED arrival & Mixed-effects binomial
+regression with logit and identity links & Odds ratio & Death before
+assessment; withdrawal/loss to follow-up; outcome not relevant for some
+participants & While alive / outcome-defined population strategy \\
+Adherence to ATLS® principles during initial resuscitation &
+Mixed-effects beta regression with logit link & Difference in expected
+adherence proportion on the logit scale & Failure to observe
+resuscitation; incomplete observation window & Treatment policy strategy
+for the observed nested sample \\
 Quality of life within 7 days of discharge & Mixed-effects cumulative
 logit model for EQ-5D dimensions; linear mixed-effects model for VAS &
 Common odds ratio for ordinal dimensions; mean difference for VAS &
@@ -906,25 +925,6 @@ WHODAS domains; linear mixed-effects model for WHODAS summary score &
 Common odds ratio for ordinal domains; mean difference for summary score
 & Death before 3 months; withdrawal from non-routine follow-up; loss to
 follow-up & While alive strategy \\
-Return to work 30 days after ED arrival & Mixed-effects binomial
-regression with logit and identity links & Odds ratio & Death before
-assessment; withdrawal/loss to follow-up; outcome not relevant for some
-participants & While alive / outcome-defined population strategy \\
-Return to work 3 months after ED arrival & Mixed-effects binomial
-regression with logit and identity links & Odds ratio & Death before
-assessment; withdrawal/loss to follow-up; outcome not relevant for some
-participants & While alive / outcome-defined population strategy \\
-Length of emergency department stay & & & & \\
-Length of hospital stay & & & & \\
-Intensive care unit (ICU) admission & Mixed-effects binomial regression
-with logit link & Odds ratio & Death before ICU admission ascertainment;
-transfer & Treatment policy strategy using available data \\
-Length of Intensive care unit admission stay & & & & \\
-Adherence to ATLS® principles during initial resuscitation &
-Mixed-effects beta regression with logit link & Difference in expected
-adherence proportion on the logit scale & Failure to observe
-resuscitation; incomplete observation window & Treatment policy strategy
-for the observed nested sample \\
 
 \end{longtable}
 
