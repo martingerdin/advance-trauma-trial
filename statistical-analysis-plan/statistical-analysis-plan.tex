@@ -687,6 +687,9 @@ is required to release physicians for training.
 
 \subsection{Outcomes}\label{outcomes}
 
+A summary of all outcomes, populations, effect measures, and handling of
+intercurrent events is provided in Table~\ref{tbl-outcomes-summary}.
+
 \subsubsection{Primary outcome}\label{primary-outcome}
 
 The primary outcome will be in-hospital mortality within 30 days of
@@ -752,7 +755,7 @@ design}\label{collected-using-the-nested-staircase-design}
 \item
   Quality of life within seven days of discharge, and at 30 days and
   three months of arrival at the emergency department, measured by the
-  official and validated translations of the EQ5D3L. This outcome is
+  official and validated translations of the EQ5D5L. This outcome is
   only relevant to alive patients. Data on this outcome will be
   collected in person if the patient is still in hospital, or by phone
   if the patient has been discharged. We will collect this data using a
@@ -766,9 +769,6 @@ design}\label{collected-using-the-nested-staircase-design}
   has been discharged. This data will also be collected using a nested
   staircase design.
 \end{itemize}
-
-A summary of all outcomes, populations, effect measures, and handling of
-intercurrent events is provided in Table~\ref{tbl-outcomes-summary}.
 
 \begin{landscape}
 \begingroup\fontsize{8}{10}\selectfont
@@ -793,26 +793,26 @@ Outcome & Design component & Data type & Target population & Main analysis model
 \endfoot
 \bottomrule
 \endlastfoot
-Primary outcome: In-hospital mortality within 30 days of ED arrival & Main stepped-wedge & Binary & All eligible patient participants in the main stepped-wedge trial & Mixed-effects binomial regression with logit and identity links & Odds ratio; absolute risk difference & Transfer to another hospital before outcome ascertainment; withdrawal/opt-out before final analysis & Treatment policy strategy: outcome will be ascertained irrespective of transfer where possible; all available primary outcome data included\\
-All-cause mortality within 24 hours of ED arrival & Main stepped-wedge & Binary & All eligible patient participants in the main stepped-wedge trial & Mixed-effects binomial regression with logit and identity links & Odds ratio; absolute risk difference & Loss to follow-up before ascertainment; withdrawal/opt-out & Treatment policy strategy using all available data\\
-All-cause mortality within 30 days of ED arrival & Main stepped-wedge & Binary & All eligible patient participants in the main stepped-wedge trial & Mixed-effects binomial regression with logit and identity links & Odds ratio; absolute risk difference & Loss to follow-up before ascertainment; withdrawal/opt-out & Treatment policy strategy using all available data\\
-All-cause mortality within 3 months of ED arrival & Main stepped-wedge & Binary & All eligible patient participants in the main stepped-wedge trial & Mixed-effects binomial regression with logit and identity links & Odds ratio; absolute risk difference & Loss to follow-up before ascertainment; withdrawal/opt-out & Treatment policy strategy using all available data\\
-Length of emergency department stay & Main stepped-wedge &  &  &  &  &  & \\
+Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Transfer; withdrawal & ITT; ascertain despite transfer\\
+All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & ITT\\
+All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & ITT\\
+All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & ITT\\
+Length of emergency department stay & Main stepped-wedge & Time-to-event & All eligible patients (ITT) & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death as competing event (ITT)\\
 \addlinespace
-Length of hospital stay & Main stepped-wedge &  &  &  &  &  & \\
-Intensive care unit (ICU) admission & Main stepped-wedge & Binary & All eligible patient participants in the main stepped-wedge trial & Mixed-effects binomial regression with logit link & Odds ratio & Death before ICU admission ascertainment; transfer & Treatment policy strategy using available data\\
-Length of Intensive care unit admission stay & Main stepped-wedge &  &  &  &  &  & \\
-Return to work 30 days after ED arrival & Main stepped-wedge & Binary & Patients alive at 30 days for whom return to work is relevant & Mixed-effects binomial regression with logit and identity links & Odds ratio & Death before assessment; withdrawal/loss to follow-up; outcome not relevant for some participants & While alive / outcome-defined population strategy\\
-Return to work 3 months after ED arrival & Main stepped-wedge & Binary & Patients alive at 3 months for whom return to work is relevant & Mixed-effects binomial regression with logit and identity links & Odds ratio & Death before assessment; withdrawal/loss to follow-up; outcome not relevant for some participants & While alive / outcome-defined population strategy\\
+Length of hospital stay & Main stepped-wedge & Time-to-event & All eligible patients (ITT) & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death as competing event (ITT)\\
+Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit) & OR & Death; transfer & ITT\\
+Length of intensive care unit stay & Main stepped-wedge & Time-to-event & ICU admissions (ITT) & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death as competing event (ITT)\\
+Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit) & OR & Death; loss to follow-up; not relevant & Survivors only\\
+Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit) & OR & Death; loss to follow-up; not relevant & Survivors only\\
 \addlinespace
-Adherence to ATLS® principles during initial resuscitation & Nested staircase & Proportion & Random sample of patients observed in both control and intervention periods within the nested staircase design & Mixed-effects beta regression with logit link & Difference in expected adherence proportion on the logit scale & Failure to observe resuscitation; incomplete observation window & Treatment policy strategy for the observed nested sample\\
-Quality of life within 7 days of discharge & Nested staircase & Ordinal EQ-5D dimensions; continuous VAS & Patients alive at the relevant follow-up time point within the nested staircase sample & Mixed-effects cumulative logit model for EQ-5D dimensions; linear mixed-effects model for VAS & Common odds ratio for ordinal dimensions; mean difference for VAS & Death before assessment; withdrawal from non-routine follow-up; loss to follow-up & While alive strategy: analysed among patients alive at the relevant time point; interpreted as conditional on survival\\
-Quality of life 30 days after ED arrival & Nested staircase & Ordinal EQ-5D dimensions; continuous VAS & Patients alive at 30 days within the nested staircase sample & Mixed-effects cumulative logit model for EQ-5D dimensions; linear mixed-effects model for VAS & Common odds ratio for ordinal dimensions; mean difference for VAS & Death before 30 days; withdrawal from non-routine follow-up; loss to follow-up & While alive strategy\\
-Quality of life 3 months after ED arrival & Nested staircase & Ordinal EQ-5D dimensions; continuous VAS & Patients alive at 3 months within the nested staircase sample & Mixed-effects cumulative logit model for EQ-5D dimensions; linear mixed-effects model for VAS & Common odds ratio for ordinal dimensions; mean difference for VAS & Death before 3 months; withdrawal from non-routine follow-up; loss to follow-up & While alive strategy\\
-Disability within 7 days of discharge & Nested staircase & Ordinal WHODAS domains; continuous summary score & Patients alive at the relevant follow-up time point within the nested staircase sample & Mixed-effects ordinal model for WHODAS domains; linear mixed-effects model for WHODAS summary score & Common odds ratio for ordinal domains; mean difference for summary score & Death before assessment; withdrawal from non-routine follow-up; loss to follow-up & While alive strategy\\
+Adherence to ATLS® principles during initial patient resuscitation & Nested staircase & Proportion & Observed nested sample & Mixed-effects beta (logit) & Logit-scale difference & Not observed; incomplete window & Observed sample\\
+Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
+Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
+Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
+Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
 \addlinespace
-Disability 30 days after ED arrival & Nested staircase & Ordinal WHODAS domains; continuous summary score & Patients alive at 30 days within the nested staircase sample & Mixed-effects ordinal model for WHODAS domains; linear mixed-effects model for WHODAS summary score & Common odds ratio for ordinal domains; mean difference for summary score & Death before 30 days; withdrawal from non-routine follow-up; loss to follow-up & While alive strategy\\
-Disability 3 months after ED arrival & Nested staircase & Ordinal WHODAS domains; continuous summary score & Patients alive at 3 months within the nested staircase sample & Mixed-effects ordinal model for WHODAS domains; linear mixed-effects model for WHODAS summary score & Common odds ratio for ordinal domains; mean difference for summary score & Death before 3 months; withdrawal from non-routine follow-up; loss to follow-up & While alive strategy\\*
+Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
+Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\*
 
 \end{longtable}
 
