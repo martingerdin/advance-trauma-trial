@@ -687,8 +687,8 @@ is required to release physicians for training.
 
 \subsection{Outcomes}\label{outcomes}
 
-A summary of all outcomes, populations, effect measures, and handling of
-intercurrent events is provided in Table~\ref{tbl-outcomes-summary}.
+A summary of all outcomes, analysis sets, effect measures, and handling
+of intercurrent events is provided in Table~\ref{tbl-outcomes-summary}.
 
 \subsubsection{Primary outcome}\label{primary-outcome}
 
@@ -775,33 +775,33 @@ design}\label{collected-using-the-nested-staircase-design}
 
 \begin{longtable}{p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}}
 
-\caption{\label{tbl-outcomes-summary}Summary of outcomes, populations,
+\caption{\label{tbl-outcomes-summary}Summary of outcomes, analysis sets,
 effect measures, and handling of intercurrent events}
 
 \tabularnewline
 
 \toprule
-Outcome & Design component & Data type & Target population & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
+Outcome & Design component & Data type & Analysis set & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
 \midrule
 \endfirsthead
 \multicolumn{8}{@{}l}{\textit{(continued)}}\\
 \toprule
-Outcome & Design component & Data type & Target population & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
+Outcome & Design component & Data type & Analysis set & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
 \midrule
 \endhead
 
 \endfoot
 \bottomrule
 \endlastfoot
-Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Withdrawal & ITT\\
-All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & ITT\\
-All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & ITT\\
-All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & ITT\\
-Length of emergency department stay & Main stepped-wedge & Time-to-event & All eligible patients (ITT) & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death as competing event (ITT)\\
+Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Primary analysis set\\
+All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Primary analysis set\\
+All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Primary analysis set\\
+All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Primary analysis set\\
+Length of emergency department stay & Main stepped-wedge & Time-to-event & Primary analysis set & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death competing event; primary analysis set\\
 \addlinespace
-Length of hospital stay & Main stepped-wedge & Time-to-event & All eligible patients (ITT) & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death as competing event (ITT)\\
-Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & All eligible patients (ITT) & Mixed-effects binomial (logit) & OR & Death; transfer & ITT\\
-Length of intensive care unit stay & Main stepped-wedge & Time-to-event & ICU admissions (ITT) & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death as competing event (ITT)\\
+Length of hospital stay & Main stepped-wedge & Time-to-event & Primary analysis set & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death competing event; primary analysis set\\
+Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit) & OR & Death; transfer & Primary analysis set\\
+Length of intensive care unit stay & Main stepped-wedge & Time-to-event & ICU admissions, primary analysis set & Mixed-effects Fine–Gray model & Subdistribution HR & Death; transfer & Death competing event; primary analysis set\\
 Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit) & OR & Death; loss to follow-up; not relevant & Survivors only\\
 Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit) & OR & Death; loss to follow-up; not relevant & Survivors only\\
 \addlinespace
@@ -935,24 +935,25 @@ we will report 95\% confidence intervals (CI) for all estimates. We will
 not adjust for multiple testing because no secondary outcome is regarded
 as singularly more important.
 
-\subsection{Analysis populations}\label{analysis-populations}
+\subsection{Analysis sets}\label{analysis-sets}
 
 The unit of randomisation is the hospital, because all units trained in
 the same hospital will be treated as one cluster, but the unit of
-analysis is the individual patient. The group allocation for a patient
-depends on the period in which the patient was admitted to the hospital,
-and patients will be considered exposed to the intervention if they were
-admitted to the hospital at any time point following the transition
-period. We will use an intention-to-treat approach for all analyses,
-according to the planned date of transition from standard care. We might
-consider a per protocol analysis if clusters deviate considerably from
-the planned date of transition, using the actual date of transition as
-the cut-off point. We will report the results of the per protocol
-analysis as a sensitivity analysis. We will use a CONSORT diagram to
-display the flow of hospitals, clusters and patients through the trial.
-We will present cluster level summaries of the intervention effect. We
-will report the study according to the CONSORT guidelines for
-stepped-wedge randomised trials\textsuperscript{15}.
+analysis is the individual patient. The primary analysis set will
+include all observations within clusters with available data and
+irrespective of the receipt of the intervention. Clusters and
+observations within clusters will be considered exposed to the
+intervention after the date at which the cluster was scheduled to
+transition. All data will be included with the exception of the
+transition phases. Group allocation for a patient depends on the period
+in which the patient was admitted to the hospital. If clusters deviate
+considerably from the scheduled date of transition, we will conduct a
+sensitivity analysis using the actual date of transition to define
+exposure. We will use a CONSORT diagram to display the flow of
+hospitals, clusters and patients through the trial. We will present
+cluster level summaries of the intervention effect. We will report the
+study according to the CONSORT guidelines for stepped-wedge randomised
+trials\textsuperscript{15}.
 
 \subsection{Baseline analyses}\label{baseline-analyses}
 
