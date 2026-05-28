@@ -51,6 +51,12 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 | Jessica Kasza (JK) `r insert_orcid_link("0000-0002-8940-0136")`                      | Monash University, Melbourne, Australia | Statistician               |
 | Arpita Ghosh (AG) `r insert_orcid_link("0000-0003-0036-4376")`                      | The George Institute for Global Health, New Delhi, India | Statistician               |
 
+```{=latex}
+% Pandoc renders markdown tables as longtable, which increments the table counter
+% even without a caption. This table should not count toward Table numbering.
+\addtocounter{table}{-1}
+```
+
 {{< pagebreak >}}
 
 # Trial synopsis
