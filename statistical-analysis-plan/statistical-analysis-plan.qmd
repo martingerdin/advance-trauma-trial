@@ -173,12 +173,16 @@ names(outcomes.table) <- c(
 #| results: asis
 
 ncol.outcomes <- ncol(outcomes.table)
+# Column widths sum to 0.84\\linewidth so tabcolsep does not overflow the text block
+col.widths <- c(0.20, 0.08, 0.07, 0.09, 0.13, 0.08, 0.10, 0.09)
+col.align <- sprintf("p{%s\\linewidth}", col.widths)
+
 outcomes.kable <- knitr::kable(
   outcomes.table,
   format = "latex",
   booktabs = TRUE,
   longtable = TRUE,
-  align = rep("p{0.11\\linewidth}", ncol.outcomes)
+  align = col.align
 ) |>
   kableExtra::kable_styling(
     latex_options = c("repeat_header"),
@@ -194,8 +198,11 @@ outcomes.latex <- gsub(
 )
 
 cat("\\begin{landscape}\n")
+cat("\\setlength{\\tabcolsep}{3pt}\n")
+cat("\\setlength{\\LTleft}{\\fill}\n")
+cat("\\setlength{\\LTright}{\\fill}\n")
 cat(outcomes.latex)
-cat("\n\\end{landscape}\n")
+cat("\\end{landscape}\n")
 ```
 
 ## Statistical hypotheses

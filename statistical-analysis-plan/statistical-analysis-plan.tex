@@ -143,6 +143,7 @@
 \usepackage{fontspec}
 \usepackage{xcolor}
 \usepackage{pdflscape}
+\usepackage{adjustbox}
 \definecolor{secondary}{HTML}{1a9dbb}
 \lohead{ADVANCE TRAUMA SAP}
 \rohead{ClinicalTrials.gov ID NCT06321419}
@@ -771,9 +772,12 @@ design}\label{collected-using-the-nested-staircase-design}
 \end{itemize}
 
 \begin{landscape}
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
 \begingroup\fontsize{8}{10}\selectfont
 
-\begin{longtable}{p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}p{0.11\linewidth}}
+\begin{longtable}{p{0.2\linewidth}p{0.08\linewidth}p{0.07\linewidth}p{0.09\linewidth}p{0.13\linewidth}p{0.08\linewidth}p{0.1\linewidth}p{0.09\linewidth}}
 
 \caption{\label{tbl-outcomes-summary}Summary of outcomes, analysis sets,
 effect measures, and handling of intercurrent events}
@@ -816,8 +820,7 @@ Disability at three months after arrival at the emergency department & Nested st
 
 \end{longtable}
 
-\endgroup{}
-\end{landscape}
+\endgroup{}\end{landscape}
 
 \subsection{Statistical hypotheses}\label{statistical-hypotheses}
 
