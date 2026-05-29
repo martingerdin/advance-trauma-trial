@@ -88,7 +88,11 @@ To compare the effects of ATLS^®^ training with standard care on outcomes in ad
 
 ## Design
 
-This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` clusters (see @fig-trial-design). The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an overlap of `r batches.overlap.months` months between successive batches.
+This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` clusters (see @fig-trial-design). Each cluster is a hospital and represents the unit for randomisation, even if one or more units are trained in the same hospital. There are two intervention conditions: ATLS® training and standard care. The trial is designed and will be analysed within a superiority framework, with ATLS® training compared with standard care for the primary and secondary outcomes. 
+
+The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an anticpated overlap of `r batches.overlap.months` months between successive batches.
+
+Clusters will be sequentially allocated to batches based on when they enter the study, and within each batch clusters will then be randomised to an intervention implementation sequence. Individual patients will be included cross-sectionally for the primary outcome, although some secondary outcomes will be assessed at multiple follow-up time points. The anticipated trial period is from February 2025 to October 2029.
 
 ```{r}
 #| echo: false
@@ -140,9 +144,13 @@ knitr::include_graphics(
 
 ## Randomisation of clusters
 
-We will enrol and assign clusters to batches once eligibility is confirmed and ethical approval is obtained. Each batch will include hospitals from different regions to optimise trial logistics and training delivery. Within each batch, clusters will be randomised to the intervention implementation sequences allocated to that batch. Randomisation is conducted at the cluster level and stratified by batch. Within each batch, allocation is balanced on cluster size, defined as the monthly volume of eligible patients, using covariate-constrained randomisation (CCR). CCR was selected to improve balance between intervention conditions on this key design variable.
+We will enrol and assign clusters to batches once eligibility is confirmed and ethical approval is obtained. Each batch will include hospitals from different regions to optimise trial logistics and training delivery. Within each batch, clusters will be randomised to the intervention implementation sequences allocated to that batch. 
 
-For example, in Batch 1, five clusters were randomised to one of five sequences using CCR. A statistician (JM) implemented a computer algorithm in R to evaluate all possible allocations (n = 120) and calculate a balance metric reflecting how evenly cluster size would be distributed between intervention and control conditions. For each allocation, the squared difference in anticipated cluster size between conditions was calculated; because only one covariate was used, this squared difference constituted the balance statistic. The 10% of allocations demonstrating the greatest imbalance were excluded, and the remaining allocations formed the candidate set. The final allocation was then selected at random from this set. Owing to limitations in the algorithm, the balance score was calculated assuming a complete design, although the trial design includes transition periods. This CCR procedure is repeated independently for each batch.
+Randomisation is conducted at the cluster level and stratified by batch. Within each batch, allocation is balanced on cluster size, defined as the monthly volume of eligible patients, using covariate-constrained randomisation (CCR). CCR was selected to improve balance between intervention conditions on this key design variable.
+
+For example, in Batch 1, five clusters were randomised to one of five sequences using CCR. A statistician (JM) implemented a computer algorithm in R to evaluate all possible allocations (n = 120) and calculate a balance metric reflecting how evenly cluster size would be distributed between intervention and control conditions. For each allocation, the squared difference in anticipated cluster size between conditions was calculated; because only one covariate was used, this squared difference constituted the balance statistic.
+
+The 10% of allocations demonstrating the greatest imbalance were excluded, and the remaining allocations formed the candidate set. The final allocation was then selected at random from this set. Owing to limitations in the algorithm, the balance score was calculated assuming a complete design, although the trial design includes transition periods. This CCR procedure is repeated independently for each batch.
 
 The random allocation sequence is generated by JM and communicated to the trial team to allow logistical arrangements, including securing places on upcoming ATLS^®^ training courses, to be initiated. Allocation order will be concealed from participating sites for as long as logistically feasible, recognising that advance planning is required to release physicians for training.
 
@@ -218,10 +226,7 @@ cat("\\restoregeometry\n")
 
 ## Statistical hypotheses
 
-Our primary statistical hypotheses are:
-
--   **Null hypothesis**: There is no difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care, meaning that the odds ratio (OR) for ATLS^®^ vs standard care would be 1 and the absolute risk difference (ARD) would be 0.
--   **Alternative hypothesis**: There is an absolute difference in the primary outcome of 30-day in-hospital mortality between those randomised to ATLS^®^ and standard care of at least 5% units, meaning that the OR for ATLS^®^ vs standard care would be different from 1 and the ARD would be different from 0. Our expectation, based on our pilot study and review of the literature, is that the OR will be less than 1 and the ARD will be less than 0, indicating lower odds of 30-day in-hospital mortality among those randomised to ATLS^®^ group compared to those randomised to the standard care group.
+The primary analysis will estimate the effect of ATLS training on 30-day in-hospital mortality compared with standard care. The treatment effect will be expressed as an odds ratio (OR) and as an absolute risk difference (ARD). An OR < 1 or ARD < 0 indicates lower mortality among patients treated in hospitals after ATLS implementation compared with standard care. Based on our pilot study and systematic review of the literature, we expect the intervention to reduce mortality.
 
 ## Sample size calculations
 
@@ -245,7 +250,15 @@ We will use a two-sided significance level of 0.05 for all analyses, and we will
 
 ## Analysis sets
 
-The unit of randomisation is the hospital, because all units trained in the same hospital will be treated as one cluster, but the unit of analysis is the individual patient. The primary analysis set will include all observations within clusters with available data and irrespective of the receipt of the intervention. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. Group allocation for a patient depends on the period in which the patient was admitted to the hospital. If clusters deviate considerably from the scheduled date of transition, we will conduct a sensitivity analysis using the actual date of transition to define exposure. We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+The trial has a hierarchical structure in which hospitals represent the clusters, clinical units within hospitals deliver care, and individual patients constitute the unit of observation and analysis. Randomisation is performed at the hospital level, with all trained units within the same hospital treated as part of the same cluster. The primary analysis set will include all observations within clusters with available data on the primary outcome and irrespective of the receipt of the intervention. 
+
+Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. Group allocation for a patient depends on the period in which the patient was admitted to the hospital. If clusters deviate considerably from the scheduled date of transition, defined as more than four weeks, we will conduct a sensitivity analysis using the actual date of transition to define exposure. 
+
+The analysis set will be specified for each analysis. For the primary outcome and mortality secondary outcomes, the analysis set is all eligible patient participants included in the main stepped-wedge trial. For quality-of-life, disability, and return-to-work outcomes, the analysis set is patients alive at the relevant follow-up time point. For adherence to ATLS® principles, the analysis set is the random sample of patients observed within the nested staircase design. 
+
+The analysis set for each outcome will include all available participants from the relevant target population with observed outcome data, subject to any restrictions imposed by the outcome definition or the nested staircase sampling scheme. For adjusted analyses, the analysis set may be further restricted by the availability of covariate data, as described in @sec-treatment-of-missing-data.
+
+We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial, see @fig-consort-diagram. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ## Baseline analyses
 
@@ -504,7 +517,7 @@ We will perform the following subgroup analyses:
 
 These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-primary-model.
 
-### Treatment of missing data
+### Treatment of missing data {#sec-treatment-of-missing-data}
 
 We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10%, we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, we will handle missing data depending on the missing data mechanism. If the data are missing at random (MAR), we will perform multiple imputation using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations. If there is evidence that the data are missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Evidence that data are MNAR may include systematic differences in missingness across observed covariates, patterns suggestive of non-random dropout, or clinical expectations that missingness is related to unmeasured outcomes. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
 
