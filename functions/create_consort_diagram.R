@@ -29,8 +29,8 @@
 #' @examples
 #' create_consort_diagram(sequences = 5, save = FALSE)
 create_consort_diagram <- function(sequences = 5,
-                                   intervention.fill = "blue",
-                                   control.fill = "red",
+                                   intervention.fill = colors()["intervention"] |> unname(),
+                                   control.fill = colors()["standard.care"] |> unname(),
                                    text.size = 1.9,
                                    return.figure = TRUE,
                                    save = TRUE,
