@@ -177,7 +177,6 @@ names(outcomes.table) <- c(
 #| message: false
 #| warning: false
 #| results: asis
-
 ncol.outcomes <- ncol(outcomes.table)
 # Column widths sum to 0.84\\linewidth so tabcolsep does not overflow the text block
 col.widths <- c(0.20, 0.08, 0.07, 0.09, 0.13, 0.08, 0.10, 0.09)
@@ -203,12 +202,18 @@ outcomes.latex <- gsub(
   outcomes.latex
 )
 
+# Margins for the landscape table pages. Because pdflscape rotates the page,
+# geometry's top/bottom control the VISUAL left/right (the long edge) and
+# left/right control the VISUAL top/bottom. \newgeometry must come BEFORE
+# \begin{landscape} so the landscape text block is built from these margins.
+cat("\\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}\n")
 cat("\\begin{landscape}\n")
 cat("\\setlength{\\tabcolsep}{3pt}\n")
 cat("\\setlength{\\LTleft}{\\fill}\n")
 cat("\\setlength{\\LTright}{\\fill}\n")
 cat(outcomes.latex)
 cat("\\end{landscape}\n")
+cat("\\restoregeometry\n")
 ```
 
 ## Statistical hypotheses
