@@ -388,7 +388,7 @@ create_consort_diagram <- function(sequences = 5,
         geom_rect(
             data = boxes,
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
-            color = "grey40", linewidth = 0.3
+            color = "grey40", linewidth = 0.3, alpha = 0.8
         ) +
         geom_segment(
             data = subset(segments, !arrow),
