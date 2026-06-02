@@ -40,6 +40,8 @@
 #' @param text.size Numeric. Fixed text size in points used for all text;
 #'     boxes are grown so the text fits at this size. Must be a length 1
 #'     numeric value greater than or equal to 8. Default is 8.
+#' @param note Character. A figure note printed below the legend, used to keep
+#'     the repeated cluster-size detail out of every box. Set to "" to omit.
 #' @param return.figure Logical. If TRUE the function returns the ggplot
 #'     object, otherwise it returns the path to the saved file. Default is TRUE.
 #' @param save Logical. If TRUE the figure is saved to disk. Default is TRUE.
@@ -60,6 +62,11 @@ create_consort_diagram <- function(sequences = 5,
                                    control.fill = colors()["standard.care"] |> unname(),
                                    transition.fill = colors()["transition"] |> unname(),
                                    text.size = 8,
+                                   note = paste(
+                                       "Note: each \"n=\" should report the number of clusters,",
+                                       "the average cluster size, and the variance of cluster sizes.",
+                                       "For clusters that did not receive the intervention, give reasons."
+                                   ),
                                    return.figure = TRUE,
                                    save = TRUE,
                                    device = "pdf") {
@@ -76,6 +83,7 @@ create_consort_diagram <- function(sequences = 5,
     assertthat::assert_that(is.character(control.fill) && length(control.fill) == 1)
     assertthat::assert_that(is.character(transition.fill) && length(transition.fill) == 1)
     assertthat::assert_that(is.numeric(text.size) && length(text.size) == 1 && text.size >= 8)
+    assertthat::assert_that(is.character(note) && length(note) == 1)
 
     n.seq <- sequences
     n.per <- periods
@@ -92,12 +100,13 @@ create_consort_diagram <- function(sequences = 5,
     pt.per.unit <- cm.per.unit * 28.3465 # 1 cm = 28.3465 pt
     text.size.mm <- text.size / .pt # ggplot2 geom_text size (mm) for text.size pt
 
-    ## Conservative font metrics (in multiples of the font size); deliberately
-    ## generous so the computed boxes never clip the text.
-    char.width.units <- text.size * 0.58 / pt.per.unit
-    line.height.units <- text.size * 1.25 / pt.per.unit
-    pad.x <- 0.8
-    pad.y <- 0.8
+    ## Font metrics (in multiples of the font size), tuned to the rendered text
+    ## so the boxes hug the text with only a little breathing room. The line
+    ## height matches the 0.9 lineheight used by geom_fit_text below.
+    char.width.units <- text.size * 0.50 / pt.per.unit
+    line.height.units <- text.size * 0.90 / pt.per.unit
+    pad.x <- 0.6
+    pad.y <- 0.3
 
     ## Number of wrapped lines a label needs within a box of the given width
     n_lines <- function(label, box.width) {
@@ -132,8 +141,8 @@ create_consort_diagram <- function(sequences = 5,
     seq.sub.label <- "Clusters allocated (n=)"
     cell.label <- paste(
         "Assessed for eligibility (n=)",
-        "Received intervention (n=no of clusters, average cluster size, variance of cluster sizes)",
-        "Did not receive intervention, give reasons (n=no of clusters, average cluster size, variance of cluster sizes)",
+        "Received intervention (n=)",
+        "Did not receive intervention (n=)",
         sep = "\n"
     )
 
@@ -154,7 +163,7 @@ create_consort_diagram <- function(sequences = 5,
     gap.elig.rand <- excl.h + 2 * excl.margin
     gap.rand.head <- 6
     gap.head.grid <- 3
-    period.gap <- 2.5
+    period.gap <- 1
     gap.grid.legend <- 5
 
     ## Lay out the vertical positions from the top going down
@@ -328,13 +337,15 @@ create_consort_diagram <- function(sequences = 5,
                 label = cell.label, place = "topleft"
             )
 
-            ## Arrow from the sequence header (period 1) or the previous cell
+            ## Arrow from the sequence header into period 1. Consecutive period
+            ## rows are stacked directly, so only draw a connector when there is
+            ## a gap between them.
             if (p == 1) {
                 add_segment(
                     x = col.center[k], xend = col.center[k],
                     y = head.cy - head.h / 2, yend = period.top[p]
                 )
-            } else {
+            } else if (period.gap > 0) {
                 add_segment(
                     x = col.center[k], xend = col.center[k],
                     y = period.bottom[p - 1], yend = period.top[p]
@@ -365,6 +376,21 @@ create_consort_diagram <- function(sequences = 5,
             x = legend.x + legend.box + 1, y = legend.y,
             label = legend.items$label[i], hjust = 0, vjust = 0.5
         )
+    }
+
+    ## Figure note (keeps the repeated cluster-size detail out of every box)
+    fig.bottom <- legend.y - legend.h / 2
+    if (nzchar(note)) {
+        gap.legend.note <- 3
+        note.wrap.chars <- max(10, floor(grid.width / char.width.units))
+        note.wrapped <- paste(strwrap(note, width = note.wrap.chars), collapse = "\n")
+        note.lines <- length(strsplit(note.wrapped, "\n", fixed = TRUE)[[1]])
+        note.top <- legend.y - legend.h / 2 - gap.legend.note
+        add_text(
+            x = grid.left, y = note.top,
+            label = note.wrapped, hjust = 0, vjust = 1
+        )
+        fig.bottom <- note.top - note.lines * line.height.units
     }
 
     ## Helper to add a geom_fit_text layer for a given place/fontface group
@@ -412,7 +438,7 @@ create_consort_diagram <- function(sequences = 5,
         scale_fill_identity() +
         coord_cartesian(
             xlim = c(plot.left, plot.right),
-            ylim = c(legend.y - legend.h, elig.cy + elig.h / 2),
+            ylim = c(fig.bottom, elig.cy + elig.h / 2),
             clip = "off"
         ) +
         theme_void()
@@ -420,7 +446,7 @@ create_consort_diagram <- function(sequences = 5,
     ## Save figure
     if (save) {
         file.name <- paste0("consort-diagram-", n.seq, "-sequences.", device)
-        y.span <- (elig.cy + elig.h / 2) - (legend.y - legend.h)
+        y.span <- (elig.cy + elig.h / 2) - fig.bottom
         x.span <- plot.right - plot.left
         ggsave(file.name, consort.figure,
             width = x.span * cm.per.unit,
