@@ -42,6 +42,11 @@
 #'     numeric value greater than or equal to 8. Default is 8.
 #' @param note Character. A figure note printed below the legend, used to keep
 #'     the repeated cluster-size detail out of every box. Set to "" to omit.
+#' @param page.width.mm Numeric. Width of the saved figure in millimetres. The
+#'     plotting scale is derived from this so text wrapping, box widths, and
+#'     text size are all consistent with the output width (e.g. 200 for A4
+#'     portrait with margins). The height is derived from the layout. Default
+#'     is 200.
 #' @param return.figure Logical. If TRUE the function returns the ggplot
 #'     object, otherwise it returns the path to the saved file. Default is TRUE.
 #' @param save Logical. If TRUE the figure is saved to disk. Default is TRUE.
@@ -63,10 +68,13 @@ create_consort_diagram <- function(sequences = 5,
                                    transition.fill = colors()["transition"] |> unname(),
                                    text.size = 8,
                                    note = paste(
-                                       "Note: each \"n=\" should report the number of clusters,",
-                                       "the average cluster size, and the variance of cluster sizes.",
-                                       "For clusters that did not receive the intervention, give reasons."
+                                       "Note: within each box, Assessed = assessed for eligibility,",
+                                       "Intervention = received intervention, and No intervention = did",
+                                       "not receive intervention (give reasons). Each \"n=\" should report",
+                                       "the number of clusters, the average cluster size, and the",
+                                       "variance of cluster sizes."
                                    ),
+                                   page.width.mm = 200,
                                    return.figure = TRUE,
                                    save = TRUE,
                                    device = "pdf") {
@@ -84,6 +92,7 @@ create_consort_diagram <- function(sequences = 5,
     assertthat::assert_that(is.character(transition.fill) && length(transition.fill) == 1)
     assertthat::assert_that(is.numeric(text.size) && length(text.size) == 1 && text.size >= 8)
     assertthat::assert_that(is.character(note) && length(note) == 1)
+    assertthat::assert_that(is.numeric(page.width.mm) && length(page.width.mm) == 1 && page.width.mm > 0)
 
     n.seq <- sequences
     n.per <- periods
@@ -94,9 +103,11 @@ create_consort_diagram <- function(sequences = 5,
     plot.right <- 99
     grid.left <- 7 # left margin reserved for the "Period k" labels
 
-    ## Fixed mapping between plotting units and points. Box heights are derived
-    ## from the text so that all text renders at exactly `text.size` points.
-    cm.per.unit <- 0.30
+    ## Mapping between plotting units and points, derived from the output width
+    ## so that text wrapping, box widths, and text size are consistent with the
+    ## width the figure is actually saved at. Box heights are derived from the
+    ## text so that all text renders at exactly `text.size` points.
+    cm.per.unit <- (page.width.mm / 10) / (plot.right - plot.left)
     pt.per.unit <- cm.per.unit * 28.3465 # 1 cm = 28.3465 pt
     text.size.mm <- text.size / .pt # ggplot2 geom_text size (mm) for text.size pt
 
@@ -140,9 +151,9 @@ create_consort_diagram <- function(sequences = 5,
     seq.title.label <- paste0("Sequence ", n.seq) # widest sequence title
     seq.sub.label <- "Clusters allocated (n=)"
     cell.label <- paste(
-        "Assessed for eligibility (n=)",
-        "Received intervention (n=)",
-        "Did not receive intervention (n=)",
+        "Assessed (n=)",
+        "Intervention (n=)",
+        "No intervention (n=)",
         sep = "\n"
     )
 
@@ -159,10 +170,10 @@ create_consort_diagram <- function(sequences = 5,
 
     ## Vertical gaps (fixed); the eligibility-to-randomised gap must clear the
     ## excluded box that sits between them.
-    excl.margin <- 1
+    excl.margin <- 0.5
     gap.elig.rand <- excl.h + 2 * excl.margin
-    gap.rand.head <- 6
-    gap.head.grid <- 3
+    gap.rand.head <- 3
+    gap.head.grid <- 2
     period.gap <- 1
     gap.grid.legend <- 5
 
@@ -443,11 +454,12 @@ create_consort_diagram <- function(sequences = 5,
         ) +
         theme_void()
 
-    ## Save figure
+    ## Save figure. The width matches page.width.mm and the height is derived
+    ## from the layout so that one x-unit equals one y-unit (no distortion).
     if (save) {
         file.name <- paste0("consort-diagram-", n.seq, "-sequences.", device)
-        y.span <- (elig.cy + elig.h / 2) - fig.bottom
         x.span <- plot.right - plot.left
+        y.span <- (elig.cy + elig.h / 2) - fig.bottom
         ggsave(file.name, consort.figure,
             width = x.span * cm.per.unit,
             height = y.span * cm.per.unit,
