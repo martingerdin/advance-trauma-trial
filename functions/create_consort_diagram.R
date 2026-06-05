@@ -80,7 +80,6 @@ create_consort_diagram <- function(sequences = 5,
                                    device = "pdf") {
     ## Load packages
     library(ggplot2)
-    library(ggfittext)
 
     ## Check arguments
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
@@ -113,7 +112,7 @@ create_consort_diagram <- function(sequences = 5,
 
     ## Font metrics (in multiples of the font size), tuned to the rendered text
     ## so the boxes hug the text with only a little breathing room. The line
-    ## height matches the 0.9 lineheight used by geom_fit_text below.
+    ## height matches the 0.9 lineheight used by geom_text below.
     char.width.units <- text.size * 0.50 / pt.per.unit
     line.height.units <- text.size * 0.90 / pt.per.unit
     pad.x <- 0.6
@@ -128,6 +127,17 @@ create_consort_diagram <- function(sequences = 5,
     ## Box height (units) needed to hold the label at the fixed text size
     box_height <- function(label, box.width) {
         n_lines(label, box.width) * line.height.units + 2 * pad.y
+    }
+    ## Wrap a label to a box width, preserving any indentation on lines that
+    ## already fit (only over-long lines are re-wrapped). Used so the rendered
+    ## text matches the line count box_height() reserves space for.
+    wrap_box <- function(label, box.width) {
+        wrap.chars <- max(6, floor((box.width - 2 * pad.x) / char.width.units))
+        blocks <- strsplit(label, "\n", fixed = TRUE)[[1]]
+        lines <- unlist(lapply(blocks, function(b) {
+            if (nchar(b) <= wrap.chars) b else strwrap(b, width = wrap.chars)
+        }))
+        paste(lines, collapse = "\n")
     }
 
     ## Column geometry, one column per sequence
@@ -202,9 +212,8 @@ create_consort_diagram <- function(sequences = 5,
     grid.bottom <- min(period.bottom)
     legend.y <- grid.bottom - gap.grid.legend
 
-    ## Collect boxes, fitted box text, free text labels and connector segments
+    ## Collect boxes, free text labels and connector segments
     boxes <- data.frame()
-    fit.texts <- data.frame()
     texts <- data.frame()
     segments <- data.frame()
 
@@ -213,12 +222,23 @@ create_consort_diagram <- function(sequences = 5,
             xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill
         ))
     }
-    ## Text that must fit inside a box (xmin/xmax/ymin/ymax define the bounds)
+    ## Text rendered inside a box (xmin/xmax/ymin/ymax define the bounds). The
+    ## box is already sized to hold the label at the fixed text size, so the
+    ## text is drawn at that exact size (no shrink-to-fit), keeping every label
+    ## uniformly text.size pt.
     add_fit <- function(xmin, xmax, ymin, ymax, label, place = "topleft", fontface = "plain") {
-        fit.texts <<- rbind(fit.texts, data.frame(
-            xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax,
-            label = label, place = place, fontface = fontface
-        ))
+        wrapped <- wrap_box(label, xmax - xmin)
+        if (place == "centre") {
+            add_text(
+                x = (xmin + xmax) / 2, y = (ymin + ymax) / 2, label = wrapped,
+                hjust = 0.5, vjust = 0.5, fontface = fontface
+            )
+        } else {
+            add_text(
+                x = xmin + pad.x, y = ymax - pad.y, label = wrapped,
+                hjust = 0, vjust = 1, fontface = fontface
+            )
+        }
     }
     ## Free-floating text (labels outside boxes)
     add_text <- function(x, y, label, hjust = 0, vjust = 1, fontface = "plain", size = text.size.mm) {
@@ -407,22 +427,6 @@ create_consort_diagram <- function(sequences = 5,
         fig.bottom <- note.top - note.lines * line.height.units
     }
 
-    ## Helper to add a geom_fit_text layer for a given place/fontface group
-    fit_layer <- function(layer.place, layer.fontface) {
-        data <- fit.texts[fit.texts$place == layer.place & fit.texts$fontface == layer.fontface, ]
-        if (nrow(data) == 0) {
-            return(NULL)
-        }
-        geom_fit_text(
-            data = data,
-            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, label = label),
-            place = layer.place, fontface = layer.fontface,
-            reflow = TRUE, grow = FALSE, min.size = 0, size = text.size,
-            padding.x = grid::unit(0.6, "mm"), padding.y = grid::unit(0.6, "mm"),
-            lineheight = 0.9
-        )
-    }
-
     ## Build the plot
     consort.figure <- ggplot() +
         geom_rect(
@@ -441,9 +445,6 @@ create_consort_diagram <- function(sequences = 5,
             color = "grey40", linewidth = 0.3,
             arrow = arrow(length = unit(0.15, "cm"), type = "closed")
         ) +
-        fit_layer("topleft", "plain") +
-        fit_layer("centre", "plain") +
-        fit_layer("centre", "bold") +
         geom_text(
             data = texts,
             aes(x = x, y = y, label = label, hjust = hjust, vjust = vjust, fontface = fontface),
