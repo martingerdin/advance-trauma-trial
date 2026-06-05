@@ -173,9 +173,9 @@ create_consort_diagram <- function(sequences = 5,
     elig.h <- box_height(elig.label, grid.width)
     rand.h <- box_height(rand.label, grid.width)
     excl.h <- box_height(excluded.label, excl.width)
-    head.title.h <- box_height(seq.title.label, col.width)
-    head.sub.h <- box_height(seq.sub.label, col.width)
-    head.h <- head.title.h + head.sub.h
+    head.title.lines <- 1
+    head.sub.lines <- n_lines(seq.sub.label, col.width)
+    head.h <- (head.title.lines + head.sub.lines) * line.height.units + 2 * pad.y
     period.h <- box_height(cell.label, col.width)
     legend.h <- box_height("legend", 10)
 
@@ -322,23 +322,25 @@ create_consort_diagram <- function(sequences = 5,
         )
     }
 
-    ## Sequence header boxes (bold title on top, allocation text below)
-    head.split <- head.cy + head.h / 2 - head.title.h
+    ## Sequence header boxes (bold title on top, allocation text directly below
+    ## at the normal line spacing so the two lines are not pushed apart)
+    head.text.top <- head.cy + head.h / 2 - pad.y
     for (k in seq_len(n.seq)) {
         add_box(
             xmin = col.left[k], xmax = col.right[k],
             ymin = head.cy - head.h / 2, ymax = head.cy + head.h / 2,
             fill = "white"
         )
-        add_fit(
-            xmin = col.left[k], xmax = col.right[k],
-            ymin = head.split, ymax = head.cy + head.h / 2,
-            label = paste0("Sequence ", k), place = "centre", fontface = "bold"
+        add_text(
+            x = col.center[k], y = head.text.top,
+            label = paste0("Sequence ", k),
+            hjust = 0.5, vjust = 1, fontface = "bold"
         )
-        add_fit(
-            xmin = col.left[k], xmax = col.right[k],
-            ymin = head.cy - head.h / 2, ymax = head.split,
-            label = seq.sub.label, place = "centre"
+        add_text(
+            x = col.center[k],
+            y = head.text.top - head.title.lines * line.height.units,
+            label = wrap_box(seq.sub.label, col.width),
+            hjust = 0.5, vjust = 1
         )
     }
 
@@ -399,18 +401,24 @@ create_consort_diagram <- function(sequences = 5,
             "Cluster under intervention condition"
         )
     )
-    legend.spacing <- (plot.right - grid.left) / nrow(legend.items)
+    ## Pack the entries left-to-right using each label's width so they do not
+    ## overlap, rather than spacing them on a fixed grid.
+    legend.swatch.gap <- 1 # swatch to its own label
+    legend.item.gap <- 3 # between one entry and the next
+    legend.x <- grid.left
     for (i in seq_len(nrow(legend.items))) {
-        legend.x <- grid.left + (i - 1) * legend.spacing
         add_box(
             xmin = legend.x, xmax = legend.x + legend.box,
             ymin = legend.y - legend.h / 2, ymax = legend.y + legend.h / 2,
             fill = legend.items$fill[i]
         )
+        text.x <- legend.x + legend.box + legend.swatch.gap
         add_text(
-            x = legend.x + legend.box + 1, y = legend.y,
+            x = text.x, y = legend.y,
             label = legend.items$label[i], hjust = 0, vjust = 0.5
         )
+        label.width <- nchar(legend.items$label[i]) * char.width.units
+        legend.x <- text.x + label.width + legend.item.gap
     }
 
     ## Figure note (keeps the repeated cluster-size detail out of every box)
