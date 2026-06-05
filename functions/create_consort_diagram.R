@@ -74,7 +74,7 @@ create_consort_diagram <- function(sequences = 5,
                                        "the number of clusters, the average cluster size, and the",
                                        "variance of cluster sizes."
                                    ),
-                                   page.width.mm = 200,
+                                   page.width.mm = 174,
                                    return.figure = TRUE,
                                    save = TRUE,
                                    device = "pdf") {
