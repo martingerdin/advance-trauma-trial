@@ -111,12 +111,13 @@ create_consort_diagram <- function(sequences = 5,
     text.size.mm <- text.size / .pt # ggplot2 geom_text size (mm) for text.size pt
 
     ## Font metrics (in multiples of the font size), tuned to the rendered text
-    ## so the boxes hug the text with only a little breathing room. The line
-    ## height matches the 0.9 lineheight used by geom_text below.
+    ## so the boxes hug the text with only a little breathing room. The per-line
+    ## reservation is a touch larger than the 0.9 lineheight used by geom_text
+    ## below so that glyph ascenders/descenders are not clipped by the box edge.
     char.width.units <- text.size * 0.50 / pt.per.unit
-    line.height.units <- text.size * 0.90 / pt.per.unit
+    line.height.units <- text.size * 1.15 / pt.per.unit
     pad.x <- 0.6
-    pad.y <- 0.3
+    pad.y <- 0.5
 
     ## Number of wrapped lines a label needs within a box of the given width
     n_lines <- function(label, box.width) {
