@@ -47,6 +47,8 @@
 #'     text size are all consistent with the output width (e.g. 200 for A4
 #'     portrait with margins). The height is derived from the layout. Default
 #'     is 200.
+#' @param background Character. Fill colour of the figure background. Default
+#'     is "grey92".
 #' @param return.figure Logical. If TRUE the function returns the ggplot
 #'     object, otherwise it returns the path to the saved file. Default is TRUE.
 #' @param save Logical. If TRUE the figure is saved to disk. Default is TRUE.
@@ -75,6 +77,7 @@ create_consort_diagram <- function(sequences = 5,
                                        "variance of cluster sizes."
                                    ),
                                    page.width.mm = 174,
+                                   background = "grey92",
                                    return.figure = TRUE,
                                    save = TRUE,
                                    device = "pdf") {
@@ -92,6 +95,7 @@ create_consort_diagram <- function(sequences = 5,
     assertthat::assert_that(is.numeric(text.size) && length(text.size) == 1 && text.size >= 8)
     assertthat::assert_that(is.character(note) && length(note) == 1)
     assertthat::assert_that(is.numeric(page.width.mm) && length(page.width.mm) == 1 && page.width.mm > 0)
+    assertthat::assert_that(is.character(background) && length(background) == 1)
 
     n.seq <- sequences
     n.per <- periods
@@ -436,8 +440,21 @@ create_consort_diagram <- function(sequences = 5,
         fig.bottom <- note.top - note.lines * line.height.units
     }
 
+    ## Discrete drop shadow: a grey copy of each box, offset down and to the
+    ## right and drawn underneath the boxes.
+    shadow.offset <- 0.4
+    shadows <- transform(boxes,
+        xmin = xmin + shadow.offset, xmax = xmax + shadow.offset,
+        ymin = ymin - shadow.offset, ymax = ymax - shadow.offset
+    )
+
     ## Build the plot
     consort.figure <- ggplot() +
+        geom_rect(
+            data = shadows,
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            fill = "grey50", color = NA, alpha = 0.35
+        ) +
         geom_rect(
             data = boxes,
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
@@ -465,7 +482,11 @@ create_consort_diagram <- function(sequences = 5,
             ylim = c(fig.bottom, elig.cy + elig.h / 2),
             clip = "off"
         ) +
-        theme_void()
+        theme_void() +
+        theme(
+            plot.background = element_rect(fill = background, color = NA),
+            panel.background = element_rect(fill = background, color = NA)
+        )
 
     ## Save figure. The width matches page.width.mm and the height is derived
     ## from the layout so that one x-unit equals one y-unit (no distortion).
