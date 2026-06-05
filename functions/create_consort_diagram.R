@@ -101,7 +101,7 @@ create_consort_diagram <- function(sequences = 5,
     ## preserved on save so that one x-unit equals one y-unit in centimetres).
     plot.left <- 1
     plot.right <- 99
-    grid.left <- 7 # left margin reserved for the "Period k" labels
+    grid.left <- 2 # small left margin; "Period k" labels sit above each row
 
     ## Mapping between plotting units and points, derived from the output width
     ## so that text wrapping, box widths, and text size are consistent with the
@@ -189,12 +189,15 @@ create_consort_diagram <- function(sequences = 5,
     head.cy <- y - head.h / 2
     y <- y - head.h
     y <- y - gap.head.grid
+    period.label.h <- line.height.units + 0.4 # band above each row for its label
     period.top <- numeric(n.per)
     period.bottom <- numeric(n.per)
+    period.label.y <- numeric(n.per)
     for (p in seq_len(n.per)) {
-        period.top[p] <- y
-        period.bottom[p] <- y - period.h
-        y <- y - period.h - period.gap
+        period.label.y[p] <- y
+        period.top[p] <- y - period.label.h
+        period.bottom[p] <- period.top[p] - period.h
+        y <- period.bottom[p] - period.gap
     }
     grid.bottom <- min(period.bottom)
     legend.y <- grid.bottom - gap.grid.legend
@@ -320,9 +323,9 @@ create_consort_diagram <- function(sequences = 5,
 
     ## Period rows and per-sequence cells
     for (p in seq_len(n.per)) {
-        ## Period label in the left margin
+        ## Period label sitting on top of the row of boxes
         add_text(
-            x = plot.left, y = period.top[p],
+            x = grid.left, y = period.label.y[p],
             label = paste0("Period ", p), hjust = 0, vjust = 1, fontface = "bold"
         )
         for (k in seq_len(n.seq)) {
