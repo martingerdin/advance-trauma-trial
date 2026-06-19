@@ -25,14 +25,6 @@ create_cluster_characteristics_table <- function(data,
     assertthat::assert_that(is.data.frame(data))
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.logical(include.overall) && length(include.overall) == 1)
-    required.columns <- c("field_name", "field_type", "select_choices_or_calculations")
-    assertthat::assert_that(
-        all(required.columns %in% names(data)),
-        msg = paste0(
-            "`data` must be REDCap metadata containing the columns: ",
-            paste(required.columns, collapse = ", "), "."
-        )
-    )
 
     ## Cluster baseline characteristics to summarise, given as REDCap field
     ## names mapped to the short labels used as table row headers. The field
@@ -52,32 +44,10 @@ create_cluster_characteristics_table <- function(data,
     categorical.placeholder <- "n (%)"
     continuous.placeholder <- "mean (SD); median (Q1-Q3)"
 
-    ## Extract the response option labels from a REDCap choices string of the
-    ## form "1, Label one | 2, Label two | ...".
-    parse_choices <- function(choices) {
-        options <- trimws(strsplit(choices, "|", fixed = TRUE)[[1]])
-        labels <- vapply(options, function(option) trimws(sub("^[^,]*,", "", option)), character(1))
-        unname(labels[nzchar(labels)])
-    }
-
     ## Derive a specification (type and levels) for each characteristic from the
-    ## data dictionary.
+    ## data dictionary, using the generic REDCap field helper.
     specifications <- lapply(names(characteristics), function(field.name) {
-        metadata <- data[data$field_name == field.name, , drop = FALSE]
-        if (nrow(metadata) == 0) {
-            warning("Field '", field.name, "' was not found in the REDCap data dictionary and was skipped.")
-            return(NULL)
-        }
-        field.type <- metadata$field_type[1]
-        if (field.type %in% c("radio", "dropdown", "checkbox")) {
-            list(name = field.name, type = "categorical", levels = parse_choices(metadata$select_choices_or_calculations[1]))
-        } else if (field.type == "yesno") {
-            list(name = field.name, type = "categorical", levels = c("Yes", "No"))
-        } else {
-            ## Anything else (e.g. numeric text or calculated fields) is treated
-            ## as a continuous variable.
-            list(name = field.name, type = "continuous", levels = NULL)
-        }
+        get_redcap_field_specification(data, field.name)
     })
     specifications <- Filter(Negate(is.null), specifications)
     assertthat::assert_that(length(specifications) > 0, msg = "None of the requested characteristics were found in the data dictionary.")
@@ -92,14 +62,14 @@ create_cluster_characteristics_table <- function(data,
     for (specification in specifications) {
         if (specification$type == "categorical") {
             values <- rep(specification$levels, length.out = n.rows)
-            shell.data[[specification$name]] <- factor(values, levels = specification$levels)
+            shell.data[[specification$field_name]] <- factor(values, levels = specification$levels)
         } else {
-            shell.data[[specification$name]] <- as.numeric(seq_len(n.rows))
+            shell.data[[specification$field_name]] <- as.numeric(seq_len(n.rows))
         }
     }
 
     ## Apply the human-readable labels and variable types
-    variable.names <- vapply(specifications, function(specification) specification$name, character(1))
+    variable.names <- vapply(specifications, function(specification) specification$field_name, character(1))
     variable.labels <- stats::setNames(as.list(unname(characteristics[variable.names])), variable.names)
     variable.types <- stats::setNames(
         as.list(vapply(specifications, function(specification) specification$type, character(1))),
