@@ -9,22 +9,44 @@
 #' placeholders for the summary statistics, because this is an analysis plan
 #' rather than a report and no data are summarised yet.
 #'
-#' @param data A data frame. The REDCap cluster-screening data dictionary
-#'     (metadata), as returned by `get_redcap_data(content = "metadata")`. Must
-#'     contain the columns `field_name`, `field_type` and
-#'     `select_choices_or_calculations`. No default.
+#' @param data A data frame or NULL. The REDCap cluster-screening data
+#'     dictionary (metadata), with the columns `field_name`, `field_type` and
+#'     `select_choices_or_calculations`. If NULL (the default) the dictionary is
+#'     fetched from REDCap with `get_redcap_data()` using `url.name` and
+#'     `api.key.name`. Pass a data frame to supply the dictionary directly, for
+#'     example when testing offline.
+#' @param url.name Character. Name of the environment variable holding the
+#'     REDCap API URL for the cluster-screening project. Used only when `data`
+#'     is NULL. Defaults to "TGI_REDCAP_URL".
+#' @param api.key.name Character. Name of the environment variable holding the
+#'     REDCap API token for the cluster-screening project. Used only when `data`
+#'     is NULL. Defaults to "TGI_REDCAP_CLUSTER_SCREENING_API_KEY".
 #' @param sequences Numeric. Number of implementation sequences (columns) to
 #'     display. Defaults to the trial-wide value from `global_variables()`.
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
 #'     Defaults to TRUE.
 #' @return A `gtsummary` table object (class `tbl_summary`).
-create_cluster_characteristics_table <- function(data,
+create_cluster_characteristics_table <- function(data = NULL,
+                                                 url.name = "KI_REDCAP_URL",
+                                                 api.key.name = "KI_REDCAP_CLUSTER_SCREENING_API_KEY",
                                                  sequences = global_variables()$sequences,
                                                  include.overall = TRUE) {
     ## Check arguments
-    assertthat::assert_that(is.data.frame(data))
+    assertthat::assert_that(is.null(data) || is.data.frame(data))
+    assertthat::assert_that(is.character(url.name) && length(url.name) == 1)
+    assertthat::assert_that(is.character(api.key.name) && length(api.key.name) == 1)
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.logical(include.overall) && length(include.overall) == 1)
+
+    ## Fetch the cluster-screening data dictionary from REDCap unless one was
+    ## supplied directly.
+    if (is.null(data)) {
+        data <- get_redcap_data(
+            url.name = url.name,
+            api.key.name = api.key.name,
+            content = "metadata"
+        )
+    }
 
     ## Cluster baseline characteristics to summarise, given as REDCap field
     ## names mapped to the short labels used as table row headers. The field
