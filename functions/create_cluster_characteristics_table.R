@@ -26,6 +26,28 @@
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
 #'     Defaults to TRUE.
 #' @return A `gtsummary` table object (class `tbl_summary`).
+#'
+#' @examples
+#' ## Load all project functions first
+#' noacsr::source_all_functions()
+#'
+#' \dontrun{
+#' ## Build the shell table by fetching the cluster-screening data dictionary
+#' ## from REDCap (requires the API token in a project-level .env file)
+#' cluster.table <- create_cluster_characteristics_table()
+#' cluster.table
+#' }
+#'
+#' ## Build the table offline by supplying the committed data-dictionary snapshot
+#' ## instead of fetching from REDCap (paths are relative to the
+#' ## statistical-analysis-plan directory)
+#' dictionary <- read.csv("../cluster-screening/data-dictionary.csv", check.names = FALSE)
+#' dictionary <- data.frame(
+#'     field_name = dictionary[["Variable / Field Name"]],
+#'     field_type = dictionary[["Field Type"]],
+#'     select_choices_or_calculations = dictionary[["Choices, Calculations, OR Slider Labels"]]
+#' )
+#' create_cluster_characteristics_table(data = dictionary)
 create_cluster_characteristics_table <- function(data = NULL,
                                                  url.name = "KI_REDCAP_URL",
                                                  api.key.name = "KI_REDCAP_CLUSTER_SCREENING_API_KEY",
