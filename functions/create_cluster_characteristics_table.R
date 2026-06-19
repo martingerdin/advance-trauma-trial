@@ -96,6 +96,12 @@ create_cluster_characteristics_table <- function(data = NULL,
     specifications <- Filter(Negate(is.null), specifications)
     assertthat::assert_that(length(specifications) > 0, msg = "None of the requested characteristics were found in the data dictionary.")
 
+    ## Drop the uninformative "Not sure" response option from every characteristic
+    specifications <- lapply(specifications, function(specification) {
+        specification$levels <- specification$levels[specification$levels != "Not sure"]
+        specification
+    })
+
     ## Build a small placeholder data set so that gtsummary lays out every
     ## response option for every sequence. The values themselves are immaterial:
     ## the body cells are overwritten with placeholders below, and defining the
