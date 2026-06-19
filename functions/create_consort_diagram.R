@@ -49,6 +49,11 @@
 #'     is 200.
 #' @param background Character. Fill colour of the figure background. Default
 #'     is "grey92".
+#' @param fill.lightness Numeric between 0 and 1. Amount of white blended into
+#'     the phase fill colours (0 keeps them fully saturated, 1 turns them
+#'     white). The boxes are drawn opaque, so lightening the colours here -
+#'     rather than reducing their alpha - keeps the drop shadow from showing
+#'     through. Default is 0.2.
 #' @param return.figure Logical. If TRUE the function returns the ggplot
 #'     object, otherwise it returns the path to the saved file. Default is TRUE.
 #' @param save Logical. If TRUE the figure is saved to disk. Default is TRUE.
@@ -78,6 +83,7 @@ create_consort_diagram <- function(sequences = 5,
                                    ),
                                    page.width.mm = 174,
                                    background = "grey92",
+                                   fill.lightness = 0.2,
                                    return.figure = TRUE,
                                    save = TRUE,
                                    device = "pdf") {
@@ -96,6 +102,17 @@ create_consort_diagram <- function(sequences = 5,
     assertthat::assert_that(is.character(note) && length(note) == 1)
     assertthat::assert_that(is.numeric(page.width.mm) && length(page.width.mm) == 1 && page.width.mm > 0)
     assertthat::assert_that(is.character(background) && length(background) == 1)
+    assertthat::assert_that(is.numeric(fill.lightness) && length(fill.lightness) == 1 && fill.lightness >= 0 && fill.lightness <= 1)
+
+    ## Lighten the phase fills toward white instead of relying on alpha, so the
+    ## boxes stay opaque and the drop shadow does not show through them. Only
+    ## valid hex colours can be blended; anything else is left untouched.
+    lighten_if_hex <- function(col) {
+        if (grepl("^#[0-9A-Fa-f]{6}$", col)) lighten_color(col, fill.lightness) else col
+    }
+    intervention.fill <- lighten_if_hex(intervention.fill)
+    control.fill <- lighten_if_hex(control.fill)
+    transition.fill <- lighten_if_hex(transition.fill)
 
     n.seq <- sequences
     n.per <- periods
@@ -222,9 +239,10 @@ create_consort_diagram <- function(sequences = 5,
     texts <- data.frame()
     segments <- data.frame()
 
-    add_box <- function(xmin, xmax, ymin, ymax, fill) {
+    add_box <- function(xmin, xmax, ymin, ymax, fill, shadow = TRUE) {
         boxes <<- rbind(boxes, data.frame(
-            xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill
+            xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax,
+            fill = fill, shadow = shadow
         ))
     }
     ## Text rendered inside a box (xmin/xmax/ymin/ymax define the bounds). The
@@ -414,7 +432,7 @@ create_consort_diagram <- function(sequences = 5,
         add_box(
             xmin = legend.x, xmax = legend.x + legend.box,
             ymin = legend.y - legend.h / 2, ymax = legend.y + legend.h / 2,
-            fill = legend.items$fill[i]
+            fill = legend.items$fill[i], shadow = FALSE
         )
         text.x <- legend.x + legend.box + legend.swatch.gap
         add_text(
@@ -440,10 +458,10 @@ create_consort_diagram <- function(sequences = 5,
         fig.bottom <- note.top - note.lines * line.height.units
     }
 
-    ## Discrete drop shadow: a grey copy of each box, offset down and to the
-    ## right and drawn underneath the boxes.
+    ## Discrete drop shadow: a grey copy of each box (except the legend
+    ## swatches), offset down and to the right and drawn underneath the boxes.
     shadow.offset <- 0.4
-    shadows <- transform(boxes,
+    shadows <- transform(boxes[boxes$shadow, ],
         xmin = xmin + shadow.offset, xmax = xmax + shadow.offset,
         ymin = ymin - shadow.offset, ymax = ymax - shadow.offset
     )
@@ -458,7 +476,7 @@ create_consort_diagram <- function(sequences = 5,
         geom_rect(
             data = boxes,
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
-            color = "grey40", linewidth = 0.3, alpha = 0.8
+            color = "grey40", linewidth = 0.3
         ) +
         geom_segment(
             data = subset(segments, !arrow),
