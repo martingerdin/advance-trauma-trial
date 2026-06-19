@@ -260,6 +260,24 @@ The analysis set for each outcome will include all available participants from t
 
 We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial, see @fig-consort-diagram. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
+```{r}
+#| echo: false
+#| label: fig-consort-diagram
+#| fig.cap: "Consort diagram. The diagram displays the flow of clusters and participants through the trial."
+#| fig.align: "center"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics(
+  create_consort_diagram(
+    sequences = sequences,
+    periods = total.months,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
+
 ## Baseline analyses
 
 ### Cluster characteristics
