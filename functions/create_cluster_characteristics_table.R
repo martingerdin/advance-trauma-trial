@@ -181,15 +181,11 @@ create_cluster_characteristics_table <- function(data = NULL,
         gtsummary::modify_header(gtsummary::all_stat_cols() ~ "**{level}**") |>
         gtsummary::modify_spanning_header(
             gtsummary::all_stat_cols(stat_0 = FALSE) ~ "**Implementation sequence**"
-        ) |>
-        gtsummary::modify_caption(
-            paste(
-                "Shell table: cells show the summary statistics that will be reported",
-                "(categorical characteristics as n (%) and continuous characteristics",
-                "as median (Q1-Q3)), not observed data. Characteristics and response",
-                "options are taken from the REDCap cluster-screening data dictionary."
-            )
         )
+    
+    ## Add label for the summary statistics shown in each row
+    cluster.table <- cluster.table |>
+        gtsummary::add_stat_label()
 
     return(cluster.table)
 }
