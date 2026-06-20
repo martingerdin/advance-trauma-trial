@@ -38,9 +38,10 @@
 #' cluster.table
 #' }
 #'
-#' ## Build the table offline by supplying the committed data-dictionary snapshot
-#' ## instead of fetching from REDCap (paths are relative to the
-#' ## statistical-analysis-plan directory)
+#' ## Build the table offline by supplying a data-dictionary snapshot instead of
+#' ## fetching from REDCap (paths are relative to the statistical-analysis-plan
+#' ## directory). Note that the committed snapshot may predate recently added
+#' ## fields, in which case those characteristics are dropped with a warning.
 #' dictionary <- read.csv("../cluster-screening/data-dictionary.csv", check.names = FALSE)
 #' dictionary <- data.frame(
 #'     field_name = dictionary[["Variable / Field Name"]],
@@ -49,8 +50,8 @@
 #' )
 #' create_cluster_characteristics_table(data = dictionary)
 create_cluster_characteristics_table <- function(data = NULL,
-                                                 url.name = "KI_REDCAP_URL",
-                                                 api.key.name = "KI_REDCAP_CLUSTER_SCREENING_API_KEY",
+                                                 url.name = "TGI_REDCAP_URL",
+                                                 api.key.name = "TGI_REDCAP_CLUSTER_SCREENING_API_KEY",
                                                  sequences = global_variables()$sequences,
                                                  include.overall = TRUE) {
     ## Check arguments
@@ -70,33 +71,49 @@ create_cluster_characteristics_table <- function(data = NULL,
         )
     }
 
-    ## Cluster baseline characteristics to summarise, given as REDCap field
-    ## names mapped to the short labels used as table row headers. The field
-    ## names are looked up in the data dictionary, so the response options
-    ## (levels) and the variable type are taken directly from REDCap.
+    ## Cluster baseline characteristics summarised from the REDCap cluster-
+    ## screening data dictionary, given as field names mapped to the short labels
+    ## used as table row headers. The variable type (categorical or continuous)
+    ## and, for categorical fields, the response options are taken directly from
+    ## REDCap; the bed counts are recorded as integers and are therefore
+    ## summarised as continuous variables.
     characteristics <- c(
-        volume = "Monthly trauma patient volume",
-        hospital_beds = "Hospital beds",
-        icu_beds = "Intensive care unit beds",
-        trauma_beds = "Dedicated trauma beds",
+        number_hospital_beds = "Hospital beds",
+        number_intensive_care_unit_beds = "Intensive care unit beds",
+        number_dedicated_trauma_beds = "Dedicated trauma beds",
         specialities = "Specialities available around the clock",
         facilities = "Facilities available around the clock",
         initial_resuscitation = "Initial resuscitation provider"
     )
 
+    ## Continuous characteristics that are not held in the screening data
+    ## dictionary and will instead be derived from other sources (monthly trauma
+    ## volume is computed from the actual patient inclusion numbers). These are
+    ## still shown in the shell as continuous rows.
+    external.characteristics <- c(
+        volume = "Monthly trauma patient volume"
+    )
+
     ## Placeholder summary statistics for the shell table
     categorical.placeholder <- "n (%)"
-    continuous.placeholder <- "mean (SD); median (Q1-Q3)"
+    continuous.placeholder <- "median (Q1-Q3)"
 
     ## Derive a specification (type and levels) for each characteristic from the
-    ## data dictionary, using the generic REDCap field helper.
-    specifications <- lapply(names(characteristics), function(field.name) {
+    ## data dictionary, using the generic REDCap field helper, and add the
+    ## external continuous characteristics. Volume is placed first as the lead
+    ## measure of cluster size.
+    dictionary.specifications <- lapply(names(characteristics), function(field.name) {
         get_redcap_field_specification(data, field.name)
     })
+    external.specifications <- lapply(names(external.characteristics), function(field.name) {
+        list(field_name = field.name, redcap_type = NA_character_, type = "continuous", levels = character(0))
+    })
+    specifications <- c(external.specifications, dictionary.specifications)
     specifications <- Filter(Negate(is.null), specifications)
-    assertthat::assert_that(length(specifications) > 0, msg = "None of the requested characteristics were found in the data dictionary.")
+    assertthat::assert_that(length(specifications) > 0, msg = "None of the requested characteristics were found.")
 
-    ## Drop the uninformative "Not sure" response option from every characteristic
+    ## Combined label lookup and removal of the uninformative "Not sure" option
+    characteristic.labels <- c(external.characteristics, characteristics)
     specifications <- lapply(specifications, function(specification) {
         specification$levels <- specification$levels[specification$levels != "Not sure"]
         specification
@@ -120,7 +137,7 @@ create_cluster_characteristics_table <- function(data = NULL,
 
     ## Apply the human-readable labels and variable types
     variable.names <- vapply(specifications, function(specification) specification$field_name, character(1))
-    variable.labels <- stats::setNames(as.list(unname(characteristics[variable.names])), variable.names)
+    variable.labels <- stats::setNames(as.list(unname(characteristic.labels[variable.names])), variable.names)
     variable.types <- stats::setNames(
         as.list(vapply(specifications, function(specification) specification$type, character(1))),
         variable.names
@@ -134,7 +151,7 @@ create_cluster_characteristics_table <- function(data = NULL,
         type = variable.types,
         statistic = list(
             gtsummary::all_categorical() ~ "{n} ({p}%)",
-            gtsummary::all_continuous() ~ "{mean} ({sd})"
+            gtsummary::all_continuous() ~ "{median} ({p25}, {p75})"
         ),
         missing = "no"
     )
@@ -169,9 +186,8 @@ create_cluster_characteristics_table <- function(data = NULL,
             paste(
                 "Shell table: cells show the summary statistics that will be reported",
                 "(categorical characteristics as n (%) and continuous characteristics",
-                "as mean (SD) and median (Q1-Q3)), not observed data. Characteristics",
-                "and response options are taken from the REDCap cluster-screening data",
-                "dictionary."
+                "as median (Q1-Q3)), not observed data. Characteristics and response",
+                "options are taken from the REDCap cluster-screening data dictionary."
             )
         )
 
