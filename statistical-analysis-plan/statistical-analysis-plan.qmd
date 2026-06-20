@@ -282,7 +282,16 @@ knitr::include_graphics(
 
 ### Cluster characteristics
 
-We will describe cluster characteristics including location and size using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables.
+We will describe cluster characteristics including location and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. See @tbl-cluster-characteristics for details.
+
+```{r}
+#| label: tbl-cluster-characteristics
+#| tbl-cap: "Cluster characteristics"
+#| echo: false
+#| message: false
+#| warning: false
+create_cluster_characteristics_table()
+```
 
 ### Patient characteristics
 
