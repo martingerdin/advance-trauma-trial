@@ -187,5 +187,15 @@ create_cluster_characteristics_table <- function(data = NULL,
     cluster.table <- cluster.table |>
         gtsummary::add_stat_label()
 
+    ## For PDF/LaTeX output, scale the table to the page width so that the
+    ## sequence columns do not overflow the right margin. The scaling only
+    ## shrinks the table when it is wider than the text block. Other output
+    ## formats (HTML, Word) are returned as the gtsummary object unchanged.
+    if (isTRUE(knitr::is_latex_output())) {
+        cluster.table <- cluster.table |>
+            gtsummary::as_kable_extra(format = "latex", booktabs = TRUE, linesep = "") |>
+            kableExtra::kable_styling(latex_options = c("HOLD_position", "scale_down"))
+    }
+
     return(cluster.table)
 }
