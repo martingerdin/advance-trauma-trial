@@ -95,8 +95,8 @@ create_cluster_characteristics_table <- function(data = NULL,
     )
 
     ## Placeholder summary statistics for the shell table
-    categorical.placeholder <- "n (%)"
-    continuous.placeholder <- "median (Q1-Q3)"
+    categorical.placeholder <- ""
+    continuous.placeholder <- ""
 
     ## Derive a specification (type and levels) for each characteristic from the
     ## data dictionary, using the generic REDCap field helper, and add the
