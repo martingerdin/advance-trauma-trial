@@ -6,8 +6,8 @@
 #' options are pulled from the REDCap trial-data dictionary (metadata), so the
 #' table stays in sync with the data actually collected. A few characteristics
 #' are not single dictionary fields and are supplied directly: the Injury
-#' Severity Score is derived from the recorded injury diagnoses, radiology is
-#' derived from the imaging form, and the mechanism of injury is recorded as an
+#' Severity Score is derived from the recorded injury diagnoses, imaging is
+#' summarised by modality from the imaging form, and the mechanism of injury is recorded as an
 #' ICD-10 code and so is shown using the grouped categories it will be
 #' collapsed into for reporting. The table is laid out with `gtsummary`; the
 #' body cells are then blanked, because this is an analysis plan rather than a
@@ -99,8 +99,8 @@ create_patient_characteristics_table <- function(data = NULL,
         list(field = "systolic_blood_pressure", label = "Systolic blood pressure (mmHg)", source = "dictionary"),
         list(field = "surgery_done", label = "Surgery", source = "dictionary", summary = "dichotomous"),
         list(field = "transfusion_done", label = "Transfusion", source = "dictionary", summary = "dichotomous"),
-        list(field = "radiology", label = "Radiology", source = "external", summary = "dichotomous"),
-        list(field = "icu_admission", label = "Intensive care unit admission", source = "dictionary", summary = "dichotomous")
+        list(field = "imaging", label = "Imaging", source = "external", summary = "categorical",
+             levels = c("Ultrasound", "X-ray", "CT"))
     )
 
     ## Placeholder summary statistics for the shell table. The body cells are
@@ -111,12 +111,11 @@ create_patient_characteristics_table <- function(data = NULL,
     ## The "Yes" level reported for dichotomous (yes/no) characteristics
     dichotomous.value <- "Yes"
 
-    ## Continuous variables are reported on two lines, as a mean (standard
-    ## deviation) and a median (Q1-Q3), matching the patient-characteristics
-    ## description in the analysis plan. gtsummary's "continuous2" type lays each
-    ## statistic out on its own row.
-    continuous.type <- "continuous2"
-    continuous.statistics <- c("{mean} ({sd})", "{median} ({p25}, {p75})")
+    ## Continuous variables are reported as a median (Q1-Q3) on a single row
+    continuous.statistics <- "{median} ({p25}, {p75})"
+
+    ## Show a missing-values row for every characteristic
+    missing.text <- "Missing"
 
     ## Derive a specification (label, summary type and levels) for each
     ## requested characteristic. Dictionary fields use the generic REDCap field
@@ -176,9 +175,7 @@ create_patient_characteristics_table <- function(data = NULL,
         variable.names
     )
     variable.types <- stats::setNames(
-        lapply(specifications, function(specification) {
-            if (specification$type == "continuous") continuous.type else specification$type
-        }),
+        lapply(specifications, function(specification) specification$type),
         variable.names
     )
     dichotomous.names <- variable.names[vapply(specifications, function(specification) specification$type == "dichotomous", logical(1))]
@@ -198,7 +195,8 @@ create_patient_characteristics_table <- function(data = NULL,
             gtsummary::all_categorical() ~ "{n} ({p}%)",
             gtsummary::all_continuous() ~ continuous.statistics
         ),
-        missing = "no"
+        missing = "always",
+        missing_text = missing.text
     )
     if (include.overall) {
         patient.table <- gtsummary::add_overall(patient.table, last = TRUE)
@@ -212,9 +210,9 @@ create_patient_characteristics_table <- function(data = NULL,
         function(table.body) {
             statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
             for (statistic.column in statistic.columns) {
-                table.body[[statistic.column]][table.body$row_type == "level"] <- cell.placeholder
+                table.body[[statistic.column]][table.body$row_type %in% c("level", "missing")] <- cell.placeholder
                 table.body[[statistic.column]][table.body$row_type == "label" &
-                    table.body$var_type %in% c("continuous", "continuous2", "dichotomous")] <- cell.placeholder
+                    table.body$var_type %in% c("continuous", "dichotomous")] <- cell.placeholder
             }
             table.body
         }
