@@ -187,14 +187,37 @@ create_cluster_characteristics_table <- function(data = NULL,
     cluster.table <- cluster.table |>
         gtsummary::add_stat_label()
 
-    ## For PDF/LaTeX output, scale the table to the page width so that the
-    ## sequence columns do not overflow the right margin. The scaling only
-    ## shrinks the table when it is wider than the text block. Other output
-    ## formats (HTML, Word) are returned as the gtsummary object unchanged.
+    ## For PDF/LaTeX output, keep a fixed font size (matching the other tables
+    ## in the document) rather than scaling the whole table down. The table is
+    ## instead kept within the text block by giving every column a fixed width
+    ## expressed as a fraction of the line width, so that long labels and cell
+    ## contents wrap across several lines. The column widths sum to
+    ## 0.84\\linewidth and the inter-column padding is reduced to 3pt (as for the
+    ## other wide table in this document) so the table fits the text block. Other
+    ## output formats (HTML, Word) are returned as the gtsummary object unchanged.
     if (isTRUE(knitr::is_latex_output())) {
+        n.statistic.columns <- sequences + as.integer(include.overall)
+        label.width <- 0.24
+        statistic.width <- round((0.84 - label.width) / n.statistic.columns, 3)
+
         cluster.table <- cluster.table |>
             gtsummary::as_kable_extra(format = "latex", booktabs = TRUE, linesep = "") |>
-            kableExtra::kable_styling(latex_options = c("HOLD_position", "scale_down"))
+            kableExtra::kable_styling(latex_options = "HOLD_position", font_size = 8)
+
+        ## Replace the tabular preamble with fixed-width paragraph columns (so
+        ## the contents wrap rather than overflow) and reduce the inter-column
+        ## padding. Written as a single rewrite because chained column widths
+        ## expressed in \\linewidth confuse kableExtra::column_spec.
+        column.preamble <- paste0(
+            "\\setlength{\\tabcolsep}{3pt}\\begin{tabular}{",
+            ">{\\raggedright\\arraybackslash}p{", label.width, "\\linewidth}",
+            "*{", n.statistic.columns, "}{>{\\centering\\arraybackslash}p{", statistic.width, "\\linewidth}}",
+            "}"
+        )
+        column.replacement <- gsub("\\\\", "\\\\\\\\", column.preamble)
+        table.attributes <- attributes(cluster.table)
+        cluster.table <- sub("\\\\begin\\{tabular\\}\\{[lcr]+\\}", column.replacement, cluster.table)
+        attributes(cluster.table) <- table.attributes
     }
 
     return(cluster.table)

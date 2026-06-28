@@ -1019,9 +1019,9 @@ Table~\ref{tbl-cluster-characteristics} for details.
 
 \centering{
 
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}{lcccccc}
+\centering\begingroup\fontsize{8}{10}\selectfont
+
+\setlength{\tabcolsep}{3pt}\begin{tabular}{>{\raggedright\arraybackslash}p{0.24\linewidth}*{6}{>{\centering\arraybackslash}p{0.1\linewidth}}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{5}{c}{\textbf{Implementation sequence}} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){2-6}
@@ -1049,7 +1049,8 @@ Initial resuscitation provider, n (\%) &  &  &  &  &  & \\
 \hspace{1em}Emergency medicine residents & n (\%) & n (\%) & n (\%) & n (\%) & n (\%) & n (\%)\\
 \hspace{1em}Surgical residents & n (\%) & n (\%) & n (\%) & n (\%) & n (\%) & n (\%)\\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\endgroup{}
 
 }
 
