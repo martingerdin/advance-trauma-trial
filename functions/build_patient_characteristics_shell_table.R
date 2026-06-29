@@ -1,3 +1,49 @@
+#' Convert a LaTeX tabular kable to a longtable with repeated headers
+#'
+#' @param kable.latex Character. LaTeX produced by `kableExtra`.
+#' @param n.columns Integer. Number of table columns.
+#' @param caption Character. Table caption text.
+#' @param label Character. Table label for cross-referencing.
+#' @return Character vector of LaTeX.
+convert_patient_table_to_longtable <- function(kable.latex,
+                                               n.columns,
+                                               caption = NULL,
+                                               label = NULL) {
+    kable.latex <- as.character(kable.latex)
+    kable.latex <- gsub("\\\\begin\\{table\\}\\[[^]]*\\]", "", kable.latex)
+    kable.latex <- gsub("\\\\begin\\{table\\}", "", kable.latex)
+    kable.latex <- gsub("\\\\end\\{table\\}", "", kable.latex)
+
+    if (!is.null(caption) && nzchar(caption)) {
+        caption.line <- if (!is.null(label) && nzchar(label)) {
+            paste0("\\caption{", caption, "\\label{", label, "}\\\\\n", "\\", "tabularnewline\n")
+        } else {
+            paste0("\\caption{", caption, "}\\\\\n", "\\", "tabularnewline\n")
+        }
+        kable.latex <- sub("\\toprule", paste0(caption.line, "\\toprule"), kable.latex, fixed = TRUE)
+    }
+
+    header.pattern <- "(\\\\toprule[\\s\\S]*?\\\\midrule)"
+    header.match <- regexpr(header.pattern, kable.latex, perl = TRUE)
+    if (header.match[1] == -1) {
+        return(kable.latex)
+    }
+    header.start <- header.match
+    header.end <- header.match + attr(header.match, "match.length") - 1
+    header <- substr(kable.latex, header.start, header.end)
+    before <- substr(kable.latex, 1, header.start - 1)
+    after <- substr(kable.latex, header.end + 1, nchar(kable.latex))
+    paste0(
+        before,
+        header,
+        "\n\\endfirsthead\n",
+        sprintf("\\multicolumn{%d}{@{\\extracolsep{\\fill}}l}{\\textit{(continued)}}\\\\\n", n.columns),
+        header,
+        "\n\\endhead\n\n\\endfoot\n\\bottomrule\n\\endlastfoot\n",
+        after
+    )
+}
+
 #' Build a shell patient characteristics table from a variable specification
 #'
 #' Shared implementation for patient baseline characteristic shell tables. Takes
@@ -11,14 +57,18 @@
 #'     and `levels`.
 #' @param groups Character. Stratum labels for the table columns.
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
+#' @param longtable Logical. If TRUE and the output format is LaTeX, return a
+#'     page-breaking `longtable` rather than a floating `table` environment.
 #' @param dropped.levels Character. Categorical levels to omit from the shell.
 #' @param label.width Numeric. Fraction of `\linewidth` for the label column in
 #'     PDF/LaTeX output.
-#' @return A `gtsummary` or `kableExtra` table object.
+#' @return A `gtsummary` or `kableExtra` table object, or, when `longtable =
+#'     TRUE` in LaTeX output, a `knitr_asis` object containing raw LaTeX.
 build_patient_characteristics_shell_table <- function(data,
                                                       requests,
                                                       groups,
                                                       include.overall,
+                                                      longtable = FALSE,
                                                       dropped.levels = c("Not sure", "Not known", "999. Not known"),
                                                       label.width = 0.34) {
     cell.placeholder <- ""
@@ -120,14 +170,25 @@ build_patient_characteristics_shell_table <- function(data,
 
     if (isTRUE(knitr::is_latex_output())) {
         n.statistic.columns <- length(groups) + as.integer(include.overall)
+        n.columns <- 1L + n.statistic.columns
         statistic.width <- round((0.84 - label.width) / n.statistic.columns, 3)
+        table.environment <- if (isTRUE(longtable)) "longtable" else "tabular"
 
         patient.table <- patient.table |>
-            gtsummary::as_kable_extra(format = "latex", booktabs = TRUE, linesep = "") |>
-            kableExtra::kable_styling(latex_options = "HOLD_position", font_size = 8)
+            gtsummary::as_kable_extra(format = "latex", booktabs = TRUE, linesep = "")
+
+        if (isTRUE(longtable)) {
+            patient.table <- kableExtra::kable_styling(patient.table, font_size = 8)
+        } else {
+            patient.table <- kableExtra::kable_styling(
+                patient.table,
+                latex_options = "HOLD_position",
+                font_size = 8
+            )
+        }
 
         column.preamble <- paste0(
-            "\\setlength{\\tabcolsep}{3pt}\\begin{tabular}{",
+            "\\setlength{\\tabcolsep}{3pt}\\begin{", table.environment, "}{",
             ">{\\raggedright\\arraybackslash}p{", label.width, "\\linewidth}",
             "*{", n.statistic.columns, "}{>{\\centering\\arraybackslash}p{", statistic.width, "\\linewidth}}",
             "}"
@@ -135,7 +196,22 @@ build_patient_characteristics_shell_table <- function(data,
         column.replacement <- gsub("\\\\", "\\\\\\\\", column.preamble)
         table.attributes <- attributes(patient.table)
         patient.table <- sub("\\\\begin\\{tabular\\}\\{[lcr]+\\}", column.replacement, patient.table)
+        if (isTRUE(longtable)) {
+            patient.table <- gsub("\\\\end\\{tabular\\}", "\\\\end{longtable}", patient.table)
+        }
         attributes(patient.table) <- table.attributes
+
+        if (isTRUE(longtable)) {
+            caption <- knitr::opts_current$get("tbl.cap")
+            label <- knitr::opts_current$get("label")
+            patient.table <- convert_patient_table_to_longtable(
+                kable.latex = patient.table,
+                n.columns = n.columns,
+                caption = caption,
+                label = label
+            )
+            return(knitr::asis_output(patient.table))
+        }
     }
 
     return(patient.table)

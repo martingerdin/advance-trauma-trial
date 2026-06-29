@@ -306,15 +306,6 @@ We will describe patient characteristics stratified by before and after ATLS tra
 create_patient_characteristics_table()
 ```
 
-```{r}
-#| label: tbl-patient-characteristics-all
-#| tbl-cap: "All patient characteristics"
-#| echo: false
-#| message: false
-#| warning: false
-create_patient_characteristics_table(all = TRUE)
-```
-
 ## Interim analysis
 
 {{< include ../shared-assets/interim-analysis.qmd >}}
@@ -664,6 +655,18 @@ g\{\mathbb{E}(Y_{bkti})\}
 $$ {#eq-beta-model}
 
 Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The intervention effect $\theta$ represents the difference in expected adherence proportion on the logit (link) scale. Because the observed adherence proportion may take values of 0 or 1, values will be rescaled to lie in the open interval $(0,1)$ prior to fitting the beta regression model. A beta regression precision (dispersion) parameter will be estimated as part of the model.
+
+# Supplementary tables
+
+```{r}
+#| label: tbl-patient-characteristics-all
+#| tbl-cap: "All patient characteristics"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_patient_characteristics_table(all = TRUE)
+```
 
 # References {.numbered}
 ::: {#refs}

@@ -144,6 +144,7 @@ create_patient_characteristics_table <- function(data = NULL,
         data = data,
         requests = requests,
         groups = groups,
-        include.overall = include.overall
+        include.overall = include.overall,
+        longtable = isTRUE(all)
     )
 }
