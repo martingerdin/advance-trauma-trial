@@ -295,7 +295,16 @@ create_cluster_characteristics_table()
 
 ### Patient characteristics
 
-We will describe patient characteristics at baseline, meaning all pre-training periods, per treatment group and overall using frequencies and percentages for discrete variables and means, standard deviations, medians and interquartile ranges (Q1-Q3) for continuous variables. We will not adjust for clustering when presenting baseline characteristics.
+We will describe patient characteristics stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics. See @tbl-patient-characteristics for details.
+
+```{r}
+#| label: tbl-patient-characteristics
+#| tbl-cap: "Patient characteristics"
+#| echo: false
+#| message: false
+#| warning: false
+create_patient_characteristics_table()
+```
 
 ## Interim analysis
 
