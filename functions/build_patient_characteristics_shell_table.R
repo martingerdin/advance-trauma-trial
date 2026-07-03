@@ -57,6 +57,7 @@ convert_patient_table_to_longtable <- function(kable.latex,
 #'     and `levels`.
 #' @param groups Character. Stratum labels for the table columns.
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
+#' @param label.header Character. Header text for the first column.
 #' @param longtable Logical. If TRUE and the output format is LaTeX, return a
 #'     page-breaking `longtable` rather than a floating `table` environment.
 #' @param dropped.levels Character. Categorical levels to omit from the shell.
@@ -69,6 +70,7 @@ build_patient_characteristics_shell_table <- function(data,
                                                       groups,
                                                       include.overall,
                                                       longtable = FALSE,
+                                                      label.header = "**Characteristic**",
                                                       dropped.levels = c("Not sure", "Not known", "999. Not known"),
                                                       label.width = 0.34) {
     cell.placeholder <- ""
@@ -162,7 +164,10 @@ build_patient_characteristics_shell_table <- function(data,
     )
 
     patient.table <- patient.table |>
-        gtsummary::modify_header(gtsummary::all_stat_cols() ~ "**{level}**") |>
+        gtsummary::modify_header(
+            label ~ label.header,
+            gtsummary::all_stat_cols() ~ "**{level}**"
+        ) |>
         gtsummary::modify_spanning_header(
             gtsummary::all_stat_cols(stat_0 = FALSE) ~ "**ATLS training**"
         ) |>

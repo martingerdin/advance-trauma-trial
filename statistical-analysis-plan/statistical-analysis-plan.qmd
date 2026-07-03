@@ -295,7 +295,7 @@ create_cluster_characteristics_table()
 
 ### Patient characteristics
 
-We will describe patient characteristics stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics. We will present key characteristics in the results section, and present all characteristics as supplementary tables. See @tbl-patient-characteristics for key characteristics and @tbl-patient-characteristics-all for all characteristics. Summaries of primary and secondary outcomes will be presented in the results section, using the same summary statistics as the patient characteristics tables. See @tbl-outcomes-summary for details.
+We will describe patient characteristics stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics. We will present key characteristics in the results section, and present all characteristics as supplementary tables. See @tbl-patient-characteristics for key characteristics and @tbl-patient-characteristics-all for all characteristics.
 
 ```{r}
 #| label: tbl-patient-characteristics
@@ -304,6 +304,20 @@ We will describe patient characteristics stratified by before and after ATLS tra
 #| message: false
 #| warning: false
 create_patient_characteristics_table()
+```
+
+### Outcomes
+
+Summaries of primary and secondary outcomes will be presented in the results section, stratified by before and after ATLS training and overall, using the same summary statistics as the patient characteristics tables. Missing values will be reported for each outcome. See @tbl-outcomes-descriptive for details.
+
+```{r}
+#| label: tbl-outcomes-descriptive
+#| tbl-cap: "Descriptive summaries of outcomes"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_outcomes_descriptive_table()
 ```
 
 ## Interim analysis
