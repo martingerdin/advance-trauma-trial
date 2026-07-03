@@ -104,6 +104,10 @@ get_table_section_labels <- function(requests) {
 }
 
 #' Format section header rows in LaTeX table output
+#'
+#' gtsummary converts markdown `**bold**` in column headers to `\textbf{}`, but
+#' custom section rows are emitted as plain text (or literal asterisks). This
+#' helper rewrites those rows to spanning bold LaTeX headers.
 format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels) {
     kable.latex <- as.character(kable.latex)
     empty.columns <- paste0("(?:&\\s*){", n.columns - 1L, "}")
@@ -115,6 +119,7 @@ format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels)
             "}}\\\\"
         )
         patterns <- c(
+            paste0("<span[^>]*>\\*\\*", escaped.section, "\\*\\*,?\\s*</span>\\s*", empty.columns, "\\\\"),
             paste0("\\*\\*", escaped.section, "\\*\\*,\\s*", empty.columns, "\\\\"),
             paste0("\\\\textbf\\{", escaped.section, "\\},\\s*", empty.columns, "\\\\"),
             paste0(escaped.section, ",\\s*", empty.columns, "\\\\")
@@ -260,13 +265,11 @@ build_patient_characteristics_shell_table <- function(data,
     section.labels <- get_table_section_labels(requests)
 
     if (length(section.labels) > 0L && !isTRUE(knitr::is_latex_output())) {
-        patient.table <- gtsummary::modify_table_body(
+        patient.table <- gtsummary::modify_table_styling(
             patient.table,
-            function(table.body) {
-                is.section <- table.body$row_type == "section"
-                table.body$label[is.section] <- paste0("**", table.body$label[is.section], "**")
-                table.body
-            }
+            columns = label,
+            rows = row_type == "section",
+            text_format = "bold"
         )
     }
 
