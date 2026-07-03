@@ -44,6 +44,89 @@ convert_patient_table_to_longtable <- function(kable.latex,
     )
 }
 
+#' Insert section header rows into a gtsummary table body
+#'
+#' When requests include a `section` element, inserts a bold header row before
+#' the first outcome in each section.
+insert_table_section_headers <- function(tbl, requests) {
+    has.sections <- any(vapply(requests, function(request) {
+        !is.null(request$section) && nzchar(request$section)
+    }, logical(1)))
+    if (!has.sections) {
+        return(tbl)
+    }
+
+    variable.sections <- stats::setNames(
+        vapply(requests, function(request) {
+            if (is.null(request$section)) "" else request$section
+        }, character(1)),
+        vapply(requests, function(request) request$field, character(1))
+    )
+
+    table.body <- tbl$table_body
+    statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
+    sections.seen <- character(0)
+    new.rows <- list()
+
+    for (i in seq_len(nrow(table.body))) {
+        row <- table.body[i, , drop = FALSE]
+        if (identical(row$row_type, "label") && row$variable %in% names(variable.sections)) {
+            section <- unname(variable.sections[[row$variable]])
+            if (nzchar(section) && !section %in% sections.seen) {
+                sections.seen <- c(sections.seen, section)
+                header.row <- row
+                header.row$variable <- paste0(".section_", length(sections.seen))
+                header.row$var_type <- "section"
+                header.row$row_type <- "section"
+                header.row$var_label <- ""
+                header.row$label <- section
+                header.row$stat_label <- ""
+                for (statistic.column in statistic.columns) {
+                    header.row[[statistic.column]] <- ""
+                }
+                new.rows <- c(new.rows, list(header.row))
+            }
+        }
+        new.rows <- c(new.rows, list(row))
+    }
+
+    tbl$table_body <- dplyr::bind_rows(new.rows)
+    tbl
+}
+
+#' Extract ordered unique section labels from table requests
+get_table_section_labels <- function(requests) {
+    sections <- vapply(requests, function(request) {
+        if (is.null(request$section)) "" else request$section
+    }, character(1))
+    sections <- sections[nzchar(sections)]
+    sections[!duplicated(sections)]
+}
+
+#' Format section header rows in LaTeX table output
+format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels) {
+    kable.latex <- as.character(kable.latex)
+    empty.columns <- paste0("(?:&\\s*){", n.columns - 1L, "}")
+    for (section in section.labels) {
+        escaped.section <- gsub("([\\()\\[\\]{}.*+?|^$\\\\])", "\\\\\\1", section, perl = TRUE)
+        replacement <- paste0(
+            "\\\\multicolumn{", n.columns, "}{@{\\\\extracolsep{\\\\fill}}l}{\\\\textbf{",
+            section,
+            "}}\\\\"
+        )
+        patterns <- c(
+            paste0("\\*\\*", escaped.section, "\\*\\*,\\s*", empty.columns, "\\\\"),
+            paste0("\\\\textbf\\{", escaped.section, "\\},\\s*", empty.columns, "\\\\"),
+            paste0(escaped.section, ",\\s*", empty.columns, "\\\\")
+        )
+        for (pattern in patterns) {
+            kable.latex <- gsub(pattern, replacement, kable.latex, perl = TRUE)
+        }
+    }
+
+    kable.latex
+}
+
 #' Build a shell patient characteristics table from a variable specification
 #'
 #' Shared implementation for patient baseline characteristic shell tables. Takes
@@ -173,6 +256,20 @@ build_patient_characteristics_shell_table <- function(data,
         ) |>
         gtsummary::add_stat_label()
 
+    patient.table <- insert_table_section_headers(patient.table, requests)
+    section.labels <- get_table_section_labels(requests)
+
+    if (length(section.labels) > 0L && !isTRUE(knitr::is_latex_output())) {
+        patient.table <- gtsummary::modify_table_body(
+            patient.table,
+            function(table.body) {
+                is.section <- table.body$row_type == "section"
+                table.body$label[is.section] <- paste0("**", table.body$label[is.section], "**")
+                table.body
+            }
+        )
+    }
+
     if (isTRUE(knitr::is_latex_output())) {
         n.statistic.columns <- length(groups) + as.integer(include.overall)
         n.columns <- 1L + n.statistic.columns
@@ -205,6 +302,14 @@ build_patient_characteristics_shell_table <- function(data,
             patient.table <- gsub("\\\\end\\{tabular\\}", "\\\\end{longtable}", patient.table)
         }
         attributes(patient.table) <- table.attributes
+
+        if (length(section.labels) > 0L) {
+            patient.table <- format_section_rows_in_latex(
+                kable.latex = patient.table,
+                n.columns = n.columns,
+                section.labels = section.labels
+            )
+        }
 
         if (isTRUE(longtable)) {
             caption <- knitr::opts_current$get("tbl.cap")

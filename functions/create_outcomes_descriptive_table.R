@@ -3,8 +3,8 @@
 #' Builds a shell (template) table illustrating how primary and secondary
 #' outcomes will be summarised before and after ATLS training is implemented in
 #' a cluster. Dichotomous outcomes are reported as n (\%); continuous and
-#' time-to-event outcomes are reported as median (Q1-Q3); ordinal EQ-5D-5L
-#' dimensions are reported as n (\%) by response level. Derived outcomes
+#' time-to-event outcomes are reported as median (Q1-Q3); EQ-5D-5L is summarised
+#' using its index score and visual analogue scale. Derived outcomes
 #' (mortality at specified time points, lengths of stay, adherence proportion,
 #' and WHODAS summary scores) are specified directly rather than from single
 #' REDCap fields. Missing values are shown for every outcome. The table is
@@ -47,22 +47,6 @@ create_outcomes_descriptive_table <- function(data = NULL,
         )
     }
 
-    eq5d.levels <- c(
-        "No problems",
-        "Slight problems",
-        "Moderate problems",
-        "Severe problems",
-        "Unable to"
-    )
-
-    eq5d.dimensions <- list(
-        list(field = "mobility", label = "Mobility"),
-        list(field = "self_care", label = "Self-care"),
-        list(field = "usual_activities", label = "Usual activities"),
-        list(field = "pain_discomfort", label = "Pain or discomfort"),
-        list(field = "anxiety_depression", label = "Anxiety or depression")
-    )
-
     eq5d.timepoints <- c(
         "within seven days of discharge",
         "at 30 days",
@@ -72,65 +56,75 @@ create_outcomes_descriptive_table <- function(data = NULL,
     whodas.timepoints <- eq5d.timepoints
 
     requests <- list(
-        ## Mortality
+        ## Primary outcome
         list(field = "inhospital_mortality_30d",
              label = "In-hospital mortality within 30 days",
-             source = "external", summary = "dichotomous"),
+             source = "external", summary = "dichotomous",
+             section = "Primary outcome"),
+
+        ## Secondary outcomes (main stepped-wedge design)
         list(field = "all_cause_mortality_24h",
              label = "All-cause mortality within 24 hours",
-             source = "external", summary = "dichotomous"),
+             source = "external", summary = "dichotomous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "all_cause_mortality_30d",
              label = "All-cause mortality within 30 days",
-             source = "external", summary = "dichotomous"),
+             source = "external", summary = "dichotomous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "all_cause_mortality_90d",
              label = "All-cause mortality within three months",
-             source = "external", summary = "dichotomous"),
-
-        ## Length of stay
+             source = "external", summary = "dichotomous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "length_ed_stay",
              label = "Length of emergency department stay (days)",
-             source = "external", summary = "continuous"),
+             source = "external", summary = "continuous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "length_hospital_stay",
              label = "Length of hospital stay (days)",
-             source = "external", summary = "continuous"),
+             source = "external", summary = "continuous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "icu_admission",
              label = "Intensive care unit admission",
-             source = "dictionary", summary = "dichotomous"),
+             source = "dictionary", summary = "dichotomous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "length_icu_stay",
              label = "Length of intensive care unit stay (days)",
-             source = "external", summary = "continuous"),
-
-        ## Return to work
+             source = "external", summary = "continuous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "return_to_work_30d",
              label = "Return to work at 30 days",
-             source = "external", summary = "dichotomous"),
+             source = "external", summary = "dichotomous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
         list(field = "return_to_work_90d",
              label = "Return to work at three months",
-             source = "external", summary = "dichotomous"),
+             source = "external", summary = "dichotomous",
+             section = "Secondary outcomes (main stepped-wedge design)"),
 
-        ## Nested staircase outcomes
+        ## Secondary outcomes (nested staircase design)
         list(field = "atls_adherence",
              label = "Adherence to ATLS principles (%)",
-             source = "external", summary = "continuous")
+             source = "external", summary = "continuous",
+             section = "Secondary outcomes (nested staircase design)")
     )
 
     for (timepoint in eq5d.timepoints) {
         timepoint.slug <- gsub("[^a-z0-9]+", "_", tolower(timepoint))
-        for (dimension in eq5d.dimensions) {
-            requests <- c(requests, list(list(
-                field = paste0("eq5d_", dimension$field, "_", timepoint.slug),
-                label = paste0("EQ-5D-5L ", dimension$label, " ", timepoint),
+        requests <- c(requests, list(
+            list(
+                field = paste0("eq5d_index_", timepoint.slug),
+                label = paste0("EQ-5D-5L index score ", timepoint),
                 source = "external",
-                summary = "categorical",
-                levels = eq5d.levels
-            )))
-        }
-        requests <- c(requests, list(list(
-            field = paste0("eq5d_vas_", timepoint.slug),
-            label = paste0("EQ-5D-5L visual analogue scale ", timepoint),
-            source = "external",
-            summary = "continuous"
-        )))
+                summary = "continuous",
+                section = "Secondary outcomes (nested staircase design)"
+            ),
+            list(
+                field = paste0("eq5d_vas_", timepoint.slug),
+                label = paste0("EQ-5D-5L visual analogue scale ", timepoint),
+                source = "external",
+                summary = "continuous",
+                section = "Secondary outcomes (nested staircase design)"
+            )
+        ))
     }
 
     for (timepoint in whodas.timepoints) {
@@ -139,7 +133,8 @@ create_outcomes_descriptive_table <- function(data = NULL,
             field = paste0("whodas_summary_", timepoint.slug),
             label = paste0("WHODAS 2.0 summary score ", timepoint),
             source = "external",
-            summary = "continuous"
+            summary = "continuous",
+            section = "Secondary outcomes (nested staircase design)"
         )))
     }
 
