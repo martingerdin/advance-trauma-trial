@@ -21,12 +21,18 @@
 #'     or a `knitr_asis` object containing a page-breaking `longtable` for
 #'     PDF/LaTeX output.
 #'
+#' @seealso [create_outcomes_descriptive_table_word_preview()] to render a
+#'     minimal Word document for checking section headers and table layout.
+#'
 #' @examples
 #' ## Load all project functions first
 #' noacsr::source_all_functions()
 #'
 #' \dontrun{
 #' create_outcomes_descriptive_table()
+#'
+#' ## Minimal Word preview (requires Quarto)
+#' create_outcomes_descriptive_table_word_preview()
 #' }
 create_outcomes_descriptive_table <- function(data = NULL,
                                               url.name = "TGI_REDCAP_URL",
@@ -146,4 +152,89 @@ create_outcomes_descriptive_table <- function(data = NULL,
         longtable = TRUE,
         label.header = "**Outcome**"
     )
+}
+
+#' Write a minimal Word preview of the outcomes descriptive table
+#'
+#' Renders a single-table Quarto document to Word. Useful for checking section
+#' headers, stratification columns, and non-LaTeX formatting without building
+#' the full statistical analysis plan.
+#'
+#' @param output.file Character. Path for the Word document to create. A
+#'     companion `.qmd` file is written alongside it unless `cleanup.qmd` is
+#'     TRUE.
+#' @param title Character. Title shown in the Word document.
+#' @param cleanup.qmd Logical. If TRUE, delete the temporary `.qmd` after
+#'     rendering.
+#' @return Invisibly, the path to `output.file`.
+#'
+#' @examples
+#' ## Load all project functions first
+#' noacsr::source_all_functions()
+#'
+#' \dontrun{
+#' create_outcomes_descriptive_table_word_preview()
+#' create_outcomes_descriptive_table_word_preview("preview/outcomes-table.docx")
+#' }
+create_outcomes_descriptive_table_word_preview <- function(
+    output.file = "_test-outcomes-word.docx",
+    title = "Outcomes table — Word preview",
+    cleanup.qmd = FALSE) {
+    assertthat::assert_that(is.character(output.file) && length(output.file) == 1)
+    assertthat::assert_that(is.character(title) && length(title) == 1)
+    assertthat::assert_that(is.logical(cleanup.qmd) && length(cleanup.qmd) == 1)
+
+    output.file <- normalizePath(output.file, winslash = "/", mustWork = FALSE)
+    output.dir <- dirname(output.file)
+    if (!dir.exists(output.dir)) {
+        dir.create(output.dir, recursive = TRUE, showWarnings = FALSE)
+    }
+
+    qmd.file <- sub("\\.docx$", ".qmd", output.file, ignore.case = TRUE)
+    if (!grepl("\\.qmd$", qmd.file, ignore.case = TRUE)) {
+        qmd.file <- paste0(qmd.file, ".qmd")
+    }
+
+    qmd.content <- c(
+        "---",
+        paste0("title: \"", gsub("\"", "\\\\\"", title), "\""),
+        "format:",
+        "  docx: default",
+        "execute:",
+        "  echo: false",
+        "  message: false",
+        "  warning: false",
+        "---",
+        "",
+        "```{r setup}",
+        "noacsr::source_all_functions()",
+        "```",
+        "",
+        "Minimal preview of the outcomes descriptive table for Word output",
+        "(section headers and stratification).",
+        "",
+        "```{r}",
+        "#| label: tbl-outcomes-descriptive",
+        "#| tbl-cap: \"Descriptive summaries of outcomes\"",
+        "create_outcomes_descriptive_table()",
+        "```",
+        ""
+    )
+    writeLines(qmd.content, qmd.file, useBytes = TRUE)
+
+    old.wd <- getwd()
+    on.exit(setwd(old.wd), add = TRUE)
+    setwd(output.dir)
+
+    quarto::quarto_render(
+        input = basename(qmd.file),
+        output_format = "docx",
+        output_file = basename(output.file)
+    )
+
+    if (isTRUE(cleanup.qmd)) {
+        unlink(basename(qmd.file))
+    }
+
+    invisible(output.file)
 }
