@@ -4,7 +4,7 @@
 #' outcomes will be summarised before and after ATLS training is implemented in
 #' a cluster. Dichotomous outcomes are reported as n (\%); continuous and
 #' time-to-event outcomes are reported as median (Q1-Q3); EQ-5D-5L is summarised
-#' using its index score and visual analogue scale. Derived outcomes
+#' using its index score. Derived outcomes
 #' (mortality at specified time points, lengths of stay, adherence proportion,
 #' and WHODAS summary scores) are specified directly rather than from single
 #' REDCap fields. Missing values are shown for every outcome. The table is
@@ -115,22 +115,13 @@ create_outcomes_descriptive_table <- function(data = NULL,
 
     for (timepoint in eq5d.timepoints) {
         timepoint.slug <- gsub("[^a-z0-9]+", "_", tolower(timepoint))
-        requests <- c(requests, list(
-            list(
-                field = paste0("eq5d_index_", timepoint.slug),
-                label = paste0("EQ-5D-5L index score ", timepoint),
-                source = "external",
-                summary = "continuous",
-                section = "Secondary outcomes (nested staircase design)"
-            ),
-            list(
-                field = paste0("eq5d_vas_", timepoint.slug),
-                label = paste0("EQ-5D-5L visual analogue scale ", timepoint),
-                source = "external",
-                summary = "continuous",
-                section = "Secondary outcomes (nested staircase design)"
-            )
-        ))
+        requests <- c(requests, list(list(
+            field = paste0("eq5d_index_", timepoint.slug),
+            label = paste0("EQ-5D-5L index score ", timepoint),
+            source = "external",
+            summary = "continuous",
+            section = "Secondary outcomes (nested staircase design)"
+        )))
     }
 
     for (timepoint in whodas.timepoints) {
