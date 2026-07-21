@@ -44,6 +44,23 @@ convert_patient_table_to_longtable <- function(kable.latex,
     )
 }
 
+#' Prevent kableExtra `\centering` from affecting text after a longtable
+#'
+#' `kableExtra` emits `\centering\begingroup`; `\endgroup` restores the font
+#' size group but leaves `\centering` active for the rest of the document.
+finalize_longtable_latex <- function(kable.latex) {
+    kable.latex <- as.character(kable.latex)
+    kable.latex <- gsub("\\\\centering\\\\begingroup", "\\\\begingroup", kable.latex)
+    kable.latex <- gsub("\\\\centering\\s*\\n\\\\begingroup", "\\\\begingroup", kable.latex, perl = TRUE)
+    kable.latex <- sub(
+        "\\\\endgroup\\{\\}\\s*$",
+        paste0("\\\\endgroup{}", "\n", "\\\\par\\\\raggedright\n"),
+        kable.latex,
+        perl = TRUE
+    )
+    kable.latex
+}
+
 #' Insert section header rows into a gtsummary table body
 #'
 #' When requests include a `section` element, inserts a bold header row before
@@ -323,6 +340,7 @@ build_patient_characteristics_shell_table <- function(data,
                 caption = caption,
                 label = label
             )
+            patient.table <- finalize_longtable_latex(patient.table)
             return(knitr::asis_output(patient.table))
         }
     }
