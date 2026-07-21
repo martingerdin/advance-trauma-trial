@@ -27,6 +27,9 @@
 #'     Defaults to TRUE.
 #' @return A `gtsummary` table object (class `tbl_summary`).
 #'
+#' @seealso [create_cluster_characteristics_table_word_preview()] to render a
+#'     minimal Word document for checking table layout.
+#'
 #' @examples
 #' ## Load all project functions first
 #' noacsr::source_all_functions()
@@ -36,6 +39,9 @@
 #' ## from REDCap (requires the API token in a project-level .env file)
 #' cluster.table <- create_cluster_characteristics_table()
 #' cluster.table
+#'
+#' ## Minimal Word preview (requires Quarto)
+#' create_cluster_characteristics_table_word_preview()
 #' }
 #'
 #' ## Build the table offline by supplying a data-dictionary snapshot instead of
@@ -221,4 +227,38 @@ create_cluster_characteristics_table <- function(data = NULL,
     }
 
     return(cluster.table)
+}
+
+#' Write a minimal Word preview of the cluster characteristics table
+#'
+#' Renders a single-table Quarto document to Word. Useful for checking table
+#' layout without building the full statistical analysis plan.
+#'
+#' @param output.file Character. Path for the Word document to create.
+#' @param title Character. Title shown in the Word document.
+#' @param cleanup.qmd Logical. If TRUE, delete the temporary `.qmd` after
+#'     rendering.
+#' @return Invisibly, the path to `output.file`.
+#'
+#' @examples
+#' ## Load all project functions first
+#' noacsr::source_all_functions()
+#'
+#' \dontrun{
+#' create_cluster_characteristics_table_word_preview()
+#' create_cluster_characteristics_table_word_preview("preview/cluster-table.docx")
+#' }
+create_cluster_characteristics_table_word_preview <- function(
+    output.file = "_test-cluster-characteristics-word.docx",
+    title = "Cluster characteristics — Word preview",
+    cleanup.qmd = FALSE) {
+    render_shell_table_word_preview(
+        table.call = "create_cluster_characteristics_table()",
+        output.file = output.file,
+        title = title,
+        table.label = "tbl-cluster-characteristics",
+        table.caption = "Cluster characteristics",
+        description = "Minimal preview of the cluster characteristics table for Word output.",
+        cleanup.qmd = cleanup.qmd
+    )
 }

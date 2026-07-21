@@ -180,61 +180,16 @@ create_outcomes_descriptive_table_word_preview <- function(
     output.file = "_test-outcomes-word.docx",
     title = "Outcomes table — Word preview",
     cleanup.qmd = FALSE) {
-    assertthat::assert_that(is.character(output.file) && length(output.file) == 1)
-    assertthat::assert_that(is.character(title) && length(title) == 1)
-    assertthat::assert_that(is.logical(cleanup.qmd) && length(cleanup.qmd) == 1)
-
-    output.file <- normalizePath(output.file, winslash = "/", mustWork = FALSE)
-    output.dir <- dirname(output.file)
-    if (!dir.exists(output.dir)) {
-        dir.create(output.dir, recursive = TRUE, showWarnings = FALSE)
-    }
-
-    qmd.file <- sub("\\.docx$", ".qmd", output.file, ignore.case = TRUE)
-    if (!grepl("\\.qmd$", qmd.file, ignore.case = TRUE)) {
-        qmd.file <- paste0(qmd.file, ".qmd")
-    }
-
-    qmd.content <- c(
-        "---",
-        paste0("title: \"", gsub("\"", "\\\\\"", title), "\""),
-        "format:",
-        "  docx: default",
-        "execute:",
-        "  echo: false",
-        "  message: false",
-        "  warning: false",
-        "---",
-        "",
-        "```{r setup}",
-        "noacsr::source_all_functions()",
-        "```",
-        "",
-        "Minimal preview of the outcomes descriptive table for Word output",
-        "(section headers and stratification).",
-        "",
-        "```{r}",
-        "#| label: tbl-outcomes-descriptive",
-        "#| tbl-cap: \"Descriptive summaries of outcomes\"",
-        "create_outcomes_descriptive_table()",
-        "```",
-        ""
+    render_shell_table_word_preview(
+        table.call = "create_outcomes_descriptive_table()",
+        output.file = output.file,
+        title = title,
+        table.label = "tbl-outcomes-descriptive",
+        table.caption = "Descriptive summaries of outcomes",
+        description = paste(
+            "Minimal preview of the outcomes descriptive table for Word output",
+            "(section headers and stratification)."
+        ),
+        cleanup.qmd = cleanup.qmd
     )
-    writeLines(qmd.content, qmd.file, useBytes = TRUE)
-
-    old.wd <- getwd()
-    on.exit(setwd(old.wd), add = TRUE)
-    setwd(output.dir)
-
-    quarto::quarto_render(
-        input = basename(qmd.file),
-        output_format = "docx",
-        output_file = basename(output.file)
-    )
-
-    if (isTRUE(cleanup.qmd)) {
-        unlink(basename(qmd.file))
-    }
-
-    invisible(output.file)
 }

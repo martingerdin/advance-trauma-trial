@@ -42,6 +42,9 @@
 #' @return A `gtsummary` table object (class `tbl_summary`), or, for PDF/LaTeX
 #'     output, a `kableExtra` table sized to fit the text block.
 #'
+#' @seealso [create_patient_characteristics_table_word_preview()] to render a
+#'     minimal Word document for checking table layout.
+#'
 #' @examples
 #' ## Load all project functions first
 #' noacsr::source_all_functions()
@@ -52,6 +55,10 @@
 #'
 #' ## All non-outcome characteristics for supplementary tables
 #' create_patient_characteristics_table(all = TRUE)
+#'
+#' ## Minimal Word previews (requires Quarto)
+#' create_patient_characteristics_table_word_preview()
+#' create_patient_characteristics_table_word_preview(all = TRUE)
 #' }
 create_patient_characteristics_table <- function(data = NULL,
                                                  url.name = "TGI_REDCAP_URL",
@@ -146,5 +153,88 @@ create_patient_characteristics_table <- function(data = NULL,
         groups = groups,
         include.overall = include.overall,
         longtable = isTRUE(all)
+    )
+}
+
+#' Write a minimal Word preview of the patient characteristics table
+#'
+#' Renders a single-table Quarto document to Word. Useful for checking table
+#' layout without building the full statistical analysis plan.
+#'
+#' @param output.file Character or NULL. Path for the Word document to create.
+#'     If NULL, defaults to `_test-patient-characteristics-word.docx` for key
+#'     characteristics and `_test-patient-characteristics-all-word.docx` when
+#'     `all = TRUE`.
+#' @param title Character or NULL. Title shown in the Word document. If NULL, a
+#'     default title is chosen based on `all`.
+#' @param all Logical. If TRUE, preview the supplementary all-characteristics
+#'     table; otherwise preview the key characteristics table.
+#' @param cleanup.qmd Logical. If TRUE, delete the temporary `.qmd` after
+#'     rendering.
+#' @return Invisibly, the path to `output.file`.
+#'
+#' @examples
+#' ## Load all project functions first
+#' noacsr::source_all_functions()
+#'
+#' \dontrun{
+#' create_patient_characteristics_table_word_preview()
+#' create_patient_characteristics_table_word_preview(all = TRUE)
+#' create_patient_characteristics_table_word_preview("preview/patient-table.docx")
+#' }
+create_patient_characteristics_table_word_preview <- function(
+    output.file = NULL,
+    title = NULL,
+    all = FALSE,
+    cleanup.qmd = FALSE) {
+    assertthat::assert_that(is.null(output.file) || (is.character(output.file) && length(output.file) == 1))
+    assertthat::assert_that(is.null(title) || (is.character(title) && length(title) == 1))
+    assertthat::assert_that(is.logical(all) && length(all) == 1)
+    assertthat::assert_that(is.logical(cleanup.qmd) && length(cleanup.qmd) == 1)
+
+    if (is.null(output.file)) {
+        output.file <- if (isTRUE(all)) {
+            "_test-patient-characteristics-all-word.docx"
+        } else {
+            "_test-patient-characteristics-word.docx"
+        }
+    }
+    if (is.null(title)) {
+        title <- if (isTRUE(all)) {
+            "All patient characteristics — Word preview"
+        } else {
+            "Key patient characteristics — Word preview"
+        }
+    }
+
+    table.call <- if (isTRUE(all)) {
+        "create_patient_characteristics_table(all = TRUE)"
+    } else {
+        "create_patient_characteristics_table()"
+    }
+    table.label <- if (isTRUE(all)) {
+        "tbl-patient-characteristics-all"
+    } else {
+        "tbl-patient-characteristics"
+    }
+    table.caption <- if (isTRUE(all)) {
+        "All patient characteristics"
+    } else {
+        "Key patient characteristics"
+    }
+    description <- if (isTRUE(all)) {
+        "Minimal preview of all patient characteristics for Word output."
+    } else {
+        "Minimal preview of key patient characteristics for Word output."
+    }
+
+    render_shell_table_word_preview(
+        table.call = table.call,
+        output.file = output.file,
+        title = title,
+        table.label = table.label,
+        table.caption = table.caption,
+        description = description,
+        cleanup.qmd = cleanup.qmd
     )
 }
