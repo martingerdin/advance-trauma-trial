@@ -476,37 +476,7 @@ Where:
 - $u_{bk} \sim \mathcal{N}(0,\sigma_u^2)$ is a random effect representing cluster-specific deviations from the average intervention effect.
 - $u_{bk}$ is assumed to be independent of the cluster random effect $\alpha_{bk}$ and the cluster-by-period random effect $\gamma_{bkt}$.
 
-#### Models with correlated random cluster-by-intervention effects
-
-We will additionally explore sensitivity to the assumption that the random cluster-by-intervention effect is independent of the other random effects in the model. In this sensitivity analysis, we will fit a model that allows the random cluster-by-intervention effect $u_{bk}$ to be correlated with both the cluster random intercept $\alpha_{bk}$ and the cluster-by-period random effect $\gamma_{bkt}$. This relaxes the independence assumptions of the random-effects structure and allows for potential associations between baseline cluster risk, cluster-specific time deviations, and cluster-specific intervention effects. The model is specified in @eq-model-correlated-random-effects.
-
-$$
-g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + u_{bk} X_{bkt}
-$$ {#eq-model-correlated-random-effects}
-
-We assume a joint multivariate normal distribution for the random effects:
-
-$$
-\begin{pmatrix}
-\alpha_{bk} \\
-\gamma_{bkt} \\
-u_{bk}
-\end{pmatrix}
-\sim
-\mathcal{N}\!\left(
-\begin{pmatrix}
-0 \\
-0 \\
-0
-\end{pmatrix},
-\begin{pmatrix}
-\sigma^2_{\alpha} & \sigma_{\alpha\gamma} & \sigma_{\alpha u} \\
-\sigma_{\alpha\gamma} & \sigma^2_{\gamma} & \sigma_{\gamma u} \\
-\sigma_{\alpha u} & \sigma_{\gamma u} & \sigma^2_{u}
-\end{pmatrix}
-\right).
-$$
+<!-- sap-revision-todo A3 (comments id=220 KH, id=221 AO): removed "Models with correlated random cluster-by-intervention effects" as unnecessarily complex; independent random slope retained above. -->
 
 #### Models with time modelled with a spline function
 
