@@ -4,18 +4,23 @@ Minimal protocol changes needed to stay consistent with the revised Statistical 
 
 ## Principles
 
-- Keep protocol edits to a **minimum**. Prefer SAP elaboration that stays within the protocol’s existing wording over changing the protocol.
-- Only list a protocol edit when the approved SAP text would otherwise **materially conflict** with `../protocol/protocol.qmd`.
+- **Prefer changing the SAP to stay within the protocol** over listing a protocol edit. The protocol should change only when unavoidable.
+- Keep protocol edits to a **minimum**. Prefer SAP elaboration that stays within the protocol’s existing wording.
+- Only list a protocol edit when the approved SAP text would otherwise **materially conflict** with `../protocol/protocol.qmd` and no protocol-compatible SAP wording is acceptable.
 - Prefer the smallest possible wording change (one sentence / one phrase) over rewriting sections.
 - Each item cites the SAP to-do ID that drove it and the protocol location.
 
 ---
 
-## Required (material conflict with approved SAP)
+## Required (unavoidable material conflict with approved SAP)
 
-- [ ] **P1 (from A1).** Replace RSPL with the SAP estimation framework. Protocol § Statistics → Analysis models (`protocol.qmd` ~line 815) still says models are fitted using “residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL)”. Align with the SAP: maximum likelihood with Laplace approximation; package/implementation may be chosen closer to analysis. *Minimal edit: replace the RSPL sentence only.*
+- [ ] **P1 (from A1).** Replace RSPL with the SAP estimation framework. Protocol § Statistics → Analysis models (`protocol.qmd` ~line 815) still says models are fitted using “residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL)”. The SAP uses maximum likelihood with Laplace approximation because RSPL is SAS-specific with no exact R equivalent — a protocol-compatible SAP wording is not available without retaining an inaccurate method name. *Minimal edit: replace the RSPL sentence only.*
 
-- [ ] **P2 (from A3).** Soften or remove “with a non-zero covariance term” for random cluster-by-intervention effects. Protocol § Additional sensitivity analyses (`protocol.qmd` ~line 823) says models will include “random cluster by intervention effects (with a non-zero covariance term)”. The SAP retains an independent random cluster-by-intervention slope and dropped the correlated version. *Minimal edit: delete the parenthetical “(with a non-zero covariance term)” so the protocol matches the retained SAP sensitivity analysis.*
+---
+
+## Avoided by adjusting the SAP (no protocol edit)
+
+- **P2 (from A3) — avoided.** Protocol’s “random cluster by intervention effects (with a non-zero covariance term)” is met in the SAP by a random intervention slope correlated with the cluster intercept $\alpha_{bk}$ only; $\gamma_{bkt}$ remains independent. The over-complex three-way correlated section was not restored.
 
 ---
 
@@ -27,4 +32,4 @@ Minimal protocol changes needed to stay consistent with the revised Statistical 
 
 ## Parking lot (only if a later SAP decision forces it)
 
-_Add further minimal protocol edits here only when an approved SAP change creates a new material conflict._
+_Add further minimal protocol edits here only when an approved SAP change creates a new material conflict that cannot be resolved by adjusting the SAP._

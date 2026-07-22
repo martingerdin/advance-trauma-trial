@@ -11,7 +11,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 - Several passages live in shared includes under `../shared-assets/` (e.g. `outcomes.qmd`, `sample-size-calculations-main.qmd`, `sample-size-calculations-nested.qmd`). Edit the include, not the rendered copy.
 - Each item cites the originating comment(s) and reviewer. Items tagged **[decision]** need a human/statistician judgement call before editing — flag these rather than guessing. Items tagged **[verify]** may already be partly done; confirm the current text satisfies the comment before marking complete.
 - For every substantive edit made for a to-do item, add an HTML comment immediately above the changed passage citing the to-do ID and originating comment IDs, e.g. `<!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO): short rationale. -->`. Agent behaviour for this workflow is also in `.cursor/rules/sap-revision-todo.mdc`.
-- Check corresponding text in `../protocol/protocol.qmd` before finalising substantive analysis changes. Prefer SAP wording that elaborates the protocol without conflicting. If an approved SAP change materially conflicts, add a **minimal** item to `protocol-edits-todo.md` — do not edit the protocol until the SAP revision is finished.
+- Check corresponding text in `../protocol/protocol.qmd` before finalising substantive analysis changes. **Default: keep the SAP aligned with the protocol** (elaborate/operationalise; do not contradict). Only if an approved SAP change unavoidably conflicts, add a **minimal** item to `protocol-edits-todo.md` — do not edit the protocol until the SAP revision is finished.
 - Mark an item complete only after the edits have been explicitly approved.
 - After edits, re-render to confirm the document still builds.
 

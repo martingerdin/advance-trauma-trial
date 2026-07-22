@@ -30,10 +30,11 @@ Whenever you add or change SAP text for a to-do item, place an HTML comment **im
 
 Before proposing or finalising a substantive SAP edit, check the corresponding text in `../protocol/protocol.qmd` (and shared includes used by both documents).
 
+- **Default: keep the SAP aligned with the protocol** so the protocol need not change. Prefer wording that elaborates or operationalises the protocol without contradicting it.
 - Flag any **material deviation** from the protocol (analysis model, estimand, estimation method, sensitivity analyses, analysis sets, outcome definitions).
-- Prefer SAP wording that remains consistent with the protocol when the protocol already covers the point at a higher level.
-- **Do not edit the protocol during the SAP revision.** If an approved SAP change materially conflicts with the protocol, add a **minimal** item to `protocol-edits-todo.md` (cite the SAP to-do ID and protocol location). Apply that list only after the SAP revision is finished.
-- Keep protocol edits to a minimum: one sentence or phrase where possible; skip the list when the SAP merely elaborates compatible protocol text.
+- When a reviewer request conflicts with the protocol, first propose an SAP formulation that satisfies the review **and** stays within the protocol. Only if that is impossible, present the conflict explicitly and ask whether to (1) keep the protocol-aligned SAP wording, or (2) accept a minimal protocol edit later.
+- **Do not edit the protocol during the SAP revision.** If an approved SAP change unavoidably conflicts with the protocol, add a **minimal** item to `protocol-edits-todo.md` (cite the SAP to-do ID and protocol location). That list is a last resort; apply it only after the SAP revision is finished.
+- Keep any deferred protocol edits as small as possible (one sentence or phrase). Skip the list when the SAP merely elaborates compatible protocol text.
 - Detail that elaborates the protocol without changing its substance is fine; changing method class (e.g. time-to-event vs count, RSPL vs Laplace) is material.
 
 ## Source of truth

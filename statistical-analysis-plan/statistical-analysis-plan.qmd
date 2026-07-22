@@ -464,7 +464,8 @@ summary(model)
 
 #### Models with random cluster by intervention effects
 
-To assess sensitivity to the assumption of a common intervention effect across clusters, we will extend the primary analysis model to allow the intervention effect to vary by cluster. Specifically, we will include a random cluster-level slope for the intervention exposure. The model is specified in @eq-model-random-cluster-intervention.
+<!-- sap-revision-todo A3 (comments id=220 KH, id=221 AO): dropped the over-complex three-way correlated RE section; retained a simplified random intervention slope with non-zero Cov(α,u) only (γ independent) to adhere to the protocol while addressing reviewer complexity concerns. -->
+To assess sensitivity to the assumption of a common intervention effect across clusters, we will extend the primary analysis model to allow the intervention effect to vary by cluster. Specifically, we will include a random cluster-level slope for the intervention exposure, with a non-zero covariance between this slope and the cluster random intercept (as anticipated in the protocol). The cluster-by-period random effect remains independent of both. The model is specified in @eq-model-random-cluster-intervention.
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
@@ -473,10 +474,27 @@ $$ {#eq-model-random-cluster-intervention}
 
 Where:
 
-- $u_{bk} \sim \mathcal{N}(0,\sigma_u^2)$ is a random effect representing cluster-specific deviations from the average intervention effect.
-- $u_{bk}$ is assumed to be independent of the cluster random effect $\alpha_{bk}$ and the cluster-by-period random effect $\gamma_{bkt}$.
-
-<!-- sap-revision-todo A3 (comments id=220 KH, id=221 AO): removed "Models with correlated random cluster-by-intervention effects" as unnecessarily complex; independent random slope retained above. -->
+- $u_{bk}$ is a random effect representing cluster-specific deviations from the average intervention effect.
+- The cluster intercept and intervention slope are jointly normally distributed,
+$$
+\begin{pmatrix}
+\alpha_{bk} \\
+u_{bk}
+\end{pmatrix}
+\sim
+\mathcal{N}\!\left(
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+\sigma^2_{\alpha} & \sigma_{\alpha u} \\
+\sigma_{\alpha u} & \sigma^2_{u}
+\end{pmatrix}
+\right),
+$$
+with $\sigma_{\alpha u} \neq 0$ allowed.
+- $\gamma_{bkt} \sim \mathcal{N}(0,\sigma^2_{\gamma})$ is independent of $(\alpha_{bk}, u_{bk})$.
 
 #### Models with time modelled with a spline function
 
