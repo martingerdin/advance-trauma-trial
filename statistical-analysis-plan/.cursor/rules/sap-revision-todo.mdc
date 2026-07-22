@@ -1,0 +1,32 @@
+---
+description: Workflow for working through sap-revision-todo.md SAP revisions
+alwaysApply: true
+---
+
+# SAP revision to-do workflow
+
+When working through items in `sap-revision-todo.md`:
+
+## Traceability comments
+
+Whenever you add or change SAP text for a to-do item, place an HTML comment **immediately above** the edited passage in the source `.qmd` (or shared include), citing the to-do ID and originating comment IDs:
+
+```html
+<!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO): short rationale. -->
+```
+
+- Use the item ID from `sap-revision-todo.md` (e.g. `A1`, `B3`).
+- Include the comment IDs and reviewer initials given in the to-do item when available.
+- Keep the rationale to one short clause.
+- Do this for every substantive edit made for a to-do item, including shared includes under `../shared-assets/`.
+
+## Completion gate
+
+- Do **not** mark a to-do item complete (in `sap-revision-todo.md` or the session todo list) until the user has explicitly approved the edits.
+- Items tagged **[decision]** need a human judgement call before editing — present options; do not guess.
+- Items tagged **[verify]** may already be satisfied — confirm current text before proposing changes.
+
+## Source of truth
+
+- Edit `statistical-analysis-plan.qmd` or the shared include, not rendered copies.
+- After edits, re-render when the user asks or when needed to confirm the document still builds.
