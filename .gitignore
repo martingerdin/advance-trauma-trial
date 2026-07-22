@@ -5,3 +5,6 @@
 *.pem
 *.key
 *.crt
+
+# --- Microsoft Office lock / temporary files ---
+~$*

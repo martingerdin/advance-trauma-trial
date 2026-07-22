@@ -42,22 +42,22 @@
   {
     "outcome": "Length of emergency department stay",
     "design_component": "Main stepped-wedge",
-    "data_type": "Time-to-event",
+    "data_type": "Count (hours)",
     "analysis_set": "Primary analysis set",
-    "main_analysis_model": "Mixed-effects Fine–Gray model",
-    "effect_measure": "Subdistribution HR",
+    "main_analysis_model": "Mixed-effects negative binomial (log)",
+    "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Death competing event; primary analysis set"
+    "strategy_for_handling_intercurrent_events": "Observed hours to ED exit; death/transfer truncate stay"
   },
   {
     "outcome": "Length of hospital stay",
     "design_component": "Main stepped-wedge",
-    "data_type": "Time-to-event",
+    "data_type": "Count (days)",
     "analysis_set": "Primary analysis set",
-    "main_analysis_model": "Mixed-effects Fine–Gray model",
-    "effect_measure": "Subdistribution HR",
+    "main_analysis_model": "Mixed-effects negative binomial (log)",
+    "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Death competing event; primary analysis set"
+    "strategy_for_handling_intercurrent_events": "Observed days; death/transfer truncate stay"
   },
   {
     "outcome": "Intensive care unit (ICU) admission",
@@ -72,12 +72,12 @@
   {
     "outcome": "Length of intensive care unit stay",
     "design_component": "Main stepped-wedge",
-    "data_type": "Time-to-event",
+    "data_type": "Count (days)",
     "analysis_set": "ICU admissions, primary analysis set",
-    "main_analysis_model": "Mixed-effects Fine–Gray model",
-    "effect_measure": "Subdistribution HR",
+    "main_analysis_model": "Mixed-effects negative binomial (log)",
+    "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Death competing event; primary analysis set"
+    "strategy_for_handling_intercurrent_events": "Observed days among ICU admissions; death/transfer truncate stay"
   },
   {
     "outcome": "Return to work at 30 days after arrival at the emergency department",
