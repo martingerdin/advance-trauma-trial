@@ -26,6 +26,16 @@ Whenever you add or change SAP text for a to-do item, place an HTML comment **im
 - Items tagged **[decision]** need a human judgement call before editing — present options; do not guess.
 - Items tagged **[verify]** may already be satisfied — confirm current text before proposing changes.
 
+## Protocol alignment
+
+Before proposing or finalising a substantive SAP edit, check the corresponding text in `../protocol/protocol.qmd` (and shared includes used by both documents).
+
+- Flag any **material deviation** from the protocol (analysis model, estimand, estimation method, sensitivity analyses, analysis sets, outcome definitions).
+- Prefer SAP wording that remains consistent with the protocol when the protocol already covers the point at a higher level.
+- **Do not edit the protocol during the SAP revision.** If an approved SAP change materially conflicts with the protocol, add a **minimal** item to `protocol-edits-todo.md` (cite the SAP to-do ID and protocol location). Apply that list only after the SAP revision is finished.
+- Keep protocol edits to a minimum: one sentence or phrase where possible; skip the list when the SAP merely elaborates compatible protocol text.
+- Detail that elaborates the protocol without changing its substance is fine; changing method class (e.g. time-to-event vs count, RSPL vs Laplace) is material.
+
 ## Source of truth
 
 - Edit `statistical-analysis-plan.qmd` or the shared include, not rendered copies.
