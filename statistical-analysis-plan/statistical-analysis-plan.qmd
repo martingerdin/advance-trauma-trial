@@ -389,7 +389,8 @@ $$ {#eq-distributional-assumptions}
 
 To correct potential inflation of the type I error rate due to the small number of clusters, a small-sample correction will be applied. Our primary method will be the Kenward–Roger correction [@grantham_evaluating_2022], but this choice may be updated based on methodological developments available closer to the end of patient inclusion. The correction applied may also differ for outcomes collected via the complete stepped-wedge design and the incomplete nested staircase designs.
 
-All models will be fitted using residual pseudo-likelihood estimation based on linearisation with subject-specific expansion (RSPL), due to its computational stability and robust performance in small-sample settings. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
+<!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO): replace SAS-specific RSPL with the R estimation framework actually used. -->
+Models will be fitted by maximum likelihood using a Laplace approximation to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
 
 <!--
 *Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
