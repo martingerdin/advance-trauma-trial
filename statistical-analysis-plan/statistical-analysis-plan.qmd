@@ -257,7 +257,7 @@ Clusters and observations within clusters will be considered exposed to the inte
 
 The analysis set will be specified for each analysis. For the primary outcome and mortality secondary outcomes, the analysis set is all eligible patient participants included in the main stepped-wedge trial. For quality-of-life, disability, and return-to-work outcomes, the analysis set is patients alive at the relevant follow-up time point. For adherence to ATLS® principles, the analysis set is the random sample of patients observed within the nested staircase design. 
 
-The analysis set for each outcome will include all available participants from the relevant target population with observed outcome data, subject to any restrictions imposed by the outcome definition or the nested staircase sampling scheme. For adjusted analyses, the analysis set may be further restricted by the availability of covariate data, as described in @sec-treatment-of-missing-data.
+The analysis set for each outcome will include all available participants from the relevant target population with observed outcome data, subject to any restrictions imposed by the outcome definition or the nested staircase sampling scheme. For adjusted analyses under the available-case approach, the analysis set will be restricted to participants with complete covariate data, as described in @sec-treatment-of-missing-data.
 
 We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial, see @fig-consort-diagram. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
@@ -559,7 +559,14 @@ These subgroup analyses will be conducted by adding the subgroup variable and th
 
 ### Treatment of missing data {#sec-treatment-of-missing-data}
 
-We will present the frequency and percentage of missing data for all variables. If the percentage of missing data for the primary outcome is less than 10%, we will perform a complete case analysis. If the percentage of missing data for the primary outcome is 10% or more, we will handle missing data depending on the missing data mechanism. If the data are missing at random (MAR), we will perform multiple imputation using multiple imputation by chained equations (MICE), imputing data for the primary outcome as well as all covariates included in the fully adjusted model. The number of imputations will be determined by the percentage of missing data, with a minimum of 20 imputations. If there is evidence that the data are missing not at random (MNAR), we will explore the impact of this assumption using a sensitivity analysis (e.g., pattern mixture models or selection models) to assess how robust our findings are to different assumptions about the missing data mechanism. Evidence that data are MNAR may include systematic differences in missingness across observed covariates, patterns suggestive of non-random dropout, or clinical expectations that missingness is related to unmeasured outcomes. Additionally, we will perform diagnostic checks after multiple imputation to ensure the quality of the imputation process, including comparing distributions of observed and imputed data and checking convergence.
+<!-- sap-revision-todo A5 (comment id=260 AO): 10% primary-outcome missingness chooses available-case pipeline vs MICE; do not mix complete-case adjusted analyses with covariate imputation. -->
+We will present the frequency and percentage of missing data for all variables. Handling of missing data for the primary analysis will depend on the percentage of missing data for the primary outcome.
+
+If less than 10% of participants have a missing primary outcome, we will use an available-case approach. The primary unadjusted analysis will include all participants with observed primary outcome data. Adjusted analyses will be restricted to participants with complete data on the adjustment covariates, and the unadjusted analysis will be repeated in this complete-case population to allow a like-for-like comparison.
+
+If 10% or more of participants have a missing primary outcome, we will use multiple imputation by chained equations (MICE) under a missing-at-random assumption, imputing the primary outcome and the covariates included in the fully adjusted model, with a minimum of 20 imputations. Unadjusted and adjusted analyses will then be conducted using the imputed datasets. We will also present the corresponding complete-case analyses for comparison.
+
+If there is evidence that data are missing not at random, we will explore this in a sensitivity analysis.
 
 <!-- 
 Thoughts on missing data: 
