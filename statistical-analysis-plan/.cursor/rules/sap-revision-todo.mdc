@@ -20,6 +20,13 @@ Whenever you add or change SAP text for a to-do item, place an HTML comment **im
 - Keep the rationale to one short clause.
 - Do this for every substantive edit made for a to-do item, including shared includes under `../shared-assets/`.
 
+## Style and scope of edits
+
+- Make **minimal edits** to the SAP: change only what the to-do item requires; do not rewrite surrounding prose, restructure sections, or add optional elaboration.
+- Match the **style and tone** of the existing SAP text: concise declarative sentences, plain scientific English, same terminology and level of detail as neighbouring paragraphs.
+- Prefer inserting or adjusting a short clause or sentence over adding long justificatory paragraphs.
+- When replacing a passage, read adjacent sections first and mirror their voice.
+
 ## Completion gate
 
 - Do **not** mark a to-do item complete (in `sap-revision-todo.md` or the session todo list) until the user has explicitly approved the edits.
