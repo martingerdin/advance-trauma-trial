@@ -131,3 +131,15 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 - [ ] **I3. Region defined by official state.** Confirm the subgroup/region wording notes the number of states depends on the final set of participating clusters and cannot be prespecified. _(Comments id=238, id=239)_ **[verify]**
 
 - [ ] **I4. Staircase random-selection cross-reference.** Confirm the randomisation section cross-references the nested staircase sampling description so the reader is not left wondering where random selection for the staircase is defined. _(Comments id=45 KH, id=46 AO)_ **[verify]**
+
+---
+
+## G. Other
+
+- [ ] **G1. Add summary shell table of all outcomes.** Add a second summary table of outcomes, similar to the first one, but including all secondary outcomes.
+
+- [ ] **G2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.**
+
+- [ ] **G3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.**
+
+- [ ] **G3. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP.
