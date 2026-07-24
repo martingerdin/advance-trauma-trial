@@ -352,7 +352,8 @@ $$
 g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk
 $$ {#eq-simplified-random-effects-model}
 
-3. **Model with shared period effects**: a model in which period effects are shared across batches, with time adjusted for using a common period effect or calendar time modelled directly (e.g., as a continuous covariate or using splines), while retaining the random effects structure. The model is specified in @eq-shared-period-model.
+<!-- sap-revision-todo B1 (comments id=191 KH, id=192 AO): state retained random effects and batch indexing for the shared period effects model. -->
+3. **Model with shared period effects**: a model in which fixed period effects are shared across batches, with time adjusted for using a common period effect or calendar time modelled directly (e.g., as a continuous covariate or using splines). A random intercept for cluster and a random cluster-by-period effect are retained; clusters remain indexed by batch, but the fixed period effects are common across batches. The model is specified in @eq-shared-period-model.
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}

@@ -36,7 +36,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 ## B. Analysis-model clarifications
 
-- [ ] **B1. Clarify the random-effects structure in the "shared period effects" model.** In the model-sequence bullet "Model with shared period effects" (`statistical-analysis-plan.qmd` ~line 354, `@eq-shared-period-model`), state explicitly which random effects are retained (cluster random intercept and cluster-by-period random effect) and clarify the batch indexing. _(Comments id=191 KH, id=192 AO)_
+- [x] **B1. Clarify the random-effects structure in the "shared period effects" model.** In the model-sequence bullet "Model with shared period effects" (`statistical-analysis-plan.qmd` ~line 354, `@eq-shared-period-model`), state explicitly which random effects are retained (cluster random intercept and cluster-by-period random effect) and clarify the batch indexing. _(Comments id=191 KH, id=192 AO)_
 
 - [ ] **B2. Add a sentence on how model assumptions/diagnostics will be checked.** In the primary-outcome analysis and secondary-outcomes sections, state that appropriate diagnostics will assess distributional assumptions, the proportional-odds assumption (for the cumulative logit / ordinal models), and model convergence. _(Comments id=24 MGW, id=25 AO; Round Two)_
 
