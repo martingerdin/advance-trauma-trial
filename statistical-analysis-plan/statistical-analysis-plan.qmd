@@ -394,6 +394,9 @@ To correct potential inflation of the type I error rate due to the small number 
 <!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO): replace SAS-specific RSPL with the R estimation framework actually used. -->
 Models will be fitted by maximum likelihood using a Laplace approximation to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
 
+<!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): state that diagnostics will check distributional assumptions and convergence. -->
+Model diagnostics will be used to assess distributional assumptions and model convergence.
+
 <!--
 *Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
 
@@ -556,7 +559,8 @@ Let us discuss this further.
 
 ## Analysis of secondary outcomes
 
-Unless otherwise stated, secondary outcomes will be analysed using the same mixed-effects modelling framework as specified for the primary outcome, including fixed effects for time and intervention exposure and random effects for cluster and cluster-by-period, with the link function and outcome distribution adapted to the scale of the outcome.
+<!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): diagnostics for secondary models, including proportional odds for ordinal outcomes. -->
+Unless otherwise stated, secondary outcomes will be analysed using the same mixed-effects modelling framework as specified for the primary outcome, including fixed effects for time and intervention exposure and random effects for cluster and cluster-by-period, with the link function and outcome distribution adapted to the scale of the outcome. Model diagnostics will be used to assess distributional assumptions, the proportional-odds assumption for cumulative logit models, and model convergence.
 
 ### All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department
 
