@@ -428,40 +428,7 @@ Where:
 
 We note that this AR(1) formulation differs slightly from alternative parameterisations used elsewhere in which correlations are specified through a joint covariance matrix. Although both approaches capture decaying temporal correlation, the parameter $\rho$ is not directly equivalent to parameters used in other specifications and should not be interpreted interchangeably.
 
-#### Models with batch-specific secular trends
-
-To assess sensitivity to assumptions about common secular trends across batches, we will include a random batch-by-period effect allowing each batch to follow its own time trend. This specification accounts for the randomisation by batches and permits additional between-batch heterogeneity over time. The model is specified in @eq-model-batch-trend.
-
-$$
-g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \delta_{bt}
-$$ {#eq-model-batch-trend}
-
-Where $\delta_{bt}$ represents a random effect for batch $b$ during period $t$, capturing between-batch variation in secular trends over time.
-
-
-<!-- 
-Need to be updated
-```{r}
-#| echo: FALSE
-#| include: FALSE
-#| eval: FALSE
-
-library(nlme)
-
-# Assuming `data` is your DataFrame with the necessary columns
-# Fit the model
-model <- nmle::gls(
-    fixed = outcome ~ period + intervention + batch,
-    data = data,
-    correlation = corAR1(form = ~ 1 | cluster_id),
-    weights = varIdent(form = ~ 1 | period)
-)
-
-# Check the summary
-summary(model)
-```
--->
+<!-- sap-revision-todo A6 (comments id=212 KH, id=213 AO): removed "Models with batch-specific secular trends" sensitivity; primary model already uses fixed batch-specific period effects β_bt (protocol-aligned); shared period effects remain in the convergence sequence. -->
 
 #### Models with random cluster by intervention effects
 
