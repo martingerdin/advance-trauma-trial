@@ -12,7 +12,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 - Each item cites the originating comment(s) and reviewer. Items tagged **[decision]** need a human/statistician judgement call before editing — flag these rather than guessing. Items tagged **[verify]** may already be partly done; confirm the current text satisfies the comment before marking complete.
 - For every substantive edit made for a to-do item, add an HTML comment immediately above the changed passage citing the to-do ID and originating comment IDs, e.g. `<!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO): short rationale. -->`. Agent behaviour for this workflow is also in `.cursor/rules/sap-revision-todo.mdc`.
 - Keep SAP edits **minimal** and **consistent in style and tone** with the existing SAP text (concise declarative sentences; no unnecessary rewriting or long justifications).
-- Check corresponding text in `../protocol/protocol.qmd` before finalising substantive analysis changes. **Default: keep the SAP aligned with the protocol** (elaborate/operationalise; do not contradict). Only if an approved SAP change unavoidably conflicts, add a **minimal** item to `protocol-edits-todo.md` — do not edit the protocol until the SAP revision is finished.
+- Check corresponding text in `../protocol/protocol.qmd` before finalising substantive analysis changes. **Default: keep the SAP aligned with the protocol** (elaborate/operationalise; do not contradict). Do **not** edit `../shared-assets/` includes shared with the protocol unless explicitly agreed — prefer SAP-only text. Only if an approved SAP change unavoidably conflicts, add a **minimal** item to `protocol-edits-todo.md` — do not edit the protocol until the SAP revision is finished.
 - Mark an item complete only after the edits have been explicitly approved.
 - After edits, re-render to confirm the document still builds.
 
@@ -56,7 +56,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 ## C. Outcomes: definitions and handling of intercurrent events
 
-- [ ] **C1. Specify how death and transfer to another hospital are handled per outcome.** For outcomes where death or transfer may preclude measurement (e.g. ICU admission, length-of-stay outcomes), specify the intercurrent-event strategy (e.g. competing-event treatment, censoring, or exclusion) in the analysis text and in the outcomes summary table. Check this is applied consistently across all affected outcomes, not just length of ED stay. _(Comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11)_ **[verify]**
+- [x] **C1. Specify how death and transfer to another hospital are handled per outcome.** For outcomes where death or transfer may preclude measurement (e.g. ICU admission, length-of-stay outcomes), specify the intercurrent-event strategy (e.g. competing-event treatment, censoring, or exclusion) in the analysis text and in the outcomes summary table. Check this is applied consistently across all affected outcomes, not just length of ED stay. _(Comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11)_ **[verify]**
 
 - [ ] **C2. Clarify the definition of length of emergency department stay.** Define it as time to ED exit and enumerate the possible exit routes (ward admission, ICU admission, transfer, death, discharge home), making explicit how each is treated in the analysis. _(Comment id=348 AO)_ (Coordinate with A2.)
 

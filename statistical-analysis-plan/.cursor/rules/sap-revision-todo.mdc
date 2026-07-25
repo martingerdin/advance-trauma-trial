@@ -38,6 +38,7 @@ Whenever you add or change SAP text for a to-do item, place an HTML comment **im
 Before proposing or finalising a substantive SAP edit, check the corresponding text in `../protocol/protocol.qmd` (and shared includes used by both documents).
 
 - **Default: keep the SAP aligned with the protocol** so the protocol need not change. Prefer wording that elaborates or operationalises the protocol without contradicting it.
+- **Do not edit shared includes under `../shared-assets/` that are also used by the protocol** (e.g. `outcomes.qmd`) unless the user explicitly agrees: those edits revise the protocol. Prefer SAP-only text (e.g. analysis sections, `tables/outcomes-summary.json`) when clarifying for the SAP.
 - Flag any **material deviation** from the protocol (analysis model, estimand, estimation method, sensitivity analyses, analysis sets, outcome definitions).
 - When a reviewer request conflicts with the protocol, first propose an SAP formulation that satisfies the review **and** stays within the protocol. Only if that is impossible, present the conflict explicitly and ask whether to (1) keep the protocol-aligned SAP wording, or (2) accept a minimal protocol edit later.
 - **Do not edit the protocol during the SAP revision.** If an approved SAP change unavoidably conflicts with the protocol, add a **minimal** item to `protocol-edits-todo.md` (cite the SAP to-do ID and protocol location). That list is a last resort; apply it only after the SAP revision is finished.
