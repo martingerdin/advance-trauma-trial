@@ -60,7 +60,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **C2. Clarify the definition of length of emergency department stay.** Define it as time to ED exit and enumerate the possible exit routes (ward admission, ICU admission, transfer, death, discharge home), making explicit how each is treated in the analysis. _(Comment id=348 AO)_ (Coordinate with A2.)
 
-- [ ] **C3. State that adherence to ATLS® is measured in both arms.** In the adherence outcome section (`statistical-analysis-plan.qmd` ~line 659) make clear the checklist is assessed in both standard-care and ATLS® periods/arms. _(Comment id=361 KH)_
+- [x] **C3. State that adherence to ATLS® is measured in both arms.** In the adherence outcome section (`statistical-analysis-plan.qmd` ~line 659) make clear the checklist is assessed in both standard-care and ATLS® periods/arms. _(Comment id=361 KH)_
 
 - [ ] **C4. Express adherence as a percentage and remove the duplicated paragraph.** Confirm adherence is defined as the proportion of completed checklist items (0–1), with completion of all 14 steps = 100% adherence, and present/interpret it as a percentage. NOTE: the adherence description paragraph is currently duplicated verbatim (`statistical-analysis-plan.qmd` ~lines 661–663) — delete the duplicate. _(Comments id=61 KH, id=62 AO, id=63 MGW)_
 

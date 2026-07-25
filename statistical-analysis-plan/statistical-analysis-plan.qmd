@@ -637,10 +637,8 @@ Length of intensive care unit stay will be analysed as a count outcome among pat
 
 ### Adherence to ATLS^®^ principles during initial patient resuscitation
 
-We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey.  Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
-
-We will assess adherence to ATLS® principles using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
-
+<!-- sap-revision-todo C3 (comment id=361 KH): checklist assessed in both standard-care and ATLS® periods. -->
+We will assess adherence to ATLS® principles in both the standard care and ATLS® periods using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
 
 $$
 g\{\mathbb{E}(Y_{bkti})\}
