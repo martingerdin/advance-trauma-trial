@@ -608,6 +608,7 @@ We will measure disability using the WHO Disability Assessment Schedule 2.0 (WHO
 Return to work will be analysed as a dichotomous outcome using the mixed-effects binomial model specified in @eq-primary-model with the logit link.
 
 <!-- sap-revision-todo A2 (comments id=349, id=350 KH; id=351 AO; id=348 AO): replace Fine–Gray competing-risks LOS models with mixed-effects negative binomial count models; clarify purpose, random/period effects, and death/transfer handling. -->
+<!-- sap-revision-todo C2 (comment id=348 AO): ED stay defined as hours to ED exit; exit routes enumerated; all routes contribute observed duration. -->
 ### Length of emergency department stay
 
 Length of emergency department stay will be analysed as a count outcome: the number of hours from arrival at the emergency department until ED exit. Exit may occur via ward admission, ICU admission, transfer to another hospital, death, or discharge home; all of these routes contribute the observed ED duration. The purpose of the analysis is to estimate the effect of ATLS® on mean ED length of stay. Death and transfer truncate the observed stay and are not treated as censoring; mortality is analysed separately as a primary and secondary outcome.

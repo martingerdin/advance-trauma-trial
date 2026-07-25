@@ -58,7 +58,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **C1. Specify how death and transfer to another hospital are handled per outcome.** For outcomes where death or transfer may preclude measurement (e.g. ICU admission, length-of-stay outcomes), specify the intercurrent-event strategy (e.g. competing-event treatment, censoring, or exclusion) in the analysis text and in the outcomes summary table. Check this is applied consistently across all affected outcomes, not just length of ED stay. _(Comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11)_ **[verify]**
 
-- [ ] **C2. Clarify the definition of length of emergency department stay.** Define it as time to ED exit and enumerate the possible exit routes (ward admission, ICU admission, transfer, death, discharge home), making explicit how each is treated in the analysis. _(Comment id=348 AO)_ (Coordinate with A2.)
+- [x] **C2. Clarify the definition of length of emergency department stay.** Define it as time to ED exit and enumerate the possible exit routes (ward admission, ICU admission, transfer, death, discharge home), making explicit how each is treated in the analysis. _(Comment id=348 AO)_ (Coordinate with A2.)
 
 - [ ] **C3. State that adherence to ATLS® is measured in both arms.** In the adherence outcome section (`statistical-analysis-plan.qmd` ~line 659) make clear the checklist is assessed in both standard-care and ATLS® periods/arms. _(Comment id=361 KH)_
 
