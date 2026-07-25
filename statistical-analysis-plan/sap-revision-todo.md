@@ -50,7 +50,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **B7. Add clustering to the missing-data / imputation strategy.** In the missing-data section, state that any multiple-imputation model will reflect the hierarchical data structure — clustering at hospital level plus design variables such as period and intervention exposure. _(Comments id=31 MGW, id=32 AO; Round Two)_ (Coordinate with A5.)
 
-- [ ] **B8. Confirm the primary-outcome model uses cluster-level / hospital-level clustering and gives cluster-specific estimates.** Ensure the primary and secondary analysis text states the mixed-effects models account for clustering at hospital level, use outcome-appropriate link functions/effect measures, and provide cluster-specific estimates of the intervention effect. _(Comment id=20 AO; Round Two 27a)_ **[verify]**
+- [x] **B8. Confirm the primary-outcome model uses cluster-level / hospital-level clustering and gives cluster-specific estimates.** Ensure the primary and secondary analysis text states the mixed-effects models account for clustering at hospital level, use outcome-appropriate link functions/effect measures, and provide cluster-specific estimates of the intervention effect. _(Comment id=20 AO; Round Two 27a)_ **[verify]**
 
 ---
 
