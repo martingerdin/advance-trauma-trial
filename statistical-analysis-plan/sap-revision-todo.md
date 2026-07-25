@@ -44,7 +44,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **B4. Add the general estimation framework statement.** Briefly state the general estimation framework for the fitted mixed-effects models (see also A1). Implementation-specific numerical details need not be prespecified. _(Comment id=23 AO; Round Two 27b)_
 
-- [ ] **B5. Add reporting of correlation parameters (from the protocol).** State that time-adjusted within-cluster correlations will be reported with 95% CIs, alongside the correlations implied by the assumed correlation structures, all estimated variance components, and latent-scale correlations for binary outcomes. _(Comments id=26, id=27 AO; Round Two)_
+- [x] **B5. Add reporting of correlation parameters (from the protocol).** State that time-adjusted within-cluster correlations will be reported with 95% CIs, alongside the correlations implied by the assumed correlation structures, all estimated variance components, and latent-scale correlations for binary outcomes. _(Comments id=26, id=27 AO; Round Two)_
 
 - [ ] **B6. Add how ICC and other correlation parameters will be estimated.** State that intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models, and that for AR(1) within-cluster structures the correlation parameter is estimated directly from the AR(1) structure. _(Comments id=28, id=29 AO; Round Two)_
 
