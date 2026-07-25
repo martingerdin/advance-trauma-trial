@@ -394,8 +394,8 @@ To correct potential inflation of the type I error rate due to the small number 
 <!-- sap-revision-todo B3 (comments id=21, id=22 AO; Round Two 27c/27d): model-based SEs, small-sample adjustments, Wald-type CIs. -->
 Standard errors will be model-based. Small-sample adjustments, including degrees-of-freedom corrections such as Kenward–Roger, will be applied where relevant. Confidence intervals will be Wald-type.
 
-<!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO): replace SAS-specific RSPL with the R estimation framework actually used. -->
-Models will be fitted by maximum likelihood using a Laplace approximation to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
+<!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO); B4 (comment id=23 AO; Round Two 27b): general estimation framework is ML with Laplace; package/implementation not prespecified. -->
+The general estimation framework for the mixed-effects models is maximum likelihood, with a Laplace approximation used to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
 
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): state that diagnostics will check distributional assumptions and convergence. -->
 Model diagnostics will be used to assess distributional assumptions and model convergence.

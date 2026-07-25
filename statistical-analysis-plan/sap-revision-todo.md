@@ -42,7 +42,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **B3. Add reporting of standard errors and confidence intervals.** In the primary-outcome analysis, state that standard errors will be model-based, that small-sample adjustments (including degrees-of-freedom corrections, e.g. Kenward–Roger) will be applied where relevant, and that confidence intervals will be Wald-type. _(Comments id=21, id=22 AO; Round Two checklist items 27c/27d)_
 
-- [ ] **B4. Add the general estimation framework statement.** Briefly state the general estimation framework for the fitted mixed-effects models (see also A1). Implementation-specific numerical details need not be prespecified. _(Comment id=23 AO; Round Two 27b)_
+- [x] **B4. Add the general estimation framework statement.** Briefly state the general estimation framework for the fitted mixed-effects models (see also A1). Implementation-specific numerical details need not be prespecified. _(Comment id=23 AO; Round Two 27b)_
 
 - [ ] **B5. Add reporting of correlation parameters (from the protocol).** State that time-adjusted within-cluster correlations will be reported with 95% CIs, alongside the correlations implied by the assumed correlation structures, all estimated variance components, and latent-scale correlations for binary outcomes. _(Comments id=26, id=27 AO; Round Two)_
 
