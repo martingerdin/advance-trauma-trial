@@ -46,7 +46,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **B5. Add reporting of correlation parameters (from the protocol).** State that time-adjusted within-cluster correlations will be reported with 95% CIs, alongside the correlations implied by the assumed correlation structures, all estimated variance components, and latent-scale correlations for binary outcomes. _(Comments id=26, id=27 AO; Round Two)_
 
-- [ ] **B6. Add how ICC and other correlation parameters will be estimated.** State that intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models, and that for AR(1) within-cluster structures the correlation parameter is estimated directly from the AR(1) structure. _(Comments id=28, id=29 AO; Round Two)_
+- [x] **B6. Add how ICC and other correlation parameters will be estimated.** State that intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models, and that for AR(1) within-cluster structures the correlation parameter is estimated directly from the AR(1) structure. _(Comments id=28, id=29 AO; Round Two)_
 
 - [ ] **B7. Add clustering to the missing-data / imputation strategy.** In the missing-data section, state that any multiple-imputation model will reflect the hierarchical data structure — clustering at hospital level plus design variables such as period and intervention exposure. _(Comments id=31 MGW, id=32 AO; Round Two)_ (Coordinate with A5.)
 

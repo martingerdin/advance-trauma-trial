@@ -403,6 +403,9 @@ Model diagnostics will be used to assess distributional assumptions and model co
 <!-- sap-revision-todo B5 (comments id=26, id=27 AO; Round Two): report time-adjusted within-cluster correlations, variance components, and latent-scale correlations (protocol-aligned). -->
 We will report time-adjusted within-cluster correlations for all outcomes with 95% CIs, including the intra-cluster correlation (ICC) and within- and between-period correlations implied by the assumed correlation structures, together with all estimated variance components. For binary outcomes, correlations will also be reported on the latent scale.
 
+<!-- sap-revision-todo B6 (comments id=28, id=29 AO; Round Two): ICC and related correlations derived from variance components; AR(1) rho from the AR(1) structure. -->
+Intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models. For models with an AR(1) within-cluster structure, the correlation parameter will be estimated directly from the AR(1) structure.
+
 <!--
 *Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
 
