@@ -40,7 +40,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **B2. Add a sentence on how model assumptions/diagnostics will be checked.** In the primary-outcome analysis and secondary-outcomes sections, state that appropriate diagnostics will assess distributional assumptions, the proportional-odds assumption (for the cumulative logit / ordinal models), and model convergence. _(Comments id=24 MGW, id=25 AO; Round Two)_
 
-- [ ] **B3. Add reporting of standard errors and confidence intervals.** In the primary-outcome analysis, state that standard errors will be model-based, that small-sample adjustments (including degrees-of-freedom corrections, e.g. Kenward–Roger) will be applied where relevant, and that confidence intervals will be Wald-type. _(Comments id=21, id=22 AO; Round Two checklist items 27c/27d)_
+- [x] **B3. Add reporting of standard errors and confidence intervals.** In the primary-outcome analysis, state that standard errors will be model-based, that small-sample adjustments (including degrees-of-freedom corrections, e.g. Kenward–Roger) will be applied where relevant, and that confidence intervals will be Wald-type. _(Comments id=21, id=22 AO; Round Two checklist items 27c/27d)_
 
 - [ ] **B4. Add the general estimation framework statement.** Briefly state the general estimation framework for the fitted mixed-effects models (see also A1). Implementation-specific numerical details need not be prespecified. _(Comment id=23 AO; Round Two 27b)_
 
