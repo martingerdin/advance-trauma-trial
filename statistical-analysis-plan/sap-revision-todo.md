@@ -86,7 +86,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 ## E. Baseline and descriptive summaries
 
-- [ ] **E1. Base patient-characteristics summaries on all eligible patients across the whole trial.** Reviewer noted "baseline" should describe all patients meeting eligibility criteria for the entire trial period, not only pre-training periods. Update the "Patient characteristics" text (`statistical-analysis-plan.qmd` ~line 296) accordingly, keeping the by-group and overall summaries and the no-clustering-adjustment statement. _(Comments id=166 KH, id=167 AO)_ **[verify]**
+- [x] **E1. Base patient-characteristics summaries on all eligible patients across the whole trial.** Reviewer noted "baseline" should describe all patients meeting eligibility criteria for the entire trial period, not only pre-training periods. Update the "Patient characteristics" text (`statistical-analysis-plan.qmd` ~line 296) accordingly, keeping the by-group and overall summaries and the no-clustering-adjustment statement. _(Comments id=166 KH, id=167 AO)_ **[verify]**
 
 - [ ] **E2. Ensure both cluster-level and individual-level baseline characteristics are listed.** Confirm the SAP lists the baseline characteristics to be summarised at both cluster level (`@tbl-cluster-characteristics`) and individual level (`@tbl-patient-characteristics`). _(Comment id=10 MGW; Round Two)_ **[verify]**
 
