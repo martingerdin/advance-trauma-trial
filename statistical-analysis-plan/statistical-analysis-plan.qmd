@@ -232,6 +232,9 @@ The primary analysis will estimate the effect of ATLS training on 30-day in-hosp
 
 ## Sample size calculations
 
+<!-- sap-revision-todo D4 (comments id=73 KH, id=74 AO, id=75 MGW): note design-phase Shiny CRT Calculator; no protocol cross-ref. -->
+Sample size calculations were performed during the trial design phase using the Shiny CRT Calculator [@Hemming2020Feb].
+
 ### Main stepped wedge design and primary outcome
 
 {{< include ../shared-assets/sample-size-calculations-main.qmd >}}

@@ -80,7 +80,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **D3. Add allocation ratio and repeated-measures statement to the trial-design description.** Ensure the "Design" section (`statistical-analysis-plan.qmd` ~lines 89–95) explicitly gives the definition of cluster, target number of clusters, number of intervention conditions, allocation ratio, whether clusters/participants are repeatedly measured, number of sequences, clusters per sequence, number of periods, and anticipated calendar duration. _(Comments id=3 MGW, id=4 AO; Round Two)_ **[verify]**
 
-- [ ] **D4. Consider referencing the protocol for full sample-size methodology.** In `../shared-assets/sample-size-calculations-main.qmd`, consider adding that the sample-size calculations were performed during the trial design phase (using the Shiny CRT Calculator) and that full methodological detail is in the protocol. _(Comments id=73 KH, id=74 AO, id=75 MGW — open discussion)_ **[decision]**
+- [x] **D4. Consider referencing the protocol for full sample-size methodology.** In `../shared-assets/sample-size-calculations-main.qmd`, consider adding that the sample-size calculations were performed during the trial design phase (using the Shiny CRT Calculator) and that full methodological detail is in the protocol. _(Comments id=73 KH, id=74 AO, id=75 MGW — open discussion)_ **[decision]** — SAP-only Shiny CRT sentence; no protocol cross-ref
 
 ---
 
