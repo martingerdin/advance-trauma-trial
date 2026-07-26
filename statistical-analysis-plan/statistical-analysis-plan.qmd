@@ -253,6 +253,9 @@ We will use the R Statistical Software for all analyses [@R].
 
 We will use a two-sided significance level of 0.05 for all analyses, and we will report 95% confidence intervals (CI) for all estimates. We will not adjust for multiple testing because no secondary outcome is regarded as singularly more important.
 
+<!-- sap-revision-todo G2 (comment id=5 MGW; Round Two): single final analysis once all data are available. -->
+Primary and secondary outcomes will be analysed collectively in a single final analysis once all trial data are available.
+
 ## Analysis sets
 
 <!-- sap-revision-todo A4 (comments id=102 KH, id=103 AO): clarify hospital→unit→patient hierarchy vs model RE; justify omitting unit-level RE; standardise on "units" (protocol term), not "teams". -->

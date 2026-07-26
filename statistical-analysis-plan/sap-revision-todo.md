@@ -104,11 +104,11 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **G1. Confirm the superiority framework is stated in the objectives/hypotheses.** Ensure the superiority (vs equivalence/non-inferiority) framework is explicitly specified and states which comparisons are presented on this basis. _(Comments id=1 MGW, id=2 AO; Round Two)_ **[verify]** (Design section already mentions superiority at ~line 91.)
 
-- [ ] **G2. Add a statement on the timing of analysis.** State that all outcomes will be analysed collectively once all data are in (single final analysis). Add to the statistical-principles/analysis section. _(Comment id=5 MGW; Round Two)_
+- [x] **G2. Add a statement on the timing of analysis.** State that all outcomes will be analysed collectively once all data are in (single final analysis). Add to the statistical-principles/analysis section. _(Comment id=5 MGW; Round Two)_
 
-- [ ] **G3. Confirm the significance level / CI statement.** Ensure the two-sided 0.05 significance level and 95% CI reporting is present. _(Comments id=6, id=7 AO; Round Two)_ **[verify]** (Present at `statistical-analysis-plan.qmd` ~line 249.)
+- [x] **G3. Confirm the significance level / CI statement.** Ensure the two-sided 0.05 significance level and 95% CI reporting is present. _(Comments id=6, id=7 AO; Round Two)_ **[verify]** (Present at `statistical-analysis-plan.qmd` ~line 249.)
 
-- [ ] **G4. Confirm the revised statistical-hypotheses text (no null/alternative framing).** The reviewer preferred removing formal null/alternative hypotheses; the section was revised to the agreed effect-estimation wording. Confirm it reads as intended (`statistical-analysis-plan.qmd` ~line 227). _(Comments id=66 KH, id=67 AO, id=68 MGW)_ **[verify]**
+- [x] **G4. Confirm the revised statistical-hypotheses text (no null/alternative framing).** The reviewer preferred removing formal null/alternative hypotheses; the section was revised to the agreed effect-estimation wording. Confirm it reads as intended (`statistical-analysis-plan.qmd` ~line 227). _(Comments id=66 KH, id=67 AO, id=68 MGW)_ **[verify]**
 
 ---
 
