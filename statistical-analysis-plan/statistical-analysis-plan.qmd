@@ -531,7 +531,8 @@ These are known individual-level prognostic factors for the primary outcome. The
 
 ### Subgroup analyses
 
-We will perform the following subgroup analyses:
+<!-- sap-revision-todo F1 (comments id=33 MGW, id=34 AO; id=368 KH): subgroup analyses of primary outcome via interactions. -->
+We will perform the following subgroup analyses of the primary outcome:
 
 <!--[^too-many-subgroups]: **Question:** Are we exploring too many subgroups?-->
 

@@ -94,7 +94,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 ## F. Subgroup analyses
 
-- [ ] **F1. Confirm subgroup analyses target the primary outcome only, via interaction terms.** The subgroup section (`statistical-analysis-plan.qmd` ~line 555) should state subgroups are analysed for the primary outcome only, list the prespecified subgroups, and specify that each is analysed by adding the subgroup variable and its interaction with intervention exposure to the primary model. _(Comments id=33 MGW, id=34 AO; id=368 KH; Round Two)_ **[verify]**
+- [x] **F1. Confirm subgroup analyses target the primary outcome only, via interaction terms.** The subgroup section (`statistical-analysis-plan.qmd` ~line 555) should state subgroups are analysed for the primary outcome only, list the prespecified subgroups, and specify that each is analysed by adding the subgroup variable and its interaction with intervention exposure to the primary model. _(Comments id=33 MGW, id=34 AO; id=368 KH; Round Two)_ **[verify]**
 
 - [ ] **F2. Clarify how subgroup variables are defined/coded, and whether cluster size is continuous or categorical.** State the coding of each subgroup (e.g. binary vs multi-category for clinical cohorts) and resolve whether cluster size enters as continuous or categorical (small/medium/large). Reduce the number of subgroups if considered too many. _(Comments id=243, id=246 KH)_ **[decision]**
 
