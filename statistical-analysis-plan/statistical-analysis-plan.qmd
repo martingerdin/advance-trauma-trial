@@ -532,16 +532,15 @@ These are known individual-level prognostic factors for the primary outcome. The
 ### Subgroup analyses
 
 <!-- sap-revision-todo F1 (comments id=33 MGW, id=34 AO; id=368 KH): subgroup analyses of primary outcome via interactions. -->
+<!-- sap-revision-todo F2 (comments id=243, id=246 KH): clarify subgroup coding; cluster size categorical; keep six subgroups. -->
 We will perform the following subgroup analyses of the primary outcome:
 
-<!--[^too-many-subgroups]: **Question:** Are we exploring too many subgroups?-->
-
--  geographical region, defined using the state in which the participating hospital is located;
--  age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021]
+-  geographical region, defined using the state in which the participating hospital is located, with each state as a separate category;
+-  age groups, defined as older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021];
 -  sex, using the levels male and female;
--  clinical cohorts, defined as blunt multisystem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts [@hornor_quality_2018];
--  patients with major trauma, defined as patients with an injury severity score (ISS) of 16 or higher;
--  cluster size (number of patients per hospital)
+-  clinical cohorts, defined as blunt multisystem trauma, penetrating trauma, and severe isolated traumatic brain injury, with modification to avoid overlap between the cohorts [@hornor_quality_2018]; this subgroup analysis will include only patients classified into one of these three cohorts;
+-  patients with major trauma, defined as patients with an injury severity score (ISS) of 16 or higher versus those with ISS below 16;
+-  cluster size, defined as the monthly volume of eligible patients (as used for covariate-constrained randomisation) and categorised as small (fewer than 12 patients per month), medium (12–20), or large (more than 20)
 
 These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-primary-model.
 
