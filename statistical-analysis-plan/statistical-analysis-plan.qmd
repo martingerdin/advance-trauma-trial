@@ -580,13 +580,16 @@ These outcomes will be analysed as dichotomous variables using the mixed-effects
 
 ### Quality of life within seven days of discharge, and at 30 days and three months of arrival at the emergency department, among survivors
 
-Quality of life will be measured using the official and validated translations of the EQ5D5L. This tool assesses five dimensions of health-related quality of life: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression. Each dimension is rated on a Likert scale from 1 to 5. There is also a visual analogue scale (VAS) ranging from 0 to 100.
+<!-- sap-revision-todo C5 (comments id=288, id=289 KH; id=290, id=291 AO): nested staircase collection; period effects on global timeline. -->
+<!-- sap-revision-todo C6 (comments id=295, id=296 KH/AO; id=303 KH): clarify EQ-5D-5L yields ordinal domains plus VAS. -->
+<!-- sap-revision-todo C7 (Anna email): standardise instrument name to EQ-5D-5L in SAP text. -->
+Quality of life will be measured within the nested staircase design using the official and validated translations of the EQ-5D-5L. The EQ-5D-5L yields two outcome types: five ordinal domain scores (mobility, self-care, usual activities, pain/discomfort, and anxiety/depression), each rated on a Likert scale from 1 to 5, and a visual analogue scale (VAS) ranging from 0 to 100. For these analyses, period effects are defined on the global study timeline (not separately within each batch), and not all clusters contribute data in every period.
 
-For each of the five ordinal dimensions, we will use a mixed-effects cumulative logit (proportional odds) model:
+For each of the five ordinal domains, we will use a mixed-effects cumulative logit (proportional odds) model:
 
 $$
 \text{logit}\{\Pr(Y_{bkti} \leq j)\}
-= \mu_j + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu_j + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-ordinal-model}
 
 Where $\mu_j$ is the intercept for the $j$th category.
@@ -595,13 +598,14 @@ The VAS will be analysed as a continuous outcome using a linear mixed-effects mo
 
 $$
 \text{VAS}_{bkti}
-= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
+= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
 \quad \epsilon_{bkti} \sim \mathcal{N}(0,\sigma^2)
 $$ {#eq-linear-model}
 
 ### Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, among survivors
 
-We will measure disability using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0) [@ustun_measuring_2010]. This tool assesses six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each domain is rated on a likert scale from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme difficulties. We will analyse each domain separately using a mixed effects ordinal model as specified in @eq-ordinal-model. We will also calculate a WHODAS 2.0 summary score using the method referred to as the "complex scoring" method. This method involves summing the item scores within each of the six domains, then summing the scores of all domains, and finally transforming the total score to a 0-100 scale. We will analyse the summary score using a linear mixed effects model as specified in @eq-linear-model.
+<!-- sap-revision-todo C5 (comments id=288, id=289 KH; id=290, id=291 AO): nested staircase collection; period effects on global timeline. -->
+Disability will be measured within the nested staircase design using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0) [@ustun_measuring_2010]. This tool assesses six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each domain is rated on a likert scale from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme difficulties. As for quality of life, period effects are defined on the global study timeline, and not all clusters contribute data in every period. We will analyse each domain separately using a mixed effects ordinal model as specified in @eq-ordinal-model. We will also calculate a WHODAS 2.0 summary score using the method referred to as the "complex scoring" method. This method involves summing the item scores within each of the six domains, then summing the scores of all domains, and finally transforming the total score to a 0-100 scale. We will analyse the summary score using a linear mixed effects model as specified in @eq-linear-model.
 
 ### Return to work at 30 days and three months after arrival at the emergency department, among survivors
 
@@ -638,11 +642,13 @@ Length of intensive care unit stay will be analysed as a count outcome among pat
 ### Adherence to ATLS^®^ principles during initial patient resuscitation
 
 <!-- sap-revision-todo C3 (comment id=361 KH): checklist assessed in both standard-care and ATLS® periods. -->
-We will assess adherence to ATLS® principles in both the standard care and ATLS® periods using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the proportion of completed items on this checklist. This outcome will be analysed using a mixed-effects beta regression model with a logit link:
+<!-- sap-revision-todo C4 (comments id=61 KH, id=62 AO, id=63 MGW): express adherence as percentage; 14/14 = 100%; duplicate paragraph already removed. -->
+<!-- sap-revision-todo C5 (comments id=288, id=289 KH; id=290, id=291 AO): nested staircase collection; period effects on global timeline. -->
+We will assess adherence to ATLS® principles within the nested staircase design, in both the standard care and ATLS® periods, using a 14-item checklist that covers the key steps of the ATLS® primary survey. Adherence will be measured as the percentage of completed checklist items (completion of all 14 steps corresponds to 100% adherence). For these analyses, period effects are defined on the global study timeline (not separately within each batch), and not all clusters contribute data in every period. This outcome will be analysed using a mixed-effects beta regression model with a logit link, with the percentage first expressed as a proportion on the 0–1 scale:
 
 $$
 g\{\mathbb{E}(Y_{bkti})\}
-= \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-beta-model}
 
 Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The intervention effect $\theta$ represents the difference in expected adherence proportion on the logit (link) scale. Because the observed adherence proportion may take values of 0 or 1, values will be rescaled to lie in the open interval $(0,1)$ prior to fitting the beta regression model. A beta regression precision (dispersion) parameter will be estimated as part of the model.

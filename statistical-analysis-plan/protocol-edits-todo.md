@@ -16,6 +16,8 @@ Minimal protocol changes needed to stay consistent with the revised Statistical 
 
 - [ ] **P1 (from A1).** Replace RSPL with the SAP estimation framework. Protocol § Statistics → Analysis models (`protocol.qmd` ~line 815) still says models are fitted using “residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL)”. The SAP uses maximum likelihood with Laplace approximation because RSPL is SAS-specific with no exact R equivalent — a protocol-compatible SAP wording is not available without retaining an inaccurate method name. *Minimal edit: replace the RSPL sentence only.*
 
+- [ ] **P3 (from C7).** Harmonise EQ-5D naming to **EQ-5D-5L** (and correct 3L where present). Shared includes still use `EQ5D5L` (`../shared-assets/outcomes.qmd`, `../shared-assets/sample-size-calculations-nested.qmd`); `protocol/variables.csv` still says EQ-5D-3L while the CRF uses EQ-5D-5L. SAP analysis text and `@tbl-outcomes-summary` already use EQ-5D-5L. *Minimal edits: replace instrument name strings only; do not rewrite outcome definitions.*
+
 ---
 
 ## Avoided by adjusting the SAP (no protocol edit)
