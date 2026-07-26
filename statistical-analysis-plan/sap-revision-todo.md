@@ -102,7 +102,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 ## G. Statistical principles, hypotheses and reporting
 
-- [ ] **G1. Confirm the superiority framework is stated in the objectives/hypotheses.** Ensure the superiority (vs equivalence/non-inferiority) framework is explicitly specified and states which comparisons are presented on this basis. _(Comments id=1 MGW, id=2 AO; Round Two)_ **[verify]** (Design section already mentions superiority at ~line 91.)
+- [x] **G1. Confirm the superiority framework is stated in the objectives/hypotheses.** Ensure the superiority (vs equivalence/non-inferiority) framework is explicitly specified and states which comparisons are presented on this basis. _(Comments id=1 MGW, id=2 AO; Round Two)_ **[verify]** (Design section already mentions superiority at ~line 91.)
 
 - [ ] **G2. Add a statement on the timing of analysis.** State that all outcomes will be analysed collectively once all data are in (single final analysis). Add to the statistical-principles/analysis section. _(Comment id=5 MGW; Round Two)_
 
