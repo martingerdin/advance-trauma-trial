@@ -118,9 +118,9 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **H2. Confirm/enrich the outcomes summary shell table.** Confirm `@tbl-outcomes-summary` (built from `tables/outcomes-summary.json`) captures outcome, design component, data type, analysis set, main analysis model, effect measure, potential intercurrent events, and strategy for handling them, and reconcile it against `comments/ALTS _ Summary of outcomes table.docx` / `comments/outcomes-summary.md`. Confirm a shell table showing how outcomes are summarised/compared by arm (or sequence/period) is present. Anna asked for a review of her first draft of this table (columns: outcome, data type, population, effect measure, potential intercurrent events, strategy). _(Comments id=18, id=19 MGW; Round Two; Anna email)_ **[verify]**
 
-- [ ] **H3. Confirm use of the stepped-wedge/cluster CONSORT flow diagram.** Ensure the SAP states the cluster/stepped-wedge CONSORT extension is used for the flow diagram (`@fig-consort-diagram`, `statistical-analysis-plan.qmd` ~line 261). _(Comment id=9 MGW; Round Two)_ **[verify]**
+- [x] **H3. Confirm use of the stepped-wedge/cluster CONSORT flow diagram.** Ensure the SAP states the cluster/stepped-wedge CONSORT extension is used for the flow diagram (`@fig-consort-diagram`, `statistical-analysis-plan.qmd` ~line 261). _(Comment id=9 MGW; Round Two)_ **[verify]**
 
-- [ ] **H4. Confirm the target population is specified per analysis.** Ensure the population of clusters/individuals for whom the treatment effect is estimated is specified for each analysis, including survivor-only outcomes and nested-design outcomes (`statistical-analysis-plan.qmd` ~line 257). _(Comments id=12 MGW, id=13 AO; Round Two)_ **[verify]**
+- [x] **H4. Confirm the target population is specified per analysis.** Ensure the population of clusters/individuals for whom the treatment effect is estimated is specified for each analysis, including survivor-only outcomes and nested-design outcomes (`statistical-analysis-plan.qmd` ~line 257). _(Comments id=12 MGW, id=13 AO; Round Two)_ **[verify]**
 
 ---
 
