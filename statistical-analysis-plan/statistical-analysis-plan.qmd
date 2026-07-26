@@ -88,9 +88,10 @@ To compare the effects of ATLS^®^ training with standard care on outcomes in ad
 
 ## Design
 
+<!-- sap-revision-todo D3 (comments id=3 MGW, id=4 AO; Round Two): confirm design descriptors including allocation and repeated measures on clusters. -->
 This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` clusters (see @fig-trial-design). Each cluster is a hospital and represents the unit for randomisation, even if one or more units are trained in the same hospital. There are two intervention conditions: ATLS® training and standard care. The trial is designed and will be analysed within a superiority framework, with ATLS® training compared with standard care for the primary and secondary outcomes. 
 
-The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster being assigned to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
+The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster allocated to each sequence of each batch (equal allocation across sequences) [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. Clusters are repeatedly measured across periods. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
 
 Clusters will be sequentially allocated to batches based on when they enter the study, and within each batch clusters will then be randomised to an intervention implementation sequence. Individual patients will be included cross-sectionally for the primary outcome, although some secondary outcomes will be assessed at multiple follow-up time points. The anticipated trial period is from February 2025 to October 2029.
 
