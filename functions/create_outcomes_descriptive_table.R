@@ -62,12 +62,24 @@ create_outcomes_descriptive_table <- function(data = NULL,
         )
     }
 
-    timepoints <- c(
-        "within seven days of discharge",
-        "at 30 days",
-        "at three months"
+    timepoints <- list(
+        list(
+            label = "within seven days of discharge",
+            slug = "within_seven_days_of_discharge",
+            section = "Secondary outcomes within seven days of discharge (nested staircase design)"
+        ),
+        list(
+            label = "at 30 days",
+            slug = "at_30_days",
+            section = "Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)"
+        ),
+        list(
+            label = "at three months",
+            slug = "at_three_months",
+            section = "Secondary outcomes at three months after arrival at the emergency department (nested staircase design)"
+        )
     )
-    nested.section <- "Secondary outcomes (nested staircase design)"
+    adherence.section <- "Secondary outcomes during initial resuscitation (nested staircase design)"
     main.section <- "Secondary outcomes (main stepped-wedge design)"
     ## WHODAS 2.0 difficulty response scale (same wording across domains)
     whodas.levels <- c(
@@ -143,7 +155,7 @@ create_outcomes_descriptive_table <- function(data = NULL,
         list(slug = "participation", label = "participation")
     )
 
-    key.requests <- list(
+    requests <- list(
         ## Primary outcome
         list(field = "inhospital_mortality_30d",
              label = "In-hospital mortality within 30 days",
@@ -188,73 +200,62 @@ create_outcomes_descriptive_table <- function(data = NULL,
              source = "external", summary = "dichotomous",
              section = main.section),
 
-        ## Secondary outcomes (nested staircase design) — key summaries
+        ## Nested staircase — adherence (not time-point follow-up)
         list(field = "atls_adherence",
              label = "Adherence to ATLS principles (%)",
              source = "external", summary = "continuous",
-             section = nested.section)
+             section = adherence.section)
     )
 
     for (timepoint in timepoints) {
-        timepoint.slug <- gsub("[^a-z0-9]+", "_", tolower(timepoint))
-        key.requests <- c(key.requests, list(list(
-            field = paste0("eq5d_index_", timepoint.slug),
-            label = paste0("EQ-5D-5L index score ", timepoint),
-            source = "external",
-            summary = "continuous",
-            section = nested.section
-        )))
-    }
+        ## Key summaries first within each follow-up section
+        requests <- c(requests, list(
+            list(
+                field = paste0("eq5d_index_", timepoint$slug),
+                label = "EQ-5D-5L index score",
+                source = "external",
+                summary = "continuous",
+                section = timepoint$section
+            ),
+            list(
+                field = paste0("whodas_summary_", timepoint$slug),
+                label = "WHODAS 2.0 summary score",
+                source = "external",
+                summary = "continuous",
+                section = timepoint$section
+            )
+        ))
 
-    for (timepoint in timepoints) {
-        timepoint.slug <- gsub("[^a-z0-9]+", "_", tolower(timepoint))
-        key.requests <- c(key.requests, list(list(
-            field = paste0("whodas_summary_", timepoint.slug),
-            label = paste0("WHODAS 2.0 summary score ", timepoint),
-            source = "external",
-            summary = "continuous",
-            section = nested.section
-        )))
-    }
-
-    all.requests <- key.requests
-
-    if (isTRUE(all)) {
-        domain.requests <- list()
-        for (timepoint in timepoints) {
-            timepoint.slug <- gsub("[^a-z0-9]+", "_", tolower(timepoint))
+        if (isTRUE(all)) {
             for (domain in eq5d.domains) {
-                domain.requests <- c(domain.requests, list(list(
-                    field = paste0("eq5d_", domain$slug, "_", timepoint.slug),
-                    label = paste0("EQ-5D-5L ", domain$label, " ", timepoint),
+                requests <- c(requests, list(list(
+                    field = paste0("eq5d_", domain$slug, "_", timepoint$slug),
+                    label = paste0("EQ-5D-5L ", domain$label),
                     source = "external",
                     summary = "categorical",
                     levels = domain$levels,
-                    section = nested.section
+                    section = timepoint$section
                 )))
             }
-            domain.requests <- c(domain.requests, list(list(
-                field = paste0("eq5d_vas_", timepoint.slug),
-                label = paste0("EQ-5D-5L VAS ", timepoint),
+            requests <- c(requests, list(list(
+                field = paste0("eq5d_vas_", timepoint$slug),
+                label = "EQ-5D-5L VAS",
                 source = "external",
                 summary = "continuous",
-                section = nested.section
+                section = timepoint$section
             )))
             for (domain in whodas.domains) {
-                domain.requests <- c(domain.requests, list(list(
-                    field = paste0("whodas_", domain$slug, "_", timepoint.slug),
-                    label = paste0("WHODAS 2.0 ", domain$label, " ", timepoint),
+                requests <- c(requests, list(list(
+                    field = paste0("whodas_", domain$slug, "_", timepoint$slug),
+                    label = paste0("WHODAS 2.0 ", domain$label),
                     source = "external",
                     summary = "categorical",
                     levels = whodas.levels,
-                    section = nested.section
+                    section = timepoint$section
                 )))
             }
         }
-        all.requests <- c(key.requests, domain.requests)
     }
-
-    requests <- if (isTRUE(all)) all.requests else key.requests
 
     build_patient_characteristics_shell_table(
         data = data,
