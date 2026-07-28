@@ -3,9 +3,9 @@
 #' Builds a blank `gtsummary` results shell in the style of
 #' `gtsummary::tbl_regression`. One stacked regression row is created for each
 #' outcome–effect-measure combination. Estimate, confidence-interval, and
-#' p-value cells are blanked for the analysis plan. Section headers separate
-#' the primary outcome, main stepped-wedge secondaries (by timing), and nested
-#' staircase outcomes (by timing).
+#' p-value cells are blanked for the analysis plan. Hierarchy is shown with
+#' columns for primacy (primary/secondary), design component, and timing,
+#' rather than nested section headers that look identical in print.
 #'
 #' @param data A data frame or NULL. Outcomes summary with columns
 #'     `outcome`, `design_component`, and `effect_measure`. If NULL, reads
@@ -47,6 +47,7 @@ create_outcomes_analysis_results_table <- function(
     )
 
     specs <- build_outcomes_analysis_results_specs(data = data, all = all)
+    spec.by.field <- stats::setNames(specs, vapply(specs, function(spec) spec$field, character(1)))
 
     tables <- lapply(seq_along(specs), function(i) {
         create_outcomes_analysis_results_shell_row(
@@ -66,43 +67,72 @@ create_outcomes_analysis_results_table <- function(
     results.table <- gtsummary::tbl_stack(tables, quiet = TRUE) |>
         gtsummary::modify_footnote(everything() ~ NA_character_)
 
-    results.table <- insert_table_section_headers(results.table, specs)
     results.table <- gtsummary::modify_table_body(
         results.table,
         function(table.body) {
-            result.columns <- intersect(
-                c("estimate", "std.error", "statistic", "conf.low", "conf.high", "ci", "p.value"),
-                names(table.body)
-            )
-            section.rows <- table.body$row_type == "section"
-            for (column.name in result.columns) {
-                if (is.numeric(table.body[[column.name]])) {
-                    table.body[[column.name]][section.rows] <- NA_real_
-                } else {
-                    table.body[[column.name]][section.rows] <- ""
+            fields <- table.body$variable
+            table.body$primacy <- vapply(fields, function(field) {
+                spec <- spec.by.field[[field]]
+                if (is.null(spec)) "" else spec$primacy
+            }, character(1))
+            table.body$design <- vapply(fields, function(field) {
+                spec <- spec.by.field[[field]]
+                if (is.null(spec)) "" else spec$design
+            }, character(1))
+            table.body$timing <- vapply(fields, function(field) {
+                spec <- spec.by.field[[field]]
+                if (is.null(spec)) "" else spec$timing
+            }, character(1))
+
+            ## Show grouping values only on the first row of each run
+            blank.repeated <- function(values) {
+                if (length(values) <= 1L) {
+                    return(values)
                 }
+                same.as.previous <- c(
+                    FALSE,
+                    values[-1] == values[-length(values)] & nzchar(values[-1])
+                )
+                values[same.as.previous] <- ""
+                values
             }
-            table.body
+            table.body$primacy <- blank.repeated(table.body$primacy)
+            table.body$design <- blank.repeated(table.body$design)
+            table.body$timing <- blank.repeated(table.body$timing)
+
+            group.cols <- c("primacy", "design", "timing")
+            label.idx <- match("label", names(table.body))
+            before <- setdiff(names(table.body)[seq_len(label.idx - 1L)], group.cols)
+            after <- setdiff(
+                names(table.body)[seq(label.idx, ncol(table.body))],
+                group.cols
+            )
+            table.body[, c(before, group.cols, after), drop = FALSE]
         }
     )
 
-    section.labels <- get_table_section_labels(specs)
-    if (length(section.labels) > 0L && !isTRUE(knitr::is_latex_output())) {
-        results.table <- gtsummary::modify_table_styling(
-            results.table,
-            columns = label,
-            rows = row_type == "section",
-            text_format = "bold"
+    results.table <- results.table |>
+        gtsummary::modify_column_unhide(columns = c(primacy, design, timing)) |>
+        gtsummary::modify_table_styling(
+            columns = c(primacy, design, timing),
+            align = "left"
+        ) |>
+        gtsummary::modify_header(
+            primacy ~ "**Primacy**",
+            design ~ "**Design component**",
+            timing ~ "**Timing**",
+            label ~ "**Outcome (effect measure)**",
+            estimate ~ "**Estimate**",
+            conf.low ~ "**95% CI**",
+            p.value ~ "**p-value**"
         )
-    }
 
     if (isTRUE(knitr::is_latex_output())) {
-        n.columns <- 4L
         results.table <- results.table |>
             gtsummary::as_kable_extra(format = "latex", booktabs = TRUE, linesep = "") |>
             kableExtra::kable_styling(
                 latex_options = c("repeat_header"),
-                font_size = 8
+                font_size = 7
             )
         results.latex <- as.character(results.table)
         results.latex <- sub(
@@ -115,13 +145,6 @@ create_outcomes_analysis_results_table <- function(
             "\\\\end{longtable}",
             results.latex
         )
-        if (length(section.labels) > 0L) {
-            results.latex <- format_section_rows_in_latex(
-                kable.latex = results.latex,
-                n.columns = n.columns,
-                section.labels = section.labels
-            )
-        }
         return(knitr::asis_output(results.latex))
     }
 
@@ -132,7 +155,8 @@ create_outcomes_analysis_results_table <- function(
 #'
 #' @param data Data frame of outcomes summary rows.
 #' @param all Logical. Expand nested QoL/disability to domain-level rows.
-#' @return A list of specs with `field`, `label`, `measure`, and `section`.
+#' @return A list of specs with `field`, `label`, `measure`, `primacy`,
+#'     `design`, and `timing`.
 build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
     measure.labels <- c(
         "OR" = "Odds ratio",
@@ -157,22 +181,22 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
         "life activities",
         "participation"
     )
-    section.order <- c(
-        "Primary outcome",
-        "Main stepped-wedge outcomes during hospital stay",
-        "Main stepped-wedge outcomes within 24 hours",
-        "Main stepped-wedge outcomes at 30 days",
-        "Main stepped-wedge outcomes at three months",
-        "Nested staircase outcomes during initial resuscitation",
-        "Nested staircase outcomes within seven days of discharge",
-        "Nested staircase outcomes at 30 days after arrival at the emergency department",
-        "Nested staircase outcomes at three months after arrival at the emergency department"
+    group.order <- c(
+        "Primary|—|Within 30 days",
+        "Secondary|Main stepped-wedge|During hospital stay",
+        "Secondary|Main stepped-wedge|Within 24 hours",
+        "Secondary|Main stepped-wedge|At 30 days",
+        "Secondary|Main stepped-wedge|At three months",
+        "Secondary|Nested staircase|During initial resuscitation",
+        "Secondary|Nested staircase|Within seven days of discharge",
+        "Secondary|Nested staircase|At 30 days",
+        "Secondary|Nested staircase|At three months"
     )
 
     specs <- list()
     counter <- 0L
 
-    add.spec <- function(label, measure, section) {
+    add.spec <- function(label, measure, primacy, design, timing) {
         counter <<- counter + 1L
         measure.label <- if (measure %in% names(measure.labels)) {
             unname(measure.labels[[measure]])
@@ -183,15 +207,17 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
             field = paste0("analysis_result_", counter),
             label = paste0(label, " (", measure.label, ")"),
             measure = measure,
-            section = section
+            primacy = primacy,
+            design = design,
+            timing = timing
         )
     }
 
     for (i in seq_len(nrow(data))) {
         outcome <- data$outcome[[i]]
-        design <- data$design_component[[i]]
+        design.component <- data$design_component[[i]]
         effect.measure <- data$effect_measure[[i]]
-        section <- classify_outcomes_analysis_results_section(outcome, design)
+        grouping <- classify_outcomes_analysis_results_grouping(outcome, design.component)
         short.label <- shorten_outcomes_analysis_results_label(outcome)
 
         expand.nested <- isTRUE(all) && grepl("^(Quality of life|Disability)\\b", outcome)
@@ -200,66 +226,103 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
             measures <- trimws(unlist(strsplit(effect.measure, ";", fixed = TRUE)))
             measures <- measures[nzchar(measures)]
             for (measure in measures) {
-                add.spec(short.label, measure, section)
+                add.spec(
+                    short.label,
+                    measure,
+                    grouping$primacy,
+                    grouping$design,
+                    grouping$timing
+                )
             }
             next
         }
 
         if (grepl("^Quality of life\\b", outcome)) {
             for (domain in eq5d.domains) {
-                add.spec(paste0("EQ-5D-5L ", domain), "COR", section)
+                add.spec(
+                    paste0("EQ-5D-5L ", domain),
+                    "COR",
+                    grouping$primacy,
+                    grouping$design,
+                    grouping$timing
+                )
             }
-            add.spec("EQ-5D-5L VAS", "mean difference", section)
+            add.spec(
+                "EQ-5D-5L VAS",
+                "mean difference",
+                grouping$primacy,
+                grouping$design,
+                grouping$timing
+            )
         } else {
             for (domain in whodas.domains) {
-                add.spec(paste0("WHODAS 2.0 ", domain), "COR", section)
+                add.spec(
+                    paste0("WHODAS 2.0 ", domain),
+                    "COR",
+                    grouping$primacy,
+                    grouping$design,
+                    grouping$timing
+                )
             }
-            add.spec("WHODAS 2.0 summary score", "mean difference", section)
+            add.spec(
+                "WHODAS 2.0 summary score",
+                "mean difference",
+                grouping$primacy,
+                grouping$design,
+                grouping$timing
+            )
         }
     }
 
-    section.ranks <- match(
-        vapply(specs, function(spec) spec$section, character(1)),
-        section.order
-    )
-    section.ranks[is.na(section.ranks)] <- length(section.order) + 1L
-    specs[order(section.ranks, seq_along(specs))]
+    group.keys <- vapply(specs, function(spec) {
+        paste(spec$primacy, spec$design, spec$timing, sep = "|")
+    }, character(1))
+    group.ranks <- match(group.keys, group.order)
+    group.ranks[is.na(group.ranks)] <- length(group.order) + 1L
+    specs[order(group.ranks, seq_along(specs))]
 }
 
-#' Classify an outcomes-summary row into an analysis-results section header
-classify_outcomes_analysis_results_section <- function(outcome, design) {
+#' Classify an outcomes-summary row into primacy, design, and timing columns
+classify_outcomes_analysis_results_grouping <- function(outcome, design) {
     if (grepl("^Primary outcome", outcome)) {
-        return("Primary outcome")
+        return(list(
+            primacy = "Primary",
+            design = "Main stepped-wedge",
+            timing = "Within 30 days"
+        ))
     }
-    if (identical(design, "Main stepped-wedge")) {
-        if (grepl("within 24 hours", outcome)) {
-            return("Main stepped-wedge outcomes within 24 hours")
-        }
-        if (grepl("at 30 days|within 30 days", outcome) &&
-            !grepl("three months|3 months", outcome)) {
-            return("Main stepped-wedge outcomes at 30 days")
-        }
-        if (grepl("three months|3 months", outcome)) {
-            return("Main stepped-wedge outcomes at three months")
-        }
-        return("Main stepped-wedge outcomes during hospital stay")
+
+    design.label <- if (identical(design, "Main stepped-wedge")) {
+        "Main stepped-wedge"
+    } else if (identical(design, "Nested staircase")) {
+        "Nested staircase"
+    } else {
+        design
     }
-    if (grepl("Adherence|resuscitation", outcome)) {
-        return("Nested staircase outcomes during initial resuscitation")
+
+    timing <- if (grepl("Adherence|resuscitation", outcome)) {
+        "During initial resuscitation"
+    } else if (grepl("within 24 hours", outcome)) {
+        "Within 24 hours"
+    } else if (grepl("within seven days|within 7 days", outcome)) {
+        "Within seven days of discharge"
+    } else if (grepl("at 30 days|within 30 days", outcome) &&
+        !grepl("three months|3 months", outcome)) {
+        "At 30 days"
+    } else if (grepl("three months|3 months", outcome)) {
+        "At three months"
+    } else {
+        "During hospital stay"
     }
-    if (grepl("within seven days|within 7 days", outcome)) {
-        return("Nested staircase outcomes within seven days of discharge")
-    }
-    if (grepl("at 30 days", outcome)) {
-        return("Nested staircase outcomes at 30 days after arrival at the emergency department")
-    }
-    if (grepl("three months|3 months", outcome)) {
-        return("Nested staircase outcomes at three months after arrival at the emergency department")
-    }
-    design
+
+    list(
+        primacy = "Secondary",
+        design = design.label,
+        timing = timing
+    )
 }
 
-#' Shorten outcome labels when timing is conveyed by the section header
+#' Shorten outcome labels when timing is conveyed by the Timing column
 shorten_outcomes_analysis_results_label <- function(outcome) {
     label <- sub("^Primary outcome:\\s*", "", outcome)
     label <- sub("\\s+within 24 hours of arrival at the emergency department$", "", label)
