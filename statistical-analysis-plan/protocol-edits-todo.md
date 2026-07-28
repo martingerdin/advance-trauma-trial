@@ -34,4 +34,6 @@ Minimal protocol changes needed to stay consistent with the revised Statistical 
 
 ## Parking lot (only if a later SAP decision forces it)
 
+- [ ] **P4 (from I1) — optional sync.** Protocol still includes `../shared-assets/sample-size-calculations.qmd`, which says “simple random sampling on the shift level”; the SAP nested include correctly says stratified random sampling by shift. *Minimal edit when amending the protocol: align that phrase (or switch the protocol include to the nested/main split used by the SAP).*
+
 _Add further minimal protocol edits here only when an approved SAP change creates a new material conflict that cannot be resolved by adjusting the SAP._

@@ -1,1 +1,13 @@
+<!--
+  sap-revision-todo I2 (comments id=80, id=81, id=82): preferred shared-include rephrasing
+  (do not apply here until a coordinated protocol / shared-assets pass; SAP has a preface instead):
+
+  The secondary outcomes measured using the nested staircase design are adherence to
+  ATLS® principles during initial patient resuscitation, quality of life, and disability.
+  The power calculations presented here are intended only to inform the sample size
+  required for their data collection within the nested staircase design.
+
+  Also prefer "The expected effects of the intervention on these outcomes are …"
+  (subject–verb agreement) in place of "The expected effect … are …".
+-->
 The secondary outcomes that will be measured using the nested staircase design are secondary outcomes, and the power calculations presented here are intended only to inform the sample size required for their data collection within the nested staircase design. These outcomes are adherence to ATLS^®^ principles during initial patient resuscitation, quality of life, and disability. The expected effect of the intervention on each of these outcomes are an improvement in adherence from 50% during standard care to 70% after training [@lashoher_implementation_2017], an increase in EQ5D5L health status from 70 during care to 75 after training [@kapitan_effect_2024], and finally a decrease in disability from a baseline value of 25 during standard care to 22.5 after training [@higgins_psychometric_2021]. For quality of life and disability, these effects correspond to standardised effect sizes, expressed as Cohen's d, of 0.5. With 30 clusters in total, six per sequence, for a discrete time decay correlation structure, with ICCs of 0.01 to 0.15 and a CAC of 0.8, there is >80% power to detect these effects by including four patients in each cluster in each period. Accounting for loss to follow-up, we will include at least six patients per cluster per month. These patients will be a random subset of patients included in the primary outcome data collection during the staircase months. The random subset will be selected using stratified random sampling by shift, meaning that the timing of the clinical research coordinator's shift will be randomised to cover approximately eight hours during the morning, afternoon, or night shift. Adherence to ATLS^®^ principles, quality of life, and disability will be measured in all patients included during these shifts. In each hospital, the number of shifts that will be randomised will be determined by the volume of patients included during the months preceding the staircase months. 

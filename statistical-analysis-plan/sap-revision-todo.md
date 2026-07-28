@@ -126,13 +126,13 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 ## I. Already resolved in shared includes — verify only
 
-- [ ] **I1. Nested-outcomes sampling described as stratified sampling by shift.** Already updated in `../shared-assets/sample-size-calculations-nested.qmd` (now "stratified random sampling by shift"). Confirm the stale wording ("simple random sampling on the shift level") in the unused `../shared-assets/sample-size-calculations.qmd` does not get included anywhere. _(Comments id=83, id=84, id=85, id=86)_ **[verify]**
+- [x] **I1. Nested-outcomes sampling described as stratified sampling by shift.** Already updated in `../shared-assets/sample-size-calculations-nested.qmd` (now "stratified random sampling by shift"). Confirm the stale wording ("simple random sampling on the shift level") in the unused `../shared-assets/sample-size-calculations.qmd` does not get included anywhere. _(Comments id=83, id=84, id=85, id=86)_ **[verify]** — SAP OK; protocol stale text noted as optional P4
 
-- [ ] **I2. Secondary-outcome / power framing.** `../shared-assets/sample-size-calculations-nested.qmd` already clarifies these are secondary outcomes whose power calculations only inform data-collection sample size. Confirm wording reads cleanly (there is a minor "are secondary outcomes are …" phrasing to tidy). _(Comments id=80, id=81, id=82)_ **[verify]**
+- [x] **I2. Secondary-outcome / power framing.** `../shared-assets/sample-size-calculations-nested.qmd` already clarifies these are secondary outcomes whose power calculations only inform data-collection sample size. Confirm wording reads cleanly (there is a minor "are secondary outcomes are …" phrasing to tidy). _(Comments id=80, id=81, id=82)_ **[verify]** — SAP-only preface; preferred rephrase noted as comment in nested include
 
-- [ ] **I3. Region defined by official state.** Confirm the subgroup/region wording notes the number of states depends on the final set of participating clusters and cannot be prespecified. _(Comments id=238, id=239)_ **[verify]**
+- [x] **I3. Region defined by official state.** Confirm the subgroup/region wording notes the number of states depends on the final set of participating clusters and cannot be prespecified. _(Comments id=238, id=239)_ **[verify]**
 
-- [ ] **I4. Staircase random-selection cross-reference.** Confirm the randomisation section cross-references the nested staircase sampling description so the reader is not left wondering where random selection for the staircase is defined. _(Comments id=45 KH, id=46 AO)_ **[verify]**
+- [x] **I4. Staircase random-selection cross-reference.** Confirm the randomisation section cross-references the nested staircase sampling description so the reader is not left wondering where random selection for the staircase is defined. _(Comments id=45 KH, id=46 AO)_ **[verify]**
 
 ---
 
