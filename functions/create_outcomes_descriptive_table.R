@@ -69,7 +69,22 @@ create_outcomes_descriptive_table <- function(data = NULL,
     )
     nested.section <- "Secondary outcomes (nested staircase design)"
     main.section <- "Secondary outcomes (main stepped-wedge design)"
-    likert.levels <- as.character(1:5)
+    ## EuroQol EQ-5D-5L severity labels (generic across domains for shell tables)
+    eq5d.levels <- c(
+        "1. No problems",
+        "2. Slight problems",
+        "3. Moderate problems",
+        "4. Severe problems",
+        "5. Extreme problems"
+    )
+    ## WHODAS 2.0 difficulty response scale
+    whodas.levels <- c(
+        "1. None",
+        "2. Mild",
+        "3. Moderate",
+        "4. Severe",
+        "5. Extreme or cannot do"
+    )
 
     eq5d.domains <- list(
         list(slug = "mobility", label = "mobility"),
@@ -173,7 +188,7 @@ create_outcomes_descriptive_table <- function(data = NULL,
                     label = paste0("EQ-5D-5L ", domain$label, " ", timepoint),
                     source = "external",
                     summary = "categorical",
-                    levels = likert.levels,
+                    levels = eq5d.levels,
                     section = nested.section
                 )))
             }
@@ -190,7 +205,7 @@ create_outcomes_descriptive_table <- function(data = NULL,
                     label = paste0("WHODAS 2.0 ", domain$label, " ", timepoint),
                     source = "external",
                     summary = "categorical",
-                    levels = likert.levels,
+                    levels = whodas.levels,
                     section = nested.section
                 )))
             }
