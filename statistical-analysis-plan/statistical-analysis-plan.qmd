@@ -672,6 +672,21 @@ $$ {#eq-beta-model}
 
 Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The intervention effect $\theta$ represents the difference in expected adherence proportion on the logit (link) scale. Because the observed adherence proportion may take values of 0 or 1, values will be rescaled to lie in the open interval $(0,1)$ prior to fitting the beta regression model. A beta regression precision (dispersion) parameter will be estimated as part of the model.
 
+## Presentation of analysis results
+
+<!-- sap-revision-todo J2: gtsummary tbl_regression-style shell for primary and secondary effect estimates. -->
+Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. Results tables will be prepared in the style of `gtsummary::tbl_regression`. See @tbl-outcomes-analysis-results.
+
+```{r}
+#| label: tbl-outcomes-analysis-results
+#| tbl-cap: "Shell table of primary and secondary outcome analysis results"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_outcomes_analysis_results_table()
+```
+
 # Supplementary tables
 
 ```{r}
