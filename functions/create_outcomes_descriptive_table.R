@@ -69,15 +69,7 @@ create_outcomes_descriptive_table <- function(data = NULL,
     )
     nested.section <- "Secondary outcomes (nested staircase design)"
     main.section <- "Secondary outcomes (main stepped-wedge design)"
-    ## EuroQol EQ-5D-5L severity labels (generic across domains for shell tables)
-    eq5d.levels <- c(
-        "1. No problems",
-        "2. Slight problems",
-        "3. Moderate problems",
-        "4. Severe problems",
-        "5. Extreme problems"
-    )
-    ## WHODAS 2.0 difficulty response scale
+    ## WHODAS 2.0 difficulty response scale (same wording across domains)
     whodas.levels <- c(
         "1. None",
         "2. Mild",
@@ -85,13 +77,62 @@ create_outcomes_descriptive_table <- function(data = NULL,
         "4. Severe",
         "5. Extreme or cannot do"
     )
-
     eq5d.domains <- list(
-        list(slug = "mobility", label = "mobility"),
-        list(slug = "self_care", label = "self-care"),
-        list(slug = "usual_activities", label = "usual activities"),
-        list(slug = "pain_discomfort", label = "pain/discomfort"),
-        list(slug = "anxiety_depression", label = "anxiety/depression")
+        list(
+            slug = "mobility",
+            label = "mobility",
+            levels = c(
+                "1. I have no problems in walking about",
+                "2. I have slight problems in walking about",
+                "3. I have moderate problems in walking about",
+                "4. I have severe problems in walking about",
+                "5. I am unable to walk about"
+            )
+        ),
+        list(
+            slug = "self_care",
+            label = "self-care",
+            levels = c(
+                "1. I have no problems washing or dressing myself",
+                "2. I have slight problems washing or dressing myself",
+                "3. I have moderate problems washing or dressing myself",
+                "4. I have severe problems washing or dressing myself",
+                "5. I am unable to wash or dress myself"
+            )
+        ),
+        list(
+            slug = "usual_activities",
+            label = "usual activities",
+            levels = c(
+                "1. I have no problems doing my usual activities",
+                "2. I have slight problems doing my usual activities",
+                "3. I have moderate problems doing my usual activities",
+                "4. I have severe problems doing my usual activities",
+                "5. I am unable to do my usual activities"
+            )
+        ),
+        list(
+            slug = "pain_discomfort",
+            label = "pain/discomfort",
+            levels = c(
+                "1. I have no pain or discomfort",
+                "2. I have slight pain or discomfort",
+                "3. I have moderate pain or discomfort",
+                "4. I have severe pain or discomfort",
+                "5. I have extreme pain or discomfort"
+            )
+        ),
+        list(
+            slug = "anxiety_depression",
+            label = "anxiety/depression",
+            levels = c(
+                "1. I am not anxious or depressed",
+                "2. I am slightly anxious or depressed",
+                "3. I am moderately anxious or depressed",
+                "4. I am severely anxious or depressed",
+                "5. I am extremely anxious or depressed"
+            )
+        )
     )
     whodas.domains <- list(
         list(slug = "cognition", label = "cognition"),
@@ -188,7 +229,7 @@ create_outcomes_descriptive_table <- function(data = NULL,
                     label = paste0("EQ-5D-5L ", domain$label, " ", timepoint),
                     source = "external",
                     summary = "categorical",
-                    levels = eq5d.levels,
+                    levels = domain$levels,
                     section = nested.section
                 )))
             }
