@@ -674,12 +674,12 @@ Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The inte
 
 ## Presentation of analysis results
 
-<!-- sap-revision-todo J2: gtsummary tbl_regression-style shell for primary and secondary effect estimates. -->
-Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. Results tables will be prepared in the style of `gtsummary::tbl_regression`. See @tbl-outcomes-analysis-results.
+<!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells with design and time-point sections. -->
+Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. Results tables will be prepared in the style of `gtsummary::tbl_regression`. We will present key outcome analyses in the results section, and present all outcome analyses as supplementary tables. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
 
 ```{r}
 #| label: tbl-outcomes-analysis-results
-#| tbl-cap: "Shell table of primary and secondary outcome analysis results"
+#| tbl-cap: "Shell table of key primary and secondary outcome analysis results"
 #| echo: false
 #| message: false
 #| warning: false
@@ -707,6 +707,16 @@ create_patient_characteristics_table(all = TRUE)
 #| warning: false
 #| results: asis
 create_outcomes_descriptive_table(all = TRUE)
+```
+
+```{r}
+#| label: tbl-outcomes-analysis-results-all
+#| tbl-cap: "Shell table of all primary and secondary outcome analysis results"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_outcomes_analysis_results_table(all = TRUE)
 ```
 
 # References {.numbered}

@@ -140,7 +140,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J1. Add summary shell table of all outcomes.** Add a second summary table of outcomes, similar to the first one, but including all secondary outcomes. — `create_outcomes_descriptive_table(all = TRUE)` with EQ-5D-5L domains/VAS and WHODAS domains grouped by follow-up time point; key table in results; all in supplementary
 
-- [ ] **J2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.** — awaiting approval: `@tbl-outcomes-analysis-results` from `outcomes-summary.json` (blank Estimate / 95% CI / P-value)
+- [ ] **J2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.** — awaiting approval: key/`all` `tbl_regression` shells with design and time-point section headers
 
 - [ ] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.**
 
