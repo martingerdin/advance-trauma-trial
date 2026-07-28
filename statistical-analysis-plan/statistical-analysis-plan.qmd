@@ -326,11 +326,12 @@ create_patient_characteristics_table()
 
 ### Outcomes
 
-Summaries of primary and secondary outcomes will be presented in the results section, stratified by before and after ATLS training and overall, using the same summary statistics as the patient characteristics tables. Missing values will be reported for each outcome. See @tbl-outcomes-descriptive for details.
+<!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L/WHODAS in supplementary). -->
+Summaries of primary and secondary outcomes will be presented in the results section, stratified by before and after ATLS training and overall, using the same summary statistics as the patient characteristics tables. Missing values will be reported for each outcome. We will present key outcome summaries in the results section, and present all outcome summaries as supplementary tables. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
 
 ```{r}
 #| label: tbl-outcomes-descriptive
-#| tbl-cap: "Descriptive summaries of outcomes"
+#| tbl-cap: "Descriptive summaries of key outcomes"
 #| echo: false
 #| message: false
 #| warning: false
@@ -681,6 +682,16 @@ Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The inte
 #| warning: false
 #| results: asis
 create_patient_characteristics_table(all = TRUE)
+```
+
+```{r}
+#| label: tbl-outcomes-descriptive-all
+#| tbl-cap: "Descriptive summaries of all outcomes"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_outcomes_descriptive_table(all = TRUE)
 ```
 
 # References {.numbered}
