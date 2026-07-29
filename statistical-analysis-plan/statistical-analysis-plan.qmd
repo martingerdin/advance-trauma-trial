@@ -674,8 +674,8 @@ Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The inte
 
 ## Presentation of analysis results
 
-<!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells with design and time-point sections. -->
-Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. Results tables will be prepared in the style of `gtsummary::tbl_regression`. We will present key outcome analyses in the results section, and present all outcome analyses as supplementary tables. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
+<!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
+Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. Results tables will be prepared in the style of `gtsummary::tbl_regression`, using the same section headers and label style as the descriptive outcome summaries. We will present key outcome analyses in the results section, and present all outcome analyses as supplementary tables. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
 
 ```{r}
 #| label: tbl-outcomes-analysis-results

@@ -64,19 +64,27 @@ finalize_longtable_latex <- function(kable.latex) {
 #' Insert section header rows into a gtsummary table body
 #'
 #' When requests include a `section` element, inserts a bold header row before
-#' the first outcome in each section.
+#' the first outcome in each section. `section` may be a single string or a
+#' character vector of nested headers (e.g. overarching group then subgroup);
+#' each distinct header is inserted the first time it appears.
 insert_table_section_headers <- function(tbl, requests) {
     has.sections <- any(vapply(requests, function(request) {
-        !is.null(request$section) && nzchar(request$section)
+        sections <- request$section
+        !is.null(sections) && any(nzchar(as.character(sections)))
     }, logical(1)))
     if (!has.sections) {
         return(tbl)
     }
 
     variable.sections <- stats::setNames(
-        vapply(requests, function(request) {
-            if (is.null(request$section)) "" else request$section
-        }, character(1)),
+        lapply(requests, function(request) {
+            sections <- request$section
+            if (is.null(sections)) {
+                character(0)
+            } else {
+                as.character(sections)
+            }
+        }),
         vapply(requests, function(request) request$field, character(1))
     )
 
@@ -88,20 +96,22 @@ insert_table_section_headers <- function(tbl, requests) {
     for (i in seq_len(nrow(table.body))) {
         row <- table.body[i, , drop = FALSE]
         if (identical(row$row_type, "label") && row$variable %in% names(variable.sections)) {
-            section <- unname(variable.sections[[row$variable]])
-            if (nzchar(section) && !section %in% sections.seen) {
-                sections.seen <- c(sections.seen, section)
-                header.row <- row
-                header.row$variable <- paste0(".section_", length(sections.seen))
-                header.row$var_type <- "section"
-                header.row$row_type <- "section"
-                header.row$var_label <- ""
-                header.row$label <- section
-                header.row$stat_label <- ""
-                for (statistic.column in statistic.columns) {
-                    header.row[[statistic.column]] <- ""
+            sections <- unname(variable.sections[[row$variable]])
+            for (section in sections) {
+                if (nzchar(section) && !section %in% sections.seen) {
+                    sections.seen <- c(sections.seen, section)
+                    header.row <- row
+                    header.row$variable <- paste0(".section_", length(sections.seen))
+                    header.row$var_type <- "section"
+                    header.row$row_type <- "section"
+                    header.row$var_label <- ""
+                    header.row$label <- section
+                    header.row$stat_label <- ""
+                    for (statistic.column in statistic.columns) {
+                        header.row[[statistic.column]] <- ""
+                    }
+                    new.rows <- c(new.rows, list(header.row))
                 }
-                new.rows <- c(new.rows, list(header.row))
             }
         }
         new.rows <- c(new.rows, list(row))
@@ -113,9 +123,14 @@ insert_table_section_headers <- function(tbl, requests) {
 
 #' Extract ordered unique section labels from table requests
 get_table_section_labels <- function(requests) {
-    sections <- vapply(requests, function(request) {
-        if (is.null(request$section)) "" else request$section
-    }, character(1))
+    sections <- unlist(lapply(requests, function(request) {
+        request.sections <- request$section
+        if (is.null(request.sections)) {
+            character(0)
+        } else {
+            as.character(request.sections)
+        }
+    }), use.names = FALSE)
     sections <- sections[nzchar(sections)]
     sections[!duplicated(sections)]
 }
@@ -137,9 +152,9 @@ format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels)
         )
         patterns <- c(
             paste0("<span[^>]*>\\*\\*", escaped.section, "\\*\\*,?\\s*</span>\\s*", empty.columns, "\\\\"),
-            paste0("\\*\\*", escaped.section, "\\*\\*,\\s*", empty.columns, "\\\\"),
-            paste0("\\\\textbf\\{", escaped.section, "\\},\\s*", empty.columns, "\\\\"),
-            paste0(escaped.section, ",\\s*", empty.columns, "\\\\")
+            paste0("\\*\\*", escaped.section, "\\*\\*,?\\s*", empty.columns, "\\\\"),
+            paste0("\\\\textbf\\{", escaped.section, "\\},?\\s*", empty.columns, "\\\\"),
+            paste0(escaped.section, ",?\\s*", empty.columns, "\\\\")
         )
         for (pattern in patterns) {
             kable.latex <- gsub(pattern, replacement, kable.latex, perl = TRUE)

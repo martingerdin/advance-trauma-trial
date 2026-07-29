@@ -62,25 +62,26 @@ create_outcomes_descriptive_table <- function(data = NULL,
         )
     }
 
+    sections <- outcomes_shell_section_labels()
     timepoints <- list(
         list(
             label = "within seven days of discharge",
             slug = "within_seven_days_of_discharge",
-            section = "Secondary outcomes within seven days of discharge (nested staircase design)"
+            section = sections$nested_seven_days
         ),
         list(
             label = "at 30 days",
             slug = "at_30_days",
-            section = "Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)"
+            section = sections$nested_30_days
         ),
         list(
             label = "at three months",
             slug = "at_three_months",
-            section = "Secondary outcomes at three months after arrival at the emergency department (nested staircase design)"
+            section = sections$nested_three_months
         )
     )
-    adherence.section <- "Secondary outcomes during initial resuscitation (nested staircase design)"
-    main.section <- "Secondary outcomes (main stepped-wedge design)"
+    adherence.section <- sections$nested_resuscitation
+    main.section <- sections$main_stepped_wedge
     ## WHODAS 2.0 difficulty response scale (same wording across domains)
     whodas.levels <- c(
         "1. None",
@@ -160,7 +161,7 @@ create_outcomes_descriptive_table <- function(data = NULL,
         list(field = "inhospital_mortality_30d",
              label = "In-hospital mortality within 30 days",
              source = "external", summary = "dichotomous",
-             section = "Primary outcome"),
+             section = sections$primary),
 
         ## Secondary outcomes (main stepped-wedge design)
         list(field = "all_cause_mortality_24h",

@@ -140,14 +140,18 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J1. Add summary shell table of all outcomes.** Add a second summary table of outcomes, similar to the first one, but including all secondary outcomes. — `create_outcomes_descriptive_table(all = TRUE)` with EQ-5D-5L domains/VAS and WHODAS domains grouped by follow-up time point; key table in results; all in supplementary
 
-- [ ] **J2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.** — awaiting approval: key/`all` `tbl_regression` shells with design and time-point section headers
+- [x] **J2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.** — awaiting approval: key/`all` `tbl_regression` shells with design and time-point section headers
 
 - [ ] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.**
 
-- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the intermin analyses**
+- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses**
 
 - [ ] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none**
 
-- [ ] **J6. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP.
+- [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables, for example on ICC**
+
+- [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?**
+
+- [ ] **J7. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP.
 
 
