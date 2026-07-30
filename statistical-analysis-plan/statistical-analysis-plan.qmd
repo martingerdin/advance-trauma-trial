@@ -687,6 +687,19 @@ Intervention-effect estimates for the primary and secondary outcomes will be rep
 create_outcomes_analysis_results_table()
 ```
 
+<!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
+Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will be reported in the same style. See @tbl-additional-analyses-results.
+
+```{r}
+#| label: tbl-additional-analyses-results
+#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_additional_analyses_results_table()
+```
+
 # Supplementary tables
 
 ```{r}

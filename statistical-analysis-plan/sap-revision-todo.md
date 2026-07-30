@@ -140,9 +140,9 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J1. Add summary shell table of all outcomes.** Add a second summary table of outcomes, similar to the first one, but including all secondary outcomes. — `create_outcomes_descriptive_table(all = TRUE)` with EQ-5D-5L domains/VAS and WHODAS domains grouped by follow-up time point; key table in results; all in supplementary
 
-- [x] **J2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.** — awaiting approval: key/`all` `tbl_regression` shells with design and time-point section headers
+- [x] **J2. Add summary shell table of the results of the analysis of the primary and secondary outcomes.** — key/`all` `tbl_regression` shells; shared descriptive section headers; effect measure in outcome label
 
-- [ ] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.**
+- [x] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.** — `@tbl-additional-analyses-results`; primary-outcome shell with Sensitivity / Fully adjusted / Subgroup sections
 
 - [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses**
 
