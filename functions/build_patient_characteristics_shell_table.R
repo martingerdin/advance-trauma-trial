@@ -183,6 +183,14 @@ format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels)
 #' @param dropped.levels Character. Categorical levels to omit from the shell.
 #' @param label.width Numeric. Fraction of `\linewidth` for the label column in
 #'     PDF/LaTeX output.
+#' @param continuous.statistics Character. `gtsummary` statistic template for
+#'     continuous variables. Defaults to `"{median} ({p25}, {p75})"`.
+#' @param missing Character. Passed to `gtsummary::tbl_summary()` (`"always"`,
+#'     `"ifany"`, or `"no"`). Defaults to `"always"`.
+#' @param spanning.header Character or NULL. Spanning header over the stratum
+#'     columns. Defaults to `"**ATLS training**"`. Use NULL to omit.
+#' @param force.stat.label Character or NULL. If set, replace all non-section
+#'     `stat_label` values (e.g. `"n"` for count shells).
 #' @return A `gtsummary` or `kableExtra` table object, or, when `longtable =
 #'     TRUE` in LaTeX output, a `knitr_asis` object containing raw LaTeX.
 build_patient_characteristics_shell_table <- function(data,
@@ -192,10 +200,13 @@ build_patient_characteristics_shell_table <- function(data,
                                                       longtable = FALSE,
                                                       label.header = "**Characteristic**",
                                                       dropped.levels = c("Not sure", "Not known", "999. Not known"),
-                                                      label.width = 0.34) {
+                                                      label.width = 0.34,
+                                                      continuous.statistics = "{median} ({p25}, {p75})",
+                                                      missing = "always",
+                                                      spanning.header = "**ATLS training**",
+                                                      force.stat.label = NULL) {
     cell.placeholder <- ""
     dichotomous.value <- "Yes"
-    continuous.statistics <- "{median} ({p25}, {p75})"
     missing.text <- "Missing"
 
     specifications <- lapply(requests, function(request) {
@@ -215,6 +226,10 @@ build_patient_characteristics_shell_table <- function(data,
 
         if (!is.null(request$summary)) {
             specification$type <- request$summary
+        }
+        ## Count metrics use continuous placeholders; statistic is blanked in the shell
+        if (identical(specification$type, "count")) {
+            specification$type <- "continuous"
         }
         if (identical(specification$type, "dichotomous")) {
             specification$levels <- c(dichotomous.value, "No")
@@ -263,7 +278,7 @@ build_patient_characteristics_shell_table <- function(data,
             gtsummary::all_categorical() ~ "{n} ({p}%)",
             gtsummary::all_continuous() ~ continuous.statistics
         ),
-        missing = "always",
+        missing = missing,
         missing_text = missing.text
     )
     if (include.overall) {
@@ -287,11 +302,24 @@ build_patient_characteristics_shell_table <- function(data,
         gtsummary::modify_header(
             label ~ label.header,
             gtsummary::all_stat_cols() ~ "**{level}**"
-        ) |>
-        gtsummary::modify_spanning_header(
-            gtsummary::all_stat_cols(stat_0 = FALSE) ~ "**ATLS training**"
-        ) |>
-        gtsummary::add_stat_label()
+        )
+    if (!is.null(spanning.header) && nzchar(spanning.header)) {
+        patient.table <- gtsummary::modify_spanning_header(
+            patient.table,
+            gtsummary::all_stat_cols(stat_0 = FALSE) ~ spanning.header
+        )
+    }
+    patient.table <- gtsummary::add_stat_label(patient.table)
+
+    if (!is.null(force.stat.label) && nzchar(force.stat.label)) {
+        patient.table <- gtsummary::modify_table_body(
+            patient.table,
+            function(table.body) {
+                table.body$stat_label[table.body$row_type == "label"] <- force.stat.label
+                table.body
+            }
+        )
+    }
 
     patient.table <- insert_table_section_headers(patient.table, requests)
     section.labels <- get_table_section_labels(requests)

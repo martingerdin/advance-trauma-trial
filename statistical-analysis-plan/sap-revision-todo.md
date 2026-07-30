@@ -76,7 +76,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **D1. Soften the fixed "6-month overlap" commitment in the design description.** Reviewer felt the SAP should not tie itself down too tightly to the anticipated overlap between successive batches (`statistical-analysis-plan.qmd` ~line 93). Reword to indicate this is anticipated/approximate rather than fixed. _(Comment id=36 KH)_ **[decision]**
 
-- [-] **D2. Add detail on the CCR random seed / random selection step.** Reviewer asked how the seed was chosen for covariate-constrained randomisation (`statistical-analysis-plan.qmd` ~lines 149–155). James (JM) to add how the final allocation was selected at random (seed / reproducibility). _(Comments id=43 KH, id=44 MGW — "James to add")_ **[decision]**
+- [-] **D2. Add detail on the CCR random seed / random selection step.** Reviewer asked how the seed was chosen for covariate-constrained randomisation (`statistical-analysis-plan.qmd` ~lines 149–155). James (JM) to add how the final allocation was selected at random (seed / reproducibility). _(Comments id=43 KH, id=44 MGW — "James to add")_ **[decision]** — [#6](https://github.com/martingerdin/advance-trauma-trial/issues/6)
 
 - [x] **D3. Add allocation ratio and repeated-measures statement to the trial-design description.** Ensure the "Design" section (`statistical-analysis-plan.qmd` ~lines 89–95) explicitly gives the definition of cluster, target number of clusters, number of intervention conditions, allocation ratio, whether clusters/participants are repeatedly measured, number of sequences, clusters per sequence, number of periods, and anticipated calendar duration. _(Comments id=3 MGW, id=4 AO; Round Two)_ **[verify]**
 
@@ -144,14 +144,14 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.** — `@tbl-additional-analyses-results`; primary-outcome shell with Sensitivity / Fully adjusted / Subgroup sections
 
-- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: interim report contents after shared include (aligned with SDMC charter; no efficacy stopping; sample-size recalculation remains omitted)
+- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: single Interim analysis list (aligned former outline; detailed shells deferred) — [#1](https://github.com/martingerdin/advance-trauma-trial/issues/1)
 
-- [ ] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none**
+- [ ] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
 
-- [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC**
+- [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC** — [#3](https://github.com/martingerdin/advance-trauma-trial/issues/3)
 
-- [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?**
+- [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
 
-- [ ] **J7. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP.
+- [ ] **J8. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP. — [#5](https://github.com/martingerdin/advance-trauma-trial/issues/5)
 
 
