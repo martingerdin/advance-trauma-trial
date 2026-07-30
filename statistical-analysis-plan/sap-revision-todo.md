@@ -144,11 +144,11 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.** — `@tbl-additional-analyses-results`; primary-outcome shell with Sensitivity / Fully adjusted / Subgroup sections
 
-- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses**
+- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: interim report contents after shared include (aligned with SDMC charter; no efficacy stopping; sample-size recalculation remains omitted)
 
 - [ ] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none**
 
-- [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables, for example on ICC**
+- [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC**
 
 - [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?**
 

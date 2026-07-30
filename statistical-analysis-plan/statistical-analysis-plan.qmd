@@ -343,6 +343,21 @@ create_outcomes_descriptive_table()
 
 {{< include ../shared-assets/interim-analysis.qmd >}}
 
+<!-- sap-revision-todo J4: content of the interim report to the joint SDMC. -->
+The Trial Team will prepare the interim analysis report for the joint Trial Steering and Data Monitoring Committee (SDMC), for approval by the Trial Management Group before circulation. The report will follow the standard SDMC report template and will include:
+
+- numbers of clusters included and dropping out;
+- numbers of potentially eligible participants screened, participants included, participants who did not consent to out-of-hospital follow-up, and participants lost to follow-up, overall and by intervention condition;
+- adherence to the randomisation schedule and reasons for non-adherence;
+- completeness of primary and secondary outcome data, overall and by intervention condition;
+- summary statistics of included clusters and patient participants by intervention condition, to monitor for differential recruitment or ascertainment;
+- numbers of physicians trained in ATLS® in each hospital;
+- protocol deviations and proposed protocol amendments;
+- safety events, as defined for SDMC monitoring; and
+- relevant external evidence.
+
+No formal interim efficacy analysis or efficacy-based stopping rule will be applied. Outcomes will not be compared across intervention conditions in the interim report, to avoid biasing the SDMC or Trial Management Group. The SDMC will use the interim report to advise whether the trial remains feasible and should continue as planned.
+
 <!-- 
 Removed the recalculation of the sample size from the interim analysis after discussion with Karla and James on 2024-10-16. The rationale was that the estimates would be associated with so much uncertainty and that it wouldn't change things.
 
