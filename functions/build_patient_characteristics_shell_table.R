@@ -234,6 +234,15 @@ build_patient_characteristics_shell_table <- function(data,
         if (identical(specification$type, "dichotomous")) {
             specification$levels <- c(dichotomous.value, "No")
         }
+        if (!is.null(request$prepend.levels) && length(request$prepend.levels) > 0L) {
+            specification$levels <- c(
+                as.character(request$prepend.levels),
+                specification$levels
+            )
+        }
+        if (!is.null(request$levels) && identical(request$source, "external")) {
+            specification$levels <- as.character(request$levels)
+        }
 
         specification$levels <- specification$levels[!specification$levels %in% dropped.levels]
         specification$label <- request$label

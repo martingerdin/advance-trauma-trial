@@ -717,6 +717,7 @@ create_additional_analyses_results_table()
 
 # Supplementary tables
 
+<!-- sap-revision-todo J5: Charlson severity fields reported as none when Charlson is none. -->
 ```{r}
 #| label: tbl-patient-characteristics-all
 #| tbl-cap: "All patient characteristics"

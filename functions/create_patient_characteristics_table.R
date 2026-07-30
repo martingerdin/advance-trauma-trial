@@ -114,9 +114,25 @@ create_patient_characteristics_table <- function(data = NULL,
         list(field = "main_work_status", label = "Main work status", source = "dictionary"),
         list(field = "income_level", label = "Income level (INR per month)", source = "dictionary"),
         list(field = "comorbidities", label = "Comorbidities (Charlson Comorbidity Index)", source = "dictionary"),
-        list(field = "liver_disease_severity", label = "Severity of liver disease", source = "dictionary"),
-        list(field = "diabetes_severity", label = "Severity of diabetes", source = "dictionary"),
-        list(field = "malignancy_severity", label = "Severity of malignancy", source = "dictionary"),
+        ## sap-revision-todo J5: prepend None when Charlson is none (CRF hides severity otherwise).
+        list(
+            field = "liver_disease_severity",
+            label = "Severity of liver disease",
+            source = "dictionary",
+            prepend.levels = "None"
+        ),
+        list(
+            field = "diabetes_severity",
+            label = "Severity of diabetes",
+            source = "dictionary",
+            prepend.levels = "None"
+        ),
+        list(
+            field = "malignancy_severity",
+            label = "Severity of malignancy",
+            source = "dictionary",
+            prepend.levels = "None"
+        ),
         list(field = "clinical_frailty_scale", label = "Clinical Frailty Scale", source = "dictionary"),
         list(field = "transport_mode", label = "Mode of transport", source = "dictionary"),
         list(field = "referred", label = "Transferred in", source = "dictionary", summary = "dichotomous"),

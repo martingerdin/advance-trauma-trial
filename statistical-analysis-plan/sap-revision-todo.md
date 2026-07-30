@@ -146,7 +146,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: single Interim analysis list (aligned former outline; detailed shells deferred) — [#1](https://github.com/martingerdin/advance-trauma-trial/issues/1)
 
-- [ ] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
+- [x] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — awaiting approval — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
 
 - [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC** — [#3](https://github.com/martingerdin/advance-trauma-trial/issues/3)
 
