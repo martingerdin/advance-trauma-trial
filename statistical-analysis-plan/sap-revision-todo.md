@@ -144,7 +144,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.** — `@tbl-additional-analyses-results`; primary-outcome shell with Sensitivity / Fully adjusted / Subgroup sections
 
-- [ ] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: single Interim analysis list (aligned former outline; detailed shells deferred) — [#1](https://github.com/martingerdin/advance-trauma-trial/issues/1)
+- [x] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: single Interim analysis list (aligned former outline; detailed shells deferred) — [#1](https://github.com/martingerdin/advance-trauma-trial/issues/1)
 
 - [x] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — awaiting approval — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
 
