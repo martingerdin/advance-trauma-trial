@@ -299,6 +299,7 @@ knitr::include_graphics(
 
 ### Cluster characteristics
 
+<!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
 We will describe cluster characteristics including location and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. See @tbl-cluster-characteristics for details.
 
 ```{r}
@@ -307,12 +308,14 @@ We will describe cluster characteristics including location and size using frequ
 #| echo: false
 #| message: false
 #| warning: false
+#| results: asis
 create_cluster_characteristics_table()
 ```
 
 ### Patient characteristics
 
 <!-- sap-revision-todo E1 (comments id=166 KH, id=167 AO): all eligible patients over entire trial; baseline = characteristics not outcomes. -->
+<!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
 We will describe patient characteristics among all eligible patients over the entire trial period, stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics (i.e. non-outcome variables). We will present key characteristics in the results section, and present all characteristics as supplementary tables. See @tbl-patient-characteristics for key characteristics and @tbl-patient-characteristics-all for all characteristics.
 
 ```{r}
@@ -321,6 +324,7 @@ We will describe patient characteristics among all eligible patients over the en
 #| echo: false
 #| message: false
 #| warning: false
+#| results: asis
 create_patient_characteristics_table()
 ```
 

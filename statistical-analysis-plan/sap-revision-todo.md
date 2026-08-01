@@ -150,7 +150,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC** — `@tbl-correlation-parameters` supplementary shell for all outcomes (ICC, variance components, latent-scale additional for binary, AR(1) parameters) — [#3](https://github.com/martingerdin/advance-trauma-trial/issues/3)
 
-- [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
+- [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — awaiting approval: cluster + key patient shells converted to non-floating longtables — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
 
 - [ ] **J8. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP. — [#5](https://github.com/martingerdin/advance-trauma-trial/issues/5)
 

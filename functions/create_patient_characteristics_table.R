@@ -168,7 +168,9 @@ create_patient_characteristics_table <- function(data = NULL,
         requests = requests,
         groups = groups,
         include.overall = include.overall,
-        longtable = isTRUE(all)
+        ## Always use longtable in PDF so key tables stay in document order
+        ## (floating `table` environments can drift past later longtables).
+        longtable = TRUE
     )
 }
 

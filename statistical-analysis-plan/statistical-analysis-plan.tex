@@ -1037,20 +1037,34 @@ using frequencies and percentages for discrete variables and medians and
 interquartile ranges (Q1-Q3) for continuous variables. See
 Table~\ref{tbl-cluster-characteristics} for details.
 
-\begin{table}
+\begingroup\fontsize{8}{10}\selectfont
+
+\setlength{\tabcolsep}{3pt}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.24\linewidth}*{6}{>{\centering\arraybackslash}p{0.1\linewidth}}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}}
 
 \caption{\label{tbl-cluster-characteristics}Cluster characteristics}
 
-\centering{
+\tabularnewline
 
-\centering\begingroup\fontsize{8}{10}\selectfont
-
-\setlength{\tabcolsep}{3pt}\begin{tabular}{>{\raggedright\arraybackslash}p{0.24\linewidth}*{6}{>{\centering\arraybackslash}p{0.1\linewidth}}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{5}{c}{\textbf{Implementation sequence}} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){2-6}
 \textbf{Characteristic} & \textbf{Sequence 1} & \textbf{Sequence 2} & \textbf{Sequence 3} & \textbf{Sequence 4} & \textbf{Sequence 5} & \textbf{Overall}\\
 \midrule
+\endfirsthead
+\multicolumn{7}{@{\extracolsep{\fill}}l}{\textit{(continued)}}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{\textbf{Implementation sequence}} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-6}
+\textbf{Characteristic} & \textbf{Sequence 1} & \textbf{Sequence 2} & \textbf{Sequence 3} & \textbf{Sequence 4} & \textbf{Sequence 5} & \textbf{Overall}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+
 Monthly trauma patient volume, Median (Q1, Q3) &  &  &  &  &  & \\
 Hospital beds, Median (Q1, Q3) &  &  &  &  &  & \\
 Intensive care unit beds, Median (Q1, Q3) &  &  &  &  &  & \\
@@ -1073,12 +1087,11 @@ Initial resuscitation provider, n (\%) &  &  &  &  &  & \\
 \hspace{1em}Emergency medicine residents &  &  &  &  &  & \\
 \hspace{1em}Surgical residents &  &  &  &  &  & \\
 \bottomrule
-\end{tabular}
+
+\end{longtable}
+
 \endgroup{}
-
-}
-
-\end{table}%
+\par\raggedright
 
 \subsubsection{Patient characteristics}\label{patient-characteristics}
 
@@ -1094,20 +1107,34 @@ tables. See Table~\ref{tbl-patient-characteristics} for key
 characteristics and Table~\ref{tbl-patient-characteristics-all} for all
 characteristics.
 
-\begin{table}
+\begingroup\fontsize{8}{10}\selectfont
+
+\setlength{\tabcolsep}{3pt}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-patient-characteristics}Key patient characteristics}
 
-\centering{
+\tabularnewline
 
-\centering\begingroup\fontsize{8}{10}\selectfont
-
-\setlength{\tabcolsep}{3pt}\begin{tabular}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{2}{c}{\textbf{ATLS training}} & \multicolumn{1}{c}{ } \\
 \cmidrule(l{3pt}r{3pt}){2-3}
 \textbf{Characteristic} & \textbf{Before ATLS} & \textbf{After ATLS} & \textbf{Overall}\\
 \midrule
+\endfirsthead
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textit{(continued)}}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\textbf{ATLS training}} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-3}
+\textbf{Characteristic} & \textbf{Before ATLS} & \textbf{After ATLS} & \textbf{Overall}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+
 Age (years), Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{11} & \\
 Sex, n (\%) &  &  & \\
@@ -1143,12 +1170,11 @@ Imaging, n (\%) &  &  & \\
 \hspace{1em}CT &  &  & \\
 \hspace{1em}Missing &  &  & \\
 \bottomrule
-\end{tabular}
+
+\end{longtable}
+
 \endgroup{}
-
-}
-
-\end{table}%
+\par\raggedright
 
 \subsubsection{Outcomes}\label{outcomes-1}
 
