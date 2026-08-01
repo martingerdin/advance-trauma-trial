@@ -148,10 +148,14 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — awaiting approval — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
 
-- [ ] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC** — [#3](https://github.com/martingerdin/advance-trauma-trial/issues/3)
+- [x] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC** — `@tbl-correlation-parameters` supplementary shell for all outcomes (ICC, variance components, latent-scale additional for binary, AR(1) parameters) — [#3](https://github.com/martingerdin/advance-trauma-trial/issues/3)
 
 - [ ] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
 
 - [ ] **J8. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP. — [#5](https://github.com/martingerdin/advance-trauma-trial/issues/5)
+
+- [ ] **J9. Add safety event reporting table shell** (final analysis; distinct from interim SDMC list) — [#8](https://github.com/martingerdin/advance-trauma-trial/issues/8)
+
+- [ ] **J10. Add subgroup forest plot shell** for primary-outcome subgroup analyses — [#9](https://github.com/martingerdin/advance-trauma-trial/issues/9)
 
 

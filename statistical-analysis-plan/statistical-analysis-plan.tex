@@ -1477,8 +1477,8 @@ We will report time-adjusted within-cluster correlations for all
 outcomes with 95\% CIs, including the intra-cluster correlation (ICC)
 and within- and between-period correlations implied by the assumed
 correlation structures, together with all estimated variance components.
-For binary outcomes, correlations will also be reported on the latent
-scale.
+For binary outcomes, these correlations will additionally be reported on
+the latent scale.
 
 Intra-cluster and related correlation parameters will be derived from
 the estimated variance components of the fitted models. For models with
@@ -2079,6 +2079,14 @@ Cluster size: Large (>20 patients/month), Absolute risk difference &  &  & \\
 
 \endgroup{}
 \par\raggedright
+
+Time-adjusted within-cluster correlations and variance components will
+be reported with 95\% CIs for all outcomes, as specified above; for
+binary outcomes, latent-scale correlations will additionally be
+reported. For models with an AR(1) within-cluster structure, the
+within-period correlation and correlation decay parameter will also be
+reported. These parameters will be presented as a supplementary table.
+See Table~\ref{tbl-correlation-parameters}.
 
 \section{Supplementary tables}\label{supplementary-tables}
 
@@ -2695,6 +2703,196 @@ WHODAS 2.0 participation, Cumulative odds ratio &  &  & \\
 WHODAS 2.0 summary score, Mean difference &  &  & \\
 \bottomrule
 \multicolumn{4}{l}{\rule{0pt}{1em}Abbreviations: CI = Confidence Interval, IRR = Incidence Rate Ratio, OR = Odds Ratio}\\
+
+\end{longtable}
+
+\endgroup{}
+\par\raggedright
+
+\begingroup\fontsize{8}{10}\selectfont
+
+\setlength{\tabcolsep}{3pt}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.5\linewidth}*{2}{>{\centering\arraybackslash}p{0.17\linewidth}}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}}
+
+\caption{\label{tbl-correlation-parameters}Shell table of within-cluster
+correlation parameters for all outcomes}
+
+\tabularnewline
+
+\toprule
+\textbf{Parameter} & \textbf{Estimate} & \textbf{95\% CI}\\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textit{(continued)}}\\
+\toprule
+\textbf{Parameter} & \textbf{Estimate} & \textbf{95\% CI}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{In-hospital mortality within 30 days}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{All-cause mortality within 24 hours}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{All-cause mortality within 30 days}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{All-cause mortality within three months}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Length of emergency department stay}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Length of hospital stay}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Intensive care unit (ICU) admission}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Length of intensive care unit stay}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Return to work at 30 days}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Return to work at three months}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Adherence to ATLS® principles}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life within seven days of discharge}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life at 30 days}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life at three months}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability within seven days of discharge}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at 30 days}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at three months}}\\
+Cluster variance &  & \\
+Cluster-by-period variance &  & \\
+Intra-cluster correlation (ICC) &  & \\
+Within-period correlation &  & \\
+Between-period correlation &  & \\
+AR(1) within-period correlation &  & \\
+AR(1) correlation decay parameter (rho) &  & \\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}Abbreviation: CI = Confidence Interval}\\
 
 \end{longtable}
 

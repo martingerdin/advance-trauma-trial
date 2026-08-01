@@ -435,7 +435,8 @@ The general estimation framework for the mixed-effects models is maximum likelih
 Model diagnostics will be used to assess distributional assumptions and model convergence.
 
 <!-- sap-revision-todo B5 (comments id=26, id=27 AO; Round Two): report time-adjusted within-cluster correlations, variance components, and latent-scale correlations (protocol-aligned). -->
-We will report time-adjusted within-cluster correlations for all outcomes with 95% CIs, including the intra-cluster correlation (ICC) and within- and between-period correlations implied by the assumed correlation structures, together with all estimated variance components. For binary outcomes, correlations will also be reported on the latent scale.
+<!-- sap-revision-todo J6: clarify latent-scale is additional for binary outcomes only. -->
+We will report time-adjusted within-cluster correlations for all outcomes with 95% CIs, including the intra-cluster correlation (ICC) and within- and between-period correlations implied by the assumed correlation structures, together with all estimated variance components. For binary outcomes, these correlations will additionally be reported on the latent scale.
 
 <!-- sap-revision-todo B6 (comments id=28, id=29 AO; Round Two): ICC and related correlations derived from variance components; AR(1) rho from the AR(1) structure. -->
 Intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models. For models with an AR(1) within-cluster structure, the correlation parameter will be estimated directly from the AR(1) structure.
@@ -715,6 +716,9 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 create_additional_analyses_results_table()
 ```
 
+<!-- sap-revision-todo J6: shell for ICC, variance components, and related correlations (B5-B6); supplementary only. -->
+Time-adjusted within-cluster correlations and variance components will be reported with 95% CIs for all outcomes, as specified above; for binary outcomes, latent-scale correlations will additionally be reported. For models with an AR(1) within-cluster structure, the within-period correlation and correlation decay parameter will also be reported. These parameters will be presented as a supplementary table. See @tbl-correlation-parameters.
+
 # Supplementary tables
 
 <!-- sap-revision-todo J5: Charlson severity fields reported as none when Charlson is none. -->
@@ -746,6 +750,16 @@ create_outcomes_descriptive_table(all = TRUE)
 #| warning: false
 #| results: asis
 create_outcomes_analysis_results_table(all = TRUE)
+```
+
+```{r}
+#| label: tbl-correlation-parameters
+#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_correlation_parameters_shell_table(all = TRUE)
 ```
 
 # References {.numbered}
