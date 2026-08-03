@@ -57,6 +57,11 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 \addtocounter{table}{-1}
 ```
 
+<!-- sap-revision-todo J8 (GitHub #5): generative AI disclosure in administrative information. -->
+## Use of generative artificial intelligence
+
+Generative artificial intelligence tools, including large language models accessed via Cursor, were used to assist with drafting, revising, and formatting this statistical analysis plan. All substantive statistical content was reviewed and approved by the authors, who take full responsibility for the final document.
+
 {{< pagebreak >}}
 
 # Trial synopsis

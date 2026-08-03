@@ -152,7 +152,7 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — awaiting approval: cluster + key patient shells converted to non-floating longtables — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
 
-- [ ] **J8. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP. — [#5](https://github.com/martingerdin/advance-trauma-trial/issues/5)
+- [x] **J8. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP. — [#5](https://github.com/martingerdin/advance-trauma-trial/issues/5)
 
 - [ ] **J9. Add safety event reporting table shell** (final analysis; distinct from interim SDMC list) — [#8](https://github.com/martingerdin/advance-trauma-trial/issues/8)
 
