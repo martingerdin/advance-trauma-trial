@@ -348,6 +348,21 @@ Summaries of primary and secondary outcomes will be presented in the results sec
 create_outcomes_descriptive_table()
 ```
 
+### Safety events
+
+<!-- sap-revision-todo J9 (GitHub #8): final-analysis safety event shell table; protocol-aligned definitions. -->
+Safety events, as defined in the trial protocol, will be summarised as counts and percentages of patients with at least one recorded event, stratified by before and after ATLS training and overall. We will not adjust for clustering in these summaries. See @tbl-safety-events for details.
+
+```{r}
+#| label: tbl-safety-events
+#| tbl-cap: "Safety events"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_safety_events_table()
+```
+
 ## Interim analysis
 
 {{< include ../shared-assets/interim-analysis.qmd >}}

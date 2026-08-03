@@ -248,45 +248,8 @@ create_interim_protocol_deviations_table <- function(
 create_interim_safety_events_table <- function(
     groups = interim_analysis_report_groups(),
     include.overall = TRUE) {
-    requests <- list(
-        list(
-            field = "prolonged_ventilation",
-            label = "Prolonged mechanical ventilation (>7 days)",
-            source = "external",
-            summary = "dichotomous",
-            section = "Safety events"
-        ),
-        list(
-            field = "renal_replacement",
-            label = "Initiation of renal replacement therapy",
-            source = "external",
-            summary = "dichotomous",
-            section = "Safety events"
-        ),
-        list(
-            field = "prolonged_vasopressors",
-            label = "Prolonged (>2 days) or renewed vasopressor use",
-            source = "external",
-            summary = "dichotomous",
-            section = "Safety events"
-        ),
-        list(
-            field = "other_safety",
-            label = "Other reported safety events",
-            source = "external",
-            summary = "dichotomous",
-            section = "Safety events"
-        ),
-        list(
-            field = "probably_related",
-            label = "Events assessed as probably related to the trial or intervention",
-            source = "external",
-            summary = "dichotomous",
-            section = "Safety events"
-        )
-    )
     build_interim_count_shell_table(
-        requests = requests,
+        requests = safety_events_shell_requests(),
         groups = groups,
         include.overall = include.overall,
         label.header = "**Safety event**",
