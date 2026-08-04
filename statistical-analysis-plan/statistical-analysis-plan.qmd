@@ -728,7 +728,7 @@ create_outcomes_analysis_results_table()
 ```
 
 <!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
-Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will be reported in the same style. See @tbl-additional-analyses-results.
+Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will be reported in the same style. See @tbl-additional-analyses-results. Subgroup-specific intervention effects will also be presented in a forest plot with 95% CIs for the odds ratio and absolute risk difference. See @fig-subgroup-forest-plot.
 
 ```{r}
 #| label: tbl-additional-analyses-results
@@ -738,6 +738,23 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 #| warning: false
 #| results: asis
 create_additional_analyses_results_table()
+```
+
+<!-- sap-revision-todo J10 (GitHub #9): forest plot shell for primary-outcome subgroup analyses. -->
+```{r}
+#| label: fig-subgroup-forest-plot
+#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days. Estimates and confidence intervals are placeholders to be completed at analysis."
+#| fig.align: "center"
+#| echo: false
+#| message: false
+#| warning: false
+
+knitr::include_graphics(
+  create_subgroup_forest_plot(
+    return.figure = FALSE,
+    device = "png"
+  )
+)
 ```
 
 <!-- sap-revision-todo J6: shell for ICC, variance components, and related correlations (B5-B6); supplementary only. -->

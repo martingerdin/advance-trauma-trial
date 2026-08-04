@@ -135,6 +135,93 @@ create_additional_analyses_results_table <- function(label.width = 0.50) {
     results.table
 }
 
+#' Prespecified subgroup levels for primary-outcome subgroup analyses
+#'
+#' Shared by the additional-analyses results table and the subgroup forest plot
+#' shell. Table row labels are flattened by [subgroup_analysis_row_labels()];
+#' the forest plot uses grouped headers and indented levels.
+#'
+#' @return A list of list elements with `header`, `levels`, and optional
+#'     `table_label` for rows that do not follow the `header: level` pattern.
+subgroup_analysis_definitions <- function() {
+    list(
+        list(
+            header = "Geographical region",
+            levels = c("State-specific estimates (states depend on participating clusters)"),
+            table_label = paste0(
+                "Geographical region (state-specific estimates; ",
+                "states depend on participating clusters)"
+            )
+        ),
+        list(
+            header = "Age group",
+            levels = c(
+                "Older adolescents (15-19 years)",
+                "Young adults (20-24 years)",
+                "Adults (25-59 years)",
+                "Older adults (60 years and older)"
+            )
+        ),
+        list(header = "Sex", levels = c("Male", "Female")),
+        list(
+            header = "Clinical cohort",
+            levels = c(
+                "Blunt multisystem trauma",
+                "Penetrating trauma",
+                "Severe isolated traumatic brain injury"
+            )
+        ),
+        list(header = "Major trauma", levels = c("ISS >=16", "ISS <16")),
+        list(
+            header = "Cluster size",
+            levels = c(
+                "Small (<12 patients/month)",
+                "Medium (12-20 patients/month)",
+                "Large (>20 patients/month)"
+            )
+        )
+    )
+}
+
+#' Flatten subgroup definitions to row labels for tabular reporting
+#'
+#' @return Character vector of subgroup row labels.
+subgroup_analysis_row_labels <- function() {
+    unlist(lapply(subgroup_analysis_definitions(), function(definition) {
+        if (!is.null(definition$table_label) && length(definition$levels) == 1L) {
+            rep(definition$table_label, length(definition$levels))
+        } else {
+            paste(definition$header, definition$levels, sep = ": ")
+        }
+    }), use.names = FALSE)
+}
+
+#' Build grouped row layout for the subgroup forest plot
+#'
+#' @return A data frame with `row_type` (`header` or `level`), `label`, and
+#'     `fontface`.
+build_subgroup_forest_plot_rows <- function() {
+    rows <- lapply(subgroup_analysis_definitions(), function(definition) {
+        header.row <- data.frame(
+            row_type = "header",
+            label = definition$header,
+            fontface = "bold",
+            stringsAsFactors = FALSE
+        )
+        level.rows <- data.frame(
+            row_type = "level",
+            label = paste0("  ", definition$levels),
+            fontface = "plain",
+            stringsAsFactors = FALSE
+        )
+        rbind(header.row, level.rows)
+    })
+    layout <- do.call(rbind, rows)
+    layout$y <- rev(seq_len(nrow(layout)))
+    rownames(layout) <- NULL
+    layout
+}
+
 #' Build row specifications for the additional-analyses results shell
 #'
 #' @return A list of specs with `field`, `label`, `measure`, and `section`.
@@ -175,37 +262,8 @@ build_additional_analyses_results_specs <- function() {
     add.pair(adjusted, "Fully adjusted analysis")
 
     subgroup <- "Subgroup analyses"
-    add.pair(
-        subgroup,
-        "Geographical region (state-specific estimates; states depend on participating clusters)"
-    )
-    for (level in c(
-        "Older adolescents (15-19 years)",
-        "Young adults (20-24 years)",
-        "Adults (25-59 years)",
-        "Older adults (60 years and older)"
-    )) {
-        add.pair(subgroup, paste0("Age group: ", level))
-    }
-    for (level in c("Male", "Female")) {
-        add.pair(subgroup, paste0("Sex: ", level))
-    }
-    for (level in c(
-        "Blunt multisystem trauma",
-        "Penetrating trauma",
-        "Severe isolated traumatic brain injury"
-    )) {
-        add.pair(subgroup, paste0("Clinical cohort: ", level))
-    }
-    for (level in c("ISS >=16", "ISS <16")) {
-        add.pair(subgroup, paste0("Major trauma: ", level))
-    }
-    for (level in c(
-        "Small (<12 patients/month)",
-        "Medium (12-20 patients/month)",
-        "Large (>20 patients/month)"
-    )) {
-        add.pair(subgroup, paste0("Cluster size: ", level))
+    for (label in subgroup_analysis_row_labels()) {
+        add.pair(subgroup, label)
     }
 
     specs
