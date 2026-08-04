@@ -156,6 +156,6 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J9. Add safety event reporting table shell** (final analysis; distinct from interim SDMC list) — [#8](https://github.com/martingerdin/advance-trauma-trial/issues/8)
 
-- [ ] **J10. Add subgroup forest plot shell** for primary-outcome subgroup analyses — [#9](https://github.com/martingerdin/advance-trauma-trial/issues/9)
+- [x] **J10. Add subgroup forest plot shell** for primary-outcome subgroup analyses — [#9](https://github.com/martingerdin/advance-trauma-trial/issues/9)
 
 
