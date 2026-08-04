@@ -21,6 +21,12 @@
 \setkomafont{pagehead}{\sffamily}
 % Title page URL on cover: clickable white text in Roboto
 \newcommand{\titlepageurl}{\href{https://www.advancetrauma.info}{\textcolor{white}{www.advancetrauma.info}}}
+% Title-page brand wordmark (replaces logo image); Quicksand matches the ADVANCE TRAUMA logo typeface
+\newfontfamily\quicksand{Quicksand}[RawFeature={axis={wght=500}}]
+\newcommand{\advancetraumabrand}{%
+  {\quicksand\Huge\textcolor{white}{ADVANCE TRAUMA}}\par
+  \vspace{1.5em}%
+}
 % Reduce vertical space around headings
 \RedeclareSectionCommand[beforeskip=2ex plus 0.5ex minus 0.2ex,afterskip=1.5ex plus 0.2ex]{section}
 \RedeclareSectionCommand[beforeskip=1.5ex plus 0.5ex minus 0.2ex,afterskip=1ex plus 0.2ex]{subsection}

@@ -4,7 +4,6 @@ number-sections: true
 number-depth: 4
 fig-caption: true
 link-bibliography: false
-titlepage-logo: logo.png
 titlepage-theme:
   page-color: "secondary"
   title-fontfamily: "Roboto"
@@ -20,7 +19,7 @@ titlepage-theme:
   footer-fontstyle: ["LARGE"]
   footer-color: "white"
   footer-space-after: 0pt
-  elements: ["\\logoblock", "\\titleblock", "\\vfill", "\\footerblock", "\\textcolor{white}{\\hrule}", "\\par", "\\vspace*{0.5cm}", "\\bgroup\\LARGE\\sffamily\\titlepageurl\\egroup"]
+  elements: ["\\advancetraumabrand", "\\titleblock", "\\vfill", "\\footerblock", "\\textcolor{white}{\\hrule}", "\\par", "\\vspace*{0.5cm}", "\\bgroup\\LARGE\\sffamily\\titlepageurl\\egroup"]
 format:
   titlepage-pdf:
     titlepage: formal

@@ -161,6 +161,12 @@
 \setkomafont{pagehead}{\sffamily}
 % Title page URL on cover: clickable white text in Roboto
 \newcommand{\titlepageurl}{\href{https://www.advancetrauma.info}{\textcolor{white}{www.advancetrauma.info}}}
+% Title-page brand wordmark (replaces logo image); Quicksand matches the ADVANCE TRAUMA logo typeface
+\newfontfamily\quicksand{Quicksand}[RawFeature={axis={wght=700}}]
+\newcommand{\advancetraumabrand}{%
+  {\quicksand\Huge\textcolor{white}{ADVANCE TRAUMA}}\par
+  \vspace{1.5em}%
+}
 % Reduce vertical space around headings
 \RedeclareSectionCommand[beforeskip=2ex plus 0.5ex minus 0.2ex,afterskip=1.5ex plus 0.2ex]{section}
 \RedeclareSectionCommand[beforeskip=1.5ex plus 0.5ex minus 0.2ex,afterskip=1ex plus 0.2ex]{subsection}
@@ -340,7 +346,7 @@ Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 {}
 }
 \newcommand{\footerstyled}{%
-{\LARGE{Version 0.6.0, 2026-03-04}}
+{\LARGE{Version 0.7.0, 2026-08-04}}
 }
 \newcommand{\datestyled}{%
 {}
@@ -372,10 +378,7 @@ Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 
 \newcommand{\affiliationblock}{}
 
-\newcommand{\logoblock}{{\includegraphics[width=0.4\textwidth]{logo.png}}
-
-\vspace{1cm}
-}
+\newcommand{\logoblock}{}
 
 \newcommand{\footerblock}{\textcolor{white}{\titlepagefooterfont
 \titlepagefooterblock}
@@ -399,7 +402,7 @@ Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 % [s] means stretch out vertically; assuming there is a vfill
 \begin{minipage}[b][\textheight][s]{\minipagewidth}
 \titlepagepagealign
-\logoblock
+\advancetraumabrand
 
 \titleblock
 
@@ -451,8 +454,35 @@ Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 
 \subsection{Changelog}\label{changelog}
 
-Once version 1.0.0 is finalised, this section will be updated with a
-changelog.
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Version
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Date
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Details
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.6.0 & 2026-03-04 & Circulated draft for statistical review (KH) and
+Round Two reporting checklist. \\
+0.7.0 & 2026-08-04 & Revisions following KH/AO review and Round Two
+checklist: estimation framework (ML with Laplace approximation);
+length-of-stay as negative binomial counts; missing-data strategy; model
+clarifications; outcomes summary and shell tables/figures; generative AI
+statement; consistency review (GitHub \#10), including OR and ARD for
+all binary secondary outcomes. \\
+\end{longtable}
+
+% Pandoc renders markdown tables as longtable, which increments the table counter
+% even without a caption. This table should not count toward Table numbering.
+\addtocounter{table}{-1}
 
 \subsection{Contributors}\label{contributors}
 
@@ -840,10 +870,10 @@ All-cause mortality within three months of arrival at the emergency department &
 Length of emergency department stay & Main stepped-wedge & Count (hours) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed hours to ED exit; death/transfer truncate stay\\
 \addlinespace
 Length of hospital stay & Main stepped-wedge & Count (days) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed days; death/transfer truncate stay\\
-Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit) & OR & Death; transfer & Classified by ICU admission before death/transfer\\
+Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by ICU admission before death/transfer\\
 Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed days among ICU admissions; death/transfer truncate stay\\
-Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit) & OR & Death; loss to follow-up; not relevant & Survivors only\\
-Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit) & OR & Death; loss to follow-up; not relevant & Survivors only\\
+Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; not relevant & Survivors only\\
+Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; not relevant & Survivors only\\
 \addlinespace
 Adherence to ATLS® principles during initial patient resuscitation & Nested staircase & Proportion & Observed nested sample & Mixed-effects beta (logit) & Logit-scale difference & Not observed; incomplete window & Observed sample\\
 Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
@@ -916,7 +946,7 @@ care to 15\% after ATLS\textsuperscript{®} training. \textbf{B)} Shows
 power curves assuming a reduction in the primary outcome from 10\% under
 standard care to 7.5\% after ATLS\textsuperscript{®} training. Under
 this scenario, we would need to increase the sample size per month to
-around 30 observations to achieve 90\% powere under most combinations of
+around 30 observations to achieve 90\% power under most combinations of
 CAC and ICC.}
 
 \end{figure}%
@@ -928,15 +958,14 @@ Adherence, quality of life, and disability collected in the nested
 staircase are secondary outcomes; the nested power calculations below
 inform only the sample size required for their data collection.
 
-The secondary outcomes that will be measured using the nested staircase
-design are secondary outcomes, and the power calculations presented here
-are intended only to inform the sample size required for their data
-collection within the nested staircase design. These outcomes are
+The secondary outcomes measured using the nested staircase design are
 adherence to ATLS\textsuperscript{®} principles during initial patient
-resuscitation, quality of life, and disability. The expected effect of
-the intervention on each of these outcomes are an improvement in
+resuscitation, quality of life, and disability. The power calculations
+presented here are intended only to inform the sample size required for
+their data collection within the nested staircase design. The expected
+effects of the intervention on these outcomes are an improvement in
 adherence from 50\% during standard care to 70\% after
-training\textsuperscript{11}, an increase in EQ5D5L health status from
+training\textsuperscript{11}, an increase in EQ-5D-5L health status from
 70 during care to 75 after training\textsuperscript{12}, and finally a
 decrease in disability from a baseline value of 25 during standard care
 to 22.5 after training\textsuperscript{13}. For quality of life and
@@ -1549,9 +1578,7 @@ The general estimation framework for the mixed-effects models is maximum
 likelihood, with a Laplace approximation used to integrate out the
 random effects. The specific R package and numerical implementation will
 be chosen based on convergence behaviour and the availability of
-appropriate small-sample corrections closer to the time of analysis. If
-the binomial model with the logit link converges but the corresponding
-model with the identity link does not, then we will report only an OR.
+appropriate small-sample corrections closer to the time of analysis.
 
 Model diagnostics will be used to assess distributional assumptions and
 model convergence.
@@ -1805,7 +1832,7 @@ will include all participants with observed primary outcome data.
 Adjusted analyses will be restricted to participants with complete data
 on the adjustment covariates, and the unadjusted analysis will be
 repeated in this complete-case population to allow the results of the
-unadjusted and ajusted analyses to be directly compared.
+unadjusted and adjusted analyses to be directly compared.
 
 If 10\% or more of participants have a missing primary outcome, we will
 use multiple imputation by chained equations (MICE) under a
@@ -1907,8 +1934,9 @@ at the emergency department, among
 survivors}\label{return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department-among-survivors}
 
 Return to work will be analysed as a dichotomous outcome using the
-mixed-effects binomial model specified in
-Equation~\ref{eq-primary-model} with the logit link.
+mixed-effects binomial model with the logit and identity links specified
+in Equation~\ref{eq-primary-model}, to estimate odds ratios and absolute
+risk differences.
 
 \subsubsection{Length of emergency department
 stay}\label{length-of-emergency-department-stay}
@@ -1956,10 +1984,11 @@ handling of death and transfer as for ED length of stay.
 admission}\label{intensive-care-unit-admission}
 
 Intensive care unit admission will be analysed as a dichotomous outcome
-using the mixed-effects binomial model specified in
-Equation~\ref{eq-primary-model} with the logit link. Patients who die or
-are transferred without ICU admission will be classified according to
-whether ICU admission occurred before that event.
+using the mixed-effects binomial model with the logit and identity links
+specified in Equation~\ref{eq-primary-model}, to estimate odds ratios
+and absolute risk differences. Patients who die or are transferred
+without ICU admission will be classified according to whether ICU
+admission occurred before that event.
 
 \subsubsection{Length of intensive care unit
 stay}\label{length-of-intensive-care-unit-stay}
@@ -2050,9 +2079,12 @@ All-cause mortality within three months, Absolute risk difference &  &  & \\
 Length of emergency department stay, Rate ratio &  &  & \\
 Length of hospital stay, Rate ratio &  &  & \\
 Intensive care unit (ICU) admission, Odds ratio &  &  & \\
+Intensive care unit (ICU) admission, Absolute risk difference &  &  & \\
 Length of intensive care unit stay, Rate ratio &  &  & \\
 Return to work at 30 days, Odds ratio &  &  & \\
+Return to work at 30 days, Absolute risk difference &  &  & \\
 Return to work at three months, Odds ratio &  &  & \\
+Return to work at three months, Absolute risk difference &  &  & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS® principles, Logit-scale difference &  &  & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
@@ -2755,9 +2787,12 @@ All-cause mortality within three months, Absolute risk difference &  &  & \\
 Length of emergency department stay, Rate ratio &  &  & \\
 Length of hospital stay, Rate ratio &  &  & \\
 Intensive care unit (ICU) admission, Odds ratio &  &  & \\
+Intensive care unit (ICU) admission, Absolute risk difference &  &  & \\
 Length of intensive care unit stay, Rate ratio &  &  & \\
 Return to work at 30 days, Odds ratio &  &  & \\
+Return to work at 30 days, Absolute risk difference &  &  & \\
 Return to work at three months, Odds ratio &  &  & \\
+Return to work at three months, Absolute risk difference &  &  & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS® principles, Logit-scale difference &  &  & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
