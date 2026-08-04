@@ -64,8 +64,8 @@
     "design_component": "Main stepped-wedge",
     "data_type": "Dichotomous",
     "analysis_set": "Primary analysis set",
-    "main_analysis_model": "Mixed-effects binomial (logit)",
-    "effect_measure": "OR",
+    "main_analysis_model": "Mixed-effects binomial (logit, identity)",
+    "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Death; transfer",
     "strategy_for_handling_intercurrent_events": "Classified by ICU admission before death/transfer"
   },
@@ -84,8 +84,8 @@
     "design_component": "Main stepped-wedge",
     "data_type": "Dichotomous",
     "analysis_set": "Alive at 30 days, outcome relevant",
-    "main_analysis_model": "Mixed-effects binomial (logit)",
-    "effect_measure": "OR",
+    "main_analysis_model": "Mixed-effects binomial (logit, identity)",
+    "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Death; loss to follow-up; not relevant",
     "strategy_for_handling_intercurrent_events": "Survivors only"
   },
@@ -94,8 +94,8 @@
     "design_component": "Main stepped-wedge",
     "data_type": "Dichotomous",
     "analysis_set": "Alive at 3 months, outcome relevant",
-    "main_analysis_model": "Mixed-effects binomial (logit)",
-    "effect_measure": "OR",
+    "main_analysis_model": "Mixed-effects binomial (logit, identity)",
+    "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Death; loss to follow-up; not relevant",
     "strategy_for_handling_intercurrent_events": "Survivors only"
   },

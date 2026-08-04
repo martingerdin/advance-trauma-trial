@@ -31,14 +31,18 @@ protocol.variables <- yaml::read_yaml("../protocol/_variables.yml")
 
 ## Changelog
 
-Once version 1.0.0 is finalised, this section will be updated with a changelog.
+<!-- github-issue-10: populate changelog for post-review revisions. -->
 
-<!--
-
-| Version | Date       | Details | 
+| Version | Date       | Details |
 |---------|------------|---------|
+| 0.6.0   | 2026-03-04 | Circulated draft for statistical review (KH) and Round Two reporting checklist. |
+| 0.7.0   | 2026-08-04 | Revisions following KH/AO review and Round Two checklist: estimation framework (ML with Laplace approximation); length-of-stay as negative binomial counts; missing-data strategy; model clarifications; outcomes summary and shell tables/figures; generative AI statement; consistency review (GitHub #10), including OR and ARD for all binary secondary outcomes. |
 
--->
+```{=latex}
+% Pandoc renders markdown tables as longtable, which increments the table counter
+% even without a caption. This table should not count toward Table numbering.
+\addtocounter{table}{-1}
+```
 
 ## Contributors
 
@@ -249,7 +253,7 @@ Sample size calculations were performed during the trial design phase using the 
 
 ### Nested staircase design and secondary outcomes
 
-<!-- sap-revision-todo I2 (comments id=80, id=81, id=82): SAP-only secondary-outcome / power framing; shared include left unchanged. -->
+<!-- github-issue-10: nested include now carries secondary-outcome / power framing; preface retained for emphasis. -->
 Adherence, quality of life, and disability collected in the nested staircase are secondary outcomes; the nested power calculations below inform only the sample size required for their data collection.
 
 {{< include ../shared-assets/sample-size-calculations-nested.qmd >}}
@@ -453,7 +457,7 @@ To correct potential inflation of the type I error rate due to the small number 
 Standard errors will be model-based. Small-sample adjustments, including degrees-of-freedom corrections such as Kenward–Roger, will be applied where relevant. Confidence intervals will be Wald-type.
 
 <!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO); B4 (comment id=23 AO; Round Two 27b): general estimation framework is ML with Laplace; package/implementation not prespecified. -->
-The general estimation framework for the mixed-effects models is maximum likelihood, with a Laplace approximation used to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
+The general estimation framework for the mixed-effects models is maximum likelihood, with a Laplace approximation used to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. 
 
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): state that diagnostics will check distributional assumptions and convergence. -->
 Model diagnostics will be used to assess distributional assumptions and model convergence.
@@ -602,7 +606,7 @@ These subgroup analyses will be conducted by adding the subgroup variable and th
 <!-- sap-revision-todo A5 (comment id=260 AO): 10% primary-outcome missingness chooses available-case pipeline vs MICE; do not mix complete-case adjusted analyses with covariate imputation. -->
 We will present the frequency and percentage of missing data for all variables. Handling of missing data for the primary analysis will depend on the percentage of missing data for the primary outcome.
 
-If less than 10% of participants have a missing primary outcome, we will use an available-case approach. The primary unadjusted analysis will include all participants with observed primary outcome data. Adjusted analyses will be restricted to participants with complete data on the adjustment covariates, and the unadjusted analysis will be repeated in this complete-case population to allow the results of the unadjusted and ajusted analyses to be directly compared.
+If less than 10% of participants have a missing primary outcome, we will use an available-case approach. The primary unadjusted analysis will include all participants with observed primary outcome data. Adjusted analyses will be restricted to participants with complete data on the adjustment covariates, and the unadjusted analysis will be repeated in this complete-case population to allow the results of the unadjusted and adjusted analyses to be directly compared.
 
 <!-- sap-revision-todo B7 (comments id=31 MGW, id=32 AO; Round Two): MI model reflects hospital clustering plus period and intervention exposure. -->
 If 10% or more of participants have a missing primary outcome, we will use multiple imputation by chained equations (MICE) under a missing-at-random assumption, imputing the primary outcome, secondary outcomes as required for analysis, and the covariates included in the fully adjusted model, with a minimum of 20 imputations. The imputation model will reflect the hierarchical data structure, including clustering at the hospital level and design variables such as period and intervention exposure. Unadjusted and adjusted analyses will then be conducted using the imputed datasets. We will also present the corresponding complete-case analyses for comparison. Secondary outcomes will not be imputed under the available-case approach.
@@ -668,7 +672,8 @@ Disability will be measured within the nested staircase design using the WHO Dis
 
 ### Return to work at 30 days and three months after arrival at the emergency department, among survivors
 
-Return to work will be analysed as a dichotomous outcome using the mixed-effects binomial model specified in @eq-primary-model with the logit link.
+<!-- github-issue-10: align RTW with binary OR and ARD (same as primary mortality). -->
+Return to work will be analysed as a dichotomous outcome using the mixed-effects binomial model with the logit and identity links specified in @eq-primary-model, to estimate odds ratios and absolute risk differences.
 
 <!-- sap-revision-todo A2 (comments id=349, id=350 KH; id=351 AO; id=348 AO): replace Fine–Gray competing-risks LOS models with mixed-effects negative binomial count models; clarify purpose, random/period effects, and death/transfer handling. -->
 <!-- sap-revision-todo C2 (comment id=348 AO): ED stay defined as hours to ED exit; exit routes enumerated; all routes contribute observed duration. -->
@@ -692,7 +697,8 @@ Length of hospital stay will be analysed as a count outcome: the number of days 
 ### Intensive care unit admission
 
 <!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): state death/transfer handling for ICU admission. -->
-Intensive care unit admission will be analysed as a dichotomous outcome using the mixed-effects binomial model specified in @eq-primary-model with the logit link. Patients who die or are transferred without ICU admission will be classified according to whether ICU admission occurred before that event.
+<!-- github-issue-10: align ICU admission with binary OR and ARD (same as primary mortality). -->
+Intensive care unit admission will be analysed as a dichotomous outcome using the mixed-effects binomial model with the logit and identity links specified in @eq-primary-model, to estimate odds ratios and absolute risk differences. Patients who die or are transferred without ICU admission will be classified according to whether ICU admission occurred before that event.
 
 ### Length of intensive care unit stay
 
