@@ -7,8 +7,9 @@ link-bibliography: false
 titlepage-theme:
   page-color: "secondary"
   title-fontfamily: "Roboto"
-  title-fontsize: 32
-  title-fontstyle: ["bfseries"]
+  title-fontsize: 36
+  title-spacing: 44
+  title-fontstyle: ["mdseries"]
   title-color: "white"
   subtitle-fontfamily: "Roboto"
   subtitle-fontsize: 28
