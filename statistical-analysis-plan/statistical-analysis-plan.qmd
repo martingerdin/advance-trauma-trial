@@ -31,18 +31,8 @@ protocol.variables <- yaml::read_yaml("../protocol/_variables.yml")
 
 ## Changelog
 
-<!-- github-issue-10: populate changelog for post-review revisions. -->
-
-| Version | Date       | Details |
-|---------|------------|---------|
-| 0.6.0   | 2026-03-04 | Circulated draft for statistical review (KH) and Round Two reporting checklist. |
-| 0.7.0   | 2026-08-04 | Revisions following KH/AO review and Round Two checklist: estimation framework (ML with Laplace approximation); length-of-stay as negative binomial counts; missing-data strategy; model clarifications; outcomes summary and shell tables/figures; generative AI statement; consistency review (GitHub #10), including OR and ARD for all binary secondary outcomes. |
-
-```{=latex}
-% Pandoc renders markdown tables as longtable, which increments the table counter
-% even without a caption. This table should not count toward Table numbering.
-\addtocounter{table}{-1}
-```
+<!-- github-issue-11: changelog table only after version 1.0.0. -->
+Once version 1.0.0 is finalised, this section will be updated with a changelog.
 
 ## Contributors
 
