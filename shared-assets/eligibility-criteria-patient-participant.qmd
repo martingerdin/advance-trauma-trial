@@ -1,0 +1,16 @@
+#### Inclusion criteria
+
+**Patients participants** must meet the following criteria:
+
+- age of at least 15 years;
+- trauma occurred less than 48 hours before arrival at the hospital;
+- present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
+- admitted, or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
+- managed by a participating unit in the emergency department.
+
+#### Exclusion criteria
+
+**Patients participants** are excluded if they meet the following criteria:
+
+- present with isolated closed extremity fracture; or
+- are directly admitted to a ward without being seen by a physician in the emergency department.

@@ -346,29 +346,7 @@ Our trial has eligibility criteria on the cluster and patient participant level.
 
 Clusters will be secondary or tertiary hospitals providing trauma care in India. This will be the unit of randomisation. Within each cluster, one or more units of physicians providing initial trauma care in the emergency department will be trained. These units already exist in the hospitals and rotate through the emergency department on specific days of the week.
 
-#### Inclusion criteria
-
-**Clusters** must meet the following criteria:
-
-- admit or refer/transfer for admission at least 400 patients with trauma per year or 35 patients with trauma per month for at least the last six months;
-- provide surgical and orthopaedic emergency services around the clock; and
-- have at most 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme, like ATLS^®^ or Primary Trauma Care (PTC).
-
-Additionally, the units to be trained within the cluster must meet the following criteria:
-
-- admits or refers/transfers for admission at least 12 patients with trauma per month for at least the last six months; and
-- no more than 25% of physicians providing initial trauma care trained in a formalised trauma life support training programme.
-
-#### Exclusion criteria
-
-**Hospitals** are excluded if they meet any of the following criteria:
-
-- implement a formalised trauma life support training programme [^note:concurrent-training-programmes] during the trial period; or
-- plan to implement or implement other major interventions[^note:major-interventions] that affects trauma care during the trial period.
-
-[^note:concurrent-training-programmes]: These include but are not limited to the National Emergency Life Support (NELS) programme, the Basic Trauma Life Support (BTLS) programme, the Pre-Hospital Trauma Life Support (PHTLS) programme, the Trauma Nursing Core Course (TNCC) and the Advanced Trauma Care for Nurses (ATCN) programme.
-
-[^note:major-interventions]: These include but are not limited to implementing of a trauma team approach, opening a trauma centre and  implementing a trauma quality improvement programme.
+{{< include ../shared-assets/eligibility-criteria-cluster.qmd >}}
 
 #### Screening
 
@@ -378,22 +356,7 @@ The trial management group will compile a list of hospitals with potentially eli
 
 Patient participants are adult trauma patients who presents to the emergency department of participating hospitals and are admitted or transferred for admission.
 
-#### Inclusion criteria
-
-**Patients participants** must meet the following criteria:
-
-- age of at least 15 years;
-- trauma occurred less than 48 hours before arrival at the hospital;
-- present to the emergency department of participating hospitals, with a history of trauma defined as having any of the reasons listed in the International Classification of Diseases chapter XX as the reason for presenting;
-- admitted, or died between arrival at the hospital and admission, or referred/transferred from the emergency department of a participating hospital to another hospital for admission; and
-- managed by a participating unit in the emergency department.
-
-#### Exclusion criteria
-
-**Patients participants** are excluded if they meet the following criteria:
-
-- present with isolated closed extremity fracture; or
-- are directly admitted to a ward without being seen by a physician in the emergency department.
+{{< include ../shared-assets/eligibility-criteria-patient-participant.qmd >}}
 
 #### Screening
 
