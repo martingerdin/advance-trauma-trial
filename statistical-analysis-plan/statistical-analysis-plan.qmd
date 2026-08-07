@@ -227,10 +227,23 @@ We will not adjust for multiple testing because no secondary outcome is regarded
 
 ## Adherence and Protocol deviations
 
-<!-- Should include:
-- Definition of adherence to the intervention, for both clusters and individuals if relevant; how this is assessed, and how it will be presented 
-- Definition of protocol deviations, for both clusters and individuals if relevant, and how this will be summarized and accommodated
--->
+<!-- github-issue-21: draft adherence and protocol deviations from existing SAP/protocol text (checklist 17a/17b). -->
+
+### Adherence to the intervention
+
+Adherence to the intervention is defined at the cluster and individual levels and is distinct from the secondary outcome adherence to ATLS® principles during resuscitation (see Analysis of secondary outcomes).
+
+At the cluster level, adherence means that ATLS® training is delivered to the intended physicians during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS® training before its scheduled transition. Cluster-level adherence will be assessed using training-delivery records (including numbers of physicians trained in each hospital and timing of training relative to the scheduled transition). We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis (see Interim analysis).
+
+At the individual level, exposure to the intervention is defined by the cluster’s scheduled transition date, as specified under Analysis sets: patients are classified according to the period of admission, transition months are excluded, and the primary analysis includes eligible patients with available outcome data irrespective of whether care was delivered by a trained physician. Individual-level receipt of care from ATLS®-trained physicians will be monitored descriptively where available, but will not redefine the primary analysis set. If a cluster’s actual transition date differs from the scheduled date by more than four weeks, exposure will be redefined using the actual transition date in a sensitivity analysis (see Analysis sets).
+
+Process adherence to ATLS® principles during initial resuscitation (the 14-item checklist) is a nested-staircase secondary outcome and is defined and analysed in the Outcomes and Analysis of secondary outcomes sections; it is not used to exclude patients from the primary analysis.
+
+### Protocol deviations
+
+A protocol deviation is any departure from the approved trial protocol, ICH-GCP, or applicable regulations. Consistent with the protocol, serious breaches and deviations that significantly affect, or are likely to affect, participant safety or integrity or the reliability of trial data will be reported without delay to the sponsor for assessment. Minor deviations that do not affect participant safety or integrity and do not materially affect the scientific value of the trial will be documented in the trial records of the principal investigator and the sponsor.
+
+Protocol deviations will be summarised descriptively for the final analysis (and reviewed at interim analysis), overall and by intervention condition where informative, including counts by type (cluster-level versus individual-level, and serious versus minor where classified) and narrative reasons. Deviations will not be used to exclude clusters or patients from the primary analysis set; the primary analysis remains based on scheduled intervention exposure and available outcome data as specified under Analysis sets.
 
 # Trial sample
 
