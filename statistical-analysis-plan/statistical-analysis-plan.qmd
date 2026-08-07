@@ -58,13 +58,15 @@ Generative artificial intelligence tools, including large language models access
 
 {{< pagebreak >}}
 
-# Trial synopsis
+# Introduction
+
+## Trial synopsis
 
 {{< include ../shared-assets/synopsis.qmd >}}
 
 {{< pagebreak >}}
 
-# Special considerations
+## Special considerations
 
 {{< include ../shared-assets/special-considerations.qmd >}}
 
@@ -83,14 +85,18 @@ To compare the effects of ATLS^®^ training with standard care on outcomes in ad
 - To estimate the effects of ATLS^®^ training on secondary outcomes compared to standard care.
 - To explore the effects of ATLS^®^ training on subgroups of patients compared to standard care.
 
-# Statistical analysis
+## Framework
+
+We have designed and will analyse the trial within a superiority framework, with ATLS® training compared with standard care for the primary and secondary outcomes. 
 
 <!-- github-issue-12: reorder sections to Round Two checklist sequence. -->
 
-## Design
+# Study design
+
+## Trial design
 
 <!-- sap-revision-todo D3 (comments id=3 MGW, id=4 AO; Round Two): confirm design descriptors including allocation and repeated measures on clusters. -->
-This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` clusters (see @fig-trial-design). Each cluster is a hospital and represents the unit for randomisation, even if one or more units are trained in the same hospital. There are two intervention conditions: ATLS® training and standard care. The trial is designed and will be analysed within a superiority framework, with ATLS® training compared with standard care for the primary and secondary outcomes. 
+This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` clusters (see @fig-trial-design). Each cluster is a hospital and represents the unit for randomisation, even if one or more units are trained in the same hospital. There are two intervention conditions: ATLS® training and standard care. 
 
 The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster allocated to each sequence of each batch (equal allocation across sequences) [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. Clusters are repeatedly measured across periods. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
 
@@ -144,7 +150,11 @@ knitr::include_graphics(
 )
 ```
 
-## Randomisation of clusters
+## Intervention and control treatment
+
+{{< include ../shared-assets/intervention-and-control-treatment.qmd >}}
+
+## Randomisation and inclusion
 
 We will enrol and assign clusters to batches once eligibility is confirmed and ethical approval is obtained. Each batch will include hospitals from different regions to optimise trial logistics and training delivery. Within each batch, clusters will be randomised to the intervention implementation sequences allocated to that batch. 
 
