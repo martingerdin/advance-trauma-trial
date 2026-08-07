@@ -385,21 +385,26 @@ cat("\\restoregeometry\n")
 
 ## Population
 
-<!-- Should include:
-- The population of clusters and individuals for whom the treatment effect is to be estimated for (e.g., all live births, all women having a C-section)
--->
+<!-- github-issue-24: draft target populations from analysis-set and eligibility text. -->
+The treatment effects estimated in this plan are defined for the trial’s eligible clusters and eligible patient participants, as specified under Eligibility criteria.
+
+- **Clusters.** Effects are estimated for participating hospitals (clusters) that meet cluster eligibility criteria and are randomised within the batched stepped-wedge design. Units within a hospital are part of the same cluster; the estimands are not defined separately by unit.
+- **Main stepped-wedge patient population.** For the primary outcome, all-cause mortality secondary outcomes, length of emergency department and hospital stay, and ICU admission, the target population is eligible trauma patients included in the main stepped-wedge trial during non-transition periods. Length of ICU stay is targeted among patients in that population who are admitted to ICU.
+- **Survivor populations.** Quality of life and disability effects are targeted among patients in the nested staircase sample who are alive at the relevant follow-up time point. Return-to-work effects are targeted among patients in the main stepped-wedge trial who are alive at the relevant follow-up and for whom return to work is relevant.
+- **Nested adherence population.** The adherence-to-ATLS®-principles effect is targeted among patients randomly selected for observation in the nested staircase design during the observation window.
+
+Operational membership of each analysis (available outcome data, covariate completeness for adjusted analyses, and scheduled exposure rules) is specified under Analysis sets.
 
 ## Analysis sets
 
 <!-- sap-revision-todo A4 (comments id=102 KH, id=103 AO): clarify hospital→unit→patient hierarchy vs model RE; justify omitting unit-level RE; standardise on "units" (protocol term), not "teams". -->
 <!-- sap-revision-todo H4 (comments id=12 MGW, id=13 AO; Round Two): specify target population per analysis including LOS/ICU and nested survivors. -->
+<!-- github-issue-24: keep operational analysis-set rules here; target populations moved above. -->
 The trial has a hierarchical structure in which hospitals represent the clusters, units within hospitals deliver care, and individual patients constitute the unit of observation and analysis. Randomisation is performed at the hospital level, with all trained units within the same hospital treated as part of the same cluster. Analysis models therefore account for clustering at the hospital level and do not include a separate random effect for unit within hospital. The primary analysis set will include all observations within clusters with available data on the primary outcome and irrespective of the receipt of the intervention. 
 
 Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. Group allocation for a patient depends on the period in which the patient was admitted to the hospital. If clusters deviate considerably from the scheduled date of transition, defined as more than four weeks, we will conduct a sensitivity analysis using the actual date of transition to define exposure. 
 
-The analysis set will be specified for each analysis. For the primary outcome, mortality secondary outcomes, length-of-stay outcomes, and ICU admission, the analysis set is all eligible patient participants included in the main stepped-wedge trial (with length of ICU stay restricted to patients admitted to ICU). For quality-of-life and disability outcomes, the analysis set is patients alive at the relevant follow-up time point within the nested staircase sample. For return-to-work outcomes, the analysis set is patients alive at the relevant follow-up time point in the main stepped-wedge trial for whom return to work is relevant. For adherence to ATLS® principles, the analysis set is the random sample of patients observed within the nested staircase design. 
-
-The analysis set for each outcome will include all available participants from the relevant target population with observed outcome data, subject to any restrictions imposed by the outcome definition or the nested staircase sampling scheme. For adjusted analyses under the available-case approach, the analysis set will be restricted to participants with complete covariate data, as described in @sec-treatment-of-missing-data.
+The analysis set will be specified for each analysis and corresponds to the target population for that outcome (see Population), restricted to participants with observed outcome data and any further outcome-specific constraints in @tbl-outcomes-summary. For adjusted analyses under the available-case approach, the analysis set will be restricted to participants with complete covariate data, as described in @sec-treatment-of-missing-data.
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
 We will use a CONSORT diagram to display the flow of hospitals, clusters and patients through the trial, see @fig-consort-diagram. We will present cluster level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
