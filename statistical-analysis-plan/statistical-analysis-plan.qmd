@@ -425,14 +425,9 @@ knitr::include_graphics(
 
 ## Effect measures
 
-<!-- Should include:
-- Details of how each outcome (both cluster-level and individual-level) will be summarized by arm (or sequence, period), for each data type (e.g., binary, continuous), including how the prevalence of missing data will be reported; and if any averaging will be by cluster or individual
-- For each outcome data type (e.g., binary, continuous) what effect measures will be used to 2describe the treatment effect (e.g., odds ratio, mean difference); and if any averaging will be by cluster or individual
-- Shell table visualising how primary and secondary outcomes (both cluster-level and individual-level), will be summarized and compared by arm (or sequence or period)
--->
-
+<!-- github-issue-25: revise effect measures against checklist; keep descriptive shells and cross-ref analysis shells. -->
 <!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L/WHODAS in supplementary). -->
-Summaries of primary and secondary outcomes will be presented in the results section, stratified by before and after ATLS training and overall, using the same summary statistics as the patient characteristics tables. Missing values will be reported for each outcome. We will present key outcome summaries in the results section, and present all outcome summaries as supplementary tables. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
+Outcomes are measured on individual patients. Descriptive summaries of primary and secondary outcomes will be presented stratified by before and after ATLS® training and overall, using frequencies and percentages for dichotomous and categorical outcomes, medians and interquartile ranges (Q1–Q3) for continuous and count outcomes, and the same summary statistics as the patient characteristics tables otherwise. Missing values will be reported for each outcome. These descriptive summaries are unadjusted for clustering (patient-level summaries). We will present key outcome summaries in the results section, and all outcome summaries as supplementary tables. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
 
 ```{r}
 #| label: tbl-outcomes-descriptive
@@ -443,6 +438,16 @@ Summaries of primary and secondary outcomes will be presented in the results sec
 #| results: asis
 create_outcomes_descriptive_table()
 ```
+
+Comparative effect measures for the intervention are listed by outcome in @tbl-outcomes-summary and are estimated from the mixed-effects models in Analysis methods (cluster-specific effects unless otherwise stated):
+
+- **Dichotomous outcomes:** odds ratio (logit link) and absolute risk difference (identity link), where both links are used.
+- **Count (length-of-stay) outcomes:** rate ratio from a negative binomial model with log link.
+- **Ordinal outcomes (EQ-5D-5L domains and WHODAS domain scores):** cumulative odds ratio from a cumulative logit model.
+- **Continuous outcomes (EQ-5D-5L VAS and WHODAS summary score):** mean difference from a linear mixed model.
+- **Adherence proportion:** difference on the logit scale from a beta mixed model.
+
+Shell tables of the planned comparative results are given under Presentation of analysis results (@tbl-outcomes-analysis-results, @tbl-outcomes-analysis-results-all, and @tbl-additional-analyses-results).
 
 # Analysis methods
 
