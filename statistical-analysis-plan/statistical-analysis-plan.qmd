@@ -261,23 +261,47 @@ Our trial has eligibility criteria on the cluster and patient participant level.
 
 ## Study withdrawal and follow-up
 
-<!-- github-issue-22: CONSORT flow moved here from Analysis sets; shell covers assigned/received/analysed and post-randomisation losses. -->
+<!-- github-issue-22: two-figure CONSORT shells (cluster + patient), following batched SW reporting practice. -->
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
-We will use a CONSORT diagram to display the flow of hospitals, clusters, and patients through the trial, see @fig-consort-diagram. For each sequence and period, the diagram will report the numbers of clusters and patients randomly assigned (or included under that sequence), who received the intended intervention condition, who were lost or excluded after randomisation (with reasons), and who were analysed for the primary outcome. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+We will use CONSORT diagrams to display the flow of clusters and patients through the trial, reported as two figures in line with recent batched stepped-wedge practice: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS® training. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ```{r}
 #| echo: false
-#| label: fig-consort-diagram
-#| fig.cap: "Consort diagram shell. For each sequence and period, placeholders cover clusters and patients randomly assigned or included, receipt of the intended intervention, losses and exclusions after randomisation with reasons, and analysis for the primary outcome."
+#| label: fig-consort-clusters
+#| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
 
 knitr::include_graphics(
-  create_consort_diagram(
+  create_cluster_consort_diagram(
     sequences = sequences,
-    periods = total.months,
+    batches = batches,
+    total.months = total.months,
+    min.standard.care.months = min.standard.care.months,
+    transition.months = transition.months,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
+
+```{r}
+#| echo: false
+#| label: fig-consort-patients
+#| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall."
+#| fig.align: "center"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics(
+  create_patient_consort_diagram(
+    sequences = sequences,
+    batches = batches,
+    total.months = total.months,
+    min.standard.care.months = min.standard.care.months,
+    transition.months = transition.months,
     return.figure = FALSE,
     device = "png"
   )
