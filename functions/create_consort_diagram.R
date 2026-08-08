@@ -17,8 +17,8 @@ consort_shell_canvas <- function(page.width.mm = 174,
         text.size = text.size,
         text.size.mm = text.size / ggplot2::.pt,
         ## Match geom_text lineheight = 0.88 used in consort_render.
-        line.h = text.size * 0.72 / pt.per.unit,
-        pad = text.size * 0.30 / pt.per.unit,
+        line.h = text.size * 0.84 / pt.per.unit,
+        pad = text.size * 0.40 / pt.per.unit,
         boxes = data.frame(),
         texts = data.frame(),
         segments = data.frame(),
@@ -322,7 +322,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
         )
     )
     excl.post.label <- consort_bullet_list(
-        "Lost/excluded after randomisation (n=; reasons):",
+        "Lost/excluded (n=; reasons):",
         c(
             "Withdrawn (n=)",
             "No outcome data (n=)",
@@ -551,7 +551,7 @@ create_patient_consort_diagram <- function(sequences = 5,
 
     top.label <- "Patients entered the trial (n=)"
     excl.label <- consort_bullet_list(
-        "Lost/excluded from primary analysis (n=; reasons):",
+        "Lost/excluded (n=; reasons):",
         c(
             "Lost to follow-up (n=)",
             "Withdrew consent (n=)",
