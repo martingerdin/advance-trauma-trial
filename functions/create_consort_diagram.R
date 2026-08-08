@@ -57,9 +57,46 @@ consort_wrap <- function(label, width.chars = 28) {
     paste(strwrap(label, width = width.chars), collapse = "\n")
 }
 
+#' Wrap text while preserving existing newlines (for bullet lists)
+#'
+#' @keywords internal
+consort_wrap_preserve <- function(label, width.chars = 28) {
+    lines <- strsplit(label, "\n", fixed = TRUE)[[1]]
+    wrapped <- unlist(lapply(lines, function(line) {
+        if (!nzchar(line)) {
+            return("")
+        }
+        ## Continuation indent for bullet lines
+        indent <- if (grepl("^[\u2022\\-\\*]\\s", line)) {
+            "  "
+        } else {
+            ""
+        }
+        pieces <- strwrap(
+            line,
+            width = width.chars,
+            exdent = nchar(indent),
+            simplify = TRUE
+        )
+        if (length(pieces) == 0L) {
+            return(line)
+        }
+        paste(pieces, collapse = "\n")
+    }))
+    paste(wrapped, collapse = "\n")
+}
+
+#' Build a headed bullet list for exclusion boxes
+#'
+#' @keywords internal
+consort_bullet_list <- function(header, items) {
+    bullets <- paste0("\u2022 ", items)
+    paste(c(header, bullets), collapse = "\n")
+}
+
 #' @keywords internal
 consort_box_height <- function(label, width.chars = 28, line.h = 3.2, pad = 1.6) {
-    wrapped <- consort_wrap(label, width.chars)
+    wrapped <- consort_wrap_preserve(label, width.chars)
     n.lines <- length(strsplit(wrapped, "\n", fixed = TRUE)[[1]])
     n.lines * line.h + pad
 }
@@ -256,29 +293,31 @@ create_cluster_consort_diagram <- function(sequences = 5,
 
     top.label <- "Eligible clusters assessed for eligibility (n=)"
     rand.label <- "Clusters randomised (n=)"
-    excl.pre.label <- paste(
+    excl.pre.label <- consort_bullet_list(
         "Excluded before randomisation (n=):",
-        "  Not meeting inclusion criteria (n=)",
-        "  Declined to participate (n=)",
-        "  Other reasons (n=)",
-        sep = "\n"
+        c(
+            "Not meeting inclusion criteria (n=)",
+            "Declined to participate (n=)",
+            "Other reasons (n=)"
+        )
     )
-    excl.post.label <- paste(
-        "Clusters lost or excluded",
-        "after randomisation (n=; reasons):",
-        "  Withdrawn (n=)",
-        "  No outcome data (n=)",
-        "  Other (n=)",
-        sep = "\n"
+    excl.post.label <- consort_bullet_list(
+        "Lost/excluded after randomisation (n=; reasons):",
+        c(
+            "Withdrawn (n=)",
+            "No outcome data (n=)",
+            "Other (n=)"
+        )
     )
     included.label <- "Clusters included in primary analysis (n=)"
     total.included.label <- "Clusters included in primary analysis (n=)"
-    total.excl.label <- paste(
+    total.excl.label <- consort_bullet_list(
         "Clusters excluded after randomisation (n=):",
-        "  Withdrawn (n=)",
-        "  No outcome data (n=)",
-        "  Other (n=)",
-        sep = "\n"
+        c(
+            "Withdrawn (n=)",
+            "No outcome data (n=)",
+            "Other (n=)"
+        )
     )
 
     y <- 0
@@ -292,7 +331,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     excl.pre.h <- consort_box_height(excl.pre.label, 36)
     canvas <- consort_add_box(canvas, 58, 98, y - excl.pre.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 60, y - 0.8, consort_wrap(excl.pre.label, 34),
+        canvas, 60, y - 0.8, consort_wrap_preserve(excl.pre.label, 34),
         hjust = 0, vjust = 1
     )
     branch.y <- y - excl.pre.h / 2
@@ -358,7 +397,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.left[k] + 0.5, excl.top - 0.6,
-            consort_wrap(excl.post.label, wrap.chars),
+            consort_wrap_preserve(excl.post.label, wrap.chars),
             hjust = 0, vjust = 1
         )
 
@@ -394,7 +433,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     tot.excl.h <- consort_box_height(total.excl.label, 55)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 20, y - 0.7, consort_wrap(total.excl.label, 50),
+        canvas, 20, y - 0.7, consort_wrap_preserve(total.excl.label, 50),
         hjust = 0, vjust = 1
     )
     y <- y - tot.excl.h - 3
@@ -491,42 +530,51 @@ create_patient_consort_diagram <- function(sequences = 5,
     wrap.chars <- max(14, floor(col.width * 0.9))
 
     top.label <- "Patients entered the trial (n=)"
-    excl.label <- paste(
-        "Patients lost or excluded from",
-        "primary analysis (n=; reasons):",
-        "  Lost to follow-up (n=)",
-        "  Withdrew consent (n=)",
-        "  Other (n=)",
-        sep = "\n"
+    excl.label <- consort_bullet_list(
+        "Lost/excluded from primary analysis (n=; reasons):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Other (n=)"
+        )
     )
     included.label <- "Patients included in primary analysis (n=)"
     before.label <- paste(
         "Before ATLS training",
         "Patients (n=)",
         "Included in primary analysis (n=)",
-        "Excluded (n=; reasons):",
-        "  Lost to follow-up (n=)",
-        "  Withdrew consent (n=)",
-        "  Other (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Other (n=)"
+            )
+        ),
         sep = "\n"
     )
     after.label <- paste(
         "After ATLS training",
         "Patients (n=)",
         "Included in primary analysis (n=)",
-        "Excluded (n=; reasons):",
-        "  Lost to follow-up (n=)",
-        "  Withdrew consent (n=)",
-        "  Other (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Other (n=)"
+            )
+        ),
         sep = "\n"
     )
     total.included.label <- "Patients included in primary analysis (n=)"
-    total.excl.label <- paste(
+    total.excl.label <- consort_bullet_list(
         "Patients excluded from primary analysis (n=):",
-        "  Lost to follow-up (n=)",
-        "  Withdrew consent (n=)",
-        "  Other (n=)",
-        sep = "\n"
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Other (n=)"
+        )
     )
 
     y <- 0
@@ -586,7 +634,7 @@ create_patient_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.left[k] + 0.5, excl.top - 0.6,
-            consort_wrap(excl.label, wrap.chars),
+            consort_wrap_preserve(excl.label, wrap.chars),
             hjust = 0, vjust = 1
         )
 
@@ -615,12 +663,12 @@ create_patient_consort_diagram <- function(sequences = 5,
     phase.h <- consort_box_height(before.label, 40)
     canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 10, y - 0.7, consort_wrap(before.label, 38),
+        canvas, 10, y - 0.7, consort_wrap_preserve(before.label, 38),
         hjust = 0, vjust = 1
     )
     canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 54, y - 0.7, consort_wrap(after.label, 38),
+        canvas, 54, y - 0.7, consort_wrap_preserve(after.label, 38),
         hjust = 0, vjust = 1
     )
     phase.bottom <- y - phase.h
@@ -641,7 +689,7 @@ create_patient_consort_diagram <- function(sequences = 5,
     tot.excl.h <- consort_box_height(total.excl.label, 55)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 20, y - 0.7, consort_wrap(total.excl.label, 50),
+        canvas, 20, y - 0.7, consort_wrap_preserve(total.excl.label, 50),
         hjust = 0, vjust = 1
     )
     y <- y - tot.excl.h - 3
