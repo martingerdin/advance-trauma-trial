@@ -16,9 +16,9 @@ consort_shell_canvas <- function(page.width.mm = 174,
         background = background,
         text.size = text.size,
         text.size.mm = text.size / ggplot2::.pt,
-        ## Match geom_text lineheight = 0.88 used in consort_render.
-        line.h = text.size * 0.84 / pt.per.unit,
-        pad = text.size * 0.40 / pt.per.unit,
+        ## Match geom_text lineheight = 1 used in consort_render.
+        line.h = text.size * 1.0 / pt.per.unit,
+        pad = text.size * 0.35 / pt.per.unit,
         boxes = data.frame(),
         texts = data.frame(),
         segments = data.frame(),
@@ -117,8 +117,8 @@ consort_box_height <- function(label, width.chars = 28, canvas = NULL,
     }
     wrapped <- consort_wrap_preserve(label, width.chars)
     n.lines <- length(strsplit(wrapped, "\n", fixed = TRUE)[[1]])
-    ## pad is total vertical inset (top + bottom); keep boxes close to the text.
-    n.lines * line.h + pad
+    ## Small safety factor so the last line is not clipped by the box edge.
+    n.lines * line.h * 1.06 + pad
 }
 
 #' Mini stepped-wedge strip coordinates for one sequence
@@ -220,7 +220,7 @@ consort_render <- function(canvas,
                 x = x, y = y, label = label, hjust = hjust, vjust = vjust,
                 fontface = fontface
             ),
-            size = canvas$texts$size, lineheight = 0.88
+            size = canvas$texts$size, lineheight = 1
         ) +
         scale_fill_identity() +
         coord_cartesian(
@@ -241,7 +241,7 @@ consort_render <- function(canvas,
         ggplot2::ggsave(
             file.name, figure,
             width = x.span * cm.per.unit,
-            height = max(8, y.span * cm.per.unit),
+            height = y.span * cm.per.unit,
             units = "cm", limitsize = FALSE
         )
     }
@@ -348,7 +348,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     )
     y <- y - top.h - 1.2
 
-    excl.pre.h <- consort_box_height(excl.pre.label, 42, canvas = canvas)
+    excl.pre.h <- consort_box_height(excl.pre.label, 40, canvas = canvas)
     canvas <- consort_add_box(canvas, 58, 98, y - excl.pre.h, y, "white")
     canvas <- consort_add_text(
         canvas, 60, y - canvas$pad / 2, consort_wrap_preserve(excl.pre.label, 40),
@@ -378,7 +378,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     excl.post.h <- consort_box_height(excl.post.label, wrap.chars, canvas = canvas)
     included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
     seq.block.top <- y
-    seq.block.bottom <- y - title.h - strip.h - 0.7 - excl.post.h - 0.6 - included.h
+    seq.block.bottom <- y - title.h - strip.h - 0.7 - excl.post.h - 0.85 - included.h
 
     for (k in seq_len(n.seq)) {
         canvas <- consort_add_segment(
@@ -421,7 +421,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
             hjust = 0, vjust = 1
         )
 
-        incl.top <- excl.top - excl.post.h - 0.6
+        incl.top <- excl.top - excl.post.h - 0.85
         canvas <- consort_add_segment(
             canvas, col.center[k], col.center[k],
             excl.top - excl.post.h, incl.top, arrow = TRUE
@@ -450,7 +450,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     )
     y <- y - tot.incl.h - 0.8
 
-    tot.excl.h <- consort_box_height(total.excl.label, 55, canvas = canvas)
+    tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
         canvas, 20, y - canvas$pad / 2, consort_wrap_preserve(total.excl.label, 50),
@@ -615,7 +615,7 @@ create_patient_consort_diagram <- function(sequences = 5,
     title.h <- 2.4
     excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
     included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
-    seq.block.bottom <- y - title.h - strip.h - 0.7 - excl.h - 0.6 - included.h
+    seq.block.bottom <- y - title.h - strip.h - 0.7 - excl.h - 0.85 - included.h
 
     for (k in seq_len(n.seq)) {
         canvas <- consort_add_segment(
@@ -658,7 +658,7 @@ create_patient_consort_diagram <- function(sequences = 5,
             hjust = 0, vjust = 1
         )
 
-        incl.top <- excl.top - excl.h - 0.6
+        incl.top <- excl.top - excl.h - 0.85
         canvas <- consort_add_segment(
             canvas, col.center[k], col.center[k],
             excl.top - excl.h, incl.top, arrow = TRUE
@@ -706,7 +706,7 @@ create_patient_consort_diagram <- function(sequences = 5,
     )
     y <- y - tot.incl.h - 0.8
 
-    tot.excl.h <- consort_box_height(total.excl.label, 55, canvas = canvas)
+    tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
         canvas, 20, y - canvas$pad / 2, consort_wrap_preserve(total.excl.label, 50),
