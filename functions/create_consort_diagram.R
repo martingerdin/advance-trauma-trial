@@ -95,9 +95,10 @@ consort_bullet_list <- function(header, items) {
 }
 
 #' @keywords internal
-consort_box_height <- function(label, width.chars = 28, line.h = 2.55, pad = 0.7) {
+consort_box_height <- function(label, width.chars = 28, line.h = 1.65, pad = 0.55) {
     wrapped <- consort_wrap_preserve(label, width.chars)
     n.lines <- length(strsplit(wrapped, "\n", fixed = TRUE)[[1]])
+    ## pad is total vertical inset (top + bottom); keep boxes close to the text.
     n.lines * line.h + pad
 }
 
@@ -289,7 +290,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     col.left <- margin + (seq_len(n.seq) - 1) * (col.width + gap)
     col.right <- col.left + col.width
     col.center <- (col.left + col.right) / 2
-    wrap.chars <- max(14, floor(col.width * 0.9))
+    wrap.chars <- max(16, floor(col.width * 1.15))
 
     top.label <- "Eligible clusters assessed for eligibility (n=)"
     rand.label <- "Clusters randomised (n=)"
@@ -331,7 +332,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     excl.pre.h <- consort_box_height(excl.pre.label, 36)
     canvas <- consort_add_box(canvas, 58, 98, y - excl.pre.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 60, y - 0.35, consort_wrap_preserve(excl.pre.label, 34),
+        canvas, 60, y - 0.28, consort_wrap_preserve(excl.pre.label, 34),
         hjust = 0, vjust = 1
     )
     branch.y <- y - excl.pre.h / 2
@@ -396,7 +397,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
             excl.top - excl.post.h, excl.top, "white"
         )
         canvas <- consort_add_text(
-            canvas, col.left[k] + 0.4, excl.top - 0.3,
+            canvas, col.left[k] + 0.4, excl.top - 0.28,
             consort_wrap_preserve(excl.post.label, wrap.chars),
             hjust = 0, vjust = 1
         )
@@ -433,7 +434,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     tot.excl.h <- consort_box_height(total.excl.label, 55)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 20, y - 0.35, consort_wrap_preserve(total.excl.label, 50),
+        canvas, 20, y - 0.28, consort_wrap_preserve(total.excl.label, 50),
         hjust = 0, vjust = 1
     )
     y <- y - tot.excl.h - 1.8
@@ -527,7 +528,7 @@ create_patient_consort_diagram <- function(sequences = 5,
     col.left <- margin + (seq_len(n.seq) - 1) * (col.width + gap)
     col.right <- col.left + col.width
     col.center <- (col.left + col.right) / 2
-    wrap.chars <- max(14, floor(col.width * 0.9))
+    wrap.chars <- max(16, floor(col.width * 1.15))
 
     top.label <- "Patients entered the trial (n=)"
     excl.label <- consort_bullet_list(
@@ -633,7 +634,7 @@ create_patient_consort_diagram <- function(sequences = 5,
             excl.top - excl.h, excl.top, "white"
         )
         canvas <- consort_add_text(
-            canvas, col.left[k] + 0.4, excl.top - 0.3,
+            canvas, col.left[k] + 0.4, excl.top - 0.28,
             consort_wrap_preserve(excl.label, wrap.chars),
             hjust = 0, vjust = 1
         )
@@ -663,12 +664,12 @@ create_patient_consort_diagram <- function(sequences = 5,
     phase.h <- consort_box_height(before.label, 40)
     canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 10, y - 0.35, consort_wrap_preserve(before.label, 38),
+        canvas, 10, y - 0.28, consort_wrap_preserve(before.label, 38),
         hjust = 0, vjust = 1
     )
     canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 54, y - 0.35, consort_wrap_preserve(after.label, 38),
+        canvas, 54, y - 0.28, consort_wrap_preserve(after.label, 38),
         hjust = 0, vjust = 1
     )
     phase.bottom <- y - phase.h
@@ -689,7 +690,7 @@ create_patient_consort_diagram <- function(sequences = 5,
     tot.excl.h <- consort_box_height(total.excl.label, 55)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 20, y - 0.35, consort_wrap_preserve(total.excl.label, 50),
+        canvas, 20, y - 0.28, consort_wrap_preserve(total.excl.label, 50),
         hjust = 0, vjust = 1
     )
     y <- y - tot.excl.h - 1.8
