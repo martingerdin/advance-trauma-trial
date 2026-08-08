@@ -261,18 +261,15 @@ Our trial has eligibility criteria on the cluster and patient participant level.
 
 ## Study withdrawal and follow-up
 
-<!-- github-issue-22: draft from protocol withdrawal/follow-up; CONSORT flow moved here from Analysis sets. -->
-Patient participants may withdraw consent for collection of non-routinely recorded data at any time before the final analysis. Further trial-specific follow-up and collection of such data will then stop. Participants may also request that already collected data be removed from the trial before final analysis. Withdrawal of consent or removal of data does not affect clinical care; any subsequent follow-up is according to the participating hospital’s routine. Clusters that leave the trial after randomisation will be documented with reasons where available.
-
-Enrolled patients will be followed daily until discharge for injury information. Mortality outcomes will be assessed at 24 hours, 30 days, and three months after arrival at the emergency department, and functional outcomes and return to work at 30 days and three months; patients discharged before a scheduled time point will be followed by phone. Loss to follow-up and withdrawal will be summarised overall and by intervention condition.
+<!-- github-issue-22: CONSORT flow moved here from Analysis sets; shell covers assigned/received/analysed and post-randomisation losses. -->
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
-We will use a CONSORT diagram to display the flow of hospitals, clusters, and patients through the trial, see @fig-consort-diagram. The diagram will report, for each sequence (and overall), the numbers of clusters and patients randomly assigned, receiving the intended intervention condition according to the scheduled transition, excluded after randomisation (with reasons), and included in the primary analysis. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+We will use a CONSORT diagram to display the flow of hospitals, clusters, and patients through the trial, see @fig-consort-diagram. For each sequence and period, the diagram will report the numbers of clusters and patients randomly assigned (or included under that sequence), who received the intended intervention condition, who were lost or excluded after randomisation (with reasons), and who were analysed for the primary outcome. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ```{r}
 #| echo: false
 #| label: fig-consort-diagram
-#| fig.cap: "Consort diagram. The diagram displays the flow of clusters and participants through the trial."
+#| fig.cap: "Consort diagram shell. For each sequence and period, placeholders cover clusters and patients randomly assigned or included, receipt of the intended intervention, losses and exclusions after randomisation with reasons, and analysis for the primary outcome."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE

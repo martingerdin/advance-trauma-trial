@@ -6,7 +6,10 @@
 #' column per treatment sequence and one row per period, with cells shaded to
 #' indicate whether the cluster is under the intervention or control condition
 #' in that period. The text is a template (placeholder counts such as "n=") to
-#' be completed once the trial is reported.
+#' be completed once the trial is reported. Sequence headers show clusters
+#' randomly assigned and patients included; period cells show receipt of the
+#' intended intervention, losses/exclusions after randomisation with reasons,
+#' and analysis for the primary outcome, separately for clusters and patients.
 #'
 #' The number of sequence columns is driven by `sequences`, so the figure
 #' stays in sync with the design. Rather than shrinking text to fit fixed
@@ -75,11 +78,14 @@ create_consort_diagram <- function(sequences = 5,
                                    transition.fill = colors()["transition"] |> unname(),
                                    text.size = 8,
                                    note = paste(
-                                       "Note: within each box, Assessed = assessed for eligibility,",
-                                       "Intervention = received intervention, and No intervention = did",
-                                       "not receive intervention (give reasons). Each \"n=\" should report",
-                                       "the number of clusters, the average cluster size, and the",
-                                       "variance of cluster sizes."
+                                       "Note: each \"n=\" reports the number of clusters and, where",
+                                       "patients are shown, the number of individuals. Sequence headers",
+                                       "give clusters randomly assigned and patients included under that",
+                                       "sequence. Period cells give, for that sequence and period, who",
+                                       "received the intended intervention condition, losses and",
+                                       "exclusions after randomisation (with reasons), and who were",
+                                       "analysed for the primary outcome. Where informative, also report",
+                                       "average cluster size and the variance of cluster sizes."
                                    ),
                                    page.width.mm = 174,
                                    background = "grey92",
@@ -170,22 +176,36 @@ create_consort_diagram <- function(sequences = 5,
     col.right <- col.left + col.width
     grid.width <- plot.right - grid.left
 
-    ## Text content (defined here so box heights can be derived from it)
-    elig.label <- "Assessed for eligibility (n=no of clusters)"
-    rand.label <- "Randomised (n=no of clusters)"
+    ## Text content (defined here so box heights can be derived from it).
+    ## Placeholders follow the stepped-wedge CONSORT extension: for each sequence
+    ## (and period), report clusters and patients randomly assigned / included,
+    ## who received the intended intervention, losses/exclusions after
+    ## randomisation with reasons, and who were analysed for the primary outcome.
+    elig.label <- "Assessed for eligibility (n= clusters)"
+    rand.label <- "Randomised (n= clusters)"
     excluded.label <- paste(
-        "Excluded (n=no of clusters):",
+        "Excluded before randomisation (n= clusters):",
         "    Not meeting inclusion criteria (n=)",
         "    Declined to participate (n=)",
         "    Other reasons (n=)",
         sep = "\n"
     )
     seq.title.label <- paste0("Sequence ", n.seq) # widest sequence title
-    seq.sub.label <- "Clusters allocated (n=)"
+    seq.sub.label <- paste(
+        "Clusters randomly assigned (n=)",
+        "Patients included (n=)",
+        sep = "\n"
+    )
     cell.label <- paste(
-        "Assessed (n=)",
-        "Intervention (n=)",
-        "No intervention (n=)",
+        "Received intended intervention:",
+        "    Clusters (n=)",
+        "    Patients (n=)",
+        "Lost or excluded after randomisation:",
+        "    Clusters (n=; reasons)",
+        "    Patients (n=; reasons)",
+        "Analysed for primary outcome:",
+        "    Clusters (n=)",
+        "    Patients (n=)",
         sep = "\n"
     )
 
@@ -359,10 +379,10 @@ create_consort_diagram <- function(sequences = 5,
             hjust = 0.5, vjust = 1, fontface = "bold"
         )
         add_text(
-            x = col.center[k],
+            x = col.left[k] + pad.x,
             y = head.text.top - head.title.lines * line.height.units,
             label = wrap_box(seq.sub.label, col.width),
-            hjust = 0.5, vjust = 1
+            hjust = 0, vjust = 1
         )
     }
 
