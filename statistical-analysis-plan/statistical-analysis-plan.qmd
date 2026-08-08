@@ -233,17 +233,17 @@ We will not adjust for multiple testing because no secondary outcome is regarded
 
 Adherence to the intervention is defined at the cluster and individual levels and is distinct from the secondary outcome adherence to ATLS® principles during resuscitation (see Analysis of secondary outcomes).
 
-At the cluster level, adherence means that ATLS® training is delivered to the intended physicians during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS® training before its scheduled transition. Cluster-level adherence will be assessed using training-delivery records (including numbers of physicians trained in each hospital and timing of training relative to the scheduled transition). We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis (see Interim analysis).
+At the cluster level, adherence means that ATLS® training is delivered during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS® training before its scheduled transition. We will assess cluster level adherence using the training log kept  by the trial team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis (see Interim analysis).
 
-At the individual level, exposure to the intervention is defined by the cluster’s scheduled transition date, as specified under Analysis sets: patients are classified according to the period of admission, transition months are excluded, and the primary analysis includes eligible patients with available outcome data irrespective of whether care was delivered by a trained physician. Individual-level receipt of care from ATLS®-trained physicians will be monitored descriptively where available, but will not redefine the primary analysis set. If a cluster’s actual transition date differs from the scheduled date by more than four weeks, exposure will be redefined using the actual transition date in a sensitivity analysis (see Analysis sets).
+At the individual level, exposure to the intervention is defined by the cluster’s scheduled transition date, as specified under Analysis sets. Patients are classified according to the period of admission, and the primary analysis includes eligible patients irrespective of whether care was delivered by a trained physician. If a cluster’s actual transition date differs from the scheduled date by more than four weeks, exposure will be redefined using the actual transition date in a sensitivity analysis (see Analysis sets).
 
-Process adherence to ATLS® principles during initial resuscitation (the 14-item checklist) is a nested-staircase secondary outcome and is defined and analysed in the Outcomes and Analysis of secondary outcomes sections; it is not used to exclude patients from the primary analysis.
+Process adherence to ATLS® principles during initial resuscitation is a nested-staircase secondary outcome and is defined and analysed in the Outcomes and Analysis of secondary outcomes sections; it is not used to exclude patients from the primary analysis.
 
 ### Protocol deviations
 
 A protocol deviation is any departure from the approved trial protocol, ICH-GCP, or applicable regulations. Consistent with the protocol, serious breaches and deviations that significantly affect, or are likely to affect, participant safety or integrity or the reliability of trial data will be reported without delay to the sponsor for assessment. Minor deviations that do not affect participant safety or integrity and do not materially affect the scientific value of the trial will be documented in the trial records of the principal investigator and the sponsor.
 
-Protocol deviations will be summarised descriptively for the final analysis (and reviewed at interim analysis), overall and by intervention condition where informative, including counts by type (cluster-level versus individual-level, and serious versus minor where classified) and narrative reasons. Deviations will not be used to exclude clusters or patients from the primary analysis set; the primary analysis remains based on scheduled intervention exposure and available outcome data as specified under Analysis sets.
+Protocol deviations will be summarised descriptively for the final analysis (and reviewed at interim analysis), overall and by intervention condition where informative, including counts by type (cluster-level versus individual-level, and serious versus minor where classified) and narrative reasons. Deviations will not be used to exclude clusters or patients from the primary analysis; the primary analysis remains based on scheduled intervention exposure and available outcome data as specified under Analysis sets.
 
 # Trial sample
 
@@ -446,15 +446,8 @@ create_outcomes_descriptive_table()
 
 ## Analysis methods
 
-<!-- Should include:
-- What analysis method will be used (including link functions) for each data type (to align with effect measures), including how clustering will be accounted for and whether this targets the marginal or cluster-specific effect
-- How standard errors will be estimated, and where relevant how a small number of clusters will be accommodated 
-- How confidence intervals will be derived (e.g., z-distribution or t-distribution) and the method of degrees of freedom where relevant 
-- Information on the technical details of model inference, including estimation methods (e.g., mean-variance adaptive Gauss-Hermite Quadrature), optimization technique (e.g., Newton Raphson) and for models fit via Maximum Likelihood, what is being maximised (e.g. log-likelihood, profile log-likelihood) 
-- Details of any adjustment for cluster or individual-level covariates and whether this is for the primary or sensitivity analysis
-- How underlying assumptions of the statistical methods will be checked (including any intercurrent event strategy assumptions)
--->
-
+<!-- github-issue-26: replace checklist placeholder with overview pointing to existing subsections. -->
+Primary and secondary outcomes will be analysed with mixed-effects regression models that account for clustering at the hospital level and target cluster-specific intervention effects, using link functions and outcome distributions matched to each data type (see Effect measures and the subsections below). Standard errors will be model-based; small-sample adjustments (including Kenward–Roger degrees-of-freedom corrections where relevant) and Wald-type confidence intervals will be used as specified under Analysis of the primary outcome. Estimation will be by maximum likelihood with a Laplace approximation for the random effects, with the software implementation chosen closer to analysis. Covariate adjustment for the fully adjusted analysis is specified under Adjusted analyses. Model diagnostics will assess distributional assumptions, convergence, and (where relevant) intercurrent-event strategy assumptions noted under Intercurrent events. If the preferred primary model does not converge, the prespecified sequence of simpler models under Analysis of the primary outcome will be used.
 
 ### Analysis of the primary outcome
 
@@ -526,13 +519,6 @@ The general estimation framework for the mixed-effects models is maximum likelih
 
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): state that diagnostics will check distributional assumptions and convergence. -->
 Model diagnostics will be used to assess distributional assumptions and model convergence.
-
-<!-- sap-revision-todo B5 (comments id=26, id=27 AO; Round Two): report time-adjusted within-cluster correlations, variance components, and latent-scale correlations (protocol-aligned). -->
-<!-- sap-revision-todo J6: clarify latent-scale is additional for binary outcomes only. -->
-We will report time-adjusted within-cluster correlations for all outcomes with 95% CIs, including the intra-cluster correlation (ICC) and within- and between-period correlations implied by the assumed correlation structures, together with all estimated variance components. For binary outcomes, these correlations will additionally be reported on the latent scale.
-
-<!-- sap-revision-todo B6 (comments id=28, id=29 AO; Round Two): ICC and related correlations derived from variance components; AR(1) rho from the AR(1) structure. -->
-Intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models. For models with an AR(1) within-cluster structure, the correlation parameter will be estimated directly from the AR(1) structure.
 
 ### Analysis of secondary outcomes
 
@@ -637,9 +623,13 @@ So my recommendation would be for the primary analysis to be as currently specif
 
 ## Correlations
 
-<!-- Should include:
-- How the intra-cluster correlation coefficients and other correlation parameters will be estimated 
--->
+<!-- github-issue-26: move ICC/correlation reporting here from primary-analysis subsection (B5–B6). -->
+<!-- sap-revision-todo B5 (comments id=26, id=27 AO; Round Two): report time-adjusted within-cluster correlations, variance components, and latent-scale correlations (protocol-aligned). -->
+<!-- sap-revision-todo J6: clarify latent-scale is additional for binary outcomes only. -->
+We will report time-adjusted within-cluster correlations for all outcomes with 95% CIs, including the intra-cluster correlation (ICC) and within- and between-period correlations implied by the assumed correlation structures, together with all estimated variance components. For binary outcomes, these correlations will additionally be reported on the latent scale.
+
+<!-- sap-revision-todo B6 (comments id=28, id=29 AO; Round Two): ICC and related correlations derived from variance components; AR(1) rho from the AR(1) structure. -->
+Intra-cluster and related correlation parameters will be derived from the estimated variance components of the fitted models. For models with an AR(1) within-cluster structure, the correlation parameter will be estimated directly from the AR(1) structure. These parameters will be presented as a supplementary table. See @tbl-correlation-parameters.
 
 ## Missing data {#sec-treatment-of-missing-data}
 
@@ -673,12 +663,8 @@ Let us discuss this further.
 
 ## Sensitivity analyses
 
-<!-- Should include:
-- Any planned sensitivity analyses for each outcome where applicable
-- Details of alternative methods to be used if convergence is not achieved 
--->
-
-We will conduct sensitivity analyses to assess the robustness of the primary analysis results to different modelling assumptions. In all sensitivity analyses, the focus will be on the stability of the estimated intervention effect $\theta$. Unless otherwise stated, each sensitivity analysis will be operationalised using two separate models, one with the logit link and one with the identity link.
+<!-- github-issue-26: checklist covered by existing sensitivity subsections; note convergence fallback. -->
+We will conduct sensitivity analyses to assess the robustness of the primary analysis results to different modelling assumptions. In all sensitivity analyses, the focus will be on the stability of the estimated intervention effect $\theta$. Unless otherwise stated, each sensitivity analysis will be operationalised using two separate models, one with the logit link and one with the identity link. If a sensitivity model does not converge, we will report that fact and, where feasible, fit the next simpler random-effects or period specification analogous to the primary-analysis convergence sequence.
 
 #### Models with autoregressive within-cluster correlation
 
@@ -781,10 +767,7 @@ These are known individual-level prognostic factors for the primary outcome. The
 
 ## Subgroup analyses
 
-<!-- Should include:
-- Any planned subgroup analyses or analyses to detect treatment effect heterogeneity for each outcome including number and type of subgroups or potential effect modifiers, how they are defined (e.g., whether cluster-level or individual-level, any categorization of continuous variables) and methods of analysis (e.g., interaction tests or stratified analyses, any planned control of type 1s error) and how results will be presented (e.g., forest plots)
--->
-
+<!-- github-issue-26: remove checklist placeholder; existing F1/F2 text covers methods. -->
 <!-- sap-revision-todo F1 (comments id=33 MGW, id=34 AO; id=368 KH): subgroup analyses of primary outcome via interactions. -->
 <!-- sap-revision-todo F2 (comments id=243, id=246 KH): clarify subgroup coding; cluster size categorical; keep six subgroups. -->
 We will perform the following subgroup analyses of the primary outcome:
@@ -797,7 +780,7 @@ We will perform the following subgroup analyses of the primary outcome:
 -  patients with major trauma, defined as patients with an injury severity score (ISS) of 16 or higher versus those with ISS below 16;
 -  cluster size, defined as the monthly volume of eligible patients (as used for covariate-constrained randomisation) and categorised as small (fewer than 12 patients per month), medium (12–20), or large (more than 20)
 
-These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-primary-model.
+These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-primary-model. Results will be presented in @tbl-additional-analyses-results and as a forest plot of subgroup-specific intervention effects with 95% CIs (see @fig-subgroup-forest-plot).
 
 ## Safety events
 
@@ -816,11 +799,8 @@ create_safety_events_table()
 
 ## Statistical software
 
-<!-- Should include:
-- Details of statistical software and packages to be used to carry out analyses
--->
-
-We will use the R Statistical Software for all analyses [@R].
+<!-- github-issue-26: expand software note for checklist. -->
+We will use the R Statistical Software for all analyses [@R]. Specific packages for mixed-effects modelling, small-sample corrections, multiple imputation, and reporting tables will be selected closer to the time of analysis based on convergence behaviour and available methodology, and will be documented in the analysis code and final report.
 
 ## Presentation of analysis results
 
