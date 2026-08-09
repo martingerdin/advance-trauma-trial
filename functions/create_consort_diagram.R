@@ -344,7 +344,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    top.label <- "Eligible clusters assessed for eligibility (n=)"
+    top.label <- "Clusters assessed for eligibility (n=)"
     rand.label <- "Clusters randomised (n=)"
     excl.pre.label <- consort_bullet_list(
         "Excluded before randomisation (n=):",
@@ -510,16 +510,17 @@ create_cluster_consort_diagram <- function(sequences = 5,
     }
     y <- legend.y - 2.5
 
-    note <- paste0(
-        "Note: cluster-level CONSORT shell for the batched stepped-wedge design ",
-        "(", batches, " batches; ", sequences, " sequences). Mini strips show the ",
-        "scheduled condition by period. Complete n= and reasons at reporting."
-    )
-    canvas <- consort_add_text(
-        canvas, margin, y, consort_wrap(note, 95),
-        hjust = 0, vjust = 1
-    )
-    y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    # note <- paste0(
+    #     "Note: cluster-level CONSORT shell for the batched stepped-wedge design ",
+    #     "(", batches, " batches; ", sequences, " sequences). Mini strips show the ",
+    #     "scheduled condition by period. Complete n= and reasons at reporting."
+    # )
+    # canvas <- consort_add_text(
+    #     canvas, margin, y, consort_wrap(note, 95),
+    #     hjust = 0, vjust = 1
+    # )
+    # y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    y.bottom <- y - 0.5
 
     consort_render(
         canvas = canvas,
