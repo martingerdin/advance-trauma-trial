@@ -16,9 +16,11 @@ consort_shell_canvas <- function(page.width.mm = 174,
         background = background,
         text.size = text.size,
         text.size.mm = text.size / ggplot2::.pt,
-        ## Match geom_text lineheight = 1 used in consort_render.
-        line.h = text.size * 1.0 / pt.per.unit,
-        pad = text.size * 0.35 / pt.per.unit,
+        ## geom_text(lineheight = 1) spans ~1.10× fontsize in native units
+        ## (matched to textGrob); requires expand = FALSE in consort_render.
+        line.h = text.size * 1.10 / pt.per.unit,
+        ## Symmetric top/bottom inset inside boxes (side inset is separate).
+        pad = text.size * 0.25 / pt.per.unit,
         boxes = data.frame(),
         texts = data.frame(),
         segments = data.frame(),
@@ -117,8 +119,31 @@ consort_box_height <- function(label, width.chars = 28, canvas = NULL,
     }
     wrapped <- consort_wrap_preserve(label, width.chars)
     n.lines <- length(strsplit(wrapped, "\n", fixed = TRUE)[[1]])
-    ## Small safety factor so the last line is not clipped by the box edge.
-    n.lines * line.h * 1.06 + pad
+    n.lines * line.h + 2 * pad
+}
+
+#' Condition fills for mini stepped-wedge strips (avoid base::colors clash)
+#'
+#' @keywords internal
+consort_condition_fills <- function() {
+    ## Prefer the project palette when sourced; otherwise use the same hexes.
+    if (exists("colors", mode = "function", inherits = TRUE) &&
+            !identical(get("colors", mode = "function"), grDevices::colors)) {
+        cols <- colors()
+        out <- c(
+            control = unname(cols["light.standard.care"]),
+            transition = unname(cols["light.transition"]),
+            intervention = unname(cols["light.intervention"])
+        )
+        if (!anyNA(out) && all(nzchar(out))) {
+            return(out)
+        }
+    }
+    c(
+        control = "#FCCE94",
+        transition = "#92D9E6",
+        intervention = "#BFA6D6"
+    )
 }
 
 #' Mini stepped-wedge strip coordinates for one sequence
@@ -218,20 +243,25 @@ consort_render <- function(canvas,
             data = canvas$texts,
             aes(
                 x = x, y = y, label = label, hjust = hjust, vjust = vjust,
-                fontface = fontface
+                fontface = fontface, size = size
             ),
-            size = canvas$texts$size, lineheight = 1
+            lineheight = 1
         ) +
+        scale_size_identity() +
         scale_fill_identity() +
+        ## expand = FALSE keeps data units equal to the ggsave mm mapping used
+        ## for line.h / pad; default expansion shrinks units and clips text.
         coord_cartesian(
             xlim = c(canvas$plot.left, canvas$plot.right),
             ylim = c(y.bottom, y.top),
+            expand = FALSE,
             clip = "off"
         ) +
         theme_void() +
         theme(
             plot.background = element_rect(fill = canvas$background, color = NA),
-            panel.background = element_rect(fill = canvas$background, color = NA)
+            panel.background = element_rect(fill = canvas$background, color = NA),
+            plot.margin = margin(0, 0, 0, 0)
         )
 
     if (isTRUE(save)) {
@@ -295,10 +325,10 @@ create_cluster_consort_diagram <- function(sequences = 5,
             transition.months >= 0
     )
 
-    cols <- colors()
-    control.fill <- unname(cols["light.standard.care"])
-    transition.fill <- unname(cols["light.transition"])
-    intervention.fill <- unname(cols["light.intervention"])
+    fills <- consort_condition_fills()
+    control.fill <- unname(fills["control"])
+    transition.fill <- unname(fills["transition"])
+    intervention.fill <- unname(fills["intervention"])
     box.fill <- "#fde6d4"
 
     canvas <- consort_shell_canvas(page.width.mm = page.width.mm)
@@ -310,6 +340,9 @@ create_cluster_consort_diagram <- function(sequences = 5,
     col.right <- col.left + col.width
     col.center <- (col.left + col.right) / 2
     wrap.chars <- max(18, floor(col.width * 1.45))
+    ## Vertical gaps between strip / exclusion / analysis boxes (arrow length).
+    gap.strip.excl <- 3.0
+    gap.excl.incl <- 3.0
 
     top.label <- "Eligible clusters assessed for eligibility (n=)"
     rand.label <- "Clusters randomised (n=)"
@@ -351,7 +384,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     excl.pre.h <- consort_box_height(excl.pre.label, 40, canvas = canvas)
     canvas <- consort_add_box(canvas, 58, 98, y - excl.pre.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 60, y - canvas$pad / 2, consort_wrap_preserve(excl.pre.label, 40),
+        canvas, 60, y - canvas$pad, consort_wrap_preserve(excl.pre.label, 40),
         hjust = 0, vjust = 1
     )
     branch.y <- y - excl.pre.h / 2
@@ -378,7 +411,8 @@ create_cluster_consort_diagram <- function(sequences = 5,
     excl.post.h <- consort_box_height(excl.post.label, wrap.chars, canvas = canvas)
     included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
     seq.block.top <- y
-    seq.block.bottom <- y - title.h - strip.h - 0.7 - excl.post.h - 0.85 - included.h
+    seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.post.h -
+        gap.excl.incl - included.h
 
     for (k in seq_len(n.seq)) {
         canvas <- consort_add_segment(
@@ -406,7 +440,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
         )
         canvas$strips <- rbind(canvas$strips, strip)
 
-        excl.top <- strip.bottom - 0.7
+        excl.top <- strip.bottom - gap.strip.excl
         canvas <- consort_add_segment(
             canvas, col.center[k], col.center[k],
             strip.bottom, excl.top, arrow = TRUE
@@ -416,12 +450,12 @@ create_cluster_consort_diagram <- function(sequences = 5,
             excl.top - excl.post.h, excl.top, "white"
         )
         canvas <- consort_add_text(
-            canvas, col.left[k] + 0.4, excl.top - canvas$pad / 2,
+            canvas, col.left[k] + 0.4, excl.top - canvas$pad,
             consort_wrap_preserve(excl.post.label, wrap.chars),
             hjust = 0, vjust = 1
         )
 
-        incl.top <- excl.top - excl.post.h - 0.85
+        incl.top <- excl.top - excl.post.h - gap.excl.incl
         canvas <- consort_add_segment(
             canvas, col.center[k], col.center[k],
             excl.top - excl.post.h, incl.top, arrow = TRUE
@@ -453,7 +487,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
     tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 20, y - canvas$pad / 2, consort_wrap_preserve(total.excl.label, 50),
+        canvas, 20, y - canvas$pad, consort_wrap_preserve(total.excl.label, 50),
         hjust = 0, vjust = 1
     )
     y <- y - tot.excl.h - 1.8
@@ -533,10 +567,10 @@ create_patient_consort_diagram <- function(sequences = 5,
             transition.months >= 0
     )
 
-    cols <- colors()
-    control.fill <- unname(cols["light.standard.care"])
-    transition.fill <- unname(cols["light.transition"])
-    intervention.fill <- unname(cols["light.intervention"])
+    fills <- consort_condition_fills()
+    control.fill <- unname(fills["control"])
+    transition.fill <- unname(fills["transition"])
+    intervention.fill <- unname(fills["intervention"])
     box.fill <- "#fde6d4"
 
     canvas <- consort_shell_canvas(page.width.mm = page.width.mm)
@@ -548,6 +582,10 @@ create_patient_consort_diagram <- function(sequences = 5,
     col.right <- col.left + col.width
     col.center <- (col.left + col.right) / 2
     wrap.chars <- max(18, floor(col.width * 1.45))
+    ## Vertical gaps between strip / exclusion / analysis boxes (arrow length).
+    ## Keep well above the arrowhead size (~0.7 data units) so shafts remain visible.
+    gap.strip.excl <- 3.0
+    gap.excl.incl <- 3.0
 
     top.label <- "Patients entered the trial (n=)"
     excl.label <- consort_bullet_list(
@@ -615,7 +653,8 @@ create_patient_consort_diagram <- function(sequences = 5,
     title.h <- 2.4
     excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
     included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
-    seq.block.bottom <- y - title.h - strip.h - 0.7 - excl.h - 0.85 - included.h
+    seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.h -
+        gap.excl.incl - included.h
 
     for (k in seq_len(n.seq)) {
         canvas <- consort_add_segment(
@@ -643,7 +682,7 @@ create_patient_consort_diagram <- function(sequences = 5,
         )
         canvas$strips <- rbind(canvas$strips, strip)
 
-        excl.top <- strip.bottom - 0.7
+        excl.top <- strip.bottom - gap.strip.excl
         canvas <- consort_add_segment(
             canvas, col.center[k], col.center[k],
             strip.bottom, excl.top, arrow = TRUE
@@ -653,12 +692,12 @@ create_patient_consort_diagram <- function(sequences = 5,
             excl.top - excl.h, excl.top, "white"
         )
         canvas <- consort_add_text(
-            canvas, col.left[k] + 0.4, excl.top - canvas$pad / 2,
+            canvas, col.left[k] + 0.4, excl.top - canvas$pad,
             consort_wrap_preserve(excl.label, wrap.chars),
             hjust = 0, vjust = 1
         )
 
-        incl.top <- excl.top - excl.h - 0.85
+        incl.top <- excl.top - excl.h - gap.excl.incl
         canvas <- consort_add_segment(
             canvas, col.center[k], col.center[k],
             excl.top - excl.h, incl.top, arrow = TRUE
@@ -683,12 +722,12 @@ create_patient_consort_diagram <- function(sequences = 5,
     phase.h <- consort_box_height(before.label, 40, canvas = canvas)
     canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 10, y - canvas$pad / 2, consort_wrap_preserve(before.label, 38),
+        canvas, 10, y - canvas$pad, consort_wrap_preserve(before.label, 38),
         hjust = 0, vjust = 1
     )
     canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 54, y - canvas$pad / 2, consort_wrap_preserve(after.label, 38),
+        canvas, 54, y - canvas$pad, consort_wrap_preserve(after.label, 38),
         hjust = 0, vjust = 1
     )
     phase.bottom <- y - phase.h
@@ -709,7 +748,7 @@ create_patient_consort_diagram <- function(sequences = 5,
     tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
     canvas <- consort_add_text(
-        canvas, 20, y - canvas$pad / 2, consort_wrap_preserve(total.excl.label, 50),
+        canvas, 20, y - canvas$pad, consort_wrap_preserve(total.excl.label, 50),
         hjust = 0, vjust = 1
     )
     y <- y - tot.excl.h - 1.8
