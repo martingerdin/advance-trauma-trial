@@ -146,6 +146,30 @@ consort_condition_fills <- function() {
     )
 }
 
+#' Add a single-row centred legend of colour swatches with labels
+#'
+#' @keywords internal
+consort_add_centered_legend <- function(canvas, legend.y, fills, labels,
+                                        char.w = 0.80,
+                                        swatch.w = 3,
+                                        label.gap = 0.5,
+                                        item.gap = 4) {
+    item.w <- swatch.w + label.gap + nchar(labels) * char.w
+    legend.w <- sum(item.w) + item.gap * (length(labels) - 1L)
+    lx <- (canvas$plot.right + canvas$plot.left - legend.w) / 2
+    for (i in seq_along(labels)) {
+        canvas <- consort_add_box(
+            canvas, lx, lx + swatch.w, legend.y - 1.6, legend.y, fills[i]
+        )
+        canvas <- consort_add_text(
+            canvas, lx + swatch.w + label.gap, legend.y - 0.8, labels[i],
+            hjust = 0, vjust = 0.5
+        )
+        lx <- lx + item.w[i] + item.gap
+    }
+    canvas
+}
+
 #' Mini stepped-wedge strip coordinates for one sequence
 #'
 #' @keywords internal
@@ -160,17 +184,34 @@ consort_sequence_strip <- function(sequence,
                                    total.months,
                                    control.fill,
                                    transition.fill,
-                                   intervention.fill) {
+                                   intervention.fill,
+                                   staircase.months = 0,
+                                   inactive.fill = "grey80") {
     standard.care.end <- min.standard.care.months + (sequence - 1L)
     transition.end <- standard.care.end + transition.months
     periods <- seq_len(total.months)
     fills <- vapply(periods, function(p) {
-        if (p <= standard.care.end) {
+        phase.fill <- if (p <= standard.care.end) {
             control.fill
         } else if (p <= transition.end) {
             transition.fill
         } else {
             intervention.fill
+        }
+        if (staircase.months <= 0) {
+            return(phase.fill)
+        }
+        ## Keep the transition month visible; grey only non-staircase
+        ## control/intervention months outside the nested windows.
+        if (p > standard.care.end && p <= transition.end) {
+            return(transition.fill)
+        }
+        in.pre <- p > (standard.care.end - staircase.months) && p <= standard.care.end
+        in.post <- p > transition.end && p <= (transition.end + staircase.months)
+        if (in.pre || in.post) {
+            phase.fill
+        } else {
+            inactive.fill
         }
     }, character(1))
     w <- (xmax - xmin) / total.months
@@ -496,20 +537,11 @@ create_cluster_consort_diagram <- function(sequences = 5,
 
     ## Legend
     legend.y <- y
-    legend.items <- data.frame(
-        fill = c(control.fill, transition.fill, intervention.fill),
-        label = c("Standard care", "Transition", "Intervention"),
-        stringsAsFactors = FALSE
+    canvas <- consort_add_centered_legend(
+        canvas, legend.y,
+        fills = c(control.fill, transition.fill, intervention.fill),
+        labels = c("Standard care", "Transition", "Intervention")
     )
-    lx <- margin
-    for (i in seq_len(nrow(legend.items))) {
-        canvas <- consort_add_box(canvas, lx, lx + 3, legend.y - 1.6, legend.y, legend.items$fill[i])
-        canvas <- consort_add_text(
-            canvas, lx + 3.5, legend.y - 0.8, legend.items$label[i],
-            hjust = 0, vjust = 0.5
-        )
-        lx <- lx + 22
-    }
     y <- legend.y - 2.5
 
     # note <- paste0(
@@ -731,15 +763,321 @@ create_patient_consort_diagram <- function(sequences = 5,
     canvas <- consort_add_segment(canvas, 28, 28, y + 3.0, y, arrow = TRUE)
     canvas <- consort_add_segment(canvas, 72, 72, y + 3.0, y, arrow = TRUE)
 
-    phase.h <- consort_box_height(before.label, 40, canvas = canvas)
+    phase.wrap <- 38
+    ## Extra line height: multi-line geom_text runs slightly taller than line.h.
+    phase.h <- consort_box_height(before.label, phase.wrap, canvas = canvas) +
+        2 * canvas$line.h
     canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 10, y - canvas$pad, consort_wrap_preserve(before.label, 38),
+        canvas, 10, y - canvas$pad, consort_wrap_preserve(before.label, phase.wrap),
         hjust = 0, vjust = 1
     )
     canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 54, y - canvas$pad, consort_wrap_preserve(after.label, 38),
+        canvas, 54, y - canvas$pad, consort_wrap_preserve(after.label, phase.wrap),
+        hjust = 0, vjust = 1
+    )
+    phase.bottom <- y - phase.h
+    y <- phase.bottom - 6.0
+
+    canvas <- consort_add_segment(canvas, 28, 28, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 72, 72, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 28, 72, y + 3.0, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 50, y + 3.0, y, arrow = TRUE)
+
+    tot.incl.h <- consort_box_height(total.included.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.incl.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - tot.incl.h / 2, consort_wrap(total.included.label, 50)
+    )
+    y <- y - tot.incl.h - 0.8
+
+    tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 20, y - canvas$pad, consort_wrap_preserve(total.excl.label, 50),
+        hjust = 0, vjust = 1
+    )
+    y <- y - tot.excl.h - 1.8
+
+    legend.y <- y
+    canvas <- consort_add_centered_legend(
+        canvas, legend.y,
+        fills = c(control.fill, transition.fill, intervention.fill),
+        labels = c("Standard care", "Transition", "Intervention")
+    )
+    y <- legend.y - 2.5
+
+    # note <- paste0(
+    #    "Note: patient-level CONSORT shell for the batched stepped-wedge design ",
+    #    "(", batches, " batches; ", sequences, " sequences). Before/after ATLS ",
+    #    "aggregates summarise receipt of the intended intervention condition. ",
+    #    "Complete n= and reasons at reporting."
+    #)
+    # canvas <- consort_add_text(
+    #    canvas, margin, y, consort_wrap(note, 95),
+    #    hjust = 0, vjust = 1
+    #)
+    #y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    y.bottom <- y - 0.5
+
+    consort_render(
+        canvas = canvas,
+        y.top = 1,
+        y.bottom = y.bottom,
+        file.name = paste0("consort-diagram-patients-", n.seq, "-sequences.", device),
+        return.figure = return.figure,
+        save = save,
+        device = device
+    )
+}
+
+#' Create nested-staircase CONSORT diagram shell
+#'
+#' Shell flowchart for patient flow into nested-staircase secondary outcomes
+#' (adherence, quality of life, disability), separate from the main
+#' stepped-wedge CONSORT figures.
+#'
+#' @inheritParams create_patient_consort_diagram
+#' @param staircase.months Numeric. Months before and after transition in the
+#'   nested staircase window. Default 3.
+#' @return A ggplot object or the saved file name.
+#'
+#' @examples
+#' \dontrun{
+#' noacsr::source_all_functions()
+#' create_nested_staircase_consort_diagram(save = FALSE)
+#' }
+create_nested_staircase_consort_diagram <- function(sequences = 5,
+                                                    batches = 6,
+                                                    total.months = 13,
+                                                    min.standard.care.months = 4,
+                                                    transition.months = 1,
+                                                    staircase.months = 3,
+                                                    page.width.mm = 174,
+                                                    return.figure = TRUE,
+                                                    save = TRUE,
+                                                    device = "png") {
+    assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
+    assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
+    assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
+    assertthat::assert_that(
+        is.numeric(min.standard.care.months) && length(min.standard.care.months) == 1 &&
+            min.standard.care.months >= 0
+    )
+    assertthat::assert_that(
+        is.numeric(transition.months) && length(transition.months) == 1 &&
+            transition.months >= 0
+    )
+    assertthat::assert_that(
+        is.numeric(staircase.months) && length(staircase.months) == 1 &&
+            staircase.months > 0
+    )
+
+    fills <- consort_condition_fills()
+    control.fill <- unname(fills["control"])
+    transition.fill <- unname(fills["transition"])
+    intervention.fill <- unname(fills["intervention"])
+    box.fill <- "#fde6d4"
+
+    canvas <- consort_shell_canvas(page.width.mm = page.width.mm)
+    n.seq <- as.integer(sequences)
+    margin <- 2
+    gap <- 1.2
+    col.width <- (100 - 2 * margin - (n.seq - 1) * gap) / n.seq
+    col.left <- margin + (seq_len(n.seq) - 1) * (col.width + gap)
+    col.right <- col.left + col.width
+    col.center <- (col.left + col.right) / 2
+    wrap.chars <- max(18, floor(col.width * 1.45))
+    gap.strip.excl <- 3.0
+    gap.excl.incl <- 3.0
+
+    top.label <- "Patients in staircase periods (n=)"
+    not.sampled.label <- consort_bullet_list(
+        "Not sampled for nested staircase outcomes (n=):",
+        c(
+            "Outside randomised shifts (n=)",
+            "Other (n=)"
+        )
+    )
+    sampled.label <- "Sampled for nested staircase outcomes (n=)"
+    excl.label <- consort_bullet_list(
+        "Lost/excluded (n=; reasons):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Other (n=)"
+        )
+    )
+    included.label <- "Analysed for nested staircase outcomes (n=)"
+    before.label <- paste(
+        "Before ATLS training",
+        "In staircase windows (n=)",
+        "Sampled (n=)",
+        "Analysed (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Died before follow-up (n=)",
+                "Other (n=)"
+            )
+        ),
+        sep = "\n"
+    )
+    after.label <- paste(
+        "After ATLS training",
+        "In staircase windows (n=)",
+        "Sampled (n=)",
+        "Analysed (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Died before follow-up (n=)",
+                "Other (n=)"
+            )
+        ),
+        sep = "\n"
+    )
+    total.included.label <- "Analysed for nested staircase outcomes (n=)"
+    total.excl.label <- consort_bullet_list(
+        "Excluded from nested staircase analyses (n=):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Died before follow-up (n=)",
+            "Other (n=)"
+        )
+    )
+
+    y <- 0
+    top.h <- consort_box_height(top.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 20, 80, y - top.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - top.h / 2, consort_wrap(top.label, 50)
+    )
+    top.bottom <- y - top.h
+    y <- top.bottom - 1.5
+
+    not.sampled.h <- consort_box_height(not.sampled.label, 40, canvas = canvas)
+    canvas <- consort_add_box(canvas, 58, 98, y - not.sampled.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 60, y - canvas$pad, consort_wrap_preserve(not.sampled.label, 40),
+        hjust = 0, vjust = 1
+    )
+    branch.y <- y - not.sampled.h / 2
+    stem.bottom <- y - not.sampled.h - 1.2
+    canvas <- consort_add_segment(canvas, 50, 50, y + 1.2, stem.bottom, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 58, branch.y, branch.y, arrow = TRUE)
+    y <- stem.bottom - 3.0
+    canvas <- consort_add_segment(canvas, 50, 50, stem.bottom, y, arrow = TRUE)
+
+    sampled.h <- consort_box_height(sampled.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - sampled.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - sampled.h / 2, consort_wrap(sampled.label, 45)
+    )
+    sampled.bottom <- y - sampled.h
+    y <- sampled.bottom - 6.0
+
+    canvas <- consort_add_segment(canvas, 50, 50, sampled.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center), y + 3.0, y + 3.0, arrow = FALSE
+    )
+
+    strip.h <- 1.8
+    title.h <- 2.4
+    excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
+    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.h -
+        gap.excl.incl - included.h
+
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k], y + 3.0, y, arrow = TRUE
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], y - 0.15,
+            paste0("Sequence ", k), fontface = "bold", vjust = 1
+        )
+        strip.top <- y - title.h
+        strip.bottom <- strip.top - strip.h
+        strip <- consort_sequence_strip(
+            sequence = k,
+            sequences = n.seq,
+            xmin = col.left[k] + 0.4,
+            xmax = col.right[k] - 0.4,
+            ymin = strip.bottom,
+            ymax = strip.top,
+            min.standard.care.months = min.standard.care.months,
+            transition.months = transition.months,
+            total.months = total.months,
+            control.fill = control.fill,
+            transition.fill = transition.fill,
+            intervention.fill = intervention.fill,
+            staircase.months = staircase.months
+        )
+        canvas$strips <- rbind(canvas$strips, strip)
+
+        excl.top <- strip.bottom - gap.strip.excl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            strip.bottom, excl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            excl.top - excl.h, excl.top, "white"
+        )
+        canvas <- consort_add_text(
+            canvas, col.left[k] + 0.4, excl.top - canvas$pad,
+            consort_wrap_preserve(excl.label, wrap.chars),
+            hjust = 0, vjust = 1
+        )
+
+        incl.top <- excl.top - excl.h - gap.excl.incl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            excl.top - excl.h, incl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            incl.top - included.h, incl.top, box.fill
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], incl.top - included.h / 2,
+            consort_wrap(included.label, wrap.chars)
+        )
+    }
+
+    y <- seq.block.bottom - 6.0
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            seq.block.bottom, y + 3.0, arrow = FALSE
+        )
+    }
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center),
+        y + 3.0, y + 3.0, arrow = FALSE
+    )
+    canvas <- consort_add_segment(canvas, 28, 28, y + 3.0, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 72, 72, y + 3.0, y, arrow = TRUE)
+
+    phase.wrap <- 38
+    ## Extra line height: multi-line geom_text runs slightly taller than line.h.
+    phase.h <- consort_box_height(before.label, phase.wrap, canvas = canvas) +
+        2 * canvas$line.h
+    canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 10, y - canvas$pad, consort_wrap_preserve(before.label, phase.wrap),
+        hjust = 0, vjust = 1
+    )
+    canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 54, y - canvas$pad, consort_wrap_preserve(after.label, phase.wrap),
         hjust = 0, vjust = 1
     )
     phase.bottom <- y - phase.h
@@ -767,39 +1105,52 @@ create_patient_consort_diagram <- function(sequences = 5,
 
     legend.y <- y
     legend.items <- data.frame(
-        fill = c(control.fill, transition.fill, intervention.fill),
-        label = c("Standard care", "Transition", "Intervention"),
+        fill = c(control.fill, transition.fill, intervention.fill, "grey80"),
+        label = c("Staircase: standard care", "Transition", "Staircase: intervention", "Outside staircase"),
         stringsAsFactors = FALSE
     )
-    lx <- margin
-    for (i in seq_len(nrow(legend.items))) {
-        canvas <- consort_add_box(canvas, lx, lx + 3, legend.y - 1.6, legend.y, legend.items$fill[i])
+    ## Two left-aligned columns; overall block centred. char.w matches ~8pt
+    ## geom_text width in these data units (earlier 0.4–0.55 under-spaced labels).
+    char.w <- 0.80
+    swatch.w <- 3
+    label.gap <- 0.5
+    col.gap <- 5
+    col1.idx <- c(1L, 3L)
+    col2.idx <- c(2L, 4L)
+    col1.w <- swatch.w + label.gap + max(nchar(legend.items$label[col1.idx])) * char.w
+    col2.w <- swatch.w + label.gap + max(nchar(legend.items$label[col2.idx])) * char.w
+    legend.w <- col1.w + col.gap + col2.w
+    x1 <- (100 - legend.w) / 2
+    x2 <- x1 + col1.w + col.gap
+    row.ys <- c(legend.y, legend.y - 2.2)
+    for (row in seq_len(2L)) {
+        i1 <- col1.idx[row]
+        i2 <- col2.idx[row]
+        y.top <- row.ys[row]
+        canvas <- consort_add_box(
+            canvas, x1, x1 + swatch.w, y.top - 1.6, y.top, legend.items$fill[i1]
+        )
         canvas <- consort_add_text(
-            canvas, lx + 3.5, legend.y - 0.8, legend.items$label[i],
+            canvas, x1 + swatch.w + label.gap, y.top - 0.8, legend.items$label[i1],
             hjust = 0, vjust = 0.5
         )
-        lx <- lx + 22
+        canvas <- consort_add_box(
+            canvas, x2, x2 + swatch.w, y.top - 1.6, y.top, legend.items$fill[i2]
+        )
+        canvas <- consort_add_text(
+            canvas, x2 + swatch.w + label.gap, y.top - 0.8, legend.items$label[i2],
+            hjust = 0, vjust = 0.5
+        )
     }
-    y <- legend.y - 2.5
-
-    # note <- paste0(
-    #    "Note: patient-level CONSORT shell for the batched stepped-wedge design ",
-    #    "(", batches, " batches; ", sequences, " sequences). Before/after ATLS ",
-    #    "aggregates summarise receipt of the intended intervention condition. ",
-    #    "Complete n= and reasons at reporting."
-    #)
-    # canvas <- consort_add_text(
-    #    canvas, margin, y, consort_wrap(note, 95),
-    #    hjust = 0, vjust = 1
-    #)
-    #y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
-    y.bottom <- y - 0.5
+    y.bottom <- row.ys[2L] - 2.5
 
     consort_render(
         canvas = canvas,
         y.top = 1,
         y.bottom = y.bottom,
-        file.name = paste0("consort-diagram-patients-", n.seq, "-sequences.", device),
+        file.name = paste0(
+            "consort-diagram-nested-staircase-", n.seq, "-sequences.", device
+        ),
         return.figure = return.figure,
         save = save,
         device = device
