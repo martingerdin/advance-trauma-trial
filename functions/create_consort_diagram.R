@@ -195,19 +195,9 @@ consort_render <- function(canvas,
                            device = "pdf") {
     library(ggplot2)
 
-    shadow.offset <- 0.35
-    shadows <- transform(
-        canvas$boxes,
-        xmin = xmin + shadow.offset, xmax = xmax + shadow.offset,
-        ymin = ymin - shadow.offset, ymax = ymax - shadow.offset
-    )
-
+    ## No drop shadows: offset filled rects render as hard bottom edges in
+    ## PNG/PDF and read as stray horizontal lines under every box.
     figure <- ggplot() +
-        geom_rect(
-            data = shadows,
-            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
-            fill = "grey50", color = NA, alpha = 0.3
-        ) +
         geom_rect(
             data = canvas$boxes,
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
@@ -259,8 +249,12 @@ consort_render <- function(canvas,
         ) +
         theme_void() +
         theme(
-            plot.background = element_rect(fill = canvas$background, color = NA),
-            panel.background = element_rect(fill = canvas$background, color = NA),
+            plot.background = element_rect(
+                fill = canvas$background, colour = NA, linewidth = 0
+            ),
+            panel.background = element_rect(
+                fill = canvas$background, colour = NA, linewidth = 0
+            ),
             plot.margin = margin(0, 0, 0, 0)
         )
 
@@ -398,12 +392,13 @@ create_cluster_consort_diagram <- function(sequences = 5,
         canvas, 50, y - rand.h / 2, consort_wrap(rand.label, 45)
     )
     rand.bottom <- y - rand.h
-    y <- rand.bottom - 2.2
+    ## Extra space so the split-to-sequences bus has readable arrow stems
+    y <- rand.bottom - 6.0
 
     ## Bus to sequences
-    canvas <- consort_add_segment(canvas, 50, 50, rand.bottom, y + 0.6, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 50, rand.bottom, y + 3.0, arrow = FALSE)
     canvas <- consort_add_segment(
-        canvas, min(col.center), max(col.center), y + 0.6, y + 0.6, arrow = FALSE
+        canvas, min(col.center), max(col.center), y + 3.0, y + 3.0, arrow = FALSE
     )
 
     strip.h <- 1.8
@@ -416,7 +411,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
 
     for (k in seq_len(n.seq)) {
         canvas <- consort_add_segment(
-            canvas, col.center[k], col.center[k], y + 0.6, y, arrow = TRUE
+            canvas, col.center[k], col.center[k], y + 3.0, y, arrow = TRUE
         )
         canvas <- consort_add_text(
             canvas, col.center[k], y - 0.15,
@@ -470,12 +465,19 @@ create_cluster_consort_diagram <- function(sequences = 5,
         )
     }
 
-    y <- seq.block.bottom - 1.8
+    y <- seq.block.bottom - 6.0
+    ## Collect from sequences: drops + bus sit below the sequence boxes
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            seq.block.bottom, y + 3.0, arrow = FALSE
+        )
+    }
     canvas <- consort_add_segment(
         canvas, min(col.center), max(col.center),
-        seq.block.bottom + 0.15, seq.block.bottom + 0.15, arrow = FALSE
+        y + 3.0, y + 3.0, arrow = FALSE
     )
-    canvas <- consort_add_segment(canvas, 50, 50, seq.block.bottom + 0.15, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 50, 50, y + 3.0, y, arrow = TRUE)
 
     tot.incl.h <- consort_box_height(total.included.label, 55, canvas = canvas)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.incl.h, y, box.fill)
@@ -643,11 +645,12 @@ create_patient_consort_diagram <- function(sequences = 5,
         canvas, 50, y - top.h / 2, consort_wrap(top.label, 50)
     )
     top.bottom <- y - top.h
-    y <- top.bottom - 2.2
+    ## Extra space so the split-to-sequences bus has readable arrow stems
+    y <- top.bottom - 6.0
 
-    canvas <- consort_add_segment(canvas, 50, 50, top.bottom, y + 0.6, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 50, top.bottom, y + 3.0, arrow = FALSE)
     canvas <- consort_add_segment(
-        canvas, min(col.center), max(col.center), y + 0.6, y + 0.6, arrow = FALSE
+        canvas, min(col.center), max(col.center), y + 3.0, y + 3.0, arrow = FALSE
     )
 
     strip.h <- 1.8
@@ -659,7 +662,7 @@ create_patient_consort_diagram <- function(sequences = 5,
 
     for (k in seq_len(n.seq)) {
         canvas <- consort_add_segment(
-            canvas, col.center[k], col.center[k], y + 0.6, y, arrow = TRUE
+            canvas, col.center[k], col.center[k], y + 3.0, y, arrow = TRUE
         )
         canvas <- consort_add_text(
             canvas, col.center[k], y - 0.15,
@@ -713,12 +716,20 @@ create_patient_consort_diagram <- function(sequences = 5,
         )
     }
 
-    y <- seq.block.bottom - 1.8
+    y <- seq.block.bottom - 6.0
+    ## Collect from sequences, then split to before/after ATLS boxes
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            seq.block.bottom, y + 3.0, arrow = FALSE
+        )
+    }
     canvas <- consort_add_segment(
         canvas, min(col.center), max(col.center),
-        seq.block.bottom + 0.15, seq.block.bottom + 0.15, arrow = FALSE
+        y + 3.0, y + 3.0, arrow = FALSE
     )
-    canvas <- consort_add_segment(canvas, 50, 50, seq.block.bottom + 0.15, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 28, 28, y + 3.0, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 72, 72, y + 3.0, y, arrow = TRUE)
 
     phase.h <- consort_box_height(before.label, 40, canvas = canvas)
     canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
@@ -732,12 +743,12 @@ create_patient_consort_diagram <- function(sequences = 5,
         hjust = 0, vjust = 1
     )
     phase.bottom <- y - phase.h
-    y <- phase.bottom - 1.8
+    y <- phase.bottom - 6.0
 
-    canvas <- consort_add_segment(canvas, 28, 28, phase.bottom, y + 1, arrow = FALSE)
-    canvas <- consort_add_segment(canvas, 72, 72, phase.bottom, y + 1, arrow = FALSE)
-    canvas <- consort_add_segment(canvas, 28, 72, y + 1, y + 1, arrow = FALSE)
-    canvas <- consort_add_segment(canvas, 50, 50, y + 1, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 28, 28, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 72, 72, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 28, 72, y + 3.0, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 50, y + 3.0, y, arrow = TRUE)
 
     tot.incl.h <- consort_box_height(total.included.label, 55, canvas = canvas)
     canvas <- consort_add_box(canvas, 18, 82, y - tot.incl.h, y, box.fill)
@@ -771,17 +782,18 @@ create_patient_consort_diagram <- function(sequences = 5,
     }
     y <- legend.y - 2.5
 
-    note <- paste0(
-        "Note: patient-level CONSORT shell for the batched stepped-wedge design ",
-        "(", batches, " batches; ", sequences, " sequences). Before/after ATLS ",
-        "aggregates summarise receipt of the intended intervention condition. ",
-        "Complete n= and reasons at reporting."
-    )
-    canvas <- consort_add_text(
-        canvas, margin, y, consort_wrap(note, 95),
-        hjust = 0, vjust = 1
-    )
-    y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    # note <- paste0(
+    #    "Note: patient-level CONSORT shell for the batched stepped-wedge design ",
+    #    "(", batches, " batches; ", sequences, " sequences). Before/after ATLS ",
+    #    "aggregates summarise receipt of the intended intervention condition. ",
+    #    "Complete n= and reasons at reporting."
+    #)
+    # canvas <- consort_add_text(
+    #    canvas, margin, y, consort_wrap(note, 95),
+    #    hjust = 0, vjust = 1
+    #)
+    #y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    y.bottom <- y - 0.5
 
     consort_render(
         canvas = canvas,
