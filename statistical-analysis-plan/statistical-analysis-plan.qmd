@@ -262,15 +262,17 @@ Our trial has eligibility criteria on the cluster and patient participant level.
 ## Study withdrawal and follow-up
 
 <!-- github-issue-22: two-figure CONSORT shells (cluster + patient), following batched SW reporting practice. -->
+<!-- github-issue-20: nested-staircase patient flow reported separately from main CONSORT. -->
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
-We will use CONSORT diagrams to display the flow of clusters and patients through the trial, reported as two figures in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS® training. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS® training. Flow for nested-staircase secondary outcomes (adherence to ATLS® principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a separate figure (@fig-consort-nested-staircase), showing patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS® training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ```{r}
 #| echo: false
 #| label: fig-consort-clusters
-#| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall."
+#| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches 1-6."
 #| fig.align: "center"
+#| out-width: "100%"
 #| message: FALSE
 #| warning: FALSE
 
@@ -290,8 +292,9 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-patients
-#| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall."
+#| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall. The flowchart summarises data across all batches 1-6."
 #| fig.align: "center"
+#| out-width: "100%"
 #| message: FALSE
 #| warning: FALSE
 
@@ -302,6 +305,29 @@ knitr::include_graphics(
     total.months = total.months,
     min.standard.care.months = min.standard.care.months,
     transition.months = transition.months,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
+
+```{r}
+#| echo: false
+#| label: fig-consort-nested-staircase
+#| fig.cap: "Nested-staircase CONSORT diagram shell. Placeholders cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS training, and overall. Coloured strip cells mark staircase months; grey cells are outside nested data collection. The flowchart summarises data across all batches 1-6."
+#| fig.align: "center"
+#| out-width: "100%"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics(
+  create_nested_staircase_consort_diagram(
+    sequences = sequences,
+    batches = batches,
+    total.months = total.months,
+    min.standard.care.months = min.standard.care.months,
+    transition.months = transition.months,
+    staircase.months = staircase.months,
     return.figure = FALSE,
     device = "png"
   )
