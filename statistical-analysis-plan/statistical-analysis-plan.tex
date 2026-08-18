@@ -1473,12 +1473,13 @@ measures}\label{intercurrent-events-populations-and-summary-measures}
 Intercurrent events are events occurring after intervention exposure
 that affect interpretation or occurrence of an outcome. Anticipated
 events and the strategy used for each outcome are summarised in
-Table~\ref{tbl-outcomes-summary}. Frequencies of these events will be
-summarised as counts and percentages of patients with at least one
-recorded event, stratified by before and after ATLS training and
-overall. We will not adjust for clustering in these summaries.
-Incomplete observation of resuscitation will be reported among patients
-in the nested staircase sample. See Table~\ref{tbl-intercurrent-events}.
+Table~\ref{tbl-outcomes-summary}. Frequencies will be summarised for
+each outcome as counts and percentages of patients with the event before
+assessment of that outcome, stratified by before and after ATLS training
+and overall. We will not adjust for clustering in these summaries.
+Denominators follow the analysis set for the outcome (main stepped-wedge
+trial or nested staircase sample). See
+Table~\ref{tbl-intercurrent-events}.
 
 At the cluster level, late or early transition relative to the scheduled
 date, incomplete delivery of ATLS® training, and cluster dropout are
@@ -1503,13 +1504,15 @@ The events below, and the outcomes to which they apply, are as follows.
   classified according to whether admission occurred before transfer.
 \item
   \textbf{Death.} Relevant to length-of-stay and ICU outcomes and to
-  survivor-only outcomes. Observed length of stay is the completed
-  duration to exit; death truncates the observed stay and is not treated
-  as censoring. ICU admission is classified according to whether
-  admission occurred before death. Quality of life, disability, and
-  return to work are defined only among patients alive at the relevant
-  follow-up (while-alive restriction). Those analyses therefore target
-  effects in survivors at that time point; mortality is analysed
+  survivor-only outcomes. As an intercurrent event, death is death
+  before assessment of the outcome in question; later death is not an
+  intercurrent event for earlier outcomes. Observed length of stay is
+  the completed duration to exit; death truncates the observed stay and
+  is not treated as censoring. ICU admission is classified according to
+  whether admission occurred before death. Quality of life, disability,
+  and return to work are defined only among patients alive at the
+  relevant follow-up (while-alive restriction). Those analyses therefore
+  target effects in survivors at that time point; mortality is analysed
   separately.
 \item
   \textbf{Withdrawal of consent for non-routine data collection.}
@@ -1561,7 +1564,7 @@ Section~\ref{sec-analysis-methods}).
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-intercurrent-events}Intercurrent events}
+\caption{\label{tbl-intercurrent-events}Intercurrent events by outcome}
 
 \tabularnewline
 
@@ -1583,11 +1586,70 @@ Section~\ref{sec-analysis-methods}).
 \bottomrule
 \endlastfoot
 
-Transfer to another hospital, n (\%) &  &  & \\
-Death, n (\%) &  &  & \\
-Withdrawal of consent for non-routine data collection, n (\%) &  &  & \\
-Loss to follow-up, n (\%) &  &  & \\
-Incomplete observation of resuscitation, n (\%) &  &  & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
+In-hospital mortality within 30 days &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{11} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{11} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
+All-cause mortality within 24 hours &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{10} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{10} & \\
+All-cause mortality within 30 days &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{9} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{9} & \\
+All-cause mortality within three months &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{8} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{8} & \\
+Length of emergency department stay &  &  & \\
+\hspace{1em}Death, n (\%) &  &  \vphantom{3} & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{3} & \\
+Length of hospital stay &  &  & \\
+\hspace{1em}Death, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{2} & \\
+Intensive care unit (ICU) admission &  &  & \\
+\hspace{1em}Death, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{1} & \\
+Length of intensive care unit stay &  &  & \\
+\hspace{1em}Death, n (\%) &  &  & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  & \\
+Return to work at 30 days &  &  & \\
+\hspace{1em}Death before 30 days, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{7} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{7} & \\
+Return to work at three months &  &  & \\
+\hspace{1em}Death before three months, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{6} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{6} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
+Adherence to ATLS® principles &  &  & \\
+\hspace{1em}Incomplete observation of resuscitation, n (\%) &  &  & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
+Quality of life &  &  \vphantom{2} & \\
+\hspace{1em}Death before assessment, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{5} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{5} & \\
+Disability &  &  \vphantom{2} & \\
+\hspace{1em}Death before assessment, n (\%) &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{4} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{4} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
+Quality of life &  &  \vphantom{1} & \\
+\hspace{1em}Death before 30 days, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{3} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{3} & \\
+Disability &  &  \vphantom{1} & \\
+\hspace{1em}Death before 30 days, n (\%) &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{2} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
+Quality of life &  &  & \\
+\hspace{1em}Death before three months, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{1} & \\
+Disability &  &  & \\
+\hspace{1em}Death before three months, n (\%) &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  & \\
 \bottomrule
 
 \end{longtable}

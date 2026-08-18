@@ -66,7 +66,8 @@ finalize_longtable_latex <- function(kable.latex) {
 #' When requests include a `section` element, inserts a bold header row before
 #' the first outcome in each section. `section` may be a single string or a
 #' character vector of nested headers (e.g. overarching group then subgroup);
-#' each distinct header is inserted the first time it appears.
+#' each distinct header path is inserted the first time it appears, so the same
+#' subgroup label can repeat under a different parent.
 insert_table_section_headers <- function(tbl, requests) {
     has.sections <- any(vapply(requests, function(request) {
         sections <- request$section
@@ -89,6 +90,7 @@ insert_table_section_headers <- function(tbl, requests) {
     )
 
     table.body <- tbl$table_body
+    table.body$section_depth <- NA_integer_
     statistic.columns <- grep("^stat_[0-9]", names(table.body), value = TRUE)
     sections.seen <- character(0)
     new.rows <- list()
@@ -97,13 +99,17 @@ insert_table_section_headers <- function(tbl, requests) {
         row <- table.body[i, , drop = FALSE]
         if (identical(row$row_type, "label") && row$variable %in% names(variable.sections)) {
             sections <- unname(variable.sections[[row$variable]])
+            path.so.far <- character(0)
             for (section in sections) {
-                if (nzchar(section) && !section %in% sections.seen) {
-                    sections.seen <- c(sections.seen, section)
+                path.so.far <- c(path.so.far, section)
+                path.key <- paste(path.so.far, collapse = "\n")
+                if (nzchar(section) && !path.key %in% sections.seen) {
+                    sections.seen <- c(sections.seen, path.key)
                     header.row <- row
                     header.row$variable <- paste0(".section_", length(sections.seen))
                     header.row$var_type <- "section"
                     header.row$row_type <- "section"
+                    header.row$section_depth <- length(path.so.far)
                     header.row$var_label <- ""
                     header.row$label <- section
                     ## NA (not "") so add_stat_label's "{label}, {stat_label}"
@@ -124,13 +130,26 @@ insert_table_section_headers <- function(tbl, requests) {
 }
 
 #' Extract ordered unique section labels from table requests
-get_table_section_labels <- function(requests) {
+#'
+#' @param requests A list of variable request lists.
+#' @param depth Integer or NULL. If set, return only labels at that nesting
+#'     level (1 = top-level headers). If NULL, return every nested label.
+get_table_section_labels <- function(requests, depth = NULL) {
     sections <- unlist(lapply(requests, function(request) {
         request.sections <- request$section
         if (is.null(request.sections)) {
             character(0)
         } else {
-            as.character(request.sections)
+            request.sections <- as.character(request.sections)
+            if (!is.null(depth)) {
+                if (length(request.sections) >= depth) {
+                    request.sections[[depth]]
+                } else {
+                    character(0)
+                }
+            } else {
+                request.sections
+            }
         }
     }), use.names = FALSE)
     sections <- sections[nzchar(sections)]
@@ -193,6 +212,9 @@ format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels)
 #'     columns. Defaults to `"**ATLS training**"`. Use NULL to omit.
 #' @param force.stat.label Character or NULL. If set, replace all non-section
 #'     `stat_label` values (e.g. `"n"` for count shells).
+#' @param indent.labels Logical. If TRUE, indent `row_type == "label"` rows
+#'     with [gtsummary::modify_indent()]. Used when those rows sit under
+#'     nested outcome headers (e.g. intercurrent events).
 #' @return A `gtsummary` or `kableExtra` table object, or, when `longtable =
 #'     TRUE` in LaTeX output, a `knitr_asis` object containing raw LaTeX.
 build_patient_characteristics_shell_table <- function(data,
@@ -206,7 +228,8 @@ build_patient_characteristics_shell_table <- function(data,
                                                       continuous.statistics = "{median} ({p25}, {p75})",
                                                       missing = "always",
                                                       spanning.header = "**ATLS training**",
-                                                      force.stat.label = NULL) {
+                                                      force.stat.label = NULL,
+                                                      indent.labels = FALSE) {
     cell.placeholder <- ""
     dichotomous.value <- "Yes"
     missing.text <- "Missing"
@@ -333,13 +356,23 @@ build_patient_characteristics_shell_table <- function(data,
     }
 
     patient.table <- insert_table_section_headers(patient.table, requests)
-    section.labels <- get_table_section_labels(requests)
+    ## Bold only top-level headers; nested outcome names stay regular weight
+    section.labels <- get_table_section_labels(requests, depth = 1L)
+
+    if (isTRUE(indent.labels)) {
+        patient.table <- gtsummary::modify_indent(
+            patient.table,
+            columns = label,
+            rows = row_type == "label",
+            indent = 4L
+        )
+    }
 
     if (length(section.labels) > 0L && !isTRUE(knitr::is_latex_output())) {
         patient.table <- gtsummary::modify_table_styling(
             patient.table,
             columns = label,
-            rows = row_type == "section",
+            rows = row_type == "section" & section_depth == 1L,
             text_format = "bold"
         )
     }
