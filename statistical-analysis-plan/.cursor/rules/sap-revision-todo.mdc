@@ -24,8 +24,14 @@ Whenever you add or change SAP text for a to-do item, place an HTML comment **im
 
 - Make **minimal edits** to the SAP: change only what the to-do item requires; do not rewrite surrounding prose, restructure sections, or add optional elaboration.
 - Match the **style and tone** of the existing SAP text: concise declarative sentences, plain scientific English, same terminology and level of detail as neighbouring paragraphs.
+- Prefer **simple, direct sentences**. Say who or what the sentence is about and what happens. Avoid abstract nouns, jargon coinages, and parenthetical lists that pack several ideas into one phrase when a short sentence would do.
 - Prefer inserting or adjusting a short clause or sentence over adding long justificatory paragraphs.
 - When replacing a passage, read adjacent sections first and mirror their voice.
+
+```text
+Avoid: Operational membership of each analysis (available outcome data, covariate completeness for adjusted analyses, and scheduled exposure rules) is specified under Analysis sets.
+Prefer: Which participants from each target population are included in a given analysis is specified under Analysis sets.
+```
 
 ## Completion gate
 

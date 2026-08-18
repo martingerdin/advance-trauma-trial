@@ -247,7 +247,7 @@ Protocol deviations will be summarised descriptively for the final analysis (and
 
 # Trial sample
 
-## Eligibility criteria
+## Eligibility criteria {#sec-eligibility-criteria}
 
 Our trial has eligibility criteria on the cluster and patient participant level. Below follow a summary of the eligibility criteria, full details are provided in the protocol.
 
@@ -477,16 +477,16 @@ create_intercurrent_events_table()
 ## Population
 
 <!-- github-issue-24: draft target populations from analysis-set and eligibility text. -->
-The treatment effects estimated in this plan are defined for the trial’s eligible clusters and eligible patient participants, as specified under Eligibility criteria.
+The treatment effects estimated in this plan are defined for the trial’s eligible clusters and eligible patient participants, as specified under @sec-eligibility-criteria.
 
 - **Clusters.** Effects are estimated for participating hospitals (clusters) that meet cluster eligibility criteria and are randomised within the batched stepped-wedge design. Units within a hospital are part of the same cluster; the estimands are not defined separately by unit.
 - **Main stepped-wedge patient population.** For the primary outcome, all-cause mortality secondary outcomes, length of emergency department and hospital stay, and ICU admission, the target population is eligible trauma patients included in the main stepped-wedge trial during non-transition periods. Length of ICU stay is targeted among patients in that population who are admitted to ICU.
 - **Survivor populations.** Quality of life and disability effects are targeted among patients in the nested staircase sample who are alive at the relevant follow-up time point. Return-to-work effects are targeted among patients in the main stepped-wedge trial who are alive at the relevant follow-up and for whom return to work is relevant.
 - **Nested adherence population.** The adherence-to-ATLS®-principles effect is targeted among patients randomly selected for observation in the nested staircase design during the observation window.
 
-Operational membership of each analysis (available outcome data, covariate completeness for adjusted analyses, and scheduled exposure rules) is specified under Analysis sets.
+Which participants from each target population are included in a given analysis is specified under @sec-analysis-sets.
 
-## Analysis sets
+## Analysis sets {#sec-analysis-sets}
 
 <!-- sap-revision-todo A4 (comments id=102 KH, id=103 AO): clarify hospital→unit→patient hierarchy vs model RE; justify omitting unit-level RE; standardise on "units" (protocol term), not "teams". -->
 <!-- sap-revision-todo H4 (comments id=12 MGW, id=13 AO; Round Two): specify target population per analysis including LOS/ICU and nested survivors. -->
