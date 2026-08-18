@@ -7,7 +7,7 @@
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Loss to follow-up; withdrawal",
-    "strategy_for_handling_intercurrent_events": "Deaths after transfer included in outcome"
+    "strategy_for_handling_intercurrent_events": "Missing data"
   },
   {
     "outcome": "All-cause mortality within 24 hours of arrival at the emergency department",
@@ -17,7 +17,7 @@
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Loss to follow-up; withdrawal",
-    "strategy_for_handling_intercurrent_events": "All deaths regardless of setting"
+    "strategy_for_handling_intercurrent_events": "Treatment policy (any setting); missing data otherwise"
   },
   {
     "outcome": "All-cause mortality within 30 days of arrival at the emergency department",
@@ -27,7 +27,7 @@
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Loss to follow-up; withdrawal",
-    "strategy_for_handling_intercurrent_events": "All deaths regardless of setting"
+    "strategy_for_handling_intercurrent_events": "Treatment policy (any setting); missing data otherwise"
   },
   {
     "outcome": "All-cause mortality within three months of arrival at the emergency department",
@@ -37,7 +37,7 @@
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Loss to follow-up; withdrawal",
-    "strategy_for_handling_intercurrent_events": "All deaths regardless of setting"
+    "strategy_for_handling_intercurrent_events": "Treatment policy (any setting); missing data otherwise"
   },
   {
     "outcome": "Length of emergency department stay",
@@ -47,7 +47,7 @@
     "main_analysis_model": "Mixed-effects negative binomial (log)",
     "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Observed hours to ED exit; death/transfer truncate stay"
+    "strategy_for_handling_intercurrent_events": "Observed stay truncated by death or transfer"
   },
   {
     "outcome": "Length of hospital stay",
@@ -57,7 +57,7 @@
     "main_analysis_model": "Mixed-effects negative binomial (log)",
     "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Observed days; death/transfer truncate stay"
+    "strategy_for_handling_intercurrent_events": "Observed stay truncated by death or transfer"
   },
   {
     "outcome": "Intensive care unit (ICU) admission",
@@ -67,7 +67,7 @@
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Classified by ICU admission before death/transfer"
+    "strategy_for_handling_intercurrent_events": "Classified by whether ICU admission occurred first"
   },
   {
     "outcome": "Length of intensive care unit stay",
@@ -77,7 +77,7 @@
     "main_analysis_model": "Mixed-effects negative binomial (log)",
     "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
-    "strategy_for_handling_intercurrent_events": "Observed days among ICU admissions; death/transfer truncate stay"
+    "strategy_for_handling_intercurrent_events": "Observed stay truncated by death or transfer"
   },
   {
     "outcome": "Return to work at 30 days after arrival at the emergency department",
@@ -86,8 +86,8 @@
     "analysis_set": "Alive at 30 days, outcome relevant",
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
-    "potential_intercurrent_events": "Death; loss to follow-up; not relevant",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Return to work at three months after arrival at the emergency department",
@@ -96,8 +96,8 @@
     "analysis_set": "Alive at 3 months, outcome relevant",
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
-    "potential_intercurrent_events": "Death; loss to follow-up; not relevant",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Adherence to ATLS® principles during initial patient resuscitation",
@@ -106,8 +106,8 @@
     "analysis_set": "Observed nested sample",
     "main_analysis_model": "Mixed-effects beta (logit)",
     "effect_measure": "Logit-scale difference",
-    "potential_intercurrent_events": "Not observed; incomplete window",
-    "strategy_for_handling_intercurrent_events": "Observed sample"
+    "potential_intercurrent_events": "Incomplete observation",
+    "strategy_for_handling_intercurrent_events": "Available-case in the observed nested sample"
   },
   {
     "outcome": "Quality of life within seven days of discharge",
@@ -116,8 +116,8 @@
     "analysis_set": "Alive, nested sample",
     "main_analysis_model": "Cumulative logit; linear mixed",
     "effect_measure": "COR; mean difference",
-    "potential_intercurrent_events": "Death; loss to follow-up",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Quality of life at 30 days after arrival at the emergency department",
@@ -126,8 +126,8 @@
     "analysis_set": "Alive at 30 days, nested sample",
     "main_analysis_model": "Cumulative logit; linear mixed",
     "effect_measure": "COR; mean difference",
-    "potential_intercurrent_events": "Death; loss to follow-up",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Quality of life at three months after arrival at the emergency department",
@@ -136,8 +136,8 @@
     "analysis_set": "Alive at 3 months, nested sample",
     "main_analysis_model": "Cumulative logit; linear mixed",
     "effect_measure": "COR; mean difference",
-    "potential_intercurrent_events": "Death; loss to follow-up",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Disability within seven days of discharge",
@@ -146,8 +146,8 @@
     "analysis_set": "Alive, nested sample",
     "main_analysis_model": "Ordinal mixed; linear mixed",
     "effect_measure": "COR; mean difference",
-    "potential_intercurrent_events": "Death; loss to follow-up",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Disability at 30 days after arrival at the emergency department",
@@ -156,8 +156,8 @@
     "analysis_set": "Alive at 30 days, nested sample",
     "main_analysis_model": "Ordinal mixed; linear mixed",
     "effect_measure": "COR; mean difference",
-    "potential_intercurrent_events": "Death; loss to follow-up",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Disability at three months after arrival at the emergency department",
@@ -166,7 +166,7 @@
     "analysis_set": "Alive at 3 months, nested sample",
     "main_analysis_model": "Ordinal mixed; linear mixed",
     "effect_measure": "COR; mean difference",
-    "potential_intercurrent_events": "Death; loss to follow-up",
-    "strategy_for_handling_intercurrent_events": "Survivors only"
+    "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
+    "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   }
 ]
