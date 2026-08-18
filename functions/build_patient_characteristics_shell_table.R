@@ -89,7 +89,7 @@ insert_table_section_headers <- function(tbl, requests) {
     )
 
     table.body <- tbl$table_body
-    statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
+    statistic.columns <- grep("^stat_[0-9]", names(table.body), value = TRUE)
     sections.seen <- character(0)
     new.rows <- list()
 
@@ -106,7 +106,9 @@ insert_table_section_headers <- function(tbl, requests) {
                     header.row$row_type <- "section"
                     header.row$var_label <- ""
                     header.row$label <- section
-                    header.row$stat_label <- ""
+                    ## NA (not "") so add_stat_label's "{label}, {stat_label}"
+                    ## merge does not leave a trailing comma on section headers
+                    header.row$stat_label <- NA_character_
                     for (statistic.column in statistic.columns) {
                         header.row[[statistic.column]] <- ""
                     }
