@@ -1,527 +1,1183 @@
-#' Create CONSORT diagram for the stepped-wedge cluster randomised trial
+#' Shared helpers for CONSORT shell diagrams
 #'
-#' This function creates a CONSORT-style participant flow diagram following
-#' the reporting extension for stepped-wedge cluster randomised trials
-#' (Hemming et al. 2018, BMJ). The diagram is laid out as a grid with one
-#' column per treatment sequence and one row per period, with cells shaded to
-#' indicate whether the cluster is under the intervention or control condition
-#' in that period. The text is a template (placeholder counts such as "n=") to
-#' be completed once the trial is reported.
-#'
-#' The number of sequence columns is driven by `sequences`, so the figure
-#' stays in sync with the design. Rather than shrinking text to fit fixed
-#' boxes, the boxes are sized to the text: each box height is derived from the
-#' number of wrapped lines its text needs at a fixed point size (`text.size`,
-#' at least 8pt by default), so all text renders at that size. The overall
-#' figure therefore grows taller as more periods are added.
-#'
-#' Cells are shaded by condition. Each sequence starts with a standard care
-#' block, followed by a one-month (by default) transition, then the
-#' intervention. The standard care block lengthens by one period per sequence:
-#' sequence 1 has `min.standard.care.months` periods of standard care,
-#' sequence 2 has one more, and so on, so the crossover steps across periods.
-#'
-#' @param sequences Numeric. Number of treatment sequences (columns) in the
-#'     design. Must be a length 1 numeric value greater than 0. Default is 5.
-#' @param periods Numeric. Number of periods (rows) in the design. Must be a
-#'     length 1 numeric value greater than 0. Default is 13.
-#' @param min.standard.care.months Numeric. Number of standard care periods
-#'     for the first sequence. Each subsequent sequence has one more. Must be
-#'     a length 1 numeric value greater than or equal to 0. Default is 4.
-#' @param transition.months Numeric. Number of transition periods between
-#'     standard care and intervention for each sequence. Must be a length 1
-#'     numeric value greater than or equal to 0. Default is 1.
-#' @param intervention.fill Character. Fill colour for cells under the
-#'     intervention condition. Default is the project intervention colour.
-#' @param control.fill Character. Fill colour for cells under the standard
-#'     care (control) condition. Default is the project standard care colour.
-#' @param transition.fill Character. Fill colour for cells in the transition
-#'     period. Default is the project transition colour.
-#' @param text.size Numeric. Fixed text size in points used for all text;
-#'     boxes are grown so the text fits at this size. Must be a length 1
-#'     numeric value greater than or equal to 8. Default is 8.
-#' @param note Character. A figure note printed below the legend, used to keep
-#'     the repeated cluster-size detail out of every box. Set to "" to omit.
-#' @param page.width.mm Numeric. Width of the saved figure in millimetres. The
-#'     plotting scale is derived from this so text wrapping, box widths, and
-#'     text size are all consistent with the output width (e.g. 200 for A4
-#'     portrait with margins). The height is derived from the layout. Default
-#'     is 200.
-#' @param background Character. Fill colour of the figure background. Default
-#'     is "grey92".
-#' @param fill.lightness Numeric between 0 and 1. Amount of white blended into
-#'     the phase fill colours (0 keeps them fully saturated, 1 turns them
-#'     white). The boxes are drawn opaque, so lightening the colours here -
-#'     rather than reducing their alpha - keeps the drop shadow from showing
-#'     through. Default is 0.2.
-#' @param return.figure Logical. If TRUE the function returns the ggplot
-#'     object, otherwise it returns the path to the saved file. Default is TRUE.
-#' @param save Logical. If TRUE the figure is saved to disk. Default is TRUE.
-#' @param device Character. Device passed to ggplot2::ggsave. Default is "pdf".
-#'
-#' @return A ggplot object (if `return.figure`) or the saved file name.
-#'
-#' @examples
-#' ## Load all project functions, then build and preview the diagram
-#' noacsr::source_all_functions()
-#' consort.figure <- create_consort_diagram(sequences = 5, periods = 13, save = FALSE)
-#' print(consort.figure)
-create_consort_diagram <- function(sequences = 5,
-                                   periods = 13,
-                                   min.standard.care.months = 4,
-                                   transition.months = 1,
-                                   intervention.fill = colors()["intervention"] |> unname(),
-                                   control.fill = colors()["standard.care"] |> unname(),
-                                   transition.fill = colors()["transition"] |> unname(),
-                                   text.size = 8,
-                                   note = paste(
-                                       "Note: within each box, Assessed = assessed for eligibility,",
-                                       "Intervention = received intervention, and No intervention = did",
-                                       "not receive intervention (give reasons). Each \"n=\" should report",
-                                       "the number of clusters, the average cluster size, and the",
-                                       "variance of cluster sizes."
-                                   ),
-                                   page.width.mm = 174,
-                                   background = "grey92",
-                                   fill.lightness = 0.2,
-                                   return.figure = TRUE,
-                                   save = TRUE,
-                                   device = "pdf") {
-    ## Load packages
-    library(ggplot2)
-
-    ## Check arguments
-    assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
-    assertthat::assert_that(is.numeric(periods) && length(periods) == 1 && periods > 0)
-    assertthat::assert_that(is.numeric(min.standard.care.months) && length(min.standard.care.months) == 1 && min.standard.care.months >= 0)
-    assertthat::assert_that(is.numeric(transition.months) && length(transition.months) == 1 && transition.months >= 0)
-    assertthat::assert_that(is.character(intervention.fill) && length(intervention.fill) == 1)
-    assertthat::assert_that(is.character(control.fill) && length(control.fill) == 1)
-    assertthat::assert_that(is.character(transition.fill) && length(transition.fill) == 1)
-    assertthat::assert_that(is.numeric(text.size) && length(text.size) == 1 && text.size >= 8)
-    assertthat::assert_that(is.character(note) && length(note) == 1)
-    assertthat::assert_that(is.numeric(page.width.mm) && length(page.width.mm) == 1 && page.width.mm > 0)
-    assertthat::assert_that(is.character(background) && length(background) == 1)
-    assertthat::assert_that(is.numeric(fill.lightness) && length(fill.lightness) == 1 && fill.lightness >= 0 && fill.lightness <= 1)
-
-    ## Lighten the phase fills toward white instead of relying on alpha, so the
-    ## boxes stay opaque and the drop shadow does not show through them. Only
-    ## valid hex colours can be blended; anything else is left untouched.
-    lighten_if_hex <- function(col) {
-        if (grepl("^#[0-9A-Fa-f]{6}$", col)) lighten_color(col, fill.lightness) else col
-    }
-    intervention.fill <- lighten_if_hex(intervention.fill)
-    control.fill <- lighten_if_hex(control.fill)
-    transition.fill <- lighten_if_hex(transition.fill)
-
-    n.seq <- sequences
-    n.per <- periods
-
-    ## Layout constants (arbitrary plotting units; the figure aspect ratio is
-    ## preserved on save so that one x-unit equals one y-unit in centimetres).
-    plot.left <- 1
-    plot.right <- 99
-    grid.left <- 2 # small left margin; "Period k" labels sit above each row
-
-    ## Mapping between plotting units and points, derived from the output width
-    ## so that text wrapping, box widths, and text size are consistent with the
-    ## width the figure is actually saved at. Box heights are derived from the
-    ## text so that all text renders at exactly `text.size` points.
+#' @keywords internal
+consort_shell_canvas <- function(page.width.mm = 174,
+                                 background = "grey92",
+                                 text.size = 8) {
+    plot.left <- 0
+    plot.right <- 100
+    ## Convert point size to plotting units so box heights match rendered text.
     cm.per.unit <- (page.width.mm / 10) / (plot.right - plot.left)
-    pt.per.unit <- cm.per.unit * 28.3465 # 1 cm = 28.3465 pt
-    text.size.mm <- text.size / .pt # ggplot2 geom_text size (mm) for text.size pt
-
-    ## Font metrics (in multiples of the font size), tuned to the rendered text
-    ## so the boxes hug the text with only a little breathing room. The per-line
-    ## reservation is a touch larger than the 0.9 lineheight used by geom_text
-    ## below so that glyph ascenders/descenders are not clipped by the box edge.
-    char.width.units <- text.size * 0.50 / pt.per.unit
-    line.height.units <- text.size * 1.15 / pt.per.unit
-    pad.x <- 0.6
-    pad.y <- 0.5
-
-    ## Number of wrapped lines a label needs within a box of the given width
-    n_lines <- function(label, box.width) {
-        wrap.chars <- max(6, floor((box.width - 2 * pad.x) / char.width.units))
-        blocks <- strsplit(label, "\n", fixed = TRUE)[[1]]
-        sum(vapply(blocks, function(b) max(1L, length(strwrap(b, width = wrap.chars))), integer(1)))
-    }
-    ## Box height (units) needed to hold the label at the fixed text size
-    box_height <- function(label, box.width) {
-        n_lines(label, box.width) * line.height.units + 2 * pad.y
-    }
-    ## Wrap a label to a box width, preserving any indentation on lines that
-    ## already fit (only over-long lines are re-wrapped). Used so the rendered
-    ## text matches the line count box_height() reserves space for.
-    wrap_box <- function(label, box.width) {
-        wrap.chars <- max(6, floor((box.width - 2 * pad.x) / char.width.units))
-        blocks <- strsplit(label, "\n", fixed = TRUE)[[1]]
-        lines <- unlist(lapply(blocks, function(b) {
-            if (nchar(b) <= wrap.chars) b else strwrap(b, width = wrap.chars)
-        }))
-        paste(lines, collapse = "\n")
-    }
-
-    ## Column geometry, one column per sequence
-    col.gap <- 1.2
-    col.width <- ((plot.right - grid.left) - (n.seq - 1) * col.gap) / n.seq
-    col.left <- grid.left + (seq_len(n.seq) - 1) * (col.width + col.gap)
-    col.center <- col.left + col.width / 2
-    col.right <- col.left + col.width
-    grid.width <- plot.right - grid.left
-
-    ## Text content (defined here so box heights can be derived from it)
-    elig.label <- "Assessed for eligibility (n=no of clusters)"
-    rand.label <- "Randomised (n=no of clusters)"
-    excluded.label <- paste(
-        "Excluded (n=no of clusters):",
-        "    Not meeting inclusion criteria (n=)",
-        "    Declined to participate (n=)",
-        "    Other reasons (n=)",
-        sep = "\n"
+    pt.per.unit <- cm.per.unit * 28.3465
+    list(
+        plot.left = plot.left,
+        plot.right = plot.right,
+        page.width.mm = page.width.mm,
+        background = background,
+        text.size = text.size,
+        text.size.mm = text.size / ggplot2::.pt,
+        ## geom_text(lineheight = 1) spans ~1.10× fontsize in native units
+        ## (matched to textGrob); requires expand = FALSE in consort_render.
+        line.h = text.size * 1.10 / pt.per.unit,
+        ## Symmetric top/bottom inset inside boxes (side inset is separate).
+        pad = text.size * 0.25 / pt.per.unit,
+        boxes = data.frame(),
+        texts = data.frame(),
+        segments = data.frame(),
+        strips = data.frame()
     )
-    seq.title.label <- paste0("Sequence ", n.seq) # widest sequence title
-    seq.sub.label <- "Clusters allocated (n=)"
-    cell.label <- paste(
-        "Assessed (n=)",
-        "Intervention (n=)",
-        "No intervention (n=)",
-        sep = "\n"
+}
+
+#' @keywords internal
+consort_add_box <- function(canvas, xmin, xmax, ymin, ymax, fill = "white") {
+    canvas$boxes <- rbind(
+        canvas$boxes,
+        data.frame(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill)
     )
+    canvas
+}
 
-    ## Box heights derived from the text
-    excl.width <- col.width * 2
-    elig.h <- box_height(elig.label, grid.width)
-    rand.h <- box_height(rand.label, grid.width)
-    excl.h <- box_height(excluded.label, excl.width)
-    head.title.lines <- 1
-    head.sub.lines <- n_lines(seq.sub.label, col.width)
-    head.h <- (head.title.lines + head.sub.lines) * line.height.units + 2 * pad.y
-    period.h <- box_height(cell.label, col.width)
-    legend.h <- box_height("legend", 10)
-
-    ## Vertical gaps (fixed); the eligibility-to-randomised gap must clear the
-    ## excluded box that sits between them.
-    excl.margin <- 0.5
-    gap.elig.rand <- excl.h + 2 * excl.margin
-    gap.rand.head <- 3
-    gap.head.grid <- 2
-    period.gap <- 1
-    gap.grid.legend <- 5
-
-    ## Lay out the vertical positions from the top going down
-    y <- 0
-    elig.cy <- y - elig.h / 2
-    y <- y - elig.h
-    y <- y - gap.elig.rand
-    rand.cy <- y - rand.h / 2
-    y <- y - rand.h
-    bus.y <- y - gap.rand.head / 2 # horizontal bus line for branching arrows
-    y <- y - gap.rand.head
-    head.cy <- y - head.h / 2
-    y <- y - head.h
-    y <- y - gap.head.grid
-    period.label.h <- line.height.units + 0.4 # band above each row for its label
-    period.top <- numeric(n.per)
-    period.bottom <- numeric(n.per)
-    period.label.y <- numeric(n.per)
-    for (p in seq_len(n.per)) {
-        period.label.y[p] <- y
-        period.top[p] <- y - period.label.h
-        period.bottom[p] <- period.top[p] - period.h
-        y <- period.bottom[p] - period.gap
+#' @keywords internal
+consort_add_text <- function(canvas, x, y, label, hjust = 0.5, vjust = 0.5,
+                             fontface = "plain", size = NULL) {
+    if (is.null(size)) {
+        size <- canvas$text.size.mm
     }
-    grid.bottom <- min(period.bottom)
-    legend.y <- grid.bottom - gap.grid.legend
-
-    ## Collect boxes, free text labels and connector segments
-    boxes <- data.frame()
-    texts <- data.frame()
-    segments <- data.frame()
-
-    add_box <- function(xmin, xmax, ymin, ymax, fill, shadow = TRUE) {
-        boxes <<- rbind(boxes, data.frame(
-            xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax,
-            fill = fill, shadow = shadow
-        ))
-    }
-    ## Text rendered inside a box (xmin/xmax/ymin/ymax define the bounds). The
-    ## box is already sized to hold the label at the fixed text size, so the
-    ## text is drawn at that exact size (no shrink-to-fit), keeping every label
-    ## uniformly text.size pt.
-    add_fit <- function(xmin, xmax, ymin, ymax, label, place = "topleft", fontface = "plain") {
-        wrapped <- wrap_box(label, xmax - xmin)
-        if (place == "centre") {
-            add_text(
-                x = (xmin + xmax) / 2, y = (ymin + ymax) / 2, label = wrapped,
-                hjust = 0.5, vjust = 0.5, fontface = fontface
-            )
-        } else {
-            add_text(
-                x = xmin + pad.x, y = ymax - pad.y, label = wrapped,
-                hjust = 0, vjust = 1, fontface = fontface
-            )
-        }
-    }
-    ## Free-floating text (labels outside boxes)
-    add_text <- function(x, y, label, hjust = 0, vjust = 1, fontface = "plain", size = text.size.mm) {
-        texts <<- rbind(texts, data.frame(
+    canvas$texts <- rbind(
+        canvas$texts,
+        data.frame(
             x = x, y = y, label = label, hjust = hjust, vjust = vjust,
             fontface = fontface, size = size
-        ))
+        )
+    )
+    canvas
+}
+
+#' @keywords internal
+consort_add_segment <- function(canvas, x, xend, y, yend, arrow = TRUE) {
+    canvas$segments <- rbind(
+        canvas$segments,
+        data.frame(x = x, xend = xend, y = y, yend = yend, arrow = arrow)
+    )
+    canvas
+}
+
+#' @keywords internal
+consort_wrap <- function(label, width.chars = 28) {
+    paste(strwrap(label, width = width.chars), collapse = "\n")
+}
+
+#' Wrap text while preserving existing newlines (for bullet lists)
+#'
+#' @keywords internal
+consort_wrap_preserve <- function(label, width.chars = 28) {
+    lines <- strsplit(label, "\n", fixed = TRUE)[[1]]
+    wrapped <- unlist(lapply(lines, function(line) {
+        if (!nzchar(line)) {
+            return("")
+        }
+        ## Continuation indent for bullet lines
+        indent <- if (grepl("^[\u2022\\-\\*]\\s", line)) {
+            "  "
+        } else {
+            ""
+        }
+        pieces <- strwrap(
+            line,
+            width = width.chars,
+            exdent = nchar(indent),
+            simplify = TRUE
+        )
+        if (length(pieces) == 0L) {
+            return(line)
+        }
+        paste(pieces, collapse = "\n")
+    }))
+    paste(wrapped, collapse = "\n")
+}
+
+#' Build a headed bullet list for exclusion boxes
+#'
+#' @keywords internal
+consort_bullet_list <- function(header, items) {
+    bullets <- paste0("\u2022 ", items)
+    paste(c(header, bullets), collapse = "\n")
+}
+
+#' @keywords internal
+consort_box_height <- function(label, width.chars = 28, canvas = NULL,
+                               line.h = NULL, pad = NULL) {
+    if (!is.null(canvas)) {
+        line.h <- canvas$line.h
+        pad <- canvas$pad
     }
-    add_segment <- function(x, xend, y, yend, arrow = TRUE) {
-        segments <<- rbind(segments, data.frame(
-            x = x, xend = xend, y = y, yend = yend, arrow = arrow
-        ))
+    if (is.null(line.h)) {
+        line.h <- 1.45
     }
-
-    ## Header: assessed for eligibility (spans the grid width)
-    add_box(
-        xmin = grid.left, xmax = plot.right,
-        ymin = elig.cy - elig.h / 2, ymax = elig.cy + elig.h / 2,
-        fill = "white"
-    )
-    add_fit(
-        xmin = grid.left, xmax = plot.right,
-        ymin = elig.cy - elig.h / 2, ymax = elig.cy + elig.h / 2,
-        label = elig.label, place = "centre"
-    )
-
-    ## Header: randomised (spans the grid width)
-    add_box(
-        xmin = grid.left, xmax = plot.right,
-        ymin = rand.cy - rand.h / 2, ymax = rand.cy + rand.h / 2,
-        fill = "white"
-    )
-    add_fit(
-        xmin = grid.left, xmax = plot.right,
-        ymin = rand.cy - rand.h / 2, ymax = rand.cy + rand.h / 2,
-        label = rand.label, place = "centre"
-    )
-
-    ## Excluded box (top right), centred in the gap between the two banners
-    excl.xmin <- plot.right - excl.width
-    excl.cy <- (elig.cy - elig.h / 2 + rand.cy + rand.h / 2) / 2
-    excl.ymax <- excl.cy + excl.h / 2
-    excl.ymin <- excl.cy - excl.h / 2
-    add_box(
-        xmin = excl.xmin, xmax = plot.right,
-        ymin = excl.ymin, ymax = excl.ymax,
-        fill = "white"
-    )
-    add_fit(
-        xmin = excl.xmin, xmax = plot.right,
-        ymin = excl.ymin, ymax = excl.ymax,
-        label = excluded.label, place = "topleft"
-    )
-
-    ## Connector: eligibility -> randomised, with branch to excluded box
-    connector.x <- (grid.left + plot.right) / 2
-    branch.y <- (elig.cy - elig.h / 2 + rand.cy + rand.h / 2) / 2
-    add_segment(
-        x = connector.x, xend = connector.x,
-        y = elig.cy - elig.h / 2, yend = rand.cy + rand.h / 2
-    )
-    add_segment(
-        x = connector.x, xend = excl.xmin,
-        y = branch.y, yend = branch.y
-    )
-
-    ## Branching arrows: randomised -> a horizontal bus -> each sequence header
-    add_segment(
-        x = connector.x, xend = connector.x,
-        y = rand.cy - rand.h / 2, yend = bus.y, arrow = FALSE
-    )
-    add_segment(
-        x = min(col.center), xend = max(col.center),
-        y = bus.y, yend = bus.y, arrow = FALSE
-    )
-    for (k in seq_len(n.seq)) {
-        add_segment(
-            x = col.center[k], xend = col.center[k],
-            y = bus.y, yend = head.cy + head.h / 2
-        )
+    if (is.null(pad)) {
+        pad <- 0.5
     }
+    wrapped <- consort_wrap_preserve(label, width.chars)
+    n.lines <- length(strsplit(wrapped, "\n", fixed = TRUE)[[1]])
+    n.lines * line.h + 2 * pad
+}
 
-    ## Sequence header boxes (bold title on top, allocation text directly below
-    ## at the normal line spacing so the two lines are not pushed apart)
-    head.text.top <- head.cy + head.h / 2 - pad.y
-    for (k in seq_len(n.seq)) {
-        add_box(
-            xmin = col.left[k], xmax = col.right[k],
-            ymin = head.cy - head.h / 2, ymax = head.cy + head.h / 2,
-            fill = "white"
+#' Condition fills for mini stepped-wedge strips (avoid base::colors clash)
+#'
+#' @keywords internal
+consort_condition_fills <- function() {
+    ## Prefer the project palette when sourced; otherwise use the same hexes.
+    if (exists("colors", mode = "function", inherits = TRUE) &&
+            !identical(get("colors", mode = "function"), grDevices::colors)) {
+        cols <- colors()
+        out <- c(
+            control = unname(cols["light.standard.care"]),
+            transition = unname(cols["light.transition"]),
+            intervention = unname(cols["light.intervention"])
         )
-        add_text(
-            x = col.center[k], y = head.text.top,
-            label = paste0("Sequence ", k),
-            hjust = 0.5, vjust = 1, fontface = "bold"
-        )
-        add_text(
-            x = col.center[k],
-            y = head.text.top - head.title.lines * line.height.units,
-            label = wrap_box(seq.sub.label, col.width),
-            hjust = 0.5, vjust = 1
-        )
-    }
-
-    ## Period rows and per-sequence cells
-    for (p in seq_len(n.per)) {
-        ## Period label sitting on top of the row of boxes
-        add_text(
-            x = grid.left, y = period.label.y[p],
-            label = paste0("Period ", p), hjust = 0, vjust = 1, fontface = "bold"
-        )
-        for (k in seq_len(n.seq)) {
-            ## Each sequence has a standard care block that lengthens by one
-            ## period per sequence, then a transition, then the intervention.
-            standard.care.end <- min.standard.care.months + (k - 1)
-            transition.end <- standard.care.end + transition.months
-            fill <- if (p <= standard.care.end) {
-                control.fill
-            } else if (p <= transition.end) {
-                transition.fill
-            } else {
-                intervention.fill
-            }
-            add_box(
-                xmin = col.left[k], xmax = col.right[k],
-                ymin = period.bottom[p], ymax = period.top[p],
-                fill = fill
-            )
-            add_fit(
-                xmin = col.left[k], xmax = col.right[k],
-                ymin = period.bottom[p], ymax = period.top[p],
-                label = cell.label, place = "topleft"
-            )
-
-            ## Arrow from the sequence header into period 1. Consecutive period
-            ## rows are stacked directly, so only draw a connector when there is
-            ## a gap between them.
-            if (p == 1) {
-                add_segment(
-                    x = col.center[k], xend = col.center[k],
-                    y = head.cy - head.h / 2, yend = period.top[p]
-                )
-            } else if (period.gap > 0) {
-                add_segment(
-                    x = col.center[k], xend = col.center[k],
-                    y = period.bottom[p - 1], yend = period.top[p]
-                )
-            }
+        if (!anyNA(out) && all(nzchar(out))) {
+            return(out)
         }
     }
-
-    ## Manual legend (scale_fill_identity does not produce one)
-    legend.box <- 2.5
-    legend.items <- data.frame(
-        fill = c(control.fill, transition.fill, intervention.fill),
-        label = c(
-            "Cluster under standard care condition",
-            "Cluster in transition period",
-            "Cluster under intervention condition"
-        )
+    c(
+        control = "#FCCE94",
+        transition = "#92D9E6",
+        intervention = "#BFA6D6"
     )
-    ## Pack the entries left-to-right using each label's width so they do not
-    ## overlap, rather than spacing them on a fixed grid.
-    legend.swatch.gap <- 1 # swatch to its own label
-    legend.item.gap <- 3 # between one entry and the next
-    legend.x <- grid.left
-    for (i in seq_len(nrow(legend.items))) {
-        add_box(
-            xmin = legend.x, xmax = legend.x + legend.box,
-            ymin = legend.y - legend.h / 2, ymax = legend.y + legend.h / 2,
-            fill = legend.items$fill[i], shadow = FALSE
-        )
-        text.x <- legend.x + legend.box + legend.swatch.gap
-        add_text(
-            x = text.x, y = legend.y,
-            label = legend.items$label[i], hjust = 0, vjust = 0.5
-        )
-        label.width <- nchar(legend.items$label[i]) * char.width.units
-        legend.x <- text.x + label.width + legend.item.gap
-    }
+}
 
-    ## Figure note (keeps the repeated cluster-size detail out of every box)
-    fig.bottom <- legend.y - legend.h / 2
-    if (nzchar(note)) {
-        gap.legend.note <- 3
-        note.wrap.chars <- max(10, floor(grid.width / char.width.units))
-        note.wrapped <- paste(strwrap(note, width = note.wrap.chars), collapse = "\n")
-        note.lines <- length(strsplit(note.wrapped, "\n", fixed = TRUE)[[1]])
-        note.top <- legend.y - legend.h / 2 - gap.legend.note
-        add_text(
-            x = grid.left, y = note.top,
-            label = note.wrapped, hjust = 0, vjust = 1
+#' Add a single-row centred legend of colour swatches with labels
+#'
+#' @keywords internal
+consort_add_centered_legend <- function(canvas, legend.y, fills, labels,
+                                        char.w = 0.80,
+                                        swatch.w = 3,
+                                        label.gap = 0.5,
+                                        item.gap = 4) {
+    item.w <- swatch.w + label.gap + nchar(labels) * char.w
+    legend.w <- sum(item.w) + item.gap * (length(labels) - 1L)
+    lx <- (canvas$plot.right + canvas$plot.left - legend.w) / 2
+    for (i in seq_along(labels)) {
+        canvas <- consort_add_box(
+            canvas, lx, lx + swatch.w, legend.y - 1.6, legend.y, fills[i]
         )
-        fig.bottom <- note.top - note.lines * line.height.units
+        canvas <- consort_add_text(
+            canvas, lx + swatch.w + label.gap, legend.y - 0.8, labels[i],
+            hjust = 0, vjust = 0.5
+        )
+        lx <- lx + item.w[i] + item.gap
     }
+    canvas
+}
 
-    ## Discrete drop shadow: a grey copy of each box (except the legend
-    ## swatches), offset down and to the right and drawn underneath the boxes.
-    shadow.offset <- 0.4
-    shadows <- transform(boxes[boxes$shadow, ],
-        xmin = xmin + shadow.offset, xmax = xmax + shadow.offset,
-        ymin = ymin - shadow.offset, ymax = ymax - shadow.offset
+#' Mini stepped-wedge strip coordinates for one sequence
+#'
+#' @keywords internal
+consort_sequence_strip <- function(sequence,
+                                   sequences,
+                                   xmin,
+                                   xmax,
+                                   ymin,
+                                   ymax,
+                                   min.standard.care.months,
+                                   transition.months,
+                                   total.months,
+                                   control.fill,
+                                   transition.fill,
+                                   intervention.fill,
+                                   staircase.months = 0,
+                                   inactive.fill = "grey80") {
+    standard.care.end <- min.standard.care.months + (sequence - 1L)
+    transition.end <- standard.care.end + transition.months
+    periods <- seq_len(total.months)
+    fills <- vapply(periods, function(p) {
+        phase.fill <- if (p <= standard.care.end) {
+            control.fill
+        } else if (p <= transition.end) {
+            transition.fill
+        } else {
+            intervention.fill
+        }
+        if (staircase.months <= 0) {
+            return(phase.fill)
+        }
+        ## Keep the transition month visible; grey only non-staircase
+        ## control/intervention months outside the nested windows.
+        if (p > standard.care.end && p <= transition.end) {
+            return(transition.fill)
+        }
+        in.pre <- p > (standard.care.end - staircase.months) && p <= standard.care.end
+        in.post <- p > transition.end && p <= (transition.end + staircase.months)
+        if (in.pre || in.post) {
+            phase.fill
+        } else {
+            inactive.fill
+        }
+    }, character(1))
+    w <- (xmax - xmin) / total.months
+    data.frame(
+        xmin = xmin + (periods - 1L) * w,
+        xmax = xmin + periods * w,
+        ymin = ymin,
+        ymax = ymax,
+        fill = fills
     )
+}
 
-    ## Build the plot
-    consort.figure <- ggplot() +
+#' Render and optionally save a CONSORT shell ggplot
+#'
+#' @keywords internal
+consort_render <- function(canvas,
+                           y.top,
+                           y.bottom,
+                           file.name,
+                           return.figure = TRUE,
+                           save = TRUE,
+                           device = "pdf") {
+    library(ggplot2)
+
+    ## No drop shadows: offset filled rects render as hard bottom edges in
+    ## PNG/PDF and read as stray horizontal lines under every box.
+    figure <- ggplot() +
         geom_rect(
-            data = shadows,
-            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
-            fill = "grey50", color = NA, alpha = 0.35
-        ) +
-        geom_rect(
-            data = boxes,
+            data = canvas$boxes,
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
-            color = "grey40", linewidth = 0.3
-        ) +
-        geom_segment(
-            data = subset(segments, !arrow),
-            aes(x = x, xend = xend, y = y, yend = yend),
-            color = "grey40", linewidth = 0.3
-        ) +
-        geom_segment(
-            data = subset(segments, arrow),
-            aes(x = x, xend = xend, y = y, yend = yend),
-            color = "grey40", linewidth = 0.3,
-            arrow = arrow(length = unit(0.15, "cm"), type = "closed")
-        ) +
+            color = "grey35", linewidth = 0.35
+        )
+
+    if (nrow(canvas$strips) > 0L) {
+        figure <- figure +
+            geom_rect(
+                data = canvas$strips,
+                aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
+                color = "grey40", linewidth = 0.15
+            )
+    }
+
+    if (nrow(canvas$segments) > 0L) {
+        figure <- figure +
+            geom_segment(
+                data = subset(canvas$segments, !arrow),
+                aes(x = x, xend = xend, y = y, yend = yend),
+                color = "grey35", linewidth = 0.35
+            ) +
+            geom_segment(
+                data = subset(canvas$segments, arrow),
+                aes(x = x, xend = xend, y = y, yend = yend),
+                color = "grey35", linewidth = 0.35,
+                arrow = arrow(length = unit(0.12, "cm"), type = "closed")
+            )
+    }
+
+    figure <- figure +
         geom_text(
-            data = texts,
-            aes(x = x, y = y, label = label, hjust = hjust, vjust = vjust, fontface = fontface),
-            size = texts$size, lineheight = 0.9
+            data = canvas$texts,
+            aes(
+                x = x, y = y, label = label, hjust = hjust, vjust = vjust,
+                fontface = fontface, size = size
+            ),
+            lineheight = 1
         ) +
+        scale_size_identity() +
         scale_fill_identity() +
+        ## expand = FALSE keeps data units equal to the ggsave mm mapping used
+        ## for line.h / pad; default expansion shrinks units and clips text.
         coord_cartesian(
-            xlim = c(plot.left, plot.right),
-            ylim = c(fig.bottom, elig.cy + elig.h / 2),
+            xlim = c(canvas$plot.left, canvas$plot.right),
+            ylim = c(y.bottom, y.top),
+            expand = FALSE,
             clip = "off"
         ) +
         theme_void() +
         theme(
-            plot.background = element_rect(fill = background, color = NA),
-            panel.background = element_rect(fill = background, color = NA)
+            plot.background = element_rect(
+                fill = canvas$background, colour = NA, linewidth = 0
+            ),
+            panel.background = element_rect(
+                fill = canvas$background, colour = NA, linewidth = 0
+            ),
+            plot.margin = margin(0, 0, 0, 0)
         )
 
-    ## Save figure. The width matches page.width.mm and the height is derived
-    ## from the layout so that one x-unit equals one y-unit (no distortion).
-    if (save) {
-        file.name <- paste0("consort-diagram-", n.seq, "-sequences.", device)
-        x.span <- plot.right - plot.left
-        y.span <- (elig.cy + elig.h / 2) - fig.bottom
-        ggsave(file.name, consort.figure,
+    if (isTRUE(save)) {
+        cm.per.unit <- (canvas$page.width.mm / 10) / (canvas$plot.right - canvas$plot.left)
+        x.span <- canvas$plot.right - canvas$plot.left
+        y.span <- y.top - y.bottom
+        ggplot2::ggsave(
+            file.name, figure,
             width = x.span * cm.per.unit,
             height = y.span * cm.per.unit,
             units = "cm", limitsize = FALSE
         )
     }
 
-    ## Return figure or file name
-    if (return.figure) {
-        return(consort.figure)
+    if (isTRUE(return.figure)) {
+        return(figure)
     }
-    return(file.name)
+    file.name
+}
+
+#' Create cluster-level CONSORT diagram shell
+#'
+#' Shell flowchart for cluster (hospital) flow through a batched stepped-wedge
+#' trial, following a two-figure reporting approach (cluster figure separate
+#' from the patient figure). Placeholders (`n=`) are completed at reporting.
+#'
+#' @param sequences Numeric. Number of sequences (columns). Default 5.
+#' @param batches Numeric. Number of batches (shown in the figure note). Default 6.
+#' @param total.months Numeric. Periods shown in each mini stepped-wedge strip.
+#' @param min.standard.care.months Numeric. Standard-care periods for sequence 1.
+#' @param transition.months Numeric. Transition periods per sequence.
+#' @param page.width.mm Numeric. Output width in millimetres. Default 174.
+#' @param return.figure Logical. Return ggplot if TRUE. Default TRUE.
+#' @param save Logical. Save to disk if TRUE. Default TRUE.
+#' @param device Character. Device for `ggsave`. Default `"png"`.
+#' @return A ggplot object or the saved file name.
+#'
+#' @examples
+#' \dontrun{
+#' noacsr::source_all_functions()
+#' create_cluster_consort_diagram(save = FALSE)
+#' }
+create_cluster_consort_diagram <- function(sequences = 5,
+                                           batches = 6,
+                                           total.months = 13,
+                                           min.standard.care.months = 4,
+                                           transition.months = 1,
+                                           page.width.mm = 174,
+                                           return.figure = TRUE,
+                                           save = TRUE,
+                                           device = "png") {
+    assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
+    assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
+    assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
+    assertthat::assert_that(
+        is.numeric(min.standard.care.months) && length(min.standard.care.months) == 1 &&
+            min.standard.care.months >= 0
+    )
+    assertthat::assert_that(
+        is.numeric(transition.months) && length(transition.months) == 1 &&
+            transition.months >= 0
+    )
+
+    fills <- consort_condition_fills()
+    control.fill <- unname(fills["control"])
+    transition.fill <- unname(fills["transition"])
+    intervention.fill <- unname(fills["intervention"])
+    box.fill <- "#fde6d4"
+
+    canvas <- consort_shell_canvas(page.width.mm = page.width.mm)
+    n.seq <- as.integer(sequences)
+    margin <- 2
+    gap <- 1.2
+    col.width <- (100 - 2 * margin - (n.seq - 1) * gap) / n.seq
+    col.left <- margin + (seq_len(n.seq) - 1) * (col.width + gap)
+    col.right <- col.left + col.width
+    col.center <- (col.left + col.right) / 2
+    wrap.chars <- max(18, floor(col.width * 1.45))
+    ## Vertical gaps between strip / exclusion / analysis boxes (arrow length).
+    gap.strip.excl <- 3.0
+    gap.excl.incl <- 3.0
+
+    top.label <- "Clusters assessed for eligibility (n=)"
+    rand.label <- "Clusters randomised (n=)"
+    excl.pre.label <- consort_bullet_list(
+        "Excluded before randomisation (n=):",
+        c(
+            "Not meeting inclusion criteria (n=)",
+            "Declined to participate (n=)",
+            "Other reasons (n=)"
+        )
+    )
+    excl.post.label <- consort_bullet_list(
+        "Lost/excluded (n=; reasons):",
+        c(
+            "Withdrawn (n=)",
+            "No outcome data (n=)",
+            "Other (n=)"
+        )
+    )
+    included.label <- "Clusters included in primary analysis (n=)"
+    total.included.label <- "Clusters included in primary analysis (n=)"
+    total.excl.label <- consort_bullet_list(
+        "Clusters excluded after randomisation (n=):",
+        c(
+            "Withdrawn (n=)",
+            "No outcome data (n=)",
+            "Other (n=)"
+        )
+    )
+
+    y <- 0
+    top.h <- consort_box_height(top.label, 60, canvas = canvas)
+    canvas <- consort_add_box(canvas, 20, 80, y - top.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - top.h / 2, consort_wrap(top.label, 50)
+    )
+    y <- y - top.h - 1.2
+
+    excl.pre.h <- consort_box_height(excl.pre.label, 40, canvas = canvas)
+    canvas <- consort_add_box(canvas, 58, 98, y - excl.pre.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 60, y - canvas$pad, consort_wrap_preserve(excl.pre.label, 40),
+        hjust = 0, vjust = 1
+    )
+    branch.y <- y - excl.pre.h / 2
+    canvas <- consort_add_segment(canvas, 50, 50, y + 1.2, y - excl.pre.h - 1.2, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 58, branch.y, branch.y, arrow = TRUE)
+    y <- y - excl.pre.h - 1.2
+
+    rand.h <- consort_box_height(rand.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 22, 78, y - rand.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - rand.h / 2, consort_wrap(rand.label, 45)
+    )
+    rand.bottom <- y - rand.h
+    ## Extra space so the split-to-sequences bus has readable arrow stems
+    y <- rand.bottom - 6.0
+
+    ## Bus to sequences
+    canvas <- consort_add_segment(canvas, 50, 50, rand.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center), y + 3.0, y + 3.0, arrow = FALSE
+    )
+
+    strip.h <- 1.8
+    title.h <- 2.4
+    excl.post.h <- consort_box_height(excl.post.label, wrap.chars, canvas = canvas)
+    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    seq.block.top <- y
+    seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.post.h -
+        gap.excl.incl - included.h
+
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k], y + 3.0, y, arrow = TRUE
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], y - 0.15,
+            paste0("Sequence ", k), fontface = "bold", vjust = 1
+        )
+        strip.top <- y - title.h
+        strip.bottom <- strip.top - strip.h
+        strip <- consort_sequence_strip(
+            sequence = k,
+            sequences = n.seq,
+            xmin = col.left[k] + 0.4,
+            xmax = col.right[k] - 0.4,
+            ymin = strip.bottom,
+            ymax = strip.top,
+            min.standard.care.months = min.standard.care.months,
+            transition.months = transition.months,
+            total.months = total.months,
+            control.fill = control.fill,
+            transition.fill = transition.fill,
+            intervention.fill = intervention.fill
+        )
+        canvas$strips <- rbind(canvas$strips, strip)
+
+        excl.top <- strip.bottom - gap.strip.excl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            strip.bottom, excl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            excl.top - excl.post.h, excl.top, "white"
+        )
+        canvas <- consort_add_text(
+            canvas, col.left[k] + 0.4, excl.top - canvas$pad,
+            consort_wrap_preserve(excl.post.label, wrap.chars),
+            hjust = 0, vjust = 1
+        )
+
+        incl.top <- excl.top - excl.post.h - gap.excl.incl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            excl.top - excl.post.h, incl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            incl.top - included.h, incl.top, box.fill
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], incl.top - included.h / 2,
+            consort_wrap(included.label, wrap.chars)
+        )
+    }
+
+    y <- seq.block.bottom - 6.0
+    ## Collect from sequences: drops + bus sit below the sequence boxes
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            seq.block.bottom, y + 3.0, arrow = FALSE
+        )
+    }
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center),
+        y + 3.0, y + 3.0, arrow = FALSE
+    )
+    canvas <- consort_add_segment(canvas, 50, 50, y + 3.0, y, arrow = TRUE)
+
+    tot.incl.h <- consort_box_height(total.included.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.incl.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - tot.incl.h / 2, consort_wrap(total.included.label, 50)
+    )
+    y <- y - tot.incl.h - 0.8
+
+    tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 20, y - canvas$pad, consort_wrap_preserve(total.excl.label, 50),
+        hjust = 0, vjust = 1
+    )
+    y <- y - tot.excl.h - 1.8
+
+    ## Legend
+    legend.y <- y
+    canvas <- consort_add_centered_legend(
+        canvas, legend.y,
+        fills = c(control.fill, transition.fill, intervention.fill),
+        labels = c("Standard care", "Transition", "Intervention")
+    )
+    y <- legend.y - 2.5
+
+    # note <- paste0(
+    #     "Note: cluster-level CONSORT shell for the batched stepped-wedge design ",
+    #     "(", batches, " batches; ", sequences, " sequences). Mini strips show the ",
+    #     "scheduled condition by period. Complete n= and reasons at reporting."
+    # )
+    # canvas <- consort_add_text(
+    #     canvas, margin, y, consort_wrap(note, 95),
+    #     hjust = 0, vjust = 1
+    # )
+    # y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    y.bottom <- y - 0.5
+
+    consort_render(
+        canvas = canvas,
+        y.top = 1,
+        y.bottom = y.bottom,
+        file.name = paste0("consort-diagram-clusters-", n.seq, "-sequences.", device),
+        return.figure = return.figure,
+        save = save,
+        device = device
+    )
+}
+
+#' Create patient-level CONSORT diagram shell
+#'
+#' Shell flowchart for patient flow through a batched stepped-wedge trial,
+#' separate from the cluster-level CONSORT figure. Shows sequence-specific
+#' inclusion/exclusion and before/after intervention aggregates.
+#'
+#' @inheritParams create_cluster_consort_diagram
+#' @return A ggplot object or the saved file name.
+#'
+#' @examples
+#' \dontrun{
+#' noacsr::source_all_functions()
+#' create_patient_consort_diagram(save = FALSE)
+#' }
+create_patient_consort_diagram <- function(sequences = 5,
+                                           batches = 6,
+                                           total.months = 13,
+                                           min.standard.care.months = 4,
+                                           transition.months = 1,
+                                           page.width.mm = 174,
+                                           return.figure = TRUE,
+                                           save = TRUE,
+                                           device = "png") {
+    assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
+    assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
+    assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
+    assertthat::assert_that(
+        is.numeric(min.standard.care.months) && length(min.standard.care.months) == 1 &&
+            min.standard.care.months >= 0
+    )
+    assertthat::assert_that(
+        is.numeric(transition.months) && length(transition.months) == 1 &&
+            transition.months >= 0
+    )
+
+    fills <- consort_condition_fills()
+    control.fill <- unname(fills["control"])
+    transition.fill <- unname(fills["transition"])
+    intervention.fill <- unname(fills["intervention"])
+    box.fill <- "#fde6d4"
+
+    canvas <- consort_shell_canvas(page.width.mm = page.width.mm)
+    n.seq <- as.integer(sequences)
+    margin <- 2
+    gap <- 1.2
+    col.width <- (100 - 2 * margin - (n.seq - 1) * gap) / n.seq
+    col.left <- margin + (seq_len(n.seq) - 1) * (col.width + gap)
+    col.right <- col.left + col.width
+    col.center <- (col.left + col.right) / 2
+    wrap.chars <- max(18, floor(col.width * 1.45))
+    ## Vertical gaps between strip / exclusion / analysis boxes (arrow length).
+    ## Keep well above the arrowhead size (~0.7 data units) so shafts remain visible.
+    gap.strip.excl <- 3.0
+    gap.excl.incl <- 3.0
+
+    top.label <- "Patients entered the trial (n=)"
+    excl.label <- consort_bullet_list(
+        "Lost/excluded (n=; reasons):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Other (n=)"
+        )
+    )
+    included.label <- "Patients included in primary analysis (n=)"
+    before.label <- paste(
+        "Before ATLS training",
+        "Patients (n=)",
+        "Included in primary analysis (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Other (n=)"
+            )
+        ),
+        sep = "\n"
+    )
+    after.label <- paste(
+        "After ATLS training",
+        "Patients (n=)",
+        "Included in primary analysis (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Other (n=)"
+            )
+        ),
+        sep = "\n"
+    )
+    total.included.label <- "Patients included in primary analysis (n=)"
+    total.excl.label <- consort_bullet_list(
+        "Patients excluded from primary analysis (n=):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Other (n=)"
+        )
+    )
+
+    y <- 0
+    top.h <- consort_box_height(top.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 22, 78, y - top.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - top.h / 2, consort_wrap(top.label, 50)
+    )
+    top.bottom <- y - top.h
+    ## Extra space so the split-to-sequences bus has readable arrow stems
+    y <- top.bottom - 6.0
+
+    canvas <- consort_add_segment(canvas, 50, 50, top.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center), y + 3.0, y + 3.0, arrow = FALSE
+    )
+
+    strip.h <- 1.8
+    title.h <- 2.4
+    excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
+    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.h -
+        gap.excl.incl - included.h
+
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k], y + 3.0, y, arrow = TRUE
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], y - 0.15,
+            paste0("Sequence ", k), fontface = "bold", vjust = 1
+        )
+        strip.top <- y - title.h
+        strip.bottom <- strip.top - strip.h
+        strip <- consort_sequence_strip(
+            sequence = k,
+            sequences = n.seq,
+            xmin = col.left[k] + 0.4,
+            xmax = col.right[k] - 0.4,
+            ymin = strip.bottom,
+            ymax = strip.top,
+            min.standard.care.months = min.standard.care.months,
+            transition.months = transition.months,
+            total.months = total.months,
+            control.fill = control.fill,
+            transition.fill = transition.fill,
+            intervention.fill = intervention.fill
+        )
+        canvas$strips <- rbind(canvas$strips, strip)
+
+        excl.top <- strip.bottom - gap.strip.excl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            strip.bottom, excl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            excl.top - excl.h, excl.top, "white"
+        )
+        canvas <- consort_add_text(
+            canvas, col.left[k] + 0.4, excl.top - canvas$pad,
+            consort_wrap_preserve(excl.label, wrap.chars),
+            hjust = 0, vjust = 1
+        )
+
+        incl.top <- excl.top - excl.h - gap.excl.incl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            excl.top - excl.h, incl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            incl.top - included.h, incl.top, box.fill
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], incl.top - included.h / 2,
+            consort_wrap(included.label, wrap.chars)
+        )
+    }
+
+    y <- seq.block.bottom - 6.0
+    ## Collect from sequences, then split to before/after ATLS boxes
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            seq.block.bottom, y + 3.0, arrow = FALSE
+        )
+    }
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center),
+        y + 3.0, y + 3.0, arrow = FALSE
+    )
+    canvas <- consort_add_segment(canvas, 28, 28, y + 3.0, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 72, 72, y + 3.0, y, arrow = TRUE)
+
+    phase.wrap <- 38
+    ## Extra line height: multi-line geom_text runs slightly taller than line.h.
+    phase.h <- consort_box_height(before.label, phase.wrap, canvas = canvas) +
+        2 * canvas$line.h
+    canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 10, y - canvas$pad, consort_wrap_preserve(before.label, phase.wrap),
+        hjust = 0, vjust = 1
+    )
+    canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 54, y - canvas$pad, consort_wrap_preserve(after.label, phase.wrap),
+        hjust = 0, vjust = 1
+    )
+    phase.bottom <- y - phase.h
+    y <- phase.bottom - 6.0
+
+    canvas <- consort_add_segment(canvas, 28, 28, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 72, 72, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 28, 72, y + 3.0, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 50, y + 3.0, y, arrow = TRUE)
+
+    tot.incl.h <- consort_box_height(total.included.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.incl.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - tot.incl.h / 2, consort_wrap(total.included.label, 50)
+    )
+    y <- y - tot.incl.h - 0.8
+
+    tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 20, y - canvas$pad, consort_wrap_preserve(total.excl.label, 50),
+        hjust = 0, vjust = 1
+    )
+    y <- y - tot.excl.h - 1.8
+
+    legend.y <- y
+    canvas <- consort_add_centered_legend(
+        canvas, legend.y,
+        fills = c(control.fill, transition.fill, intervention.fill),
+        labels = c("Standard care", "Transition", "Intervention")
+    )
+    y <- legend.y - 2.5
+
+    # note <- paste0(
+    #    "Note: patient-level CONSORT shell for the batched stepped-wedge design ",
+    #    "(", batches, " batches; ", sequences, " sequences). Before/after ATLS ",
+    #    "aggregates summarise receipt of the intended intervention condition. ",
+    #    "Complete n= and reasons at reporting."
+    #)
+    # canvas <- consort_add_text(
+    #    canvas, margin, y, consort_wrap(note, 95),
+    #    hjust = 0, vjust = 1
+    #)
+    #y.bottom <- y - consort_box_height(note, 95, canvas = canvas) - 0.5
+    y.bottom <- y - 0.5
+
+    consort_render(
+        canvas = canvas,
+        y.top = 1,
+        y.bottom = y.bottom,
+        file.name = paste0("consort-diagram-patients-", n.seq, "-sequences.", device),
+        return.figure = return.figure,
+        save = save,
+        device = device
+    )
+}
+
+#' Create nested-staircase CONSORT diagram shell
+#'
+#' Shell flowchart for patient flow into nested-staircase secondary outcomes
+#' (adherence, quality of life, disability), separate from the main
+#' stepped-wedge CONSORT figures.
+#'
+#' @inheritParams create_patient_consort_diagram
+#' @param staircase.months Numeric. Months before and after transition in the
+#'   nested staircase window. Default 3.
+#' @return A ggplot object or the saved file name.
+#'
+#' @examples
+#' \dontrun{
+#' noacsr::source_all_functions()
+#' create_nested_staircase_consort_diagram(save = FALSE)
+#' }
+create_nested_staircase_consort_diagram <- function(sequences = 5,
+                                                    batches = 6,
+                                                    total.months = 13,
+                                                    min.standard.care.months = 4,
+                                                    transition.months = 1,
+                                                    staircase.months = 3,
+                                                    page.width.mm = 174,
+                                                    return.figure = TRUE,
+                                                    save = TRUE,
+                                                    device = "png") {
+    assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
+    assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
+    assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
+    assertthat::assert_that(
+        is.numeric(min.standard.care.months) && length(min.standard.care.months) == 1 &&
+            min.standard.care.months >= 0
+    )
+    assertthat::assert_that(
+        is.numeric(transition.months) && length(transition.months) == 1 &&
+            transition.months >= 0
+    )
+    assertthat::assert_that(
+        is.numeric(staircase.months) && length(staircase.months) == 1 &&
+            staircase.months > 0
+    )
+
+    fills <- consort_condition_fills()
+    control.fill <- unname(fills["control"])
+    transition.fill <- unname(fills["transition"])
+    intervention.fill <- unname(fills["intervention"])
+    box.fill <- "#fde6d4"
+
+    canvas <- consort_shell_canvas(page.width.mm = page.width.mm)
+    n.seq <- as.integer(sequences)
+    margin <- 2
+    gap <- 1.2
+    col.width <- (100 - 2 * margin - (n.seq - 1) * gap) / n.seq
+    col.left <- margin + (seq_len(n.seq) - 1) * (col.width + gap)
+    col.right <- col.left + col.width
+    col.center <- (col.left + col.right) / 2
+    wrap.chars <- max(18, floor(col.width * 1.45))
+    gap.strip.excl <- 3.0
+    gap.excl.incl <- 3.0
+
+    top.label <- "Patients in staircase periods (n=)"
+    not.sampled.label <- consort_bullet_list(
+        "Not sampled for nested staircase outcomes (n=):",
+        c(
+            "Outside randomised shifts (n=)",
+            "Other (n=)"
+        )
+    )
+    sampled.label <- "Sampled for nested staircase outcomes (n=)"
+    excl.label <- consort_bullet_list(
+        "Lost/excluded (n=; reasons):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Other (n=)"
+        )
+    )
+    included.label <- "Analysed for nested staircase outcomes (n=)"
+    before.label <- paste(
+        "Before ATLS training",
+        "In staircase windows (n=)",
+        "Sampled (n=)",
+        "Analysed (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Died before follow-up (n=)",
+                "Other (n=)"
+            )
+        ),
+        sep = "\n"
+    )
+    after.label <- paste(
+        "After ATLS training",
+        "In staircase windows (n=)",
+        "Sampled (n=)",
+        "Analysed (n=)",
+        consort_bullet_list(
+            "Excluded (n=; reasons):",
+            c(
+                "Lost to follow-up (n=)",
+                "Withdrew consent (n=)",
+                "Died before follow-up (n=)",
+                "Other (n=)"
+            )
+        ),
+        sep = "\n"
+    )
+    total.included.label <- "Analysed for nested staircase outcomes (n=)"
+    total.excl.label <- consort_bullet_list(
+        "Excluded from nested staircase analyses (n=):",
+        c(
+            "Lost to follow-up (n=)",
+            "Withdrew consent (n=)",
+            "Died before follow-up (n=)",
+            "Other (n=)"
+        )
+    )
+
+    y <- 0
+    top.h <- consort_box_height(top.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 20, 80, y - top.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - top.h / 2, consort_wrap(top.label, 50)
+    )
+    top.bottom <- y - top.h
+    y <- top.bottom - 1.5
+
+    not.sampled.h <- consort_box_height(not.sampled.label, 40, canvas = canvas)
+    canvas <- consort_add_box(canvas, 58, 98, y - not.sampled.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 60, y - canvas$pad, consort_wrap_preserve(not.sampled.label, 40),
+        hjust = 0, vjust = 1
+    )
+    branch.y <- y - not.sampled.h / 2
+    stem.bottom <- y - not.sampled.h - 1.2
+    canvas <- consort_add_segment(canvas, 50, 50, y + 1.2, stem.bottom, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 58, branch.y, branch.y, arrow = TRUE)
+    y <- stem.bottom - 3.0
+    canvas <- consort_add_segment(canvas, 50, 50, stem.bottom, y, arrow = TRUE)
+
+    sampled.h <- consort_box_height(sampled.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - sampled.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - sampled.h / 2, consort_wrap(sampled.label, 45)
+    )
+    sampled.bottom <- y - sampled.h
+    y <- sampled.bottom - 6.0
+
+    canvas <- consort_add_segment(canvas, 50, 50, sampled.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center), y + 3.0, y + 3.0, arrow = FALSE
+    )
+
+    strip.h <- 1.8
+    title.h <- 2.4
+    excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
+    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.h -
+        gap.excl.incl - included.h
+
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k], y + 3.0, y, arrow = TRUE
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], y - 0.15,
+            paste0("Sequence ", k), fontface = "bold", vjust = 1
+        )
+        strip.top <- y - title.h
+        strip.bottom <- strip.top - strip.h
+        strip <- consort_sequence_strip(
+            sequence = k,
+            sequences = n.seq,
+            xmin = col.left[k] + 0.4,
+            xmax = col.right[k] - 0.4,
+            ymin = strip.bottom,
+            ymax = strip.top,
+            min.standard.care.months = min.standard.care.months,
+            transition.months = transition.months,
+            total.months = total.months,
+            control.fill = control.fill,
+            transition.fill = transition.fill,
+            intervention.fill = intervention.fill,
+            staircase.months = staircase.months
+        )
+        canvas$strips <- rbind(canvas$strips, strip)
+
+        excl.top <- strip.bottom - gap.strip.excl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            strip.bottom, excl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            excl.top - excl.h, excl.top, "white"
+        )
+        canvas <- consort_add_text(
+            canvas, col.left[k] + 0.4, excl.top - canvas$pad,
+            consort_wrap_preserve(excl.label, wrap.chars),
+            hjust = 0, vjust = 1
+        )
+
+        incl.top <- excl.top - excl.h - gap.excl.incl
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            excl.top - excl.h, incl.top, arrow = TRUE
+        )
+        canvas <- consort_add_box(
+            canvas, col.left[k], col.right[k],
+            incl.top - included.h, incl.top, box.fill
+        )
+        canvas <- consort_add_text(
+            canvas, col.center[k], incl.top - included.h / 2,
+            consort_wrap(included.label, wrap.chars)
+        )
+    }
+
+    y <- seq.block.bottom - 6.0
+    for (k in seq_len(n.seq)) {
+        canvas <- consort_add_segment(
+            canvas, col.center[k], col.center[k],
+            seq.block.bottom, y + 3.0, arrow = FALSE
+        )
+    }
+    canvas <- consort_add_segment(
+        canvas, min(col.center), max(col.center),
+        y + 3.0, y + 3.0, arrow = FALSE
+    )
+    canvas <- consort_add_segment(canvas, 28, 28, y + 3.0, y, arrow = TRUE)
+    canvas <- consort_add_segment(canvas, 72, 72, y + 3.0, y, arrow = TRUE)
+
+    phase.wrap <- 38
+    ## Extra line height: multi-line geom_text runs slightly taller than line.h.
+    phase.h <- consort_box_height(before.label, phase.wrap, canvas = canvas) +
+        2 * canvas$line.h
+    canvas <- consort_add_box(canvas, 8, 48, y - phase.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 10, y - canvas$pad, consort_wrap_preserve(before.label, phase.wrap),
+        hjust = 0, vjust = 1
+    )
+    canvas <- consort_add_box(canvas, 52, 92, y - phase.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 54, y - canvas$pad, consort_wrap_preserve(after.label, phase.wrap),
+        hjust = 0, vjust = 1
+    )
+    phase.bottom <- y - phase.h
+    y <- phase.bottom - 6.0
+
+    canvas <- consort_add_segment(canvas, 28, 28, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 72, 72, phase.bottom, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 28, 72, y + 3.0, y + 3.0, arrow = FALSE)
+    canvas <- consort_add_segment(canvas, 50, 50, y + 3.0, y, arrow = TRUE)
+
+    tot.incl.h <- consort_box_height(total.included.label, 55, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.incl.h, y, box.fill)
+    canvas <- consort_add_text(
+        canvas, 50, y - tot.incl.h / 2, consort_wrap(total.included.label, 50)
+    )
+    y <- y - tot.incl.h - 0.8
+
+    tot.excl.h <- consort_box_height(total.excl.label, 50, canvas = canvas)
+    canvas <- consort_add_box(canvas, 18, 82, y - tot.excl.h, y, "white")
+    canvas <- consort_add_text(
+        canvas, 20, y - canvas$pad, consort_wrap_preserve(total.excl.label, 50),
+        hjust = 0, vjust = 1
+    )
+    y <- y - tot.excl.h - 1.8
+
+    legend.y <- y
+    legend.items <- data.frame(
+        fill = c(control.fill, transition.fill, intervention.fill, "grey80"),
+        label = c("Staircase: standard care", "Transition", "Staircase: intervention", "Outside staircase"),
+        stringsAsFactors = FALSE
+    )
+    ## Two left-aligned columns; overall block centred. char.w matches ~8pt
+    ## geom_text width in these data units (earlier 0.4–0.55 under-spaced labels).
+    char.w <- 0.80
+    swatch.w <- 3
+    label.gap <- 0.5
+    col.gap <- 5
+    col1.idx <- c(1L, 3L)
+    col2.idx <- c(2L, 4L)
+    col1.w <- swatch.w + label.gap + max(nchar(legend.items$label[col1.idx])) * char.w
+    col2.w <- swatch.w + label.gap + max(nchar(legend.items$label[col2.idx])) * char.w
+    legend.w <- col1.w + col.gap + col2.w
+    x1 <- (100 - legend.w) / 2
+    x2 <- x1 + col1.w + col.gap
+    row.ys <- c(legend.y, legend.y - 2.2)
+    for (row in seq_len(2L)) {
+        i1 <- col1.idx[row]
+        i2 <- col2.idx[row]
+        y.top <- row.ys[row]
+        canvas <- consort_add_box(
+            canvas, x1, x1 + swatch.w, y.top - 1.6, y.top, legend.items$fill[i1]
+        )
+        canvas <- consort_add_text(
+            canvas, x1 + swatch.w + label.gap, y.top - 0.8, legend.items$label[i1],
+            hjust = 0, vjust = 0.5
+        )
+        canvas <- consort_add_box(
+            canvas, x2, x2 + swatch.w, y.top - 1.6, y.top, legend.items$fill[i2]
+        )
+        canvas <- consort_add_text(
+            canvas, x2 + swatch.w + label.gap, y.top - 0.8, legend.items$label[i2],
+            hjust = 0, vjust = 0.5
+        )
+    }
+    y.bottom <- row.ys[2L] - 2.5
+
+    consort_render(
+        canvas = canvas,
+        y.top = 1,
+        y.bottom = y.bottom,
+        file.name = paste0(
+            "consort-diagram-nested-staircase-", n.seq, "-sequences.", device
+        ),
+        return.figure = return.figure,
+        save = save,
+        device = device
+    )
+}
+
+#' Create CONSORT diagram (deprecated wrapper)
+#'
+#' Retained for older call sites. Prefer
+#' [create_cluster_consort_diagram()] and
+#' [create_patient_consort_diagram()].
+#'
+#' @inheritParams create_cluster_consort_diagram
+#' @param periods Ignored; use `total.months`.
+#' @param ... Additional arguments passed to `create_cluster_consort_diagram`.
+#' @return A ggplot object or saved file name from the cluster diagram.
+create_consort_diagram <- function(sequences = 5,
+                                   periods = 13,
+                                   min.standard.care.months = 4,
+                                   transition.months = 1,
+                                   ...,
+                                   total.months = periods) {
+    create_cluster_consort_diagram(
+        sequences = sequences,
+        total.months = total.months,
+        min.standard.care.months = min.standard.care.months,
+        transition.months = transition.months,
+        ...
+    )
 }
