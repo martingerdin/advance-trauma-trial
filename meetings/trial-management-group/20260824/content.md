@@ -1,5 +1,3 @@
-# TMG meeting — 24 August 2026
-
 ## 1. Batch 2 patient inclusion
 
 \* Incomplete / ongoing period.
