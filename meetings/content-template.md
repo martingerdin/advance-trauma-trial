@@ -1,22 +1,56 @@
-# TMG meeting — [DATE]
+# Meeting notes — [MEETING TYPE] — [DATE]
+
+Examples: `Meeting notes — Trial team — 24 August 2026` or `Meeting notes — TMG — 24 August 2026`.
 
 ## Instructions (delete this section before publishing)
+
+Use this template for TMG meetings, weekly trial team meetings, and similar ADVANCE TRAUMA meetings.
 
 For a clean Word to Markdown conversion:
 
 1. Keep Heading 1 for the title and Heading 2 for sections only (do not use Heading 3, and do not bold plain paragraphs to fake headings).
-2. Edit tables in place — do not merge or split cells.
-3. Put only one value per cell (no line breaks inside cells).
-4. Keep column headers and variable names **bold**; keep categorical levels in regular weight.
-5. Prefer numbered or bulleted lists for narrative updates.
-6. Avoid text boxes, shapes, and pasted screenshots of tables.
-7. When finished, convert with: `pandoc content.docx -t gfm -o content.md`
+2. Rename or replace the placeholder sections below to match the agenda.
+3. Edit tables in place — do not merge or split cells.
+4. Put only one value per cell (no line breaks inside cells).
+5. Keep column headers and variable names **bold**; keep categorical levels in regular weight.
+6. Prefer numbered or bulleted lists for narrative updates.
+7. Avoid text boxes, shapes, and pasted screenshots of tables.
+8. When finished, convert with: `pandoc content.docx -t gfm -o content.md`
 
-Sections 1–2 below keep the 24 August 2026 tables as a worked example. Replace values for each new meeting. Sections 3–4 use placeholders.
+Copy this file into the meeting folder as `content.docx`. The optional worked-example tables at the end are from a TMG meeting; delete them when they are not needed.
 
-## 1. Batch 2 patient inclusion
+## 1. [Agenda item]
 
-\* Incomplete / ongoing period.
+- Key update
+- Key update
+
+| **Item** | **Status** | **Notes** |
+| --- | --- | --- |
+| **Example row** | In progress | Replace or delete |
+| Level / subcategory | Done | Categorical levels stay regular weight |
+
+## 2. [Agenda item]
+
+1. **Topic** — Notes and next step.
+2. **Topic** — Notes and next step.
+
+## 3. [Agenda item]
+
+| **Site / centre** | **Update** |
+| --- | --- |
+| **Site name** | Status |
+| **Site name** | Status |
+
+## 4. Decisions and actions
+
+| **Action** | **Owner** | **Due** |
+| --- | --- | --- |
+| **Action description** | Name | Date |
+| **Action description** | Name | Date |
+
+## Worked example — patient inclusion by cluster and period (TMG, 24 August 2026)
+
+\* Incomplete / ongoing period. Delete this section if not needed.
 
 | **Cluster** | **Follow-up** | **Dec–Jan** | **Jan–Feb** | **Feb–Mar** | **Mar–Apr** | **Apr–May** | **May–Jun** | **Jun–Jul** | **Jul–Aug** | **Aug–Sep** |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -39,9 +73,11 @@ Sections 1–2 below keep the 24 August 2026 tables as a worked example. Replace
 | | QoL/Dis | NA | NA | 5.5 | 5 | 4.75 | NA | 3.75 | 4.4 | 2 |
 | | ATLS | NA | 6.5 | 5 | 6.5 | 5 | 4.2 | 4.8 | 7.8 | 1.3 |
 
-Period labels are mid-month to mid-month (e.g. Dec–Jan = 15 Dec to 15 Jan). Update column headers for the reporting window of each meeting.
+Period labels are mid-month to mid-month (e.g. Dec–Jan = 15 Dec to 15 Jan).
 
-## 2. Batch 2 data
+## Worked example — patient characteristics by site (TMG, 24 August 2026)
+
+Delete this section if not needed.
 
 | **Variable** | **AMC (N = 240)** | **Holy Family (N = 170)** | **Sion (N = 124)** | **DMC (N = 144)** | **KEM (N = 85)** | **Total (N = 763)** |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -75,34 +111,4 @@ Period labels are mid-month to mid-month (e.g. Dec–Jan = 15 Dec to 15 Jan). Up
 | Transfer | 0 (0) | 10 (7.9) | 0 (0) | 0 (0) | 0 (0) | 10 (1.4) |
 | Missing | 10 (4.2) | 29 (18.6) | 13 (9.8) | 1 (0.7) | 1 (1.2) | 54 (7.1) |
 
-\* Among patients with non-missing values. Update site column headers and Ns each meeting.
-
-## 3. Batch 3 progress
-
-1. **Site name** — Status update (EC, CTA, MOU, next step).
-2. **Site name** — Status update.
-3. **Site name** — Status update.
-
-**Summary**
-
-- EC approvals in hand:
-- CTAs in progress:
-
-## Additional sites being followed
-
-1. Site name
-2. Site name
-
-## 4. ATLS training — Site name (candidate counts)
-
-| **Centre** | **Training dates** |
-| --- | --- |
-| **Training centre** | Dates — status |
-| **Training centre** | Dates |
-
-## 4. ATLS training — Next in line — Site name
-
-| **Centre** | **Training dates** |
-| --- | --- |
-| **Training centre — N candidates** | Dates |
-| **Training centre — N candidates** | Dates |
+\* Among patients with non-missing values.
