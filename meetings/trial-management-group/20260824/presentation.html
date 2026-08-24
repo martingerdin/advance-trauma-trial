@@ -46,7 +46,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -137,7 +136,7 @@
 
   <p class="date">2026-08-24</p>
 </section>
-<section id="agenda" class="slide level2 scrollable">
+<section id="agenda" class="slide level2">
 <h2>Agenda</h2>
 <ol type="1">
 <li>Batch 2 patient inclusion</li>
@@ -441,7 +440,9 @@
 </tr>
 </tbody>
 </table>
-<p>Note: RR missingness is high overall (60.1%), especially AMC and Sion.</p>
+<ul>
+<li>RR missingness is high overall (<strong>60.1%</strong>), especially AMC and Sion.</li>
+</ul>
 </section>
 <section id="hospital-disposition" class="slide level2">
 <h2>Hospital disposition</h2>
@@ -504,6 +505,19 @@
 <td><strong>Srinagar GMC</strong></td>
 <td>EC approved; Dean response awaited</td>
 </tr>
+</tbody>
+</table>
+</section>
+<section id="site-status-continued" class="slide level2">
+<h2>Site status (continued)</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Site</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
 <td><strong>MAMC Delhi</strong></td>
 <td>MOU executed; EC waiver to start</td>
@@ -526,11 +540,13 @@
 <section id="batch-3-summary" class="slide level2">
 <h2>Batch 3 summary</h2>
 <ul>
-<li><strong>Major delay:</strong> Intended to start in May.</li>
+<li><strong>Major delay:</strong> Intended to start in May</li>
 <li><strong>EC approvals in hand:</strong> 3; PGI next week; plus MAMC waiver</li>
 <li><strong>CTAs:</strong> GMC Patiala signing; targeting Kolkata, PGI, MAMC, Srinagar</li>
 </ul>
-<p>Also being followed:</p>
+</section>
+<section id="additional-sites-being-followed" class="slide level2">
+<h2>Additional sites being followed</h2>
 <ul>
 <li>Hindu Mission Hospital, Chennai</li>
 <li>Believers Church Medical College Hospital, Kerala</li>
@@ -630,7 +646,7 @@
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,

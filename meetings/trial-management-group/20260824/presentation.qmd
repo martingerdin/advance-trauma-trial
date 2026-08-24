@@ -9,8 +9,8 @@ format:
     slide-number: true
     chalkboard: false
     preview-links: auto
-    smaller: false
-    scrollable: true
+    smaller: true
+    scrollable: false
     footer: "advancetrauma.info"
 title-slide-attributes:
   data-background-color: "#1a9dbb"
@@ -112,7 +112,7 @@ title-slide-attributes:
 | Surgery | 308 (39.3%) |
 | ICU admission | 271 (40.1%) |
 
-Note: RR missingness is high overall (60.1%), especially AMC and Sion.
+- RR missingness is high overall (**60.1%**), especially AMC and Sion.
 
 ## Hospital disposition
 
@@ -135,6 +135,11 @@ Note: RR missingness is high overall (60.1%), especially AMC and Sion.
 | **Kolkata Medical College** | EC approved; CTA legal review |
 | **GMC Patiala** | EC approved; CTA signing |
 | **Srinagar GMC** | EC approved; Dean response awaited |
+
+## Site status (continued)
+
+| Site | Status |
+| --- | --- |
 | **MAMC Delhi** | MOU executed; EC waiver to start |
 | **Safdarjung** | EC submission in process |
 | **Doon Medical College** | EC submitted; departmental review |
@@ -142,11 +147,11 @@ Note: RR missingness is high overall (60.1%), especially AMC and Sion.
 
 ## Batch 3 summary
 
-- **Major delay:** Intended to start in May. 
+- **Major delay:** Intended to start in May
 - **EC approvals in hand:** 3; PGI next week; plus MAMC waiver
 - **CTAs:** GMC Patiala signing; targeting Kolkata, PGI, MAMC, Srinagar
 
-Also being followed:
+## Additional sites being followed
 
 - Hindu Mission Hospital, Chennai
 - Believers Church Medical College Hospital, Kerala

@@ -206,8 +206,8 @@
 .reveal table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 0.72em;
-  margin: 0.5em 0 0;
+  font-size: 0.62em;
+  margin: 0.35em 0 0;
   background: var(--surface);
 }
 
@@ -218,13 +218,13 @@
   color: var(--ink);
   border: 1px solid var(--border);
   border-bottom: 2px solid var(--brand);
-  padding: 0.45em 0.55em;
+  padding: 0.28em 0.4em;
   text-align: left;
 }
 
 .reveal table td {
   border: 1px solid var(--border);
-  padding: 0.4em 0.55em;
+  padding: 0.25em 0.4em;
   vertical-align: top;
 }
 
