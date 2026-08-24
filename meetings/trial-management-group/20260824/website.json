@@ -2,6 +2,7 @@
   "title": "TMG meeting",
   "date": "2026-08-24",
   "files": [
-    { "path": "content.md", "role": "content" }
+    { "path": "content.md", "role": "content" },
+    { "path": "presentation.html", "role": "presentation" }
   ]
 }

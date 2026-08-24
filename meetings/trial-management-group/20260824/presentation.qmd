@@ -1,0 +1,171 @@
+---
+title: "ADVANCE TRAUMA"
+subtitle: "Trial Management Group meeting"
+date: "24 August 2026"
+format:
+  revealjs:
+    theme: simple
+    css: presentation-theme.css
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    smaller: false
+    scrollable: true
+    footer: "advancetrauma.info"
+title-slide-attributes:
+  data-background-color: "#1a9dbb"
+---
+
+## Agenda
+
+1. Batch 2 patient inclusion
+2. Batch 2 data
+3. Batch 3 progress
+4. ATLS training
+
+## Batch 2 patient inclusion {data-background-color="#1a9dbb" .section-slide}
+
+## Inclusion overview
+
+- Mid-month reporting windows (e.g. Dec–Jan = 15 Dec to 15 Jan)
+- Follow-up rows: **All**, **QoL/Dis**, **ATLS**
+- \* = incomplete / ongoing period
+
+## Monthly average — All patients
+
+| Period | Mean inclusions |
+| --- | ---: |
+| Dec–Jan | 17.8 |
+| Jan–Feb | 26.0 |
+| Feb–Mar | 14.6 |
+| Mar–Apr | 14.4 |
+| Apr–May | 14.2 |
+| May–Jun | 14.2 |
+| Jun–Jul | 13.6 |
+| Jul–Aug | 17.8 |
+| Aug–Sep\* | 3.2 |
+
+## Site totals — All patients (selected periods)
+
+| Cluster | Dec–Jan | Jan–Feb | Jul–Aug | Aug–Sep\* |
+| --- | ---: | ---: | ---: | ---: |
+| **Dibrugarh** | 7 | 30 | 17 | 6\* |
+| **Holy Family** | 25 | 29 | 13 | 2\* |
+| **KEM** | 9\* | 25 | 14 | 3\* |
+| **Dayanand** | 28 | 31 | 19 | 2\* |
+| **Sion** | 20 | 15 | 26 | Today's night |
+
+## Nested follow-up — recent complete month (Jul–Aug)
+
+| Cluster | All | QoL/Dis | ATLS |
+| --- | ---: | ---: | ---: |
+| **Dibrugarh** | 17 | 4 | 5 |
+| **Holy Family** | 13 | 3 | 4 |
+| **KEM** | 14 | 7 | 6 |
+| **Dayanand** | 19 | 3 | 14 |
+| **Sion** | 26 | 5 | 10 |
+| **Monthly average** | 17.8 | 4.4 | 7.8 |
+
+## Batch 2 data {data-background-color="#1a9dbb" .section-slide}
+
+## Cohort overview
+
+| Site | N |
+| --- | ---: |
+| AMC (Dibrugarh) | 240 |
+| Holy Family | 170 |
+| Sion | 124 |
+| DMC (Dayanand) | 144 |
+| KEM | 85 |
+| **Total** | **763** |
+
+- Total injuries recorded: **2082**
+- Age, median (IQR): **38 (26 to 52)**
+- Female sex: **143 (18.7%)**
+
+## Mechanism of injury
+
+| Mechanism | n (%) |
+| --- | ---: |
+| Transport | 438 (60.2) |
+| Fall | 160 (22.0) |
+| Assault | 65 (8.9) |
+| Self-harm | 26 (3.5) |
+| Other | 45 (6.2) |
+| Missing | 1 (0.8) |
+
+## Clinical characteristics (overall)
+
+| Variable | Value |
+| --- | --- |
+| Transfer | 353 (47.6%) |
+| SBP, median (IQR) | 120 (110 to 130) |
+| RR, median (IQR) | 20 (20 to 22) |
+| SpO₂, median (IQR) | 98 (96 to 99) |
+| GCS, median (IQR) | 15 (12 to 15) |
+| CT | 889 (39.7%) |
+| Surgery | 308 (39.3%) |
+| ICU admission | 271 (40.1%) |
+
+Note: RR missingness is high overall (60.1%), especially AMC and Sion.
+
+## Hospital disposition
+
+| Disposition | n (%) |
+| --- | ---: |
+| Alive | 544 (77.2) |
+| Dead | 151 (21.4) |
+| Transfer | 10 (1.4) |
+| Missing | 54 (7.1) |
+
+## Batch 3 progress {data-background-color="#1a9dbb" .section-slide}
+
+## Site status
+
+| Site | Status |
+| --- | --- |
+| **PGI Chandigarh** | EC/CTA details expected in 1–2 days |
+| **Kolkata Medical College** | EC approved; CTA legal review |
+| **GMC Patiala** | EC approved; CTA signing |
+| **Srinagar GMC** | EC approved; Dean response awaited |
+| **MAMC Delhi** | MOU executed; EC waiver to start |
+| **Safdarjung** | EC submission in process |
+| **Doon Medical College** | EC submitted; departmental review |
+| **CRCs** | Finalized |
+
+## Batch 3 summary
+
+- **EC approvals in hand:** 3; PGI next week; plus MAMC waiver
+- **CTAs:** GMC Patiala signing; targeting Kolkata, PGI, MAMC, Srinagar
+
+Also being followed:
+
+- Hindu Mission Hospital, Chennai
+- Believers Church Medical College Hospital, Kerala
+- GMC Amritsar
+- Imphal, Manipur
+
+## ATLS training {data-background-color="#1a9dbb" .section-slide}
+
+## Training progress by site
+
+| Site | Status |
+| --- | --- |
+| **AMC Dibrugarh** | 7 trained (+1 scheduled); Bangalore cohort completed, all passed |
+| **Holy Family** | Training across Hyderabad and Mumbai (May–Jun) |
+| **KEM Mumbai** | Next in line; MGM Oct 29–31 available |
+| **Dayanand** | Jul–Aug slots across Bengaluru, Hyderabad, Chennai |
+| **Sion** | 8 seats frozen (LIHS 7–9 Aug; MGM 20–22 Aug) |
+
+## Next steps
+
+- Confirm Batch 3 EC/CTA closures (PGI, Kolkata, Patiala, Srinagar, MAMC)
+- Continue Safdarjung and Doon EC pathways
+- Advance ATLS training for KEM, Dayanand, and Sion
+- Review Aug–Sep inclusions once the period closes
+
+## Thank you {data-background-color="#1a9dbb" .closing}
+
+ADVANCE TRAUMA · TMG · 24 August 2026
+
+[advancetrauma.info](https://www.advancetrauma.info)

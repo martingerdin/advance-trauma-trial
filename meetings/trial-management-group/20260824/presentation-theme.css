@@ -1,0 +1,264 @@
+/* ADVANCE TRAUMA presentation theme — aligned with advancetrauma.info tokens */
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+:root {
+  --brand: #1a9dbb;
+  --brand-deep: #1589a4;
+  --brand-darker: #12788f;
+  --accent: #f6851f;
+  --surface: #ffffff;
+  --surface-muted: #f4fafc;
+  --ink: #082830;
+  --text: #1a2a30;
+  --text-muted: #4a5c64;
+  --text-inverse: #ffffff;
+  --border: #d5e3e8;
+  --font-display: "Quicksand", sans-serif;
+  --font-heading: "EB Garamond", serif;
+  --font-body: "Roboto", sans-serif;
+  --radius: 2px;
+
+  /* Reveal slide surface — solid white, no muted “card” frame */
+  --r-background-color: #ffffff;
+  --r-main-font: "Roboto", sans-serif;
+  --r-main-color: #1a2a30;
+  --r-heading-font: "EB Garamond", serif;
+  --r-heading-color: #082830;
+  --r-link-color: #1589a4;
+  --r-link-color-hover: #12788f;
+  --r-selection-background-color: #1a9dbb;
+  --r-selection-color: #ffffff;
+}
+
+.reveal {
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--surface);
+}
+
+.reveal .slides {
+  text-align: left;
+  background: transparent;
+}
+
+/* Full-bleed slides: no inset card */
+.reveal .slides section,
+.reveal .slides section.slide {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  padding: 1.6rem 2rem;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.reveal h1 {
+  font-size: 2.4em;
+  color: var(--brand-deep);
+}
+
+.reveal h2 {
+  font-size: 1.65em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25em;
+  margin-bottom: 0.75em;
+}
+
+.reveal h3 {
+  font-size: 1.2em;
+  color: var(--brand-darker);
+}
+
+.reveal p,
+.reveal li,
+.reveal td,
+.reveal th {
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.reveal .slides > section > p,
+.reveal .slides > section > ul,
+.reveal .slides > section > ol,
+.reveal .slides section.slide > p,
+.reveal .slides section.slide > ul,
+.reveal .slides section.slide > ol {
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+
+.reveal a {
+  color: var(--brand-deep);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+
+.reveal strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/*
+  Brand title / section slides:
+  Reveal paints data-background-color behind the slide.
+  Match the slide surface to brand so there is no white card,
+  and force white type (do not rely on runtime has-dark-background alone).
+*/
+.reveal .slides section.quarto-title-block,
+.reveal .slides section.section-slide,
+.reveal .slides section.closing,
+.reveal .slides section[data-background-color="#1a9dbb"],
+.reveal .slides section[data-background-color="#1A9DBB"],
+.reveal .slides section.has-dark-background {
+  --r-background-color: #1a9dbb;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--text-inverse);
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.reveal .slides section.quarto-title-block h1,
+.reveal .slides section.section-slide h2,
+.reveal .slides section.closing h2,
+.reveal .slides section[data-background-color="#1a9dbb"] h1,
+.reveal .slides section[data-background-color="#1a9dbb"] h2,
+.reveal .slides section.has-dark-background h1,
+.reveal .slides section.has-dark-background h2 {
+  color: var(--text-inverse) !important;
+  font-family: var(--font-display);
+  border: none;
+  letter-spacing: 0.03em;
+}
+
+.reveal .slides section.quarto-title-block h1,
+.reveal .slides section.section-slide h2,
+.reveal .slides section[data-background-color="#1a9dbb"] h1,
+.reveal .slides section[data-background-color="#1a9dbb"] h2 {
+  font-size: 2.4em;
+  font-weight: 600;
+}
+
+.reveal .slides section.quarto-title-block .subtitle,
+.reveal .slides section.quarto-title-block p,
+.reveal .slides section.quarto-title-block .date,
+.reveal .slides section[data-background-color="#1a9dbb"] .subtitle,
+.reveal .slides section[data-background-color="#1a9dbb"] p,
+.reveal .slides section[data-background-color="#1a9dbb"] .date,
+.reveal .slides section[data-background-color="#1a9dbb"] a,
+.reveal .slides section.closing p,
+.reveal .slides section.closing a,
+.reveal .slides section.has-dark-background .subtitle,
+.reveal .slides section.has-dark-background p,
+.reveal .slides section.has-dark-background .date,
+.reveal .slides section.has-dark-background a {
+  color: color-mix(in srgb, var(--text-inverse) 88%, transparent) !important;
+  font-family: var(--font-body);
+  border: none;
+}
+
+.reveal .slides section.quarto-title-block .subtitle {
+  font-size: 1.15em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.reveal .slides section.quarto-title-block .date,
+.reveal .slides section.quarto-title-block > p {
+  font-size: 0.9em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reveal .footer {
+  font-family: var(--font-display);
+  font-size: 0.55em;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.reveal .has-dark-background .footer,
+.reveal .slide-background-primary[data-background-color="#1a9dbb"] ~ * .footer {
+  color: color-mix(in srgb, var(--text-inverse) 80%, transparent);
+}
+
+.reveal .slide-logo {
+  display: none !important;
+}
+
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.72em;
+  margin: 0.5em 0 0;
+  background: var(--surface);
+}
+
+.reveal table th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  background: var(--surface-muted);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--brand);
+  padding: 0.45em 0.55em;
+  text-align: left;
+}
+
+.reveal table td {
+  border: 1px solid var(--border);
+  padding: 0.4em 0.55em;
+  vertical-align: top;
+}
+
+.reveal table tr:nth-child(even) td {
+  background: var(--surface-muted);
+}
+
+.reveal table td:first-child,
+.reveal table th:first-child {
+  font-weight: 500;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-left: 1.1em;
+}
+
+.reveal li::marker {
+  color: var(--brand);
+}
+
+.reveal .slide-number {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  background: transparent;
+  font-size: 0.7em;
+  right: 1rem;
+}
+
+.reveal .progress {
+  color: var(--brand);
+  height: 2px;
+}
+
+.reveal .controls {
+  color: var(--brand);
+}
