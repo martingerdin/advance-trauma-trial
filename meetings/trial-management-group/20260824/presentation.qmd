@@ -6,6 +6,8 @@ format:
   revealjs:
     theme: simple
     css: presentation-theme.css
+    embed-resources: true
+    html-math-method: plain
     slide-number: true
     chalkboard: false
     preview-links: auto
