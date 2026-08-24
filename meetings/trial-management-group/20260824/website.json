@@ -3,7 +3,7 @@
   "date": "2026-08-24",
   "files": [
     { "path": "content.md", "role": "content" },
-    { "path": "presentation.html", "role": "web-presentation" },
+    { "path": "presentation.html", "role": "presentation-web" },
     { "path": "presentation.pdf", "role": "presentation-pdf" }
   ]
 }
