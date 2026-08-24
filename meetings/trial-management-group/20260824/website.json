@@ -2,6 +2,6 @@
   "title": "TMG meeting",
   "date": "2026-08-24",
   "files": [
-    { "path": "agenda.qmd", "role": "agenda" }
+    { "path": "content.md", "role": "content" }
   ]
 }
