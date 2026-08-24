@@ -1,6 +1,29 @@
-/* ADVANCE TRAUMA presentation theme — aligned with advancetrauma.info tokens */
+/* ADVANCE TRAUMA presentation theme — aligned with advancetrauma.info tokens.
+   Brand fonts are local Latin WOFF2 subsets (see meetings/fonts/). */
 
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../fonts/quicksand-600-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../fonts/ebgaramond-600-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("../../fonts/roboto-latin.woff2") format("woff2");
+}
 
 :root {
   --brand: #1a9dbb;
@@ -14,27 +37,37 @@
   --text-muted: #4a5c64;
   --text-inverse: #ffffff;
   --border: #d5e3e8;
-  --font-display: "Quicksand", sans-serif;
-  --font-heading: "EB Garamond", serif;
-  --font-body: "Roboto", sans-serif;
+  --font-display: "Quicksand", system-ui, sans-serif;
+  --font-heading: "EB Garamond", Georgia, serif;
+  --font-body: "Roboto", system-ui, sans-serif;
   --radius: 2px;
 
   /* Reveal slide surface — solid white, no muted “card” frame */
   --r-background-color: #ffffff;
-  --r-main-font: "Roboto", sans-serif;
+  --r-main-font: "Roboto", system-ui, sans-serif;
   --r-main-color: #1a2a30;
-  --r-heading-font: "EB Garamond", serif;
+  --r-heading-font: "EB Garamond", Georgia, serif;
   --r-heading-color: #082830;
   --r-link-color: #1589a4;
   --r-link-color-hover: #12788f;
   --r-selection-background-color: #1a9dbb;
   --r-selection-color: #ffffff;
+
+  /* Reveal type scale (must live here: Quarto theme CSS is stripped with its fonts) */
+  --r-main-font-size: 36px;
+  --r-heading1-size: 2.5em;
+  --r-heading2-size: 1.6em;
+  --r-heading3-size: 1.3em;
+  --r-heading4-size: 1em;
+  --r-block-margin: 12px;
 }
 
-.reveal {
+.reveal,
+.reveal-viewport {
   font-family: var(--font-body);
   color: var(--text);
   background-color: var(--surface);
+  font-size: var(--r-main-font-size);
 }
 
 .reveal .slides {
@@ -64,19 +97,19 @@
 }
 
 .reveal h1 {
-  font-size: 2.4em;
+  font-size: var(--r-heading1-size);
   color: var(--brand-deep);
 }
 
 .reveal h2 {
-  font-size: 1.65em;
+  font-size: var(--r-heading2-size);
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.25em;
   margin-bottom: 0.75em;
 }
 
 .reveal h3 {
-  font-size: 1.2em;
+  font-size: var(--r-heading3-size);
   color: var(--brand-darker);
 }
 
@@ -94,7 +127,7 @@
 .reveal .slides section.slide > p,
 .reveal .slides section.slide > ul,
 .reveal .slides section.slide > ol {
-  font-size: 0.95em;
+  font-size: 1em;
   line-height: 1.45;
 }
 
@@ -206,7 +239,7 @@
 .reveal table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 0.62em;
+  font-size: 0.7em;
   margin: 0.35em 0 0;
   background: var(--surface);
 }
@@ -218,13 +251,13 @@
   color: var(--ink);
   border: 1px solid var(--border);
   border-bottom: 2px solid var(--brand);
-  padding: 0.28em 0.4em;
+  padding: 0.35em 0.45em;
   text-align: left;
 }
 
 .reveal table td {
   border: 1px solid var(--border);
-  padding: 0.25em 0.4em;
+  padding: 0.3em 0.45em;
   vertical-align: top;
 }
 

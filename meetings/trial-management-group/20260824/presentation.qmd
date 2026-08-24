@@ -8,10 +8,11 @@ format:
     css: presentation-theme.css
     embed-resources: true
     html-math-method: plain
+    menu: false
     slide-number: true
     chalkboard: false
     preview-links: auto
-    smaller: true
+    smaller: false
     scrollable: false
     footer: "advancetrauma.info"
 title-slide-attributes:
