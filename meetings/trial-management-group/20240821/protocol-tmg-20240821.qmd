@@ -1,0 +1,64 @@
+---
+subtitle: Trial Management Group meeting, 21th August 2024
+title: ATLS® vs standard care trial (ADVANCE TRAUMA)
+reference-doc: ../reference-doc.docx
+format: docx
+---
+
+# Members present
+
+-   Martin Gerdin Wärnberg (chair) (MGW)
+-   Samriddhi Ranjan (SR)
+-   Monty Khajanchi (MK)
+-   Li Felländer-Tsai (LFT)
+-   Nobhojit Roy (NR)
+-   Debojit Basak (DB)
+-   Johanna Berg (JB)
+-   Karla Hemming (KH)
+
+# Members excused
+
+-   Kapil Dev Soni (KDS)
+-   Abhinav Bassi (AB)
+-   Lovisa Strömmer (LS)
+-   Girish D Bakhshi (GB)
+-   Shamita Chatterjee (SC)
+-   Anurag Mishra (AM)
+-   Rajdeep Singh (RS)
+-   Vivekanand Jha (VJ)
+
+# Additional attendees
+
+- Anshul Kushwaha (TGI intern)
+- Gunjan Tripathi (TGI intern) 
+- Prashant Kharat (Trial Team member, TGI)
+
+# Agenda
+
+1. Update on ethics and regulatory applications
+
+2. Discussion on how to handle consent for ATLS adherence observations
+
+3. Decision on new protocol version given the discussion on consent (see attached protocol pre-release version 1.2.0-6)
+
+4. Update on joint trial steering and data monitoring committee
+
+5. Additional points
+
+# Notes and decisions
+
+1. The process of completing the Clinical Trial Agreements is ongoing. We have also started identifying prospective Clinical Research Coordinators and residents for training. We have received one more ethical approval from CMC Ludiana. The current status of ethical applications for the hospitals participating in the first batch is:
+
+    - Government Medical College & Hospital, Chandigarh: Approval received.
+    - Himalayan Institute of Medical Sciences: Approval received.
+    - Christian Medical College and Hospital Ludhiana: Approval received.
+    - H.B.T. Medical College & Dr. R.N. Cooper Municipal General Hospital: Awaiting IRB meeting, submission ready. 
+    - IPGMER & SSKM Hospital: Preparing for submission.
+
+2. We discussed how to handle consent for ATLS adherence observations. We decided to include consent for these observations as part of the opt-out and waiver procedures of the trial, same as for the routinely collected data.
+
+3. We decided to approve the current version of the protocol, with the addition of the consent for ATLS adherence observations.
+
+4. Four members have been finalised for the joint trial steering and data monitoring committee. We are still looking for a patient representative. SR will check with the TGI team if they have any suggestions. MK will reach out to KDS to see if he has any suggestions from AIIMS.
+
+5. There were no additional points. New meeting dates will be circulated soon.

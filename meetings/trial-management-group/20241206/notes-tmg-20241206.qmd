@@ -1,0 +1,55 @@
+---
+subtitle: Trial Management Group Meeting, December 6, 2024
+title: ADVANCE TRAUMA
+format: pdf
+---
+
+# Members Present
+
+-   Martin Gerdin Wärnberg (chair) (MGW)
+-   Samriddhi Ranjan (SR)
+-   Monty Khajanchi (MK)
+-   Kapil Dev Soni (KDS)
+-   Shamita Chatterjee (SC)
+-   Rajdeep Singh (RS)
+-   Debojit Basak (DB)
+
+# Members Excused
+
+-   Li Felländer-Tsai (LFT)
+-   Prashant Kharat (PK)
+-   Johanna Berg (JB)
+-   Nobhojit Roy (NR)
+-   Karla Hemming (KH)
+-   Abhinav Bassi (AB)
+-   Lovisa Strömmer (LS)
+-   Girish D Bakhshi (GB)
+-   Anurag Mishra (AM)
+-   Vivekanand Jha (VJ)
+
+# Agenda
+
+1. **Update on trial progress**
+   - Current status
+   - Anticipated start date
+
+2. **Report from the first Joint Trial Steering and Data Monitoring Committee Meeting**
+
+3. **Report from pilot data collection**
+
+4. **Additional points**
+  - ATLS observership for CRCs
+  - Blunt or penetrating trauma
+
+
+# Notes and Decisions
+
+1. **Current status:** Training of Clinical Research Coordinators has started and is happening every Monday. We have also trained CRCs in the collection of ATLS adherence data. Clinical Trial Agreements have been signed with two hospitals, one is in the process of signing, and discussion are ongoing with two hospitals. The collaboration agreement between KI and TGI is still being negotiated. All these agreements need to be signed before we can start the trial. **Anticipated start date:** The delay is due to the agreements, but we hope that we will be able to start before the end of the year.
+
+2. **Report from the first Joint Trial Steering and Data Monitoring Committee Meeting:** The meeting was held on November 6, 2024. The committee was positive and supportive of the trial. There were no objections to starting the trial.
+
+3. **Report from pilot data collection:** We are in the process of piloting the data collection. SR displayed the number of pilot records that have been collected per site. Varying numbers of records have been collected from different hospitals. The ATLS adherence data collection so far show very high adherence, which is somewhat surprising. We are discussing the adherence data collection with the CRCs every Monday, and will reinforce the need for some of the data collection to be done under the supervision of a more senior clinician in the emergency department. We also discussed that only collecting adherence data from a smaller number of patients in each shift may impact how physicians treat those patients compared to other patients for whom adherence data is not being collected. We said that adherence data should therefore be collected for all patients arriving during the shifts assigned for this data collection.
+
+4. **Additional points:** 
+  - SC asked whether we should send CRC to observe an ATLS course. Because we have not received an approval from ATLS India yet we decided not to do this, but to train CRCs in collecting this data ourselves.
+  - DB raised the question of whether we should collect data on the mechanism of injury, as in whether the injury was blunt or penetrating. We decided that MGW will check if this can be derived from the data that we already collect. If not, then we will add this variable.

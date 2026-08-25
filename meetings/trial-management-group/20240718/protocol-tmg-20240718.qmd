@@ -1,0 +1,55 @@
+---
+subtitle: Trial Management Group meeting, 18th June 2024
+title: ATLS® vs standard care trial
+reference-doc: ../reference-doc.docx
+format: docx
+---
+
+# Members present
+
+-   Martin Gerdin Wärnberg (chair) (MGW)
+-   Samriddhi Ranjan (SR)
+-   Kapil Dev Soni (KDS)
+-   Monty Khajanchi (MK)
+-   Li Felländer-Tsai (LFT)
+-   Nobhojit Roy (NR)
+
+# Members excused
+
+-   Debojit Basak (DB)
+-   Abhinav Bassi (AB)
+-   Johanna Berg (JB)
+-   Lovisa Strömmer (LS)
+-   Girish D Bakhshi (GB)
+-   Shamita Chatterjee (SC)
+-   Anurag Mishra (AM)
+-   Rajdeep Singh (RS)
+-   Karla Hemming (KH)
+-   Vivekanand Jha (VJ)
+
+# Additional attendees
+
+- Anshul Kushwaha (TGI intern)
+- Gunjan Tripathi (TGI intern) 
+- Prashant Kharat (Trial Team member, TGI)
+
+# Agenda
+
+1. Update on ethics and regulatory applications
+2. Discussion on revised proposal to measure ATLS adherence, see [this google doc](https://docs.google.com/document/d/1-kXmFWrOQnt6U1R9HjhnRb45anaOwQXO/edit)
+3. Decision on sending clinical research coordinators to observe ATLS course before starting data collection
+4. Additional points
+
+# Notes and decisions
+
+1. We have received ethical approval from one more hospital. We have alo received approval from the TGI ethics committee. We have started sharing ethics packs with the sites participating in the second batch. All India Institute of Medical Sciences, Mangalagiri, was initially planned to be included in the first batch, but because the residents there are likely to undergo training in the new National Emergency Life Support (NELS), which include a module on trauma, tentatively during next summer, we have pushed their participation to a later batch to avoid this training contaminating the ATLS intervention. The Clinical Trial Agreement has been circulated to all sites. We have submitted the application to the Health Ministry Screening Committee (HMSC) and have received some administrative queries, which the team at TGI is currently working on addressing. The current status of ethical applications for the hospitals participating in the first batch is:
+
+    - Government Medical College & Hospital, Chandigarh: Approval received.
+    - Himalayan Institute of Medical Sciences: Approval received.
+    - Christian Medical College and Hospital Ludhiana: Application submitted.
+    - H.B.T. Medical College & Dr. R.N. Cooper Municipal General Hospital: Awaiting IRB meeting, submission ready. 
+    - Nilratan Sircar Medical College & Hospital: Preparing for submission.
+
+2. We discussed the revised proposal to measure ATLS adherence. The proposal will remain open for online comments until Monday, July 22, after which it will be finalised and incorporated into the CRF.
+3. We decided to send the clinical research coordinators to observe an ATLS course before starting data collection.
+4. There were no additional points. The next meeting will be held on Wednesday, August 21.

@@ -1,0 +1,10 @@
+{
+  "title": "TMG meeting",
+  "date": "2026-08-24",
+  "files": [
+    { "path": "content.md", "role": "content"},
+    { "path": "content.pdf", "role": "content-pdf", "name": "Notes" },
+    { "path": "presentation.html", "role": "presentation-web" },
+    { "path": "presentation.pdf", "role": "presentation-pdf", "name": "Presentation" }
+  ]
+}

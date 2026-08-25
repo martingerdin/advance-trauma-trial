@@ -1,0 +1,190 @@
+/* ADVANCE TRAUMA meeting notes PDF — tokens aligned with presentation / advancetrauma.info */
+
+@page {
+  size: letter portrait;
+  margin: 16mm 14mm 18mm 14mm;
+
+  @bottom-left {
+    content: "advancetrauma.info";
+    font-family: "Quicksand", system-ui, sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.06em;
+    color: #4a5c64;
+  }
+
+  @bottom-right {
+    content: counter(page);
+    font-family: "Roboto", system-ui, sans-serif;
+    font-size: 8pt;
+    color: #4a5c64;
+  }
+}
+
+:root {
+  --brand: #1a9dbb;
+  --brand-deep: #1589a4;
+  --brand-darker: #12788f;
+  --accent: #f6851f;
+  --surface: #ffffff;
+  --surface-muted: #f4fafc;
+  --ink: #082830;
+  --text: #1a2a30;
+  --text-muted: #4a5c64;
+  --text-inverse: #ffffff;
+  --border: #d5e3e8;
+  --font-display: "Quicksand", system-ui, sans-serif;
+  --font-heading: "EB Garamond", Georgia, serif;
+  --font-body: "Roboto", system-ui, sans-serif;
+}
+
+html {
+  font-size: 10pt;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--surface);
+  line-height: 1.45;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+/* Trial wordmark */
+body::before {
+  content: "ADVANCE TRAUMA";
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  color: var(--brand);
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+}
+
+/* Pandoc title block duplicates the markdown H1 — keep only the body heading */
+header#title-block-header {
+  display: none;
+}
+
+h1 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  background: none;
+  margin: 0 0 1.15rem;
+  padding: 0 0 0.55rem;
+  border-bottom: 1px solid var(--border);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.28rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--brand);
+  padding-bottom: 0.25em;
+  margin: 1.25rem 0 0.55rem;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--brand-darker);
+  margin: 0.95rem 0 0.4rem;
+  page-break-after: avoid;
+}
+
+p,
+li {
+  font-family: var(--font-body);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+p {
+  margin: 0.4rem 0;
+}
+
+ul,
+ol {
+  margin: 0.35rem 0 0.65rem 1.15em;
+  padding: 0;
+}
+
+li {
+  margin: 0.2rem 0;
+}
+
+li::marker {
+  color: var(--brand);
+}
+
+strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+a {
+  color: var(--brand-deep);
+}
+
+/* Tables — match presentation; slightly smaller for portrait width */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.62rem;
+  margin: 0.45rem 0 0.85rem;
+  background: var(--surface);
+  page-break-inside: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+tr {
+  page-break-inside: avoid;
+}
+
+th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  background: var(--surface-muted);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--brand);
+  padding: 0.3em 0.28em;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+td {
+  border: 1px solid var(--border);
+  padding: 0.24em 0.28em;
+  vertical-align: top;
+  color: var(--text);
+}
+
+tr:nth-child(even) td {
+  background: var(--surface-muted);
+}
+
+td[style*="text-align: right"],
+th[style*="text-align: right"],
+td[align="right"],
+th[align="right"] {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+code {
+  font-size: 0.9em;
+}

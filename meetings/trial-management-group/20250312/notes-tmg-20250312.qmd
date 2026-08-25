@@ -1,0 +1,48 @@
+---
+subtitle: Trial Management Group Meeting, March 12, 2025
+title: ADVANCE TRAUMA
+format: pdf
+---
+
+# Members Present
+
+-   Martin Gerdin Wärnberg (chair) (MGW)
+-   Samriddhi Ranjan (SR)
+-   Kapil Dev Soni (KDS)
+-   Shamita Chatterjee (SC)
+-   Debojit Basak (DB)
+-   Li Felländer-Tsai (LFT)
+-   Prashant Kharat (PK)
+-   Nobhojit Roy (NR)
+-   Anna Olofsson (AO)
+
+# Members Excused
+
+-   Monty Khajanchi (MK)
+-   Rajdeep Singh (RS)
+-   Johanna Berg (JB)
+-   Karla Hemming (KH)
+-   Abhinav Bassi (AB)
+-   Lovisa Strömmer (LS)
+-   Girish D Bakhshi (GB)
+-   Anurag Mishra (AM)
+-   Vivekanand Jha (VJ)
+
+# Agenda
+
+1. **Batch 1 updates**
+   - Patient inclusions
+   - Summary data
+   - ATLS training
+
+2. **Batch 2 updates**
+   - Anticipated sites
+   - Anticipated start date
+
+3. **Additional points**
+
+# Notes and Decisions
+
+1. The trial has started since the last week of February 2025. SR and PK presented the summary data from the first week of data collection, attached to these notes. There were some discussion on the vital signs, where there is missing data, particularly in respiratory rate. Given that this data is collected from the patients' charts, it is not surprising that there is missing data. There has been one remote monitoring session with the centre that has collected the most data so far. The sites have been randomised to different implementation sequences, and SR and PK will start contacting ATLS training centres to arrange for the training of residents.
+2. There are four sites finalised for the second batch of hospitals and ethical applications and clinical trial agreements are being negotiated with these sites. The fifth site will be either Nil Ratan Sircar Medical College & Hospital, which has been previously screened, or Assam Medical College in Dibrugarh, which has not been screened yet. SR will reach out to the contact person at Assam Medical College to arrange for the screening call and interview. The anticipated start data for the second batch is September 2025.
+3. All TMG members can expect a revised version of the protocol manuscript shortly.
