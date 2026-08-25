@@ -93,12 +93,26 @@ create_cluster_characteristics_table <- function(data = NULL,
         initial_resuscitation = "Initial resuscitation provider"
     )
 
-    ## Continuous characteristics that are not held in the screening data
-    ## dictionary and will instead be derived from other sources (monthly trauma
-    ## volume is computed from the actual patient inclusion numbers). These are
-    ## still shown in the shell as continuous rows.
-    external.characteristics <- c(
-        volume = "Monthly trauma patient volume"
+    ## Characteristics not held as structured fields in the screening data
+    ## dictionary. State (Indian state of the hospital) is recorded from site
+    ## location and listed at analysis; monthly trauma volume is derived from
+    ## patient inclusion numbers. State is placed first (location), then volume
+    ## as the lead measure of cluster size.
+    external.specifications <- list(
+        list(
+            field_name = "state",
+            redcap_type = NA_character_,
+            type = "categorical",
+            levels = c("States depend on participating clusters"),
+            label = "State"
+        ),
+        list(
+            field_name = "volume",
+            redcap_type = NA_character_,
+            type = "continuous",
+            levels = character(0),
+            label = "Monthly trauma patient volume"
+        )
     )
 
     ## Placeholder summary statistics for the shell table
@@ -106,21 +120,20 @@ create_cluster_characteristics_table <- function(data = NULL,
     continuous.placeholder <- ""
 
     ## Derive a specification (type and levels) for each characteristic from the
-    ## data dictionary, using the generic REDCap field helper, and add the
-    ## external continuous characteristics. Volume is placed first as the lead
-    ## measure of cluster size.
+    ## data dictionary, using the generic REDCap field helper, and prepend the
+    ## external characteristics.
     dictionary.specifications <- lapply(names(characteristics), function(field.name) {
-        get_redcap_field_specification(data, field.name)
-    })
-    external.specifications <- lapply(names(external.characteristics), function(field.name) {
-        list(field_name = field.name, redcap_type = NA_character_, type = "continuous", levels = character(0))
+        specification <- get_redcap_field_specification(data, field.name)
+        if (!is.null(specification)) {
+            specification$label <- unname(characteristics[[field.name]])
+        }
+        specification
     })
     specifications <- c(external.specifications, dictionary.specifications)
     specifications <- Filter(Negate(is.null), specifications)
     assertthat::assert_that(length(specifications) > 0, msg = "None of the requested characteristics were found.")
 
-    ## Combined label lookup and removal of the uninformative "Not sure" option
-    characteristic.labels <- c(external.characteristics, characteristics)
+    ## Removal of the uninformative "Not sure" option
     specifications <- lapply(specifications, function(specification) {
         specification$levels <- specification$levels[specification$levels != "Not sure"]
         specification
@@ -144,7 +157,10 @@ create_cluster_characteristics_table <- function(data = NULL,
 
     ## Apply the human-readable labels and variable types
     variable.names <- vapply(specifications, function(specification) specification$field_name, character(1))
-    variable.labels <- stats::setNames(as.list(unname(characteristic.labels[variable.names])), variable.names)
+    variable.labels <- stats::setNames(
+        lapply(specifications, function(specification) specification$label),
+        variable.names
+    )
     variable.types <- stats::setNames(
         as.list(vapply(specifications, function(specification) specification$type, character(1))),
         variable.names

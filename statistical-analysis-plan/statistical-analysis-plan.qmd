@@ -339,7 +339,8 @@ knitr::include_graphics(
 ### Cluster characteristics
 
 <!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
-We will describe cluster characteristics including location and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. See @tbl-cluster-characteristics for details.
+<!-- github-issue-14: add state to cluster characteristics shell. -->
+We will describe cluster characteristics including state and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. State categories depend on the final set of participating clusters. See @tbl-cluster-characteristics for details.
 
 ```{r}
 #| label: tbl-cluster-characteristics
