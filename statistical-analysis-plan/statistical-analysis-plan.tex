@@ -1110,9 +1110,10 @@ criteria:
 follow-up}\label{study-withdrawal-and-follow-up}
 
 We will use CONSORT diagrams to display the flow of clusters and
-patients through the trial, reported as two figures in line with recent
-batched stepped-wedge practice\textsuperscript{14}: a cluster-level
-diagram (Figure~\ref{fig-consort-clusters}) and a patient-level diagram
+patients through the main batched stepped-wedge trial, reported as two
+figures in line with recent batched stepped-wedge
+practice\textsuperscript{14}: a cluster-level diagram
+(Figure~\ref{fig-consort-clusters}) and a patient-level diagram
 (Figure~\ref{fig-consort-patients}). For each sequence, the diagrams
 will report numbers randomly assigned or included, losses and exclusions
 after randomisation (with reasons), and numbers analysed for the primary
@@ -1120,13 +1121,11 @@ outcome. The patient diagram will also summarise flow before and after
 ATLS® training. Flow for nested-staircase secondary outcomes (adherence
 to ATLS® principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a
 separate figure (Figure~\ref{fig-consort-nested-staircase}), showing
-patients in the staircase windows, the shift-stratified sample, losses
-and exclusions, and numbers analysed, by sequence, before and after
-ATLS® training, and overall; the main CONSORT diagrams remain restricted
-to the primary stepped-wedge analysis sets. We will present
-cluster-level summaries of the intervention effect. We will report the
-study according to the CONSORT guidelines for stepped-wedge randomised
-trials\textsuperscript{15}.
+patients in the staircase periods, losses and exclusions, and numbers
+analysed, by sequence, before and after ATLS® training, and overall. We
+will present cluster-level summaries of the intervention effect. We will
+report the study according to the CONSORT guidelines for stepped-wedge
+randomised trials\textsuperscript{15}.
 
 \begin{figure}
 
@@ -1169,7 +1168,7 @@ data across all batches 1-6.}
 }
 
 \caption{\label{fig-consort-nested-staircase}Nested-staircase CONSORT
-diagram shell. Placeholders cover patients in staircase windows, the
+diagram shell. Placeholders cover patients in staircase periods, the
 shift-stratified nested sample, losses and exclusions with reasons, and
 patients analysed for nested-staircase secondary outcomes, by sequence,
 before and after ATLS training, and overall. Coloured strip cells mark
@@ -1440,26 +1439,26 @@ Outcome & Design component & Data type & Analysis set & Main analysis model & Ef
 \endfoot
 \bottomrule
 \endlastfoot
-Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Deaths after transfer included in outcome\\
-All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & All deaths regardless of setting\\
-All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & All deaths regardless of setting\\
-All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & All deaths regardless of setting\\
-Length of emergency department stay & Main stepped-wedge & Count (hours) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed hours to ED exit; death/transfer truncate stay\\
+Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
+All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+Length of emergency department stay & Main stepped-wedge & Count (hours) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
 \addlinespace
-Length of hospital stay & Main stepped-wedge & Count (days) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed days; death/transfer truncate stay\\
-Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by ICU admission before death/transfer\\
-Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed days among ICU admissions; death/transfer truncate stay\\
-Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; not relevant & Survivors only\\
-Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; not relevant & Survivors only\\
+Length of hospital stay & Main stepped-wedge & Count (days) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by whether ICU admission occurred first\\
+Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 \addlinespace
-Adherence to ATLS® principles during initial patient resuscitation & Nested staircase & Proportion & Observed nested sample & Mixed-effects beta (logit) & Logit-scale difference & Not observed; incomplete window & Observed sample\\
-Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
-Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
-Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
-Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
+Adherence to ATLS® principles during initial patient resuscitation & Nested staircase & Proportion & Observed nested sample & Mixed-effects beta (logit) & Logit-scale difference & Incomplete observation & Available-case in the observed nested sample\\
+Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 \addlinespace
-Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\
-Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up & Survivors only\\*
+Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
 
 \end{longtable}
 
@@ -1470,6 +1469,193 @@ Disability at three months after arrival at the emergency department & Nested st
 measures}\label{intercurrent-events-populations-and-summary-measures}
 
 \subsection{Intercurrent events}\label{intercurrent-events}
+
+Intercurrent events are events occurring after intervention exposure
+that affect interpretation or occurrence of an outcome. Anticipated
+events and the strategy used for each outcome are summarised in
+Table~\ref{tbl-outcomes-summary}. Frequencies will be summarised for
+each outcome as counts and percentages of patients with the event before
+assessment of that outcome, stratified by before and after ATLS training
+and overall. We will not adjust for clustering in these summaries.
+Denominators follow the analysis set for the outcome (main stepped-wedge
+trial or nested staircase sample). See
+Table~\ref{tbl-intercurrent-events}.
+
+At the cluster level, late or early transition relative to the scheduled
+date, incomplete delivery of ATLS® training, and cluster dropout are
+treated as protocol or adherence issues (see Adherence and Protocol
+deviations) rather than as outcome-specific intercurrent events;
+exposure for analysis remains as defined under Analysis sets, with a
+sensitivity analysis using the actual transition date when the deviation
+exceeds four weeks.
+
+At the individual level, patients cannot withdraw from the intervention.
+The events below, and the outcomes to which they apply, are as follows.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Transfer to another hospital.} Relevant to length-of-stay and
+  ICU outcomes. It is not an intercurrent event for mortality outcomes,
+  because the primary outcome includes in-hospital deaths after transfer
+  and all-cause mortality counts deaths regardless of care setting. For
+  length of emergency department, hospital, and ICU stay, transfer ends
+  the observed stay and is not treated as censoring. ICU admission is
+  classified according to whether admission occurred before transfer.
+\item
+  \textbf{Death.} Relevant to length-of-stay and ICU outcomes and to
+  survivor-only outcomes. As an intercurrent event, death is death
+  before assessment of the outcome in question; later death is not an
+  intercurrent event for earlier outcomes. Observed length of stay is
+  the completed duration to exit; death truncates the observed stay and
+  is not treated as censoring. ICU admission is classified according to
+  whether admission occurred before death. Quality of life, disability,
+  and return to work are defined only among patients alive at the
+  relevant follow-up (while-alive restriction). Those analyses therefore
+  target effects in survivors at that time point; mortality is analysed
+  separately.
+\item
+  \textbf{Withdrawal of consent for non-routine data collection.}
+  Relevant only to outcomes that require opt-in follow-up: all-cause
+  mortality after the initial admission (when not available from
+  records), return to work, quality of life, and disability. It is also
+  relevant to the primary outcome when death after transfer cannot be
+  ascertained from records and requires contact with the patient, a
+  representative, or the receiving hospital. Withdrawal is not listed
+  for routinely recorded in-hospital outcomes (length of stay and ICU
+  admission) or for adherence, which are collected under opt-out
+  consent. Participants who withdraw contribute observed non-routine
+  outcomes up to withdrawal unless they also request removal of already
+  collected data; subsequent missing values are handled under the
+  missing-data plan (see Section~\ref{sec-treatment-of-missing-data}).
+\item
+  \textbf{Loss to follow-up.} Relevant to the same contact-dependent
+  outcomes as withdrawal. These events create missing outcome data and
+  are handled under the missing-data plan.
+\item
+  \textbf{Incomplete observation of resuscitation.} Relevant only to
+  adherence. The checklist is scored from observation of initial
+  resuscitation up to one hour after the physician first sees the
+  patient. Incomplete observation means that this window was not fully
+  observed (for example the observer could not complete the 14-item
+  checklist because care ended, the patient left the emergency
+  department, or observation was interrupted). Unobserved or
+  incompletely observed resuscitations are excluded from the adherence
+  analysis (available-case analysis of the observed nested sample).
+  Death during the observation window is treated in the same way.
+\end{itemize}
+
+Return to work is further restricted to patients for whom the outcome is
+relevant; that restriction defines the analysis set and is not an
+intercurrent event.
+
+Where a while-alive strategy is used, we assume that, conditional on the
+analysis model and design factors, death before the outcome assessment
+does not induce selection bias beyond what is addressed by analysing
+mortality separately; sensitivity of conclusions will rely on joint
+interpretation of mortality and survivor outcomes. Assumptions
+underlying each strategy will be considered when interpreting results
+and when checking model assumptions (see
+Section~\ref{sec-analysis-methods}).
+
+\begingroup\fontsize{8}{10}\selectfont
+
+\setlength{\tabcolsep}{3pt}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
+
+\caption{\label{tbl-intercurrent-events}Intercurrent events by outcome}
+
+\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\textbf{ATLS training}} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-3}
+\textbf{Intercurrent event} & \textbf{Before ATLS} & \textbf{After ATLS} & \textbf{Overall}\\
+\midrule
+\endfirsthead
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textit{(continued)}}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{\textbf{ATLS training}} & \multicolumn{1}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-3}
+\textbf{Intercurrent event} & \textbf{Before ATLS} & \textbf{After ATLS} & \textbf{Overall}\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
+In-hospital mortality within 30 days &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{11} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{11} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
+All-cause mortality within 24 hours &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{10} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{10} & \\
+All-cause mortality within 30 days &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{9} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{9} & \\
+All-cause mortality within three months &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{8} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{8} & \\
+Length of emergency department stay &  &  & \\
+\hspace{1em}Death, n (\%) &  &  \vphantom{3} & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{3} & \\
+Length of hospital stay &  &  & \\
+\hspace{1em}Death, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{2} & \\
+Intensive care unit (ICU) admission &  &  & \\
+\hspace{1em}Death, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{1} & \\
+Length of intensive care unit stay &  &  & \\
+\hspace{1em}Death, n (\%) &  &  & \\
+\hspace{1em}Transfer to another hospital, n (\%) &  &  & \\
+Return to work at 30 days &  &  & \\
+\hspace{1em}Death before 30 days, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{7} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{7} & \\
+Return to work at three months &  &  & \\
+\hspace{1em}Death before three months, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{6} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{6} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
+Adherence to ATLS® principles &  &  & \\
+\hspace{1em}Incomplete observation of resuscitation, n (\%) &  &  & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
+Quality of life &  &  \vphantom{2} & \\
+\hspace{1em}Death before assessment, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{5} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{5} & \\
+Disability &  &  \vphantom{2} & \\
+\hspace{1em}Death before assessment, n (\%) &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{4} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{4} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
+Quality of life &  &  \vphantom{1} & \\
+\hspace{1em}Death before 30 days, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{3} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{3} & \\
+Disability &  &  \vphantom{1} & \\
+\hspace{1em}Death before 30 days, n (\%) &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{2} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
+Quality of life &  &  & \\
+\hspace{1em}Death before three months, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{1} & \\
+Disability &  &  & \\
+\hspace{1em}Death before three months, n (\%) &  &  & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  & \\
+\hspace{1em}Loss to follow-up, n (\%) &  &  & \\
+\bottomrule
+
+\end{longtable}
+
+\endgroup{}
+\par\raggedright
 
 \subsection{Population}\label{population}
 
@@ -1602,9 +1788,9 @@ WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
 \endgroup{}
 \par\raggedright
 
-\section{Analysis methods}\label{analysis-methods}
+\section{Analysis methods}\label{sec-analysis-methods}
 
-\subsection{Analysis methods}\label{analysis-methods-1}
+\subsection{Analysis methods}\label{analysis-methods}
 
 Primary and secondary outcomes will be analysed with mixed-effects
 regression models that account for clustering at the hospital level and
