@@ -851,6 +851,7 @@ These are known individual-level prognostic factors for the primary outcome. The
 <!-- github-issue-26: remove checklist placeholder; existing F1/F2 text covers methods. -->
 <!-- sap-revision-todo F1 (comments id=33 MGW, id=34 AO; id=368 KH): subgroup analyses of primary outcome via interactions. -->
 <!-- sap-revision-todo F2 (comments id=243, id=246 KH): clarify subgroup coding; cluster size categorical; keep six subgroups. -->
+<!-- github-issue-16 github-issue-17: subgroup-specific effects from interaction model; use converged primary model. -->
 We will perform the following subgroup analyses of the primary outcome:
 
 <!-- sap-revision-todo I3 (comments id=238, id=239): number of states depends on final clusters. -->
@@ -861,7 +862,7 @@ We will perform the following subgroup analyses of the primary outcome:
 -  patients with major trauma, defined as patients with an injury severity score (ISS) of 16 or higher versus those with ISS below 16;
 -  cluster size, defined as the monthly volume of eligible patients (as used for covariate-constrained randomisation) and categorised as small (fewer than 12 patients per month), medium (12–20), or large (more than 20)
 
-These subgroup analyses will be conducted by adding the subgroup variable and the interaction between the subgroup variable and the intervention exposure variable as fixed effects to the models specified in @eq-primary-model. Results will be presented in @tbl-additional-analyses-results and as a forest plot of subgroup-specific intervention effects with 95% CIs (see @fig-subgroup-forest-plot).
+Each subgroup analysis will use the same mixed-effects binomial model that is selected for the primary analysis under Analysis of the primary outcome (the most complex model in that sequence that converges), with the logit and identity links as for the primary outcome. We will add the subgroup variable and the interaction between the subgroup variable and intervention exposure as fixed effects. Subgroup-specific intervention effects (odds ratios and absolute risk differences) will be obtained from that model as the intervention effect within each subgroup level, combining the main intervention effect with the corresponding interaction term, and will be reported with 95% CIs. We will also report the interaction p-value as a test of heterogeneity across subgroup levels. Results will be presented in @tbl-additional-analyses-results and as a forest plot of subgroup-specific intervention effects with 95% CIs (see @fig-subgroup-forest-plot).
 
 ## Safety events
 
