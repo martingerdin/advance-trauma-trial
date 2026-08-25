@@ -644,7 +644,8 @@ Disability will be measured within the nested staircase design using the WHO Dis
 #### Return to work at 30 days and three months after arrival at the emergency department, among survivors
 
 <!-- github-issue-10: align RTW with binary OR and ARD (same as primary mortality). -->
-Return to work will be analysed as a dichotomous outcome using the mixed-effects binomial model with the logit and identity links specified in @eq-primary-model, to estimate odds ratios and absolute risk differences.
+<!-- github-issue-18: use converged primary-analysis model, not a hard-coded @eq-primary-model. -->
+Return to work will be analysed as a dichotomous outcome using the same mixed-effects binomial model that is selected for the primary analysis under Analysis of the primary outcome (the most complex model in that sequence that converges), with the logit and identity links, to estimate odds ratios and absolute risk differences.
 
 <!-- sap-revision-todo A2 (comments id=349, id=350 KH; id=351 AO; id=348 AO): replace Fine–Gray competing-risks LOS models with mixed-effects negative binomial count models; clarify purpose, random/period effects, and death/transfer handling. -->
 <!-- sap-revision-todo C2 (comment id=348 AO): ED stay defined as hours to ED exit; exit routes enumerated; all routes contribute observed duration. -->
@@ -653,7 +654,8 @@ Return to work will be analysed as a dichotomous outcome using the mixed-effects
 
 Length of emergency department stay will be analysed as a count outcome: the number of hours from arrival at the emergency department until ED exit. Exit may occur via ward admission, ICU admission, transfer to another hospital, death, or discharge home; all of these routes contribute the observed ED duration. The purpose of the analysis is to estimate the effect of ATLS® on mean ED length of stay. Death and transfer truncate the observed stay and are not treated as censoring; mortality is analysed separately as a primary and secondary outcome.
 
-We will use a mixed-effects negative binomial regression model with a log link, including fixed effects for intervention exposure and batch-specific categorical period effects, a random intercept for cluster, and a random cluster-by-period effect, matching the primary analysis model structure where feasible. If this model does not converge, we will simplify the random-effects and period structure following the same sequence as for the primary outcome. The model is specified in @eq-length-of-stay-model. The intervention effect $\theta$ is the log rate ratio for ED length of stay associated with ATLS® exposure compared with standard care; we will also report the corresponding multiplicative effect on the mean count (rate ratio).
+<!-- github-issue-19: preferred LOS model with same convergence sequence as primary. -->
+The preferred model is a mixed-effects negative binomial regression with a log link, including fixed effects for intervention exposure and batch-specific categorical period effects, a random intercept for cluster, and a random cluster-by-period effect, as specified in @eq-length-of-stay-model. If this model does not converge, we will simplify the random-effects and period structure following the same sequence of decreasing complexity as for the primary outcome. The intervention effect $\theta$ is the log rate ratio for ED length of stay associated with ATLS® exposure compared with standard care; we will also report the corresponding multiplicative effect on the mean count (rate ratio).
 
 $$
 \log\{\mathbb{E}(Y_{bkti})\}
@@ -664,7 +666,7 @@ Where $Y_{bkti}$ is the length-of-stay count for patient $i$ in cluster $k$ duri
 
 #### Length of hospital stay
 
-Length of hospital stay will be analysed as a count outcome: the number of days from arrival at the emergency department to hospital discharge (or death in hospital). The analysis uses the mixed-effects negative binomial model in @eq-length-of-stay-model, with the same handling of death and transfer as for ED length of stay.
+Length of hospital stay will be analysed as a count outcome: the number of days from arrival at the emergency department to hospital discharge (or death in hospital). The analysis uses the same preferred negative binomial specification and the same convergence sequence as for ED length of stay (@eq-length-of-stay-model), with the same handling of death and transfer.
 
 #### Intensive care unit admission
 
@@ -674,7 +676,7 @@ Intensive care unit admission will be analysed as a dichotomous outcome using th
 
 #### Length of intensive care unit stay
 
-Length of intensive care unit stay will be analysed as a count outcome among patients admitted to ICU: the number of days from ICU admission to ICU discharge (or death in ICU). The analysis uses the mixed-effects negative binomial model in @eq-length-of-stay-model, with the same handling of death and transfer as for the other length-of-stay outcomes.
+Length of intensive care unit stay will be analysed as a count outcome among patients admitted to ICU: the number of days from ICU admission to ICU discharge (or death in ICU). The analysis uses the same preferred negative binomial specification and the same convergence sequence as for the other length-of-stay outcomes (@eq-length-of-stay-model), with the same handling of death and transfer.
 
 #### Adherence to ATLS^®^ principles during initial patient resuscitation
 
