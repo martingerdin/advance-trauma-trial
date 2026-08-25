@@ -591,22 +591,22 @@ $$
 \end{aligned}
 $$ {#eq-distributional-assumptions}
 
-To correct potential inflation of the type I error rate due to the small number of clusters, a small-sample correction will be applied. Our primary method will be the Kenward–Roger correction [@grantham_evaluating_2022], but this choice may be updated based on methodological developments available closer to the end of patient inclusion. The correction applied may also differ for outcomes collected via the complete stepped-wedge design and the incomplete nested staircase designs.
-
+<!-- github-issue-15: deduplicate B3/A1/B2 with overview and software sections. -->
 <!-- sap-revision-todo B3 (comments id=21, id=22 AO; Round Two 27c/27d): model-based SEs, small-sample adjustments, Wald-type CIs. -->
-Standard errors will be model-based. Small-sample adjustments, including degrees-of-freedom corrections such as Kenward–Roger, will be applied where relevant. Confidence intervals will be Wald-type.
+Standard errors will be model-based. Confidence intervals will be Wald-type. To correct potential inflation of the type I error rate due to the small number of clusters, a small-sample correction will be applied. Our primary method will be the Kenward–Roger correction [@grantham_evaluating_2022], but this choice may be updated based on methodological developments available closer to the end of patient inclusion. The correction applied may also differ for outcomes collected via the complete stepped-wedge design and the incomplete nested staircase designs.
 
 <!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO); B4 (comment id=23 AO; Round Two 27b): general estimation framework is ML with Laplace; package/implementation not prespecified. -->
-The general estimation framework for the mixed-effects models is maximum likelihood, with a Laplace approximation used to integrate out the random effects. The specific R package and numerical implementation will be chosen based on convergence behaviour and the availability of appropriate small-sample corrections closer to the time of analysis. 
+The general estimation framework for the mixed-effects models is maximum likelihood, with a Laplace approximation used to integrate out the random effects. The specific R package and numerical implementation are not prespecified (see Statistical software).
 
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): state that diagnostics will check distributional assumptions and convergence. -->
 Model diagnostics will be used to assess distributional assumptions and model convergence.
 
 ### Analysis of secondary outcomes
 
+<!-- github-issue-15: keep only ordinal-specific diagnostics here; general diagnostics under primary. -->
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): diagnostics for secondary models, including proportional odds for ordinal outcomes. -->
 <!-- sap-revision-todo H1 (comments id=14, id=15, id=17 MGW/AO; Round Two): effect measures by outcome type; no HR after A2; cluster-specific estimates. -->
-Unless otherwise stated, secondary outcomes will be analysed using the same mixed-effects modelling framework as specified for the primary outcome, including fixed effects for time and intervention exposure and random effects for cluster and cluster-by-period, with the link function and outcome distribution adapted to the scale of the outcome. Effect measures are odds ratios and absolute risk differences for binary outcomes, rate ratios for count (length-of-stay) outcomes, cumulative odds ratios for ordinal outcomes, mean differences for continuous outcomes, and a logit-scale difference for the adherence proportion. These models provide cluster-specific estimates of the intervention effect for patient-level outcomes. Model diagnostics will be used to assess distributional assumptions, the proportional-odds assumption for cumulative logit models, and model convergence.
+Unless otherwise stated, secondary outcomes will be analysed using the same mixed-effects modelling framework as specified for the primary outcome, including fixed effects for time and intervention exposure and random effects for cluster and cluster-by-period, with the link function and outcome distribution adapted to the scale of the outcome. Effect measures are odds ratios and absolute risk differences for binary outcomes, rate ratios for count (length-of-stay) outcomes, cumulative odds ratios for ordinal outcomes, mean differences for continuous outcomes, and a logit-scale difference for the adherence proportion. These models provide cluster-specific estimates of the intervention effect for patient-level outcomes. For cumulative logit models, diagnostics will also assess the proportional-odds assumption.
 
 #### All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department
 
@@ -890,6 +890,7 @@ We will use the R Statistical Software for all analyses [@R]. Specific packages 
 ## Presentation of analysis results
 
 <!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
+<!-- github-issue-34: outcome names as nested headers; effect measures indented with modify_indent. -->
 Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the results section, and present all outcome analyses as supplementary tables. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
 
 ```{r}
@@ -903,6 +904,7 @@ create_outcomes_analysis_results_table()
 ```
 
 <!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
+<!-- github-issue-34: analysis names as nested headers; OR/ARD indented with modify_indent. -->
 Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will be reported in the same style. See @tbl-additional-analyses-results. Subgroup-specific intervention effects will also be presented in a forest plot with 95% CIs for the odds ratio and absolute risk difference. See @fig-subgroup-forest-plot.
 
 ```{r}
@@ -932,8 +934,9 @@ knitr::include_graphics(
 )
 ```
 
+<!-- github-issue-15: avoid repeating B5–B6 detail; cross-ref Correlations. -->
 <!-- sap-revision-todo J6: shell for ICC, variance components, and related correlations (B5-B6); supplementary only. -->
-Time-adjusted within-cluster correlations and variance components will be reported with 95% CIs for all outcomes, as specified above; for binary outcomes, latent-scale correlations will additionally be reported. For models with an AR(1) within-cluster structure, the within-period correlation and correlation decay parameter will also be reported. These parameters will be presented as a supplementary table. See @tbl-correlation-parameters.
+Time-adjusted within-cluster correlations and variance components will be presented as a supplementary table, as specified under Correlations. See @tbl-correlation-parameters.
 
 # Supplementary tables
 

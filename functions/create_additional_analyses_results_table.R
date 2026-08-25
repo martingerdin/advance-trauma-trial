@@ -2,8 +2,9 @@
 #'
 #' Blank `gtsummary::tbl_regression`-style shell for primary-outcome sensitivity
 #' analyses, the fully adjusted analysis, and subgroup analyses. Layout matches
-#' the main analysis-results shells: section headers, effect measure folded into
-#' the outcome label, and blank Estimate / 95% CI / p-value columns.
+#' the main analysis-results shells: top-level section headers, nested analysis
+#' names, effect-measure labels indented with [gtsummary::modify_indent()], and
+#' blank Estimate / 95% CI / p-value columns.
 #'
 #' @param label.width Numeric. Fraction of linewidth for the label column in
 #'     LaTeX output. Defaults to `0.50`.
@@ -44,7 +45,15 @@ create_additional_analyses_results_table <- function(label.width = 0.50) {
         list(field = spec$field, section = spec$section)
     })
     results.table <- insert_table_section_headers(results.table, section.requests)
-    section.labels <- get_table_section_labels(section.requests)
+    ## Bold only top-level headers; nested analysis names stay regular weight
+    section.labels <- get_table_section_labels(section.requests, depth = 1L)
+
+    results.table <- gtsummary::modify_indent(
+        results.table,
+        columns = label,
+        rows = row_type == "label",
+        indent = 4L
+    )
 
     results.table <- gtsummary::modify_table_body(
         results.table,
@@ -81,7 +90,7 @@ create_additional_analyses_results_table <- function(label.width = 0.50) {
         results.table <- gtsummary::modify_table_styling(
             results.table,
             columns = label,
-            rows = row_type == "section",
+            rows = row_type == "section" & section_depth == 1L,
             text_format = "bold"
         )
     }
@@ -224,7 +233,9 @@ build_subgroup_forest_plot_rows <- function() {
 
 #' Build row specifications for the additional-analyses results shell
 #'
-#' @return A list of specs with `field`, `label`, `measure`, and `section`.
+#' @return A list of specs with `field`, `label`, `measure`, and `section`
+#'     (`section` is a character vector: top-level header, then analysis name
+#'     when the analysis name is not identical to the top-level header).
 build_additional_analyses_results_specs <- function() {
     measure.labels <- c(
         "OR" = "Odds ratio",
@@ -234,20 +245,26 @@ build_additional_analyses_results_specs <- function() {
     specs <- list()
     counter <- 0L
 
-    add.spec <- function(section, label, measure) {
+    add.spec <- function(section, analysis.label = NULL, measure) {
         counter <<- counter + 1L
         measure.label <- unname(measure.labels[[measure]])
+        section.path <- if (is.null(analysis.label) ||
+            identical(analysis.label, section)) {
+            section
+        } else {
+            c(section, analysis.label)
+        }
         specs[[length(specs) + 1L]] <<- list(
             field = paste0("additional_analysis_", counter),
-            label = paste0(label, ", ", measure.label),
+            label = measure.label,
             measure = measure,
-            section = section
+            section = section.path
         )
     }
 
-    add.pair <- function(section, label) {
-        add.spec(section, label, "OR")
-        add.spec(section, label, "ARD")
+    add.pair <- function(section, analysis.label = NULL) {
+        add.spec(section, analysis.label, "OR")
+        add.spec(section, analysis.label, "ARD")
     }
 
     sensitivity <- "Sensitivity analyses"
@@ -258,8 +275,7 @@ build_additional_analyses_results_specs <- function() {
     add.pair(sensitivity, "Lag and weaning effects (periods since first exposure)")
     add.pair(sensitivity, "Actual date of transition for intervention exposure")
 
-    adjusted <- "Fully adjusted analysis"
-    add.pair(adjusted, "Fully adjusted analysis")
+    add.pair("Fully adjusted analysis")
 
     subgroup <- "Subgroup analyses"
     for (label in subgroup_analysis_row_labels()) {

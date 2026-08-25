@@ -3,9 +3,9 @@
 #' Builds a blank `gtsummary` results shell in the style of
 #' `gtsummary::tbl_regression`. One stacked regression row is created for each
 #' outcome–effect-measure combination. Estimate, confidence-interval, and
-#' p-value cells are blanked for the analysis plan. Section headers and label
-#' style match the descriptive outcomes shells (effect measure folded into the
-#' outcome label, as with `, n (%)` in descriptive tables).
+#' p-value cells are blanked for the analysis plan. Design sections nest
+#' outcome names as headers, with effect-measure labels indented underneath
+#' via [gtsummary::modify_indent()] (avoiding repeated outcome names).
 #'
 #' @param data A data frame or NULL. Outcomes summary with columns
 #'     `outcome`, `design_component`, and `effect_measure`. If NULL, reads
@@ -77,7 +77,15 @@ create_outcomes_analysis_results_table <- function(
         )
     })
     results.table <- insert_table_section_headers(results.table, section.requests)
-    section.labels <- get_table_section_labels(section.requests)
+    ## Bold only top-level design headers; nested outcome names stay regular
+    section.labels <- get_table_section_labels(section.requests, depth = 1L)
+
+    results.table <- gtsummary::modify_indent(
+        results.table,
+        columns = label,
+        rows = row_type == "label",
+        indent = 4L
+    )
 
     results.table <- gtsummary::modify_table_body(
         results.table,
@@ -117,7 +125,7 @@ create_outcomes_analysis_results_table <- function(
         results.table <- gtsummary::modify_table_styling(
             results.table,
             columns = label,
-            rows = row_type == "section",
+            rows = row_type == "section" & section_depth == 1L,
             text_format = "bold"
         )
     }
@@ -176,7 +184,8 @@ create_outcomes_analysis_results_table <- function(
 #' @param data Data frame of outcomes summary rows.
 #' @param all Logical. Expand nested QoL/disability to domain-level rows.
 #' @return A list of specs with `field`, `label`, `measure`, `effect_measure`,
-#'     `outcome_type`, `design`, `timing`, and `section`.
+#'     `outcome_type`, `design`, `timing`, and `section` (`section` is a
+#'     character vector: design header then outcome name).
 build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
     measure.labels <- c(
         "OR" = "Odds ratio",
@@ -213,19 +222,20 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
         } else {
             measure
         }
+        top.section <- outcomes_shell_section_for(
+            outcome_type = outcome_type,
+            design = design,
+            timing = timing
+        )
         specs[[length(specs) + 1L]] <<- list(
             field = paste0("analysis_result_", counter),
-            label = paste0(label, ", ", measure.label),
+            label = measure.label,
             measure = measure,
             effect_measure = measure.label,
             outcome_type = outcome_type,
             design = design,
             timing = timing,
-            section = outcomes_shell_section_for(
-                outcome_type = outcome_type,
-                design = design,
-                timing = timing
-            )
+            section = c(top.section, label)
         )
     }
 
@@ -301,7 +311,7 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
     }
 
     section.ranks <- match(
-        vapply(specs, function(spec) spec$section, character(1)),
+        vapply(specs, function(spec) spec$section[[1]], character(1)),
         section.order
     )
     section.ranks[is.na(section.ranks)] <- length(section.order) + 1L
