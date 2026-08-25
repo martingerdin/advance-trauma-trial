@@ -513,7 +513,7 @@ Outcomes are measured on individual patients. Descriptive summaries of primary a
 create_outcomes_descriptive_table()
 ```
 
-Comparative effect measures for the intervention are listed by outcome in @tbl-outcomes-summary and are estimated from the mixed-effects models in Analysis methods (cluster-specific effects unless otherwise stated):
+Comparative effect measures for the intervention are listed by outcome in @tbl-outcomes-summary and are estimated from the mixed-effects models in @sec-analysis-methods. The effects are cluster-specific unless otherwise stated. The types of effect measures are as follows:
 
 - **Dichotomous outcomes:** odds ratio (logit link) and absolute risk difference (identity link), where both links are used.
 - **Count (length-of-stay) outcomes:** rate ratio from a negative binomial model with log link.
