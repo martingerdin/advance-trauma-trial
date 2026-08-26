@@ -102,7 +102,53 @@ The trial will be composed of `r batches` batches of identical `r total.months -
 
 Clusters will be sequentially allocated to batches based on when they enter the study, and within each batch clusters will then be randomised to an intervention implementation sequence. Individual patients will be included cross-sectionally for the primary outcome, although some secondary outcomes will be assessed at multiple follow-up time points. The anticipated trial period is from February 2025 to October 2029.
 
-Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.  
+```{r}
+#| echo: false
+#| label: fig-trial-design
+#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
+#| fig.align: "center"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics(
+  create_trial_design_flowchart(
+    clusters = clusters, sequences = sequences, batches = batches,
+    min.standard.care.months = min.standard.care.months,
+    min.intervention.months = min.intervention.months,
+    batches.overlap.months = batches.overlap.months,
+    transition.months = transition.months,
+    transition.overlap.months = transition.overlap.months,
+    current.month = NULL,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
+
+Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.
+
+```{r}
+#| echo: false
+#| label: fig-nested-staircase-design
+#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase."
+#| fig.align: "center"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics(
+  create_trial_design_flowchart(
+    clusters = clusters, sequences = sequences, batches = batches,
+    min.standard.care.months = min.standard.care.months,
+    min.intervention.months = min.intervention.months,
+    batches.overlap.months = batches.overlap.months,
+    transition.months = transition.months,
+    transition.overlap.months = transition.overlap.months,
+    staircase.months = staircase.months,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
 
 ## Intervention and control treatment
 
@@ -260,6 +306,52 @@ names(outcomes.table) <- c(
   "Potential intercurrent events",
   "Strategy for handling intercurrent events"
 )
+```
+
+```{r}
+#| label: tbl-outcomes-summary
+#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+ncol.outcomes <- ncol(outcomes.table)
+# Column widths sum to 0.84\\linewidth so tabcolsep does not overflow the text block
+col.widths <- c(0.20, 0.08, 0.07, 0.09, 0.13, 0.08, 0.10, 0.09)
+col.align <- sprintf("p{%s\\linewidth}", col.widths)
+
+outcomes.kable <- knitr::kable(
+  outcomes.table,
+  format = "latex",
+  booktabs = TRUE,
+  longtable = TRUE,
+  align = col.align
+) |>
+  kableExtra::kable_styling(
+    latex_options = c("repeat_header"),
+    font_size = 8
+  )
+
+# kableExtra repeat_header uses the wrong colspan for p{} column alignments
+outcomes.latex <- as.character(outcomes.kable)
+outcomes.latex <- gsub(
+  sprintf("\\\\multicolumn\\{%d\\}", ncol.outcomes * 2 - 2),
+  sprintf("\\\\multicolumn{%d}", ncol.outcomes),
+  outcomes.latex
+)
+
+# Margins for the landscape table pages. Because pdflscape rotates the page,
+# geometry's top/bottom control the VISUAL left/right (the long edge) and
+# left/right control the VISUAL top/bottom. \newgeometry must come BEFORE
+# \begin{landscape} so the landscape text block is built from these margins.
+cat("\\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}\n")
+cat("\\begin{landscape}\n")
+cat("\\setlength{\\tabcolsep}{3pt}\n")
+cat("\\setlength{\\LTleft}{\\fill}\n")
+cat("\\setlength{\\LTright}{\\fill}\n")
+cat(outcomes.latex)
+cat("\\end{landscape}\n")
+cat("\\restoregeometry\n")
 ```
 
 # Intercurrent events, populations and summary measures 
@@ -695,56 +787,10 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 <!-- sap-revision-todo J6: shell for ICC, variance components, and related correlations (B5-B6); supplementary only. -->
 Time-adjusted within-cluster correlations and variance components will be presented as a supplementary table, as specified under Correlations. See @tbl-correlation-parameters.
 
-<!-- github-issue-33: move all shell tables and figures to end matter. -->
+<!-- github-issue-33: move reporting shells to end matter; keep design figures and outcomes summary inline. -->
 # Shell tables and figures
 
-The shell tables and figures cited in the plan are collected here for reference. Cross-references in the preceding sections point to these shells.
-
-```{r}
-#| echo: false
-#| label: fig-trial-design
-#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
-#| fig.align: "center"
-#| message: FALSE
-#| warning: FALSE
-
-knitr::include_graphics(
-  create_trial_design_flowchart(
-    clusters = clusters, sequences = sequences, batches = batches,
-    min.standard.care.months = min.standard.care.months,
-    min.intervention.months = min.intervention.months,
-    batches.overlap.months = batches.overlap.months,
-    transition.months = transition.months,
-    transition.overlap.months = transition.overlap.months,
-    current.month = NULL,
-    return.figure = FALSE,
-    device = "png"
-  )
-)
-```
-
-```{r}
-#| echo: false
-#| label: fig-nested-staircase-design
-#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase."
-#| fig.align: "center"
-#| message: FALSE
-#| warning: FALSE
-
-knitr::include_graphics(
-  create_trial_design_flowchart(
-    clusters = clusters, sequences = sequences, batches = batches,
-    min.standard.care.months = min.standard.care.months,
-    min.intervention.months = min.intervention.months,
-    batches.overlap.months = batches.overlap.months,
-    transition.months = transition.months,
-    transition.overlap.months = transition.overlap.months,
-    staircase.months = staircase.months,
-    return.figure = FALSE,
-    device = "png"
-  )
-)
-```
+Reporting shells cited in the plan are collected here for reference. Design figures and the outcomes summary table remain in the main text. Cross-references in the preceding sections point to these shells.
 
 ```{r}
 #| echo: false
@@ -831,52 +877,6 @@ create_cluster_characteristics_table()
 #| warning: false
 #| results: asis
 create_patient_characteristics_table()
-```
-
-```{r}
-#| label: tbl-outcomes-summary
-#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events"
-#| echo: false
-#| message: false
-#| warning: false
-#| results: asis
-ncol.outcomes <- ncol(outcomes.table)
-# Column widths sum to 0.84\\linewidth so tabcolsep does not overflow the text block
-col.widths <- c(0.20, 0.08, 0.07, 0.09, 0.13, 0.08, 0.10, 0.09)
-col.align <- sprintf("p{%s\\linewidth}", col.widths)
-
-outcomes.kable <- knitr::kable(
-  outcomes.table,
-  format = "latex",
-  booktabs = TRUE,
-  longtable = TRUE,
-  align = col.align
-) |>
-  kableExtra::kable_styling(
-    latex_options = c("repeat_header"),
-    font_size = 8
-  )
-
-# kableExtra repeat_header uses the wrong colspan for p{} column alignments
-outcomes.latex <- as.character(outcomes.kable)
-outcomes.latex <- gsub(
-  sprintf("\\\\multicolumn\\{%d\\}", ncol.outcomes * 2 - 2),
-  sprintf("\\\\multicolumn{%d}", ncol.outcomes),
-  outcomes.latex
-)
-
-# Margins for the landscape table pages. Because pdflscape rotates the page,
-# geometry's top/bottom control the VISUAL left/right (the long edge) and
-# left/right control the VISUAL top/bottom. \newgeometry must come BEFORE
-# \begin{landscape} so the landscape text block is built from these margins.
-cat("\\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}\n")
-cat("\\begin{landscape}\n")
-cat("\\setlength{\\tabcolsep}{3pt}\n")
-cat("\\setlength{\\LTleft}{\\fill}\n")
-cat("\\setlength{\\LTright}{\\fill}\n")
-cat(outcomes.latex)
-cat("\\end{landscape}\n")
-cat("\\restoregeometry\n")
 ```
 
 ```{r}
