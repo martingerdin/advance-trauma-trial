@@ -324,6 +324,25 @@ body {
   color: var(--brand-deep);
 }
 
+.slide-inner--references .references-intro {
+  font-size: 0.88em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+  max-width: 72ch;
+}
+
+.slide-references--standalone {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  font-size: 0.68em;
+}
+
+.slide-references--standalone li {
+  padding: 0.35em 0;
+}
+
 .inline-stats {
   display: flex;
   gap: 2rem;

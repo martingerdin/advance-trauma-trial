@@ -124,6 +124,25 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "references":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--references">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="references-intro" data-animate>${slide.body}</p>` : ""}
+          ${
+            slide.references?.length
+              ? `<ol class="slide-references slide-references--standalone" data-animate>
+                  ${slide.references
+                    .map((ref) => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`)
+                    .join("")}
+                </ol>`
+              : ""
+          }
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
     case "two-col":
       el.innerHTML = `
         <div class="slide-inner">

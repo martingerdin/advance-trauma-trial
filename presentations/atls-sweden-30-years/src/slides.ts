@@ -21,7 +21,8 @@ export interface Slide {
     | "visual"
     | "design"
     | "implications"
-    | "closing";
+    | "closing"
+    | "references";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -136,6 +137,40 @@ export const slides: Slide[] = [
     title: "Impact on patient outcomes",
     body: "ATLS training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
     cite: ATLS_MANUAL_CITE,
+  },
+  {
+    id: "atls-impact-sources",
+    layout: "references",
+    title: "Sources for the ATLS Impact section",
+    body: "The 11th edition Impact paragraph (p. xv) has no in-text citations. These are the primary sources historically linked to its claims.",
+    references: [
+      {
+        id: "1",
+        text: "Decreased injury mortality in a developing country — Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
+      },
+      {
+        id: "2",
+        text: "Lower per-capita injury death rates where clinicians have ATLS training — Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
+      },
+      {
+        id: "3",
+        text: "Small ATLS-experienced team equivalent to a larger urban team — Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
+      },
+      {
+        id: "4",
+        text: "More unexpected survivors than fatalities — van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
+      },
+      {
+        id: "5",
+        text: "Improves knowledge, psychomotor skills, confidence, and performance — Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
+      },
+      {
+        id: "6",
+        text: "Organizational and procedural skills retained ≥6 years — Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+      },
+    ],
+    footer:
+      "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
   },
   {
     id: "atls-outcomes-reviews",
