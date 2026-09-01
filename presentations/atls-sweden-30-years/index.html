@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ADVANCE TRAUMA trial — Effects of ATLS training compared to standard care on adult trauma patient outcomes. Presented at the Swedish ATLS 30-year anniversary."
+    />
+    <title>ADVANCE TRAUMA — ATLS Sweden 30 Years</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Quicksand:wght@600&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div id="slides" aria-live="polite"></div>
+      <nav id="controls" aria-label="Slide navigation">
+        <button id="prev" aria-label="Previous slide" title="Previous (←)">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span id="slide-counter" aria-live="polite"></span>
+        <button id="next" aria-label="Next slide" title="Next (→)">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
