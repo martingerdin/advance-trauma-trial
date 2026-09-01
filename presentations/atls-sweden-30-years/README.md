@@ -19,9 +19,8 @@ pnpm build
 
 Static files are output to `dist/`. Deploy the entire `dist/` folder to your web host (e.g. `advancetrauma.info/presentations/atls-sweden-30-years/`).
 
-Image assets are copied from the project root during build. Ensure these files remain alongside the built `index.html`:
+Image assets in `public/` are copied to `dist/` during build:
 
-- `advance-trauma-visual-abstract.png`
 - `crash-illustration.png`
 - `training-illustration.png`
 - `patient-review-before-illustration.png`
@@ -40,11 +39,10 @@ Image assets are copied from the project root during build. Ensure these files r
 | # | ID | Content |
 |---|-----|---------|
 | 1 | `title` | Title slide |
-| 2 | `visual-abstract` | Full visual abstract |
-| 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
-| 5–12 | ATLS slides | Purpose, evidence, critique |
-| 13–21 | Trial slides | Design, outcomes, status |
-| 22–23 | `implications`, `closing` | Take-home messages |
+| 2–3 | `section-problem`, `trauma-stats` | Trauma burden |
+| 4–11 | ATLS slides | Purpose, evidence, critique |
+| 12–20 | Trial slides | Design, outcomes, status |
+| 21–22 | `implications`, `closing` | Take-home messages |
 
 ## Source
 

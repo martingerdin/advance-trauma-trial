@@ -71,8 +71,11 @@ function renderSlide(slide: Slide): HTMLElement {
                   (s) => `
                 <div class="stat-card" data-animate>
                   <span class="stat-value">${s.value}</span>
-                  <span class="stat-label">${s.label}</span>
-                  ${s.source ? `<span class="stat-source">${s.source}</span>` : ""}
+                  <span class="stat-label">${s.label}${
+                    s.source
+                      ? `<sup class="cite-ref" aria-label="Reference ${s.source}">${s.source}</sup>`
+                      : ""
+                  }</span>
                 </div>`
                 )
                 .join("")}
@@ -83,6 +86,15 @@ function renderSlide(slide: Slide): HTMLElement {
                 : ""
             }
           </div>
+          ${
+            slide.references?.length
+              ? `<ol class="slide-references" data-animate>
+                  ${slide.references
+                    .map((ref) => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`)
+                    .join("")}
+                </ol>`
+              : ""
+          }
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;

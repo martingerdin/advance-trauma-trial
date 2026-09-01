@@ -100,12 +100,29 @@ body {
 }
 
 .slide--title h1,
+.slide--title h2,
+.slide--section h1,
 .slide--section h2,
-.slide--closing h2 {
+.slide--closing h1,
+.slide--closing h2,
+.slide--title .display,
+.slide--section .section-title,
+.slide--closing .display {
   color: var(--text-inverse);
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: 0.03em;
+  border-bottom-color: color-mix(in srgb, var(--text-inverse) 30%, transparent);
+}
+
+.slide--title .subtitle,
+.slide--title .eyebrow,
+.slide--title .meta,
+.slide--section .section-subtitle,
+.slide--closing .meta,
+.slide--closing .closing-link,
+.slide--closing .closing-link a {
+  color: var(--text-inverse);
 }
 
 .slide--title .display {
@@ -128,7 +145,7 @@ body {
   font-size: 0.85em;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.8;
+  opacity: 0.88;
   margin-bottom: 1.5em;
 }
 
@@ -140,11 +157,12 @@ body {
 .slide--section .section-title {
   font-size: clamp(2.5rem, 7vw, 4.5rem);
   border: none;
+  border-bottom: none;
 }
 
 .slide--section .section-subtitle {
   font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-  opacity: 0.88;
+  opacity: 0.92;
   margin-top: 0.5em;
   font-weight: 400;
 }
@@ -159,7 +177,6 @@ body {
 }
 
 .slide--closing .closing-link a {
-  color: var(--text-inverse);
   text-decoration: none;
   border-bottom: 2px solid color-mix(in srgb, var(--text-inverse) 50%, transparent);
   transition: border-color 0.2s;
@@ -171,7 +188,7 @@ body {
 
 /* ── Content slides ───────────────────────────────────────────── */
 
-.slide h2 {
+.slide:not(.slide--title):not(.slide--section):not(.slide--closing) h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3.5vw, 2.2rem);
   color: var(--ink);
@@ -272,12 +289,39 @@ body {
 .stat-label {
   font-size: 0.9em;
   color: var(--text-muted);
+  line-height: 1.4;
 }
 
-.stat-source {
-  font-size: 0.75em;
-  color: var(--brand);
-  font-weight: 500;
+.cite-ref {
+  font-size: 0.65em;
+  font-weight: 600;
+  color: var(--brand-deep);
+  margin-left: 0.15em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.slide-references {
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  list-style: none;
+  counter-reset: none;
+  font-size: 0.72em;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.slide-references li {
+  display: flex;
+  gap: 0.35em;
+  padding: 0.2em 0;
+}
+
+.slide-references .ref-marker {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--brand-deep);
 }
 
 .inline-stats {

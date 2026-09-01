@@ -1,3 +1,8 @@
+export interface Reference {
+  id: string;
+  text: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
@@ -28,6 +33,7 @@ export interface Slide {
   imagePosition?: "left" | "right" | "background";
   cite?: string;
   footer?: string;
+  references?: Reference[];
 }
 
 export const slides: Slide[] = [
@@ -39,15 +45,6 @@ export const slides: Slide[] = [
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "Swedish ATLS Chapter — 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
-  },
-  {
-    id: "visual-abstract",
-    layout: "visual",
-    title: "How does ATLS training impact patient outcomes?",
-    image: "./advance-trauma-visual-abstract.png",
-    imageAlt:
-      "Visual abstract of the ADVANCE TRAUMA stepped-wedge cluster randomised trial in India",
-    imagePosition: "background",
   },
   {
     id: "section-problem",
@@ -67,6 +64,24 @@ export const slides: Slide[] = [
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
       { value: "~2M", label: "quality-related deaths", source: "3" },
       { value: "#1", label: "disease burden, ages 10–49", source: "4" },
+    ],
+    references: [
+      {
+        id: "1",
+        text: "Naghavi M et al. Global burden of 292 causes of death in 204 countries and territories, 1990–2023. Lancet. 2025.",
+      },
+      {
+        id: "2",
+        text: "Peterson C et al. Economic Cost of Injury — United States, 2019. MMWR Morb Mortal Wkly Rep. 2021.",
+      },
+      {
+        id: "3",
+        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
+      },
+      {
+        id: "4",
+        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries, 1990–2019. Lancet. 2020.",
+      },
     ],
   },
   {
