@@ -342,20 +342,65 @@ body {
 
 /* ── Quote ──────────────────────────────────────────────────────── */
 
+.slide-inner--quote {
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-inner--quote h2 {
+  flex-shrink: 0;
+}
+
 .quote-block {
-  border-left: 4px solid var(--brand);
-  padding: 1rem 0 1rem 1.5rem;
-  margin: 1rem 0;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--text);
-  line-height: 1.6;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: 0.5rem 0 0;
+  padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.75rem, 4vw, 2.75rem)
+    clamp(1.75rem, 4vw, 2.75rem) clamp(2.25rem, 5vw, 3.25rem);
+  background: linear-gradient(135deg, var(--surface-muted) 0%, #eef7fa 100%);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--brand);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(8, 40, 48, 0.06);
+}
+
+.quote-block::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.15em;
+  left: 0.35em;
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--brand) 25%, transparent);
+  pointer-events: none;
+}
+
+.quote-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
 }
 
 .quote-block cite {
+  position: relative;
+  z-index: 1;
   display: block;
-  margin-top: 1em;
-  font-size: 0.85em;
+  margin-top: 1.25em;
+  padding-top: 1em;
+  border-top: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
   font-style: normal;
+  font-weight: 500;
   color: var(--text-muted);
 }
 

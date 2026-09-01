@@ -102,10 +102,10 @@ function renderSlide(slide: Slide): HTMLElement {
 
     case "quote":
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--quote">
           <h2 data-animate>${slide.title}</h2>
           <blockquote class="quote-block" data-animate>
-            <p>${slide.body}</p>
+            <p class="quote-text">${slide.body}</p>
             ${slide.cite ? `<cite>${slide.cite}</cite>` : ""}
           </blockquote>
         </div>

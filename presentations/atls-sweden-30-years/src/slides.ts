@@ -36,6 +36,9 @@ export interface Slide {
   references?: Reference[];
 }
 
+const ATLS_MANUAL_CITE =
+  "American College of Surgeons. Advanced Trauma Life Support® (ATLS®) Student Course Manual. 11th ed. 2025.";
+
 export const slides: Slide[] = [
   {
     id: "title",
@@ -95,7 +98,7 @@ export const slides: Slide[] = [
     layout: "quote",
     title: "Purpose and content",
     body: "Emphasizes the rapid initial assessment and primary treatment of injured patients, starting at the time of injury and continuing through initial assessment, lifesaving intervention, reevaluation, stabilization, and, when needed, transfer to a trauma center.",
-    cite: "ATLS® Student Course Manual, 10th ed. 2018",
+    cite: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-spread",
@@ -113,9 +116,9 @@ export const slides: Slide[] = [
   {
     id: "atls-providers",
     layout: "quote",
-    title: "Impact on providers' knowledge and skills",
-    body: "There is abundant evidence that ATLS training improves the knowledge base, the psychomotor skills and their use in resuscitation, and the confidence and performance of doctors who have taken part in the program. The organization and procedural skills taught in the course are retained by course participants for at least 6 years.",
-    cite: "ATLS® Student Course Manual, 10th ed. 2018",
+    title: "Impact on clinicians' knowledge and skills",
+    body: "There is abundant evidence that ATLS training improves knowledge base, psychomotor skills, application of skills in resuscitation, and the confidence and performance of clinicians. The organizational and procedural skills taught in the course are retained by course participants for at least 6 years, which may be the most significant impact.",
+    cite: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-provider-evidence",
@@ -131,8 +134,8 @@ export const slides: Slide[] = [
     id: "atls-outcomes-claim",
     layout: "quote",
     title: "Impact on patient outcomes",
-    body: "ATLS training in a developing country has resulted in a decrease in injury mortality. Lower per capita rates of deaths from injuries are observed in areas where providers have ATLS training. In one study, a small trauma team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team.",
-    cite: "ATLS® Student Course Manual, 10th ed. 2018",
+    body: "ATLS training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
+    cite: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-outcomes-reviews",
