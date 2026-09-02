@@ -22,7 +22,8 @@ export interface Slide {
     | "design"
     | "implications"
     | "closing"
-    | "references";
+    | "references"
+    | "aim";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -103,7 +104,7 @@ export const slides: Slide[] = [
   },
   {
     id: "atls-spread",
-    layout: "two-col",
+    layout: "stats",
     title: "Spread and dissemination",
     image: "./training-illustration.png",
     imageAlt: "ATLS training session with instructor and students",
@@ -205,11 +206,9 @@ export const slides: Slide[] = [
   },
   {
     id: "aim",
-    layout: "bullets",
+    layout: "aim",
     title: "Aim",
-    bullets: [
-      "To compare the effects of ATLS® training with standard care on outcomes in adult trauma patients",
-    ],
+    body: "To compare the effects of ATLS® training with standard care on outcomes in adult trauma patients",
   },
   {
     id: "previous-work",

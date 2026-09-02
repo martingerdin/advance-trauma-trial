@@ -188,7 +188,7 @@ body {
 
 /* ── Content slides ───────────────────────────────────────────── */
 
-.slide:not(.slide--title):not(.slide--section):not(.slide--closing) h2 {
+.slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--aim) h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3.5vw, 2.2rem);
   color: var(--ink);
@@ -421,6 +421,45 @@ body {
   font-style: normal;
   font-weight: 500;
   color: var(--text-muted);
+}
+
+/* ── Aim ────────────────────────────────────────────────────────── */
+
+.slide-inner--aim {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.slide-inner--aim h2 {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.aim-statement {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: clamp(1.75rem, 3.8vw, 2.75rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  margin: 0.75rem auto 0;
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2rem);
+  max-width: 44ch;
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
 }
 
 /* ── Bullets ────────────────────────────────────────────────────── */

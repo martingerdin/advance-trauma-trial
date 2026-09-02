@@ -143,6 +143,15 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "aim":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--aim">
+          <h2 data-animate>${slide.title}</h2>
+          <p class="aim-statement" data-animate>${slide.body}</p>
+        </div>
+      `;
+      break;
+
     case "two-col":
       el.innerHTML = `
         <div class="slide-inner">
