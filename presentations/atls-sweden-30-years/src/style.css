@@ -1122,10 +1122,6 @@ body {
   fill: var(--text-muted);
 }
 
-.stepped-wedge-chart .wedge-axis-tick-label {
-  dominant-baseline: hanging;
-}
-
 .stepped-wedge-chart .wedge-axis-xtitle {
   font-size: 9px;
   letter-spacing: 0.04em;

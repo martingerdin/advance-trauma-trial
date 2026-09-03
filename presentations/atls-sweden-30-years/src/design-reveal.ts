@@ -35,13 +35,13 @@ const STAGES: Array<{
     id: "site",
     label: "One site",
     caption: "One hospital — standard care, ATLS training, then intervention",
-    holdMs: 4000,
+    holdMs: 4500,
   },
   {
     id: "batch",
     label: "First batch",
     caption: "First batch — five hospitals move together through months 0–13",
-    holdMs: 3000,
+    holdMs: 3500,
   },
   {
     id: "full",
@@ -421,7 +421,7 @@ export function startDesignReveal(
       setReveal(shortEnd, true);
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 6.5);
+    await scrubTimeline(0, shortEnd, token, 8);
   };
 
   const animateBatch = async (token: number, animateIn: boolean) => {
@@ -447,7 +447,7 @@ export function startDesignReveal(
       setReveal(shortEnd);
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 6.5);
+    await scrubTimeline(0, shortEnd, token, 8);
   };
 
   const animateFull = async (token: number, animateIn: boolean) => {
@@ -466,7 +466,7 @@ export function startDesignReveal(
       setReveal(fullEnd);
       return;
     }
-    await scrubTimeline(0, fullEnd, token, 9);
+    await scrubTimeline(0, fullEnd, token, 12);
   };
 
   const animateStage = async (stage: DesignRevealStage, token: number, animateIn: boolean) => {
