@@ -194,6 +194,35 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "outcomes": {
+      const items = slide.outcomes ?? [];
+      const isPrimary = Boolean(slide.body);
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : ""}">
+          <h2 data-animate>${slide.title}</h2>
+          ${
+            slide.body
+              ? `<p class="outcome-hero" data-animate>${slide.body}</p>`
+              : ""
+          }
+          <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
+            ${items
+              .map(
+                (item) => `
+              <article class="outcome-card" data-animate>
+                ${item.tag ? `<span class="outcome-card__tag">${item.tag}</span>` : ""}
+                <p class="outcome-card__title">${item.title}</p>
+                ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+    }
+
     case "two-col":
       el.innerHTML = `
         <div class="slide-inner">

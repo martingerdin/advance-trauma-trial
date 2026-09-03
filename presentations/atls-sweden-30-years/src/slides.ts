@@ -24,6 +24,12 @@ export interface Milestone {
   cite?: string;
 }
 
+export interface OutcomeItem {
+  title: string;
+  detail?: string;
+  tag?: string;
+}
+
 export interface Slide {
   id: string;
   layout:
@@ -42,7 +48,8 @@ export interface Slide {
     | "references"
     | "evidence"
     | "milestones"
-    | "aim";
+    | "aim"
+    | "outcomes";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -57,6 +64,7 @@ export interface Slide {
   references?: Reference[];
   evidence?: EvidenceItem[];
   milestones?: Milestone[];
+  outcomes?: OutcomeItem[];
   /** Which exported trial-design JSON to render on design slides. */
   designVariant?: "main" | "staircase";
 }
@@ -355,24 +363,52 @@ export const slides: Slide[] = [
   },
   {
     id: "primary-outcome",
-    layout: "bullets",
+    layout: "outcomes",
     title: "Primary outcome",
-    bullets: [
-      "30-day in-hospital mortality",
-      "Collected through medical records for patients admitted or discharged home",
-      "Collected through telephonic follow-up for patients transferred to another hospital",
+    body: "30-day in-hospital mortality",
+    outcomes: [
+      {
+        tag: "Medical records",
+        title: "Patients admitted or discharged home",
+        detail: "Extracted from hospital records during the initial admission",
+      },
+      {
+        tag: "Telephonic follow-up",
+        title: "Patients transferred to another hospital",
+        detail: "Collected by calling the patient, representative, or receiving hospital",
+      },
     ],
   },
   {
     id: "secondary-outcomes",
-    layout: "bullets",
+    layout: "outcomes",
     title: "Secondary outcomes",
-    bullets: [
-      "All-cause and in-hospital mortality at 24 h, 30 days, and 90 days",
-      "Length of stay in ED, ICU, and hospital",
-      "Return to work at 30 and 90 days",
-      "Adherence to ATLS principles (nested staircase design)",
-      "Quality of life (EQ-5D-5L) and disability (WHODAS 2.0) at 30 and 90 days",
+    outcomes: [
+      {
+        tag: "Mortality",
+        title: "All-cause and in-hospital mortality",
+        detail: "24 hours · 30 days · 90 days",
+      },
+      {
+        tag: "Length of stay",
+        title: "ED, ICU, and hospital stay",
+        detail: "From patient hospital records",
+      },
+      {
+        tag: "Recovery",
+        title: "Return to work",
+        detail: "30 and 90 days after arrival",
+      },
+      {
+        tag: "Process",
+        title: "Adherence to ATLS principles",
+        detail: "Nested staircase design",
+      },
+      {
+        tag: "Patient-reported",
+        title: "Quality of life and disability",
+        detail: "EQ-5D-5L · WHODAS 2.0 · 30 and 90 days",
+      },
     ],
   },
   {
