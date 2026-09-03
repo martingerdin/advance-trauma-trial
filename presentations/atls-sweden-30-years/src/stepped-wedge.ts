@@ -1,6 +1,6 @@
 import { trialDesign, type TrialDesignData, type TrialDesignSegment } from "./figure-data";
 
-export const MONTH_WIDTH = 8;
+export const MONTH_WIDTH = 22;
 export const LABEL_LEFT = 36;
 export const LABEL_RIGHT = 36;
 /** Top padding only — legend lives outside the SVG. */
@@ -84,7 +84,8 @@ export function focusViewBox(data: TrialDesignData, stage: DesignFocusStage): We
   if (stage === "site") {
     const barY = clusterY(1, clusters);
     const axisBottom = TOP_PAD + clusters * (ROW_HEIGHT + ROW_GAP) + AXIS_HEIGHT;
-    const padY = 10;
+    // Tight crop — phase callouts live in HTML above the SVG, not inside the viewBox.
+    const padY = 8;
     return { x: 0, y: barY - padY, w: width, h: axisBottom - barY + padY * 2 };
   }
 
@@ -97,21 +98,36 @@ export function focusViewBox(data: TrialDesignData, stage: DesignFocusStage): We
 
 /**
  * Size the SVG to the largest rectangle that fits in `container` while
- * preserving the current viewBox aspect — fills the well instead of
- * letterboxing a tiny chart inside a 100%×100% SVG.
+ * preserving the current viewBox aspect.
+ *
+ * `preferWidth` (one-site): fill container width first so a short crop
+ * stays a wide readable timeline instead of a tiny centered blob.
+ * `reserveBottom` / `reserveTop`: space taken by siblings inside the container.
  */
 export function fitSvgInContainer(
   svg: SVGSVGElement,
   box: WedgeViewBox,
-  container: HTMLElement
+  container: HTMLElement,
+  options: { preferWidth?: boolean; reserveTop?: number; reserveBottom?: number } = {}
 ): void {
   const style = getComputedStyle(container);
   const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
   const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+  const reserve = Math.max(options.reserveTop ?? 0, 0) + Math.max(options.reserveBottom ?? 0, 0);
   const cw = Math.max(container.clientWidth - padX, 1);
-  const ch = Math.max(container.clientHeight - padY, 1);
+  const ch = Math.max(container.clientHeight - padY - reserve, 1);
   if (!Number.isFinite(box.w) || !Number.isFinite(box.h) || box.w <= 0 || box.h <= 0) return;
-  const scale = Math.min(cw / box.w, ch / box.h);
+
+  let scale: number;
+  if (options.preferWidth) {
+    scale = cw / box.w;
+    // Flex wells can report a tiny height before layout settles — only clamp
+    // when there is a real vertical budget.
+    if (ch > 120 && box.h * scale > ch) scale = ch / box.h;
+  } else {
+    scale = Math.min(cw / box.w, ch / box.h);
+  }
+
   svg.style.width = `${Math.max(box.w * scale, 1)}px`;
   svg.style.height = `${Math.max(box.h * scale, 1)}px`;
   svg.style.flex = "0 0 auto";

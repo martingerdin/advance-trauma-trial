@@ -6,9 +6,7 @@ import {
   fitSvgInContainer,
   focusViewBox,
   lerpViewBox,
-  monthCenterPercent,
   setRevealMonth,
-  stageMonthSpan,
   syncAxisToStage,
   viewBoxString,
   type DesignFocusStage,
@@ -122,7 +120,8 @@ export function startDesignReveal(
   const stageBar = slideEl.querySelector<HTMLElement>(".wedge-stages") ?? slideEl;
   const mount = slideEl.querySelector<HTMLElement>("#wedge-mount");
   const legendMount = slideEl.querySelector<HTMLElement>(".wedge-legend-mount");
-  const phaseCallouts = mount?.querySelector<HTMLElement>(".wedge-phase-callouts") ?? null;
+  const phaseCallouts = slideEl.querySelector<HTMLElement>(".wedge-phase-callouts");
+  const chartStack = slideEl.querySelector<HTMLElement>(".wedge-chart-stack");
   const bullets = Array.from(slideEl.querySelectorAll<HTMLElement>(".design-bullets li"));
 
   let paused = false;
@@ -151,35 +150,43 @@ export function startDesignReveal(
   }
 
   const svg = createSteppedWedgeSvg(data);
+  // Keep phase callouts as the first child; chart follows below them.
   mount.querySelectorAll("svg").forEach((node) => node.remove());
-  mount.prepend(svg);
+  mount.appendChild(svg);
 
   const shortEnd = Math.max(data.parameters.totalMonths, 13);
   const fullEnd = data.xMax;
-  const siteMonths = stageMonthSpan(data, "site");
 
   const rows = () => Array.from(svg.querySelectorAll<SVGGElement>(".wedge-row"));
   const batchLabels = () => Array.from(svg.querySelectorAll<SVGTextElement>(".wedge-batch-label"));
 
+  /** Keep the phase grid the same width as the fitted SVG so columns line up with bars. */
   const layoutPhaseCallouts = () => {
-    if (!phaseCallouts || !mount) return;
-    const svgEl = mount.querySelector<SVGSVGElement>(".stepped-wedge-chart");
-    if (!svgEl) return;
+    if (!phaseCallouts) return;
+    const svgWidth = svg.getBoundingClientRect().width;
+    if (svgWidth <= 0) return;
+    phaseCallouts.style.width = `${svgWidth}px`;
+  };
 
-    const mountRect = mount.getBoundingClientRect();
-    const svgRect = svgEl.getBoundingClientRect();
-    if (svgRect.width <= 0 || svgRect.height <= 0) return;
+  const calloutReserve = () => {
+    if (!phaseCallouts || phaseCallouts.hidden) return 0;
+    return phaseCallouts.getBoundingClientRect().height + 8;
+  };
 
-    phaseCallouts.style.left = `${svgRect.left - mountRect.left}px`;
-    phaseCallouts.style.top = `${svgRect.top - mountRect.top}px`;
-    phaseCallouts.style.width = `${svgRect.width}px`;
-    phaseCallouts.style.height = `${Math.min(svgRect.height * 0.5, 104)}px`;
-
-    for (const phase of SITE_PHASES) {
-      const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phase.id}"]`);
-      if (!el) continue;
-      el.style.left = `${monthCenterPercent(phase.centerMonth, siteMonths)}%`;
+  const setCamera = (box: WedgeViewBox, stage?: DesignRevealStage) => {
+    svg.setAttribute("viewBox", viewBoxString(box));
+    const resolved = stage ?? ((svg.dataset.stage as DesignRevealStage) || undefined);
+    if (stage) {
+      svg.dataset.stage = stage;
+      syncAxisToStage(svg, data, stage);
+      chartStack?.setAttribute("data-stage", stage);
+      mount.dataset.stage = stage;
     }
+    fitSvgInContainer(svg, box, mount, {
+      preferWidth: true,
+      reserveTop: resolved === "site" ? calloutReserve() : 0,
+    });
+    layoutPhaseCallouts();
   };
 
   const phaseIsActive = (phaseId: SitePhaseId, month: number): boolean => {
@@ -226,12 +233,14 @@ export function startDesignReveal(
     if (phaseCallouts) {
       phaseCallouts.hidden = !showPhases;
       phaseCallouts.setAttribute("aria-hidden", showPhases ? "false" : "true");
-      if (showPhases) layoutPhaseCallouts();
+      if (showPhases) void phaseCallouts.offsetHeight; // force layout before measuring reserve
     }
     if (legendMount) {
       legendMount.hidden = showPhases;
       legendMount.setAttribute("aria-hidden", showPhases ? "true" : "false");
     }
+    // Re-fit after callouts show/hide so reserveTop stays accurate.
+    setCamera(parseViewBox(svg), activeStage ?? undefined);
     bullets.forEach((li, i) => {
       const stageIndex = STAGES.findIndex((s) => s.id === activeStage);
       li.classList.toggle("is-emphasis", !complete && stageIndex === i);
@@ -298,16 +307,6 @@ export function startDesignReveal(
       const idx = running.indexOf(controls);
       if (idx >= 0) running.splice(idx, 1);
     });
-  };
-
-  const setCamera = (box: WedgeViewBox, stage?: DesignRevealStage) => {
-    svg.setAttribute("viewBox", viewBoxString(box));
-    fitSvgInContainer(svg, box, mount);
-    layoutPhaseCallouts();
-    if (stage) {
-      svg.dataset.stage = stage;
-      syncAxisToStage(svg, data, stage);
-    }
   };
 
   // Start cropped to one site so the first paint is not the full 0–48 axis.

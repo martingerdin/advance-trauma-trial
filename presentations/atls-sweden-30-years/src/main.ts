@@ -303,7 +303,7 @@ function renderSlide(slide: Slide): HTMLElement {
             <div class="wedge-legend-mount"></div>
             <div class="wedge-chart-stack">
               <div class="wedge-container wedge-container--animation" id="wedge-mount">
-                <div class="wedge-phase-callouts wedge-phase-callouts--overlay" hidden aria-hidden="true">
+                <div class="wedge-phase-callouts" hidden aria-hidden="true">
                   <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
                     <figure class="wedge-phase__figure">
                       <img src="./patient-review-before-illustration.png" alt="" />
