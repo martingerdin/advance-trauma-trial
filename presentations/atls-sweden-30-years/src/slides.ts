@@ -37,7 +37,6 @@ export interface TeamGroup {
 
 export interface Funder {
   name: string;
-  detail: string;
 }
 
 export interface Slide {
@@ -468,15 +467,15 @@ export const slides: Slide[] = [
         members: [
           { name: "Martin Gerdin Wärnberg", role: "Principal Investigator" },
           { name: "Anna Olofsson", role: "Trial Statistician" },
-          { name: "Johanna Berg, Lovisa Strömmer, Li Felländer-Tsai", role: "TMG members" },
+          { name: "Lovisa Strömmer, Li Felländer-Tsai, Johanna Berg", role: "TMG members" },
         ],
       },
       {
-        label: "The George Institute",
+        label: "The George Institute for Global Health",
         location: "New Delhi, India",
         members: [
-          { name: "Vivekanand Jha", role: "Co-principal Investigator" },
-          { name: "Nobhojit Roy, Abhinav Bassi, Debojit Basak", role: "Trial operations" },
+          { name: "Vivekanand Jha, Nobhojit Roy", role: "Co-principal Investigators" },
+          { name: "Prashant Kharat, Debojit Basak, Monty Khajanchi, Abhinav Bassi", role: "Trial operations" },
           { name: "Hospital investigators & CRCs", role: "Sites across India" },
         ],
       },
@@ -498,22 +497,10 @@ export const slides: Slide[] = [
     title: "Funding",
     body: "Current support for ADVANCE TRAUMA",
     funders: [
-      {
-        name: "Swedish Research Council",
-        detail: "Reg. no. 2023-03128",
-      },
-      {
-        name: "Laerdal Foundation",
-        detail: "Reg. no. 2023-0297",
-      },
-      {
-        name: "Region Stockholm",
-        detail: "Regional research funding",
-      },
-      {
-        name: "Swedish Society of Medicine",
-        detail: "Svenska Läkaresällskapet",
-      },
+      { name: "Swedish Research Council" },
+      { name: "Laerdal Foundation" },
+      { name: "Region Stockholm" },
+      { name: "Swedish Society of Medicine" },
     ],
     footer:
       "Not yet fully funded — additional support is needed to complete the trial through 2028–2029.",
