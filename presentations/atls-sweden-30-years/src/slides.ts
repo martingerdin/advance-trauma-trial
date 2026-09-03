@@ -37,7 +37,6 @@ export interface TeamGroup {
 
 export interface Funder {
   name: string;
-  detail: string;
 }
 
 export interface Slide {
@@ -498,22 +497,10 @@ export const slides: Slide[] = [
     title: "Funding",
     body: "Current support for ADVANCE TRAUMA",
     funders: [
-      {
-        name: "Swedish Research Council",
-        detail: "Reg. no. 2023-03128",
-      },
-      {
-        name: "Laerdal Foundation",
-        detail: "Reg. no. 2023-0297",
-      },
-      {
-        name: "Region Stockholm",
-        detail: "Regional research funding",
-      },
-      {
-        name: "Swedish Society of Medicine",
-        detail: "Svenska Läkaresällskapet",
-      },
+      { name: "Swedish Research Council" },
+      { name: "Laerdal Foundation" },
+      { name: "Region Stockholm" },
+      { name: "Swedish Society of Medicine" },
     ],
     footer:
       "Not yet fully funded — additional support is needed to complete the trial through 2028–2029.",

@@ -458,7 +458,6 @@ function renderSlide(slide: Slide): HTMLElement {
                 (f) => `
               <article class="funding-card" data-animate>
                 <p class="funding-card__name">${f.name}</p>
-                <p class="funding-card__detail">${f.detail}</p>
               </article>`
               )
               .join("")}
