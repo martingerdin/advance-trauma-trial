@@ -468,15 +468,15 @@ export const slides: Slide[] = [
         members: [
           { name: "Martin Gerdin Wärnberg", role: "Principal Investigator" },
           { name: "Anna Olofsson", role: "Trial Statistician" },
-          { name: "Johanna Berg, Lovisa Strömmer, Li Felländer-Tsai", role: "TMG members" },
+          { name: "Lovisa Strömmer, Li Felländer-Tsai, Johanna Berg", role: "TMG members" },
         ],
       },
       {
-        label: "The George Institute",
+        label: "The George Institute for Global Health",
         location: "New Delhi, India",
         members: [
-          { name: "Vivekanand Jha", role: "Co-principal Investigator" },
-          { name: "Nobhojit Roy, Abhinav Bassi, Debojit Basak", role: "Trial operations" },
+          { name: "Vivekanand Jha, Nobhojit Roy", role: "Co-principal Investigators" },
+          { name: "Prashant Kharat, Debojit Basak, Monty Khajanchi, Abhinav Bassi", role: "Trial operations" },
           { name: "Hospital investigators & CRCs", role: "Sites across India" },
         ],
       },
