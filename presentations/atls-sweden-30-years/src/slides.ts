@@ -42,12 +42,14 @@ export interface Slide {
     | "references"
     | "evidence"
     | "milestones"
-    | "aim";
+    | "aim"
+    | "presenter";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
   body?: string;
   bullets?: string[];
+  affiliations?: string[];
   stats?: Stat[];
   image?: string;
   imageAlt?: string;
@@ -73,6 +75,22 @@ export const slides: Slide[] = [
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "Swedish ATLS Chapter — 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
+  },
+  {
+    id: "presenter",
+    layout: "presenter",
+    title: "Martin Gerdin Wärnberg",
+    subtitle: "MD, PhD",
+    eyebrow: "Speaker",
+    bullets: [
+      "Principal Investigator, ADVANCE TRAUMA",
+      "Associate Professor of Clinical Epidemiology, Karolinska Institutet",
+      "Resident in Anaesthesia and Intensive Care, Karolinska University Hospital",
+    ],
+    affiliations: [
+      "Department of Global Public Health, Karolinska Institutet, Stockholm",
+      "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
+    ],
   },
   {
     id: "section-problem",

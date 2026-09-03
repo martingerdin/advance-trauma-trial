@@ -190,9 +190,105 @@ body {
   border-color: var(--text-inverse);
 }
 
+/* ── Presenter introduction ───────────────────────────────────── */
+
+.slide--presenter {
+  background: var(--surface);
+}
+
+.slide-inner--presenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  max-width: 1100px;
+}
+
+.slide--presenter .eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.75em;
+}
+
+.presenter-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.presenter-degrees {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  color: var(--text-muted);
+  margin: 0.35em 0 1.75em;
+}
+
+.presenter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.presenter-heading {
+  font-family: var(--font-display);
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  border: none;
+  margin: 0 0 0.85em;
+  padding: 0;
+}
+
+.presenter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.presenter-list li {
+  position: relative;
+  padding: 0.55em 0 0.55em 1.35em;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.presenter-list li:last-child {
+  border-bottom: none;
+}
+
+.presenter-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05em;
+  width: 8px;
+  height: 8px;
+  background: var(--brand);
+  border-radius: 50%;
+}
+
+@media (max-width: 800px) {
+  .presenter-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 /* ── Content slides ───────────────────────────────────────────── */
 
-.slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--aim) h2 {
+.slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--aim):not(.slide--presenter) h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3.5vw, 2.2rem);
   color: var(--ink);

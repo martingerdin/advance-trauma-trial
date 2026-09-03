@@ -56,6 +56,38 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "presenter":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--presenter">
+          ${slide.eyebrow ? `<p class="eyebrow" data-animate>${slide.eyebrow}</p>` : ""}
+          <h1 class="presenter-name" data-animate>${slide.title}</h1>
+          ${slide.subtitle ? `<p class="presenter-degrees" data-animate>${slide.subtitle}</p>` : ""}
+          <div class="presenter-grid">
+            ${
+              slide.bullets?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Positions</h2>
+                    <ul class="presenter-list">
+                      ${slide.bullets.map((b) => `<li>${b}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+            ${
+              slide.affiliations?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Affiliations</h2>
+                    <ul class="presenter-list">
+                      ${slide.affiliations.map((a) => `<li>${a}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+          </div>
+        </div>
+      `;
+      break;
+
     case "closing":
       el.innerHTML = `
         <div class="slide-inner slide-inner--center">
