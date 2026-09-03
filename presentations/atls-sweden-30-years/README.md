@@ -63,3 +63,13 @@ Typed accessors are in `src/figure-data.ts`. Regenerate after changing systemati
 ```bash
 Rscript export-figure-data.R
 ```
+
+### Interactive forest plot
+
+On the `#atls-forest` slide you can:
+
+- Click a study row to include or exclude it
+- Use the chips to show all studies or only one study design
+- Watch the pooled diamond, CI, and I² update live
+
+When every study is included, the plot shows the R-exported REML pooled estimate (same as the protocol). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).

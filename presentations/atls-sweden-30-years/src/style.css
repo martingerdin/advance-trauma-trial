@@ -532,7 +532,7 @@ body {
 }
 
 .forest-container {
-  margin-top: 0.6rem;
+  margin-top: 0.35rem;
   background: var(--surface-muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -540,10 +540,58 @@ body {
   overflow: hidden;
 }
 
+.forest-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+}
+
+.forest-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+}
+
+.forest-chip {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.38rem 0.65rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.forest-chip:hover {
+  border-color: var(--brand);
+  color: var(--brand-darker);
+}
+
+.forest-chip.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--text-inverse);
+}
+
+.forest-hint {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.forest-footer {
+  margin-top: 0.15rem;
+}
+
 .forest-plot-chart {
   width: 100%;
   height: auto;
-  max-height: min(62vh, 520px);
+  max-height: min(58vh, 500px);
 }
 
 .forest-plot-chart .forest-header,
@@ -558,10 +606,27 @@ body {
 .forest-plot-chart .forest-study,
 .forest-plot-chart .forest-n,
 .forest-plot-chart .forest-effect,
-.forest-plot-chart .axis-label {
+.forest-plot-chart .axis-label,
+.forest-plot-chart .forest-empty {
   font-family: var(--font-body);
   font-size: 8.5px;
   fill: var(--text);
+}
+
+.forest-row--interactive {
+  cursor: pointer;
+}
+
+.forest-row--interactive:hover .forest-row-hit {
+  fill: rgba(26, 157, 187, 0.08);
+}
+
+.forest-row.is-excluded {
+  opacity: 0.28;
+}
+
+.forest-row.is-excluded .forest-study {
+  text-decoration: line-through;
 }
 
 .forest-square,
