@@ -24,6 +24,22 @@ export interface Milestone {
   cite?: string;
 }
 
+export interface TeamMember {
+  name: string;
+  role: string;
+}
+
+export interface TeamGroup {
+  label: string;
+  location: string;
+  members: TeamMember[];
+}
+
+export interface Funder {
+  name: string;
+  detail: string;
+}
+
 export interface Slide {
   id: string;
   layout:
@@ -35,18 +51,23 @@ export interface Slide {
     | "two-col"
     | "visual"
     | "design"
+    | "design-animation"
     | "forest"
     | "implications"
     | "closing"
     | "references"
     | "evidence"
     | "milestones"
-    | "aim";
+    | "aim"
+    | "presenter"
+    | "team"
+    | "funding";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
   body?: string;
   bullets?: string[];
+  affiliations?: string[];
   stats?: Stat[];
   image?: string;
   imageAlt?: string;
@@ -56,6 +77,10 @@ export interface Slide {
   references?: Reference[];
   evidence?: EvidenceItem[];
   milestones?: Milestone[];
+  teamGroups?: TeamGroup[];
+  funders?: Funder[];
+  /** Which exported trial-design JSON to render on design slides. */
+  designVariant?: "main" | "staircase";
 }
 
 const ATLS_MANUAL_CITE =
@@ -70,6 +95,23 @@ export const slides: Slide[] = [
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "Swedish ATLS Chapter — 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
+  },
+  {
+    id: "presenter",
+    layout: "presenter",
+    title: "Martin Gerdin Wärnberg",
+    subtitle: "MD, PhD",
+    eyebrow: "Speaker",
+    bullets: [
+      "Principal Investigator, ADVANCE TRAUMA",
+      "Associate Professor of Clinical Epidemiology, Karolinska Institutet",
+      "Specialist Physician in Anaesthesia and Intensive Care, Karolinska University Hospital",
+    ],
+    affiliations: [
+      "Department of Global Public Health, Karolinska Institutet, Stockholm",
+      "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
+    ],
+    body: "Nothing to declare",
   },
   {
     id: "section-problem",
@@ -260,19 +302,19 @@ export const slides: Slide[] = [
     layout: "forest",
     title: "Updated systematic review",
   },
-  {
-    id: "atls-critique",
-    layout: "bullets",
-    title: "Critique",
-    bullets: [
-      "Costly",
-      "Perpetuates theories despite evidence of the contrary",
-      "Not adapted to modern trauma care",
-      "Not adaptable to local circumstances",
-      "Fixed didactic nature",
-    ],
-    cite: "Shilston & Turner 2022; Wiles 2015",
-  },
+  // {
+  //   id: "atls-critique",
+  //   layout: "bullets",
+  //   title: "Critique",
+  //   bullets: [
+  //     "Costly",
+  //     "Perpetuates theories despite evidence of the contrary",
+  //     "Not adapted to modern trauma care",
+  //     "Not adaptable to local circumstances",
+  //     "Fixed didactic nature",
+  //   ],
+  //   cite: "Shilston & Turner 2022; Wiles 2015",
+  // },
   {
     id: "section-trial",
     layout: "section",
@@ -325,11 +367,18 @@ export const slides: Slide[] = [
     id: "design",
     layout: "design",
     title: "Study design",
+    designVariant: "main",
     bullets: [
       "Batched stepped-wedge cluster randomised trial",
       "30 hospitals · 6 batches · 5 sequences · 13 months in trial",
       "Conducted in India — ongoing collaborations >10 years; ATLS not yet standard",
     ],
+  },
+  {
+    id: "design-animation",
+    layout: "design-animation",
+    title: "How the trial unfolds",
+    designVariant: "main",
   },
   {
     id: "intervention",
@@ -366,6 +415,17 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "design-staircase",
+    layout: "design",
+    title: "Nested staircase design",
+    designVariant: "staircase",
+    bullets: [
+      "Adherence measured around each hospital’s transition to ATLS®",
+      "Pre- and post-transition staircase periods nested in the stepped wedge",
+      "Lets us compare process adherence before and after training within clusters",
+    ],
+  },
+  {
     id: "sample-size",
     layout: "stats",
     title: "Sample size",
@@ -395,6 +455,68 @@ export const slides: Slide[] = [
     id: "implications",
     layout: "implications",
     title: "Implications",
+  },
+  {
+    id: "team",
+    layout: "team",
+    title: "The team",
+    subtitle: "An international collaboration",
+    teamGroups: [
+      {
+        label: "Karolinska Institutet",
+        location: "Stockholm, Sweden",
+        members: [
+          { name: "Martin Gerdin Wärnberg", role: "Principal Investigator" },
+          { name: "Anna Olofsson", role: "Trial Statistician" },
+          { name: "Johanna Berg, Lovisa Strömmer, Li Felländer-Tsai", role: "TMG members" },
+        ],
+      },
+      {
+        label: "The George Institute",
+        location: "New Delhi, India",
+        members: [
+          { name: "Vivekanand Jha", role: "Co-principal Investigator" },
+          { name: "Nobhojit Roy, Abhinav Bassi, Debojit Basak", role: "Trial operations" },
+          { name: "Hospital investigators & CRCs", role: "Sites across India" },
+        ],
+      },
+      {
+        label: "Methods partners",
+        location: "Birmingham · Melbourne",
+        members: [
+          { name: "Karla Hemming", role: "University of Birmingham" },
+          { name: "James Martin", role: "University of Birmingham" },
+          { name: "Jessica Kasza", role: "Monash University" },
+        ],
+      },
+    ],
+    footer: "Full team and site list at advancetrauma.info",
+  },
+  {
+    id: "funding",
+    layout: "funding",
+    title: "Funding",
+    body: "Current support for ADVANCE TRAUMA",
+    funders: [
+      {
+        name: "Swedish Research Council",
+        detail: "Reg. no. 2023-03128",
+      },
+      {
+        name: "Laerdal Foundation",
+        detail: "Reg. no. 2023-0297",
+      },
+      {
+        name: "Region Stockholm",
+        detail: "Regional research funding",
+      },
+      {
+        name: "Swedish Society of Medicine",
+        detail: "Svenska Läkaresällskapet",
+      },
+    ],
+    footer:
+      "Not yet fully funded — additional support is needed to complete the trial through 2028–2029.",
   },
   {
     id: "closing",

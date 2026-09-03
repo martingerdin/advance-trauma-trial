@@ -1,12 +1,15 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
-import { createSteppedWedgeSvg } from "./stepped-wedge";
+import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
+import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
+import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
 import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
 const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
+let designReveal: DesignRevealControls | null = null;
 
 const slidesEl = document.getElementById("slides")!;
 const counterEl = document.getElementById("slide-counter")!;
@@ -50,6 +53,46 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner slide-inner--center">
           <h2 class="section-title" data-animate>${slide.title}</h2>
           ${slide.subtitle ? `<p class="section-subtitle" data-animate>${slide.subtitle}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "presenter":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--presenter">
+          ${slide.eyebrow ? `<p class="eyebrow" data-animate>${slide.eyebrow}</p>` : ""}
+          <h1 class="presenter-name" data-animate>${slide.title}</h1>
+          ${slide.subtitle ? `<p class="presenter-degrees" data-animate>${slide.subtitle}</p>` : ""}
+          <div class="presenter-grid">
+            ${
+              slide.bullets?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Positions</h2>
+                    <ul class="presenter-list">
+                      ${slide.bullets.map((b) => `<li>${b}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+            ${
+              slide.affiliations?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Affiliations</h2>
+                    <ul class="presenter-list">
+                      ${slide.affiliations.map((a) => `<li>${a}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+          </div>
+          ${
+            slide.body
+              ? `<section class="presenter-disclosure" data-animate>
+                  <h2 class="presenter-heading">Conflicts of interest</h2>
+                  <p class="presenter-disclosure__text">${slide.body}</p>
+                </section>`
+              : ""
+          }
         </div>
       `;
       break;
@@ -280,14 +323,77 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "forest":
+    case "design-animation": {
+      const stages = designRevealStageMeta();
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--design-animation">
           <h2 data-animate>${slide.title}</h2>
-          <div id="forest-mount"></div>
+          <div class="wedge-panel wedge-panel--solo" data-animate>
+            <div class="wedge-toolbar">
+              <div class="wedge-stages" role="list" aria-label="Design reveal stages">
+                ${stages
+                  .map(
+                    (s) =>
+                      `<button type="button" class="wedge-stage" data-stage="${s.id}" role="listitem">${s.label}</button>`
+                  )
+                  .join("")}
+              </div>
+              <button type="button" class="wedge-play-pause" aria-label="Pause animation" title="Pause (Space)"></button>
+            </div>
+            <p class="wedge-caption" aria-live="polite"></p>
+            <div class="wedge-legend-mount"></div>
+            <div class="wedge-chart-stack">
+              <div class="wedge-container wedge-container--animation" id="wedge-mount">
+                <div class="wedge-phase-callouts" hidden aria-hidden="true">
+                  <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-before-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Standard care</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="transition" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./training-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Training</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-after-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Intervention</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       `;
       break;
+    }
+
+    case "forest": {
+      const pooled = metaAnalysis.pooled;
+      el.innerHTML = `
+        <div class="slide-inner">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="forest-container" data-animate id="forest-mount"></div>
+          <p class="slide-footer" data-animate>
+            Random-effects ${metaAnalysis.measure} ${pooled.rrFormatted}
+            (95% CI ${pooled.ciFormatted.replace("; ", "–")});
+            I² ${(pooled.i2Rounded * 100).toFixed(0)}%;
+            ${pooled.numberOfStudies} observational studies
+          </p>
+        </div>
+      `;
+      break;
+    }
 
     case "implications":
       el.innerHTML = `
@@ -306,6 +412,61 @@ function renderSlide(slide: Slide): HTMLElement {
         </div>
       `;
       break;
+
+    case "team":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--team">
+          <header class="team-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="team-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="team-grid" data-animate-group>
+            ${(slide.teamGroups ?? [])
+              .map(
+                (group) => `
+              <article class="team-card" data-animate>
+                <h3 class="team-card__label">${group.label}</h3>
+                <p class="team-card__location">${group.location}</p>
+                <ul class="team-card__members">
+                  ${group.members
+                    .map(
+                      (m) => `
+                    <li>
+                      <span class="team-member__name">${m.name}</span>
+                      <span class="team-member__role">${m.role}</span>
+                    </li>`
+                    )
+                    .join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "funding":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--funding">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="funding-intro" data-animate>${slide.body}</p>` : ""}
+          <div class="funding-grid" data-animate-group>
+            ${(slide.funders ?? [])
+              .map(
+                (f) => `
+              <article class="funding-card" data-animate>
+                <p class="funding-card__name">${f.name}</p>
+                <p class="funding-card__detail">${f.detail}</p>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="funding-note" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
   }
 
   return el;
@@ -319,9 +480,15 @@ function mountSlides(): void {
     el.setAttribute("aria-hidden", i === currentIndex ? "false" : "true");
     slidesEl.appendChild(el);
 
-    if (slide.layout === "design") {
+    if (slide.layout === "design" || slide.layout === "design-animation") {
       const mount = el.querySelector("#wedge-mount");
-      if (mount) mount.appendChild(createSteppedWedgeSvg());
+      if (mount) {
+        if (slide.layout === "design") {
+          const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
+          mount.appendChild(createSteppedWedgeSvg(data));
+        }
+        // design-animation chart is mounted by startDesignReveal.
+      }
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
@@ -351,27 +518,52 @@ function animateSlideIn(slideEl: HTMLElement): void {
     { duration: 0.55, delay: stagger(0.08), ease: [0.22, 1, 0.36, 1] }
   );
 
-  if (slideEl.dataset.layout === "design") {
-    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".wedge-row"));
-    animate(
-      rows,
-      { opacity: [0, 1], transform: ["translateX(-20px)", "translateX(0)"] } as Record<string, unknown>,
-      { duration: 0.4, delay: stagger(0.02, { startDelay: 0.3 }), ease: "easeOut" }
-    );
+  if (slideEl.dataset.layout === "design" || slideEl.dataset.layout === "design-animation") {
+    const slide = slides[currentIndex];
+    designReveal?.cancel();
+    designReveal = null;
 
-    const segments = Array.from(slideEl.querySelectorAll<SVGRectElement>(".wedge-segment"));
-    segments.forEach((seg) => {
-      seg.style.transformOrigin = "left center";
-    });
-    animate(
-      segments,
-      { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
-      {
-        duration: 0.35,
-        delay: stagger(0.008, { startDelay: 0.4 }),
-        ease: [0.22, 1, 0.36, 1],
+    if (slide?.layout === "design-animation") {
+      designReveal = startDesignReveal(slideEl, trialDesign);
+    } else if (slide?.layout === "design") {
+      const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
+      const rows = Array.from(slideEl.querySelectorAll<SVGGElement>(".wedge-row"));
+      const svg = slideEl.querySelector<SVGSVGElement>(".stepped-wedge-chart");
+      if (svg) {
+        svg.setAttribute("viewBox", viewBoxString(focusViewBox(data, "full")));
+        syncAxisToStage(svg, data, "full");
+        setRevealMonth(svg, data.xMax);
       }
-    );
+      rows.forEach((row) => {
+        row.style.opacity = "1";
+        row.setAttribute("opacity", "1");
+      });
+      slideEl.querySelectorAll<SVGTextElement>(".wedge-batch-label").forEach((label) => {
+        label.setAttribute("opacity", "1");
+      });
+      animate(
+        rows,
+        { opacity: [0, 1], transform: ["translateX(-20px)", "translateX(0)"] } as Record<string, unknown>,
+        { duration: 0.4, delay: stagger(0.02, { startDelay: 0.3 }), ease: "easeOut" }
+      );
+
+      const segments = Array.from(slideEl.querySelectorAll<SVGRectElement>(".wedge-segment"));
+      segments.forEach((seg) => {
+        seg.style.transformOrigin = "left center";
+      });
+      animate(
+        segments,
+        { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+        {
+          duration: 0.35,
+          delay: stagger(0.008, { startDelay: 0.4 }),
+          ease: [0.22, 1, 0.36, 1],
+        }
+      );
+    }
+  } else {
+    designReveal?.cancel();
+    designReveal = null;
   }
 
   if (slideEl.dataset.layout === "forest") {
@@ -394,6 +586,8 @@ function animateSlideIn(slideEl: HTMLElement): void {
 function goTo(index: number): void {
   if (isAnimating || index < 0 || index >= slides.length || index === currentIndex) return;
   isAnimating = true;
+  designReveal?.cancel();
+  designReveal = null;
 
   const current = slidesEl.children[currentIndex] as HTMLElement;
   const next = slidesEl.children[index] as HTMLElement;
@@ -439,6 +633,14 @@ function initFromHash(): void {
 
 function setupKeyboard(): void {
   document.addEventListener("keydown", (e) => {
+    const onStagedDesign = slides[currentIndex]?.layout === "design-animation";
+
+    if (e.key === " " && onStagedDesign && designReveal) {
+      e.preventDefault();
+      designReveal.toggle();
+      return;
+    }
+
     if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
       e.preventDefault();
       next();
