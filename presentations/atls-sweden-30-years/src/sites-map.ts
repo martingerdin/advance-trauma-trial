@@ -187,6 +187,37 @@ export async function mountSitesMap(container: HTMLElement): Promise<SitesMapCon
     markers.push(marker);
   }
 
+  // Count badge for cities with more than one participating cluster.
+  const sitesByCity = new Map<string, ParticipatingSite[]>();
+  for (const site of participatingSites) {
+    const key = `${site.city}|${site.state}`;
+    const group = sitesByCity.get(key);
+    if (group) group.push(site);
+    else sitesByCity.set(key, [site]);
+  }
+
+  for (const sites of sitesByCity.values()) {
+    if (sites.length < 2) continue;
+
+    const lat = sites.reduce((sum, s) => sum + s.location.lat, 0) / sites.length;
+    const lng = sites.reduce((sum, s) => sum + s.location.lng, 0) / sites.length;
+    const labelSize = 22;
+    const cityLabel = `${sites[0].city} (${sites.length} clusters)`;
+
+    L.marker([lat, lng], {
+      title: cityLabel,
+      interactive: false,
+      keyboard: false,
+      zIndexOffset: 500,
+      icon: L.divIcon({
+        className: "sites-map__city-count",
+        html: `<span class="sites-map__city-count-badge" aria-hidden="true">${sites.length}</span>`,
+        iconSize: [labelSize, labelSize],
+        iconAnchor: [labelSize / 2, labelSize + markerSize / 2 + 2],
+      }),
+    }).addTo(map);
+  }
+
   if (bounds.isValid()) {
     map.fitBounds(bounds, { padding: [mapPad, mapPad] });
   } else {
