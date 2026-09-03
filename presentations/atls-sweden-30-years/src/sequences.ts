@@ -23,6 +23,7 @@ const STRIP_COLORS: Record<string, string> = {
 };
 
 const BOX_FILL = "#FCCE94";
+const LINE = "#6b7a80";
 
 export function implementationSequences(
   data: TrialDesignData = trialDesign,
@@ -66,6 +67,14 @@ function monthPhases(seq: ImplementationSequence): string[] {
   return months;
 }
 
+function svgEl(tag: string, attrs: Record<string, string | number> = {}): SVGElement {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [key, value] of Object.entries(attrs)) {
+    el.setAttribute(key, String(value));
+  }
+  return el;
+}
+
 function flowBox(text: string, kind: "primary" | "side" = "primary"): HTMLElement {
   const box = document.createElement("div");
   box.className = `consort-box consort-box--${kind}`;
@@ -100,11 +109,6 @@ function sequenceColumn(seq: ImplementationSequence, totalMonths: number): HTMLE
   col.className = "consort-sequence";
   col.dataset.sequence = String(seq.sequence);
 
-  const drop = document.createElement("div");
-  drop.className = "consort-sequence__drop";
-  drop.setAttribute("aria-hidden", "true");
-  col.appendChild(drop);
-
   const title = document.createElement("p");
   title.className = "consort-sequence__title";
   title.textContent = `Sequence ${seq.sequence}`;
@@ -130,6 +134,120 @@ function sequenceColumn(seq: ImplementationSequence, totalMonths: number): HTMLE
   return col;
 }
 
+/** Mid stem with side branch + arrow into the exclusion box (SVG for continuous joins). */
+function createMidConnectors(): SVGSVGElement {
+  const w = 200;
+  const h = 160;
+  const cx = 20;
+  const midY = h / 2;
+  const branchEnd = 78;
+  const svg = svgEl("svg", {
+    class: "consort-mid-svg",
+    viewBox: `0 0 ${w} ${h}`,
+    preserveAspectRatio: "none",
+    "aria-hidden": "true",
+  }) as SVGSVGElement;
+
+  svg.appendChild(
+    svgEl("line", {
+      x1: cx,
+      y1: 0,
+      x2: cx,
+      y2: h,
+      stroke: LINE,
+      "stroke-width": 2,
+    })
+  );
+  svg.appendChild(
+    svgEl("line", {
+      x1: cx,
+      y1: midY,
+      x2: branchEnd,
+      y2: midY,
+      stroke: LINE,
+      "stroke-width": 2,
+    })
+  );
+  // Arrowhead flush with branch tip
+  svg.appendChild(
+    svgEl("polygon", {
+      points: `${branchEnd - 1},${midY - 6} ${branchEnd + 10},${midY} ${branchEnd - 1},${midY + 6}`,
+      fill: LINE,
+    })
+  );
+  return svg;
+}
+
+/** Fan from randomised box into sequence columns (SVG for continuous T-junctions). */
+function createFanSvg(nSeq: number): SVGSVGElement {
+  const w = 1000;
+  const stemH = 28;
+  const dropH = 36;
+  const h = stemH + dropH;
+  const colW = w / nSeq;
+  const railY = stemH;
+  const arrowH = 10;
+  const arrowHalf = 6;
+  const tipY = h - 1;
+
+  const svg = svgEl("svg", {
+    class: "consort-fan-svg",
+    viewBox: `0 0 ${w} ${h}`,
+    preserveAspectRatio: "none",
+    "aria-hidden": "true",
+  }) as SVGSVGElement;
+
+  // Stem from randomised (centre) down to rail
+  svg.appendChild(
+    svgEl("line", {
+      x1: w / 2,
+      y1: 0,
+      x2: w / 2,
+      y2: railY,
+      stroke: LINE,
+      "stroke-width": 2,
+    })
+  );
+
+  // Horizontal rail across column centres
+  const x0 = colW / 2;
+  const x1 = w - colW / 2;
+  svg.appendChild(
+    svgEl("line", {
+      x1: x0,
+      y1: railY,
+      x2: x1,
+      y2: railY,
+      stroke: LINE,
+      "stroke-width": 2,
+    })
+  );
+
+  for (let i = 0; i < nSeq; i++) {
+    const x = colW * (i + 0.5);
+    // Drop from rail to just above arrow tip
+    svg.appendChild(
+      svgEl("line", {
+        x1: x,
+        y1: railY,
+        x2: x,
+        y2: tipY - arrowH + 2,
+        stroke: LINE,
+        "stroke-width": 2,
+      })
+    );
+    // Arrowhead overlapping the shaft end
+    svg.appendChild(
+      svgEl("polygon", {
+        points: `${x - arrowHalf},${tipY - arrowH} ${x + arrowHalf},${tipY - arrowH} ${x},${tipY}`,
+        fill: LINE,
+      })
+    );
+  }
+
+  return svg;
+}
+
 /**
  * CONSORT-style cluster flow: assessed → excluded side branch → randomised →
  * five implementation-sequence strips (month cells).
@@ -137,9 +255,11 @@ function sequenceColumn(seq: ImplementationSequence, totalMonths: number): HTMLE
 export function createSequencesChart(data: TrialDesignData = trialDesign): HTMLElement {
   const sequences = implementationSequences(data);
   const totalMonths = sequences[0]?.totalMonths ?? data.parameters.totalMonths;
+  const nSeq = sequences.length;
 
   const chart = document.createElement("div");
   chart.className = "consort-flow";
+  chart.style.setProperty("--consort-seqs", String(nSeq));
   chart.setAttribute(
     "aria-label",
     "Cluster flow: hospitals are assessed for eligibility, then randomised to one of five implementation sequences"
@@ -152,18 +272,16 @@ export function createSequencesChart(data: TrialDesignData = trialDesign): HTMLE
   const mid = document.createElement("div");
   mid.className = "consort-flow__mid";
 
-  const stem = document.createElement("div");
-  stem.className = "consort-flow__stem";
-  stem.setAttribute("aria-hidden", "true");
-  const stemLine = document.createElement("div");
-  stemLine.className = "consort-flow__stem-line";
-  const stemBranch = document.createElement("div");
-  stemBranch.className = "consort-flow__stem-branch";
-  stem.append(stemLine, stemBranch);
-  mid.appendChild(stem);
+  const connectors = document.createElement("div");
+  connectors.className = "consort-flow__mid-connectors";
+  connectors.setAttribute("aria-hidden", "true");
+  connectors.appendChild(createMidConnectors());
+  mid.appendChild(connectors);
 
-  const exclusion = exclusionBox();
-  mid.appendChild(exclusion);
+  const exclWrap = document.createElement("div");
+  exclWrap.className = "consort-flow__excl-wrap";
+  exclWrap.appendChild(exclusionBox());
+  mid.appendChild(exclWrap);
   chart.appendChild(mid);
 
   const randomised = flowBox("Clusters randomised");
@@ -173,10 +291,11 @@ export function createSequencesChart(data: TrialDesignData = trialDesign): HTMLE
   const sequencesBlock = document.createElement("div");
   sequencesBlock.className = "consort-flow__sequences";
 
-  const bus = document.createElement("div");
-  bus.className = "consort-flow__bus";
-  bus.setAttribute("aria-hidden", "true");
-  sequencesBlock.appendChild(bus);
+  const fan = document.createElement("div");
+  fan.className = "consort-flow__fan";
+  fan.setAttribute("aria-hidden", "true");
+  fan.appendChild(createFanSvg(nSeq));
+  sequencesBlock.appendChild(fan);
 
   const cols = document.createElement("div");
   cols.className = "consort-sequences";
