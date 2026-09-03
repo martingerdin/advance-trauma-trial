@@ -56,6 +56,8 @@ export interface Slide {
   references?: Reference[];
   evidence?: EvidenceItem[];
   milestones?: Milestone[];
+  /** Which exported trial-design JSON to render on design slides. */
+  designVariant?: "main" | "staircase";
 }
 
 const ATLS_MANUAL_CITE =
@@ -255,26 +257,11 @@ export const slides: Slide[] = [
       },
     ],
   },
-<<<<<<< HEAD
   {
     id: "atls-forest",
     layout: "forest",
     title: "Updated systematic review",
   },
-  {
-    id: "atls-critique",
-    layout: "bullets",
-    title: "Critique",
-    bullets: [
-      "Costly",
-      "Perpetuates theories despite evidence of the contrary",
-      "Not adapted to modern trauma care",
-      "Not adaptable to local circumstances",
-      "Fixed didactic nature",
-    ],
-    cite: "Shilston & Turner 2022; Wiles 2015",
-  },
-=======
   // {
   //   id: "atls-critique",
   //   layout: "bullets",
@@ -288,7 +275,6 @@ export const slides: Slide[] = [
   //   ],
   //   cite: "Shilston & Turner 2022; Wiles 2015",
   // },
->>>>>>> main
   {
     id: "section-trial",
     layout: "section",
@@ -341,6 +327,7 @@ export const slides: Slide[] = [
     id: "design",
     layout: "design",
     title: "Study design",
+    designVariant: "main",
     bullets: [
       "Batched stepped-wedge cluster randomised trial",
       "30 hospitals · 6 batches · 5 sequences · 13 months in trial",
@@ -379,6 +366,17 @@ export const slides: Slide[] = [
       "Return to work at 30 and 90 days",
       "Adherence to ATLS principles (nested staircase design)",
       "Quality of life (EQ-5D-5L) and disability (WHODAS 2.0) at 30 and 90 days",
+    ],
+  },
+  {
+    id: "design-staircase",
+    layout: "design",
+    title: "Nested staircase design",
+    designVariant: "staircase",
+    bullets: [
+      "Adherence measured around each hospital’s transition to ATLS®",
+      "Pre- and post-transition staircase periods nested in the stepped wedge",
+      "Lets us compare process adherence before and after training within clusters",
     ],
   },
   {

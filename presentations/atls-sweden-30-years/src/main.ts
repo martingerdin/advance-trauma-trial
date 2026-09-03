@@ -2,11 +2,13 @@ import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg } from "./stepped-wedge";
 import { createForestPlotSvg } from "./forest-plot";
-import { metaAnalysis } from "./figure-data";
+import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
+import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
 import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
+let designReveal: DesignRevealControls | null = null;
 
 const slidesEl = document.getElementById("slides")!;
 const counterEl = document.getElementById("slide-counter")!;
@@ -266,7 +268,9 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "design":
+    case "design": {
+      const staged = slide.designVariant !== "staircase";
+      const stages = designRevealStageMeta();
       el.innerHTML = `
         <div class="slide-inner">
           <h2 data-animate>${slide.title}</h2>
@@ -274,11 +278,30 @@ function renderSlide(slide: Slide): HTMLElement {
             <ul class="bullet-list design-bullets" data-animate-group>
               ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
             </ul>
-            <div class="wedge-container" data-animate id="wedge-mount"></div>
+            <div class="wedge-panel" data-animate>
+              ${
+                staged
+                  ? `<div class="wedge-toolbar">
+                      <div class="wedge-stages" role="list" aria-label="Design reveal stages">
+                        ${stages
+                          .map(
+                            (s) =>
+                              `<button type="button" class="wedge-stage" data-stage="${s.id}" role="listitem">${s.label}</button>`
+                          )
+                          .join("")}
+                      </div>
+                      <button type="button" class="wedge-play-pause" aria-label="Pause animation" title="Pause (Space)"></button>
+                    </div>
+                    <p class="wedge-caption" aria-live="polite"></p>`
+                  : ""
+              }
+              <div class="wedge-container" id="wedge-mount"></div>
+            </div>
           </div>
         </div>
       `;
       break;
+    }
 
     case "forest": {
       const pooled = metaAnalysis.pooled;
@@ -289,7 +312,7 @@ function renderSlide(slide: Slide): HTMLElement {
           <p class="slide-footer" data-animate>
             Random-effects ${metaAnalysis.measure} ${pooled.rrFormatted}
             (95% CI ${pooled.ciFormatted.replace("; ", "–")});
-            I² ${pooled.i2Rounded.toFixed(2)};
+            I² ${(pooled.i2Rounded * 100).toFixed(0)}%;
             ${pooled.numberOfStudies} observational studies
           </p>
         </div>
@@ -329,7 +352,12 @@ function mountSlides(): void {
 
     if (slide.layout === "design") {
       const mount = el.querySelector("#wedge-mount");
-      if (mount) mount.appendChild(createSteppedWedgeSvg());
+      if (mount) {
+        if (slide.designVariant === "staircase") {
+          mount.appendChild(createSteppedWedgeSvg(trialDesignStaircase));
+        }
+        // Staged design chart is mounted by startDesignReveal per stage.
+      }
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
@@ -356,26 +384,37 @@ function animateSlideIn(slideEl: HTMLElement): void {
   );
 
   if (slideEl.dataset.layout === "design") {
-    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".wedge-row"));
-    animate(
-      rows,
-      { opacity: [0, 1], transform: ["translateX(-20px)", "translateX(0)"] } as Record<string, unknown>,
-      { duration: 0.4, delay: stagger(0.02, { startDelay: 0.3 }), ease: "easeOut" }
-    );
+    const slide = slides[currentIndex];
+    designReveal?.cancel();
+    designReveal = null;
 
-    const segments = Array.from(slideEl.querySelectorAll<SVGRectElement>(".wedge-segment"));
-    segments.forEach((seg) => {
-      seg.style.transformOrigin = "left center";
-    });
-    animate(
-      segments,
-      { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
-      {
-        duration: 0.35,
-        delay: stagger(0.008, { startDelay: 0.4 }),
-        ease: [0.22, 1, 0.36, 1],
-      }
-    );
+    if (slide?.designVariant === "staircase") {
+      const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".wedge-row"));
+      animate(
+        rows,
+        { opacity: [0, 1], transform: ["translateX(-20px)", "translateX(0)"] } as Record<string, unknown>,
+        { duration: 0.4, delay: stagger(0.02, { startDelay: 0.3 }), ease: "easeOut" }
+      );
+
+      const segments = Array.from(slideEl.querySelectorAll<SVGRectElement>(".wedge-segment"));
+      segments.forEach((seg) => {
+        seg.style.transformOrigin = "left center";
+      });
+      animate(
+        segments,
+        { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+        {
+          duration: 0.35,
+          delay: stagger(0.008, { startDelay: 0.4 }),
+          ease: [0.22, 1, 0.36, 1],
+        }
+      );
+    } else if (slide?.layout === "design") {
+      designReveal = startDesignReveal(slideEl, trialDesign);
+    }
+  } else {
+    designReveal?.cancel();
+    designReveal = null;
   }
 
   if (slideEl.dataset.layout === "forest") {
@@ -400,6 +439,8 @@ function animateSlideIn(slideEl: HTMLElement): void {
 function goTo(index: number): void {
   if (isAnimating || index < 0 || index >= slides.length || index === currentIndex) return;
   isAnimating = true;
+  designReveal?.cancel();
+  designReveal = null;
 
   const current = slidesEl.children[currentIndex] as HTMLElement;
   const next = slidesEl.children[index] as HTMLElement;
@@ -444,6 +485,15 @@ function initFromHash(): void {
 
 function setupKeyboard(): void {
   document.addEventListener("keydown", (e) => {
+    const onStagedDesign =
+      slides[currentIndex]?.layout === "design" && slides[currentIndex]?.designVariant !== "staircase";
+
+    if (e.key === " " && onStagedDesign && designReveal) {
+      e.preventDefault();
+      designReveal.toggle();
+      return;
+    }
+
     if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
       e.preventDefault();
       next();

@@ -43,7 +43,7 @@ Image assets in `public/` are copied to `dist/` during build:
 | 4–12 | ATLS slides | Purpose, evidence, forest plot, critique |
 | — | `atls-impact-sources` | Historical sources for manual Impact claims |
 | — | `atls-forest` | Updated systematic review forest plot |
-| 12–21 | Trial slides | Design, outcomes, status |
+| 12–21 | Trial slides | Design, nested staircase, outcomes, status |
 | 21–22 | `implications`, `closing` | Take-home messages |
 
 ## Source
