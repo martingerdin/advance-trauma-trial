@@ -39,6 +39,11 @@ export interface Funder {
   name: string;
 }
 
+export interface ColumnGroup {
+  heading: string;
+  bullets: string[];
+}
+
 export interface Slide {
   id: string;
   layout:
@@ -60,7 +65,8 @@ export interface Slide {
     | "aim"
     | "presenter"
     | "team"
-    | "funding";
+    | "funding"
+    | "columns";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -78,6 +84,7 @@ export interface Slide {
   milestones?: Milestone[];
   teamGroups?: TeamGroup[];
   funders?: Funder[];
+  columns?: ColumnGroup[];
   /** Which exported trial-design JSON to render on design slides. */
   designVariant?: "main" | "staircase";
 }
@@ -422,6 +429,28 @@ export const slides: Slide[] = [
       "Adherence measured around each hospital’s transition to ATLS®",
       "Pre- and post-transition staircase periods nested in the stepped wedge",
       "Lets us compare process adherence before and after training within clusters",
+    ],
+  },
+  {
+    id: "eligibility",
+    layout: "columns",
+    title: "Eligibility criteria",
+    columns: [
+      {
+        heading: "Cluster",
+        bullets: [
+          "Hospitals that admit or refer/transfer for admission at least 400 patients with trauma per year",
+          "Around-the-clock emergency surgical and orthopaedic services",
+        ],
+      },
+      {
+        heading: "Patient",
+        bullets: [
+          "Adult trauma patients presenting to the emergency department of participating hospitals with a history of trauma",
+          "Admitted, dies before admission, or transferred for admission",
+          "Less than 48 hours since trauma",
+        ],
+      },
     ],
   },
   {

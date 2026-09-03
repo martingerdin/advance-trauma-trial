@@ -757,6 +757,50 @@ body {
   }
 }
 
+/* ── Columns (e.g. eligibility) ─────────────────────────────────── */
+
+.slide-inner--columns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .columns-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column-card {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 2.2vw, 1.5rem);
+}
+
+.column-card__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.column-card .bullet-list li {
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  line-height: 1.45;
+}
+
 .slide-figure {
   margin: 0;
   display: flex;

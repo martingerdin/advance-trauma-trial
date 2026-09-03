@@ -281,6 +281,28 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "columns":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--columns">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="columns-grid" data-animate-group>
+            ${(slide.columns ?? [])
+              .map(
+                (col) => `
+              <article class="column-card" data-animate>
+                <h3 class="column-card__heading">${col.heading}</h3>
+                <ul class="bullet-list">
+                  ${col.bullets.map((b) => `<li>${b}</li>`).join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
     case "milestones":
       el.innerHTML = `
         <div class="slide-inner slide-inner--milestones">
@@ -527,7 +549,10 @@ function thumbPreviewClass(slide: Slide): string {
 function thumbPreviewInner(slide: Slide): string {
   const label = slideThumbLabel(slide);
   const chips =
-    slide.layout === "stats" || slide.layout === "evidence" || slide.layout === "milestones"
+    slide.layout === "stats" ||
+    slide.layout === "evidence" ||
+    slide.layout === "milestones" ||
+    slide.layout === "columns"
       ? `<div class="overview-thumb__chips" aria-hidden="true">
           <span class="overview-thumb__chip"></span>
           <span class="overview-thumb__chip overview-thumb__chip--accent"></span>
