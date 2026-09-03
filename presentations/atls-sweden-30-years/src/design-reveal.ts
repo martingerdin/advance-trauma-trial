@@ -35,7 +35,8 @@ const STAGES: Array<{
     id: "site",
     label: "One site",
     caption: "One hospital — standard care, ATLS training, then intervention",
-    holdMs: 4500,
+    // Phase pauses are manual (Space / play); no timed hold before the next stage.
+    holdMs: 0,
   },
   {
     id: "batch",
@@ -56,6 +57,25 @@ const SITE_PHASES = [
   { id: "transition", centerMonth: 4.5, revealAt: 4 },
   { id: "intervention", centerMonth: 9, revealAt: 5 },
 ] as const;
+
+/** One-site wipe segments: animate to endMonth, then wait for play. */
+const SITE_PHASE_SCRUBS: Array<{ endMonth: number; duration: number; caption: string }> = [
+  {
+    endMonth: 4,
+    duration: 4,
+    caption: "Standard care — months 0–4 at one hospital",
+  },
+  {
+    endMonth: 5,
+    duration: 2.5,
+    caption: "Transition — ATLS® course, month 4–5",
+  },
+  {
+    endMonth: 13,
+    duration: 5,
+    caption: "Intervention — months 5–13 after ATLS training",
+  },
+];
 
 type SitePhaseId = (typeof SITE_PHASES)[number]["id"];
 
@@ -128,6 +148,8 @@ export function startDesignReveal(
   let complete = false;
   let cancelled = false;
   let activeStage: DesignRevealStage | null = null;
+  /** Overrides the stage caption while stepping through one-site phases. */
+  let sitePhaseCaption: string | null = null;
   let runToken = 0;
   const running: AnimationPlaybackControls[] = [];
   const listenerAbort = new AbortController();
@@ -226,7 +248,8 @@ export function startDesignReveal(
   layoutPhaseCallouts();
 
   const syncUi = () => {
-    setCaption(captionEl, STAGES.find((s) => s.id === activeStage)?.caption ?? "");
+    const stageCaption = STAGES.find((s) => s.id === activeStage)?.caption ?? "";
+    setCaption(captionEl, sitePhaseCaption ?? stageCaption);
     setStageButtons(stageBar, activeStage, complete);
     setPlayPauseButton(playPauseBtn, paused, complete);
     const showPhases = activeStage === "site" && !complete;
@@ -409,6 +432,7 @@ export function startDesignReveal(
   const animateSite = async (token: number, animateIn: boolean) => {
     activeStage = "site";
     complete = false;
+    sitePhaseCaption = null;
     syncUi();
 
     await clearPlot(token, animateIn);
@@ -419,14 +443,31 @@ export function startDesignReveal(
 
     if (!animateIn || reduceMotion()) {
       setReveal(shortEnd, true);
+      sitePhaseCaption = null;
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 8);
+
+    let fromMonth = 0;
+    for (let i = 0; i < SITE_PHASE_SCRUBS.length; i++) {
+      const phase = SITE_PHASE_SCRUBS[i];
+      sitePhaseCaption = phase.caption;
+      syncUi();
+      await scrubTimeline(fromMonth, phase.endMonth, token, phase.duration);
+      fromMonth = phase.endMonth;
+
+      // Pause after every phase — including the last — so Space / play advances.
+      paused = true;
+      syncUi();
+      await gate(token);
+    }
+
+    sitePhaseCaption = null;
   };
 
   const animateBatch = async (token: number, animateIn: boolean) => {
     activeStage = "batch";
     complete = false;
+    sitePhaseCaption = null;
     syncUi();
 
     const batchClusters = Array.from({ length: data.parameters.clustersPerBatch }, (_, i) => i + 1);
@@ -453,6 +494,7 @@ export function startDesignReveal(
   const animateFull = async (token: number, animateIn: boolean) => {
     activeStage = "full";
     complete = false;
+    sitePhaseCaption = null;
     syncUi();
 
     const allClusters = rows().map((r) => Number(r.dataset.cluster));
