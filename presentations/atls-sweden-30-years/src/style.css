@@ -928,12 +928,23 @@ body {
   gap: 0.55rem;
 }
 
+.wedge-chart-stack {
+  position: relative;
+  flex: 1;
+  min-height: 12rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .wedge-container--animation {
+  position: relative;
   flex: 1;
   min-height: 12rem;
   aspect-ratio: auto;
   width: 100%;
-  padding: 0.65rem 0.85rem;
+  padding: 0.65rem 0.85rem 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -946,19 +957,15 @@ body {
   max-height: 100%;
 }
 
-.wedge-phase-callouts {
-  display: grid;
-  /* Match site timeline: standard care 0–4 · transition 4–5 · intervention 5–13 */
-  grid-template-columns: 4fr 1.15fr 8fr;
-  gap: 0.35rem;
-  align-items: end;
-  /* Inset roughly with SVG label gutters so cards sit over the bars */
-  padding-inline: 8% 8%;
-  margin: 0;
-  flex-shrink: 0;
+.wedge-phase-callouts--overlay {
+  position: absolute;
+  display: block;
+  padding: 0;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.wedge-phase-callouts[hidden] {
+.wedge-phase-callouts--overlay[hidden] {
   display: none;
 }
 
@@ -966,51 +973,95 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.3rem;
   text-align: center;
   min-width: 0;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wedge-phase-callouts--overlay .wedge-phase {
+  position: absolute;
+  bottom: 0;
+  width: max-content;
+  max-width: min(30%, 8.5rem);
+}
+
+.wedge-phase.is-revealed {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.wedge-phase.is-active .wedge-phase__figure {
+  border-color: color-mix(in srgb, var(--ink) 14%, var(--border));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
 .wedge-phase__figure {
   margin: 0;
   width: 100%;
-  max-height: 4.25rem;
+  max-height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(0.94);
+}
+
+.wedge-phase.is-revealed .wedge-phase__figure {
+  transform: scale(1);
 }
 
 .wedge-phase__figure img {
   display: block;
   max-width: 100%;
-  max-height: 4.25rem;
+  max-height: 3.15rem;
   width: auto;
   height: auto;
   object-fit: contain;
 }
 
 .wedge-phase[data-phase="transition"] .wedge-phase__figure {
-  max-height: 3.75rem;
+  max-height: 3.25rem;
 }
 
 .wedge-phase[data-phase="transition"] .wedge-phase__figure img {
-  max-height: 3.75rem;
+  max-height: 2.95rem;
+}
+
+.wedge-phase__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  align-items: center;
 }
 
 .wedge-phase__title {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--ink);
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
 }
 
 .wedge-phase__when {
   margin: 0;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   color: var(--text-muted);
   line-height: 1.25;
+  max-width: 9rem;
 }
 
 .wedge-phase[data-phase="standard-care"] .wedge-phase__title {
@@ -1026,11 +1077,6 @@ body {
 }
 
 @media (max-width: 900px) {
-  .wedge-phase-callouts {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
   .wedge-phase__figure,
   .wedge-phase__figure img {
     max-height: 4.25rem;
@@ -1049,6 +1095,11 @@ body {
   font-family: var(--font-body);
   font-size: 10px;
   fill: var(--text-muted);
+}
+
+.stepped-wedge-chart .wedge-axis-xtitle {
+  font-size: 9px;
+  letter-spacing: 0.04em;
 }
 
 .wedge-segment {

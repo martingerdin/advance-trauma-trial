@@ -301,30 +301,39 @@ function renderSlide(slide: Slide): HTMLElement {
             </div>
             <p class="wedge-caption" aria-live="polite"></p>
             <div class="wedge-legend-mount"></div>
-            <div class="wedge-phase-callouts" hidden>
-              <article class="wedge-phase" data-phase="standard-care">
-                <figure class="wedge-phase__figure">
-                  <img src="./patient-review-before-illustration.png" alt="Standard care in the emergency department" />
-                </figure>
-                <p class="wedge-phase__title">Standard care</p>
-                <p class="wedge-phase__when">Months 0–4</p>
-              </article>
-              <article class="wedge-phase" data-phase="transition">
-                <figure class="wedge-phase__figure">
-                  <img src="./training-illustration.png" alt="ATLS training course" />
-                </figure>
-                <p class="wedge-phase__title">Transition</p>
-                <p class="wedge-phase__when">Month 4–5 · ATLS® course</p>
-              </article>
-              <article class="wedge-phase" data-phase="intervention">
-                <figure class="wedge-phase__figure">
-                  <img src="./patient-review-after-illustration.png" alt="Care after ATLS training" />
-                </figure>
-                <p class="wedge-phase__title">Intervention</p>
-                <p class="wedge-phase__when">Months 5–13</p>
-              </article>
+            <div class="wedge-chart-stack">
+              <div class="wedge-container wedge-container--animation" id="wedge-mount">
+                <div class="wedge-phase-callouts wedge-phase-callouts--overlay" hidden aria-hidden="true">
+                  <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-before-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Standard care</p>
+                      <p class="wedge-phase__when">Months 0–4</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="transition" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./training-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Transition</p>
+                      <p class="wedge-phase__when">Month 4–5 · ATLS® course</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-after-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Intervention</p>
+                      <p class="wedge-phase__when">Months 5–13</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
             </div>
-            <div class="wedge-container wedge-container--animation" id="wedge-mount"></div>
           </div>
         </div>
       `;

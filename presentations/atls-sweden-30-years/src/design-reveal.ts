@@ -6,7 +6,9 @@ import {
   fitSvgInContainer,
   focusViewBox,
   lerpViewBox,
+  monthCenterPercent,
   setRevealMonth,
+  stageMonthSpan,
   syncAxisToStage,
   viewBoxString,
   type DesignFocusStage,
@@ -50,6 +52,14 @@ const STAGES: Array<{
     holdMs: 0,
   },
 ];
+
+const SITE_PHASES = [
+  { id: "standard-care", centerMonth: 2, revealAt: 0.2 },
+  { id: "transition", centerMonth: 4.5, revealAt: 4 },
+  { id: "intervention", centerMonth: 9, revealAt: 5 },
+] as const;
+
+type SitePhaseId = (typeof SITE_PHASES)[number]["id"];
 
 function reduceMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -112,7 +122,7 @@ export function startDesignReveal(
   const stageBar = slideEl.querySelector<HTMLElement>(".wedge-stages") ?? slideEl;
   const mount = slideEl.querySelector<HTMLElement>("#wedge-mount");
   const legendMount = slideEl.querySelector<HTMLElement>(".wedge-legend-mount");
-  const phaseCallouts = slideEl.querySelector<HTMLElement>(".wedge-phase-callouts");
+  const phaseCallouts = mount?.querySelector<HTMLElement>(".wedge-phase-callouts") ?? null;
   const bullets = Array.from(slideEl.querySelectorAll<HTMLElement>(".design-bullets li"));
 
   let paused = false;
@@ -141,14 +151,72 @@ export function startDesignReveal(
   }
 
   const svg = createSteppedWedgeSvg(data);
-  mount.replaceChildren(svg);
-  setRevealMonth(svg, 0);
+  mount.querySelectorAll("svg").forEach((node) => node.remove());
+  mount.prepend(svg);
 
   const shortEnd = Math.max(data.parameters.totalMonths, 13);
   const fullEnd = data.xMax;
+  const siteMonths = stageMonthSpan(data, "site");
 
   const rows = () => Array.from(svg.querySelectorAll<SVGGElement>(".wedge-row"));
   const batchLabels = () => Array.from(svg.querySelectorAll<SVGTextElement>(".wedge-batch-label"));
+
+  const layoutPhaseCallouts = () => {
+    if (!phaseCallouts || !mount) return;
+    const svgEl = mount.querySelector<SVGSVGElement>(".stepped-wedge-chart");
+    if (!svgEl) return;
+
+    const mountRect = mount.getBoundingClientRect();
+    const svgRect = svgEl.getBoundingClientRect();
+    if (svgRect.width <= 0 || svgRect.height <= 0) return;
+
+    phaseCallouts.style.left = `${svgRect.left - mountRect.left}px`;
+    phaseCallouts.style.top = `${svgRect.top - mountRect.top}px`;
+    phaseCallouts.style.width = `${svgRect.width}px`;
+    phaseCallouts.style.height = `${Math.min(svgRect.height * 0.5, 104)}px`;
+
+    for (const phase of SITE_PHASES) {
+      const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phase.id}"]`);
+      if (!el) continue;
+      el.style.left = `${monthCenterPercent(phase.centerMonth, siteMonths)}%`;
+    }
+  };
+
+  const phaseIsActive = (phaseId: SitePhaseId, month: number): boolean => {
+    if (phaseId === "standard-care") return month >= 0.2 && month < 4.15;
+    if (phaseId === "transition") return month >= 4 && month < 5.15;
+    return month >= 5;
+  };
+
+  const syncPhaseCallouts = (month: number, forceAll = false) => {
+    if (!phaseCallouts) return;
+    const showOverlay = activeStage === "site" && !complete;
+    if (!showOverlay) {
+      phaseCallouts.querySelectorAll<HTMLElement>(".wedge-phase").forEach((el) => {
+        el.classList.remove("is-revealed", "is-active");
+        el.setAttribute("aria-hidden", "true");
+      });
+      return;
+    }
+
+    for (const phase of SITE_PHASES) {
+      const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phase.id}"]`);
+      if (!el) continue;
+      const revealed = forceAll || month >= phase.revealAt - 0.05;
+      const active = forceAll || (revealed && phaseIsActive(phase.id, month));
+      el.classList.toggle("is-revealed", revealed);
+      el.classList.toggle("is-active", active);
+      el.setAttribute("aria-hidden", revealed ? "false" : "true");
+    }
+  };
+
+  const setReveal = (month: number, forceAllPhases = false) => {
+    setRevealMonth(svg, month);
+    syncPhaseCallouts(month, forceAllPhases);
+  };
+
+  setReveal(0);
+  layoutPhaseCallouts();
 
   const syncUi = () => {
     setCaption(captionEl, STAGES.find((s) => s.id === activeStage)?.caption ?? "");
@@ -158,6 +226,7 @@ export function startDesignReveal(
     if (phaseCallouts) {
       phaseCallouts.hidden = !showPhases;
       phaseCallouts.setAttribute("aria-hidden", showPhases ? "false" : "true");
+      if (showPhases) layoutPhaseCallouts();
     }
     if (legendMount) {
       legendMount.hidden = showPhases;
@@ -234,6 +303,7 @@ export function startDesignReveal(
   const setCamera = (box: WedgeViewBox, stage?: DesignRevealStage) => {
     svg.setAttribute("viewBox", viewBoxString(box));
     fitSvgInContainer(svg, box, mount);
+    layoutPhaseCallouts();
     if (stage) {
       svg.dataset.stage = stage;
       syncAxisToStage(svg, data, stage);
@@ -249,6 +319,7 @@ export function startDesignReveal(
 
   const resizeObserver = new ResizeObserver(() => {
     setCamera(parseViewBox(svg), (svg.dataset.stage as DesignRevealStage) || undefined);
+    layoutPhaseCallouts();
   });
   resizeObserver.observe(mount);
   signal.addEventListener("abort", () => resizeObserver.disconnect());
@@ -306,7 +377,7 @@ export function startDesignReveal(
     duration: number
   ) => {
     if (reduceMotion() || duration <= 0) {
-      setRevealMonth(svg, toMonth);
+      setReveal(toMonth, toMonth >= shortEnd - 0.05);
       return;
     }
     await gate(token);
@@ -314,22 +385,22 @@ export function startDesignReveal(
       animate(fromMonth, toMonth, {
         duration,
         ease: "linear",
-        onUpdate: (month) => setRevealMonth(svg, month),
+        onUpdate: (month) => setReveal(month),
       }),
       token
     );
-    setRevealMonth(svg, toMonth);
+    setReveal(toMonth, toMonth >= shortEnd - 0.05);
   };
 
   /** Wipe the plot clear before changing camera framing. */
   const clearPlot = async (token: number, animateIn: boolean) => {
     const current = Number(svg.dataset.revealMonth ?? 0);
     if (current <= 0.05) {
-      setRevealMonth(svg, 0);
+      setReveal(0);
       return;
     }
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, 0);
+      setReveal(0);
       return;
     }
     const duration = Math.min(1.1, 0.35 + (current / fullEnd) * 0.75);
@@ -348,7 +419,7 @@ export function startDesignReveal(
     showBatchLabels([1]);
 
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, shortEnd);
+      setReveal(shortEnd, true);
       return;
     }
     await scrubTimeline(0, shortEnd, token, 2.4);
@@ -374,7 +445,7 @@ export function startDesignReveal(
     });
 
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, shortEnd);
+      setReveal(shortEnd);
       return;
     }
     await scrubTimeline(0, shortEnd, token, 2.6);
@@ -393,7 +464,7 @@ export function startDesignReveal(
     showBatchLabels(Array.from({ length: data.parameters.batches }, (_, i) => i + 1));
 
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, fullEnd);
+      setReveal(fullEnd);
       return;
     }
     await scrubTimeline(0, fullEnd, token, 3.4);
@@ -409,6 +480,7 @@ export function startDesignReveal(
     complete = true;
     paused = false;
     bullets.forEach((li) => li.classList.remove("is-emphasis", "is-muted"));
+    syncPhaseCallouts(Number(svg.dataset.revealMonth ?? 0));
     syncUi();
   };
 

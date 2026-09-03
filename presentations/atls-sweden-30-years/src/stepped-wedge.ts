@@ -5,7 +5,9 @@ export const LABEL_LEFT = 36;
 export const LABEL_RIGHT = 36;
 /** Top padding only — legend lives outside the SVG. */
 export const TOP_PAD = 6;
-export const AXIS_HEIGHT = 28;
+export const AXIS_HEIGHT = 36;
+export const AXIS_TICK_LABEL_OFFSET = 12;
+export const AXIS_TITLE_OFFSET = 30;
 export const ROW_HEIGHT = 12;
 export const ROW_GAP = 3;
 
@@ -28,6 +30,12 @@ function svgEl(tag: string, attrs: Record<string, string | number> = {}): SVGEle
 
 export function monthX(month: number, pad = 0): number {
   return LABEL_LEFT + month * MONTH_WIDTH + pad * MONTH_WIDTH;
+}
+
+/** Horizontal center of a study month on the chart, as % of total SVG width. */
+export function monthCenterPercent(month: number, totalMonths: number): number {
+  const totalWidth = LABEL_LEFT + totalMonths * MONTH_WIDTH + LABEL_RIGHT;
+  return (monthX(month) / totalWidth) * 100;
 }
 
 /** Cluster 1 at the bottom, matching the R ggplot figure. */
@@ -131,14 +139,14 @@ export function syncAxisToStage(
     // Keep the title just under the visible cluster block for cropped stages.
     if (stage === "full") {
       const fullHeight = TOP_PAD + data.parameters.clusters * (ROW_HEIGHT + ROW_GAP) + AXIS_HEIGHT;
-      xTitle.setAttribute("y", String(fullHeight - 2));
+      xTitle.setAttribute("y", String(fullHeight - 4));
     } else if (stage === "site") {
       const barY = clusterY(1, data.parameters.clusters);
-      xTitle.setAttribute("y", String(barY + ROW_HEIGHT + 24));
+      xTitle.setAttribute("y", String(barY + ROW_HEIGHT + AXIS_TITLE_OFFSET));
     } else {
       const topY = clusterY(data.parameters.clustersPerBatch, data.parameters.clusters);
       const blockH = data.parameters.clustersPerBatch * (ROW_HEIGHT + ROW_GAP);
-      xTitle.setAttribute("y", String(topY + blockH + 24));
+      xTitle.setAttribute("y", String(topY + blockH + AXIS_TITLE_OFFSET));
     }
   }
 
@@ -309,8 +317,8 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
     );
     const tickLabel = svgEl("text", {
       x,
-      y: TOP_PAD + plotHeight + 14,
-      class: "axis-label",
+      y: TOP_PAD + plotHeight + AXIS_TICK_LABEL_OFFSET,
+      class: "axis-label wedge-axis-tick-label",
       "text-anchor": "middle",
     });
     tickLabel.textContent = String(month);
@@ -321,7 +329,7 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   const siteMonths = stageMonthSpan(data, "site");
   const xTitle = svgEl("text", {
     x: LABEL_LEFT + (siteMonths * MONTH_WIDTH) / 2,
-    y: clusterY(1, clusters) + ROW_HEIGHT + 24,
+    y: clusterY(1, clusters) + ROW_HEIGHT + AXIS_TITLE_OFFSET,
     class: "axis-label wedge-axis-xtitle",
     "text-anchor": "middle",
   });
