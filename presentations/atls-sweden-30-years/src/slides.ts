@@ -3,10 +3,25 @@ export interface Reference {
   text: string;
 }
 
+export interface EvidenceItem {
+  id: string;
+  claim: string;
+  source: string;
+  tag?: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
   source?: string;
+}
+
+export interface Milestone {
+  year: string;
+  label: string;
+  image?: string;
+  imageAlt?: string;
+  cite?: string;
 }
 
 export interface Slide {
@@ -23,6 +38,8 @@ export interface Slide {
     | "implications"
     | "closing"
     | "references"
+    | "evidence"
+    | "milestones"
     | "aim";
   title?: string;
   subtitle?: string;
@@ -36,6 +53,8 @@ export interface Slide {
   cite?: string;
   footer?: string;
   references?: Reference[];
+  evidence?: EvidenceItem[];
+  milestones?: Milestone[];
 }
 
 const ATLS_MANUAL_CITE =
@@ -124,13 +143,45 @@ export const slides: Slide[] = [
   },
   {
     id: "atls-provider-evidence",
-    layout: "bullets",
+    layout: "evidence",
     title: "Evidence on providers",
-    bullets: [
-      "Ali et al. 1995 — trauma management skills acquisition demonstrated after ATLS course",
-      "Ali et al. 1996 — improvement in OSCE scores, adherence to trauma priorities, and cognitive performance",
-      "Ali et al. 1999 — performance after new and old ATLS courses was similar using standard pass criteria",
+    body: "The 11th edition Impact paragraph cites no sources — here is what the literature shows.",
+    evidence: [
+      {
+        id: "1",
+        tag: "Manual claim",
+        claim: "Improves knowledge, psychomotor skills, confidence, and performance",
+        source:
+          "Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
+      },
+      {
+        id: "2",
+        tag: "Manual claim",
+        claim: "Organizational and procedural skills retained ≥6 years",
+        source:
+          "Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+      },
+      {
+        id: "3",
+        tag: "Further studies",
+        claim: "Trauma management skills acquisition after ATLS course",
+        source: "Ali et al. 1995",
+      },
+      {
+        id: "4",
+        tag: "Further studies",
+        claim: "Improvement in OSCE scores, adherence to priorities, and cognitive performance",
+        source: "Ali et al. 1996",
+      },
+      {
+        id: "5",
+        tag: "Further studies",
+        claim: "Similar performance after new and old ATLS courses",
+        source: "Ali et al. 1999",
+      },
     ],
+    footer:
+      "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
   },
   {
     id: "atls-outcomes-claim",
@@ -140,64 +191,82 @@ export const slides: Slide[] = [
     cite: ATLS_MANUAL_CITE,
   },
   {
-    id: "atls-impact-sources",
-    layout: "references",
-    title: "Sources for the ATLS Impact section",
-    body: "The 11th edition Impact paragraph (p. xv) has no in-text citations. These are the primary sources historically linked to its claims.",
-    references: [
+    id: "atls-patient-impact-sources",
+    layout: "evidence",
+    title: "The evidence behind the claims",
+    body: "Each claim from the manual's Impact section — and the study behind it.",
+    evidence: [
       {
         id: "1",
-        text: "Decreased injury mortality in a developing country — Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
+        claim: "Decreased injury mortality in a developing country",
+        source:
+          "Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
       },
       {
         id: "2",
-        text: "Lower per-capita injury death rates where clinicians have ATLS training — Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
+        claim: "Lower per-capita injury death rates where clinicians have ATLS training",
+        source:
+          "Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
       },
       {
         id: "3",
-        text: "Small ATLS-experienced team equivalent to a larger urban team — Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
+        claim: "Small ATLS-experienced team equivalent to a larger urban team",
+        source:
+          "Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
       },
       {
         id: "4",
-        text: "More unexpected survivors than fatalities — van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
-      },
-      {
-        id: "5",
-        text: "Improves knowledge, psychomotor skills, confidence, and performance — Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
-      },
-      {
-        id: "6",
-        text: "Organizational and procedural skills retained ≥6 years — Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+        claim: "More unexpected survivors than fatalities",
+        source:
+          "van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
       },
     ],
-    footer:
-      "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
   },
   {
     id: "atls-outcomes-reviews",
-    layout: "bullets",
-    title: "Evidence on patient outcomes",
-    bullets: [
-      "Mohammad et al. 2013 — future studies required to evaluate impact on trauma death rates",
-      "Jayaraman et al. 2014 — no evidence from controlled trials that ATLS impacts outcomes",
-      "Jin et al. 2021 — in-hospital trauma training reduced mortality (RR 0.71, 95% CI 0.62–0.78)",
-      "Putra et al. 2023 — ATLS had no significant effect on mortality (OR 0.68, 95% CI 0.39–1.20)",
-      "Nakhid et al. 2026 — 10 observational studies; pooled OR 0.51",
+    layout: "evidence",
+    title: "Systematic reviews on patient outcomes",
+    body: "What do systematic reviews conclude about ATLS® and patient mortality?",
+    evidence: [
+      {
+        id: "1",
+        tag: "Systematic review",
+        claim: "Future studies required to evaluate impact on trauma death rates",
+        source: "Mohammad et al. 2013",
+      },
+      {
+        id: "2",
+        tag: "Systematic review",
+        claim: "No evidence from controlled trials that ATLS impacts outcomes",
+        source: "Jayaraman et al. 2014",
+      },
+      {
+        id: "3",
+        tag: "Systematic review",
+        claim: "In-hospital trauma training reduced mortality (RR 0.71, 95% CI 0.62–0.78)",
+        source: "Jin et al. 2021",
+      },
+      {
+        id: "4",
+        tag: "Systematic review",
+        claim: "ATLS had no significant effect on mortality (OR 0.68, 95% CI 0.39–1.20)",
+        source: "Putra et al. 2023",
+      },
     ],
   },
-  {
-    id: "atls-critique",
-    layout: "bullets",
-    title: "Critique",
-    bullets: [
-      "Costly",
-      "Perpetuates theories despite evidence of the contrary",
-      "Not adapted to modern trauma care",
-      "Not adaptable to local circumstances",
-      "Fixed didactic nature",
-    ],
-    cite: "Shilston & Turner 2022; Wiles 2015",
-  },
+  // {
+  //   id: "atls-critique",
+  //   layout: "bullets",
+  //   title: "Critique",
+  //   bullets: [
+  //     "Costly",
+  //     "Perpetuates theories despite evidence of the contrary",
+  //     "Not adapted to modern trauma care",
+  //     "Not adaptable to local circumstances",
+  //     "Fixed didactic nature",
+  //   ],
+  //   cite: "Shilston & Turner 2022; Wiles 2015",
+  // },
   {
     id: "section-trial",
     layout: "section",
@@ -212,13 +281,38 @@ export const slides: Slide[] = [
   },
   {
     id: "previous-work",
-    layout: "bullets",
+    layout: "milestones",
     title: "Previous work",
-    bullets: [
-      "2013 — Multicentre research (TITCO)",
-      "2022–2023 — Community consultations",
-      "2022–2023 — Pilot and feasibility study in India",
-      "2022–2026 — Systematic review",
+    subtitle: "Key references",
+    milestones: [
+      {
+        year: "2013",
+        label: "Multicentre research",
+        image: "./milestones/multicentre.png",
+        imageAlt: "Map of India with hospital sites",
+        cite: "12",
+      },
+      {
+        year: "2022–2023",
+        label: "Pilot and feasibility study",
+        image: "./milestones/pilot.png",
+        imageAlt: "Clinicians discussing care in a hospital room",
+        cite: "14",
+      },
+      {
+        year: "2022–2023",
+        label: "Community consultations",
+        image: "./milestones/consultations.png",
+        imageAlt: "Patient bedside discussion about ATLS",
+        cite: "13",
+      },
+      {
+        year: "2022–2026",
+        label: "Systematic review",
+        image: "./milestones/systematic-review.png",
+        imageAlt: "Nakhid et al. systematic review article in press",
+        cite: "5",
+      },
     ],
   },
   {

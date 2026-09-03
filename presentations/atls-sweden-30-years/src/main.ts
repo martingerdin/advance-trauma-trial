@@ -12,6 +12,19 @@ const progressBar = document.getElementById("progress-bar")!;
 const prevBtn = document.getElementById("prev")!;
 const nextBtn = document.getElementById("next")!;
 
+function evidenceCardClass(tag?: string): string {
+  switch (tag) {
+    case "Manual claim":
+      return " evidence-card--manual";
+    case "Further studies":
+      return " evidence-card--further";
+    case "Systematic review":
+      return " evidence-card--review";
+    default:
+      return "";
+  }
+}
+
 function renderSlide(slide: Slide): HTMLElement {
   const el = document.createElement("article");
   el.className = `slide slide--${slide.layout}`;
@@ -124,6 +137,31 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "evidence":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--evidence">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="evidence-intro" data-animate>${slide.body}</p>` : ""}
+          <div class="evidence-grid${(slide.evidence?.length ?? 0) > 4 ? " evidence-grid--compact" : ""}" data-animate-group>
+            ${(slide.evidence ?? [])
+              .map(
+                (item) => `
+              <article class="evidence-card${evidenceCardClass(item.tag)}" data-animate>
+                <div class="evidence-card__header">
+                  <span class="evidence-card__id" aria-hidden="true">${item.id}</span>
+                  ${item.tag ? `<span class="evidence-card__tag">${item.tag}</span>` : ""}
+                </div>
+                <p class="evidence-card__claim">${item.claim}</p>
+                <p class="evidence-card__source">${item.source}</p>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
     case "references":
       el.innerHTML = `
         <div class="slide-inner slide-inner--references">
@@ -186,6 +224,41 @@ function renderSlide(slide: Slide): HTMLElement {
                 ? `<figure class="slide-figure" data-animate><img src="${slide.image}" alt="${slide.imageAlt ?? ""}" /></figure>`
                 : ""
             }
+          </div>
+        </div>
+      `;
+      break;
+
+    case "milestones":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--milestones">
+          <header class="milestones-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="milestones-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="milestones-grid" data-animate-group>
+            ${(slide.milestones ?? [])
+              .map(
+                (m) => `
+              <article class="milestone-card" data-animate>
+                ${
+                  m.image
+                    ? `<figure class="milestone-card__media">
+                        <img src="${m.image}" alt="${m.imageAlt ?? ""}" />
+                      </figure>`
+                    : ""
+                }
+                <div class="milestone-card__body">
+                  <p class="milestone-card__year">${m.year}${
+                    m.cite
+                      ? `<sup class="cite-ref" aria-label="Reference ${m.cite}">${m.cite}</sup>`
+                      : ""
+                  }</p>
+                  <p class="milestone-card__label">${m.label}</p>
+                </div>
+              </article>`
+              )
+              .join("")}
           </div>
         </div>
       `;
