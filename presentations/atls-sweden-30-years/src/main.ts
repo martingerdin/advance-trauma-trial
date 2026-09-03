@@ -336,10 +336,9 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--sequences">
           <h2 data-animate>${slide.title}</h2>
-          ${slide.body ? `<p class="sequences-lead" data-animate>${slide.body}</p>` : ""}
-          <div class="sequences-panel" data-animate>
-            <div class="sequences-legend-mount"></div>
+          <div class="sequences-panel">
             <div class="sequences-mount" id="sequences-mount"></div>
+            <div class="sequences-legend-mount" data-animate></div>
           </div>
         </div>
       `;
@@ -406,7 +405,7 @@ function mountSlides(): void {
       const mount = el.querySelector("#sequences-mount");
       const legendMount = el.querySelector(".sequences-legend-mount");
       if (mount) mount.appendChild(createSequencesChart(trialDesign));
-      if (legendMount) legendMount.appendChild(createSequencesLegend(trialDesign));
+      if (legendMount) legendMount.appendChild(createSequencesLegend());
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
@@ -481,25 +480,32 @@ function animateSlideIn(slideEl: HTMLElement): void {
   }
 
   if (slideEl.dataset.layout === "sequences") {
-    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".sequence-row"));
-    const bars = Array.from(slideEl.querySelectorAll<HTMLElement>(".sequence-bar"));
-    rows.forEach((row) => {
-      row.style.transformOrigin = "left center";
-    });
-    animate(
-      rows,
-      { opacity: [0, 1], transform: ["translateY(16px)", "translateY(0)"] } as Record<string, unknown>,
-      { duration: 0.45, delay: stagger(0.12, { startDelay: 0.2 }), ease: [0.22, 1, 0.36, 1] }
+    const flowParts = Array.from(
+      slideEl.querySelectorAll<HTMLElement>(
+        ".consort-flow__assessed, .consort-flow__mid, .consort-flow__randomised, .consort-flow__sequences"
+      )
     );
-    bars.forEach((bar) => {
-      bar.style.transformOrigin = "left center";
+    animate(
+      flowParts,
+      { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.45, delay: stagger(0.14, { startDelay: 0.15 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cols = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-sequence"));
+    animate(
+      cols,
+      { opacity: [0, 1], transform: ["translateY(12px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.4, delay: stagger(0.08, { startDelay: 0.55 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cells = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-cell"));
+    cells.forEach((cell) => {
+      cell.style.transformOrigin = "left center";
     });
     animate(
-      bars,
+      cells,
       { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
       {
-        duration: 0.55,
-        delay: stagger(0.04, { startDelay: 0.28 }),
+        duration: 0.35,
+        delay: stagger(0.012, { startDelay: 0.7 }),
         ease: [0.22, 1, 0.36, 1],
       }
     );

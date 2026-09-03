@@ -346,7 +346,6 @@ export const slides: Slide[] = [
     id: "sequences",
     layout: "sequences",
     title: "Randomisation to sequences",
-    body: "Within each batch, the five hospitals are randomised to one of five implementation sequences. Sequence 1 is four months of standard care, then training, then eight months of intervention. Sequence 2 is five months of standard care, then training, then seven months of intervention — and so on.",
   },
   {
     id: "intervention",

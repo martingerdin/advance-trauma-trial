@@ -15,6 +15,15 @@ export interface ImplementationSequence {
 
 const PHASE_ORDER = ["Standard care", "Transition", "Intervention"] as const;
 
+/** Lighter fills for month cells — match the CONSORT shell figure. */
+const STRIP_COLORS: Record<string, string> = {
+  "Standard care": "#FCCE94",
+  Transition: "#92D9E6",
+  Intervention: "#BFA6D6",
+};
+
+const BOX_FILL = "#FCCE94";
+
 export function implementationSequences(
   data: TrialDesignData = trialDesign,
   batch = 1
@@ -45,113 +54,159 @@ export function implementationSequences(
   });
 }
 
-function monthsLabel(n: number): string {
-  return n === 1 ? "1 month" : `${n} months`;
-}
-
 function phaseClass(phase: string): string {
   return phase.toLowerCase().replace(/\s+/g, "-");
 }
 
-function barLabel(phase: SequencePhase): string {
-  if (phase.phase === "Transition") return "ATLS®";
-  return monthsLabel(phase.months);
+function monthPhases(seq: ImplementationSequence): string[] {
+  const months: string[] = [];
+  for (const phase of seq.phases) {
+    for (let i = 0; i < phase.months; i++) months.push(phase.phase);
+  }
+  return months;
 }
 
+function flowBox(text: string, kind: "primary" | "side" = "primary"): HTMLElement {
+  const box = document.createElement("div");
+  box.className = `consort-box consort-box--${kind}`;
+  if (kind === "primary") box.style.background = BOX_FILL;
+  box.textContent = text;
+  return box;
+}
+
+function exclusionBox(): HTMLElement {
+  const box = document.createElement("aside");
+  box.className = "consort-box consort-box--side";
+  const title = document.createElement("p");
+  title.className = "consort-box__title";
+  title.textContent = "Excluded before randomisation:";
+  const list = document.createElement("ul");
+  list.className = "consort-box__list";
+  for (const item of [
+    "Not meeting inclusion criteria",
+    "Declined to participate",
+    "Other reasons",
+  ]) {
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  }
+  box.append(title, list);
+  return box;
+}
+
+function sequenceColumn(seq: ImplementationSequence, totalMonths: number): HTMLElement {
+  const col = document.createElement("div");
+  col.className = "consort-sequence";
+  col.dataset.sequence = String(seq.sequence);
+
+  const drop = document.createElement("div");
+  drop.className = "consort-sequence__drop";
+  drop.setAttribute("aria-hidden", "true");
+  col.appendChild(drop);
+
+  const title = document.createElement("p");
+  title.className = "consort-sequence__title";
+  title.textContent = `Sequence ${seq.sequence}`;
+  col.appendChild(title);
+
+  const strip = document.createElement("div");
+  strip.className = "consort-strip";
+  strip.style.gridTemplateColumns = `repeat(${totalMonths}, minmax(0, 1fr))`;
+  strip.setAttribute(
+    "aria-label",
+    `Sequence ${seq.sequence}: ${seq.phases[0].months} months standard care, training, ${seq.phases[2].months} months intervention`
+  );
+
+  for (const phase of monthPhases(seq)) {
+    const cell = document.createElement("span");
+    cell.className = `consort-cell consort-cell--${phaseClass(phase)}`;
+    cell.style.background = STRIP_COLORS[phase] ?? "#ccc";
+    cell.title = phase;
+    strip.appendChild(cell);
+  }
+
+  col.appendChild(strip);
+  return col;
+}
+
+/**
+ * CONSORT-style cluster flow: assessed → excluded side branch → randomised →
+ * five implementation-sequence strips (month cells).
+ */
 export function createSequencesChart(data: TrialDesignData = trialDesign): HTMLElement {
   const sequences = implementationSequences(data);
   const totalMonths = sequences[0]?.totalMonths ?? data.parameters.totalMonths;
+
   const chart = document.createElement("div");
-  chart.className = "sequences-chart";
+  chart.className = "consort-flow";
   chart.setAttribute(
     "aria-label",
-    `Five implementation sequences. Sequence 1 has ${sequences[0]?.phases[0]?.months} months of standard care, training, then ${sequences[0]?.phases[2]?.months} months of intervention. Each later sequence adds one month of standard care and one fewer month of intervention.`
+    "Cluster flow: hospitals are assessed for eligibility, then randomised to one of five implementation sequences"
   );
 
-  const axis = document.createElement("div");
-  axis.className = "sequences-axis";
-  axis.setAttribute("aria-hidden", "true");
-  const axisSpacer = document.createElement("span");
-  axisSpacer.className = "sequences-axis__label";
-  axis.appendChild(axisSpacer);
+  const assessed = flowBox("Clusters assessed for eligibility");
+  assessed.classList.add("consort-flow__assessed");
+  chart.appendChild(assessed);
 
-  const ticks = document.createElement("div");
-  ticks.className = "sequences-axis__ticks";
-  const tickStep = 2;
-  for (let month = 0; month <= totalMonths; month += tickStep) {
-    const tick = document.createElement("span");
-    tick.className = "sequences-axis__tick";
-    tick.style.left = `${(month / totalMonths) * 100}%`;
-    tick.textContent = String(month);
-    ticks.appendChild(tick);
-  }
-  if (totalMonths % tickStep !== 0) {
-    const endTick = document.createElement("span");
-    endTick.className = "sequences-axis__tick sequences-axis__tick--end";
-    endTick.style.left = "100%";
-    endTick.textContent = String(totalMonths);
-    ticks.appendChild(endTick);
-  }
-  axis.appendChild(ticks);
-  chart.appendChild(axis);
+  const mid = document.createElement("div");
+  mid.className = "consort-flow__mid";
 
-  const rows = document.createElement("div");
-  rows.className = "sequences-rows";
+  const stem = document.createElement("div");
+  stem.className = "consort-flow__stem";
+  stem.setAttribute("aria-hidden", "true");
+  const stemLine = document.createElement("div");
+  stemLine.className = "consort-flow__stem-line";
+  const stemBranch = document.createElement("div");
+  stemBranch.className = "consort-flow__stem-branch";
+  stem.append(stemLine, stemBranch);
+  mid.appendChild(stem);
 
+  const exclusion = exclusionBox();
+  mid.appendChild(exclusion);
+  chart.appendChild(mid);
+
+  const randomised = flowBox("Clusters randomised");
+  randomised.classList.add("consort-flow__randomised");
+  chart.appendChild(randomised);
+
+  const sequencesBlock = document.createElement("div");
+  sequencesBlock.className = "consort-flow__sequences";
+
+  const bus = document.createElement("div");
+  bus.className = "consort-flow__bus";
+  bus.setAttribute("aria-hidden", "true");
+  sequencesBlock.appendChild(bus);
+
+  const cols = document.createElement("div");
+  cols.className = "consort-sequences";
   for (const seq of sequences) {
-    const row = document.createElement("div");
-    row.className = "sequence-row";
-    row.dataset.sequence = String(seq.sequence);
-
-    const label = document.createElement("p");
-    label.className = "sequence-row__label";
-    label.textContent = `Sequence ${seq.sequence}`;
-    row.appendChild(label);
-
-    const track = document.createElement("div");
-    track.className = "sequence-row__track";
-    track.style.gridTemplateColumns = `repeat(${totalMonths}, minmax(0, 1fr))`;
-
-    for (const phase of seq.phases) {
-      const bar = document.createElement("div");
-      bar.className = `sequence-bar sequence-bar--${phaseClass(phase.phase)}`;
-      bar.style.gridColumn = `${phase.start + 1} / ${phase.end + 1}`;
-      bar.style.background = data.colors[phase.phase] ?? "#999999";
-      bar.title = `${phase.phase}: ${monthsLabel(phase.months)}`;
-      const text = document.createElement("span");
-      text.className = "sequence-bar__text";
-      text.textContent = barLabel(phase);
-      bar.appendChild(text);
-      track.appendChild(bar);
-    }
-
-    row.appendChild(track);
-    rows.appendChild(row);
+    cols.appendChild(sequenceColumn(seq, totalMonths));
   }
-
-  chart.appendChild(rows);
-
-  const axisTitle = document.createElement("p");
-  axisTitle.className = "sequences-axis-title";
-  axisTitle.textContent = "Study month";
-  chart.appendChild(axisTitle);
+  sequencesBlock.appendChild(cols);
+  chart.appendChild(sequencesBlock);
 
   return chart;
 }
 
-export function createSequencesLegend(data: TrialDesignData = trialDesign): HTMLElement {
+export function createSequencesLegend(): HTMLElement {
   const el = document.createElement("div");
   el.className = "wedge-legend sequences-legend";
   el.setAttribute("aria-hidden", "true");
-  for (const phase of data.legend) {
+  const labels: Array<[string, string]> = [
+    ["Standard care", STRIP_COLORS["Standard care"]],
+    ["Training", STRIP_COLORS.Transition],
+    ["Intervention", STRIP_COLORS.Intervention],
+  ];
+  for (const [text, color] of labels) {
     const item = document.createElement("span");
     item.className = "wedge-legend__item";
     const swatch = document.createElement("span");
     swatch.className = "wedge-legend__swatch";
-    swatch.style.background = data.colors[phase] ?? "#999999";
+    swatch.style.background = color;
     const label = document.createElement("span");
     label.className = "wedge-legend__label";
-    label.textContent = phase === "Transition" ? "Training (1 month)" : phase;
+    label.textContent = text;
     item.append(swatch, label);
     el.appendChild(item);
   }
