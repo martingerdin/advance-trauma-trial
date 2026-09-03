@@ -26,17 +26,18 @@ conduct_meta_analysis <- function(format = "png", plot = TRUE, export.path = NUL
     data <- data[order(data$year), ]
     pooled.studies.citation <- paste0("[", paste0("@", data$citation.key, collapse = ";"), "]")
 
-    # Create outcome data for meta-analysis
+    # Create outcome data for meta-analysis (odds ratio, matching Nakhid et al. 2026)
     outcome <- metabin(
         event.c = non.atls.died, event.e = atls.died,
         n.c = non.atls.n, n.e = atls.n,
-        studlab = study, data = data
+        studlab = study, data = data,
+        sm = "OR"
     )
 
     # Run random effects meta-analysis
     result <- summary(outcome)
     color.palette <- colors()
-    favors.atls.color <- unname(color.palette["light.intervention"])
+    favors.training.color <- unname(color.palette["light.intervention"])
     favors.comparison.color <- unname(color.palette["light.standard.care"])
     pooled.color <- unname(color.palette["light.transition"])
 
@@ -50,6 +51,7 @@ conduct_meta_analysis <- function(format = "png", plot = TRUE, export.path = NUL
         study = as.character(outcome$studlab),
         year = data$year,
         design = data$design,
+        programme = data$programme,
         eligibility = data$eligibility,
         outcome = data$outcome,
         sampleSize = data$sample.size,
@@ -68,7 +70,7 @@ conduct_meta_analysis <- function(format = "png", plot = TRUE, export.path = NUL
         weight = as.numeric(outcome$w.random),
         weightPercent = as.numeric(100 * outcome$w.random / sum(outcome$w.random)),
         favorsAtls = outcome$TE < 0,
-        color = ifelse(outcome$TE < 0, favors.atls.color, favors.comparison.color),
+        color = ifelse(outcome$TE < 0, favors.training.color, favors.comparison.color),
         stringsAsFactors = FALSE
     )
     rownames(studies) <- NULL
@@ -89,13 +91,13 @@ conduct_meta_analysis <- function(format = "png", plot = TRUE, export.path = NUL
             leftcols = c("studlab", "sample.size"),
             rightcols = c("effect", "ci"),
             leftlabs = c("Study", "Sample size"),
-            rightlabs = c("RR", "95% CI"),
+            rightlabs = c("OR", "95% CI"),
             text.random = "Pooled effect on mortality",
-            label.left = "Favors ATLS®",
+            label.left = "Favors training",
             label.right = "Favors comparison",
             fontsize = 9,
             spacing = 0.65,
-            col.square = ifelse(outcome$TE < 0, favors.atls.color, favors.comparison.color),
+            col.square = ifelse(outcome$TE < 0, favors.training.color, favors.comparison.color),
             col.diamond = pooled.color
         )
         dev.off()
@@ -113,7 +115,7 @@ conduct_meta_analysis <- function(format = "png", plot = TRUE, export.path = NUL
 
     if (!is.null(export.path)) {
         payload <- list(
-            measure = "RR",
+            measure = "OR",
             method = outcome$method,
             methodRandom = outcome$method.random,
             methodTau = outcome$method.tau,
@@ -135,9 +137,9 @@ conduct_meta_analysis <- function(format = "png", plot = TRUE, export.path = NUL
                 color = pooled.color
             ),
             labels = list(
-                left = "Favors ATLS®",
+                left = "Favors training",
                 right = "Favors comparison",
-                effect = "RR",
+                effect = "OR",
                 sampleSize = "Sample size",
                 study = "Study"
             ),

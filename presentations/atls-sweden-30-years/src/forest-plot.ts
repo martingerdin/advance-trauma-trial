@@ -68,6 +68,26 @@ const DESIGN_FILTERS: { label: string; match: (design: string) => boolean }[] = 
   },
 ];
 
+/** Preferred chip order for training-programme filters. */
+const PROGRAMME_ORDER = ["ATLS", "PTC", "RTTDC", "JATEC", "CTCT"];
+
+function programmeFilters(
+  studies: MetaAnalysisData["studies"]
+): { label: string; keys: string[] }[] {
+  const byProgramme = new Map<string, string[]>();
+  for (const study of studies) {
+    const programme = study.programme?.trim() || "Other";
+    const keys = byProgramme.get(programme) ?? [];
+    keys.push(study.citationKey);
+    byProgramme.set(programme, keys);
+  }
+  const ordered = [
+    ...PROGRAMME_ORDER.filter((name) => byProgramme.has(name)),
+    ...[...byProgramme.keys()].filter((name) => !PROGRAMME_ORDER.includes(name)).sort(),
+  ];
+  return ordered.map((label) => ({ label, keys: byProgramme.get(label)! }));
+}
+
 export interface ForestPlotController {
   element: HTMLElement;
   setIncluded(keys: Iterable<string>): void;
@@ -130,6 +150,10 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   });
   controls.appendChild(timelineBtn);
 
+  const designGroup = document.createElement("div");
+  designGroup.className = "forest-chip-group";
+  designGroup.setAttribute("role", "group");
+  designGroup.setAttribute("aria-label", "Filter by study design");
   for (const filter of DESIGN_FILTERS) {
     const keys = data.studies.filter((s) => filter.match(s.design)).map((s) => s.citationKey);
     if (keys.length === 0) continue;
@@ -137,6 +161,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     btn.type = "button";
     btn.className = "forest-chip";
     btn.dataset.filter = filter.label;
+    btn.dataset.filterKind = "design";
     btn.textContent = filter.label;
     btn.title = `Include only ${filter.label.toLowerCase()} studies`;
     btn.addEventListener("click", (e) => {
@@ -144,8 +169,31 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       abortReveal();
       setIncluded(keys);
     });
-    controls.appendChild(btn);
+    designGroup.appendChild(btn);
   }
+  if (designGroup.childElementCount > 0) controls.appendChild(designGroup);
+
+  const programmeGroup = document.createElement("div");
+  programmeGroup.className = "forest-chip-group";
+  programmeGroup.setAttribute("role", "group");
+  programmeGroup.setAttribute("aria-label", "Filter by training programme");
+  const programmes = programmeFilters(data.studies);
+  for (const filter of programmes) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "forest-chip";
+    btn.dataset.filter = filter.label;
+    btn.dataset.filterKind = "programme";
+    btn.textContent = filter.label;
+    btn.title = `Include only ${filter.label} studies`;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      abortReveal();
+      setIncluded(filter.keys);
+    });
+    programmeGroup.appendChild(btn);
+  }
+  if (programmeGroup.childElementCount > 0) controls.appendChild(programmeGroup);
 
   const hint = document.createElement("p");
   hint.className = "forest-hint";
@@ -408,7 +456,18 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     for (const filter of DESIGN_FILTERS) {
       const keys = data.studies.filter((s) => filter.match(s.design)).map((s) => s.citationKey);
       if (keys.length > 0 && sameStudySet(included, keys)) {
-        const chip = chips.find((c) => c.dataset.filter === filter.label);
+        const chip = chips.find(
+          (c) => c.dataset.filterKind === "design" && c.dataset.filter === filter.label
+        );
+        chip?.classList.add("is-active");
+        return;
+      }
+    }
+    for (const filter of programmes) {
+      if (sameStudySet(included, filter.keys)) {
+        const chip = chips.find(
+          (c) => c.dataset.filterKind === "programme" && c.dataset.filter === filter.label
+        );
         chip?.classList.add("is-active");
         return;
       }
@@ -459,7 +518,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       footer.textContent = footerText(pooled, data.measure);
       svg.setAttribute(
         "aria-label",
-        `Forest plot of ATLS effect on mortality. Pooled risk ratio ${pooled.rrFormatted}, 95% CI ${pooled.ciFormatted}, ${pooled.numberOfStudies} studies`
+        `Forest plot of trauma life support training effect on mortality. Pooled odds ratio ${pooled.rrFormatted}, 95% CI ${pooled.ciFormatted}, ${pooled.numberOfStudies} studies`
       );
     }
     syncChips();

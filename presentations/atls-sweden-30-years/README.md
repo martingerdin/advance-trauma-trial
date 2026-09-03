@@ -78,6 +78,6 @@ On the `#atls-forest` slide you can:
 - Watch studies appear oldest → newest on enter, with the pooled estimate updating after each
 - Click **Play timeline** to replay that chronological reveal
 - Click a study row to include or exclude it
-- Use the chips to show all studies or only one study design
+- Use the chips to show all studies, filter by study design, or filter by training programme (ATLS, PTC, RTTDC, JATEC, CTCT)
 
-When every study is included, the plot shows the R-exported REML pooled estimate (same as the protocol). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).
+Study-level counts come from Nakhid et al. 2026 (17 observational studies in the mortality meta-analysis, including non-ATLS programmes). When every study is included, the plot shows the R-exported REML pooled odds ratio (same pipeline as the protocol export). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).

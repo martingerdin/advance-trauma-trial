@@ -7,6 +7,7 @@ export interface MetaAnalysisStudy {
   study: string;
   year: number;
   design: string;
+  programme: string;
   eligibility: string | null;
   outcome: string | null;
   sampleSize: number;

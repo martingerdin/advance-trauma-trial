@@ -1622,11 +1622,35 @@ body {
   margin-top: 0.35rem;
 }
 
+.forest-subtitle {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 42rem;
+}
+
+.slide-inner--forest {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .forest-controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem 0.55rem;
+}
+
+.forest-chip-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding-left: 0.55rem;
+  margin-left: 0.1rem;
+  border-left: 1px solid var(--border);
 }
 
 .forest-chip {

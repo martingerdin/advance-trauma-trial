@@ -4,7 +4,7 @@ import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syn
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
 import { createSequencesChart, createSequencesLegend } from "./sequences";
-import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
+import { trialDesign, trialDesignStaircase } from "./figure-data";
 import "./style.css";
 
 let currentIndex = 0;
@@ -429,17 +429,11 @@ function renderSlide(slide: Slide): HTMLElement {
       break;
 
     case "forest": {
-      const pooled = metaAnalysis.pooled;
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--forest">
           <h2 data-animate>${slide.title}</h2>
-          <div class="forest-container" data-animate id="forest-mount"></div>
-          <p class="slide-footer" data-animate>
-            Random-effects ${metaAnalysis.measure} ${pooled.rrFormatted}
-            (95% CI ${pooled.ciFormatted.replace("; ", "–")});
-            I² ${(pooled.i2Rounded * 100).toFixed(0)}%;
-            ${pooled.numberOfStudies} observational studies
-          </p>
+          ${slide.subtitle ? `<p class="forest-subtitle" data-animate>${slide.subtitle}</p>` : ""}
+          <div id="forest-mount"></div>
         </div>
       `;
       break;
