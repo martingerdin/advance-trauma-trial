@@ -84,6 +84,14 @@ function renderSlide(slide: Slide): HTMLElement {
                 : ""
             }
           </div>
+          ${
+            slide.body
+              ? `<section class="presenter-disclosure" data-animate>
+                  <h2 class="presenter-heading">Conflicts of interest</h2>
+                  <p class="presenter-disclosure__text">${slide.body}</p>
+                </section>`
+              : ""
+          }
         </div>
       `;
       break;

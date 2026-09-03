@@ -39,7 +39,7 @@ Image assets in `public/` are copied to `dist/` during build:
 | # | ID | Content |
 |---|-----|---------|
 | 1 | `title` | Title slide |
-| 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg |
+| 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg (positions, affiliations, conflicts of interest) |
 | 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
 | 4–12 | ATLS slides | Purpose, evidence, forest plot, critique |
 | — | `atls-impact-sources` | Historical sources for manual Impact claims |

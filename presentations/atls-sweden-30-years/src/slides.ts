@@ -111,6 +111,7 @@ export const slides: Slide[] = [
       "Department of Global Public Health, Karolinska Institutet, Stockholm",
       "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
     ],
+    body: "Nothing to declare",
   },
   {
     id: "section-problem",
