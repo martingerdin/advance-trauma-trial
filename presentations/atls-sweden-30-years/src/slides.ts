@@ -91,11 +91,6 @@ export const slides: Slide[] = [
       "Department of Global Public Health, Karolinska Institutet, Stockholm",
       "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
     ],
-  },
-  {
-    id: "conflicts",
-    layout: "aim",
-    title: "Conflicts of interest",
     body: "Nothing to declare",
   },
   {
