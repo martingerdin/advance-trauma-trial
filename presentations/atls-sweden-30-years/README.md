@@ -9,7 +9,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). Use arrow keys, space, or swipe to navigate. Press **F** for fullscreen.
+Open [http://localhost:5173](http://localhost:5173). Use arrow keys, space, or swipe to navigate. Press **O** (or the grid / counter controls) for a thumbnail overview to jump to any slide. Press **F** for fullscreen.
 
 ## Build for website
 
@@ -30,6 +30,7 @@ Image assets in `public/` are copied to `dist/` during build:
 
 - **Motion** animations — staggered entrance, forest plot and stepped-wedge reveal
 - **Deep linking** — each slide has a URL hash (e.g. `#design`)
+- **Slide overview** — thumbnail filmstrip to jump to any slide (`O`, grid button, or counter)
 - **Responsive** — works on projectors, laptops, and tablets
 - **Accessible** — keyboard navigation, ARIA labels, reduced-motion support
 - **Brand-aligned** — colours and typography match advancetrauma.info
