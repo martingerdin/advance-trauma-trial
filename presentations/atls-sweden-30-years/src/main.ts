@@ -310,7 +310,6 @@ function renderSlide(slide: Slide): HTMLElement {
                     </figure>
                     <div class="wedge-phase__copy">
                       <p class="wedge-phase__title">Standard care</p>
-                      <p class="wedge-phase__when">Months 0–4</p>
                     </div>
                   </article>
                   <article class="wedge-phase" data-phase="transition" aria-hidden="true">
@@ -318,8 +317,7 @@ function renderSlide(slide: Slide): HTMLElement {
                       <img src="./training-illustration.png" alt="" />
                     </figure>
                     <div class="wedge-phase__copy">
-                      <p class="wedge-phase__title">Transition</p>
-                      <p class="wedge-phase__when">Month 4–5 · ATLS® course</p>
+                      <p class="wedge-phase__title">Training</p>
                     </div>
                   </article>
                   <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
@@ -328,7 +326,6 @@ function renderSlide(slide: Slide): HTMLElement {
                     </figure>
                     <div class="wedge-phase__copy">
                       <p class="wedge-phase__title">Intervention</p>
-                      <p class="wedge-phase__when">Months 5–13</p>
                     </div>
                   </article>
                 </div>

@@ -185,7 +185,7 @@ export function createWedgeLegend(data: TrialDesignData): HTMLElement {
     swatch.style.background = data.colors[phase] ?? "#999999";
     const label = document.createElement("span");
     label.className = "wedge-legend__label";
-    label.textContent = phase;
+    label.textContent = phase === "Transition" ? "Training" : phase;
     item.append(swatch, label);
     el.appendChild(item);
   }
