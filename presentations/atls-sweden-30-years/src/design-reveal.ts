@@ -53,31 +53,39 @@ const STAGES: Array<{
 ];
 
 const SITE_PHASES = [
-  { id: "standard-care", centerMonth: 2, revealAt: 0.2 },
-  { id: "transition", centerMonth: 4.5, revealAt: 4 },
-  { id: "intervention", centerMonth: 9, revealAt: 5 },
+  { id: "standard-care", centerMonth: 2 },
+  { id: "transition", centerMonth: 4.5 },
+  { id: "intervention", centerMonth: 9 },
 ] as const;
 
+type SitePhaseId = (typeof SITE_PHASES)[number]["id"];
+
 /** One-site wipe segments: animate to endMonth, then wait for play. */
-const SITE_PHASE_SCRUBS: Array<{ endMonth: number; duration: number; caption: string }> = [
+const SITE_PHASE_SCRUBS: Array<{
+  id: SitePhaseId;
+  endMonth: number;
+  duration: number;
+  caption: string;
+}> = [
   {
+    id: "standard-care",
     endMonth: 4,
     duration: 4,
     caption: "Standard care — months 0–4 at one hospital",
   },
   {
+    id: "transition",
     endMonth: 5,
     duration: 2.5,
     caption: "Transition — ATLS® course, month 4–5",
   },
   {
+    id: "intervention",
     endMonth: 13,
     duration: 5,
     caption: "Intervention — months 5–13 after ATLS training",
   },
 ];
-
-type SitePhaseId = (typeof SITE_PHASES)[number]["id"];
 
 function reduceMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -150,6 +158,8 @@ export function startDesignReveal(
   let activeStage: DesignRevealStage | null = null;
   /** Overrides the stage caption while stepping through one-site phases. */
   let sitePhaseCaption: string | null = null;
+  /** Callouts unlock only when that phase's wipe starts (after play), not at the prior pause. */
+  const unlockedSitePhases = new Set<SitePhaseId>();
   let runToken = 0;
   const running: AnimationPlaybackControls[] = [];
   const listenerAbort = new AbortController();
@@ -231,7 +241,7 @@ export function startDesignReveal(
     for (const phase of SITE_PHASES) {
       const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phase.id}"]`);
       if (!el) continue;
-      const revealed = forceAll || month >= phase.revealAt - 0.05;
+      const revealed = forceAll || unlockedSitePhases.has(phase.id);
       const active = forceAll || (revealed && phaseIsActive(phase.id, month));
       el.classList.toggle("is-revealed", revealed);
       el.classList.toggle("is-active", active);
@@ -433,6 +443,7 @@ export function startDesignReveal(
     activeStage = "site";
     complete = false;
     sitePhaseCaption = null;
+    unlockedSitePhases.clear();
     syncUi();
 
     await clearPlot(token, animateIn);
@@ -442,6 +453,8 @@ export function startDesignReveal(
     showBatchLabels([1]);
 
     if (!animateIn || reduceMotion()) {
+      unlockedSitePhases.clear();
+      for (const phase of SITE_PHASES) unlockedSitePhases.add(phase.id);
       setReveal(shortEnd, true);
       sitePhaseCaption = null;
       return;
@@ -451,7 +464,10 @@ export function startDesignReveal(
     for (let i = 0; i < SITE_PHASE_SCRUBS.length; i++) {
       const phase = SITE_PHASE_SCRUBS[i];
       sitePhaseCaption = phase.caption;
+      // Unlock the illustration only as this phase's wipe begins (after play).
+      unlockedSitePhases.add(phase.id);
       syncUi();
+      setReveal(fromMonth);
       await scrubTimeline(fromMonth, phase.endMonth, token, phase.duration);
       fromMonth = phase.endMonth;
 
