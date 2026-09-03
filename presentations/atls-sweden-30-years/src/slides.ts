@@ -175,14 +175,28 @@ export const slides: Slide[] = [
   {
     id: "atls-outcomes-reviews",
     layout: "bullets",
-    title: "Evidence on patient outcomes",
+    title: "Evidence on patient outcomes — systematic reviews",
     bullets: [
-      "Mohammad et al. 2013 — future studies required to evaluate impact on trauma death rates",
-      "Jayaraman et al. 2014 — no evidence from controlled trials that ATLS impacts outcomes",
-      "Jin et al. 2021 — in-hospital trauma training reduced mortality (RR 0.71, 95% CI 0.62–0.78)",
-      "Putra et al. 2023 — ATLS had no significant effect on mortality (OR 0.68, 95% CI 0.39–1.20)",
-      "Nakhid et al. 2026 — 10 observational studies; pooled OR 0.51",
+      "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
+      "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
+      "Jin et al. 2021 — certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78)",
+      "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
+      "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
     ],
+  },
+  {
+    id: "atls-outcomes-scoping",
+    layout: "bullets",
+    title: "Evidence on patient outcomes — scoping reviews",
+    bullets: [
+      "Livergant et al. 2021 — only 3 of 45 LMIC course studies assessed patient outcomes; 2 found no improvement",
+      "Brown et al. 2022 — among ATLS alternatives, only one study reported a mortality reduction",
+      "Nelson et al. 2026 — 3 of 14 ED-physician studies assessed clinical impact; results mixed",
+      "Hauta et al. 2024 — team performance often improves; mortality, morbidity and length of stay generally do not",
+      "Petroze 2014 / Osebo 2025 — patient-outcome data for focused LMIC trauma courses remain scarce",
+    ],
+    footer:
+      "Across reviews: knowledge and skills improve; randomised evidence that training changes patient outcomes is still missing.",
   },
   {
     id: "atls-critique",

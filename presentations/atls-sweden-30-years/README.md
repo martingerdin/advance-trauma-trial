@@ -40,9 +40,11 @@ Image assets in `public/` are copied to `dist/` during build:
 |---|-----|---------|
 | 1 | `title` | Title slide |
 | 2–3 | `section-problem`, `trauma-stats` | Trauma burden |
-| 4–11 | ATLS slides | Purpose, evidence, critique |
+| 4–12 | ATLS slides | Purpose, evidence, critique |
 | — | `atls-impact-sources` | Historical sources for manual Impact claims |
-| 12–21 | Trial slides | Design, outcomes, status |
+| — | `atls-outcomes-reviews` | Systematic reviews on patient outcomes |
+| — | `atls-outcomes-scoping` | Scoping reviews on patient outcomes |
+| 13–22 | Trial slides | Design, outcomes, status |
 | 21–22 | `implications`, `closing` | Take-home messages |
 
 ## Source
