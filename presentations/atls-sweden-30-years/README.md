@@ -9,7 +9,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). Use arrow keys, space, or swipe to navigate. Press **F** for fullscreen.
+Open [http://localhost:5173](http://localhost:5173). Use arrow keys, space, or swipe to navigate. Press **O** (or the grid / counter controls) for a thumbnail overview to jump to any slide. Press **F** for fullscreen.
 
 ## Build for website
 
@@ -30,6 +30,7 @@ Image assets in `public/` are copied to `dist/` during build:
 
 - **Motion** animations — staggered entrance, forest plot, sequence randomisation, and stepped-wedge reveal
 - **Deep linking** — each slide has a URL hash (e.g. `#design`)
+- **Slide overview** — thumbnail filmstrip to jump to any slide (`O`, grid button, or counter)
 - **Responsive** — works on projectors, laptops, and tablets
 - **Accessible** — keyboard navigation, ARIA labels, reduced-motion support
 - **Brand-aligned** — colours and typography match advancetrauma.info
@@ -39,12 +40,18 @@ Image assets in `public/` are copied to `dist/` during build:
 | # | ID | Content |
 |---|-----|---------|
 | 1 | `title` | Title slide |
-| 2–3 | `section-problem`, `trauma-stats` | Trauma burden |
-| 4–12 | ATLS slides | Purpose, evidence, forest plot, critique |
-| — | `atls-impact-sources` | Historical sources for manual Impact claims |
+| 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg (positions, affiliations, conflicts of interest) |
+| 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
+| — | ATLS slides | Purpose, evidence, critique |
+| — | `atls-patient-impact-sources` | Historical sources for manual Impact claims |
+| — | `atls-outcomes-reviews` | Systematic reviews on patient outcomes |
+| — | `atls-outcomes-scoping` | Scoping reviews on patient outcomes |
 | — | `atls-forest` | Updated systematic review forest plot |
-| 12–22 | Trial slides | Design, sequences, nested staircase, outcomes, status |
-| 21–22 | `implications`, `closing` | Take-home messages |
+| — | Trial slides | Design, sequences, nested staircase, outcomes, status |
+| — | `implications` | Take-home messages |
+| — | `team` | International collaboration overview |
+| — | `funding` | Current funders and funding gap |
+| — | `closing` | Thank you |
 
 ## Source
 
@@ -63,3 +70,14 @@ Typed accessors are in `src/figure-data.ts`. Regenerate after changing systemati
 ```bash
 Rscript export-figure-data.R
 ```
+
+### Interactive forest plot
+
+On the `#atls-forest` slide you can:
+
+- Watch studies appear oldest → newest on enter, with the pooled estimate updating after each
+- Click **Play timeline** to replay that chronological reveal
+- Click a study row to include or exclude it
+- Use the chips to show all studies or only one study design
+
+When every study is included, the plot shows the R-exported REML pooled estimate (same as the protocol). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).
