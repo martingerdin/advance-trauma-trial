@@ -56,6 +56,46 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "presenter":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--presenter">
+          ${slide.eyebrow ? `<p class="eyebrow" data-animate>${slide.eyebrow}</p>` : ""}
+          <h1 class="presenter-name" data-animate>${slide.title}</h1>
+          ${slide.subtitle ? `<p class="presenter-degrees" data-animate>${slide.subtitle}</p>` : ""}
+          <div class="presenter-grid">
+            ${
+              slide.bullets?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Positions</h2>
+                    <ul class="presenter-list">
+                      ${slide.bullets.map((b) => `<li>${b}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+            ${
+              slide.affiliations?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Affiliations</h2>
+                    <ul class="presenter-list">
+                      ${slide.affiliations.map((a) => `<li>${a}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+          </div>
+          ${
+            slide.body
+              ? `<section class="presenter-disclosure" data-animate>
+                  <h2 class="presenter-heading">Conflicts of interest</h2>
+                  <p class="presenter-disclosure__text">${slide.body}</p>
+                </section>`
+              : ""
+          }
+        </div>
+      `;
+      break;
+
     case "closing":
       el.innerHTML = `
         <div class="slide-inner slide-inner--center">
@@ -368,6 +408,61 @@ function renderSlide(slide: Slide): HTMLElement {
               <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training needs to change.</p>
             </div>
           </div>
+        </div>
+      `;
+      break;
+
+    case "team":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--team">
+          <header class="team-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="team-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="team-grid" data-animate-group>
+            ${(slide.teamGroups ?? [])
+              .map(
+                (group) => `
+              <article class="team-card" data-animate>
+                <h3 class="team-card__label">${group.label}</h3>
+                <p class="team-card__location">${group.location}</p>
+                <ul class="team-card__members">
+                  ${group.members
+                    .map(
+                      (m) => `
+                    <li>
+                      <span class="team-member__name">${m.name}</span>
+                      <span class="team-member__role">${m.role}</span>
+                    </li>`
+                    )
+                    .join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "funding":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--funding">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="funding-intro" data-animate>${slide.body}</p>` : ""}
+          <div class="funding-grid" data-animate-group>
+            ${(slide.funders ?? [])
+              .map(
+                (f) => `
+              <article class="funding-card" data-animate>
+                <p class="funding-card__name">${f.name}</p>
+                <p class="funding-card__detail">${f.detail}</p>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="funding-note" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
