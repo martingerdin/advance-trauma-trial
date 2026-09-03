@@ -85,7 +85,7 @@ export const slides: Slide[] = [
     bullets: [
       "Principal Investigator, ADVANCE TRAUMA",
       "Associate Professor of Clinical Epidemiology, Karolinska Institutet",
-      "Resident in Anaesthesia and Intensive Care, Karolinska University Hospital",
+      "Specialist Physician in Anaesthesia and Intensive Care, Karolinska University Hospital",
     ],
     affiliations: [
       "Department of Global Public Health, Karolinska Institutet, Stockholm",
