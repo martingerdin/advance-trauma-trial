@@ -42,6 +42,10 @@
 #' @param save Logical. If TRUE the trial design figure is saved to
 #'     disk. Defaults to TRUE.
 #' @param device Character. The device to save the figure to. Defaults to "pdf".
+#' @param export.path Character or NULL. If provided, write the plot data as
+#'     JSON to this path for use in web graphics. Defaults to NULL.
+#' @param return.data Logical. If TRUE the function returns the JSON-ready plot
+#'     data instead of the ggplot. Defaults to FALSE.
 create_trial_design_flowchart <- function(clusters = 60,
                                           sequences = 5,
                                           batches = 6,
@@ -56,10 +60,9 @@ create_trial_design_flowchart <- function(clusters = 60,
                                           current.month = NULL,
                                           return.figure = TRUE,
                                           save = TRUE,
-                                          device = "pdf") {
-    ## Load packages
-    library(ggplot2)
-
+                                          device = "pdf",
+                                          export.path = NULL,
+                                          return.data = FALSE) {
     ## Check arguments
     assertthat::assert_that(is.numeric(clusters) && length(clusters) == 1 && clusters > 0)
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
@@ -71,6 +74,12 @@ create_trial_design_flowchart <- function(clusters = 60,
     assertthat::assert_that(is.numeric(staircase.months) && length(staircase.months) == 1 && staircase.months >= 0)
     if (!is.null(current.month)) {
         assertthat::assert_that(is.numeric(current.month) && length(current.month) == 1 && current.month >= 0)
+    }
+    assertthat::assert_that(is.logical(return.figure) && length(return.figure) == 1)
+    assertthat::assert_that(is.logical(save) && length(save) == 1)
+    assertthat::assert_that(is.logical(return.data) && length(return.data) == 1)
+    if (!is.null(export.path)) {
+        assertthat::assert_that(is.character(export.path) && length(export.path) == 1)
     }
 
     ## Generate plot data
@@ -88,9 +97,99 @@ create_trial_design_flowchart <- function(clusters = 60,
         staircase.months = staircase.months
     )
     clusters.per.batch <- with(plot.data, clusters / batches)
+    color.palette <- unname(colors())
+    staircase <- staircase.months > 0
+
+    segments <- plot.data
+    rownames(segments) <- NULL
+    segments$layer <- if (staircase) {
+        ifelse(segments$phase %in% c("Standard care", "Intervention"), "background", "overlay")
+    } else {
+        "main"
+    }
+    if (staircase) {
+        fill.colors <- list(
+            "Main stepped-wedge patient inclusion period" = "#999999",
+            "Pre-transition staircase" = color.palette[1],
+            "Transition" = color.palette[2],
+            "Post-transition staircase" = color.palette[3]
+        )
+        legend <- c(
+            "Main stepped-wedge patient inclusion period",
+            "Pre-transition staircase",
+            "Transition",
+            "Post-transition staircase"
+        )
+    } else {
+        fill.colors <- list(
+            "Standard care" = color.palette[1],
+            "Transition" = color.palette[2],
+            "Intervention" = color.palette[3]
+        )
+        legend <- c("Standard care", "Transition", "Intervention")
+    }
+    payload <- list(
+        parameters = list(
+            clusters = clusters,
+            sequences = sequences,
+            batches = batches,
+            minStandardCareMonths = min.standard.care.months,
+            minInterventionMonths = min.intervention.months,
+            batchesOverlapMonths = batches.overlap.months,
+            transitionMonths = transition.months,
+            transitionOverlapMonths = transition.overlap.months,
+            startMonth = start.month,
+            totalMonths = total.months,
+            staircaseMonths = staircase.months,
+            currentMonth = if (is.null(current.month)) NA_real_ else current.month,
+            clustersPerBatch = clusters.per.batch
+        ),
+        segments = segments,
+        colors = fill.colors,
+        legend = legend,
+        labels = list(
+            x = "Study month",
+            y = "Cluster",
+            fill = "Phase",
+            batch = "Batch"
+        ),
+        geometry = list(
+            xPadding = 0.1,
+            barHalfHeight = 0.3,
+            overlayHalfHeight = 0.4,
+            xBreakStep = 2,
+            yMin = 0.5,
+            yMax = clusters + 0.5
+        ),
+        xMax = max(plot.data$end)
+    )
+    if (!is.null(export.path)) {
+        dir.create(dirname(export.path), recursive = TRUE, showWarnings = FALSE)
+        jsonlite::write_json(
+            payload,
+            path = export.path,
+            pretty = TRUE,
+            auto_unbox = TRUE,
+            na = "null",
+            digits = 8,
+            dataframe = "rows",
+            rownames = FALSE
+        )
+    }
+
+    need.figure <- save || (return.figure && !return.data)
+    if (!need.figure) {
+        if (return.data) {
+            return(payload)
+        }
+        if (!is.null(export.path)) {
+            return(export.path)
+        }
+        return(invisible(NULL))
+    }
 
     ## Create plot
-    color.palette <- unname(colors())
+    library(ggplot2)
     if (staircase.months > 0) {
         # Filter data to only show relevant phases in legend
         legend.data <- subset(plot.data, phase %in% c("Pre-transition staircase", "Transition", "Post-transition staircase"))
@@ -216,13 +315,18 @@ create_trial_design_flowchart <- function(clusters = 60,
         ggsave(file.name, trial.design.figure, width = 15, height = 9, units = "cm")
     }
 
-    ## Return figure
+    ## Return
+    if (return.data) {
+        return(payload)
+    }
     if (return.figure) {
         return(trial.design.figure)
     }
-
-    ## Return file name
-    if (!return.figure) {
+    if (save) {
         return(file.name)
     }
+    if (!is.null(export.path)) {
+        return(export.path)
+    }
+    invisible(NULL)
 }

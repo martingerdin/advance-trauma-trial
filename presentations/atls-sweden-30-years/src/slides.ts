@@ -3,10 +3,40 @@ export interface Reference {
   text: string;
 }
 
+export interface EvidenceItem {
+  id: string;
+  claim: string;
+  source: string;
+  tag?: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
   source?: string;
+}
+
+export interface Milestone {
+  year: string;
+  label: string;
+  image?: string;
+  imageAlt?: string;
+  cite?: string;
+}
+
+export interface TeamMember {
+  name: string;
+  role: string;
+}
+
+export interface TeamGroup {
+  label: string;
+  location: string;
+  members: TeamMember[];
+}
+
+export interface Funder {
+  name: string;
 }
 
 export interface Slide {
@@ -20,14 +50,23 @@ export interface Slide {
     | "two-col"
     | "visual"
     | "design"
+    | "design-animation"
+    | "forest"
     | "implications"
     | "closing"
-    | "references";
+    | "references"
+    | "evidence"
+    | "milestones"
+    | "aim"
+    | "presenter"
+    | "team"
+    | "funding";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
   body?: string;
   bullets?: string[];
+  affiliations?: string[];
   stats?: Stat[];
   image?: string;
   imageAlt?: string;
@@ -35,6 +74,12 @@ export interface Slide {
   cite?: string;
   footer?: string;
   references?: Reference[];
+  evidence?: EvidenceItem[];
+  milestones?: Milestone[];
+  teamGroups?: TeamGroup[];
+  funders?: Funder[];
+  /** Which exported trial-design JSON to render on design slides. */
+  designVariant?: "main" | "staircase";
 }
 
 const ATLS_MANUAL_CITE =
@@ -49,6 +94,23 @@ export const slides: Slide[] = [
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "Swedish ATLS Chapter — 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
+  },
+  {
+    id: "presenter",
+    layout: "presenter",
+    title: "Martin Gerdin Wärnberg",
+    subtitle: "MD, PhD",
+    eyebrow: "Speaker",
+    bullets: [
+      "Principal Investigator, ADVANCE TRAUMA",
+      "Associate Professor of Clinical Epidemiology, Karolinska Institutet",
+      "Specialist Physician in Anaesthesia and Intensive Care, Karolinska University Hospital",
+    ],
+    affiliations: [
+      "Department of Global Public Health, Karolinska Institutet, Stockholm",
+      "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
+    ],
+    body: "Nothing to declare",
   },
   {
     id: "section-problem",
@@ -103,7 +165,7 @@ export const slides: Slide[] = [
   },
   {
     id: "atls-spread",
-    layout: "two-col",
+    layout: "stats",
     title: "Spread and dissemination",
     image: "./training-illustration.png",
     imageAlt: "ATLS training session with instructor and students",
@@ -123,13 +185,45 @@ export const slides: Slide[] = [
   },
   {
     id: "atls-provider-evidence",
-    layout: "bullets",
+    layout: "evidence",
     title: "Evidence on providers",
-    bullets: [
-      "Ali et al. 1995 — trauma management skills acquisition demonstrated after ATLS course",
-      "Ali et al. 1996 — improvement in OSCE scores, adherence to trauma priorities, and cognitive performance",
-      "Ali et al. 1999 — performance after new and old ATLS courses was similar using standard pass criteria",
+    body: "The 11th edition Impact paragraph cites no sources — here is what the literature shows.",
+    evidence: [
+      {
+        id: "1",
+        tag: "Manual claim",
+        claim: "Improves knowledge, psychomotor skills, confidence, and performance",
+        source:
+          "Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
+      },
+      {
+        id: "2",
+        tag: "Manual claim",
+        claim: "Organizational and procedural skills retained ≥6 years",
+        source:
+          "Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+      },
+      {
+        id: "3",
+        tag: "Further studies",
+        claim: "Trauma management skills acquisition after ATLS course",
+        source: "Ali et al. 1995",
+      },
+      {
+        id: "4",
+        tag: "Further studies",
+        claim: "Improvement in OSCE scores, adherence to priorities, and cognitive performance",
+        source: "Ali et al. 1996",
+      },
+      {
+        id: "5",
+        tag: "Further studies",
+        claim: "Similar performance after new and old ATLS courses",
+        source: "Ali et al. 1999",
+      },
     ],
+    footer:
+      "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
   },
   {
     id: "atls-outcomes-claim",
@@ -139,38 +233,36 @@ export const slides: Slide[] = [
     cite: ATLS_MANUAL_CITE,
   },
   {
-    id: "atls-impact-sources",
-    layout: "references",
-    title: "Sources for the ATLS Impact section",
-    body: "The 11th edition Impact paragraph (p. xv) has no in-text citations. These are the primary sources historically linked to its claims.",
-    references: [
+    id: "atls-patient-impact-sources",
+    layout: "evidence",
+    title: "The evidence behind the claims",
+    body: "Each claim from the manual's Impact section — and the study behind it.",
+    evidence: [
       {
         id: "1",
-        text: "Decreased injury mortality in a developing country — Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
+        claim: "Decreased injury mortality in a developing country",
+        source:
+          "Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
       },
       {
         id: "2",
-        text: "Lower per-capita injury death rates where clinicians have ATLS training — Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
+        claim: "Lower per-capita injury death rates where clinicians have ATLS training",
+        source:
+          "Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
       },
       {
         id: "3",
-        text: "Small ATLS-experienced team equivalent to a larger urban team — Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
+        claim: "Small ATLS-experienced team equivalent to a larger urban team",
+        source:
+          "Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
       },
       {
         id: "4",
-        text: "More unexpected survivors than fatalities — van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
-      },
-      {
-        id: "5",
-        text: "Improves knowledge, psychomotor skills, confidence, and performance — Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
-      },
-      {
-        id: "6",
-        text: "Organizational and procedural skills retained ≥6 years — Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+        claim: "More unexpected survivors than fatalities",
+        source:
+          "van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
       },
     ],
-    footer:
-      "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
   },
   {
     id: "atls-outcomes-reviews",
@@ -199,18 +291,23 @@ export const slides: Slide[] = [
       "Across reviews: knowledge and skills improve; randomised evidence that training changes patient outcomes is still missing.",
   },
   {
-    id: "atls-critique",
-    layout: "bullets",
-    title: "Critique",
-    bullets: [
-      "Costly",
-      "Perpetuates theories despite evidence of the contrary",
-      "Not adapted to modern trauma care",
-      "Not adaptable to local circumstances",
-      "Fixed didactic nature",
-    ],
-    cite: "Shilston & Turner 2022; Wiles 2015",
+    id: "atls-forest",
+    layout: "forest",
+    title: "Updated systematic review",
   },
+  // {
+  //   id: "atls-critique",
+  //   layout: "bullets",
+  //   title: "Critique",
+  //   bullets: [
+  //     "Costly",
+  //     "Perpetuates theories despite evidence of the contrary",
+  //     "Not adapted to modern trauma care",
+  //     "Not adaptable to local circumstances",
+  //     "Fixed didactic nature",
+  //   ],
+  //   cite: "Shilston & Turner 2022; Wiles 2015",
+  // },
   {
     id: "section-trial",
     layout: "section",
@@ -219,32 +316,62 @@ export const slides: Slide[] = [
   },
   {
     id: "aim",
-    layout: "bullets",
+    layout: "aim",
     title: "Aim",
-    bullets: [
-      "To compare the effects of ATLS® training with standard care on outcomes in adult trauma patients",
-    ],
+    body: "To compare the effects of ATLS® training with standard care on outcomes in adult trauma patients",
   },
   {
     id: "previous-work",
-    layout: "bullets",
+    layout: "milestones",
     title: "Previous work",
-    bullets: [
-      "2013 — Multicentre research (TITCO)",
-      "2022–2023 — Community consultations",
-      "2022–2023 — Pilot and feasibility study in India",
-      "2022–2026 — Systematic review",
+    subtitle: "Key references",
+    milestones: [
+      {
+        year: "2013",
+        label: "Multicentre research",
+        image: "./milestones/multicentre.png",
+        imageAlt: "Map of India with hospital sites",
+        cite: "12",
+      },
+      {
+        year: "2022–2023",
+        label: "Pilot and feasibility study",
+        image: "./milestones/pilot.png",
+        imageAlt: "Clinicians discussing care in a hospital room",
+        cite: "14",
+      },
+      {
+        year: "2022–2023",
+        label: "Community consultations",
+        image: "./milestones/consultations.png",
+        imageAlt: "Patient bedside discussion about ATLS",
+        cite: "13",
+      },
+      {
+        year: "2022–2026",
+        label: "Systematic review",
+        image: "./milestones/systematic-review.png",
+        imageAlt: "Nakhid et al. systematic review article in press",
+        cite: "5",
+      },
     ],
   },
   {
     id: "design",
     layout: "design",
     title: "Study design",
+    designVariant: "main",
     bullets: [
       "Batched stepped-wedge cluster randomised trial",
       "30 hospitals · 6 batches · 5 sequences · 13 months in trial",
       "Conducted in India — ongoing collaborations >10 years; ATLS not yet standard",
     ],
+  },
+  {
+    id: "design-animation",
+    layout: "design-animation",
+    title: "How the trial unfolds",
+    designVariant: "main",
   },
   {
     id: "intervention",
@@ -281,6 +408,17 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "design-staircase",
+    layout: "design",
+    title: "Nested staircase design",
+    designVariant: "staircase",
+    bullets: [
+      "Adherence measured around each hospital’s transition to ATLS®",
+      "Pre- and post-transition staircase periods nested in the stepped wedge",
+      "Lets us compare process adherence before and after training within clusters",
+    ],
+  },
+  {
     id: "sample-size",
     layout: "stats",
     title: "Sample size",
@@ -310,6 +448,56 @@ export const slides: Slide[] = [
     id: "implications",
     layout: "implications",
     title: "Implications",
+  },
+  {
+    id: "team",
+    layout: "team",
+    title: "The team",
+    subtitle: "An international collaboration",
+    teamGroups: [
+      {
+        label: "Karolinska Institutet",
+        location: "Stockholm, Sweden",
+        members: [
+          { name: "Martin Gerdin Wärnberg", role: "Principal Investigator" },
+          { name: "Anna Olofsson", role: "Trial Statistician" },
+          { name: "Lovisa Strömmer, Li Felländer-Tsai, Johanna Berg", role: "TMG members" },
+        ],
+      },
+      {
+        label: "The George Institute for Global Health",
+        location: "New Delhi, India",
+        members: [
+          { name: "Vivekanand Jha, Nobhojit Roy", role: "Co-principal Investigators" },
+          { name: "Prashant Kharat, Debojit Basak, Monty Khajanchi, Abhinav Bassi", role: "Trial operations" },
+          { name: "Hospital investigators & CRCs", role: "Sites across India" },
+        ],
+      },
+      {
+        label: "Methods partners",
+        location: "Birmingham · Melbourne",
+        members: [
+          { name: "Karla Hemming", role: "University of Birmingham" },
+          { name: "James Martin", role: "University of Birmingham" },
+          { name: "Jessica Kasza", role: "Monash University" },
+        ],
+      },
+    ],
+    footer: "Full team and site list at advancetrauma.info",
+  },
+  {
+    id: "funding",
+    layout: "funding",
+    title: "Funding",
+    body: "Current support for ADVANCE TRAUMA",
+    funders: [
+      { name: "Swedish Research Council" },
+      { name: "Laerdal Foundation" },
+      { name: "Region Stockholm" },
+      { name: "Swedish Society of Medicine" },
+    ],
+    footer:
+      "Not yet fully funded — additional support is needed to complete the trial through 2028–2029.",
   },
   {
     id: "closing",
