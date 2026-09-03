@@ -405,6 +405,61 @@ function renderSlide(slide: Slide): HTMLElement {
         </div>
       `;
       break;
+
+    case "team":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--team">
+          <header class="team-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="team-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="team-grid" data-animate-group>
+            ${(slide.teamGroups ?? [])
+              .map(
+                (group) => `
+              <article class="team-card" data-animate>
+                <h3 class="team-card__label">${group.label}</h3>
+                <p class="team-card__location">${group.location}</p>
+                <ul class="team-card__members">
+                  ${group.members
+                    .map(
+                      (m) => `
+                    <li>
+                      <span class="team-member__name">${m.name}</span>
+                      <span class="team-member__role">${m.role}</span>
+                    </li>`
+                    )
+                    .join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "funding":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--funding">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="funding-intro" data-animate>${slide.body}</p>` : ""}
+          <div class="funding-grid" data-animate-group>
+            ${(slide.funders ?? [])
+              .map(
+                (f) => `
+              <article class="funding-card" data-animate>
+                <p class="funding-card__name">${f.name}</p>
+                <p class="funding-card__detail">${f.detail}</p>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="funding-note" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
   }
 
   return el;
