@@ -67,7 +67,7 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
     });
     label.textContent = phase;
     legend.append(swatch, label);
-    legendX += Math.min(phase.length * 5.2 + 28, 160);
+    legendX += 110;
   }
   svg.appendChild(legend);
 
@@ -84,6 +84,8 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
     const row = svgEl("g", {
       class: "wedge-row",
       "data-batch": String(Math.ceil(cluster / clustersPerBatch)),
+    });
+    const positioned = svgEl("g", {
       transform: `translate(0, ${y})`,
     });
 
@@ -114,9 +116,10 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
         "stroke-width": isOverlay ? 0.4 : 0,
         opacity: isOverlay ? 0.9 : 0.92,
       });
-      row.appendChild(rect);
+      positioned.appendChild(rect);
     }
 
+    row.appendChild(positioned);
     rows.appendChild(row);
   }
   svg.appendChild(rows);

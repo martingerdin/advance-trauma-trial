@@ -1,7 +1,7 @@
 import { metaAnalysis, type MetaAnalysisData } from "./figure-data";
 
 const ROW_HEIGHT = 18;
-const LABEL_WIDTH = 168;
+const LABEL_WIDTH = 186;
 const N_WIDTH = 52;
 const FOREST_WIDTH = 260;
 const EFFECT_WIDTH = 96;
