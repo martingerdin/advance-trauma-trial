@@ -1,6 +1,6 @@
 # ADVANCE TRAUMA — ATLS Sweden 30 Years
 
-Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests).
+Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (~25 slides).
 
 ## Development
 
@@ -28,7 +28,7 @@ Image assets in `public/` are copied to `dist/` during build:
 
 ## Features
 
-- **Motion** animations — staggered entrance, forest plot, sequence randomisation, and stepped-wedge reveal
+- **Motion** animations — staggered entrance, forest plot, and stepped-wedge reveal
 - **Deep linking** — each slide has a URL hash (e.g. `#design`)
 - **Slide overview** — thumbnail filmstrip to jump to any slide (`O`, grid button, or counter)
 - **Responsive** — works on projectors, laptops, and tablets
@@ -40,20 +40,19 @@ Image assets in `public/` are copied to `dist/` during build:
 | # | ID | Content |
 |---|-----|---------|
 | 1 | `title` | Title slide |
-| 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg (positions, affiliations, conflicts of interest) |
+| 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg |
 | 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
-| — | ATLS slides | Purpose, evidence, critique |
-| — | `atls-patient-impact-sources` | Historical sources for manual Impact claims |
-| — | `atls-outcomes-reviews` | Systematic reviews on patient outcomes |
-| — | `atls-outcomes-scoping` | Scoping reviews on patient outcomes |
-| — | `atls-forest` | Updated systematic review forest plot |
-| 12–21 | Trial slides | Design, nested staircase, outcomes, status |
-| — | `eligibility` | Cluster and patient eligibility criteria |
-| — | `participating-clusters` | Interactive map of currently participating hospitals |
-| — | `implications` | Take-home messages |
-| — | `team` | International collaboration overview |
-| — | `funding` | Current funders and funding gap |
-| — | `closing` | Thank you |
+| 5–7 | `section-atls`, `atls-purpose`, `atls-spread` | ATLS purpose and reach |
+| 8 | `atls-provider-evidence` | Manual claims on providers + sources |
+| 9–10 | `atls-outcomes-claim`, `atls-patient-impact-sources` | Manual claims on patient outcomes + sources |
+| 11–12 | `atls-outcomes-reviews`, `atls-forest` | Systematic reviews and updated forest plot |
+| 13–15 | `section-trial`, `aim`, `previous-work` | Trial aim and prior work |
+| 16–17 | `design`, `design-animation` | Stepped-wedge design |
+| 18–19 | `intervention`, `primary-outcome` | Arms and primary outcome |
+| 20–21 | `current-status`, `participating-clusters` | Status and site map |
+| 22–25 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
+
+Trimmed for timing: provider quote duplicate, scoping-review list, sequence randomisation chart, secondary outcomes, nested staircase, eligibility, and sample size.
 
 ## Source
 

@@ -138,7 +138,7 @@ export const slides: Slide[] = [
   {
     id: "trauma-stats",
     layout: "stats",
-    title: "Scope of the problem",
+    title: "Global burden",
     image: "./crash-illustration.png",
     imageAlt: "Illustration of a road traffic collision",
     imagePosition: "right",
@@ -194,17 +194,10 @@ export const slides: Slide[] = [
     ],
   },
   {
-    id: "atls-providers",
-    layout: "quote",
-    title: "Impact on clinicians' knowledge and skills",
-    body: "There is abundant evidence that ATLS training improves knowledge base, psychomotor skills, application of skills in resuscitation, and the confidence and performance of clinicians. The organizational and procedural skills taught in the course are retained by course participants for at least 6 years, which may be the most significant impact.",
-    cite: ATLS_MANUAL_CITE,
-  },
-  {
     id: "atls-provider-evidence",
     layout: "evidence",
     title: "Evidence on providers",
-    body: "The 11th edition Impact paragraph cites no sources — here is what the literature shows.",
+    body: "The 11th edition Impact paragraph cites no sources. Two claims from the manual — and the studies behind them.",
     evidence: [
       {
         id: "1",
@@ -220,24 +213,6 @@ export const slides: Slide[] = [
         source:
           "Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
       },
-      {
-        id: "3",
-        tag: "Further studies",
-        claim: "Trauma management skills acquisition after ATLS course",
-        source: "Ali et al. 1995",
-      },
-      {
-        id: "4",
-        tag: "Further studies",
-        claim: "Improvement in OSCE scores, adherence to priorities, and cognitive performance",
-        source: "Ali et al. 1996",
-      },
-      {
-        id: "5",
-        tag: "Further studies",
-        claim: "Similar performance after new and old ATLS courses",
-        source: "Ali et al. 1999",
-      },
     ],
     footer:
       "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
@@ -246,7 +221,7 @@ export const slides: Slide[] = [
     id: "atls-outcomes-claim",
     layout: "quote",
     title: "Impact on patient outcomes",
-    body: "ATLS training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
+    body: "ATLS® training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
     cite: ATLS_MANUAL_CITE,
   },
   {
@@ -292,18 +267,6 @@ export const slides: Slide[] = [
       "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
       "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
     ],
-  },
-  {
-    id: "atls-outcomes-scoping",
-    layout: "bullets",
-    title: "Evidence on patient outcomes — scoping reviews",
-    bullets: [
-      "Livergant et al. 2021 — only 3 of 45 LMIC course studies assessed patient outcomes; 2 found no improvement",
-      "Brown et al. 2022 — among ATLS alternatives, only one study reported a mortality reduction",
-      "Nelson et al. 2026 — 3 of 14 ED-physician studies assessed clinical impact; results mixed",
-      "Hauta et al. 2024 — team performance often improves; mortality, morbidity and length of stay generally do not",
-      "Petroze 2014 / Osebo 2025 — patient-outcome data for focused LMIC trauma courses remain scarce",
-    ],
     footer:
       "Across reviews: knowledge and skills improve; randomised evidence that training changes patient outcomes is still missing.",
   },
@@ -313,19 +276,6 @@ export const slides: Slide[] = [
     title: "Updated systematic review",
     subtitle: "Nakhid et al. 2026 — trauma life support training and mortality",
   },
-  // {
-  //   id: "atls-critique",
-  //   layout: "bullets",
-  //   title: "Critique",
-  //   bullets: [
-  //     "Costly",
-  //     "Perpetuates theories despite evidence of the contrary",
-  //     "Not adapted to modern trauma care",
-  //     "Not adaptable to local circumstances",
-  //     "Fixed didactic nature",
-  //   ],
-  //   cite: "Shilston & Turner 2022; Wiles 2015",
-  // },
   {
     id: "section-trial",
     layout: "section",
@@ -346,31 +296,27 @@ export const slides: Slide[] = [
     milestones: [
       {
         year: "2013",
-        label: "Multicentre research",
+        label: "Multicentre research — TITCO Consortium",
         image: "./milestones/multicentre.png",
         imageAlt: "Map of India with hospital sites",
-        cite: "12",
       },
       {
         year: "2022–2023",
-        label: "Pilot and feasibility study",
+        label: "Pilot and feasibility — Gerdin Wärnberg et al. BMJ Open 2025",
         image: "./milestones/pilot.png",
         imageAlt: "Clinicians discussing care in a hospital room",
-        cite: "14",
       },
       {
         year: "2022–2023",
-        label: "Community consultations",
+        label: "Community consultations — David & Gerdin Wärnberg 2024",
         image: "./milestones/consultations.png",
         imageAlt: "Patient bedside discussion about ATLS",
-        cite: "13",
       },
       {
         year: "2022–2026",
-        label: "Systematic review",
+        label: "Systematic review — Nakhid et al. 2026",
         image: "./milestones/systematic-review.png",
         imageAlt: "Nakhid et al. systematic review article in press",
-        cite: "5",
       },
     ],
   },
@@ -382,7 +328,7 @@ export const slides: Slide[] = [
     bullets: [
       "Batched stepped-wedge cluster randomised trial",
       "30 hospitals · 6 batches · 5 sequences · 13 months in trial",
-      "Conducted in India — ongoing collaborations >10 years; ATLS not yet standard",
+      "Conducted in India — ongoing collaborations >10 years; ATLS® not yet standard",
     ],
   },
   {
@@ -390,11 +336,6 @@ export const slides: Slide[] = [
     layout: "design-animation",
     title: "How the trial unfolds",
     designVariant: "main",
-  },
-  {
-    id: "sequences",
-    layout: "sequences",
-    title: "Randomisation to sequences",
   },
   {
     id: "intervention",
@@ -427,93 +368,17 @@ export const slides: Slide[] = [
     ],
   },
   {
-    id: "secondary-outcomes",
-    layout: "outcomes",
-    title: "Secondary outcomes",
-    outcomes: [
-      {
-        tag: "Mortality",
-        title: "All-cause and in-hospital mortality",
-        detail: "24 hours · 30 days · 90 days",
-      },
-      {
-        tag: "Length of stay",
-        title: "ED, ICU, and hospital stay",
-        detail: "From patient hospital records",
-      },
-      {
-        tag: "Recovery",
-        title: "Return to work",
-        detail: "30 and 90 days after arrival",
-      },
-      {
-        tag: "Process",
-        title: "Adherence to ATLS principles",
-        detail: "Nested staircase design",
-      },
-      {
-        tag: "Patient-reported",
-        title: "Quality of life and disability",
-        detail: "EQ-5D-5L · WHODAS 2.0 · 30 and 90 days",
-      },
-    ],
-  },
-  {
-    id: "design-staircase",
-    layout: "design",
-    title: "Nested staircase design",
-    designVariant: "staircase",
-    bullets: [
-      "Adherence measured around each hospital’s transition to ATLS®",
-      "Pre- and post-transition staircase periods nested in the stepped wedge",
-      "Lets us compare process adherence before and after training within clusters",
-    ],
-  },
-  {
-    id: "eligibility",
-    layout: "columns",
-    title: "Eligibility criteria",
-    columns: [
-      {
-        heading: "Cluster",
-        bullets: [
-          "Hospitals that admit or refer/transfer for admission at least 400 patients with trauma per year",
-          "Around-the-clock emergency surgical and orthopaedic services",
-        ],
-      },
-      {
-        heading: "Patient",
-        bullets: [
-          "Adult trauma patients presenting to the emergency department of participating hospitals with a history of trauma",
-          "Admitted, dies before admission, or transferred for admission",
-          "Less than 48 hours since trauma",
-        ],
-      },
-    ],
-  },
-  {
-    id: "sample-size",
-    layout: "stats",
-    title: "Sample size",
-    stats: [
-      { value: "20→15%", label: "mortality reduction to detect" },
-      { value: "90%", label: "statistical power" },
-      { value: "30", label: "hospital clusters" },
-      { value: ">4,320", label: "patients required" },
-    ],
-  },
-  {
     id: "current-status",
     layout: "stats",
     title: "Current status",
-    image: "./training-illustration.png",
-    imageAlt: "ATLS training in progress",
+    image: "./patient-review-after-illustration.png",
+    imageAlt: "Trauma team reviewing a patient after ATLS training",
     imagePosition: "right",
     stats: [
-      { value: "Feb 2025", label: "first batch ongoing" },
+      { value: "Batch 1", label: "completed (Feb 2025–Mar 2026)" },
       { value: "~1,200", label: "patients included" },
-      { value: "Dec 2025", label: "second batch started" },
-      { value: "May 2026", label: "third batch planned" },
+      { value: "Batch 2", label: "ongoing since Dec 2025" },
+      { value: "Batch 3", label: "starting" },
     ],
     footer: "Expected completion December 2028, pending funding",
   },
@@ -522,7 +387,7 @@ export const slides: Slide[] = [
     layout: "sites-map",
     title: "Participating clusters",
     subtitle: "Hospitals currently in the trial",
-    footer: "Batches 1–2 confirmed · Batches 3–6 screening · Full list at advancetrauma.info",
+    footer: "Batches 1–2 recruiting · Batch 3 starting · Batches 4–6 screening · Full list at advancetrauma.info",
   },
   {
     id: "implications",
