@@ -55,6 +55,10 @@ Image assets in `public/` are copied to `dist/` during build:
 | — | `funding` | Current funders and funding gap |
 | — | `closing` | Thank you |
 
+## Speaker briefing
+
+`qa-and-panel-briefing.md` — anticipated critical questions after the talk and in the future-of-trauma-care panel, with suggested replies (Sweden · Region 15 · US audience).
+
 ## Source
 
 Content adapted from `presentation.pptx` (trial meeting deck), tailored for an international ATLS audience celebrating 30 years of the Swedish chapter.
