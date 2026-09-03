@@ -1,11 +1,12 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg } from "./stepped-wedge";
-import { createForestPlot } from "./forest-plot";
+import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
+const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
 
 const slidesEl = document.getElementById("slides")!;
 const counterEl = document.getElementById("slide-counter")!;
@@ -324,7 +325,11 @@ function mountSlides(): void {
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
-      if (mount) mount.appendChild(createForestPlot().element);
+      if (mount) {
+        const forest = createForestPlot();
+        mount.appendChild(forest.element);
+        forestControllers.set(el, forest);
+      }
     }
   });
 }
@@ -370,12 +375,10 @@ function animateSlideIn(slideEl: HTMLElement): void {
   }
 
   if (slideEl.dataset.layout === "forest") {
-    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".forest-row"));
-    animate(
-      rows,
-      { opacity: [0, 1], transform: ["translateX(-12px)", "translateX(0)"] } as Record<string, unknown>,
-      { duration: 0.35, delay: stagger(0.04, { startDelay: 0.25 }), ease: "easeOut" }
-    );
+    const forest = forestControllers.get(slideEl);
+    if (forest) {
+      void forest.playChronologicalReveal();
+    }
   }
 
   const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");
@@ -394,6 +397,7 @@ function goTo(index: number): void {
 
   const current = slidesEl.children[currentIndex] as HTMLElement;
   const next = slidesEl.children[index] as HTMLElement;
+  forestControllers.get(current)?.abortReveal();
 
   animate(
     current,

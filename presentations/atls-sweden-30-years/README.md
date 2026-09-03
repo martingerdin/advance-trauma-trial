@@ -68,8 +68,9 @@ Rscript export-figure-data.R
 
 On the `#atls-forest` slide you can:
 
+- Watch studies appear oldest → newest on enter, with the pooled estimate updating after each
+- Click **Play timeline** to replay that chronological reveal
 - Click a study row to include or exclude it
 - Use the chips to show all studies or only one study design
-- Watch the pooled diamond, CI, and I² update live
 
 When every study is included, the plot shows the R-exported REML pooled estimate (same as the protocol). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).

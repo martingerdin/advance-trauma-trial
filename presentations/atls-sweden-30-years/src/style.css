@@ -850,6 +850,29 @@ body {
   color: var(--text-muted);
 }
 
+.forest-panel.is-revealing .forest-row.is-excluded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.forest-panel.is-revealing .forest-chip:not([data-filter="timeline"]) {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.forest-diamond.is-updating {
+  animation: forest-diamond-pulse 0.45s ease-out;
+}
+
+@keyframes forest-diamond-pulse {
+  0% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .forest-footer {
   margin-top: 0.15rem;
 }

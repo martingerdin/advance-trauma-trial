@@ -1,3 +1,4 @@
+import { animate } from "motion";
 import { metaAnalysis, type MetaAnalysisData } from "./figure-data";
 import { poolRandomEffects, sameStudySet, type PooledEstimate } from "./pool-meta";
 
@@ -72,6 +73,9 @@ export interface ForestPlotController {
   setIncluded(keys: Iterable<string>): void;
   includeAll(): void;
   getIncluded(): Set<string>;
+  /** Reveal studies oldest→newest, updating the pooled estimate after each. */
+  playChronologicalReveal(options?: { stepMs?: number }): Promise<void>;
+  abortReveal(): void;
 }
 
 /**
@@ -83,7 +87,10 @@ export interface ForestPlotController {
  */
 export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestPlotController {
   const allKeys = data.studies.map((s) => s.citationKey);
-  const included = new Set(allKeys);
+  // Start empty so the entrance reveal can build the pool chronologically.
+  const included = new Set<string>();
+  let revealToken = 0;
+  let revealing = false;
   const maxWeight = Math.max(...data.studies.map((s) => s.weightPercent));
   const forestX = PAD_LEFT + LABEL_WIDTH + N_WIDTH;
   const [xMin, xMax] = data.logScaleXlim;
@@ -101,14 +108,27 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
 
   const allBtn = document.createElement("button");
   allBtn.type = "button";
-  allBtn.className = "forest-chip is-active";
+  allBtn.className = "forest-chip";
   allBtn.textContent = "All studies";
   allBtn.dataset.filter = "all";
   allBtn.addEventListener("click", (e) => {
     e.stopPropagation();
+    abortReveal();
     includeAll();
   });
   controls.appendChild(allBtn);
+
+  const timelineBtn = document.createElement("button");
+  timelineBtn.type = "button";
+  timelineBtn.className = "forest-chip";
+  timelineBtn.dataset.filter = "timeline";
+  timelineBtn.textContent = "Play timeline";
+  timelineBtn.title = "Add studies in chronological order and watch the pooled estimate change";
+  timelineBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    void playChronologicalReveal();
+  });
+  controls.appendChild(timelineBtn);
 
   for (const filter of DESIGN_FILTERS) {
     const keys = data.studies.filter((s) => filter.match(s.design)).map((s) => s.citationKey);
@@ -121,6 +141,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     btn.title = `Include only ${filter.label.toLowerCase()} studies`;
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
+      abortReveal();
       setIncluded(keys);
     });
     controls.appendChild(btn);
@@ -240,6 +261,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     const toggle = (e: Event) => {
       e.stopPropagation();
       e.preventDefault();
+      abortReveal();
       if (included.has(study.citationKey)) included.delete(study.citationKey);
       else included.add(study.citationKey);
       refresh();
@@ -375,6 +397,10 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     for (const chip of chips) {
       chip.classList.remove("is-active");
     }
+    if (revealing) {
+      timelineBtn.classList.add("is-active");
+      return;
+    }
     if (sameStudySet(included, allKeys)) {
       allBtn.classList.add("is-active");
       return;
@@ -403,7 +429,12 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       diamond.style.display = "none";
       pooledEffect.style.display = "none";
       emptyNote.style.display = "";
-      footer.textContent = "No studies selected — click a study to include it";
+      emptyNote.textContent = revealing
+        ? "Adding studies chronologically…"
+        : "Select at least one study";
+      footer.textContent = revealing
+        ? "Building the pooled estimate as studies appear (oldest → newest)"
+        : "No studies selected — click a study to include it";
       svg.setAttribute("aria-label", "Forest plot with no studies selected");
     } else {
       diamond.style.display = "";
@@ -420,6 +451,10 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
           forestX
         )
       );
+      diamond.classList.remove("is-updating");
+      // Force reflow so the pulse can replay on each update.
+      void diamond.getBoundingClientRect();
+      diamond.classList.add("is-updating");
       pooledEffect.textContent = `${pooled.rrFormatted} (${pooled.ciFormatted.replace("; ", "–")})`;
       footer.textContent = footerText(pooled, data.measure);
       svg.setAttribute(
@@ -430,7 +465,66 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     syncChips();
   }
 
+  function abortReveal(): void {
+    revealToken += 1;
+    revealing = false;
+    panel.classList.remove("is-revealing");
+    timelineBtn.disabled = false;
+  }
+
+  function delay(ms: number): Promise<void> {
+    return new Promise((resolve) => {
+      window.setTimeout(resolve, ms);
+    });
+  }
+
+  async function playChronologicalReveal(options: { stepMs?: number } = {}): Promise<void> {
+    const stepMs = options.stepMs ?? 420;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      includeAll();
+      return;
+    }
+
+    const token = ++revealToken;
+    revealing = true;
+    panel.classList.add("is-revealing");
+    timelineBtn.disabled = true;
+    included.clear();
+    refresh();
+    await delay(280);
+    if (token !== revealToken) return;
+
+    // Studies are already ordered by year in the R export.
+    for (const study of data.studies) {
+      if (token !== revealToken) return;
+      included.add(study.citationKey);
+      refresh();
+
+      const row = rowEls.get(study.citationKey);
+      if (row) {
+        row.style.opacity = "0";
+        await animate(
+          row,
+          { opacity: [0, 1] } as Record<string, unknown>,
+          { duration: 0.32, ease: "easeOut" }
+        );
+        row.style.opacity = "";
+      }
+
+      await delay(stepMs);
+      if (token !== revealToken) return;
+    }
+
+    if (token !== revealToken) return;
+    revealing = false;
+    panel.classList.remove("is-revealing");
+    timelineBtn.disabled = false;
+    // Final paint uses the R-exported REML pooled estimate.
+    refresh();
+  }
+
   function setIncluded(keys: Iterable<string>): void {
+    abortReveal();
     included.clear();
     for (const key of keys) included.add(key);
     refresh();
@@ -447,5 +541,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     setIncluded,
     includeAll,
     getIncluded: () => new Set(included),
+    playChronologicalReveal,
+    abortReveal,
   };
 }

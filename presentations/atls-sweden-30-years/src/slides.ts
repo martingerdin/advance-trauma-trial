@@ -255,7 +255,6 @@ export const slides: Slide[] = [
       },
     ],
   },
-<<<<<<< HEAD
   {
     id: "atls-forest",
     layout: "forest",
@@ -274,21 +273,6 @@ export const slides: Slide[] = [
     ],
     cite: "Shilston & Turner 2022; Wiles 2015",
   },
-=======
-  // {
-  //   id: "atls-critique",
-  //   layout: "bullets",
-  //   title: "Critique",
-  //   bullets: [
-  //     "Costly",
-  //     "Perpetuates theories despite evidence of the contrary",
-  //     "Not adapted to modern trauma care",
-  //     "Not adaptable to local circumstances",
-  //     "Fixed didactic nature",
-  //   ],
-  //   cite: "Shilston & Turner 2022; Wiles 2015",
-  // },
->>>>>>> main
   {
     id: "section-trial",
     layout: "section",
