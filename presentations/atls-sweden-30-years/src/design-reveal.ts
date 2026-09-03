@@ -35,13 +35,13 @@ const STAGES: Array<{
     id: "site",
     label: "One site",
     caption: "One hospital — standard care, ATLS training, then intervention",
-    holdMs: 2200,
+    holdMs: 4000,
   },
   {
     id: "batch",
     label: "First batch",
     caption: "First batch — five hospitals move together through months 0–13",
-    holdMs: 1600,
+    holdMs: 3000,
   },
   {
     id: "full",
@@ -412,7 +412,7 @@ export function startDesignReveal(
     syncUi();
 
     await clearPlot(token, animateIn);
-    await morphCamera("site", token, animateIn ? 0.65 : 0);
+    await morphCamera("site", token, animateIn ? 0.9 : 0);
     hideAllRows();
     setRowVisibility([1], true);
     showBatchLabels([1]);
@@ -421,7 +421,7 @@ export function startDesignReveal(
       setReveal(shortEnd, true);
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 2.4);
+    await scrubTimeline(0, shortEnd, token, 6.5);
   };
 
   const animateBatch = async (token: number, animateIn: boolean) => {
@@ -432,7 +432,7 @@ export function startDesignReveal(
     const batchClusters = Array.from({ length: data.parameters.clustersPerBatch }, (_, i) => i + 1);
 
     await clearPlot(token, animateIn);
-    await morphCamera("batch", token, animateIn ? 0.85 : 0);
+    await morphCamera("batch", token, animateIn ? 1.1 : 0);
     setRowVisibility(batchClusters, true);
     showBatchLabels([1]);
     // Hide clusters outside this batch while the shared timeline plays.
@@ -447,7 +447,7 @@ export function startDesignReveal(
       setReveal(shortEnd);
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 2.6);
+    await scrubTimeline(0, shortEnd, token, 6.5);
   };
 
   const animateFull = async (token: number, animateIn: boolean) => {
@@ -458,7 +458,7 @@ export function startDesignReveal(
     const allClusters = rows().map((r) => Number(r.dataset.cluster));
 
     await clearPlot(token, animateIn);
-    await morphCamera("full", token, animateIn ? 1.0 : 0);
+    await morphCamera("full", token, animateIn ? 1.4 : 0);
     setRowVisibility(allClusters, true);
     showBatchLabels(Array.from({ length: data.parameters.batches }, (_, i) => i + 1));
 
@@ -466,7 +466,7 @@ export function startDesignReveal(
       setReveal(fullEnd);
       return;
     }
-    await scrubTimeline(0, fullEnd, token, 3.4);
+    await scrubTimeline(0, fullEnd, token, 9);
   };
 
   const animateStage = async (stage: DesignRevealStage, token: number, animateIn: boolean) => {

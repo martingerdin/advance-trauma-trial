@@ -1,13 +1,17 @@
 import { trialDesign, type TrialDesignData, type TrialDesignSegment } from "./figure-data";
 
 export const MONTH_WIDTH = 22;
-export const LABEL_LEFT = 36;
-export const LABEL_RIGHT = 36;
-/** Top padding only — legend lives outside the SVG. */
-export const TOP_PAD = 6;
-export const AXIS_HEIGHT = 36;
-export const AXIS_TICK_LABEL_OFFSET = 12;
-export const AXIS_TITLE_OFFSET = 30;
+/** Gutter for the rotated "Cluster" y-axis title. */
+export const LABEL_LEFT = 44;
+/** Gutter for batch numbers and the "Batch" title. */
+export const LABEL_RIGHT = 44;
+/** Room above the top cluster so "Batch" sits clear of the bars. */
+export const TOP_PAD = 20;
+export const AXIS_HEIGHT = 46;
+export const AXIS_TICK_LEN = 4;
+/** Distance from the plot bottom to the top of the tick numbers (hanging baseline). */
+export const AXIS_TICK_LABEL_OFFSET = 14;
+export const AXIS_TITLE_OFFSET = 36;
 export const ROW_HEIGHT = 12;
 export const ROW_GAP = 3;
 
@@ -303,11 +307,15 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   svg.appendChild(rows);
 
   const axis = svgEl("g", { class: "wedge-axis" });
+  const plotBottom = TOP_PAD + plotHeight;
+  const yLabelX = 16;
+  const yLabelY = TOP_PAD + plotHeight / 2;
   const yLabel = svgEl("text", {
-    x: 8,
-    y: TOP_PAD + plotHeight / 2,
+    x: yLabelX,
+    y: yLabelY,
     class: "axis-label wedge-axis-ylabel",
-    transform: `rotate(-90 8 ${TOP_PAD + plotHeight / 2})`,
+    "text-anchor": "middle",
+    transform: `rotate(-90 ${yLabelX} ${yLabelY})`,
     opacity: 0,
   });
   yLabel.textContent = data.labels.y;
@@ -325,17 +333,18 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
       svgEl("line", {
         x1: x,
         x2: x,
-        y1: TOP_PAD + plotHeight,
-        y2: TOP_PAD + plotHeight + 3,
+        y1: plotBottom,
+        y2: plotBottom + AXIS_TICK_LEN,
         stroke: "#4a5c64",
         "stroke-width": 0.75,
       })
     );
     const tickLabel = svgEl("text", {
       x,
-      y: TOP_PAD + plotHeight + AXIS_TICK_LABEL_OFFSET,
+      y: plotBottom + AXIS_TICK_LABEL_OFFSET,
       class: "axis-label wedge-axis-tick-label",
       "text-anchor": "middle",
+      "dominant-baseline": "hanging",
     });
     tickLabel.textContent = String(month);
     tick.appendChild(tickLabel);
@@ -368,7 +377,7 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
 
   const batchTitle = svgEl("text", {
     x: totalWidth - 4,
-    y: TOP_PAD + 8,
+    y: TOP_PAD - 6,
     class: "axis-label wedge-axis-batch-title",
     "text-anchor": "end",
     opacity: 0,
