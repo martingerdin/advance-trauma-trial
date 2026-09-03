@@ -120,6 +120,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
           </ul>
           ${slide.cite ? `<p class="cite-line" data-animate>${slide.cite}</p>` : ""}
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
