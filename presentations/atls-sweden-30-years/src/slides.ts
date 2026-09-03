@@ -61,7 +61,8 @@ export interface Slide {
     | "aim"
     | "presenter"
     | "team"
-    | "funding";
+    | "funding"
+    | "sites-map";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -450,6 +451,13 @@ export const slides: Slide[] = [
       { value: "May 2026", label: "third batch planned" },
     ],
     footer: "Expected completion December 2028, pending funding",
+  },
+  {
+    id: "participating-clusters",
+    layout: "sites-map",
+    title: "Participating clusters",
+    subtitle: "Hospitals currently in the trial",
+    footer: "Batches 1–2 confirmed · Batches 3–6 screening · Full list at advancetrauma.info",
   },
   {
     id: "implications",

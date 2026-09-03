@@ -4,11 +4,14 @@ import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syn
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
 import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
+import { buildSitesLegendHtml, mountSitesMap, type SitesMapController } from "./sites-map";
+import { participatingSites } from "./data/sites";
 import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
 const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
+const sitesMapControllers = new WeakMap<HTMLElement, SitesMapController>();
 let designReveal: DesignRevealControls | null = null;
 
 const slidesEl = document.getElementById("slides")!;
@@ -413,6 +416,23 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "sites-map":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--sites-map">
+          <header class="sites-map-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="sites-map-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="sites-legend" data-animate aria-label="Batch legend">
+            ${buildSitesLegendHtml()}
+            <span class="sites-legend__total">${participatingSites.length} hospitals</span>
+          </div>
+          <div class="sites-map" data-map role="region" aria-label="Participating sites map"></div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
     case "team":
       el.innerHTML = `
         <div class="slide-inner slide-inner--team">
@@ -498,6 +518,15 @@ function mountSlides(): void {
         forestControllers.set(el, forest);
       }
     }
+    if (slide.layout === "sites-map") {
+      const mount = el.querySelector<HTMLElement>("[data-map]");
+      if (mount) {
+        void mountSitesMap(mount).then((controller) => {
+          sitesMapControllers.set(el, controller);
+          if (el.classList.contains("is-active")) controller.refresh();
+        });
+      }
+    }
   });
 }
 
@@ -571,6 +600,10 @@ function animateSlideIn(slideEl: HTMLElement): void {
     if (forest) {
       void forest.playChronologicalReveal();
     }
+  }
+
+  if (slideEl.dataset.layout === "sites-map") {
+    sitesMapControllers.get(slideEl)?.refresh();
   }
 
   const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");
