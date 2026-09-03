@@ -1,11 +1,17 @@
 import { trialDesign, type TrialDesignData, type TrialDesignSegment } from "./figure-data";
 
-export const MONTH_WIDTH = 8;
-export const LABEL_LEFT = 36;
-export const LABEL_RIGHT = 36;
-/** Top padding only — legend lives outside the SVG. */
-export const TOP_PAD = 6;
-export const AXIS_HEIGHT = 28;
+export const MONTH_WIDTH = 22;
+/** Gutter for the rotated "Cluster" y-axis title. */
+export const LABEL_LEFT = 52;
+/** Gutter for batch numbers and the "Batch" title. */
+export const LABEL_RIGHT = 52;
+/** Room above the top cluster so "Batch" sits clear of the bars. */
+export const TOP_PAD = 24;
+export const AXIS_HEIGHT = 52;
+export const AXIS_TICK_LEN = 4;
+/** Distance from the plot bottom to the tick-number baseline (alphabetic). */
+export const AXIS_TICK_LABEL_OFFSET = 20;
+export const AXIS_TITLE_OFFSET = 42;
 export const ROW_HEIGHT = 12;
 export const ROW_GAP = 3;
 
@@ -28,6 +34,12 @@ function svgEl(tag: string, attrs: Record<string, string | number> = {}): SVGEle
 
 export function monthX(month: number, pad = 0): number {
   return LABEL_LEFT + month * MONTH_WIDTH + pad * MONTH_WIDTH;
+}
+
+/** Horizontal center of a study month on the chart, as % of total SVG width. */
+export function monthCenterPercent(month: number, totalMonths: number): number {
+  const totalWidth = LABEL_LEFT + totalMonths * MONTH_WIDTH + LABEL_RIGHT;
+  return (monthX(month) / totalWidth) * 100;
 }
 
 /** Cluster 1 at the bottom, matching the R ggplot figure. */
@@ -76,7 +88,8 @@ export function focusViewBox(data: TrialDesignData, stage: DesignFocusStage): We
   if (stage === "site") {
     const barY = clusterY(1, clusters);
     const axisBottom = TOP_PAD + clusters * (ROW_HEIGHT + ROW_GAP) + AXIS_HEIGHT;
-    const padY = 10;
+    // Tight crop — phase callouts live in HTML above the SVG, not inside the viewBox.
+    const padY = 8;
     return { x: 0, y: barY - padY, w: width, h: axisBottom - barY + padY * 2 };
   }
 
@@ -89,21 +102,36 @@ export function focusViewBox(data: TrialDesignData, stage: DesignFocusStage): We
 
 /**
  * Size the SVG to the largest rectangle that fits in `container` while
- * preserving the current viewBox aspect — fills the well instead of
- * letterboxing a tiny chart inside a 100%×100% SVG.
+ * preserving the current viewBox aspect.
+ *
+ * `preferWidth` (one-site): fill container width first so a short crop
+ * stays a wide readable timeline instead of a tiny centered blob.
+ * `reserveBottom` / `reserveTop`: space taken by siblings inside the container.
  */
 export function fitSvgInContainer(
   svg: SVGSVGElement,
   box: WedgeViewBox,
-  container: HTMLElement
+  container: HTMLElement,
+  options: { preferWidth?: boolean; reserveTop?: number; reserveBottom?: number } = {}
 ): void {
   const style = getComputedStyle(container);
   const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
   const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+  const reserve = Math.max(options.reserveTop ?? 0, 0) + Math.max(options.reserveBottom ?? 0, 0);
   const cw = Math.max(container.clientWidth - padX, 1);
-  const ch = Math.max(container.clientHeight - padY, 1);
+  const ch = Math.max(container.clientHeight - padY - reserve, 1);
   if (!Number.isFinite(box.w) || !Number.isFinite(box.h) || box.w <= 0 || box.h <= 0) return;
-  const scale = Math.min(cw / box.w, ch / box.h);
+
+  let scale: number;
+  if (options.preferWidth) {
+    scale = cw / box.w;
+    // Flex wells can report a tiny height before layout settles — only clamp
+    // when there is a real vertical budget.
+    if (ch > 120 && box.h * scale > ch) scale = ch / box.h;
+  } else {
+    scale = Math.min(cw / box.w, ch / box.h);
+  }
+
   svg.style.width = `${Math.max(box.w * scale, 1)}px`;
   svg.style.height = `${Math.max(box.h * scale, 1)}px`;
   svg.style.flex = "0 0 auto";
@@ -131,14 +159,14 @@ export function syncAxisToStage(
     // Keep the title just under the visible cluster block for cropped stages.
     if (stage === "full") {
       const fullHeight = TOP_PAD + data.parameters.clusters * (ROW_HEIGHT + ROW_GAP) + AXIS_HEIGHT;
-      xTitle.setAttribute("y", String(fullHeight - 2));
+      xTitle.setAttribute("y", String(fullHeight - 4));
     } else if (stage === "site") {
       const barY = clusterY(1, data.parameters.clusters);
-      xTitle.setAttribute("y", String(barY + ROW_HEIGHT + 24));
+      xTitle.setAttribute("y", String(barY + ROW_HEIGHT + AXIS_TITLE_OFFSET));
     } else {
       const topY = clusterY(data.parameters.clustersPerBatch, data.parameters.clusters);
       const blockH = data.parameters.clustersPerBatch * (ROW_HEIGHT + ROW_GAP);
-      xTitle.setAttribute("y", String(topY + blockH + 24));
+      xTitle.setAttribute("y", String(topY + blockH + AXIS_TITLE_OFFSET));
     }
   }
 
@@ -161,7 +189,7 @@ export function createWedgeLegend(data: TrialDesignData): HTMLElement {
     swatch.style.background = data.colors[phase] ?? "#999999";
     const label = document.createElement("span");
     label.className = "wedge-legend__label";
-    label.textContent = phase;
+    label.textContent = phase === "Transition" ? "Training" : phase;
     item.append(swatch, label);
     el.appendChild(item);
   }
@@ -279,11 +307,15 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   svg.appendChild(rows);
 
   const axis = svgEl("g", { class: "wedge-axis" });
+  const plotBottom = TOP_PAD + plotHeight;
+  const yLabelX = 22;
+  const yLabelY = TOP_PAD + plotHeight / 2;
   const yLabel = svgEl("text", {
-    x: 8,
-    y: TOP_PAD + plotHeight / 2,
+    x: yLabelX,
+    y: yLabelY,
     class: "axis-label wedge-axis-ylabel",
-    transform: `rotate(-90 8 ${TOP_PAD + plotHeight / 2})`,
+    "text-anchor": "middle",
+    transform: `rotate(-90 ${yLabelX} ${yLabelY})`,
     opacity: 0,
   });
   yLabel.textContent = data.labels.y;
@@ -301,16 +333,16 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
       svgEl("line", {
         x1: x,
         x2: x,
-        y1: TOP_PAD + plotHeight,
-        y2: TOP_PAD + plotHeight + 3,
+        y1: plotBottom,
+        y2: plotBottom + AXIS_TICK_LEN,
         stroke: "#4a5c64",
         "stroke-width": 0.75,
       })
     );
     const tickLabel = svgEl("text", {
       x,
-      y: TOP_PAD + plotHeight + 14,
-      class: "axis-label",
+      y: plotBottom + AXIS_TICK_LABEL_OFFSET,
+      class: "axis-label wedge-axis-tick-label",
       "text-anchor": "middle",
     });
     tickLabel.textContent = String(month);
@@ -321,7 +353,7 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   const siteMonths = stageMonthSpan(data, "site");
   const xTitle = svgEl("text", {
     x: LABEL_LEFT + (siteMonths * MONTH_WIDTH) / 2,
-    y: clusterY(1, clusters) + ROW_HEIGHT + 24,
+    y: clusterY(1, clusters) + ROW_HEIGHT + AXIS_TITLE_OFFSET,
     class: "axis-label wedge-axis-xtitle",
     "text-anchor": "middle",
   });
@@ -331,11 +363,11 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   for (let batch = 1; batch <= batches; batch++) {
     const midCluster = (batch - 0.5) * clustersPerBatch;
     const label = svgEl("text", {
-      x: totalWidth - 4,
+      x: totalWidth - LABEL_RIGHT / 2,
       y: clusterY(midCluster, clusters) + ROW_HEIGHT / 2 + 3,
       class: "axis-label wedge-batch-label",
       "data-batch": String(batch),
-      "text-anchor": "end",
+      "text-anchor": "middle",
       opacity: 0,
     });
     label.textContent = String(batch);
@@ -343,10 +375,10 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   }
 
   const batchTitle = svgEl("text", {
-    x: totalWidth - 4,
-    y: TOP_PAD + 8,
+    x: totalWidth - LABEL_RIGHT / 2,
+    y: TOP_PAD - 8,
     class: "axis-label wedge-axis-batch-title",
-    "text-anchor": "end",
+    "text-anchor": "middle",
     opacity: 0,
   });
   batchTitle.textContent = data.labels.batch;

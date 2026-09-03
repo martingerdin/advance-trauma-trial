@@ -1,13 +1,14 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
-import { createForestPlotSvg } from "./forest-plot";
+import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
 import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
 import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
+const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
 let designReveal: DesignRevealControls | null = null;
 
 const slidesEl = document.getElementById("slides")!;
@@ -341,30 +342,36 @@ function renderSlide(slide: Slide): HTMLElement {
             </div>
             <p class="wedge-caption" aria-live="polite"></p>
             <div class="wedge-legend-mount"></div>
-            <div class="wedge-phase-callouts" hidden>
-              <article class="wedge-phase" data-phase="standard-care">
-                <figure class="wedge-phase__figure">
-                  <img src="./patient-review-before-illustration.png" alt="Standard care in the emergency department" />
-                </figure>
-                <p class="wedge-phase__title">Standard care</p>
-                <p class="wedge-phase__when">Months 0–4</p>
-              </article>
-              <article class="wedge-phase" data-phase="transition">
-                <figure class="wedge-phase__figure">
-                  <img src="./training-illustration.png" alt="ATLS training course" />
-                </figure>
-                <p class="wedge-phase__title">Transition</p>
-                <p class="wedge-phase__when">Month 4–5 · ATLS® course</p>
-              </article>
-              <article class="wedge-phase" data-phase="intervention">
-                <figure class="wedge-phase__figure">
-                  <img src="./patient-review-after-illustration.png" alt="Care after ATLS training" />
-                </figure>
-                <p class="wedge-phase__title">Intervention</p>
-                <p class="wedge-phase__when">Months 5–13</p>
-              </article>
+            <div class="wedge-chart-stack">
+              <div class="wedge-container wedge-container--animation" id="wedge-mount">
+                <div class="wedge-phase-callouts" hidden aria-hidden="true">
+                  <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-before-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Standard care</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="transition" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./training-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Training</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-after-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Intervention</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
             </div>
-            <div class="wedge-container wedge-container--animation" id="wedge-mount"></div>
           </div>
         </div>
       `;
@@ -485,7 +492,11 @@ function mountSlides(): void {
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
-      if (mount) mount.appendChild(createForestPlotSvg());
+      if (mount) {
+        const forest = createForestPlot();
+        mount.appendChild(forest.element);
+        forestControllers.set(el, forest);
+      }
     }
   });
 }
@@ -556,12 +567,10 @@ function animateSlideIn(slideEl: HTMLElement): void {
   }
 
   if (slideEl.dataset.layout === "forest") {
-    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".forest-row"));
-    animate(
-      rows,
-      { opacity: [0, 1], transform: ["translateX(-12px)", "translateX(0)"] } as Record<string, unknown>,
-      { duration: 0.35, delay: stagger(0.04, { startDelay: 0.25 }), ease: "easeOut" }
-    );
+    const forest = forestControllers.get(slideEl);
+    if (forest) {
+      void forest.playChronologicalReveal();
+    }
   }
 
   const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");
@@ -582,6 +591,7 @@ function goTo(index: number): void {
 
   const current = slidesEl.children[currentIndex] as HTMLElement;
   const next = slidesEl.children[index] as HTMLElement;
+  forestControllers.get(current)?.abortReveal();
 
   animate(
     current,
