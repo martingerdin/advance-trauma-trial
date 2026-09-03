@@ -15,9 +15,16 @@ import {
   type ParticipatingSite,
 } from "./data/sites";
 
-const TILE_URL = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+/**
+ * Esri World Light Gray — free light basemap suitable for a presentation deck.
+ * CARTO Positron (used on advancetrauma.info) now watermarks tiles without an
+ * API key; Esri keeps the same clean look without a key for this use case.
+ * Note Esri’s {z}/{y}/{x} path order (not {z}/{x}/{y}).
+ */
+const TILE_URL =
+  "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}";
 const TILE_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, DeLorme, NAVTEQ';
 
 function cssVar(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -140,8 +147,7 @@ export async function mountSitesMap(container: HTMLElement): Promise<SitesMapCon
 
   L.tileLayer(TILE_URL, {
     attribution: TILE_ATTRIBUTION,
-    subdomains: "abcd",
-    maxZoom: 20,
+    maxZoom: 16,
   }).addTo(map);
 
   const bounds = L.latLngBounds([]);
