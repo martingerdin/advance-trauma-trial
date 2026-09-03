@@ -28,7 +28,7 @@ Image assets in `public/` are copied to `dist/` during build:
 
 ## Features
 
-- **Motion** animations — staggered entrance, stepped-wedge chart reveal
+- **Motion** animations — staggered entrance, forest plot and stepped-wedge reveal
 - **Deep linking** — each slide has a URL hash (e.g. `#design`)
 - **Responsive** — works on projectors, laptops, and tablets
 - **Accessible** — keyboard navigation, ARIA labels, reduced-motion support
@@ -40,8 +40,9 @@ Image assets in `public/` are copied to `dist/` during build:
 |---|-----|---------|
 | 1 | `title` | Title slide |
 | 2–3 | `section-problem`, `trauma-stats` | Trauma burden |
-| 4–11 | ATLS slides | Purpose, evidence, critique |
+| 4–12 | ATLS slides | Purpose, evidence, forest plot, critique |
 | — | `atls-impact-sources` | Historical sources for manual Impact claims |
+| — | `atls-forest` | Updated systematic review forest plot |
 | 12–21 | Trial slides | Design, outcomes, status |
 | 21–22 | `implications`, `closing` | Take-home messages |
 
@@ -51,7 +52,7 @@ Content adapted from `presentation.pptx` (trial meeting deck), tailored for an i
 
 ## Figure data
 
-JSON for web graphics is exported from the trial R functions into `src/data/`:
+The forest plot and stepped-wedge chart read JSON exported from the trial R functions into `src/data/`:
 
 - `meta-analysis.json` — `conduct_meta_analysis(plot = FALSE, export.path = ...)`
 - `trial-design.json` — `create_trial_design_flowchart(..., staircase.months = 0, export.path = ...)`
