@@ -35,19 +35,55 @@ const STAGES: Array<{
     id: "site",
     label: "One site",
     caption: "One hospital — standard care, ATLS training, then intervention",
-    holdMs: 2200,
+    // Phase pauses are manual (Space / play); no timed hold before the next stage.
+    holdMs: 0,
   },
   {
     id: "batch",
     label: "First batch",
     caption: "First batch — five hospitals move together through months 0–13",
-    holdMs: 1600,
+    holdMs: 3500,
   },
   {
     id: "full",
     label: "Full trial",
     caption: "Full trial — six batches across 30 hospitals, months 0–48",
     holdMs: 0,
+  },
+];
+
+const SITE_PHASES = [
+  { id: "standard-care", centerMonth: 2 },
+  { id: "transition", centerMonth: 4.5 },
+  { id: "intervention", centerMonth: 9 },
+] as const;
+
+type SitePhaseId = (typeof SITE_PHASES)[number]["id"];
+
+/** One-site wipe segments: animate to endMonth, then wait for play. */
+const SITE_PHASE_SCRUBS: Array<{
+  id: SitePhaseId;
+  endMonth: number;
+  duration: number;
+  caption: string;
+}> = [
+  {
+    id: "standard-care",
+    endMonth: 4,
+    duration: 4,
+    caption: "Standard care — months 0–4 at one hospital",
+  },
+  {
+    id: "transition",
+    endMonth: 5,
+    duration: 2.5,
+    caption: "Transition — ATLS® course, month 4–5",
+  },
+  {
+    id: "intervention",
+    endMonth: 13,
+    duration: 5,
+    caption: "Intervention — months 5–13 after ATLS training",
   },
 ];
 
@@ -113,12 +149,17 @@ export function startDesignReveal(
   const mount = slideEl.querySelector<HTMLElement>("#wedge-mount");
   const legendMount = slideEl.querySelector<HTMLElement>(".wedge-legend-mount");
   const phaseCallouts = slideEl.querySelector<HTMLElement>(".wedge-phase-callouts");
+  const chartStack = slideEl.querySelector<HTMLElement>(".wedge-chart-stack");
   const bullets = Array.from(slideEl.querySelectorAll<HTMLElement>(".design-bullets li"));
 
   let paused = false;
   let complete = false;
   let cancelled = false;
   let activeStage: DesignRevealStage | null = null;
+  /** Overrides the stage caption while stepping through one-site phases. */
+  let sitePhaseCaption: string | null = null;
+  /** Callouts unlock only when that phase's wipe starts (after play), not at the prior pause. */
+  const unlockedSitePhases = new Set<SitePhaseId>();
   let runToken = 0;
   const running: AnimationPlaybackControls[] = [];
   const listenerAbort = new AbortController();
@@ -141,8 +182,9 @@ export function startDesignReveal(
   }
 
   const svg = createSteppedWedgeSvg(data);
-  mount.replaceChildren(svg);
-  setRevealMonth(svg, 0);
+  // Keep phase callouts as the first child; chart follows below them.
+  mount.querySelectorAll("svg").forEach((node) => node.remove());
+  mount.appendChild(svg);
 
   const shortEnd = Math.max(data.parameters.totalMonths, 13);
   const fullEnd = data.xMax;
@@ -150,19 +192,88 @@ export function startDesignReveal(
   const rows = () => Array.from(svg.querySelectorAll<SVGGElement>(".wedge-row"));
   const batchLabels = () => Array.from(svg.querySelectorAll<SVGTextElement>(".wedge-batch-label"));
 
+  /** Keep the phase grid the same width as the fitted SVG so columns line up with bars. */
+  const layoutPhaseCallouts = () => {
+    if (!phaseCallouts) return;
+    const svgWidth = svg.getBoundingClientRect().width;
+    if (svgWidth <= 0) return;
+    phaseCallouts.style.width = `${svgWidth}px`;
+  };
+
+  const calloutReserve = () => {
+    if (!phaseCallouts || phaseCallouts.hidden) return 0;
+    return phaseCallouts.getBoundingClientRect().height + 8;
+  };
+
+  const setCamera = (box: WedgeViewBox, stage?: DesignRevealStage) => {
+    svg.setAttribute("viewBox", viewBoxString(box));
+    const resolved = stage ?? ((svg.dataset.stage as DesignRevealStage) || undefined);
+    if (stage) {
+      svg.dataset.stage = stage;
+      syncAxisToStage(svg, data, stage);
+      chartStack?.setAttribute("data-stage", stage);
+      mount.dataset.stage = stage;
+    }
+    fitSvgInContainer(svg, box, mount, {
+      preferWidth: true,
+      reserveTop: resolved === "site" ? calloutReserve() : 0,
+    });
+    layoutPhaseCallouts();
+  };
+
+  const phaseIsActive = (phaseId: SitePhaseId, month: number): boolean => {
+    if (phaseId === "standard-care") return month >= 0.2 && month < 4.15;
+    if (phaseId === "transition") return month >= 4 && month < 5.15;
+    return month >= 5;
+  };
+
+  const syncPhaseCallouts = (month: number, forceAll = false) => {
+    if (!phaseCallouts) return;
+    const showOverlay = activeStage === "site" && !complete;
+    if (!showOverlay) {
+      phaseCallouts.querySelectorAll<HTMLElement>(".wedge-phase").forEach((el) => {
+        el.classList.remove("is-revealed", "is-active");
+        el.setAttribute("aria-hidden", "true");
+      });
+      return;
+    }
+
+    for (const phase of SITE_PHASES) {
+      const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phase.id}"]`);
+      if (!el) continue;
+      const revealed = forceAll || unlockedSitePhases.has(phase.id);
+      const active = forceAll || (revealed && phaseIsActive(phase.id, month));
+      el.classList.toggle("is-revealed", revealed);
+      el.classList.toggle("is-active", active);
+      el.setAttribute("aria-hidden", revealed ? "false" : "true");
+    }
+  };
+
+  const setReveal = (month: number, forceAllPhases = false) => {
+    setRevealMonth(svg, month);
+    syncPhaseCallouts(month, forceAllPhases);
+  };
+
+  setReveal(0);
+  layoutPhaseCallouts();
+
   const syncUi = () => {
-    setCaption(captionEl, STAGES.find((s) => s.id === activeStage)?.caption ?? "");
+    const stageCaption = STAGES.find((s) => s.id === activeStage)?.caption ?? "";
+    setCaption(captionEl, sitePhaseCaption ?? stageCaption);
     setStageButtons(stageBar, activeStage, complete);
     setPlayPauseButton(playPauseBtn, paused, complete);
     const showPhases = activeStage === "site" && !complete;
     if (phaseCallouts) {
       phaseCallouts.hidden = !showPhases;
       phaseCallouts.setAttribute("aria-hidden", showPhases ? "false" : "true");
+      if (showPhases) void phaseCallouts.offsetHeight; // force layout before measuring reserve
     }
     if (legendMount) {
       legendMount.hidden = showPhases;
       legendMount.setAttribute("aria-hidden", showPhases ? "true" : "false");
     }
+    // Re-fit after callouts show/hide so reserveTop stays accurate.
+    setCamera(parseViewBox(svg), activeStage ?? undefined);
     bullets.forEach((li, i) => {
       const stageIndex = STAGES.findIndex((s) => s.id === activeStage);
       li.classList.toggle("is-emphasis", !complete && stageIndex === i);
@@ -231,15 +342,6 @@ export function startDesignReveal(
     });
   };
 
-  const setCamera = (box: WedgeViewBox, stage?: DesignRevealStage) => {
-    svg.setAttribute("viewBox", viewBoxString(box));
-    fitSvgInContainer(svg, box, mount);
-    if (stage) {
-      svg.dataset.stage = stage;
-      syncAxisToStage(svg, data, stage);
-    }
-  };
-
   // Start cropped to one site so the first paint is not the full 0–48 axis.
   setCamera(focusViewBox(data, "site"), "site");
   // Re-fit after layout — first paint often has a 0×0 container.
@@ -249,11 +351,12 @@ export function startDesignReveal(
 
   const resizeObserver = new ResizeObserver(() => {
     setCamera(parseViewBox(svg), (svg.dataset.stage as DesignRevealStage) || undefined);
+    layoutPhaseCallouts();
   });
   resizeObserver.observe(mount);
   signal.addEventListener("abort", () => resizeObserver.disconnect());
 
-  const morphCamera = async (toStage: DesignRevealStage, token: number, duration = 0.85) => {
+  const morphCamera = async (toStage: DesignRevealStage, token: number, duration = 1.2) => {
     const from = parseViewBox(svg);
     const to = focusViewBox(data, toStage);
     syncAxisToStage(svg, data, toStage);
@@ -306,7 +409,7 @@ export function startDesignReveal(
     duration: number
   ) => {
     if (reduceMotion() || duration <= 0) {
-      setRevealMonth(svg, toMonth);
+      setReveal(toMonth, toMonth >= shortEnd - 0.05);
       return;
     }
     await gate(token);
@@ -314,55 +417,79 @@ export function startDesignReveal(
       animate(fromMonth, toMonth, {
         duration,
         ease: "linear",
-        onUpdate: (month) => setRevealMonth(svg, month),
+        onUpdate: (month) => setReveal(month),
       }),
       token
     );
-    setRevealMonth(svg, toMonth);
+    setReveal(toMonth, toMonth >= shortEnd - 0.05);
   };
 
   /** Wipe the plot clear before changing camera framing. */
   const clearPlot = async (token: number, animateIn: boolean) => {
     const current = Number(svg.dataset.revealMonth ?? 0);
     if (current <= 0.05) {
-      setRevealMonth(svg, 0);
+      setReveal(0);
       return;
     }
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, 0);
+      setReveal(0);
       return;
     }
-    const duration = Math.min(1.1, 0.35 + (current / fullEnd) * 0.75);
+    const duration = Math.min(1.8, 0.55 + (current / fullEnd) * 1.1);
     await scrubTimeline(current, 0, token, duration);
   };
 
   const animateSite = async (token: number, animateIn: boolean) => {
     activeStage = "site";
     complete = false;
+    sitePhaseCaption = null;
+    unlockedSitePhases.clear();
     syncUi();
 
     await clearPlot(token, animateIn);
-    await morphCamera("site", token, animateIn ? 0.65 : 0);
+    await morphCamera("site", token, animateIn ? 0.9 : 0);
     hideAllRows();
     setRowVisibility([1], true);
     showBatchLabels([1]);
 
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, shortEnd);
+      unlockedSitePhases.clear();
+      for (const phase of SITE_PHASES) unlockedSitePhases.add(phase.id);
+      setReveal(shortEnd, true);
+      sitePhaseCaption = null;
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 2.4);
+
+    let fromMonth = 0;
+    for (let i = 0; i < SITE_PHASE_SCRUBS.length; i++) {
+      const phase = SITE_PHASE_SCRUBS[i];
+      sitePhaseCaption = phase.caption;
+      // Unlock the illustration only as this phase's wipe begins (after play).
+      unlockedSitePhases.add(phase.id);
+      syncUi();
+      setReveal(fromMonth);
+      await scrubTimeline(fromMonth, phase.endMonth, token, phase.duration);
+      fromMonth = phase.endMonth;
+
+      // Pause after every phase — including the last — so Space / play advances.
+      paused = true;
+      syncUi();
+      await gate(token);
+    }
+
+    sitePhaseCaption = null;
   };
 
   const animateBatch = async (token: number, animateIn: boolean) => {
     activeStage = "batch";
     complete = false;
+    sitePhaseCaption = null;
     syncUi();
 
     const batchClusters = Array.from({ length: data.parameters.clustersPerBatch }, (_, i) => i + 1);
 
     await clearPlot(token, animateIn);
-    await morphCamera("batch", token, animateIn ? 0.85 : 0);
+    await morphCamera("batch", token, animateIn ? 1.1 : 0);
     setRowVisibility(batchClusters, true);
     showBatchLabels([1]);
     // Hide clusters outside this batch while the shared timeline plays.
@@ -374,29 +501,30 @@ export function startDesignReveal(
     });
 
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, shortEnd);
+      setReveal(shortEnd);
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 2.6);
+    await scrubTimeline(0, shortEnd, token, 8);
   };
 
   const animateFull = async (token: number, animateIn: boolean) => {
     activeStage = "full";
     complete = false;
+    sitePhaseCaption = null;
     syncUi();
 
     const allClusters = rows().map((r) => Number(r.dataset.cluster));
 
     await clearPlot(token, animateIn);
-    await morphCamera("full", token, animateIn ? 1.0 : 0);
+    await morphCamera("full", token, animateIn ? 1.4 : 0);
     setRowVisibility(allClusters, true);
     showBatchLabels(Array.from({ length: data.parameters.batches }, (_, i) => i + 1));
 
     if (!animateIn || reduceMotion()) {
-      setRevealMonth(svg, fullEnd);
+      setReveal(fullEnd);
       return;
     }
-    await scrubTimeline(0, fullEnd, token, 3.4);
+    await scrubTimeline(0, fullEnd, token, 12);
   };
 
   const animateStage = async (stage: DesignRevealStage, token: number, animateIn: boolean) => {
@@ -409,6 +537,7 @@ export function startDesignReveal(
     complete = true;
     paused = false;
     bullets.forEach((li) => li.classList.remove("is-emphasis", "is-muted"));
+    syncPhaseCallouts(Number(svg.dataset.revealMonth ?? 0));
     syncUi();
   };
 

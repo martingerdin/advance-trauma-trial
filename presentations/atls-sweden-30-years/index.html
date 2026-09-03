@@ -24,13 +24,58 @@
             <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <span id="slide-counter" aria-live="polite"></span>
+        <button
+          id="overview-toggle"
+          type="button"
+          aria-label="Open slide overview"
+          title="Overview (O)"
+          aria-controls="overview"
+          aria-expanded="false"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+            <rect x="1" y="1" width="6" height="6" rx="1" />
+            <rect x="11" y="1" width="6" height="6" rx="1" />
+            <rect x="1" y="11" width="6" height="6" rx="1" />
+            <rect x="11" y="11" width="6" height="6" rx="1" />
+          </svg>
+        </button>
+        <button
+          id="slide-counter"
+          type="button"
+          aria-live="polite"
+          aria-label="Open slide overview"
+          title="Jump to slide (O)"
+        ></button>
         <button id="next" aria-label="Next slide" title="Next (→)">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </nav>
+      <div id="overview" hidden aria-hidden="true">
+        <button
+          type="button"
+          id="overview-backdrop"
+          aria-label="Close slide overview"
+          tabindex="-1"
+        ></button>
+        <div
+          id="overview-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="overview-heading"
+        >
+          <div class="overview-header">
+            <h2 id="overview-heading">Jump to slide</h2>
+            <button type="button" id="overview-close" aria-label="Close overview" title="Close (Esc)">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M4.5 4.5L13.5 13.5M13.5 4.5L4.5 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div id="overview-filmstrip" role="list"></div>
+        </div>
+      </div>
       <div id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
         <div id="progress-bar"></div>
       </div>

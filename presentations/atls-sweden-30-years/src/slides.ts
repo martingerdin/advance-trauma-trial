@@ -30,6 +30,21 @@ export interface OutcomeItem {
   tag?: string;
 }
 
+export interface TeamMember {
+  name: string;
+  role: string;
+}
+
+export interface TeamGroup {
+  label: string;
+  location: string;
+  members: TeamMember[];
+}
+
+export interface Funder {
+  name: string;
+}
+
 export interface Slide {
   id: string;
   layout:
@@ -42,6 +57,7 @@ export interface Slide {
     | "visual"
     | "design"
     | "design-animation"
+    | "sequences"
     | "forest"
     | "implications"
     | "closing"
@@ -49,12 +65,16 @@ export interface Slide {
     | "evidence"
     | "milestones"
     | "aim"
-    | "outcomes";
+    | "outcomes"
+    | "presenter"
+    | "team"
+    | "funding";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
   body?: string;
   bullets?: string[];
+  affiliations?: string[];
   stats?: Stat[];
   image?: string;
   imageAlt?: string;
@@ -65,6 +85,8 @@ export interface Slide {
   evidence?: EvidenceItem[];
   milestones?: Milestone[];
   outcomes?: OutcomeItem[];
+  teamGroups?: TeamGroup[];
+  funders?: Funder[];
   /** Which exported trial-design JSON to render on design slides. */
   designVariant?: "main" | "staircase";
 }
@@ -81,6 +103,23 @@ export const slides: Slide[] = [
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "Swedish ATLS Chapter — 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
+  },
+  {
+    id: "presenter",
+    layout: "presenter",
+    title: "Martin Gerdin Wärnberg",
+    subtitle: "MD, PhD",
+    eyebrow: "Speaker",
+    bullets: [
+      "Principal Investigator, ADVANCE TRAUMA",
+      "Associate Professor of Clinical Epidemiology, Karolinska Institutet",
+      "Specialist Physician in Anaesthesia and Intensive Care, Karolinska University Hospital",
+    ],
+    affiliations: [
+      "Department of Global Public Health, Karolinska Institutet, Stockholm",
+      "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
+    ],
+    body: "Nothing to declare",
   },
   {
     id: "section-problem",
@@ -236,35 +275,29 @@ export const slides: Slide[] = [
   },
   {
     id: "atls-outcomes-reviews",
-    layout: "evidence",
-    title: "Systematic reviews on patient outcomes",
-    body: "What do systematic reviews conclude about ATLS® and patient mortality?",
-    evidence: [
-      {
-        id: "1",
-        tag: "Systematic review",
-        claim: "Future studies required to evaluate impact on trauma death rates",
-        source: "Mohammad et al. 2013",
-      },
-      {
-        id: "2",
-        tag: "Systematic review",
-        claim: "No evidence from controlled trials that ATLS impacts outcomes",
-        source: "Jayaraman et al. 2014",
-      },
-      {
-        id: "3",
-        tag: "Systematic review",
-        claim: "In-hospital trauma training reduced mortality (RR 0.71, 95% CI 0.62–0.78)",
-        source: "Jin et al. 2021",
-      },
-      {
-        id: "4",
-        tag: "Systematic review",
-        claim: "ATLS had no significant effect on mortality (OR 0.68, 95% CI 0.39–1.20)",
-        source: "Putra et al. 2023",
-      },
+    layout: "bullets",
+    title: "Evidence on patient outcomes — systematic reviews",
+    bullets: [
+      "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
+      "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
+      "Jin et al. 2021 — certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78)",
+      "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
+      "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
     ],
+  },
+  {
+    id: "atls-outcomes-scoping",
+    layout: "bullets",
+    title: "Evidence on patient outcomes — scoping reviews",
+    bullets: [
+      "Livergant et al. 2021 — only 3 of 45 LMIC course studies assessed patient outcomes; 2 found no improvement",
+      "Brown et al. 2022 — among ATLS alternatives, only one study reported a mortality reduction",
+      "Nelson et al. 2026 — 3 of 14 ED-physician studies assessed clinical impact; results mixed",
+      "Hauta et al. 2024 — team performance often improves; mortality, morbidity and length of stay generally do not",
+      "Petroze 2014 / Osebo 2025 — patient-outcome data for focused LMIC trauma courses remain scarce",
+    ],
+    footer:
+      "Across reviews: knowledge and skills improve; randomised evidence that training changes patient outcomes is still missing.",
   },
   {
     id: "atls-forest",
@@ -348,6 +381,11 @@ export const slides: Slide[] = [
     layout: "design-animation",
     title: "How the trial unfolds",
     designVariant: "main",
+  },
+  {
+    id: "sequences",
+    layout: "sequences",
+    title: "Randomisation to sequences",
   },
   {
     id: "intervention",
@@ -452,6 +490,56 @@ export const slides: Slide[] = [
     id: "implications",
     layout: "implications",
     title: "Implications",
+  },
+  {
+    id: "team",
+    layout: "team",
+    title: "The team",
+    subtitle: "An international collaboration",
+    teamGroups: [
+      {
+        label: "Karolinska Institutet",
+        location: "Stockholm, Sweden",
+        members: [
+          { name: "Martin Gerdin Wärnberg", role: "Principal Investigator" },
+          { name: "Anna Olofsson", role: "Trial Statistician" },
+          { name: "Lovisa Strömmer, Li Felländer-Tsai, Johanna Berg", role: "TMG members" },
+        ],
+      },
+      {
+        label: "The George Institute for Global Health",
+        location: "New Delhi, India",
+        members: [
+          { name: "Vivekanand Jha, Nobhojit Roy", role: "Co-principal Investigators" },
+          { name: "Prashant Kharat, Debojit Basak, Monty Khajanchi, Abhinav Bassi", role: "Trial operations" },
+          { name: "Hospital investigators & CRCs", role: "Sites across India" },
+        ],
+      },
+      {
+        label: "Methods partners",
+        location: "Birmingham · Melbourne",
+        members: [
+          { name: "Karla Hemming", role: "University of Birmingham" },
+          { name: "James Martin", role: "University of Birmingham" },
+          { name: "Jessica Kasza", role: "Monash University" },
+        ],
+      },
+    ],
+    footer: "Full team and site list at advancetrauma.info",
+  },
+  {
+    id: "funding",
+    layout: "funding",
+    title: "Funding",
+    body: "Current support for ADVANCE TRAUMA",
+    funders: [
+      { name: "Swedish Research Council" },
+      { name: "Laerdal Foundation" },
+      { name: "Region Stockholm" },
+      { name: "Swedish Society of Medicine" },
+    ],
+    footer:
+      "Not yet fully funded — additional support is needed to complete the trial through 2028–2029.",
   },
   {
     id: "closing",
