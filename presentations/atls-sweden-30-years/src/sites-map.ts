@@ -201,7 +201,7 @@ export async function mountSitesMap(container: HTMLElement): Promise<SitesMapCon
 
     const lat = sites.reduce((sum, s) => sum + s.location.lat, 0) / sites.length;
     const lng = sites.reduce((sum, s) => sum + s.location.lng, 0) / sites.length;
-    const labelSize = 22;
+    const labelSize = 36;
     const cityLabel = `${sites[0].city} (${sites.length} clusters)`;
 
     L.marker([lat, lng], {
@@ -213,7 +213,7 @@ export async function mountSitesMap(container: HTMLElement): Promise<SitesMapCon
         className: "sites-map__city-count",
         html: `<span class="sites-map__city-count-badge" aria-hidden="true">${sites.length}</span>`,
         iconSize: [labelSize, labelSize],
-        iconAnchor: [labelSize / 2, labelSize + markerSize / 2 + 2],
+        iconAnchor: [labelSize / 2, labelSize + markerSize / 2 + 4],
       }),
     }).addTo(map);
   }
