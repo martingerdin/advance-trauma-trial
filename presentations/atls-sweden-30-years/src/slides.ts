@@ -93,6 +93,12 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "conflicts",
+    layout: "aim",
+    title: "Conflicts of interest",
+    body: "Nothing to declare",
+  },
+  {
     id: "section-problem",
     layout: "section",
     title: "Trauma",
