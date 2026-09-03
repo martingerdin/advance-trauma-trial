@@ -3,6 +3,7 @@ import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
+import { createSequencesChart, createSequencesLegend } from "./sequences";
 import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
 import { buildSitesLegendHtml, mountSitesMap, type SitesMapController } from "./sites-map";
 import { participatingSites } from "./data/sites";
@@ -10,6 +11,7 @@ import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
+let overviewOpen = false;
 const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
 const sitesMapControllers = new WeakMap<HTMLElement, SitesMapController>();
 let designReveal: DesignRevealControls | null = null;
@@ -19,6 +21,12 @@ const counterEl = document.getElementById("slide-counter")!;
 const progressBar = document.getElementById("progress-bar")!;
 const prevBtn = document.getElementById("prev")!;
 const nextBtn = document.getElementById("next")!;
+const overviewEl = document.getElementById("overview")!;
+const overviewFilmstrip = document.getElementById("overview-filmstrip")!;
+const overviewToggle = document.getElementById("overview-toggle")!;
+const overviewClose = document.getElementById("overview-close")!;
+const overviewBackdrop = document.getElementById("overview-backdrop")!;
+const overviewPanel = document.getElementById("overview-panel");
 
 function evidenceCardClass(tag?: string): string {
   switch (tag) {
@@ -181,6 +189,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
           </ul>
           ${slide.cite ? `<p class="cite-line" data-animate>${slide.cite}</p>` : ""}
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
@@ -238,6 +247,35 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "outcomes": {
+      const items = slide.outcomes ?? [];
+      const isPrimary = Boolean(slide.body);
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : ""}">
+          <h2 data-animate>${slide.title}</h2>
+          ${
+            slide.body
+              ? `<p class="outcome-hero" data-animate>${slide.body}</p>`
+              : ""
+          }
+          <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
+            ${items
+              .map(
+                (item) => `
+              <article class="outcome-card" data-animate>
+                ${item.tag ? `<span class="outcome-card__tag">${item.tag}</span>` : ""}
+                <p class="outcome-card__title">${item.title}</p>
+                ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+    }
+
     case "two-col":
       el.innerHTML = `
         <div class="slide-inner">
@@ -273,6 +311,28 @@ function renderSlide(slide: Slide): HTMLElement {
                 : ""
             }
           </div>
+        </div>
+      `;
+      break;
+
+    case "columns":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--columns">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="columns-grid" data-animate-group>
+            ${(slide.columns ?? [])
+              .map(
+                (col) => `
+              <article class="column-card" data-animate>
+                <h3 class="column-card__heading">${col.heading}</h3>
+                <ul class="bullet-list">
+                  ${col.bullets.map((b) => `<li>${b}</li>`).join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
@@ -381,6 +441,18 @@ function renderSlide(slide: Slide): HTMLElement {
       break;
     }
 
+    case "sequences":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--sequences">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="sequences-panel">
+            <div class="sequences-mount" id="sequences-mount"></div>
+            <div class="sequences-legend-mount" data-animate></div>
+          </div>
+        </div>
+      `;
+      break;
+
     case "forest": {
       const pooled = metaAnalysis.pooled;
       el.innerHTML = `
@@ -478,7 +550,6 @@ function renderSlide(slide: Slide): HTMLElement {
                 (f) => `
               <article class="funding-card" data-animate>
                 <p class="funding-card__name">${f.name}</p>
-                <p class="funding-card__detail">${f.detail}</p>
               </article>`
               )
               .join("")}
@@ -510,6 +581,12 @@ function mountSlides(): void {
         // design-animation chart is mounted by startDesignReveal.
       }
     }
+    if (slide.layout === "sequences") {
+      const mount = el.querySelector("#sequences-mount");
+      const legendMount = el.querySelector(".sequences-legend-mount");
+      if (mount) mount.appendChild(createSequencesChart(trialDesign));
+      if (legendMount) legendMount.appendChild(createSequencesLegend());
+    }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
       if (mount) {
@@ -530,11 +607,136 @@ function mountSlides(): void {
   });
 }
 
+function slideThumbLabel(slide: Slide): string {
+  return slide.title ?? slide.subtitle ?? slide.id;
+}
+
+function thumbPreviewClass(slide: Slide): string {
+  if (
+    slide.layout === "title" ||
+    slide.layout === "closing" ||
+    slide.layout === "section" ||
+    slide.layout === "aim"
+  ) {
+    return `overview-thumb__preview--${slide.layout}`;
+  }
+  if (slide.image) return "overview-thumb__preview--image";
+  return "";
+}
+
+function thumbPreviewInner(slide: Slide): string {
+  const label = slideThumbLabel(slide);
+  const chips =
+    slide.layout === "stats" ||
+    slide.layout === "evidence" ||
+    slide.layout === "milestones" ||
+    slide.layout === "columns"
+      ? `<div class="overview-thumb__chips" aria-hidden="true">
+          <span class="overview-thumb__chip"></span>
+          <span class="overview-thumb__chip overview-thumb__chip--accent"></span>
+          <span class="overview-thumb__chip overview-thumb__chip--purple"></span>
+        </div>`
+      : slide.layout === "design" || slide.layout === "design-animation" || slide.layout === "forest"
+        ? `<div class="overview-thumb__chips" aria-hidden="true">
+            <span class="overview-thumb__chip" style="max-width:100%"></span>
+          </div>`
+        : "";
+
+  return `${chips}<span class="overview-thumb__mini-title">${label}</span>`;
+}
+
+function mountOverview(): void {
+  overviewFilmstrip.innerHTML = "";
+  slides.forEach((slide, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "overview-thumb";
+    btn.dataset.index = String(i);
+    btn.setAttribute("role", "listitem");
+    btn.setAttribute("aria-label", `Go to slide ${i + 1}: ${slideThumbLabel(slide)}`);
+    if (i === currentIndex) btn.classList.add("is-current");
+
+    const previewClass = thumbPreviewClass(slide);
+    const imageStyle = slide.image ? ` style="background-image:url('${slide.image}')"` : "";
+
+    btn.innerHTML = `
+      <div class="overview-thumb__preview ${previewClass}"${imageStyle}>
+        <div class="overview-thumb__preview-inner">
+          ${thumbPreviewInner(slide)}
+        </div>
+      </div>
+      <div class="overview-thumb__meta">
+        <span class="overview-thumb__num">${i + 1}</span>
+        <span class="overview-thumb__label">${slideThumbLabel(slide)}</span>
+      </div>
+    `;
+
+    btn.addEventListener("click", () => {
+      const target = i;
+      closeOverview();
+      if (target !== currentIndex) goTo(target);
+    });
+
+    overviewFilmstrip.appendChild(btn);
+  });
+}
+
+function updateOverviewActive(): void {
+  const thumbs = overviewFilmstrip.querySelectorAll<HTMLButtonElement>(".overview-thumb");
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle("is-current", i === currentIndex);
+  });
+  const current = thumbs[currentIndex];
+  if (current && overviewOpen) {
+    current.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
+}
+
+function openOverview(): void {
+  if (overviewOpen) return;
+  overviewOpen = true;
+  overviewEl.hidden = false;
+  overviewEl.setAttribute("aria-hidden", "false");
+  overviewToggle.setAttribute("aria-expanded", "true");
+  overviewToggle.setAttribute("aria-label", "Close slide overview");
+  document.body.classList.add("overview-open");
+  // Force reflow so the open transition runs.
+  void overviewEl.offsetWidth;
+  overviewEl.classList.add("is-open");
+  updateOverviewActive();
+  overviewClose.focus();
+}
+
+function closeOverview(): void {
+  if (!overviewOpen) return;
+  overviewOpen = false;
+  overviewEl.classList.remove("is-open");
+  overviewToggle.setAttribute("aria-expanded", "false");
+  overviewToggle.setAttribute("aria-label", "Open slide overview");
+  document.body.classList.remove("overview-open");
+
+  const finish = (): void => {
+    if (overviewOpen) return;
+    overviewEl.hidden = true;
+    overviewEl.setAttribute("aria-hidden", "true");
+  };
+
+  overviewPanel?.addEventListener("transitionend", finish, { once: true });
+  window.setTimeout(finish, 350);
+  overviewToggle.focus();
+}
+
+function toggleOverview(): void {
+  if (overviewOpen) closeOverview();
+  else openOverview();
+}
+
 function updateUI(): void {
   counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
   progressBar.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
   document.title = `${slides[currentIndex].title ?? "ADVANCE TRAUMA"} — ATLS Sweden 30 Years`;
   history.replaceState(null, "", `#${slides[currentIndex].id}`);
+  updateOverviewActive();
 }
 
 function animateSlideIn(slideEl: HTMLElement): void {
@@ -593,6 +795,38 @@ function animateSlideIn(slideEl: HTMLElement): void {
   } else {
     designReveal?.cancel();
     designReveal = null;
+  }
+
+  if (slideEl.dataset.layout === "sequences") {
+    const flowParts = Array.from(
+      slideEl.querySelectorAll<HTMLElement>(
+        ".consort-flow__assessed, .consort-flow__mid, .consort-flow__randomised, .consort-flow__sequences"
+      )
+    );
+    animate(
+      flowParts,
+      { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.45, delay: stagger(0.14, { startDelay: 0.15 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cols = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-sequence"));
+    animate(
+      cols,
+      { opacity: [0, 1], transform: ["translateY(12px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.4, delay: stagger(0.08, { startDelay: 0.55 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cells = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-cell"));
+    cells.forEach((cell) => {
+      cell.style.transformOrigin = "left center";
+    });
+    animate(
+      cells,
+      { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+      {
+        duration: 0.35,
+        delay: stagger(0.012, { startDelay: 0.7 }),
+        ease: [0.22, 1, 0.36, 1],
+      }
+    );
   }
 
   if (slideEl.dataset.layout === "forest") {
@@ -666,6 +900,51 @@ function initFromHash(): void {
 
 function setupKeyboard(): void {
   document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overviewOpen) {
+      e.preventDefault();
+      closeOverview();
+      return;
+    }
+
+    if ((e.key === "o" || e.key === "O") && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      e.preventDefault();
+      toggleOverview();
+      return;
+    }
+
+    if (overviewOpen) {
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        e.preventDefault();
+        const nextThumb = Math.min(currentIndex + 1, slides.length - 1);
+        if (nextThumb !== currentIndex) goTo(nextThumb);
+        else updateOverviewActive();
+        return;
+      }
+      if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault();
+        const prevThumb = Math.max(currentIndex - 1, 0);
+        if (prevThumb !== currentIndex) goTo(prevThumb);
+        else updateOverviewActive();
+        return;
+      }
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        closeOverview();
+        return;
+      }
+      if (e.key === "Home") {
+        e.preventDefault();
+        goTo(0);
+        return;
+      }
+      if (e.key === "End") {
+        e.preventDefault();
+        goTo(slides.length - 1);
+        return;
+      }
+      return;
+    }
+
     const onStagedDesign = slides[currentIndex]?.layout === "design-animation";
 
     if (e.key === " " && onStagedDesign && designReveal) {
@@ -725,9 +1004,14 @@ function setupTouch(): void {
 
 prevBtn.addEventListener("click", prev);
 nextBtn.addEventListener("click", next);
+overviewToggle.addEventListener("click", toggleOverview);
+counterEl.addEventListener("click", toggleOverview);
+overviewClose.addEventListener("click", closeOverview);
+overviewBackdrop.addEventListener("click", closeOverview);
 
 initFromHash();
 mountSlides();
+mountOverview();
 updateUI();
 
 const activeSlide = slidesEl.querySelector(".is-active") as HTMLElement;
