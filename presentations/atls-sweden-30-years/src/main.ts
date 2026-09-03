@@ -1,8 +1,6 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg } from "./stepped-wedge";
-import { createForestPlotSvg } from "./forest-plot";
-import { metaAnalysis } from "./figure-data";
 import "./style.css";
 
 let currentIndex = 0;
@@ -198,23 +196,6 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "forest": {
-      const pooled = metaAnalysis.pooled;
-      el.innerHTML = `
-        <div class="slide-inner">
-          <h2 data-animate>${slide.title}</h2>
-          <div class="forest-container" data-animate id="forest-mount"></div>
-          <p class="slide-footer" data-animate>
-            Random-effects ${metaAnalysis.measure} ${pooled.rrFormatted}
-            (95% CI ${pooled.ciFormatted.replace("; ", "–")});
-            I² ${pooled.i2Rounded.toFixed(2)};
-            ${pooled.numberOfStudies} observational studies
-          </p>
-        </div>
-      `;
-      break;
-    }
-
     case "implications":
       el.innerHTML = `
         <div class="slide-inner">
@@ -248,10 +229,6 @@ function mountSlides(): void {
     if (slide.layout === "design") {
       const mount = el.querySelector("#wedge-mount");
       if (mount) mount.appendChild(createSteppedWedgeSvg());
-    }
-    if (slide.layout === "forest") {
-      const mount = el.querySelector("#forest-mount");
-      if (mount) mount.appendChild(createForestPlotSvg());
     }
   });
 }
@@ -293,15 +270,6 @@ function animateSlideIn(slideEl: HTMLElement): void {
         delay: stagger(0.008, { startDelay: 0.4 }),
         ease: [0.22, 1, 0.36, 1],
       }
-    );
-  }
-
-  if (slideEl.dataset.layout === "forest") {
-    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".forest-row"));
-    animate(
-      rows,
-      { opacity: [0, 1], transform: ["translateX(-12px)", "translateX(0)"] } as Record<string, unknown>,
-      { duration: 0.35, delay: stagger(0.04, { startDelay: 0.25 }), ease: "easeOut" }
     );
   }
 
