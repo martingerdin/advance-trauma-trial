@@ -1,8 +1,19 @@
-import { animate, stagger, type AnimationPlaybackControls } from "motion";
+import { animate, type AnimationPlaybackControls } from "motion";
 import type { TrialDesignData } from "./figure-data";
-import { createSteppedWedgeSvg } from "./stepped-wedge";
+import {
+  createSteppedWedgeSvg,
+  createWedgeLegend,
+  fitSvgInContainer,
+  focusViewBox,
+  lerpViewBox,
+  setRevealMonth,
+  syncAxisToStage,
+  viewBoxString,
+  type DesignFocusStage,
+  type WedgeViewBox,
+} from "./stepped-wedge";
 
-export type DesignRevealStage = "site" | "batch" | "full";
+export type DesignRevealStage = DesignFocusStage;
 
 export interface DesignRevealControls {
   toggle: () => void;
@@ -23,19 +34,19 @@ const STAGES: Array<{
   {
     id: "site",
     label: "One site",
-    caption: "One hospital — standard care, then transition, then intervention",
+    caption: "One hospital — standard care, ATLS training, then intervention",
     holdMs: 2200,
   },
   {
     id: "batch",
     label: "First batch",
-    caption: "First batch — five hospitals in staggered sequences",
-    holdMs: 2200,
+    caption: "First batch — five hospitals move together through months 0–13",
+    holdMs: 1600,
   },
   {
     id: "full",
     label: "Full trial",
-    caption: "Full trial — six batches, 30 hospitals",
+    caption: "Full trial — six batches across 30 hospitals, months 0–48",
     holdMs: 0,
   },
 ];
@@ -77,21 +88,19 @@ function setPlayPauseButton(btn: HTMLButtonElement | null, paused: boolean, comp
       : `<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path fill="currentColor" d="M3 2h3v10H3V2zm5 0h3v10H8V2z"/></svg>`;
 }
 
-function visibleClustersForStage(stage: DesignRevealStage, data: TrialDesignData): number[] {
-  const { clusters, clustersPerBatch } = data.parameters;
-  if (stage === "site") return [1];
-  if (stage === "batch") return Array.from({ length: clustersPerBatch }, (_, i) => i + 1);
-  return Array.from({ length: clusters }, (_, i) => i + 1);
-}
-
 async function wait(ms: number, shouldContinue: () => Promise<void>): Promise<void> {
-  const step = 50;
+  const step = 40;
   let elapsed = 0;
   while (elapsed < ms) {
     await shouldContinue();
     await new Promise((r) => setTimeout(r, step));
     elapsed += step;
   }
+}
+
+function parseViewBox(svg: SVGSVGElement): WedgeViewBox {
+  const parts = (svg.getAttribute("viewBox") ?? "0 0 0 0").split(/\s+/).map(Number);
+  return { x: parts[0] || 0, y: parts[1] || 0, w: parts[2] || 0, h: parts[3] || 0 };
 }
 
 export function startDesignReveal(
@@ -102,6 +111,8 @@ export function startDesignReveal(
   const playPauseBtn = slideEl.querySelector<HTMLButtonElement>(".wedge-play-pause");
   const stageBar = slideEl.querySelector<HTMLElement>(".wedge-stages") ?? slideEl;
   const mount = slideEl.querySelector<HTMLElement>("#wedge-mount");
+  const legendMount = slideEl.querySelector<HTMLElement>(".wedge-legend-mount");
+  const phaseCallouts = slideEl.querySelector<HTMLElement>(".wedge-phase-callouts");
   const bullets = Array.from(slideEl.querySelectorAll<HTMLElement>(".design-bullets li"));
 
   let paused = false;
@@ -113,10 +124,45 @@ export function startDesignReveal(
   const listenerAbort = new AbortController();
   const { signal } = listenerAbort;
 
+  if (!mount) {
+    return {
+      toggle() {},
+      pause() {},
+      resume() {},
+      goToStage() {},
+      isPaused: () => false,
+      isComplete: () => true,
+      cancel() {},
+    };
+  }
+
+  if (legendMount) {
+    legendMount.replaceChildren(createWedgeLegend(data));
+  }
+
+  const svg = createSteppedWedgeSvg(data);
+  mount.replaceChildren(svg);
+  setRevealMonth(svg, 0);
+
+  const shortEnd = Math.max(data.parameters.totalMonths, 13);
+  const fullEnd = data.xMax;
+
+  const rows = () => Array.from(svg.querySelectorAll<SVGGElement>(".wedge-row"));
+  const batchLabels = () => Array.from(svg.querySelectorAll<SVGTextElement>(".wedge-batch-label"));
+
   const syncUi = () => {
     setCaption(captionEl, STAGES.find((s) => s.id === activeStage)?.caption ?? "");
     setStageButtons(stageBar, activeStage, complete);
     setPlayPauseButton(playPauseBtn, paused, complete);
+    const showPhases = activeStage === "site" && !complete;
+    if (phaseCallouts) {
+      phaseCallouts.hidden = !showPhases;
+      phaseCallouts.setAttribute("aria-hidden", showPhases ? "false" : "true");
+    }
+    if (legendMount) {
+      legendMount.hidden = showPhases;
+      legendMount.setAttribute("aria-hidden", showPhases ? "true" : "false");
+    }
     bullets.forEach((li, i) => {
       const stageIndex = STAGES.findIndex((s) => s.id === activeStage);
       li.classList.toggle("is-emphasis", !complete && stageIndex === i);
@@ -157,7 +203,7 @@ export function startDesignReveal(
 
   const gate = async (token: number) => {
     while (paused && !cancelled && token === runToken) {
-      await new Promise((r) => setTimeout(r, 50));
+      await new Promise((r) => setTimeout(r, 40));
     }
     if (cancelled || token !== runToken) throw new Error("cancelled");
   };
@@ -185,66 +231,178 @@ export function startDesignReveal(
     });
   };
 
-  const mountChart = (stage: DesignRevealStage) => {
-    if (!mount) return [] as SVGGElement[];
-    const clusters = visibleClustersForStage(stage, data);
-    const svg = createSteppedWedgeSvg(data, { visibleClusters: clusters });
-    mount.replaceChildren(svg);
-    return Array.from(svg.querySelectorAll<SVGGElement>(".wedge-row"));
+  const setCamera = (box: WedgeViewBox, stage?: DesignRevealStage) => {
+    svg.setAttribute("viewBox", viewBoxString(box));
+    fitSvgInContainer(svg, box, mount);
+    if (stage) {
+      svg.dataset.stage = stage;
+      syncAxisToStage(svg, data, stage);
+    }
   };
 
-  const animateStage = async (stage: DesignRevealStage, token: number, animateIn: boolean) => {
-    activeStage = stage;
+  // Start cropped to one site so the first paint is not the full 0–48 axis.
+  setCamera(focusViewBox(data, "site"), "site");
+  // Re-fit after layout — first paint often has a 0×0 container.
+  requestAnimationFrame(() => {
+    if (!cancelled) setCamera(parseViewBox(svg), (svg.dataset.stage as DesignRevealStage) || "site");
+  });
+
+  const resizeObserver = new ResizeObserver(() => {
+    setCamera(parseViewBox(svg), (svg.dataset.stage as DesignRevealStage) || undefined);
+  });
+  resizeObserver.observe(mount);
+  signal.addEventListener("abort", () => resizeObserver.disconnect());
+
+  const morphCamera = async (toStage: DesignRevealStage, token: number, duration = 0.85) => {
+    const from = parseViewBox(svg);
+    const to = focusViewBox(data, toStage);
+    syncAxisToStage(svg, data, toStage);
+    svg.dataset.stage = toStage;
+    if (reduceMotion() || duration <= 0) {
+      setCamera(to, toStage);
+      return;
+    }
+    await gate(token);
+    await track(
+      animate(0, 1, {
+        duration,
+        ease: [0.22, 1, 0.36, 1],
+        onUpdate: (t) => setCamera(lerpViewBox(from, to, t)),
+      }),
+      token
+    );
+    setCamera(to, toStage);
+  };
+
+  const setRowVisibility = (clusterIds: number[], visible: boolean) => {
+    const idSet = new Set(clusterIds);
+    rows().forEach((row) => {
+      if (!idSet.has(Number(row.dataset.cluster))) return;
+      row.style.opacity = visible ? "1" : "0";
+      row.setAttribute("opacity", visible ? "1" : "0");
+    });
+  };
+
+  const hideAllRows = () => {
+    rows().forEach((row) => {
+      row.style.opacity = "0";
+      row.setAttribute("opacity", "0");
+    });
+    batchLabels().forEach((label) => label.setAttribute("opacity", "0"));
+  };
+
+  const showBatchLabels = (batches: number[]) => {
+    const set = new Set(batches);
+    batchLabels().forEach((label) => {
+      label.setAttribute("opacity", set.has(Number(label.dataset.batch)) ? "1" : "0");
+    });
+  };
+
+  /** Continuous left→right wipe through study months. */
+  const scrubTimeline = async (
+    fromMonth: number,
+    toMonth: number,
+    token: number,
+    duration: number
+  ) => {
+    if (reduceMotion() || duration <= 0) {
+      setRevealMonth(svg, toMonth);
+      return;
+    }
+    await gate(token);
+    await track(
+      animate(fromMonth, toMonth, {
+        duration,
+        ease: "linear",
+        onUpdate: (month) => setRevealMonth(svg, month),
+      }),
+      token
+    );
+    setRevealMonth(svg, toMonth);
+  };
+
+  /** Wipe the plot clear before changing camera framing. */
+  const clearPlot = async (token: number, animateIn: boolean) => {
+    const current = Number(svg.dataset.revealMonth ?? 0);
+    if (current <= 0.05) {
+      setRevealMonth(svg, 0);
+      return;
+    }
+    if (!animateIn || reduceMotion()) {
+      setRevealMonth(svg, 0);
+      return;
+    }
+    const duration = Math.min(1.1, 0.35 + (current / fullEnd) * 0.75);
+    await scrubTimeline(current, 0, token, duration);
+  };
+
+  const animateSite = async (token: number, animateIn: boolean) => {
+    activeStage = "site";
     complete = false;
     syncUi();
 
-    const rows = mountChart(stage);
-    const isSiteIntro = stage === "site";
+    await clearPlot(token, animateIn);
+    await morphCamera("site", token, animateIn ? 0.65 : 0);
+    hideAllRows();
+    setRowVisibility([1], true);
+    showBatchLabels([1]);
 
     if (!animateIn || reduceMotion()) {
-      rows.forEach((row) => {
-        row.style.opacity = "1";
-        row.querySelectorAll<SVGRectElement>(".wedge-segment").forEach((seg) => {
-          seg.style.transform = "scaleX(1)";
-        });
-      });
+      setRevealMonth(svg, shortEnd);
       return;
     }
+    await scrubTimeline(0, shortEnd, token, 2.4);
+  };
 
-    rows.forEach((row) => {
-      row.style.opacity = "0";
-      row.querySelectorAll<SVGRectElement>(".wedge-segment").forEach((seg) => {
-        seg.style.transformOrigin = "left center";
-        seg.style.transform = "scaleX(0)";
-      });
+  const animateBatch = async (token: number, animateIn: boolean) => {
+    activeStage = "batch";
+    complete = false;
+    syncUi();
+
+    const batchClusters = Array.from({ length: data.parameters.clustersPerBatch }, (_, i) => i + 1);
+
+    await clearPlot(token, animateIn);
+    await morphCamera("batch", token, animateIn ? 0.85 : 0);
+    setRowVisibility(batchClusters, true);
+    showBatchLabels([1]);
+    // Hide clusters outside this batch while the shared timeline plays.
+    rows().forEach((row) => {
+      if (!batchClusters.includes(Number(row.dataset.cluster))) {
+        row.style.opacity = "0";
+        row.setAttribute("opacity", "0");
+      }
     });
 
-    await gate(token);
-    await track(
-      animate(
-        rows,
-        { opacity: [0, 1], transform: ["translateX(-16px)", "translateX(0)"] } as Record<string, unknown>,
-        { duration: 0.4, delay: stagger(0.05), ease: "easeOut" }
-      ),
-      token
-    );
-
-    const segments = rows.flatMap((row) => Array.from(row.querySelectorAll<SVGRectElement>(".wedge-segment")));
-    await gate(token);
-    if (segments.length) {
-      await track(
-        animate(
-          segments,
-          { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
-          {
-            duration: isSiteIntro ? 0.55 : 0.4,
-            delay: isSiteIntro ? stagger(0.45) : stagger(0.02),
-            ease: [0.22, 1, 0.36, 1],
-          }
-        ),
-        token
-      );
+    if (!animateIn || reduceMotion()) {
+      setRevealMonth(svg, shortEnd);
+      return;
     }
+    await scrubTimeline(0, shortEnd, token, 2.6);
+  };
+
+  const animateFull = async (token: number, animateIn: boolean) => {
+    activeStage = "full";
+    complete = false;
+    syncUi();
+
+    const allClusters = rows().map((r) => Number(r.dataset.cluster));
+
+    await clearPlot(token, animateIn);
+    await morphCamera("full", token, animateIn ? 1.0 : 0);
+    setRowVisibility(allClusters, true);
+    showBatchLabels(Array.from({ length: data.parameters.batches }, (_, i) => i + 1));
+
+    if (!animateIn || reduceMotion()) {
+      setRevealMonth(svg, fullEnd);
+      return;
+    }
+    await scrubTimeline(0, fullEnd, token, 3.4);
+  };
+
+  const animateStage = async (stage: DesignRevealStage, token: number, animateIn: boolean) => {
+    if (stage === "site") await animateSite(token, animateIn);
+    else if (stage === "batch") await animateBatch(token, animateIn);
+    else await animateFull(token, animateIn);
   };
 
   const finish = () => {
@@ -278,11 +436,9 @@ export function startDesignReveal(
 
         const isLast = i === sequence.length - 1;
         if (!autoContinue && !isLast) {
-          // Manual stage pick: show this stage, then pause for the presenter.
           paused = true;
           syncUi();
           await gate(token);
-          // After resume, continue remaining stages automatically.
           autoContinue = true;
         } else if (!isLast && stage.holdMs > 0) {
           await wait(stage.holdMs, () => gate(token));

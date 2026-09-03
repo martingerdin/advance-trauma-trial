@@ -1,6 +1,6 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
-import { createSteppedWedgeSvg } from "./stepped-wedge";
+import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
 import { createForestPlotSvg } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
 import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
@@ -268,9 +268,7 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "design": {
-      const staged = slide.designVariant !== "staircase";
-      const stages = designRevealStageMeta();
+    case "design":
       el.innerHTML = `
         <div class="slide-inner">
           <h2 data-animate>${slide.title}</h2>
@@ -278,25 +276,55 @@ function renderSlide(slide: Slide): HTMLElement {
             <ul class="bullet-list design-bullets" data-animate-group>
               ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
             </ul>
-            <div class="wedge-panel" data-animate>
-              ${
-                staged
-                  ? `<div class="wedge-toolbar">
-                      <div class="wedge-stages" role="list" aria-label="Design reveal stages">
-                        ${stages
-                          .map(
-                            (s) =>
-                              `<button type="button" class="wedge-stage" data-stage="${s.id}" role="listitem">${s.label}</button>`
-                          )
-                          .join("")}
-                      </div>
-                      <button type="button" class="wedge-play-pause" aria-label="Pause animation" title="Pause (Space)"></button>
-                    </div>
-                    <p class="wedge-caption" aria-live="polite"></p>`
-                  : ""
-              }
-              <div class="wedge-container" id="wedge-mount"></div>
+            <div class="wedge-container" data-animate id="wedge-mount"></div>
+          </div>
+        </div>
+      `;
+      break;
+
+    case "design-animation": {
+      const stages = designRevealStageMeta();
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--design-animation">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="wedge-panel wedge-panel--solo" data-animate>
+            <div class="wedge-toolbar">
+              <div class="wedge-stages" role="list" aria-label="Design reveal stages">
+                ${stages
+                  .map(
+                    (s) =>
+                      `<button type="button" class="wedge-stage" data-stage="${s.id}" role="listitem">${s.label}</button>`
+                  )
+                  .join("")}
+              </div>
+              <button type="button" class="wedge-play-pause" aria-label="Pause animation" title="Pause (Space)"></button>
             </div>
+            <p class="wedge-caption" aria-live="polite"></p>
+            <div class="wedge-legend-mount"></div>
+            <div class="wedge-phase-callouts" hidden>
+              <article class="wedge-phase" data-phase="standard-care">
+                <figure class="wedge-phase__figure">
+                  <img src="./patient-review-before-illustration.png" alt="Standard care in the emergency department" />
+                </figure>
+                <p class="wedge-phase__title">Standard care</p>
+                <p class="wedge-phase__when">Months 0–4</p>
+              </article>
+              <article class="wedge-phase" data-phase="transition">
+                <figure class="wedge-phase__figure">
+                  <img src="./training-illustration.png" alt="ATLS training course" />
+                </figure>
+                <p class="wedge-phase__title">Transition</p>
+                <p class="wedge-phase__when">Month 4–5 · ATLS® course</p>
+              </article>
+              <article class="wedge-phase" data-phase="intervention">
+                <figure class="wedge-phase__figure">
+                  <img src="./patient-review-after-illustration.png" alt="Care after ATLS training" />
+                </figure>
+                <p class="wedge-phase__title">Intervention</p>
+                <p class="wedge-phase__when">Months 5–13</p>
+              </article>
+            </div>
+            <div class="wedge-container wedge-container--animation" id="wedge-mount"></div>
           </div>
         </div>
       `;
@@ -350,13 +378,14 @@ function mountSlides(): void {
     el.setAttribute("aria-hidden", i === currentIndex ? "false" : "true");
     slidesEl.appendChild(el);
 
-    if (slide.layout === "design") {
+    if (slide.layout === "design" || slide.layout === "design-animation") {
       const mount = el.querySelector("#wedge-mount");
       if (mount) {
-        if (slide.designVariant === "staircase") {
-          mount.appendChild(createSteppedWedgeSvg(trialDesignStaircase));
+        if (slide.layout === "design") {
+          const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
+          mount.appendChild(createSteppedWedgeSvg(data));
         }
-        // Staged design chart is mounted by startDesignReveal per stage.
+        // design-animation chart is mounted by startDesignReveal.
       }
     }
     if (slide.layout === "forest") {
@@ -383,13 +412,29 @@ function animateSlideIn(slideEl: HTMLElement): void {
     { duration: 0.55, delay: stagger(0.08), ease: [0.22, 1, 0.36, 1] }
   );
 
-  if (slideEl.dataset.layout === "design") {
+  if (slideEl.dataset.layout === "design" || slideEl.dataset.layout === "design-animation") {
     const slide = slides[currentIndex];
     designReveal?.cancel();
     designReveal = null;
 
-    if (slide?.designVariant === "staircase") {
-      const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".wedge-row"));
+    if (slide?.layout === "design-animation") {
+      designReveal = startDesignReveal(slideEl, trialDesign);
+    } else if (slide?.layout === "design") {
+      const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
+      const rows = Array.from(slideEl.querySelectorAll<SVGGElement>(".wedge-row"));
+      const svg = slideEl.querySelector<SVGSVGElement>(".stepped-wedge-chart");
+      if (svg) {
+        svg.setAttribute("viewBox", viewBoxString(focusViewBox(data, "full")));
+        syncAxisToStage(svg, data, "full");
+        setRevealMonth(svg, data.xMax);
+      }
+      rows.forEach((row) => {
+        row.style.opacity = "1";
+        row.setAttribute("opacity", "1");
+      });
+      slideEl.querySelectorAll<SVGTextElement>(".wedge-batch-label").forEach((label) => {
+        label.setAttribute("opacity", "1");
+      });
       animate(
         rows,
         { opacity: [0, 1], transform: ["translateX(-20px)", "translateX(0)"] } as Record<string, unknown>,
@@ -409,8 +454,6 @@ function animateSlideIn(slideEl: HTMLElement): void {
           ease: [0.22, 1, 0.36, 1],
         }
       );
-    } else if (slide?.layout === "design") {
-      designReveal = startDesignReveal(slideEl, trialDesign);
     }
   } else {
     designReveal?.cancel();
@@ -485,8 +528,7 @@ function initFromHash(): void {
 
 function setupKeyboard(): void {
   document.addEventListener("keydown", (e) => {
-    const onStagedDesign =
-      slides[currentIndex]?.layout === "design" && slides[currentIndex]?.designVariant !== "staircase";
+    const onStagedDesign = slides[currentIndex]?.layout === "design-animation";
 
     if (e.key === " " && onStagedDesign && designReveal) {
       e.preventDefault();

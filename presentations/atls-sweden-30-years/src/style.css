@@ -867,23 +867,187 @@ body {
   line-height: 1.35;
 }
 
+.wedge-legend-mount {
+  min-height: 1.25rem;
+}
+
+.wedge-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  align-items: center;
+}
+
+.wedge-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.wedge-legend__swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.wedge-legend__label {
+  white-space: nowrap;
+}
+
 .wedge-container {
   background: var(--surface-muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1rem;
   overflow: hidden;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-inner--design-animation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  max-width: 1280px;
+}
+
+.slide-inner--design-animation > h2 {
+  flex-shrink: 0;
+}
+
+.wedge-panel--solo {
+  flex: 1;
+  min-height: 0;
+  gap: 0.55rem;
+}
+
+.wedge-container--animation {
+  flex: 1;
+  min-height: 12rem;
+  aspect-ratio: auto;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wedge-container--animation .stepped-wedge-chart {
+  display: block;
+  flex: 0 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.wedge-phase-callouts {
+  display: grid;
+  /* Match site timeline: standard care 0–4 · transition 4–5 · intervention 5–13 */
+  grid-template-columns: 4fr 1.15fr 8fr;
+  gap: 0.35rem;
+  align-items: end;
+  /* Inset roughly with SVG label gutters so cards sit over the bars */
+  padding-inline: 8% 8%;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.wedge-phase-callouts[hidden] {
+  display: none;
+}
+
+.wedge-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  min-width: 0;
+}
+
+.wedge-phase__figure {
+  margin: 0;
+  width: 100%;
+  max-height: 4.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wedge-phase__figure img {
+  display: block;
+  max-width: 100%;
+  max-height: 4.25rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.wedge-phase[data-phase="transition"] .wedge-phase__figure {
+  max-height: 3.75rem;
+}
+
+.wedge-phase[data-phase="transition"] .wedge-phase__figure img {
+  max-height: 3.75rem;
+}
+
+.wedge-phase__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.wedge-phase__when {
+  margin: 0;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.25;
+}
+
+.wedge-phase[data-phase="standard-care"] .wedge-phase__title {
+  color: var(--accent);
+}
+
+.wedge-phase[data-phase="transition"] .wedge-phase__title {
+  color: var(--brand-deep);
+}
+
+.wedge-phase[data-phase="intervention"] .wedge-phase__title {
+  color: var(--intervention);
+}
+
+@media (max-width: 900px) {
+  .wedge-phase-callouts {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .wedge-phase__figure,
+  .wedge-phase__figure img {
+    max-height: 4.25rem;
+  }
 }
 
 .stepped-wedge-chart {
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-height: 100%;
+  display: block;
 }
 
 .stepped-wedge-chart .legend-label,
 .stepped-wedge-chart .axis-label {
   font-family: var(--font-body);
-  font-size: 9px;
+  font-size: 10px;
   fill: var(--text-muted);
 }
 

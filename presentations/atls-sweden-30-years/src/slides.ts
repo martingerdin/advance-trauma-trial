@@ -35,6 +35,7 @@ export interface Slide {
     | "two-col"
     | "visual"
     | "design"
+    | "design-animation"
     | "forest"
     | "implications"
     | "closing"
@@ -333,6 +334,12 @@ export const slides: Slide[] = [
       "30 hospitals · 6 batches · 5 sequences · 13 months in trial",
       "Conducted in India — ongoing collaborations >10 years; ATLS not yet standard",
     ],
+  },
+  {
+    id: "design-animation",
+    layout: "design-animation",
+    title: "How the trial unfolds",
+    designVariant: "main",
   },
   {
     id: "intervention",
