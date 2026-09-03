@@ -3,6 +3,7 @@ import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
+import { createSequencesChart, createSequencesLegend } from "./sequences";
 import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
 import "./style.css";
 
@@ -185,6 +186,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
           </ul>
           ${slide.cite ? `<p class="cite-line" data-animate>${slide.cite}</p>` : ""}
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
@@ -241,6 +243,35 @@ function renderSlide(slide: Slide): HTMLElement {
         </div>
       `;
       break;
+
+    case "outcomes": {
+      const items = slide.outcomes ?? [];
+      const isPrimary = Boolean(slide.body);
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : ""}">
+          <h2 data-animate>${slide.title}</h2>
+          ${
+            slide.body
+              ? `<p class="outcome-hero" data-animate>${slide.body}</p>`
+              : ""
+          }
+          <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
+            ${items
+              .map(
+                (item) => `
+              <article class="outcome-card" data-animate>
+                ${item.tag ? `<span class="outcome-card__tag">${item.tag}</span>` : ""}
+                <p class="outcome-card__title">${item.title}</p>
+                ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+    }
 
     case "two-col":
       el.innerHTML = `
@@ -407,6 +438,18 @@ function renderSlide(slide: Slide): HTMLElement {
       break;
     }
 
+    case "sequences":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--sequences">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="sequences-panel">
+            <div class="sequences-mount" id="sequences-mount"></div>
+            <div class="sequences-legend-mount" data-animate></div>
+          </div>
+        </div>
+      `;
+      break;
+
     case "forest": {
       const pooled = metaAnalysis.pooled;
       el.innerHTML = `
@@ -517,6 +560,12 @@ function mountSlides(): void {
         }
         // design-animation chart is mounted by startDesignReveal.
       }
+    }
+    if (slide.layout === "sequences") {
+      const mount = el.querySelector("#sequences-mount");
+      const legendMount = el.querySelector(".sequences-legend-mount");
+      if (mount) mount.appendChild(createSequencesChart(trialDesign));
+      if (legendMount) legendMount.appendChild(createSequencesLegend());
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
@@ -717,6 +766,38 @@ function animateSlideIn(slideEl: HTMLElement): void {
   } else {
     designReveal?.cancel();
     designReveal = null;
+  }
+
+  if (slideEl.dataset.layout === "sequences") {
+    const flowParts = Array.from(
+      slideEl.querySelectorAll<HTMLElement>(
+        ".consort-flow__assessed, .consort-flow__mid, .consort-flow__randomised, .consort-flow__sequences"
+      )
+    );
+    animate(
+      flowParts,
+      { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.45, delay: stagger(0.14, { startDelay: 0.15 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cols = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-sequence"));
+    animate(
+      cols,
+      { opacity: [0, 1], transform: ["translateY(12px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.4, delay: stagger(0.08, { startDelay: 0.55 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cells = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-cell"));
+    cells.forEach((cell) => {
+      cell.style.transformOrigin = "left center";
+    });
+    animate(
+      cells,
+      { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+      {
+        duration: 0.35,
+        delay: stagger(0.012, { startDelay: 0.7 }),
+        ease: [0.22, 1, 0.36, 1],
+      }
+    );
   }
 
   if (slideEl.dataset.layout === "forest") {

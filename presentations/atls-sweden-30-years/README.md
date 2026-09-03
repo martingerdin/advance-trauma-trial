@@ -28,7 +28,7 @@ Image assets in `public/` are copied to `dist/` during build:
 
 ## Features
 
-- **Motion** animations — staggered entrance, forest plot and stepped-wedge reveal
+- **Motion** animations — staggered entrance, forest plot, sequence randomisation, and stepped-wedge reveal
 - **Deep linking** — each slide has a URL hash (e.g. `#design`)
 - **Slide overview** — thumbnail filmstrip to jump to any slide (`O`, grid button, or counter)
 - **Responsive** — works on projectors, laptops, and tablets
@@ -42,8 +42,10 @@ Image assets in `public/` are copied to `dist/` during build:
 | 1 | `title` | Title slide |
 | 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg (positions, affiliations, conflicts of interest) |
 | 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
-| 4–12 | ATLS slides | Purpose, evidence, forest plot, critique |
-| — | `atls-impact-sources` | Historical sources for manual Impact claims |
+| — | ATLS slides | Purpose, evidence, critique |
+| — | `atls-patient-impact-sources` | Historical sources for manual Impact claims |
+| — | `atls-outcomes-reviews` | Systematic reviews on patient outcomes |
+| — | `atls-outcomes-scoping` | Scoping reviews on patient outcomes |
 | — | `atls-forest` | Updated systematic review forest plot |
 | 12–21 | Trial slides | Design, nested staircase, outcomes, status |
 | — | `eligibility` | Cluster and patient eligibility criteria |

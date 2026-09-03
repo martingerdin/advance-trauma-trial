@@ -24,6 +24,12 @@ export interface Milestone {
   cite?: string;
 }
 
+export interface OutcomeItem {
+  title: string;
+  detail?: string;
+  tag?: string;
+}
+
 export interface TeamMember {
   name: string;
   role: string;
@@ -56,6 +62,7 @@ export interface Slide {
     | "visual"
     | "design"
     | "design-animation"
+    | "sequences"
     | "forest"
     | "implications"
     | "closing"
@@ -63,6 +70,7 @@ export interface Slide {
     | "evidence"
     | "milestones"
     | "aim"
+    | "outcomes"
     | "presenter"
     | "team"
     | "funding"
@@ -82,6 +90,7 @@ export interface Slide {
   references?: Reference[];
   evidence?: EvidenceItem[];
   milestones?: Milestone[];
+  outcomes?: OutcomeItem[];
   teamGroups?: TeamGroup[];
   funders?: Funder[];
   columns?: ColumnGroup[];
@@ -273,35 +282,29 @@ export const slides: Slide[] = [
   },
   {
     id: "atls-outcomes-reviews",
-    layout: "evidence",
-    title: "Systematic reviews on patient outcomes",
-    body: "What do systematic reviews conclude about ATLS® and patient mortality?",
-    evidence: [
-      {
-        id: "1",
-        tag: "Systematic review",
-        claim: "Future studies required to evaluate impact on trauma death rates",
-        source: "Mohammad et al. 2013",
-      },
-      {
-        id: "2",
-        tag: "Systematic review",
-        claim: "No evidence from controlled trials that ATLS impacts outcomes",
-        source: "Jayaraman et al. 2014",
-      },
-      {
-        id: "3",
-        tag: "Systematic review",
-        claim: "In-hospital trauma training reduced mortality (RR 0.71, 95% CI 0.62–0.78)",
-        source: "Jin et al. 2021",
-      },
-      {
-        id: "4",
-        tag: "Systematic review",
-        claim: "ATLS had no significant effect on mortality (OR 0.68, 95% CI 0.39–1.20)",
-        source: "Putra et al. 2023",
-      },
+    layout: "bullets",
+    title: "Evidence on patient outcomes — systematic reviews",
+    bullets: [
+      "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
+      "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
+      "Jin et al. 2021 — certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78)",
+      "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
+      "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
     ],
+  },
+  {
+    id: "atls-outcomes-scoping",
+    layout: "bullets",
+    title: "Evidence on patient outcomes — scoping reviews",
+    bullets: [
+      "Livergant et al. 2021 — only 3 of 45 LMIC course studies assessed patient outcomes; 2 found no improvement",
+      "Brown et al. 2022 — among ATLS alternatives, only one study reported a mortality reduction",
+      "Nelson et al. 2026 — 3 of 14 ED-physician studies assessed clinical impact; results mixed",
+      "Hauta et al. 2024 — team performance often improves; mortality, morbidity and length of stay generally do not",
+      "Petroze 2014 / Osebo 2025 — patient-outcome data for focused LMIC trauma courses remain scarce",
+    ],
+    footer:
+      "Across reviews: knowledge and skills improve; randomised evidence that training changes patient outcomes is still missing.",
   },
   {
     id: "atls-forest",
@@ -387,6 +390,11 @@ export const slides: Slide[] = [
     designVariant: "main",
   },
   {
+    id: "sequences",
+    layout: "sequences",
+    title: "Randomisation to sequences",
+  },
+  {
     id: "intervention",
     layout: "two-col",
     title: "Intervention and control",
@@ -400,24 +408,52 @@ export const slides: Slide[] = [
   },
   {
     id: "primary-outcome",
-    layout: "bullets",
+    layout: "outcomes",
     title: "Primary outcome",
-    bullets: [
-      "30-day in-hospital mortality",
-      "Collected through medical records for patients admitted or discharged home",
-      "Collected through telephonic follow-up for patients transferred to another hospital",
+    body: "30-day in-hospital mortality",
+    outcomes: [
+      {
+        tag: "Medical records",
+        title: "Patients admitted or discharged home",
+        detail: "Extracted from hospital records during the initial admission",
+      },
+      {
+        tag: "Telephonic follow-up",
+        title: "Patients transferred to another hospital",
+        detail: "Collected by calling the patient, representative, or receiving hospital",
+      },
     ],
   },
   {
     id: "secondary-outcomes",
-    layout: "bullets",
+    layout: "outcomes",
     title: "Secondary outcomes",
-    bullets: [
-      "All-cause and in-hospital mortality at 24 h, 30 days, and 90 days",
-      "Length of stay in ED, ICU, and hospital",
-      "Return to work at 30 and 90 days",
-      "Adherence to ATLS principles (nested staircase design)",
-      "Quality of life (EQ-5D-5L) and disability (WHODAS 2.0) at 30 and 90 days",
+    outcomes: [
+      {
+        tag: "Mortality",
+        title: "All-cause and in-hospital mortality",
+        detail: "24 hours · 30 days · 90 days",
+      },
+      {
+        tag: "Length of stay",
+        title: "ED, ICU, and hospital stay",
+        detail: "From patient hospital records",
+      },
+      {
+        tag: "Recovery",
+        title: "Return to work",
+        detail: "30 and 90 days after arrival",
+      },
+      {
+        tag: "Process",
+        title: "Adherence to ATLS principles",
+        detail: "Nested staircase design",
+      },
+      {
+        tag: "Patient-reported",
+        title: "Quality of life and disability",
+        detail: "EQ-5D-5L · WHODAS 2.0 · 30 and 90 days",
+      },
     ],
   },
   {
