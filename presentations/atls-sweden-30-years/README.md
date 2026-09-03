@@ -47,7 +47,9 @@ Image assets in `public/` are copied to `dist/` during build:
 | — | `atls-outcomes-reviews` | Systematic reviews on patient outcomes |
 | — | `atls-outcomes-scoping` | Scoping reviews on patient outcomes |
 | — | `atls-forest` | Updated systematic review forest plot |
-| — | Trial slides | Design, sequences, nested staircase, outcomes, status |
+| 12–21 | Trial slides | Design, nested staircase, outcomes, status |
+| — | `eligibility` | Cluster and patient eligibility criteria |
+| — | `participating-clusters` | Interactive map of currently participating hospitals |
 | — | `implications` | Take-home messages |
 | — | `team` | International collaboration overview |
 | — | `funding` | Current funders and funding gap |

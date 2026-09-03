@@ -5,12 +5,15 @@ import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
 import { createSequencesChart, createSequencesLegend } from "./sequences";
 import { trialDesign, trialDesignStaircase } from "./figure-data";
+import { buildSitesLegendHtml, mountSitesMap, type SitesMapController } from "./sites-map";
+import { participatingSites } from "./data/sites";
 import "./style.css";
 
 let currentIndex = 0;
 let isAnimating = false;
 let overviewOpen = false;
 const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
+const sitesMapControllers = new WeakMap<HTMLElement, SitesMapController>();
 let designReveal: DesignRevealControls | null = null;
 
 const slidesEl = document.getElementById("slides")!;
@@ -312,6 +315,28 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "columns":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--columns">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="columns-grid" data-animate-group>
+            ${(slide.columns ?? [])
+              .map(
+                (col) => `
+              <article class="column-card" data-animate>
+                <h3 class="column-card__heading">${col.heading}</h3>
+                <ul class="bullet-list">
+                  ${col.bullets.map((b) => `<li>${b}</li>`).join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
     case "milestones":
       el.innerHTML = `
         <div class="slide-inner slide-inner--milestones">
@@ -457,6 +482,23 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
+    case "sites-map":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--sites-map">
+          <header class="sites-map-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="sites-map-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="sites-legend" data-animate aria-label="Batch legend">
+            ${buildSitesLegendHtml()}
+            <span class="sites-legend__total">${participatingSites.length} hospitals</span>
+          </div>
+          <div class="sites-map" data-map role="region" aria-label="Participating sites map"></div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
     case "team":
       el.innerHTML = `
         <div class="slide-inner slide-inner--team">
@@ -547,6 +589,15 @@ function mountSlides(): void {
         forestControllers.set(el, forest);
       }
     }
+    if (slide.layout === "sites-map") {
+      const mount = el.querySelector<HTMLElement>("[data-map]");
+      if (mount) {
+        void mountSitesMap(mount).then((controller) => {
+          sitesMapControllers.set(el, controller);
+          if (el.classList.contains("is-active")) controller.refresh();
+        });
+      }
+    }
   });
 }
 
@@ -570,7 +621,10 @@ function thumbPreviewClass(slide: Slide): string {
 function thumbPreviewInner(slide: Slide): string {
   const label = slideThumbLabel(slide);
   const chips =
-    slide.layout === "stats" || slide.layout === "evidence" || slide.layout === "milestones"
+    slide.layout === "stats" ||
+    slide.layout === "evidence" ||
+    slide.layout === "milestones" ||
+    slide.layout === "columns"
       ? `<div class="overview-thumb__chips" aria-hidden="true">
           <span class="overview-thumb__chip"></span>
           <span class="overview-thumb__chip overview-thumb__chip--accent"></span>
@@ -774,6 +828,10 @@ function animateSlideIn(slideEl: HTMLElement): void {
     if (forest) {
       void forest.playChronologicalReveal();
     }
+  }
+
+  if (slideEl.dataset.layout === "sites-map") {
+    sitesMapControllers.get(slideEl)?.refresh();
   }
 
   const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");

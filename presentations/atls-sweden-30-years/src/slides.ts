@@ -45,6 +45,11 @@ export interface Funder {
   name: string;
 }
 
+export interface ColumnGroup {
+  heading: string;
+  bullets: string[];
+}
+
 export interface Slide {
   id: string;
   layout:
@@ -68,7 +73,9 @@ export interface Slide {
     | "outcomes"
     | "presenter"
     | "team"
-    | "funding";
+    | "funding"
+    | "sites-map"
+    | "columns";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -87,6 +94,7 @@ export interface Slide {
   outcomes?: OutcomeItem[];
   teamGroups?: TeamGroup[];
   funders?: Funder[];
+  columns?: ColumnGroup[];
   /** Which exported trial-design JSON to render on design slides. */
   designVariant?: "main" | "staircase";
 }
@@ -462,6 +470,28 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "eligibility",
+    layout: "columns",
+    title: "Eligibility criteria",
+    columns: [
+      {
+        heading: "Cluster",
+        bullets: [
+          "Hospitals that admit or refer/transfer for admission at least 400 patients with trauma per year",
+          "Around-the-clock emergency surgical and orthopaedic services",
+        ],
+      },
+      {
+        heading: "Patient",
+        bullets: [
+          "Adult trauma patients presenting to the emergency department of participating hospitals with a history of trauma",
+          "Admitted, dies before admission, or transferred for admission",
+          "Less than 48 hours since trauma",
+        ],
+      },
+    ],
+  },
+  {
     id: "sample-size",
     layout: "stats",
     title: "Sample size",
@@ -486,6 +516,13 @@ export const slides: Slide[] = [
       { value: "May 2026", label: "third batch planned" },
     ],
     footer: "Expected completion December 2028, pending funding",
+  },
+  {
+    id: "participating-clusters",
+    layout: "sites-map",
+    title: "Participating clusters",
+    subtitle: "Hospitals currently in the trial",
+    footer: "Batches 1–2 confirmed · Batches 3–6 screening · Full list at advancetrauma.info",
   },
   {
     id: "implications",
