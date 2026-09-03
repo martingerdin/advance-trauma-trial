@@ -20,6 +20,7 @@ export interface Slide {
     | "two-col"
     | "visual"
     | "design"
+    | "forest"
     | "implications"
     | "closing"
     | "references";
@@ -183,6 +184,11 @@ export const slides: Slide[] = [
       "Putra et al. 2023 — ATLS had no significant effect on mortality (OR 0.68, 95% CI 0.39–1.20)",
       "Nakhid et al. 2026 — 10 observational studies; pooled OR 0.51",
     ],
+  },
+  {
+    id: "atls-forest",
+    layout: "forest",
+    title: "Updated systematic review",
   },
   {
     id: "atls-critique",
