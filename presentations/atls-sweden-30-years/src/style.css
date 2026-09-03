@@ -1055,6 +1055,152 @@ body {
   transform-box: fill-box;
 }
 
+/* ── Implementation sequences ───────────────────────────────────── */
+
+.slide-inner--sequences {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  max-width: 1280px;
+}
+
+.slide-inner--sequences > h2 {
+  flex-shrink: 0;
+}
+
+.sequences-lead {
+  margin: 0 0 0.9rem;
+  max-width: 68ch;
+  color: var(--text);
+  font-size: clamp(0.92rem, 1.55vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.sequences-panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.sequences-chart {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem 0.7rem;
+}
+
+.sequences-axis,
+.sequence-row {
+  display: grid;
+  grid-template-columns: 7.2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.sequences-axis__label {
+  min-height: 1rem;
+}
+
+.sequences-axis__ticks {
+  position: relative;
+  height: 1.1rem;
+}
+
+.sequences-axis__tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sequences-axis__tick:first-child {
+  transform: translateX(0);
+}
+
+.sequences-axis__tick:last-child {
+  transform: translateX(-100%);
+}
+
+.sequences-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.sequence-row__label {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.sequence-row__track {
+  display: grid;
+  gap: 0.2rem;
+  min-height: 2.6rem;
+}
+
+.sequence-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  border-radius: 3px;
+  color: var(--text-inverse);
+  padding: 0.2rem 0.35rem;
+}
+
+.sequence-bar__text {
+  font-size: clamp(0.62rem, 1.1vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sequence-bar--transition .sequence-bar__text {
+  font-size: clamp(0.55rem, 0.95vw, 0.72rem);
+  writing-mode: horizontal-tb;
+}
+
+.sequences-axis-title {
+  margin: 0.15rem 0 0;
+  padding-left: calc(7.2rem + 0.75rem);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .sequences-axis,
+  .sequence-row {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .sequences-axis-title {
+    padding-left: 0;
+  }
+
+  .sequence-row__track {
+    min-height: 2.2rem;
+  }
+}
+
 .forest-container {
   margin-top: 0.6rem;
   background: var(--surface-muted);

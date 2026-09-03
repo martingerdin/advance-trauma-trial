@@ -3,6 +3,7 @@ import { slides, type Slide } from "./slides";
 import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
 import { createForestPlotSvg } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
+import { createSequencesChart, createSequencesLegend } from "./sequences";
 import { metaAnalysis, trialDesign, trialDesignStaircase } from "./figure-data";
 import "./style.css";
 
@@ -331,6 +332,19 @@ function renderSlide(slide: Slide): HTMLElement {
       break;
     }
 
+    case "sequences":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--sequences">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="sequences-lead" data-animate>${slide.body}</p>` : ""}
+          <div class="sequences-panel" data-animate>
+            <div class="sequences-legend-mount"></div>
+            <div class="sequences-mount" id="sequences-mount"></div>
+          </div>
+        </div>
+      `;
+      break;
+
     case "forest": {
       const pooled = metaAnalysis.pooled;
       el.innerHTML = `
@@ -387,6 +401,12 @@ function mountSlides(): void {
         }
         // design-animation chart is mounted by startDesignReveal.
       }
+    }
+    if (slide.layout === "sequences") {
+      const mount = el.querySelector("#sequences-mount");
+      const legendMount = el.querySelector(".sequences-legend-mount");
+      if (mount) mount.appendChild(createSequencesChart(trialDesign));
+      if (legendMount) legendMount.appendChild(createSequencesLegend(trialDesign));
     }
     if (slide.layout === "forest") {
       const mount = el.querySelector("#forest-mount");
@@ -458,6 +478,31 @@ function animateSlideIn(slideEl: HTMLElement): void {
   } else {
     designReveal?.cancel();
     designReveal = null;
+  }
+
+  if (slideEl.dataset.layout === "sequences") {
+    const rows = Array.from(slideEl.querySelectorAll<HTMLElement>(".sequence-row"));
+    const bars = Array.from(slideEl.querySelectorAll<HTMLElement>(".sequence-bar"));
+    rows.forEach((row) => {
+      row.style.transformOrigin = "left center";
+    });
+    animate(
+      rows,
+      { opacity: [0, 1], transform: ["translateY(16px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.45, delay: stagger(0.12, { startDelay: 0.2 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    bars.forEach((bar) => {
+      bar.style.transformOrigin = "left center";
+    });
+    animate(
+      bars,
+      { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+      {
+        duration: 0.55,
+        delay: stagger(0.04, { startDelay: 0.28 }),
+        ease: [0.22, 1, 0.36, 1],
+      }
+    );
   }
 
   if (slideEl.dataset.layout === "forest") {

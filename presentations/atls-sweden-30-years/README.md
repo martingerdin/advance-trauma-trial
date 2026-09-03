@@ -28,7 +28,7 @@ Image assets in `public/` are copied to `dist/` during build:
 
 ## Features
 
-- **Motion** animations — staggered entrance, forest plot and stepped-wedge reveal
+- **Motion** animations — staggered entrance, forest plot, sequence randomisation, and stepped-wedge reveal
 - **Deep linking** — each slide has a URL hash (e.g. `#design`)
 - **Responsive** — works on projectors, laptops, and tablets
 - **Accessible** — keyboard navigation, ARIA labels, reduced-motion support
@@ -43,7 +43,7 @@ Image assets in `public/` are copied to `dist/` during build:
 | 4–12 | ATLS slides | Purpose, evidence, forest plot, critique |
 | — | `atls-impact-sources` | Historical sources for manual Impact claims |
 | — | `atls-forest` | Updated systematic review forest plot |
-| 12–21 | Trial slides | Design, nested staircase, outcomes, status |
+| 12–22 | Trial slides | Design, sequences, nested staircase, outcomes, status |
 | 21–22 | `implications`, `closing` | Take-home messages |
 
 ## Source
