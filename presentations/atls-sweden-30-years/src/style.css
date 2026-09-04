@@ -373,7 +373,7 @@ body {
 }
 
 .presenter-degrees {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(1.15rem, 2.4vw, 1.5rem);
   color: var(--text-muted);
   margin: 0.35em 0 1.75em;
@@ -722,7 +722,7 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: 600;
   color: var(--ink);
@@ -878,6 +878,67 @@ body {
   font-size: 0.86em;
   color: var(--text-muted);
   line-height: 1.4;
+}
+
+.slide-inner--outcomes-secondary > h2 {
+  margin-bottom: 0.65rem;
+}
+
+.outcome-list {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  border-left: 3px solid var(--brand);
+}
+
+.outcome-list__item {
+  display: grid;
+  grid-template-columns: minmax(6.75rem, 0.28fr) 1fr;
+  gap: 0.75rem 1rem;
+  align-items: baseline;
+  padding: 0.72rem 0 0.72rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.outcome-list__item:last-child {
+  border-bottom: none;
+}
+
+.outcome-list__tag {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.outcome-list__body {
+  min-width: 0;
+}
+
+.outcome-list__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.outcome-list__detail {
+  margin: 0.18rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.86em;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .outcome-list__item {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
 }
 
 /* ── Bullets / review list ──────────────────────────────────────── */
@@ -2369,7 +2430,7 @@ body {
 }
 
 .sites-map-subtitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   color: var(--text-muted);
   margin: 0;
@@ -2572,7 +2633,7 @@ body {
   align-items: center;
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -2623,7 +2684,7 @@ body {
 }
 
 .team-subtitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   color: var(--text-muted);
   margin: 0;
@@ -2702,7 +2763,7 @@ body {
 }
 
 .funding-intro {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   color: var(--text-muted);
   margin: -0.5em 0 1.5em;

@@ -1,6 +1,6 @@
 # ADVANCE TRAUMA — ATLS Sweden 30 Years
 
-Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (~30 slides).
+Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (28 slides).
 
 ## Development
 
@@ -41,20 +41,19 @@ Image assets in `public/` are copied to `dist/` during build:
 
 | # | ID | Content |
 |---|-----|---------|
-| 1 | `hook` | Provocation — the trial that asks if ATLS® improves outcomes |
-| 2 | `title` | Title slide |
-| 3 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg |
-| 4–5 | `section-problem`, `trauma-stats` | Trauma burden |
-| 6–8 | `section-atls`, `atls-purpose`, `atls-spread` | ATLS purpose and reach |
-| 9–10 | `atls-providers`, `atls-provider-evidence` | Clinician impact claims + sources |
-| 11–12 | `atls-outcomes-claim`, `atls-patient-impact-sources` | Patient-outcome claims + sources |
-| 13–14 | `atls-outcomes-reviews`, `atls-forest` | Systematic reviews and updated forest plot |
-| 15–17 | `section-trial`, `aim`, `previous-work` | Trial aim and prior work |
-| 18–19 | `design`, `design-animation` | Stepped-wedge design |
-| 20–21 | `intervention`, `eligibility` | Arms and who is included |
-| 22–24 | `primary-outcome`, `secondary-outcomes`, `sample-size` | Outcomes and power |
-| 25 | `current-status` | Status stats and participating hospitals map |
-| 26–29 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
+| 1 | `title` | Title slide |
+| 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg |
+| 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
+| 5–7 | `section-atls`, `atls-purpose`, `atls-spread` | ATLS purpose and reach |
+| 8–9 | `atls-providers`, `atls-provider-evidence` | Clinician impact claims + conclusions |
+| 10–11 | `atls-outcomes-claim`, `atls-patient-impact-sources` | Patient-outcome claims + conclusions |
+| 12–13 | `atls-outcomes-reviews`, `atls-forest` | Systematic reviews and updated meta-analysis |
+| 14–16 | `section-trial`, `aim`, `previous-work` | Trial aim and prior work |
+| 17–18 | `design`, `design-animation` | Stepped-wedge design |
+| 19–20 | `intervention`, `eligibility` | Trial arms and who is included |
+| 21–23 | `primary-outcome`, `secondary-outcomes`, `sample-size` | Outcomes and power |
+| 24 | `current-status` | Trial progress and participating hospitals map |
+| 25–28 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
 
 Trimmed for timing: redundant provider “Further studies” cards, scoping-review list, sequence randomisation chart, and nested staircase walkthrough.
 

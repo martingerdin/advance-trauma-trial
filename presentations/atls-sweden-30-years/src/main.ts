@@ -282,25 +282,42 @@ function renderSlide(slide: Slide): HTMLElement {
       const items = slide.outcomes ?? [];
       const isPrimary = Boolean(slide.body);
       el.innerHTML = `
-        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : ""}">
+        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : " slide-inner--outcomes-secondary"}">
           <h2 data-animate>${slide.title}</h2>
           ${
             slide.body
               ? `<p class="design-lead design-lead--outcome" data-animate>${slide.body}</p>`
               : ""
           }
-          <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
-            ${items
-              .map(
-                (item) => `
-              <article class="panel outcome-card" data-animate>
-                ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
-                <p class="outcome-card__title">${item.title}</p>
-                ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
-              </article>`
-              )
-              .join("")}
-          </div>
+          ${
+            isPrimary
+              ? `<div class="outcomes-grid outcomes-grid--${items.length} outcomes-grid--methods" data-animate-group>
+                  ${items
+                    .map(
+                      (item) => `
+                    <article class="panel outcome-card" data-animate>
+                      ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
+                      <p class="outcome-card__title">${item.title}</p>
+                      ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
+                    </article>`
+                    )
+                    .join("")}
+                </div>`
+              : `<ul class="outcome-list" data-animate-group>
+                  ${items
+                    .map(
+                      (item) => `
+                    <li class="outcome-list__item" data-animate>
+                      ${item.tag ? `<span class="outcome-list__tag">${item.tag}</span>` : ""}
+                      <div class="outcome-list__body">
+                        <p class="outcome-list__title">${item.title}</p>
+                        ${item.detail ? `<p class="outcome-list__detail">${item.detail}</p>` : ""}
+                      </div>
+                    </li>`
+                    )
+                    .join("")}
+                </ul>`
+          }
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
@@ -523,7 +540,7 @@ function renderSlide(slide: Slide): HTMLElement {
                 <div class="wedge-phase-callouts" hidden aria-hidden="true">
                   <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
                     <figure class="wedge-phase__figure">
-                      <img src="./patient-review-before-illustration.png" alt="" />
+                      <img src="./patient-review-after-illustration.png" alt="" />
                     </figure>
                     <div class="wedge-phase__copy">
                       <p class="wedge-phase__title">Standard care</p>
@@ -539,7 +556,7 @@ function renderSlide(slide: Slide): HTMLElement {
                   </article>
                   <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
                     <figure class="wedge-phase__figure">
-                      <img src="./patient-review-after-illustration.png" alt="" />
+                      <img src="./patient-review-before-illustration.png" alt="" />
                     </figure>
                     <div class="wedge-phase__copy">
                       <p class="wedge-phase__title">Intervention</p>
@@ -588,7 +605,7 @@ function renderSlide(slide: Slide): HTMLElement {
             </div>
             <div class="panel implication-card implication-card--negative" data-animate>
               <figure><img src="./needs-to-change-illustration.png" alt="Trauma life support training needs to change" /></figure>
-              <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training needs to change.</p>
+              <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training must evolve.</p>
             </div>
           </div>
         </div>
@@ -638,7 +655,7 @@ function renderSlide(slide: Slide): HTMLElement {
             <section class="status-map-panel" aria-label="Participating hospitals">
               <div class="sites-legend" data-animate aria-label="Batch legend">
                 ${buildSitesLegendHtml()}
-                <span class="sites-legend__total">${participatingSites.length} hospitals</span>
+                <span class="sites-legend__total">${participatingSites.length} / 30 hospital clusters</span>
               </div>
               <div class="sites-map sites-map--compact" data-map role="region" aria-label="Participating sites map"></div>
             </section>
