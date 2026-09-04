@@ -484,7 +484,6 @@ export const slides: Slide[] = [
       { value: "Batch 2", label: "in progress · from Dec 2025" },
       { value: "Batch 3", label: "starting" },
     ],
-    footer: "Expected completion December 2028, pending funding",
   },
   {
     id: "implications",
