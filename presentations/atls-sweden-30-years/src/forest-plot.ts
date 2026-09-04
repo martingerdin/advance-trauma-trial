@@ -297,14 +297,18 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       class: "forest-programme",
     });
     programme.textContent = study.programme || "—";
-    programme.setAttribute("title", study.programme || "");
+    const programmeTitle = svgEl("title");
+    programmeTitle.textContent = study.programme || "Programme";
+    programme.appendChild(programmeTitle);
     const design = svgEl("text", {
       x: designX,
       y: y + 4,
       class: "forest-design",
     });
     design.textContent = shortDesign(study.design);
-    design.setAttribute("title", study.design);
+    const designTitle = svgEl("title");
+    designTitle.textContent = study.design;
+    design.appendChild(designTitle);
     const n = svgEl("text", {
       x: nX,
       y: y + 4,
