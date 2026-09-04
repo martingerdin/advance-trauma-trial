@@ -63,12 +63,19 @@ function diamondPoints(
   return `${pLo},${y} ${px},${y - DIAMOND_H} ${pHi},${y} ${px},${y + DIAMOND_H}`;
 }
 
+const IDLE_HINT = "Click Play timeline to start";
+
 function footerText(pooled: PooledEstimate, measure: string): string {
+  const interval = `(95% CI ${pooled.ciFormatted.replace("; ", "–")})`;
+  // A single study is not a pooled estimate: naming a model or quoting I² for
+  // k = 1 invites a fair objection from any methodologist in the room.
+  if (pooled.numberOfStudies < 2) {
+    return `${measure} ${pooled.rrFormatted} ${interval}; 1 study`;
+  }
   return (
-    `Random-effects ${measure} ${pooled.rrFormatted} ` +
-    `(95% CI ${pooled.ciFormatted.replace("; ", "–")}); ` +
-    `I² ${pooled.i2Rounded.toFixed(2)}; ` +
-    `${pooled.numberOfStudies} ${pooled.numberOfStudies === 1 ? "study" : "studies"}`
+    `Random-effects ${measure} ${pooled.rrFormatted} ${interval}; ` +
+    `I² ${Math.round(pooled.i2Rounded * 100)}%; ` +
+    `${pooled.numberOfStudies} studies`
   );
 }
 
@@ -242,10 +249,6 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   }
   if (programmeGroup.childElementCount > 0) controls.appendChild(programmeGroup);
 
-  const hint = document.createElement("p");
-  hint.className = "forest-hint";
-  hint.textContent = "Click a study to include or exclude it";
-  controls.appendChild(hint);
   panel.appendChild(controls);
 
   const svg = svgEl("svg", {
@@ -435,7 +438,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     class: "forest-empty",
     "text-anchor": "middle",
   }) as SVGTextElement;
-  emptyNote.textContent = "Click Play timeline to start";
+  emptyNote.textContent = IDLE_HINT;
   emptyNote.style.display = "none";
   pooledRow.append(pooledName, diamond, pooledEffect, emptyNote);
   svg.appendChild(pooledRow);
@@ -580,23 +583,23 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       pooledEffect.style.display = "none";
       pooledName.style.display = "none";
       emptyNote.style.display = "";
+      // The in-plot note is the single home for these transient states; the
+      // footer stays empty until there is an estimate to put in it.
+      footer.textContent = "";
       if (revealing) {
         emptyNote.setAttribute("y", String(pooledY + 4));
-        emptyNote.textContent = "Adding studies chronologically…";
-        footer.textContent = "Building the pooled estimate as studies appear (oldest → newest)";
+        emptyNote.textContent = "Adding studies oldest to newest…";
         svg.setAttribute("aria-label", "Forest plot chronological reveal in progress");
       } else if (included.size === 0) {
         emptyNote.setAttribute(
           "y",
           String(PAD_TOP + (data.studies.length * ROW_HEIGHT) / 2 + 4)
         );
-        emptyNote.textContent = "Click Play timeline to start";
-        footer.textContent = "Click Play timeline to start";
-        svg.setAttribute("aria-label", "Empty forest plot. Click Play timeline to start.");
+        emptyNote.textContent = IDLE_HINT;
+        svg.setAttribute("aria-label", `Empty forest plot. ${IDLE_HINT}.`);
       } else {
         emptyNote.setAttribute("y", String(pooledY + 4));
         emptyNote.textContent = "Select at least one study";
-        footer.textContent = "No studies selected — click a study to include it";
         svg.setAttribute("aria-label", "Forest plot with no studies selected");
       }
     } else {

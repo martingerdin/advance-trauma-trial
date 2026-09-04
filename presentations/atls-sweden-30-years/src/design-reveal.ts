@@ -34,20 +34,20 @@ const STAGES: Array<{
   {
     id: "site",
     label: "One site",
-    caption: "One hospital — standard care, ATLS training, then intervention",
+    caption: "One hospital, 13 months",
     // Phase pauses are manual (Space / play); no timed hold before the next stage.
     holdMs: 0,
   },
   {
     id: "batch",
     label: "First batch",
-    caption: "First batch — five hospitals move together through months 0–13",
+    caption: "One batch — five hospitals, randomised transition months",
     holdMs: 3500,
   },
   {
     id: "full",
     label: "Full trial",
-    caption: "Full trial — six batches across 30 hospitals, months 0–48",
+    caption: "Six batches — 30 hospitals over 48 months",
     holdMs: 0,
   },
 ];
@@ -71,19 +71,19 @@ const SITE_PHASE_SCRUBS: Array<{
     id: "standard-care",
     endMonth: 4,
     duration: 4,
-    caption: "Standard care — months 0–4 at one hospital",
+    caption: "Standard care — months 0–4",
   },
   {
     id: "transition",
     endMonth: 5,
     duration: 2.5,
-    caption: "Transition — ATLS® course, month 4–5",
+    caption: "ATLS® course — months 4–5",
   },
   {
     id: "intervention",
     endMonth: 13,
     duration: 5,
-    caption: "Intervention — months 5–13 after ATLS training",
+    caption: "After training — months 5–13",
   },
 ];
 
@@ -146,7 +146,7 @@ export function startDesignReveal(
   const captionEl = slideEl.querySelector<HTMLElement>(".wedge-caption");
   const playPauseBtn = slideEl.querySelector<HTMLButtonElement>(".wedge-play-pause");
   const stageBar = slideEl.querySelector<HTMLElement>(".wedge-stages") ?? slideEl;
-  const mount = slideEl.querySelector<HTMLElement>("#wedge-mount");
+  const mount = slideEl.querySelector<HTMLElement>("[data-wedge-mount]");
   const legendMount = slideEl.querySelector<HTMLElement>(".wedge-legend-mount");
   const phaseCallouts = slideEl.querySelector<HTMLElement>(".wedge-phase-callouts");
   const chartStack = slideEl.querySelector<HTMLElement>(".wedge-chart-stack");
@@ -504,7 +504,7 @@ export function startDesignReveal(
       setReveal(shortEnd);
       return;
     }
-    await scrubTimeline(0, shortEnd, token, 8);
+    await scrubTimeline(0, shortEnd, token, 5);
   };
 
   const animateFull = async (token: number, animateIn: boolean) => {
@@ -524,7 +524,7 @@ export function startDesignReveal(
       setReveal(fullEnd);
       return;
     }
-    await scrubTimeline(0, fullEnd, token, 12);
+    await scrubTimeline(0, fullEnd, token, 7);
   };
 
   const animateStage = async (stage: DesignRevealStage, token: number, animateIn: boolean) => {
