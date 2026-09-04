@@ -19,6 +19,16 @@ pnpm build
 
 Static files are output to `dist/`. Deploy the entire `dist/` folder to your web host (e.g. `advancetrauma.info/presentations/atls-sweden-30-years/`).
 
+### PDF handout
+
+Print to PDF from the browser (or headless Chrome) and you get one slide per page.
+Choose landscape and a 16:9 paper size to match the deck:
+
+```bash
+google-chrome --headless --print-to-pdf=deck.pdf \
+  --no-pdf-header-footer --print-to-pdf-no-header http://localhost:5173
+```
+
 Image assets in `public/` are copied to `dist/` during build:
 
 - `crash-illustration.png`
@@ -42,6 +52,7 @@ npx qrcode -t svg -e M -d 082830 -l ffffff -o public/advancetrauma-qr.svg "https
 - **Slide overview** — thumbnail filmstrip to jump to any slide (`O`, grid button, or counter)
 - **Responsive** — works on projectors, laptops, and tablets
 - **Offline-safe** — fonts are bundled, so a blocked venue network cannot change the typography
+- **Legible** — every text/background pair meets WCAG AA, measured from rendered pixels rather than declared colours
 - **Accessible** — keyboard navigation, ARIA labels, reduced-motion support
 - **Brand-aligned** — colours and typography match advancetrauma.info
 

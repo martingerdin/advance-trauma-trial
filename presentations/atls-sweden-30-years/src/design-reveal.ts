@@ -103,6 +103,8 @@ function setStageButtons(root: HTMLElement, active: DesignRevealStage | null, co
     btn.disabled = false;
     btn.classList.toggle("is-active", id === active);
     btn.classList.toggle("is-done", complete || (activeIndex >= 0 && index < activeIndex));
+    // The is-active class alone conveys state to sighted users only.
+    btn.setAttribute("aria-pressed", id === active ? "true" : "false");
   });
 }
 
