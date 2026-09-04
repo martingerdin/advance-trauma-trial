@@ -48,6 +48,8 @@ export interface Funder {
 export interface ColumnGroup {
   heading: string;
   bullets: string[];
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface Slide {
@@ -75,7 +77,9 @@ export interface Slide {
     | "team"
     | "funding"
     | "sites-map"
+    | "status-map"
     | "columns"
+    | "intervention"
     | "provocation";
   title?: string;
   subtitle?: string;
@@ -209,7 +213,8 @@ export const slides: Slide[] = [
   {
     id: "atls-provider-evidence",
     layout: "evidence",
-    title: "Evidence on providers",
+    title: "The evidence behind the claims",
+    body: "Clinicians' knowledge, skills, and retention — and the studies behind the manual's claims.",
     evidence: [
       {
         id: "1",
@@ -236,6 +241,7 @@ export const slides: Slide[] = [
     id: "atls-patient-impact-sources",
     layout: "evidence",
     title: "The evidence behind the claims",
+    body: "Patient outcomes — and the studies behind the manual's claims.",
     evidence: [
       {
         id: "1",
@@ -268,11 +274,11 @@ export const slides: Slide[] = [
     layout: "bullets",
     title: "Systematic reviews",
     bullets: [
-      "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
-      "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
-      "Jin et al. 2021 — certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78)",
-      "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
-      "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
+      "Educational impact established; evidence that ATLS reduces mortality remains limited — Mohammad et al. 2013",
+      "No controlled-trial evidence that ATLS changes mortality or morbidity — Jayaraman et al. 2014 (Cochrane)",
+      "Certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78) — Jin et al. 2021",
+      "ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20) — Putra et al. 2023",
+      "Trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all studies observational — Nakhid et al. 2026",
     ],
   },
   {
@@ -383,14 +389,25 @@ export const slides: Slide[] = [
   },
   {
     id: "intervention",
-    layout: "two-col",
+    layout: "intervention",
     title: "Intervention and control",
-    image: "./patient-review-before-illustration.png",
-    imageAlt: "Trauma team managing a patient in the emergency department",
-    imagePosition: "right",
-    bullets: [
-      "Control — standard care; trauma patients initially managed by 1st/2nd year residents without formal trauma training",
-      "Intervention — 2.5-day ATLS® course at accredited facility; 1–2 units per hospital trained",
+    columns: [
+      {
+        heading: "Standard care",
+        image: "./patient-review-after-illustration.png",
+        imageAlt: "Trauma team managing a patient under standard care",
+        bullets: [
+          "Trauma patients initially managed by 1st/2nd year residents without formal trauma training",
+        ],
+      },
+      {
+        heading: "ATLS® training",
+        image: "./training-illustration.png",
+        imageAlt: "ATLS training session with instructor and students",
+        bullets: [
+          "2.5-day ATLS® course at an accredited facility; 1–2 units per hospital trained",
+        ],
+      },
     ],
   },
   {
@@ -462,22 +479,16 @@ export const slides: Slide[] = [
   },
   {
     id: "current-status",
-    layout: "stats",
+    layout: "status-map",
     title: "Current status",
-    image: "./patient-review-after-illustration.png",
-    imageAlt: "Trauma team reviewing a patient after ATLS training",
-    imagePosition: "right",
+    subtitle: "Hospitals currently in the trial",
     stats: [
       { value: "Batch 1", label: "completed (Feb 2025–Mar 2026)" },
       { value: "~2,000", label: "patients included" },
       { value: "Batch 2", label: "ongoing since Dec 2025" },
       { value: "Batch 3", label: "starting" },
     ],
-  },
-  {
-    id: "participating-clusters",
-    layout: "sites-map",
-    title: "Hospitals currently in the trial",
+    footer: "Expected completion December 2028, pending funding",
   },
   {
     id: "implications",

@@ -579,21 +579,22 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       diamond.style.display = "none";
       pooledEffect.style.display = "none";
       pooledName.style.display = "none";
-      emptyNote.style.display = "";
       if (revealing) {
+        emptyNote.style.display = "";
+        emptyNote.removeAttribute("display");
         emptyNote.setAttribute("y", String(pooledY + 4));
         emptyNote.textContent = "Adding studies chronologically…";
         footer.textContent = "Building the pooled estimate as studies appear (oldest → newest)";
         svg.setAttribute("aria-label", "Forest plot chronological reveal in progress");
       } else if (included.size === 0) {
-        emptyNote.setAttribute(
-          "y",
-          String(PAD_TOP + (data.studies.length * ROW_HEIGHT) / 2 + 4)
-        );
-        emptyNote.textContent = "Click Play timeline to start";
+        emptyNote.style.display = "none";
+        emptyNote.setAttribute("display", "none");
+        emptyNote.textContent = "";
         footer.textContent = "Click Play timeline to start";
         svg.setAttribute("aria-label", "Empty forest plot. Click Play timeline to start.");
       } else {
+        emptyNote.style.display = "";
+        emptyNote.removeAttribute("display");
         emptyNote.setAttribute("y", String(pooledY + 4));
         emptyNote.textContent = "Select at least one study";
         footer.textContent = "No studies selected — click a study to include it";
@@ -604,6 +605,8 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       pooledEffect.style.display = "";
       pooledName.style.display = "";
       emptyNote.style.display = "none";
+      emptyNote.setAttribute("display", "none");
+      emptyNote.textContent = "";
       diamond.setAttribute(
         "points",
         diamondPoints(
