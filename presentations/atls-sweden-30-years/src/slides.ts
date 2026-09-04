@@ -284,9 +284,9 @@ export const slides: Slide[] = [
       },
       {
         id: "3",
-        tag: "Trauma-system quality improvement",
+        tag: "Quality improvement in LMICs",
         claim:
-          "Lower mortality with certified in-hospital trauma training in low- and middle-income countries, RR 0.71 (95% CI 0.62–0.78)",
+          "Lower mortality with certified in-hospital trauma training, RR 0.71 (95% CI 0.62–0.78)",
         source: "Jin J et al. World J Surg. 2021;45:1982–1998.",
       },
       {
@@ -304,7 +304,7 @@ export const slides: Slide[] = [
       },
     ],
     footer:
-      "Jin et al. report risk ratios; the other reviews report odds ratios. No review has found randomised evidence that ATLS® itself changes patient outcomes.",
+      "Jin et al. report risk ratios; the others report odds ratios. No review has found randomised evidence on ATLS® itself.",
   },
   {
     id: "atls-forest",

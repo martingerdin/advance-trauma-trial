@@ -32,7 +32,7 @@
   /* Type scale. Resolved px at 1280 / 1920 viewport width.
      DOM text only — SVG text keeps user-space px (see stepped-wedge / forest). */
   --fs-display: clamp(2rem, 1.31rem + 2.03vw, 3.75rem); /* 47 / 60 */
-  --fs-aim: clamp(2rem, 1rem + 2.4vw, 3.5rem); /* 46 / 56 */
+  --fs-aim: clamp(2rem, 1rem + 2.7vw, 4rem); /* 49 / 64 */
   --fs-slide-title: clamp(1.65rem, 1.31rem + 0.94vw, 2.4rem); /* 33 / 38 */
   --fs-figure: clamp(1.6rem, 1rem + 1.56vw, 2.75rem); /* 36 / 44 */
   --fs-figure-sm: clamp(1.3rem, 0.85rem + 1.25vw, 2.25rem); /* 29 / 36 */
@@ -324,7 +324,7 @@ body {
 
 .slide--closing .closing-link {
   font-size: var(--fs-lead);
-  margin: 0.75em 0 0;
+  margin: 0.6em 0 0.9em;
 }
 
 .slide--closing .closing-link a {
@@ -348,7 +348,7 @@ body {
 
 .closing-qr img {
   display: block;
-  width: clamp(7.5rem, 18vh, 11rem);
+  width: clamp(9rem, 22vh, 15rem);
   height: auto;
   padding: 0.55rem;
   background: var(--surface);
@@ -789,7 +789,7 @@ body {
   color: var(--ink);
   line-height: 1.22;
   letter-spacing: -0.015em;
-  max-width: 26ch;
+  max-width: 28ch;
   text-wrap: balance;
 }
 
@@ -1025,7 +1025,7 @@ body {
    two illustrations having different aspect ratios. */
 .arm-card__figure {
   margin: 0;
-  height: clamp(8rem, 24vh, 14rem);
+  height: clamp(8rem, 27vh, 17rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1206,7 +1206,7 @@ body {
 
 .design-layout {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.95fr) minmax(0, 1.35fr);
+  grid-template-columns: minmax(14rem, 0.85fr) minmax(0, 1.5fr);
   gap: clamp(1.5rem, 3.5vw, 2.75rem);
   align-items: center;
   width: 100%;
@@ -1305,7 +1305,7 @@ body {
   background: var(--surface);
   color: var(--text-muted);
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: var(--fs-label);
   font-weight: 500;
   letter-spacing: 0.02em;
   padding: 0.3em 0.65em;
@@ -1900,7 +1900,7 @@ body {
   background: var(--surface);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: var(--fs-label);
   line-height: 1;
   padding: 0.38rem 0.65rem;
   border-radius: var(--radius);
@@ -1992,8 +1992,9 @@ body {
   }
 }
 
-/* Reserve the line so nothing shifts when the pooled estimate appears. */
-.forest-footer {
+/* Reserve the line so nothing shifts when the pooled estimate appears. The
+   hairline belongs to slide-level footnotes, not to this inline result line. */
+.slide-footer.forest-footer {
   margin: 0;
   padding-top: 0;
   border-top: none;
@@ -2194,6 +2195,11 @@ body {
 
 .sites-map.leaflet-container {
   font: inherit;
+}
+
+.sites-map .leaflet-control-zoom a,
+.sites-map .leaflet-control-attribution {
+  font-family: var(--font-body);
 }
 
 .sites-map__leaflet-marker {
@@ -2506,7 +2512,6 @@ body {
 }
 
 /* In flex-column layouts the note pins to the bottom of the slide. */
-.slide-inner--design > .slide-footer,
 .slide-inner--funding > .slide-footer,
 .slide-inner--arms > .slide-footer,
 .slide-inner--outcome-list > .slide-footer,
@@ -2920,6 +2925,41 @@ body.overview-open #controls {
 
   .slide-footer {
     margin-top: var(--space-4);
+  }
+
+  .paper-list__item {
+    padding-block: var(--space-2);
+  }
+
+  .paper-list__body {
+    gap: 0.15rem;
+  }
+
+  .paper-list__primary {
+    font-size: var(--fs-body);
+  }
+
+  .paper-list__secondary {
+    font-size: var(--fs-micro);
+  }
+
+  /* The design slide carries a chart and a footnote; give the chart less of
+     the height and stop centring the row so both fit above the controls. */
+  .slide-inner--design > .design-layout {
+    margin-block: 0;
+  }
+
+  .design-copy {
+    gap: var(--space-4);
+  }
+
+  .wedge-container {
+    aspect-ratio: 16 / 8.5;
+    padding: 0.5rem;
+  }
+
+  .design-metrics {
+    gap: var(--space-3) var(--space-4);
   }
 }
 
