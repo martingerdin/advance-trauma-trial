@@ -824,10 +824,8 @@ function animateSlideIn(slideEl: HTMLElement): void {
   }
 
   if (slideEl.dataset.layout === "forest") {
-    const forest = forestControllers.get(slideEl);
-    if (forest) {
-      void forest.playChronologicalReveal();
-    }
+    // Timeline stays paused on enter; presenter starts it with Play timeline.
+    forestControllers.get(slideEl)?.abortReveal();
   }
 
   if (slideEl.dataset.layout === "sites-map") {

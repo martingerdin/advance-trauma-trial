@@ -1669,7 +1669,7 @@ body {
   background: var(--surface-muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 0.75rem 1rem 0.5rem;
+  padding: 0.45rem 0.55rem 0.35rem;
   overflow: hidden;
 }
 
@@ -1724,6 +1724,21 @@ body {
   cursor: pointer;
 }
 
+.forest-chip--timeline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.forest-chip__icon {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.forest-chip__label {
+  line-height: 1;
+}
+
 .forest-chip:hover {
   border-color: var(--brand);
   color: var(--brand-darker);
@@ -1771,7 +1786,7 @@ body {
 .forest-plot-chart {
   width: 100%;
   height: auto;
-  max-height: min(58vh, 500px);
+  max-height: min(64vh, 560px);
 }
 
 .forest-plot-chart .forest-header,

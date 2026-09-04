@@ -3,16 +3,24 @@ import { metaAnalysis, type MetaAnalysisData } from "./figure-data";
 import { poolRandomEffects, sameStudySet, type PooledEstimate } from "./pool-meta";
 
 const ROW_HEIGHT = 18;
-const LABEL_WIDTH = 150;
-const PROGRAMME_WIDTH = 78;
-const DESIGN_WIDTH = 100;
+const LABEL_WIDTH = 148;
+const PROGRAMME_WIDTH = 100;
+const DESIGN_WIDTH = 104;
 const N_WIDTH = 48;
-const FOREST_WIDTH = 200;
+const FOREST_WIDTH = 340;
 const EFFECT_WIDTH = 96;
 const PAD_LEFT = 4;
 const PAD_TOP = 22;
 const AXIS_HEIGHT = 28;
 const DIAMOND_H = 7;
+/** Horizontal inset from each meta-column’s left edge to its text. */
+const COL_INSET = 8;
+
+const PLAY_ICON =
+  '<svg class="forest-chip__icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.5 2.2v11.6L14 8z"/></svg>';
+const PAUSE_ICON =
+  '<svg class="forest-chip__icon" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.5 2.5h3v11h-3zm6 0h3v11h-3z"/></svg>';
+
 
 function svgEl(tag: string, attrs: Record<string, string | number> = {}): SVGElement {
   const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -123,8 +131,8 @@ export interface ForestPlotController {
  */
 export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestPlotController {
   const allKeys = data.studies.map((s) => s.citationKey);
-  // Start empty so the entrance reveal can build the pool chronologically.
-  const included = new Set<string>();
+  // Start with the full pooled set; timeline play is manual.
+  const included = new Set<string>(allKeys);
   let revealToken = 0;
   let revealing = false;
   const maxWeight = Math.max(...data.studies.map((s) => s.weightPercent));
@@ -135,8 +143,8 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   const totalHeight = PAD_TOP + (data.studies.length + 1) * ROW_HEIGHT + AXIS_HEIGHT + 8;
   const pooledY = PAD_TOP + data.studies.length * ROW_HEIGHT + ROW_HEIGHT / 2;
   const nullX = logToX(0, data.logScaleXlim, forestX);
-  const programmeX = PAD_LEFT + LABEL_WIDTH + 4;
-  const designX = PAD_LEFT + LABEL_WIDTH + PROGRAMME_WIDTH + 4;
+  const programmeX = PAD_LEFT + LABEL_WIDTH + COL_INSET;
+  const designX = PAD_LEFT + LABEL_WIDTH + PROGRAMME_WIDTH + COL_INSET;
   const nX = PAD_LEFT + LABEL_WIDTH + PROGRAMME_WIDTH + DESIGN_WIDTH + N_WIDTH - 4;
 
   const panel = document.createElement("div");
@@ -145,6 +153,35 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   const controls = document.createElement("div");
   controls.className = "forest-controls";
   controls.setAttribute("data-animate", "");
+
+  const timelineBtn = document.createElement("button");
+  timelineBtn.type = "button";
+  timelineBtn.className = "forest-chip forest-chip--timeline";
+  timelineBtn.dataset.filter = "timeline";
+  timelineBtn.setAttribute("aria-pressed", "false");
+
+  function renderTimelineButton(playing: boolean): void {
+    timelineBtn.innerHTML = `${playing ? PAUSE_ICON : PLAY_ICON}<span class="forest-chip__label">${
+      playing ? "Pause timeline" : "Play timeline"
+    }</span>`;
+    timelineBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+    timelineBtn.title = playing
+      ? "Pause the chronological reveal"
+      : "Add studies in chronological order and watch the pooled estimate change";
+    timelineBtn.classList.toggle("is-active", playing);
+  }
+  renderTimelineButton(false);
+
+  timelineBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (revealing) {
+      abortReveal();
+      refresh();
+      return;
+    }
+    void playChronologicalReveal();
+  });
+  controls.appendChild(timelineBtn);
 
   const allBtn = document.createElement("button");
   allBtn.type = "button";
@@ -157,18 +194,6 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     includeAll();
   });
   controls.appendChild(allBtn);
-
-  const timelineBtn = document.createElement("button");
-  timelineBtn.type = "button";
-  timelineBtn.className = "forest-chip";
-  timelineBtn.dataset.filter = "timeline";
-  timelineBtn.textContent = "Play timeline";
-  timelineBtn.title = "Add studies in chronological order and watch the pooled estimate change";
-  timelineBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    void playChronologicalReveal();
-  });
-  controls.appendChild(timelineBtn);
 
   const designGroup = document.createElement("div");
   designGroup.className = "forest-chip-group";
@@ -495,12 +520,14 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   function syncChips(): void {
     const chips = [...controls.querySelectorAll<HTMLButtonElement>(".forest-chip")];
     for (const chip of chips) {
+      if (chip.dataset.filter === "timeline") continue;
       chip.classList.remove("is-active");
     }
     if (revealing) {
-      timelineBtn.classList.add("is-active");
+      renderTimelineButton(true);
       return;
     }
+    renderTimelineButton(false);
     if (sameStudySet(included, allKeys)) {
       allBtn.classList.add("is-active");
       return;
@@ -581,6 +608,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     revealing = false;
     panel.classList.remove("is-revealing");
     timelineBtn.disabled = false;
+    renderTimelineButton(false);
   }
 
   function delay(ms: number): Promise<void> {
@@ -599,7 +627,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     const token = ++revealToken;
     revealing = true;
     panel.classList.add("is-revealing");
-    timelineBtn.disabled = true;
+    renderTimelineButton(true);
     included.clear();
     refresh();
     await delay(280);
@@ -629,7 +657,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     if (token !== revealToken) return;
     revealing = false;
     panel.classList.remove("is-revealing");
-    timelineBtn.disabled = false;
+    renderTimelineButton(false);
     // Final paint uses the R-exported REML pooled estimate.
     refresh();
   }
