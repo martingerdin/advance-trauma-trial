@@ -651,7 +651,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   }
 
   async function playChronologicalReveal(options: { stepMs?: number } = {}): Promise<void> {
-    const stepMs = options.stepMs ?? 420;
+    const stepMs = options.stepMs ?? 650;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       includeAll();
       return;
@@ -665,7 +665,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     renderTimelineButton(true);
     included.clear();
     refresh();
-    await delay(280);
+    await delay(360);
     if (token !== revealToken) return;
 
     // Studies are already ordered by year in the R export.
@@ -680,7 +680,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
         await animate(
           row,
           { opacity: [0, 1] } as Record<string, unknown>,
-          { duration: 0.32, ease: "easeOut" }
+          { duration: 0.42, ease: "easeOut" }
         );
         row.style.opacity = "";
       }
