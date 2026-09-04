@@ -311,7 +311,8 @@ export const slides: Slide[] = [
     id: "atls-forest",
     layout: "forest",
     title: "Updated systematic review",
-    subtitle: "Nakhid et al. 2026 — trauma life support training and mortality",
+    subtitle:
+      "Nakhid et al. 2026, updated with Lule et al. 2026 (cluster RCT of RTTDC)",
   },
   // {
   //   id: "atls-critique",

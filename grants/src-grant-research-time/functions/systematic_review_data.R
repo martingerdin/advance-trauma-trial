@@ -1,9 +1,12 @@
 systematic_review_data <- function() {
-    ## Study-level mortality counts from Nakhid et al. 2026
+    ## Study-level mortality counts primarily from Nakhid et al. 2026
     ## (Scand J Trauma Resusc Emerg Med; doi:10.1186/s13049-026-01549-w).
     ## Includes the 17 studies that passed SIGN quality appraisal and entered
     ## the published mortality meta-analysis (Ariyanayagam 1992 and
-    ## Drimousis 2011 were rated unacceptable and are omitted).
+    ## Drimousis 2011 were rated unacceptable and are omitted), plus
+    ## Lule et al. 2026 (JMIR Hum Factors; doi:10.2196/82591) — a cluster
+    ## RCT of RTTDC that was a preprint at the time of the Nakhid search
+    ## and is now published.
     ##
     ## `atls.*` / `non.atls.*` columns are trained vs untrained counts
     ## (historical names kept for the metabin export). `programme` is the
@@ -214,6 +217,18 @@ systematic_review_data <- function() {
             non.atls.died = 6,
             atls.n = 90,
             atls.died = 7
+        ),
+        Lule2026 = list(
+            study = "Lule et al. 2026",
+            design = "Cluster randomised trial",
+            year = 2026,
+            programme = "RTTDC",
+            outcome = "90 days",
+            eligibility = "Ages 2–80 with motorcycle-related neurological and/or musculoskeletal injuries",
+            non.atls.n = 430,
+            non.atls.died = 58,
+            atls.n = 457,
+            atls.died = 24
         )
     )
 }

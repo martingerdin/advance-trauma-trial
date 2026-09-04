@@ -48,12 +48,16 @@ function footerText(pooled: PooledEstimate, measure: string): string {
     `Random-effects ${measure} ${pooled.rrFormatted} ` +
     `(95% CI ${pooled.ciFormatted.replace("; ", "–")}); ` +
     `I² ${pooled.i2Rounded.toFixed(2)}; ` +
-    `${pooled.numberOfStudies} observational ${pooled.numberOfStudies === 1 ? "study" : "studies"}`
+    `${pooled.numberOfStudies} ${pooled.numberOfStudies === 1 ? "study" : "studies"}`
   );
 }
 
 /** Compact filters for live presentation use. */
 const DESIGN_FILTERS: { label: string; match: (design: string) => boolean }[] = [
+  {
+    label: "RCT",
+    match: (design) => /randomi[sz]ed|cluster randomised|cluster randomized|\bRCT\b/i.test(design),
+  },
   {
     label: "Prospective",
     match: (design) => /prospective/i.test(design) || design === "Cohort study",
