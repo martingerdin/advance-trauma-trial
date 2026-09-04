@@ -462,27 +462,6 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Shared statement — reserved for design/primary highlight (not Aim) */
-.statement {
-  margin: 0;
-  padding: 0.9rem 0 0.9rem 1.15rem;
-  border-left: 3px solid var(--accent);
-  font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  max-width: 46ch;
-}
-
-.statement--hero {
-  font-size: clamp(1.55rem, 3.2vw, 2.25rem);
-  max-width: none;
-  width: 100%;
-  margin: 0 0 1.25rem;
-}
-
 /* Shared content panels — quiet, uniform, no hover lift */
 .panel {
   background: var(--surface-muted);
