@@ -2107,7 +2107,7 @@ body {
 
 .slide-inner--status-map {
   /* Leaflet needs a definite height; keep the map clear of the #controls pill. */
-  --map-height: clamp(13rem, 46vh, 26rem);
+  --map-height: clamp(13rem, 50vh, 32rem);
 }
 
 .status-map-layout {
