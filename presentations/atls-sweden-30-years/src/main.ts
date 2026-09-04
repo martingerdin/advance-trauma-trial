@@ -340,10 +340,8 @@ function renderSlide(slide: Slide): HTMLElement {
     case "milestones":
       el.innerHTML = `
         <div class="slide-inner slide-inner--milestones">
-          <header class="milestones-header" data-animate>
-            <h2>${slide.title}</h2>
-            ${slide.subtitle ? `<p class="milestones-subtitle">${slide.subtitle}</p>` : ""}
-          </header>
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.subtitle ? `<p class="milestones-subtitle" data-animate>${slide.subtitle}</p>` : ""}
           <div class="milestones-grid" data-animate-group>
             ${(slide.milestones ?? [])
               .map(
@@ -368,6 +366,15 @@ function renderSlide(slide: Slide): HTMLElement {
               )
               .join("")}
           </div>
+          ${
+            slide.references?.length
+              ? `<ol class="slide-references" data-animate>
+                  ${slide.references
+                    .map((ref) => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`)
+                    .join("")}
+                </ol>`
+              : ""
+          }
         </div>
       `;
       break;
