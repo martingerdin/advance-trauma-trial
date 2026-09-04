@@ -145,7 +145,7 @@ function renderSlide(slide: Slide): HTMLElement {
               ${(slide.stats ?? [])
                 .map(
                   (s) => `
-                <div class="stat-card" data-animate>
+                <div class="panel stat-card" data-animate>
                   <span class="stat-value">${s.value}</span>
                   <span class="stat-label">${s.label}${
                     s.source
@@ -188,18 +188,33 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "bullets":
+    case "bullets": {
+      const items = slide.bullets ?? [];
+      const reviewRows = items.length > 0 && items.every((b) => b.includes(" — "));
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--bullets">
           <h2 data-animate>${slide.title}</h2>
-          <ul class="bullet-list" data-animate-group>
-            ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
+          <ul class="${reviewRows ? "review-list" : "bullet-list"}" data-animate-group>
+            ${items
+              .map((b, i) => {
+                if (!reviewRows) return `<li data-animate>${b}</li>`;
+                const [author, ...rest] = b.split(" — ");
+                return `<li class="review-list__item" data-animate>
+                  <span class="review-list__n" aria-hidden="true">${i + 1}</span>
+                  <div class="review-list__body">
+                    <p class="review-list__author">${author}</p>
+                    <p class="review-list__finding">${rest.join(" — ")}</p>
+                  </div>
+                </li>`;
+              })
+              .join("")}
           </ul>
           ${slide.cite ? `<p class="cite-line" data-animate>${slide.cite}</p>` : ""}
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
+    }
 
     case "evidence":
       el.innerHTML = `
@@ -210,10 +225,10 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.evidence ?? [])
               .map(
                 (item) => `
-              <article class="evidence-card${evidenceCardClass(item.tag)}" data-animate>
+              <article class="panel evidence-card${evidenceCardClass(item.tag)}" data-animate>
                 <div class="evidence-card__header">
                   <span class="evidence-card__id" aria-hidden="true">${item.id}</span>
-                  ${item.tag ? `<span class="evidence-card__tag">${item.tag}</span>` : ""}
+                  ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
                 </div>
                 <p class="evidence-card__claim">${item.claim}</p>
                 <p class="evidence-card__source">${item.source}</p>
@@ -249,7 +264,7 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--aim">
           <h2 data-animate>${slide.title}</h2>
-          <p class="aim-statement" data-animate>${slide.body}</p>
+          <p class="statement" data-animate>${slide.body}</p>
         </div>
       `;
       break;
@@ -262,15 +277,15 @@ function renderSlide(slide: Slide): HTMLElement {
           <h2 data-animate>${slide.title}</h2>
           ${
             slide.body
-              ? `<p class="outcome-hero" data-animate>${slide.body}</p>`
+              ? `<p class="statement statement--hero" data-animate>${slide.body}</p>`
               : ""
           }
           <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
             ${items
               .map(
                 (item) => `
-              <article class="outcome-card" data-animate>
-                ${item.tag ? `<span class="outcome-card__tag">${item.tag}</span>` : ""}
+              <article class="panel outcome-card" data-animate>
+                ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
                 <p class="outcome-card__title">${item.title}</p>
                 ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
               </article>`
@@ -330,7 +345,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.columns ?? [])
               .map(
                 (col) => `
-              <article class="column-card" data-animate>
+              <article class="panel column-card" data-animate>
                 <h3 class="column-card__heading">${col.heading}</h3>
                 <ul class="bullet-list">
                   ${col.bullets.map((b) => `<li>${b}</li>`).join("")}
@@ -353,7 +368,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.milestones ?? [])
               .map(
                 (m) => `
-              <article class="milestone-card" data-animate>
+              <article class="panel milestone-card" data-animate>
                 ${
                   m.image
                     ? `<figure class="milestone-card__media">
@@ -517,11 +532,11 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner">
           <h2 data-animate>${slide.title}</h2>
           <div class="implications-grid" data-animate-group>
-            <div class="implication-card implication-card--positive" data-animate>
+            <div class="panel implication-card implication-card--positive" data-animate>
               <figure><img src="./patient-review-after-illustration.png" alt="Positive outcome — ATLS improves care" /></figure>
               <p>If ATLS<sup>®</sup> <strong>improves</strong> patient outcomes, it should be further promoted.</p>
             </div>
-            <div class="implication-card implication-card--negative" data-animate>
+            <div class="panel implication-card implication-card--negative" data-animate>
               <figure><img src="./training-illustration.png" alt="Training needs to evolve" /></figure>
               <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training needs to change.</p>
             </div>
@@ -558,7 +573,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.teamGroups ?? [])
               .map(
                 (group) => `
-              <article class="team-card" data-animate>
+              <article class="panel team-card" data-animate>
                 <h3 class="team-card__label">${group.label}</h3>
                 <p class="team-card__location">${group.location}</p>
                 <ul class="team-card__members">
@@ -590,7 +605,7 @@ function renderSlide(slide: Slide): HTMLElement {
             ${(slide.funders ?? [])
               .map(
                 (f) => `
-              <article class="funding-card" data-animate>
+              <article class="panel funding-card" data-animate>
                 <p class="funding-card__name">${f.name}</p>
               </article>`
               )
