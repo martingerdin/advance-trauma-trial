@@ -1,6 +1,6 @@
 # ADVANCE TRAUMA — ATLS Sweden 30 Years
 
-Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (~28 slides).
+Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (~29 slides).
 
 ## Development
 
@@ -43,17 +43,17 @@ Image assets in `public/` are copied to `dist/` during build:
 | 2 | `presenter` | Speaker introduction — Martin Gerdin Wärnberg |
 | 3–4 | `section-problem`, `trauma-stats` | Trauma burden |
 | 5–7 | `section-atls`, `atls-purpose`, `atls-spread` | ATLS purpose and reach |
-| 8 | `atls-provider-evidence` | Manual claims on providers + sources |
-| 9–10 | `atls-outcomes-claim`, `atls-patient-impact-sources` | Manual claims on patient outcomes + sources |
-| 11–12 | `atls-outcomes-reviews`, `atls-forest` | Systematic reviews and updated forest plot |
-| 13–15 | `section-trial`, `aim`, `previous-work` | Trial aim and prior work |
-| 16–17 | `design`, `design-animation` | Stepped-wedge design |
-| 18–19 | `intervention`, `eligibility` | Arms and who is included |
-| 20–22 | `primary-outcome`, `secondary-outcomes`, `sample-size` | Outcomes and power |
-| 23–24 | `current-status`, `participating-clusters` | Status and site map |
-| 25–28 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
+| 8–9 | `atls-providers`, `atls-provider-evidence` | Manual provider claims + sources |
+| 10–11 | `atls-outcomes-claim`, `atls-patient-impact-sources` | Manual patient-outcome claims + sources |
+| 12–13 | `atls-outcomes-reviews`, `atls-forest` | Systematic reviews and updated forest plot |
+| 14–16 | `section-trial`, `aim`, `previous-work` | Trial aim and prior work |
+| 17–18 | `design`, `design-animation` | Stepped-wedge design |
+| 19–20 | `intervention`, `eligibility` | Arms and who is included |
+| 21–23 | `primary-outcome`, `secondary-outcomes`, `sample-size` | Outcomes and power |
+| 24–25 | `current-status`, `participating-clusters` | Status and site map |
+| 26–29 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
 
-Trimmed for timing: provider quote duplicate, scoping-review list, sequence randomisation chart, and nested staircase walkthrough.
+Trimmed for timing: redundant provider “Further studies” cards, scoping-review list, sequence randomisation chart, and nested staircase walkthrough.
 
 ## Source
 
