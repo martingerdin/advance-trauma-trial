@@ -143,7 +143,7 @@ export const slides: Slide[] = [
     imageAlt: "Illustration of a road traffic collision",
     imagePosition: "right",
     stats: [
-      { value: ">4M", label: "deaths globally each year", source: "1" },
+      { value: "~5M", label: "deaths globally each year", source: "1" },
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
       { value: "~2M", label: "quality-related deaths", source: "3" },
       { value: "#1", label: "disease burden, ages 10–49", source: "4" },
@@ -376,7 +376,7 @@ export const slides: Slide[] = [
     imagePosition: "right",
     stats: [
       { value: "Batch 1", label: "completed (Feb 2025–Mar 2026)" },
-      { value: "~1,200", label: "patients included" },
+      { value: "~2,000", label: "patients included" },
       { value: "Batch 2", label: "ongoing since Dec 2025" },
       { value: "Batch 3", label: "starting" },
     ],
@@ -385,9 +385,7 @@ export const slides: Slide[] = [
   {
     id: "participating-clusters",
     layout: "sites-map",
-    title: "Participating clusters",
-    subtitle: "Hospitals currently in the trial",
-    footer: "Batches 1–2 recruiting · Batch 3 starting · Batches 4–6 screening · Full list at advancetrauma.info",
+    title: "Hospitals currently in the trial",
   },
   {
     id: "implications",
