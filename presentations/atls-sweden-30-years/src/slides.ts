@@ -350,6 +350,28 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "eligibility",
+    layout: "columns",
+    title: "Eligibility criteria",
+    columns: [
+      {
+        heading: "Cluster",
+        bullets: [
+          "Hospitals that admit or refer/transfer for admission at least 400 patients with trauma per year",
+          "Around-the-clock emergency surgical and orthopaedic services",
+        ],
+      },
+      {
+        heading: "Patient",
+        bullets: [
+          "Adult trauma patients presenting to the emergency department of participating hospitals with a history of trauma",
+          "Admitted, dies before admission, or transferred for admission",
+          "Less than 48 hours since trauma",
+        ],
+      },
+    ],
+  },
+  {
     id: "primary-outcome",
     layout: "outcomes",
     title: "Primary outcome",
@@ -365,6 +387,49 @@ export const slides: Slide[] = [
         title: "Patients transferred to another hospital",
         detail: "Collected by calling the patient, representative, or receiving hospital",
       },
+    ],
+  },
+  {
+    id: "secondary-outcomes",
+    layout: "outcomes",
+    title: "Secondary outcomes",
+    outcomes: [
+      {
+        tag: "Mortality",
+        title: "All-cause and in-hospital mortality",
+        detail: "24 hours · 30 days · 90 days",
+      },
+      {
+        tag: "Length of stay",
+        title: "ED, ICU, and hospital stay",
+        detail: "From patient hospital records",
+      },
+      {
+        tag: "Recovery",
+        title: "Return to work",
+        detail: "30 and 90 days after arrival",
+      },
+      {
+        tag: "Process",
+        title: "Adherence to ATLS principles",
+        detail: "Nested staircase design",
+      },
+      {
+        tag: "Patient-reported",
+        title: "Quality of life and disability",
+        detail: "EQ-5D-5L · WHODAS 2.0 · 30 and 90 days",
+      },
+    ],
+  },
+  {
+    id: "sample-size",
+    layout: "stats",
+    title: "Sample size",
+    stats: [
+      { value: "20→15%", label: "mortality reduction to detect" },
+      { value: "90%", label: "statistical power" },
+      { value: "30", label: "hospital clusters" },
+      { value: ">4,320", label: "patients required" },
     ],
   },
   {

@@ -1,6 +1,6 @@
 # ADVANCE TRAUMA — ATLS Sweden 30 Years
 
-Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (~25 slides).
+Web slide deck for the Swedish ATLS chapter 30-year anniversary presentation (Region 15 + US guests). Aimed at a **25–30 minute** delivery (~28 slides).
 
 ## Development
 
@@ -48,11 +48,12 @@ Image assets in `public/` are copied to `dist/` during build:
 | 11–12 | `atls-outcomes-reviews`, `atls-forest` | Systematic reviews and updated forest plot |
 | 13–15 | `section-trial`, `aim`, `previous-work` | Trial aim and prior work |
 | 16–17 | `design`, `design-animation` | Stepped-wedge design |
-| 18–19 | `intervention`, `primary-outcome` | Arms and primary outcome |
-| 20–21 | `current-status`, `participating-clusters` | Status and site map |
-| 22–25 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
+| 18–19 | `intervention`, `eligibility` | Arms and who is included |
+| 20–22 | `primary-outcome`, `secondary-outcomes`, `sample-size` | Outcomes and power |
+| 23–24 | `current-status`, `participating-clusters` | Status and site map |
+| 25–28 | `implications`, `team`, `funding`, `closing` | Take-homes and close |
 
-Trimmed for timing: provider quote duplicate, scoping-review list, sequence randomisation chart, secondary outcomes, nested staircase, eligibility, and sample size.
+Trimmed for timing: provider quote duplicate, scoping-review list, sequence randomisation chart, and nested staircase walkthrough.
 
 ## Source
 
