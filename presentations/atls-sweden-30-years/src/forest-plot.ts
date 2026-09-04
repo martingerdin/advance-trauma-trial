@@ -3,9 +3,11 @@ import { metaAnalysis, type MetaAnalysisData } from "./figure-data";
 import { poolRandomEffects, sameStudySet, type PooledEstimate } from "./pool-meta";
 
 const ROW_HEIGHT = 18;
-const LABEL_WIDTH = 186;
-const N_WIDTH = 52;
-const FOREST_WIDTH = 260;
+const LABEL_WIDTH = 150;
+const PROGRAMME_WIDTH = 78;
+const DESIGN_WIDTH = 100;
+const N_WIDTH = 48;
+const FOREST_WIDTH = 200;
 const EFFECT_WIDTH = 96;
 const PAD_LEFT = 4;
 const PAD_TOP = 22;
@@ -29,6 +31,16 @@ function formatRr(value: number): string {
   return value.toFixed(2);
 }
 
+/** Compact design labels for the forest-plot column. */
+function shortDesign(design: string): string {
+  if (/cluster\s+randomi/i.test(design)) return "Cluster RCT";
+  if (/matched\s+case-control/i.test(design)) return "Matched CC";
+  if (/prospective/i.test(design)) return "Prospective";
+  if (/retrospective/i.test(design)) return "Retrospective";
+  if (/registry/i.test(design)) return "Registry";
+  return design;
+}
+
 function diamondPoints(
   logRr: number,
   ciLower: number,
@@ -48,12 +60,16 @@ function footerText(pooled: PooledEstimate, measure: string): string {
     `Random-effects ${measure} ${pooled.rrFormatted} ` +
     `(95% CI ${pooled.ciFormatted.replace("; ", "–")}); ` +
     `I² ${pooled.i2Rounded.toFixed(2)}; ` +
-    `${pooled.numberOfStudies} observational ${pooled.numberOfStudies === 1 ? "study" : "studies"}`
+    `${pooled.numberOfStudies} ${pooled.numberOfStudies === 1 ? "study" : "studies"}`
   );
 }
 
 /** Compact filters for live presentation use. */
 const DESIGN_FILTERS: { label: string; match: (design: string) => boolean }[] = [
+  {
+    label: "RCT",
+    match: (design) => /randomi[sz]ed|cluster randomised|cluster randomized|\bRCT\b/i.test(design),
+  },
   {
     label: "Prospective",
     match: (design) => /prospective/i.test(design) || design === "Cohort study",
@@ -112,12 +128,16 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   let revealToken = 0;
   let revealing = false;
   const maxWeight = Math.max(...data.studies.map((s) => s.weightPercent));
-  const forestX = PAD_LEFT + LABEL_WIDTH + N_WIDTH;
+  const metaColsWidth = LABEL_WIDTH + PROGRAMME_WIDTH + DESIGN_WIDTH + N_WIDTH;
+  const forestX = PAD_LEFT + metaColsWidth;
   const [xMin, xMax] = data.logScaleXlim;
-  const totalWidth = PAD_LEFT + LABEL_WIDTH + N_WIDTH + FOREST_WIDTH + EFFECT_WIDTH + 8;
+  const totalWidth = PAD_LEFT + metaColsWidth + FOREST_WIDTH + EFFECT_WIDTH + 8;
   const totalHeight = PAD_TOP + (data.studies.length + 1) * ROW_HEIGHT + AXIS_HEIGHT + 8;
   const pooledY = PAD_TOP + data.studies.length * ROW_HEIGHT + ROW_HEIGHT / 2;
   const nullX = logToX(0, data.logScaleXlim, forestX);
+  const programmeX = PAD_LEFT + LABEL_WIDTH + 4;
+  const designX = PAD_LEFT + LABEL_WIDTH + PROGRAMME_WIDTH + 4;
+  const nX = PAD_LEFT + LABEL_WIDTH + PROGRAMME_WIDTH + DESIGN_WIDTH + N_WIDTH - 4;
 
   const panel = document.createElement("div");
   panel.className = "forest-panel";
@@ -209,8 +229,20 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
 
   const headerStudy = svgEl("text", { x: PAD_LEFT, y: 14, class: "forest-header" });
   headerStudy.textContent = data.labels.study;
+  const headerProgramme = svgEl("text", {
+    x: programmeX,
+    y: 14,
+    class: "forest-header",
+  });
+  headerProgramme.textContent = "Programme";
+  const headerDesign = svgEl("text", {
+    x: designX,
+    y: 14,
+    class: "forest-header",
+  });
+  headerDesign.textContent = "Design";
   const headerN = svgEl("text", {
-    x: PAD_LEFT + LABEL_WIDTH + N_WIDTH - 4,
+    x: nX,
     y: 14,
     class: "forest-header",
     "text-anchor": "end",
@@ -222,7 +254,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     class: "forest-header",
   });
   headerEffect.textContent = `${data.labels.effect} (95% CI)`;
-  svg.append(headerStudy, headerN, headerEffect);
+  svg.append(headerStudy, headerProgramme, headerDesign, headerN, headerEffect);
 
   svg.appendChild(
     svgEl("line", {
@@ -259,8 +291,26 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
 
     const name = svgEl("text", { x: PAD_LEFT, y: y + 4, class: "forest-study" });
     name.textContent = study.study;
+    const programme = svgEl("text", {
+      x: programmeX,
+      y: y + 4,
+      class: "forest-programme",
+    });
+    programme.textContent = study.programme || "—";
+    const programmeTitle = svgEl("title");
+    programmeTitle.textContent = study.programme || "Programme";
+    programme.appendChild(programmeTitle);
+    const design = svgEl("text", {
+      x: designX,
+      y: y + 4,
+      class: "forest-design",
+    });
+    design.textContent = shortDesign(study.design);
+    const designTitle = svgEl("title");
+    designTitle.textContent = study.design;
+    design.appendChild(designTitle);
     const n = svgEl("text", {
-      x: PAD_LEFT + LABEL_WIDTH + N_WIDTH - 4,
+      x: nX,
       y: y + 4,
       class: "forest-n",
       "text-anchor": "end",
@@ -285,6 +335,8 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     row.append(
       hit,
       name,
+      programme,
+      design,
       n,
       svgEl("line", {
         class: "forest-whisker",
