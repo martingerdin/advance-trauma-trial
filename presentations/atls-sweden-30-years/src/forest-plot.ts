@@ -120,6 +120,8 @@ export interface ForestPlotController {
   /** Reveal studies oldest→newest, updating the pooled estimate after each. */
   playChronologicalReveal(options?: { stepMs?: number }): Promise<void>;
   abortReveal(): void;
+  /** Empty chart with headers only; pulse Play timeline (slide-enter idle). */
+  resetIdle(): void;
 }
 
 /**
@@ -131,8 +133,8 @@ export interface ForestPlotController {
  */
 export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestPlotController {
   const allKeys = data.studies.map((s) => s.citationKey);
-  // Start with the full pooled set; timeline play is manual.
-  const included = new Set<string>(allKeys);
+  // Start idle: headers + empty plot until Play timeline.
+  const included = new Set<string>();
   let revealToken = 0;
   let revealing = false;
   const maxWeight = Math.max(...data.studies.map((s) => s.weightPercent));
@@ -148,7 +150,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   const nX = PAD_LEFT + LABEL_WIDTH + PROGRAMME_WIDTH + DESIGN_WIDTH + N_WIDTH - 4;
 
   const panel = document.createElement("div");
-  panel.className = "forest-panel";
+  panel.className = "forest-panel is-idle";
 
   const controls = document.createElement("div");
   controls.className = "forest-controls";
@@ -156,7 +158,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
 
   const timelineBtn = document.createElement("button");
   timelineBtn.type = "button";
-  timelineBtn.className = "forest-chip forest-chip--timeline";
+  timelineBtn.className = "forest-chip forest-chip--timeline is-pulsing";
   timelineBtn.dataset.filter = "timeline";
   timelineBtn.setAttribute("aria-pressed", "false");
 
@@ -433,7 +435,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     class: "forest-empty",
     "text-anchor": "middle",
   }) as SVGTextElement;
-  emptyNote.textContent = "Select at least one study";
+  emptyNote.textContent = "Click Play timeline to start";
   emptyNote.style.display = "none";
   pooledRow.append(pooledName, diamond, pooledEffect, emptyNote);
   svg.appendChild(pooledRow);
@@ -553,6 +555,16 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     }
   }
 
+  function isIdle(): boolean {
+    return included.size === 0 && !revealing;
+  }
+
+  function syncIdleChrome(): void {
+    const idle = isIdle();
+    panel.classList.toggle("is-idle", idle);
+    timelineBtn.classList.toggle("is-pulsing", idle);
+  }
+
   function refresh(): void {
     for (const study of data.studies) {
       const row = rowEls.get(study.citationKey);
@@ -566,17 +578,31 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     if (!pooled) {
       diamond.style.display = "none";
       pooledEffect.style.display = "none";
+      pooledName.style.display = "none";
       emptyNote.style.display = "";
-      emptyNote.textContent = revealing
-        ? "Adding studies chronologically…"
-        : "Select at least one study";
-      footer.textContent = revealing
-        ? "Building the pooled estimate as studies appear (oldest → newest)"
-        : "No studies selected — click a study to include it";
-      svg.setAttribute("aria-label", "Forest plot with no studies selected");
+      if (revealing) {
+        emptyNote.setAttribute("y", String(pooledY + 4));
+        emptyNote.textContent = "Adding studies chronologically…";
+        footer.textContent = "Building the pooled estimate as studies appear (oldest → newest)";
+        svg.setAttribute("aria-label", "Forest plot chronological reveal in progress");
+      } else if (included.size === 0) {
+        emptyNote.setAttribute(
+          "y",
+          String(PAD_TOP + (data.studies.length * ROW_HEIGHT) / 2 + 4)
+        );
+        emptyNote.textContent = "Click Play timeline to start";
+        footer.textContent = "Click Play timeline to start";
+        svg.setAttribute("aria-label", "Empty forest plot. Click Play timeline to start.");
+      } else {
+        emptyNote.setAttribute("y", String(pooledY + 4));
+        emptyNote.textContent = "Select at least one study";
+        footer.textContent = "No studies selected — click a study to include it";
+        svg.setAttribute("aria-label", "Forest plot with no studies selected");
+      }
     } else {
       diamond.style.display = "";
       pooledEffect.style.display = "";
+      pooledName.style.display = "";
       emptyNote.style.display = "none";
       diamond.setAttribute(
         "points",
@@ -600,6 +626,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
         `Forest plot of trauma life support training effect on mortality. Pooled odds ratio ${pooled.rrFormatted}, 95% CI ${pooled.ciFormatted}, ${pooled.numberOfStudies} studies`
       );
     }
+    syncIdleChrome();
     syncChips();
   }
 
@@ -609,6 +636,12 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     panel.classList.remove("is-revealing");
     timelineBtn.disabled = false;
     renderTimelineButton(false);
+  }
+
+  function resetIdle(): void {
+    abortReveal();
+    included.clear();
+    refresh();
   }
 
   function delay(ms: number): Promise<void> {
@@ -627,6 +660,8 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     const token = ++revealToken;
     revealing = true;
     panel.classList.add("is-revealing");
+    panel.classList.remove("is-idle");
+    timelineBtn.classList.remove("is-pulsing");
     renderTimelineButton(true);
     included.clear();
     refresh();
@@ -682,5 +717,6 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     getIncluded: () => new Set(included),
     playChronologicalReveal,
     abortReveal,
+    resetIdle,
   };
 }

@@ -824,8 +824,8 @@ function animateSlideIn(slideEl: HTMLElement): void {
   }
 
   if (slideEl.dataset.layout === "forest") {
-    // Timeline stays paused on enter; presenter starts it with Play timeline.
-    forestControllers.get(slideEl)?.abortReveal();
+    // Idle empty chart; presenter starts with Play timeline.
+    forestControllers.get(slideEl)?.resetIdle();
   }
 
   if (slideEl.dataset.layout === "sites-map") {

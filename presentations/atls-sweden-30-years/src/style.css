@@ -1750,6 +1750,42 @@ body {
   color: var(--text-inverse);
 }
 
+.forest-chip--timeline.is-pulsing {
+  border-color: var(--brand);
+  color: var(--brand-darker);
+  animation: forest-play-pulse 1.7s ease-in-out infinite;
+}
+
+@keyframes forest-play-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 45%, transparent);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--brand) 0%, transparent);
+    transform: scale(1.045);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forest-chip--timeline.is-pulsing {
+    animation: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 35%, transparent);
+  }
+}
+
+.forest-panel.is-idle .forest-row:not(.forest-row--pooled) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.forest-panel.is-idle .forest-empty {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--brand-darker, var(--brand));
+}
+
 .forest-hint {
   margin-left: auto;
   font-size: 0.72rem;

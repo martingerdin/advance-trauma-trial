@@ -77,7 +77,7 @@ Rscript export-figure-data.R
 
 On the `#atls-forest` slide you can:
 
-- Click **Play timeline** (with play/pause icon) to reveal studies oldest → newest; it starts paused with all studies shown
+- Click **Play timeline** (with play/pause icon) to reveal studies oldest → newest; the slide starts empty with a pulsing Play button
 - Click **Pause timeline** while playing to stop the reveal
 - Click a study row to include or exclude it
 - Use the chips to show all studies, filter by study design, or filter by training programme (ATLS, PTC, RTTDC, JATEC, CTCT)
