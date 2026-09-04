@@ -350,32 +350,14 @@ export const slides: Slide[] = [
     layout: "design",
     title: "Study design",
     designVariant: "main",
-    body: "Batched stepped-wedge cluster randomised trial",
+    body: "Batched stepped-wedge cluster randomised trial in India",
     stats: [
       { value: "30", label: "hospitals" },
       { value: "6", label: "batches" },
       { value: "5", label: "sequences" },
       { value: "13", label: "months in trial" },
     ],
-    footer: "Conducted in India — ongoing collaborations >10 years; ATLS® not yet standard",
-  },
-  {
-    id: "design-animation",
-    layout: "design-animation",
-    title: "How the trial unfolds",
-    designVariant: "main",
-  },
-  {
-    id: "intervention",
-    layout: "two-col",
-    title: "Intervention and control",
-    image: "./patient-review-before-illustration.png",
-    imageAlt: "Trauma team managing a patient in the emergency department",
-    imagePosition: "right",
-    bullets: [
-      "Control — standard care; trauma patients initially managed by 1st/2nd year residents without formal trauma training",
-      "Intervention — 2.5-day ATLS® course at accredited facility; 1–2 units per hospital trained",
-    ],
+    footer: "Ongoing collaborations >10 years; ATLS® not yet standard",
   },
   {
     id: "eligibility",
@@ -397,6 +379,18 @@ export const slides: Slide[] = [
           "Less than 48 hours since trauma",
         ],
       },
+    ],
+  },
+  {
+    id: "intervention",
+    layout: "two-col",
+    title: "Intervention and control",
+    image: "./patient-review-before-illustration.png",
+    imageAlt: "Trauma team managing a patient in the emergency department",
+    imagePosition: "right",
+    bullets: [
+      "Control — standard care; trauma patients initially managed by 1st/2nd year residents without formal trauma training",
+      "Intervention — 2.5-day ATLS® course at accredited facility; 1–2 units per hospital trained",
     ],
   },
   {
@@ -448,6 +442,12 @@ export const slides: Slide[] = [
         detail: "EQ-5D-5L · WHODAS 2.0 · 30 and 90 days",
       },
     ],
+  },
+  {
+    id: "design-animation",
+    layout: "design-animation",
+    title: "How the trial unfolds",
+    designVariant: "main",
   },
   {
     id: "sample-size",
