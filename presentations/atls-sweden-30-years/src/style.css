@@ -1784,6 +1784,8 @@ body {
 }
 
 .forest-plot-chart .forest-study,
+.forest-plot-chart .forest-programme,
+.forest-plot-chart .forest-design,
 .forest-plot-chart .forest-n,
 .forest-plot-chart .forest-effect,
 .forest-plot-chart .axis-label,
@@ -1791,6 +1793,11 @@ body {
   font-family: var(--font-body);
   font-size: 8.5px;
   fill: var(--text);
+}
+
+.forest-plot-chart .forest-programme,
+.forest-plot-chart .forest-design {
+  fill: var(--text-muted);
 }
 
 .forest-row--interactive {
