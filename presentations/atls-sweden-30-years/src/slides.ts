@@ -75,7 +75,8 @@ export interface Slide {
     | "team"
     | "funding"
     | "sites-map"
-    | "columns";
+    | "columns"
+    | "provocation";
   title?: string;
   subtitle?: string;
   eyebrow?: string;
@@ -103,6 +104,11 @@ const ATLS_MANUAL_CITE =
   "American College of Surgeons. Advanced Trauma Life Support® (ATLS®) Student Course Manual. 11th ed. 2025.";
 
 export const slides: Slide[] = [
+  {
+    id: "hook",
+    layout: "provocation",
+    body: "The clinical trial to determine if ATLS® improves patient outcomes",
+  },
   {
     id: "title",
     layout: "title",
@@ -204,25 +210,20 @@ export const slides: Slide[] = [
     id: "atls-provider-evidence",
     layout: "evidence",
     title: "Evidence on providers",
-    body: "The 11th edition Impact paragraph cites no sources. Two claims from the manual — and the studies behind them.",
     evidence: [
       {
         id: "1",
-        tag: "Manual claim",
         claim: "Improves knowledge, psychomotor skills, confidence, and performance",
         source:
           "Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
       },
       {
         id: "2",
-        tag: "Manual claim",
         claim: "Organizational and procedural skills retained ≥6 years",
         source:
           "Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
       },
     ],
-    footer:
-      "Note: the 6-year retention paper found cognitive scores decline while adherence to priorities is preserved.",
   },
   {
     id: "atls-outcomes-claim",
@@ -235,7 +236,6 @@ export const slides: Slide[] = [
     id: "atls-patient-impact-sources",
     layout: "evidence",
     title: "The evidence behind the claims",
-    body: "Each claim from the manual's Impact section — and the study behind it.",
     evidence: [
       {
         id: "1",
@@ -266,7 +266,7 @@ export const slides: Slide[] = [
   {
     id: "atls-outcomes-reviews",
     layout: "bullets",
-    title: "Evidence on patient outcomes — systematic reviews",
+    title: "Systematic reviews",
     bullets: [
       "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
       "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
@@ -274,8 +274,6 @@ export const slides: Slide[] = [
       "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
       "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
     ],
-    footer:
-      "Across reviews: knowledge and skills improve; randomised evidence that training changes patient outcomes is still missing.",
   },
   {
     id: "atls-forest",
@@ -298,32 +296,31 @@ export const slides: Slide[] = [
     id: "previous-work",
     layout: "milestones",
     title: "Previous work",
-    subtitle: "Key references",
     milestones: [
       {
         year: "2013",
-        label: "Multicentre research — TITCO Consortium",
+        label: "Multicentre research",
         image: "./milestones/multicentre.png",
         imageAlt: "Map of India with hospital sites",
         cite: "1",
       },
       {
         year: "2022–2023",
-        label: "Pilot and feasibility — Gerdin Wärnberg et al. BMJ Open 2025",
+        label: "Pilot and feasibility",
         image: "./milestones/pilot.png",
         imageAlt: "Clinicians discussing care in a hospital room",
         cite: "2",
       },
       {
         year: "2022–2023",
-        label: "Community consultations — David & Gerdin Wärnberg 2024",
+        label: "Community consultations",
         image: "./milestones/consultations.png",
         imageAlt: "Patient bedside discussion about ATLS",
         cite: "3",
       },
       {
         year: "2022–2026",
-        label: "Systematic review — Nakhid et al. 2026",
+        label: "Systematic review",
         image: "./milestones/systematic-review.png",
         imageAlt: "Nakhid et al. systematic review article in press",
         cite: "4",
@@ -476,7 +473,6 @@ export const slides: Slide[] = [
       { value: "Batch 2", label: "ongoing since Dec 2025" },
       { value: "Batch 3", label: "starting" },
     ],
-    footer: "Expected completion December 2028, pending funding",
   },
   {
     id: "participating-clusters",
@@ -522,21 +518,18 @@ export const slides: Slide[] = [
         ],
       },
     ],
-    footer: "Full team and site list at advancetrauma.info",
   },
   {
     id: "funding",
     layout: "funding",
     title: "Funding",
-    body: "Current support for ADVANCE TRAUMA",
     funders: [
       { name: "Swedish Research Council" },
       { name: "Laerdal Foundation" },
       { name: "Region Stockholm" },
       { name: "Swedish Society of Medicine" },
     ],
-    footer:
-      "Not yet fully funded — additional support is needed to complete the trial through 2028–2029.",
+    footer: "Additional support is needed to complete the trial through 2028–2029.",
   },
   {
     id: "closing",

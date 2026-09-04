@@ -35,19 +35,6 @@ const overviewClose = document.getElementById("overview-close")!;
 const overviewBackdrop = document.getElementById("overview-backdrop")!;
 const overviewPanel = document.getElementById("overview-panel");
 
-function evidenceCardClass(tag?: string): string {
-  switch (tag) {
-    case "Manual claim":
-      return " evidence-card--manual";
-    case "Further studies":
-      return " evidence-card--further";
-    case "Systematic review":
-      return " evidence-card--review";
-    default:
-      return "";
-  }
-}
-
 function renderSlide(slide: Slide): HTMLElement {
   const el = document.createElement("article");
   el.className = `slide slide--${slide.layout}`;
@@ -62,6 +49,14 @@ function renderSlide(slide: Slide): HTMLElement {
           <h1 class="display" data-animate>${slide.title}</h1>
           ${slide.subtitle ? `<p class="subtitle" data-animate>${slide.subtitle}</p>` : ""}
           ${slide.footer ? `<p class="meta" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "provocation":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--provocation">
+          <p class="provocation-statement" data-animate>${slide.body}</p>
         </div>
       `;
       break;
@@ -194,16 +189,16 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--bullets">
           <h2 data-animate>${slide.title}</h2>
-          <ul class="${reviewRows ? "review-list" : "bullet-list"}" data-animate-group>
+          <ul class="${reviewRows ? "paper-list" : "bullet-list"}" data-animate-group>
             ${items
               .map((b, i) => {
                 if (!reviewRows) return `<li data-animate>${b}</li>`;
                 const [author, ...rest] = b.split(" — ");
-                return `<li class="review-list__item" data-animate>
-                  <span class="review-list__n" aria-hidden="true">${i + 1}</span>
-                  <div class="review-list__body">
-                    <p class="review-list__author">${author}</p>
-                    <p class="review-list__finding">${rest.join(" — ")}</p>
+                return `<li class="paper-list__item" data-animate>
+                  <span class="paper-list__n" aria-hidden="true">${i + 1}</span>
+                  <div class="paper-list__body">
+                    <p class="paper-list__primary">${author}</p>
+                    <p class="paper-list__secondary">${rest.join(" — ")}</p>
                   </div>
                 </li>`;
               })
@@ -221,21 +216,21 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner slide-inner--evidence">
           <h2 data-animate>${slide.title}</h2>
           ${slide.body ? `<p class="evidence-intro" data-animate>${slide.body}</p>` : ""}
-          <div class="evidence-grid${(slide.evidence?.length ?? 0) > 4 ? " evidence-grid--compact" : ""}" data-animate-group>
+          <ul class="paper-list" data-animate-group>
             ${(slide.evidence ?? [])
               .map(
                 (item) => `
-              <article class="panel evidence-card${evidenceCardClass(item.tag)}" data-animate>
-                <div class="evidence-card__header">
-                  <span class="evidence-card__id" aria-hidden="true">${item.id}</span>
+              <li class="paper-list__item" data-animate>
+                <span class="paper-list__n" aria-hidden="true">${item.id}</span>
+                <div class="paper-list__body">
                   ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
+                  <p class="paper-list__primary">${item.claim}</p>
+                  <p class="paper-list__secondary">${item.source}</p>
                 </div>
-                <p class="evidence-card__claim">${item.claim}</p>
-                <p class="evidence-card__source">${item.source}</p>
-              </article>`
+              </li>`
               )
               .join("")}
-          </div>
+          </ul>
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
@@ -667,6 +662,9 @@ function mountSlides(): void {
 }
 
 function slideThumbLabel(slide: Slide): string {
+  if (slide.layout === "provocation" && slide.body) {
+    return slide.body.length > 48 ? `${slide.body.slice(0, 45)}…` : slide.body;
+  }
   return slide.title ?? slide.subtitle ?? slide.id;
 }
 
@@ -675,7 +673,8 @@ function thumbPreviewClass(slide: Slide): string {
     slide.layout === "title" ||
     slide.layout === "closing" ||
     slide.layout === "section" ||
-    slide.layout === "aim"
+    slide.layout === "aim" ||
+    slide.layout === "provocation"
   ) {
     return `overview-thumb__preview--${slide.layout}`;
   }
