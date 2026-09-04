@@ -19,9 +19,46 @@
   --text-inverse: #ffffff;
   --border: #d5e3e8;
   --shadow-ink-soft: color-mix(in srgb, var(--ink) 18%, transparent);
-  --font-display: "Quicksand", system-ui, sans-serif; /* logo / wordmark only */
-  --font-heading: "EB Garamond", Georgia, serif;
-  --font-body: "Roboto", system-ui, sans-serif;
+
+  /* Typography — three families, three jobs.
+     Quicksand is the ADVANCE TRAUMA wordmark. Exactly one selector may use it;
+     if you are reaching for a second, you want --font-body.
+     EB Garamond names slides (titles) and voices quotations — nothing else.
+     Roboto carries every lead, label, figure, card heading and body string. */
+  --font-display: "Quicksand Variable", Quicksand, system-ui, sans-serif;
+  --font-heading: "EB Garamond Variable", "EB Garamond", Georgia, serif;
+  --font-body: "Roboto Variable", Roboto, system-ui, sans-serif;
+
+  /* Type scale. Resolved px at 1280 / 1920 viewport width.
+     DOM text only — SVG text keeps user-space px (see stepped-wedge / forest). */
+  --fs-display: clamp(2rem, 1.31rem + 2.03vw, 3.75rem); /* 47 / 60 */
+  --fs-aim: clamp(2rem, 1rem + 2.4vw, 3.5rem); /* 46 / 56 */
+  --fs-slide-title: clamp(1.65rem, 1.31rem + 0.94vw, 2.4rem); /* 33 / 38 */
+  --fs-figure: clamp(1.6rem, 1rem + 1.56vw, 2.75rem); /* 36 / 44 */
+  --fs-figure-sm: clamp(1.3rem, 0.85rem + 1.25vw, 2.25rem); /* 29 / 36 */
+  --fs-lead: clamp(1.25rem, 0.88rem + 1.09vw, 2.1rem); /* 28 / 34 */
+  --fs-quote: clamp(1.15rem, 0.8rem + 0.94vw, 1.85rem); /* 25 / 30 */
+  --fs-card-title: clamp(1rem, 0.81rem + 0.47vw, 1.3rem); /* 19 / 21 */
+  --fs-body: clamp(1rem, 0.85rem + 0.31vw, 1.2rem); /* 17 / 19 */
+  --fs-body-sm: clamp(0.9rem, 0.75rem + 0.31vw, 1.05rem); /* 15 / 17 */
+  --fs-micro: clamp(0.78rem, 0.68rem + 0.23vw, 0.9rem); /* 13 / 14 */
+  --fs-label: clamp(0.7rem, 0.65rem + 0.16vw, 0.82rem); /* 12 / 13 */
+
+  /* Vertical rhythm — every gap in the deck is one of these. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  /* Measure follows content type: the wider the slide, the less of it is prose. */
+  --measure-narrow: 58rem; /* one idea: aim, quote, provocation */
+  --measure-standard: 74rem; /* prose, lists, cards */
+  --measure-wide: 86rem; /* charts, maps, illustrated pairs */
+  /* Markers (accent rules, bullet dots) hang in this channel; text stays on the column. */
+  --gutter: 1.25rem;
+
   --radius: 4px;
   --radius-md: 6px;
   --radius-pill: 999px;
@@ -51,9 +88,20 @@ body {
   background: var(--surface);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: clamp(14px, 1.6vw, 18px);
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
+}
+
+html {
+  /* Fixed root so 1rem is a constant and the type scale above is predictable.
+     Fluidity comes from the vw term inside each --fs-* clamp, not from the root. */
+  font-size: 100%;
+  /* Every weight the deck uses is a real face; fail visibly rather than faking. */
+  font-synthesis: none;
+}
+
+body {
+  font-size: var(--fs-body);
 }
 
 #app {
@@ -90,9 +138,16 @@ body {
 .slide-inner {
   min-height: 100%;
   padding: var(--slide-padding);
+  /* Bottom reserve clears the fixed #controls pill. Layouts may not remove it. */
   padding-bottom: calc(var(--slide-padding) + 3rem);
-  max-width: 1200px;
+  max-width: var(--measure-standard);
   margin: 0 auto;
+}
+
+/* Content slides reserve the marker gutter on both sides so grids stay centred
+   while accent rules and bullet dots can hang left of the text column. */
+.slide-inner:not(.slide-inner--center):not(.slide-inner--provocation) {
+  padding-inline: calc(var(--slide-padding) + var(--gutter));
 }
 
 .slide-inner--center {
@@ -102,6 +157,73 @@ body {
   justify-content: center;
   text-align: center;
   min-height: 100%;
+}
+
+/* ── Alignment: one heading baseline, body centred beneath it ─────
+   Content slides pin the h2 to the top of the slide and let the dominant
+   content block centre in the space below, so the title does not move as the
+   presenter pages through. Only the four brand layouts (title, section,
+   closing, provocation) centre their whole canvas. */
+
+.slide-inner--stats,
+.slide-inner--bullets,
+.slide-inner--evidence,
+.slide-inner--outcomes,
+.slide-inner--outcome-list,
+.slide-inner--columns,
+.slide-inner--arms,
+.slide-inner--status-map,
+.slide-inner--team,
+.slide-inner--funding,
+.slide-inner--design,
+.slide-inner--milestones,
+.slide-inner--quote,
+.slide-inner--references,
+.slide--implications .slide-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100%;
+}
+
+.slide-inner > .stats-layout,
+.slide-inner > .arms-grid,
+.slide-inner > .outcome-list,
+.slide-inner > .columns-grid,
+.slide-inner > .implications-grid,
+.slide-inner > .status-map-layout,
+.slide-inner > .team-grid,
+.slide-inner > .funding-grid,
+.slide-inner > .bullet-list,
+.slide-inner > .paper-list,
+.slide-inner > .design-layout,
+.slide-inner > .quote-block,
+.slide-inner--milestones > .milestones-grid {
+  margin-block: auto;
+}
+
+/* The primary outcome's lead and its cards travel together. */
+.slide-inner--outcomes > .lead {
+  margin-block: auto var(--space-5);
+}
+
+.slide-inner--outcomes > .outcomes-grid {
+  margin-block: 0 auto;
+}
+
+.slide-inner--aim,
+.slide-inner--quote,
+.slide-inner--provocation {
+  max-width: var(--measure-narrow);
+}
+
+.slide-inner--design,
+.slide-inner--design-animation,
+.slide-inner--sequences,
+.slide-inner--forest,
+.slide-inner--status-map,
+.slide-inner--arms {
+  max-width: var(--measure-wide);
 }
 
 /* ── Brand slides (title, section, closing) ─────────────────────── */
@@ -152,13 +274,13 @@ body {
 }
 
 .slide--title .display {
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
-  margin-bottom: 0.5em;
+  font-size: var(--fs-display);
+  margin-bottom: 0.4em;
 }
 
 .slide--title .subtitle {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-size: var(--fs-body);
   max-width: 52ch;
   opacity: 0.92;
   font-weight: 400;
@@ -169,7 +291,8 @@ body {
 .slide--closing .meta,
 .slide--title .meta {
   font-family: var(--font-body);
-  font-size: 0.85em;
+  font-size: var(--fs-label);
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0.88;
@@ -182,26 +305,26 @@ body {
 }
 
 .slide--section .section-title {
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-size: var(--fs-display);
   border: none;
   border-bottom: none;
 }
 
 .slide--section .section-subtitle {
   font-family: var(--font-body);
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-size: var(--fs-lead);
   opacity: 0.92;
   margin-top: 0.5em;
   font-weight: 400;
 }
 
 .slide--closing .display {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: var(--fs-display);
 }
 
 .slide--closing .closing-link {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  margin: 1em 0;
+  font-size: var(--fs-lead);
+  margin: 0.75em 0 0;
 }
 
 .slide--closing .closing-link a {
@@ -212,6 +335,34 @@ body {
 
 .slide--closing .closing-link a:hover {
   border-color: var(--text-inverse);
+}
+
+/* The QR sits on an opaque white plate: the closing slide is a teal gradient,
+   and scanners need the quiet zone to stay light. The URL below it is the
+   label, so no "scan me" micro-copy is needed. */
+.closing-qr {
+  margin: clamp(1rem, 3vh, 1.75rem) 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.closing-qr img {
+  display: block;
+  width: clamp(7.5rem, 18vh, 11rem);
+  height: auto;
+  padding: 0.55rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 24px rgba(8, 40, 48, 0.18);
+}
+
+.closing-trademark {
+  margin-top: clamp(1rem, 3vh, 2rem);
+  max-width: 62ch;
+  font-size: var(--fs-label);
+  line-height: 1.45;
+  color: var(--text-inverse);
+  opacity: 0.7;
 }
 
 /* ── Provocation opener ─────────────────────────────────────────── */
@@ -227,7 +378,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100%;
-  max-width: 960px;
+  max-width: var(--measure-narrow);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -237,12 +388,12 @@ body {
 .provocation-statement {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(1.9rem, 4.8vw, 3.25rem);
-  font-weight: 600;
+  font-size: var(--fs-display);
+  font-weight: 500;
   line-height: 1.22;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--text-inverse);
-  max-width: 14.5em;
+  max-width: 22ch;
   text-wrap: balance;
 }
 
@@ -261,7 +412,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  max-width: 1100px;
+  max-width: var(--measure-standard);
 }
 
 .slide--presenter .eyebrow {
@@ -284,8 +435,9 @@ body {
 }
 
 .presenter-degrees {
-  font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  font-weight: 400;
   color: var(--text-muted);
   margin: 0.35em 0 1.75em;
 }
@@ -362,36 +514,50 @@ body {
 
 /* ── Content slides ───────────────────────────────────────────── */
 
-.slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--presenter) h2 {
+.slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--presenter):not(.slide--aim) h2 {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-size: var(--fs-slide-title);
   color: var(--ink);
   font-weight: 600;
+  line-height: 1.2;
   border-bottom: 2px solid var(--border);
-  padding-bottom: 0.3em;
-  margin-bottom: 1em;
+  padding-bottom: var(--space-2);
+  margin: 0 0 var(--space-5);
   letter-spacing: -0.01em;
+  flex-shrink: 0;
 }
 
-/* Shared statement (aim / primary outcome — not quotes) */
-.statement {
-  margin: 0;
-  padding: 0.9rem 0 0.9rem 1.15rem;
+/* A lead or source line directly under the heading tightens the pair. */
+.slide-inner > h2 + .lead,
+.slide-inner > h2 + .slide-source {
+  margin-top: calc(-1 * var(--space-5) + var(--space-3));
+}
+
+/* Source line under a heading — used where a figure needs attribution. */
+.slide-source {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+  line-height: 1.45;
+  max-width: 76ch;
+}
+
+/* ── Emphasis (b): lead — study design and primary outcome ────────
+   The accent rule means exactly one thing in this deck: "this is the
+   important sentence on this slide". The aim uses a slide-level treatment
+   instead, so the two can never be confused. */
+.lead {
+  margin: 0 0 0 calc(-1 * var(--gutter));
+  padding: var(--space-2) 0 var(--space-2) var(--gutter);
   border-left: 3px solid var(--accent);
-  font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  font-weight: 500;
   color: var(--ink);
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  max-width: 46ch;
-}
-
-.statement--hero {
-  font-size: clamp(1.55rem, 3.2vw, 2.25rem);
-  max-width: none;
-  width: 100%;
-  margin: 0 0 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  max-width: 36ch;
 }
 
 /* Shared content panels — quiet, uniform, no hover lift */
@@ -404,7 +570,7 @@ body {
 
 .panel-tag {
   font-family: var(--font-body);
-  font-size: 0.62rem;
+  font-size: var(--fs-label);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -418,43 +584,6 @@ body {
 }
 
 /* ── Visual abstract slide ──────────────────────────────────────── */
-
-.slide--visual {
-  background: var(--surface-muted);
-}
-
-.slide-inner--visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  min-height: 100%;
-}
-
-.visual-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: var(--ink);
-  text-align: center;
-  max-width: 60ch;
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.visual-figure {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0;
-}
-
-.visual-figure img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  box-shadow: 0 8px 40px rgba(8, 40, 48, 0.12);
-}
 
 /* ── Stats ──────────────────────────────────────────────────────── */
 
@@ -487,22 +616,27 @@ body {
   gap: 0.25rem;
 }
 
+/* Figures are Roboto: this build of EB Garamond has no lining-figure feature
+   and its 3/5/7/9 hang below the baseline, so a stat grid set in it never
+   shares one baseline. Roboto also gives us tabular numerals. */
 .stat-value {
-  font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-figure);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   color: var(--brand-deep);
   line-height: 1.1;
+  letter-spacing: -0.015em;
 }
 
 .stat-label {
-  font-size: 0.9em;
+  font-size: var(--fs-body-sm);
   color: var(--text-muted);
   line-height: 1.4;
 }
 
 .cite-ref {
-  font-size: 0.65em;
+  font-size: 0.6em;
   font-weight: 600;
   color: var(--brand-deep);
   margin-left: 0.15em;
@@ -511,12 +645,12 @@ body {
 }
 
 .slide-references {
-  margin-top: 1.25rem;
-  padding-top: 0.75rem;
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
   border-top: 1px solid var(--border);
   list-style: none;
   counter-reset: none;
-  font-size: 0.72em;
+  font-size: var(--fs-micro);
   color: var(--text-muted);
   line-height: 1.45;
 }
@@ -533,71 +667,16 @@ body {
   color: var(--brand-deep);
 }
 
-.slide-inner--references .references-intro {
-  font-size: 0.88em;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-  line-height: 1.45;
-  max-width: 72ch;
-}
-
-.slide-references--standalone {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
-  font-size: clamp(0.78rem, 1.35vw, 0.92rem);
-  line-height: 1.5;
-}
-
-.slide-references--standalone li {
-  padding: 0.5em 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.slide-references--standalone li:last-child {
-  border-bottom: none;
-}
-
 /* ── Evidence intro (optional lead-in above paper list) ─────────── */
-
-.slide-inner--evidence .evidence-intro {
-  font-family: var(--font-body);
-  font-size: 0.92em;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
-  line-height: 1.45;
-  max-width: 60ch;
-}
-
-.inline-stats {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
-
-.inline-stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.inline-stat .stat-value {
-  font-size: clamp(2rem, 4vw, 3rem);
-}
 
 /* ── Quote (distinct from aim/statement) ────────────────────────── */
 
-.slide-inner--quote {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
-  max-width: 1000px;
-}
-
-.slide-inner--quote h2 {
-  flex-shrink: 0;
-}
+/* ── Emphasis (c): quotation ──────────────────────────────────────
+   The three quote slides reproduce the ATLS® manual verbatim. The serif is
+   doing semantic work here — it marks the manual's voice as distinct from the
+   presenter's — so this is the one place Garamond sets running text. It is set
+   at 400, not 600: a semibold serif at display size is what makes a long
+   quotation hard to read. */
 
 .quote-block {
   flex: 0 1 auto;
@@ -605,14 +684,12 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  margin: 0.35rem 0 0;
   padding: clamp(1.5rem, 3.5vw, 2.4rem) clamp(1.5rem, 3.5vw, 2.4rem)
     clamp(1.35rem, 3vw, 2rem) clamp(2rem, 4.5vw, 3rem);
-  background: linear-gradient(135deg, var(--surface-muted) 0%, #eef7fa 100%);
+  background: var(--surface-muted);
   border: 1px solid var(--border);
-  border-left: 5px solid var(--brand);
+  border-left: 3px solid var(--brand);
   border-radius: var(--radius);
-  box-shadow: 0 4px 24px rgba(8, 40, 48, 0.06);
 }
 
 .quote-block::before {
@@ -621,9 +698,9 @@ body {
   top: 0.05em;
   left: 0.28em;
   font-family: var(--font-heading);
-  font-size: clamp(3.25rem, 7vw, 5rem);
+  font-size: var(--fs-display);
   line-height: 1;
-  color: color-mix(in srgb, var(--brand) 28%, transparent);
+  color: color-mix(in srgb, var(--brand) 18%, transparent);
   pointer-events: none;
 }
 
@@ -634,138 +711,170 @@ body {
   padding: 0;
   border: none;
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 600;
+  font-size: var(--fs-quote);
+  font-weight: 400;
   color: var(--ink);
   line-height: 1.5;
-  letter-spacing: -0.01em;
-  max-width: 46ch;
+  letter-spacing: 0;
 }
 
 .quote-block cite {
   position: relative;
   z-index: 1;
   display: block;
-  margin-top: 1.15rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
   font-family: var(--font-body);
-  font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+  font-size: var(--fs-micro);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.4;
-  max-width: 56ch;
+  max-width: 60ch;
 }
 
-/* ── Aim ────────────────────────────────────────────────────────── */
+/* ── Emphasis (a): the aim ───────────────────────────────────────
+   The single most important line in the deck, so it gets the only treatment
+   of its kind: a tinted canvas, centred, titleless in all but name, and set
+   in Roboto rather than the Garamond used for slide titles. Emphasis comes
+   from removing furniture, not adding it. */
+
+.slide--aim {
+  background: linear-gradient(
+    160deg,
+    var(--surface) 0%,
+    color-mix(in srgb, var(--brand) 10%, var(--surface)) 100%
+  );
+}
 
 .slide-inner--aim {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
   min-height: 100%;
-  max-width: 920px;
 }
 
-.slide-inner--aim .statement {
-  margin-top: 0.5rem;
-  font-size: clamp(1.55rem, 3.2vw, 2.25rem);
-  max-width: 38ch;
-  padding: 1rem 0 1rem 1.25rem;
+/* "Aim" demotes from Garamond slide title to a quiet Roboto kicker. */
+.slide-inner--aim h2 {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+  border-bottom: none;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+}
+
+.slide-inner--aim h2::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+  margin: var(--space-3) auto 0;
+}
+
+.aim-statement {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: var(--font-body);
+  font-size: var(--fs-aim);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  max-width: 26ch;
+  text-wrap: balance;
 }
 
 /* ── Outcomes ───────────────────────────────────────────────────── */
 
-.slide-inner--outcomes {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
-  max-width: 1000px;
-}
-
-.slide-inner--outcomes-primary > h2 {
-  margin-bottom: 0.85rem;
-}
-
-.slide-inner--outcomes-primary .statement--hero {
-  align-self: stretch;
-}
-
+/* Cards on this slide mean "how the outcome is ascertained" — a follow-up
+   method. Outcomes themselves are listed, never carded (see .outcome-list). */
 .outcomes-grid {
   display: grid;
-  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
   width: 100%;
-  margin: 0.35rem 0 0;
-  align-self: stretch;
-}
-
-.outcomes-grid--2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.outcomes-grid--3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.outcomes-grid--4 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.outcomes-grid--5 {
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.outcomes-grid--5 .outcome-card:nth-child(1),
-.outcomes-grid--5 .outcome-card:nth-child(2),
-.outcomes-grid--5 .outcome-card:nth-child(3) {
-  grid-column: span 2;
-}
-
-.outcomes-grid--5 .outcome-card:nth-child(4) {
-  grid-column: 2 / span 2;
-}
-
-.outcomes-grid--5 .outcome-card:nth-child(5) {
-  grid-column: 4 / span 2;
-}
-
-.outcomes-grid--methods {
-  max-width: none;
-  margin-top: 0.15rem;
 }
 
 @media (max-width: 768px) {
-  .outcomes-grid--2,
-  .outcomes-grid--3,
-  .outcomes-grid--4,
-  .outcomes-grid--5 {
+  .outcomes-grid {
     grid-template-columns: 1fr;
-  }
-
-  .outcomes-grid--5 .outcome-card:nth-child(n) {
-    grid-column: auto;
   }
 }
 
 .outcome-card {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  padding: 1.15rem 1.2rem 1.05rem;
+  gap: var(--space-2);
+  padding: clamp(1.1rem, 2.2vw, 1.4rem);
+}
+
+/* ── Outcome list (secondary outcomes) ──────────────────────────── */
+
+.outcome-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  border-top: 1px solid var(--border);
+}
+
+.outcome-list__row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.6fr) minmax(0, 1.25fr) minmax(0, 1.4fr);
+  gap: var(--space-1) clamp(1rem, 2.5vw, 2rem);
+  align-items: baseline;
+  padding: clamp(0.7rem, 1.7vh, 1.15rem) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.outcome-list__category {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.outcome-list__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.outcome-list__detail {
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .outcome-list__row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
 }
 
 .outcome-card__title {
-  font-family: var(--font-heading);
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
+  font-weight: 500;
   color: var(--ink);
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .outcome-card__detail {
-  font-size: 0.86em;
+  font-size: var(--fs-body-sm);
   color: var(--text-muted);
   line-height: 1.4;
 }
@@ -777,7 +886,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  max-width: 1100px;
+  max-width: var(--measure-standard);
 }
 
 .bullet-list {
@@ -833,12 +942,13 @@ body {
 }
 
 .paper-list__n {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   color: var(--brand-deep);
-  line-height: 1.2;
-  padding-top: 0.05rem;
+  line-height: 1.3;
+  padding-top: 0.1rem;
 }
 
 .paper-list__body {
@@ -850,17 +960,17 @@ body {
 
 .paper-list__primary {
   margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
+  font-weight: 500;
   color: var(--ink);
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .paper-list__secondary {
   margin: 0;
   font-family: var(--font-body);
-  font-size: clamp(0.82rem, 1.45vw, 0.95rem);
+  font-size: var(--fs-body-sm);
   color: var(--text-muted);
   line-height: 1.45;
 }
@@ -874,27 +984,76 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  max-width: 1100px;
+  max-width: var(--measure-standard);
 }
 
-.cite-line {
-  margin-top: 1.5em;
-  font-size: 0.85em;
-  color: var(--text-muted);
-}
+/* ── Trial arms (control vs intervention) ───────────────────────── */
 
-/* ── Two column ─────────────────────────────────────────────────── */
-
-.two-col {
+.arms-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.arm-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: clamp(1.1rem, 2.2vw, 1.5rem);
+}
+
+/* Arm colours match the stepped-wedge legend on the design slides. */
+.arm-card--control {
+  border-left-color: var(--accent);
+}
+
+.arm-card--intervention {
+  border-left-color: var(--intervention);
+}
+
+.arm-card__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+/* Fixed figure box so both body paragraphs start on the same line despite the
+   two illustrations having different aspect ratios. */
+.arm-card__figure {
+  margin: 0;
+  height: clamp(8rem, 24vh, 14rem);
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.arm-card__figure img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(8, 40, 48, 0.1));
+}
+
+.arm-card__text {
+  margin: auto 0 0;
+  font-size: var(--fs-body);
+  color: var(--text);
+  line-height: 1.45;
 }
 
 @media (max-width: 768px) {
-  .two-col {
+  .arms-grid {
     grid-template-columns: 1fr;
+  }
+
+  .arm-card__figure {
+    height: clamp(6.5rem, 18vh, 9rem);
   }
 }
 
@@ -929,16 +1088,16 @@ body {
 }
 
 .column-card__heading {
-  font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
   font-weight: 600;
   color: var(--ink);
-  margin: 0 0 0.75rem;
-  letter-spacing: 0.01em;
+  margin: 0 0 var(--space-3);
+  letter-spacing: 0;
 }
 
 .column-card .bullet-list li {
-  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  font-size: var(--fs-body);
   line-height: 1.45;
 }
 
@@ -968,21 +1127,11 @@ body {
   margin-bottom: 0.35rem;
 }
 
-.milestones-subtitle {
-  margin: 0 0 1.5rem;
-  font-family: var(--font-body);
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  color: var(--text-muted);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
 .milestones-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: clamp(1rem, 2.5vw, 1.75rem) clamp(1.25rem, 3.5vw, 2.5rem);
   width: 100%;
-  flex: 1;
   align-content: center;
 }
 
@@ -994,9 +1143,10 @@ body {
 
 .milestone-card {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
 }
 
 .milestone-card__media {
@@ -1027,20 +1177,24 @@ body {
   min-width: 0;
 }
 
-.milestone-card__year {
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.9vw, 1.2rem);
-  font-weight: 600;
-  color: var(--brand-deep);
-  line-height: 1.2;
-}
-
+/* Label leads, year follows as meta: the milestone's finding is the point,
+   not the date. */
 .milestone-card__label {
   font-family: var(--font-body);
-  font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+  font-size: var(--fs-card-title);
   font-weight: 500;
   color: var(--ink);
-  line-height: 1.35;
+  line-height: 1.3;
+}
+
+.milestone-card__year {
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.2;
 }
 
 .slide-inner--milestones .slide-references {
@@ -1050,23 +1204,12 @@ body {
 
 /* ── Design / stepped wedge ─────────────────────────────────────── */
 
-.slide-inner--design {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
-  max-width: 1180px;
-}
-
-.slide-inner--design > h2 {
-  margin-bottom: 1.15rem;
-}
-
 .design-layout {
   display: grid;
   grid-template-columns: minmax(16rem, 0.95fr) minmax(0, 1.35fr);
   gap: clamp(1.5rem, 3.5vw, 2.75rem);
   align-items: center;
+  width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -1079,27 +1222,15 @@ body {
 .design-copy {
   display: flex;
   flex-direction: column;
-  gap: 1.35rem;
+  gap: var(--space-5);
   min-width: 0;
-}
-
-.design-lead {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.3;
-  letter-spacing: 0.01em;
-  padding: 0.85rem 0 0.85rem 1rem;
-  border-left: 3px solid var(--accent);
 }
 
 .design-metrics {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem 1.25rem;
-  padding: 0.15rem 0 0.15rem 1rem;
+  gap: var(--space-4) var(--space-5);
+  padding: 0;
 }
 
 .design-metric {
@@ -1110,34 +1241,16 @@ body {
 }
 
 .design-metric .stat-value {
-  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  font-size: var(--fs-figure-sm);
 }
 
 .design-metric .stat-label {
-  font-size: clamp(0.82rem, 1.5vw, 0.95rem);
-}
-
-.design-note {
-  margin: 0;
-  padding: 0.85rem 0 0 1rem;
-  border-top: 1px solid var(--border);
-  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-  color: var(--text-muted);
-  line-height: 1.45;
-  max-width: 36ch;
-}
-
-.design-copy .design-bullets {
-  padding-left: 0;
-}
-
-.design-copy .design-bullets li {
-  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
-  line-height: 1.4;
+  font-size: var(--fs-body-sm);
 }
 
 .design-bullets li {
-  font-size: 0.95em;
+  font-size: var(--fs-body);
+  line-height: 1.4;
   transition: opacity 0.25s var(--transition-smooth), color 0.25s;
 }
 
@@ -1153,20 +1266,18 @@ body {
 .design-figure {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: var(--space-3);
   min-width: 0;
 }
 
+/* Legend above the chart, matching the design-animation slide, so the key is
+   read before the figure is scanned. */
 .design-figure .wedge-legend-mount {
-  order: 1;
-}
-
-.design-figure .wedge-container {
-  order: 0;
+  order: -1;
 }
 
 .design-figure .wedge-legend {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .wedge-panel {
@@ -1301,7 +1412,7 @@ body {
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  max-width: 1280px;
+  max-width: var(--measure-wide);
 }
 
 .slide-inner--design-animation > h2 {
@@ -1512,7 +1623,7 @@ body {
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  max-width: 1280px;
+  max-width: var(--measure-wide);
 }
 
 .slide-inner--sequences > h2 {
@@ -1722,7 +1833,11 @@ body {
 }
 
 .forest-container {
-  margin-top: 0.35rem;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--surface-muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1731,24 +1846,35 @@ body {
 }
 
 .forest-panel {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  margin-top: 0.35rem;
 }
 
-.forest-subtitle {
-  margin: 0.15rem 0 0;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  max-width: 42rem;
-}
-
+/* The chart claims the height left over after the heading and chips, rather
+   than a fixed max-height that pushed the axis behind the controls pill. */
 .slide-inner--forest {
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 0;
+}
+
+.slide-inner--forest > h2 {
+  flex: 0 0 auto;
+  margin-bottom: var(--space-3);
+}
+
+.slide-inner--forest > #forest-mount {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.forest-controls {
+  flex: 0 0 auto;
 }
 
 .forest-controls {
@@ -1843,12 +1969,6 @@ body {
   fill: var(--brand-darker, var(--brand));
 }
 
-.forest-hint {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
 .forest-panel.is-revealing .forest-row.is-excluded {
   opacity: 0;
   pointer-events: none;
@@ -1872,21 +1992,26 @@ body {
   }
 }
 
+/* Reserve the line so nothing shifts when the pooled estimate appears. */
 .forest-footer {
-  margin-top: 0.15rem;
+  margin: 0;
+  padding-top: 0;
+  border-top: none;
+  min-height: 1.5em;
+  flex: 0 0 auto;
 }
 
 .forest-plot-chart {
   width: 100%;
-  height: auto;
-  max-height: min(64vh, 560px);
+  height: 100%;
+  max-height: 100%;
 }
 
 .forest-plot-chart .forest-header,
 .forest-plot-chart .forest-study--pooled,
 .forest-plot-chart .forest-effect--pooled {
   font-family: var(--font-body);
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-weight: 600;
   fill: var(--ink);
 }
@@ -1899,7 +2024,7 @@ body {
 .forest-plot-chart .axis-label,
 .forest-plot-chart .forest-empty {
   font-family: var(--font-body);
-  font-size: 8.5px;
+  font-size: 9.5px;
   fill: var(--text);
 }
 
@@ -1963,12 +2088,13 @@ body {
 }
 
 .implication-card img {
-  max-height: 180px;
+  max-height: clamp(9rem, 22vh, 13.5rem);
+  width: auto;
   object-fit: contain;
 }
 
 .implication-card p {
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-size: var(--fs-body);
   line-height: 1.5;
 }
 
@@ -1976,28 +2102,41 @@ body {
   color: var(--ink);
 }
 
-/* ── Participating clusters map ─────────────────────────────────── */
+/* ── Current status + participating clusters map ────────────────── */
 
-.slide-inner--sites-map {
+.slide-inner--status-map {
+  /* Leaflet needs a definite height; keep the map clear of the #controls pill. */
+  --map-height: clamp(13rem, 46vh, 26rem);
+}
+
+.status-map-layout {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+  width: 100%;
+}
+
+.status-map-figure {
+  margin: 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  max-width: 1100px;
-  min-height: 100%;
+  gap: var(--space-2);
 }
 
-.sites-map-header {
-  margin-bottom: 0.65rem;
+.status-map-layout .stats-grid {
+  grid-template-columns: 1fr;
 }
 
-.sites-map-header h2 {
-  margin-bottom: 0.2em;
-}
+@media (max-width: 900px) {
+  .status-map-layout {
+    grid-template-columns: 1fr;
+  }
 
-.sites-map-subtitle {
-  font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  color: var(--text-muted);
-  margin: 0;
+  .slide-inner--status-map {
+    --map-height: clamp(12rem, 38vh, 18rem);
+  }
 }
 
 .sites-legend {
@@ -2008,11 +2147,15 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.sites-legend {
+  margin-bottom: 0;
+}
+
 .sites-legend__item {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: var(--fs-micro);
   color: var(--text);
   font-weight: 500;
 }
@@ -2036,18 +2179,12 @@ body {
   content: "· ";
 }
 
-.sites-legend__total {
-  margin-left: auto;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-}
-
+/* Inactive slides are opacity:0, never display:none — Leaflet must be able to
+   measure its container while off screen or it renders a grey tile field. */
 .sites-map {
   width: 100%;
   height: var(--map-height);
-  flex: 1 1 auto;
-  min-height: 16rem;
+  min-height: 12rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface-map);
@@ -2078,8 +2215,8 @@ body {
   border-radius: 50%;
   background: var(--ink);
   color: var(--text-inverse);
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 24px;
   font-weight: 700;
   line-height: 1;
   border: 3px solid var(--text-inverse);
@@ -2197,8 +2334,8 @@ body {
   align-items: center;
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1.25;
@@ -2248,8 +2385,8 @@ body {
 }
 
 .team-subtitle {
-  font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
   color: var(--text-muted);
   margin: 0;
 }
@@ -2271,16 +2408,16 @@ body {
 }
 
 .team-card__label {
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.9vw, 1.2rem);
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
   font-weight: 600;
   color: var(--ink);
   margin: 0 0 0.2em;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 .team-card__location {
-  font-size: 0.85em;
+  font-size: var(--fs-body-sm);
   color: var(--text-muted);
   margin: 0 0 1em;
 }
@@ -2305,14 +2442,14 @@ body {
 }
 
 .team-member__name {
-  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  font-size: var(--fs-body-sm);
   color: var(--text);
   font-weight: 500;
   line-height: 1.35;
 }
 
 .team-member__role {
-  font-size: 0.85em;
+  font-size: var(--fs-micro);
   color: var(--brand-deep);
   line-height: 1.3;
 }
@@ -2324,13 +2461,6 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-}
-
-.funding-intro {
-  font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  color: var(--text-muted);
-  margin: -0.5em 0 1.5em;
 }
 
 .funding-grid {
@@ -2352,37 +2482,36 @@ body {
 }
 
 .funding-card__name {
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
+  font-weight: 500;
   color: var(--ink);
   margin: 0;
   line-height: 1.25;
 }
 
-.funding-note {
-  margin-top: 1.75rem;
-  padding: 0.9rem 0 0.9rem 1.15rem;
-  background: transparent;
-  border-left: 3px solid var(--accent);
-  border-radius: 0;
-  font-family: var(--font-body);
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  font-style: normal;
-  color: var(--text);
-  line-height: 1.45;
-  max-width: 48ch;
-}
-
-/* ── Footer on content slides ───────────────────────────────────── */
+/* ── Emphasis (d): footnote / source note ─────────────────────────
+   A hairline above muted text at the smallest size in the deck. This is where
+   sources, caveats and asides live — never a competing block. */
 
 .slide-footer {
-  margin-top: 1.5rem;
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
   font-family: var(--font-body);
-  font-size: 0.88em;
+  font-size: var(--fs-micro);
   color: var(--text-muted);
   line-height: 1.45;
-  max-width: 62ch;
+  max-width: 68ch;
+}
+
+/* In flex-column layouts the note pins to the bottom of the slide. */
+.slide-inner--design > .slide-footer,
+.slide-inner--funding > .slide-footer,
+.slide-inner--arms > .slide-footer,
+.slide-inner--outcome-list > .slide-footer,
+.slide-inner--evidence > .slide-footer {
+  margin-top: auto;
 }
 
 /* ── Controls ─────────────────────────────────────────────────────── */
@@ -2513,8 +2642,8 @@ body {
 }
 
 .overview-header h2 {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2640,9 +2769,9 @@ body {
 }
 
 .overview-thumb__mini-title {
-  font-family: var(--font-heading);
-  font-size: 0.58rem;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: var(--ink);
@@ -2690,9 +2819,10 @@ body {
 }
 
 .overview-thumb__num {
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 12px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   color: var(--brand-deep);
   min-width: 1.2rem;
 }
@@ -2734,6 +2864,63 @@ body.overview-open #controls {
   transform-origin: left;
   transition: width 0.4s var(--transition-smooth);
   width: 0;
+}
+
+/* ── Short viewports (720p projectors) ──────────────────────────────
+   Density relief so no slide has to scroll during a live talk. */
+
+@media (max-height: 820px) {
+  .slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--presenter):not(.slide--aim) h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .quote-block {
+    padding: clamp(1.1rem, 2.6vw, 1.8rem) clamp(1.1rem, 2.6vw, 1.8rem)
+      clamp(1rem, 2.2vw, 1.5rem) clamp(1.5rem, 3.4vw, 2.4rem);
+  }
+
+  .quote-block cite {
+    margin-top: var(--space-3);
+    padding-top: var(--space-2);
+  }
+
+  .slide-references {
+    margin-top: var(--space-4);
+    padding-top: var(--space-2);
+  }
+
+  .slide-references li {
+    padding: 0.1em 0;
+  }
+
+  .stats-grid {
+    gap: var(--space-3);
+  }
+
+  .stat-card {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .team-card {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .team-card__members li {
+    padding: 0.5em 0;
+  }
+
+  .presenter-list li {
+    padding: 0.45em 0 0.45em 1.35em;
+  }
+
+  .presenter-disclosure {
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+  }
+
+  .slide-footer {
+    margin-top: var(--space-4);
+  }
 }
 
 /* ── Reduced motion ───────────────────────────────────────────────── */
