@@ -157,17 +157,16 @@ export const slides: Slide[] = [
     stats: [
       { value: "4.3M", label: "deaths globally each year", source: "1" },
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
-      { value: "~2M", label: "deaths from poor-quality care", source: "3" },
-      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "4" },
+      { value: "2.1M", label: "quality-related trauma deaths in LMICs", source: "3" },
+      { value: "#1", label: "cause of lost healthy life, ages 10–24 and 25–49", source: "1" },
     ],
     references: [
-      { id: "1", text: "Naghavi M et al. Lancet. 2025." },
+      { id: "1", text: "GBD 2019 Diseases and Injuries Collaborators. Lancet. 2020;396:1204–1222." },
       { id: "2", text: "Peterson C et al. MMWR Morb Mortal Wkly Rep. 2021;70:1655–1659." },
       {
         id: "3",
         text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm. 2018.",
       },
-      { id: "4", text: "GBD 2019 Diseases and Injuries Collaborators. Lancet. 2020;396:1204–1222." },
     ],
   },
   {
@@ -211,10 +210,10 @@ export const slides: Slide[] = [
     evidence: [
       {
         id: "1",
-        tag: "Three randomised studies",
+        tag: "One randomised, two controlled",
         claim: "Knowledge and trauma management skills improve after the course",
         source:
-          "Ali J et al. J Trauma. 1995;38:687–691; World J Surg. 1996;20:1121–1126; J Trauma. 1999;46:80–86.",
+          "Ali J et al. World J Surg. 1996;20:1121–1125 (randomised); J Trauma. 1995;38:687–691; J Trauma. 1994;36:695–702.",
       },
       {
         id: "2",
@@ -293,14 +292,14 @@ export const slides: Slide[] = [
         id: "4",
         tag: "7 studies",
         claim: "No significant association with lower mortality, OR 0.68 (95% CI 0.39–1.20)",
-        source: "Putra AB et al. New Ropanasuri J Surg. 2023;8:2.",
+        source: "Putra AB et al. New Ropanasuri J Surg. 2023;8(2).",
       },
       {
         id: "5",
         tag: "17 studies, all observational",
         claim:
           "Lower mortality with trauma life support training, OR 0.60 (95% CI 0.48–0.75)",
-        source: "Nakhid Z et al. Scand J Trauma Resusc Emerg Med. 2026.",
+        source: "Nakhid Z et al. Scand J Trauma Resusc Emerg Med. 2026 (in press).",
       },
     ],
     footer:
@@ -311,12 +310,12 @@ export const slides: Slide[] = [
     layout: "forest",
     title: "Updated systematic review",
     source:
-      "Nakhid et al. 2026 (17 observational studies), plus Lule et al. 2026 — a cluster randomised trial of RTTDC, not ATLS®.",
+      "Nakhid et al. 2026, in press (17 observational studies), plus Lule et al. 2026 — a cluster randomised trial of RTTDC, not ATLS®.",
   },
   {
     id: "hook",
     layout: "provocation",
-    body: "Thirty years of ATLS® in Sweden. No randomised trial has tested whether it saves lives.",
+    body: "Thirty years of Swedish ATLS® prove we can teach at scale. No randomised trial has tested whether ATLS® saves lives.",
   },
   {
     id: "section-trial",
@@ -497,7 +496,7 @@ export const slides: Slide[] = [
       { value: "10 of 30", label: "hospitals randomised" },
       { value: "~2,000", label: "patients included" },
       { value: "Batch 1", label: "complete (Feb 2025–Mar 2026)" },
-      { value: "Batch 3", label: "starting" },
+      { value: "Batch 2", label: "ongoing since Dec 2025" },
     ],
   },
   {
@@ -550,7 +549,7 @@ export const slides: Slide[] = [
       { name: "Region Stockholm" },
       { name: "Swedish Society of Medicine" },
     ],
-    footer: "Additional funding is needed to complete the trial through 2028.",
+    footer: "Additional funding is needed to complete the trial through 2028–2029.",
   },
   {
     id: "closing",

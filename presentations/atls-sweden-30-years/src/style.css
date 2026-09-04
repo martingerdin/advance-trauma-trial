@@ -207,13 +207,20 @@ body {
   margin-block: auto;
 }
 
-/* The primary outcome's lead and its cards travel together. */
+/* The primary outcome's lead and its cards travel together, so the auto space
+   goes above the lead and below the grid — one auto margin would top-align. */
 .slide-inner--outcomes > .lead {
-  margin-block: auto var(--space-5);
+  margin-top: auto;
+  margin-bottom: var(--space-5);
+  /* The primary outcome is the headline of a trial talk: bigger than a lead,
+     still clearly below the aim, which stays the largest line in the deck. */
+  font-size: var(--fs-figure);
+  max-width: 30ch;
 }
 
 .slide-inner--outcomes > .outcomes-grid {
-  margin-block: 0 auto;
+  margin-top: 0;
+  margin-bottom: auto;
 }
 
 .slide-inner--aim,
@@ -531,8 +538,10 @@ body {
   flex-shrink: 0;
 }
 
-/* A lead or source line directly under the heading tightens the pair. */
-.slide-inner > h2 + .lead,
+/* A lead or source line directly under the heading tightens the pair — except
+   on the outcomes slide, where the lead is the centred hero rather than a
+   subtitle and needs its auto margin (see below). */
+.slide-inner:not(.slide-inner--outcomes) > h2 + .lead,
 .slide-inner > h2 + .slide-source {
   margin-top: calc(-1 * var(--space-5) + var(--space-3));
 }

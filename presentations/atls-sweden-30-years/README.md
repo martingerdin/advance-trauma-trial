@@ -35,7 +35,7 @@ Image assets in `public/` are copied to `dist/` during build:
 - `training-illustration.png`
 - `patient-review-before-illustration.png`
 - `patient-review-after-illustration.png`
-- `needs-to-change-illustration.png`
+- `needs-to-change-illustration.png` — the implications slide's "training needs to change" card
 - `milestones/` — the four `previous-work` portraits
 - `advancetrauma-qr.svg` — closing-slide QR code
 
@@ -145,4 +145,4 @@ slide carries a source line naming Lule et al. 2026 as the added cluster randomi
 of RTTDC, not ATLS®. Selecting a single study prints that study's estimate rather than
 describing it as a random-effects pooled result.
 
-Study-level counts come from Nakhid et al. 2026 (17 observational studies in the mortality meta-analysis, including non-ATLS programmes), plus Lule et al. 2026 (cluster RCT of RTTDC; doi:10.2196/82591). When every study is included, the plot shows the R-exported REML pooled odds ratio (same pipeline as the protocol export). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).
+Study-level counts come from Nakhid et al. 2026 (17 observational studies in the mortality meta-analysis, including non-ATLS programmes), plus Lule et al. 2026 (cluster RCT of RTTDC). When every study is included, the plot shows the R-exported REML pooled odds ratio (same pipeline as the protocol export). Subsets are re-pooled in the browser with inverse-variance DerSimonian–Laird random effects (`src/pool-meta.ts`).

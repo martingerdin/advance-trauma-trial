@@ -39,6 +39,11 @@ function formatRr(value: number): string {
   return value.toFixed(2);
 }
 
+/** The R export uses US spelling; the deck is British throughout. */
+function britishSpelling(label: string): string {
+  return label.replace(/\bFavors\b/g, "Favours");
+}
+
 /** Compact design labels for the forest-plot column. */
 function shortDesign(design: string): string {
   if (/cluster\s+randomi/i.test(design)) return "Cluster RCT";
@@ -65,18 +70,21 @@ function diamondPoints(
 
 const IDLE_HINT = "Click Play timeline to start";
 
-function footerText(pooled: PooledEstimate, measure: string): string {
+function footerText(pooled: PooledEstimate, measure: string, isFullSet: boolean): string {
   const interval = `(95% CI ${pooled.ciFormatted.replace("; ", "–")})`;
   // A single study is not a pooled estimate: naming a model or quoting I² for
   // k = 1 invites a fair objection from any methodologist in the room.
   if (pooled.numberOfStudies < 2) {
     return `${measure} ${pooled.rrFormatted} ${interval}; 1 study`;
   }
-  return (
+  const estimate =
     `Random-effects ${measure} ${pooled.rrFormatted} ${interval}; ` +
     `I² ${Math.round(pooled.i2Rounded * 100)}%; ` +
-    `${pooled.numberOfStudies} studies`
-  );
+    `${pooled.numberOfStudies} studies`;
+  // Only the full set is the exported REML estimate from the review pipeline.
+  // Anything else is a subset pooled in the browser, and must not be read as
+  // a published result.
+  return isFullSet ? estimate : `Subset re-pooled live, not a published estimate — ${estimate}`;
 }
 
 /** Compact filters for live presentation use. */
@@ -362,6 +370,9 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     });
     effect.textContent = `${formatRr(study.rr)} (${formatRr(study.ciLower)}–${formatRr(study.ciUpper)})`;
 
+    const clippedHigh = Math.log(study.ciUpper) > xMax;
+    const clippedLow = Math.log(study.ciLower) < xMin;
+
     row.append(
       hit,
       name,
@@ -387,6 +398,20 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       }),
       effect
     );
+
+    for (const [clipped, tip, dir] of [
+      [clippedHigh, forestX + FOREST_WIDTH, 1],
+      [clippedLow, forestX, -1],
+    ] as const) {
+      if (!clipped) continue;
+      row.appendChild(
+        svgEl("polygon", {
+          class: "forest-clip-arrow",
+          points: `${tip},${y} ${tip - dir * 4},${y - 2.6} ${tip - dir * 4},${y + 2.6}`,
+          fill: study.color,
+        })
+      );
+    }
 
     const toggle = (e: Event) => {
       e.stopPropagation();
@@ -480,14 +505,14 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
   }
 
   const leftLab = svgEl("text", { x: forestX, y: axisY + 26, class: "axis-label" });
-  leftLab.textContent = data.labels.left;
+  leftLab.textContent = britishSpelling(data.labels.left);
   const rightLab = svgEl("text", {
     x: forestX + FOREST_WIDTH,
     y: axisY + 26,
     class: "axis-label",
     "text-anchor": "end",
   });
-  rightLab.textContent = data.labels.right;
+  rightLab.textContent = britishSpelling(data.labels.right);
   svg.append(leftLab, rightLab);
 
   const chartWrap = document.createElement("div");
@@ -623,7 +648,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       void diamond.getBoundingClientRect();
       diamond.classList.add("is-updating");
       pooledEffect.textContent = `${pooled.rrFormatted} (${pooled.ciFormatted.replace("; ", "–")})`;
-      footer.textContent = footerText(pooled, data.measure);
+      footer.textContent = footerText(pooled, data.measure, sameStudySet(included, allKeys));
       svg.setAttribute(
         "aria-label",
         `Forest plot of trauma life support training effect on mortality. Pooled odds ratio ${pooled.rrFormatted}, 95% CI ${pooled.ciFormatted}, ${pooled.numberOfStudies} studies`

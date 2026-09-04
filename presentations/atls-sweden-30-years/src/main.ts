@@ -136,7 +136,7 @@ function renderSlide(slide: Slide): HTMLElement {
 
     case "stats":
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--stats">
           <h2 data-animate>${slide.title}</h2>
           <div class="stats-layout ${slide.image ? "stats-layout--with-image" : ""}">
             <div class="stats-grid" data-animate-group>
@@ -506,7 +506,7 @@ function renderSlide(slide: Slide): HTMLElement {
               <p>If ATLS<sup>®</sup> <strong>improves</strong> patient outcomes, it should be further promoted.</p>
             </div>
             <div class="panel implication-card implication-card--negative" data-animate>
-              <figure><img src="./training-illustration.png" alt="Training needs to evolve" /></figure>
+              <figure><img src="./needs-to-change-illustration.png" alt="A trauma course being taught, with a question mark on the board" /></figure>
               <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training needs to change.</p>
             </div>
           </div>
