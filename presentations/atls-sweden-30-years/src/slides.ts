@@ -346,31 +346,49 @@ export const slides: Slide[] = [
     milestones: [
       {
         year: "2013",
-        label: "Multicentre research",
+        label: "Multicentre research — TITCO Consortium",
         image: "./milestones/multicentre.png",
         imageAlt: "Map of India with hospital sites",
-        cite: "12",
+        cite: "1",
       },
       {
         year: "2022–2023",
-        label: "Pilot and feasibility study",
+        label: "Pilot and feasibility — Gerdin Wärnberg et al. BMJ Open 2025",
         image: "./milestones/pilot.png",
         imageAlt: "Clinicians discussing care in a hospital room",
-        cite: "14",
+        cite: "2",
       },
       {
         year: "2022–2023",
-        label: "Community consultations",
+        label: "Community consultations — David & Gerdin Wärnberg 2024",
         image: "./milestones/consultations.png",
         imageAlt: "Patient bedside discussion about ATLS",
-        cite: "13",
+        cite: "3",
       },
       {
         year: "2022–2026",
-        label: "Systematic review",
+        label: "Systematic review — Nakhid et al. 2026",
         image: "./milestones/systematic-review.png",
         imageAlt: "Nakhid et al. systematic review article in press",
-        cite: "5",
+        cite: "4",
+      },
+    ],
+    references: [
+      {
+        id: "1",
+        text: "TITCO Consortium. Towards Improved Trauma Care Outcomes in India. www.titco.org.",
+      },
+      {
+        id: "2",
+        text: "Gerdin Wärnberg M et al. Feasibility of a cluster randomised trial on the effect of trauma life support training: a pilot study in India. BMJ Open. 2025;15:e099020.",
+      },
+      {
+        id: "3",
+        text: "David S, Gerdin Wärnberg M, TERN Collaborators. Patient-reported outcomes relevant to post-discharge trauma patients in urban India. medRxiv. 2024.",
+      },
+      {
+        id: "4",
+        text: "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026.",
       },
     ],
   },
