@@ -194,6 +194,13 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "atls-providers",
+    layout: "quote",
+    title: "Impact on clinicians' knowledge and skills",
+    body: "There is abundant evidence that ATLS® training improves knowledge base, psychomotor skills, application of skills in resuscitation, and the confidence and performance of clinicians. The organizational and procedural skills taught in the course are retained by course participants for at least 6 years, which may be the most significant impact.",
+    cite: ATLS_MANUAL_CITE,
+  },
+  {
     id: "atls-provider-evidence",
     layout: "evidence",
     title: "Evidence on providers",
