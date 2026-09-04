@@ -177,7 +177,7 @@ export const slides: Slide[] = [
     id: "atls-purpose",
     layout: "quote",
     title: "Purpose and content",
-    body: "Emphasizes the rapid initial assessment and primary treatment of injured patients, starting at the time of injury and continuing through initial assessment, lifesaving intervention, reevaluation, stabilization, and, when needed, transfer to a trauma center.",
+    body: "The ATLS Course emphasizes rapid assessment and concurrent treatment of severely injured patients. Care starts at the time of injury and continues through initial assessment, lifesaving interventions, reevaluation, stabilization, and, when needed, transfer.",
     cite: ATLS_MANUAL_CITE,
   },
   {
