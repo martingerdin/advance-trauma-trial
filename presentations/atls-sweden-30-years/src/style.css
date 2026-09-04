@@ -1033,7 +1033,7 @@ body {
   padding: 0.85rem 1rem;
   background: var(--surface-muted);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius);
   transition: transform 0.2s var(--transition-smooth), box-shadow 0.2s;
 }
 
