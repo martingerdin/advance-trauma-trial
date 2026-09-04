@@ -4,10 +4,10 @@ import { poolRandomEffects, sameStudySet, type PooledEstimate } from "./pool-met
 
 const ROW_HEIGHT = 18;
 const LABEL_WIDTH = 150;
-const PROGRAMME_WIDTH = 48;
-const DESIGN_WIDTH = 92;
+const PROGRAMME_WIDTH = 78;
+const DESIGN_WIDTH = 100;
 const N_WIDTH = 48;
-const FOREST_WIDTH = 220;
+const FOREST_WIDTH = 200;
 const EFFECT_WIDTH = 96;
 const PAD_LEFT = 4;
 const PAD_TOP = 22;
