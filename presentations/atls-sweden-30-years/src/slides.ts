@@ -30,6 +30,15 @@ export interface OutcomeItem {
   tag?: string;
 }
 
+export interface TrialArm {
+  variant: "control" | "intervention";
+  tag: string;
+  title: string;
+  body: string;
+  image: string;
+  imageAlt: string;
+}
+
 export interface TeamMember {
   name: string;
   role: string;
@@ -58,23 +67,22 @@ export interface Slide {
     | "stats"
     | "quote"
     | "bullets"
-    | "two-col"
-    | "visual"
+    | "arms"
     | "design"
     | "design-animation"
     | "sequences"
     | "forest"
     | "implications"
     | "closing"
-    | "references"
     | "evidence"
     | "milestones"
     | "aim"
     | "outcomes"
+    | "outcome-list"
     | "presenter"
     | "team"
     | "funding"
-    | "sites-map"
+    | "status-map"
     | "columns"
     | "provocation";
   title?: string;
@@ -84,10 +92,13 @@ export interface Slide {
   bullets?: string[];
   affiliations?: string[];
   stats?: Stat[];
+  arms?: TrialArm[];
   image?: string;
   imageAlt?: string;
   imagePosition?: "left" | "right" | "background";
   cite?: string;
+  /** Attribution shown directly under the heading, above the content. */
+  source?: string;
   footer?: string;
   references?: Reference[];
   evidence?: EvidenceItem[];
@@ -104,11 +115,6 @@ const ATLS_MANUAL_CITE =
   "American College of Surgeons. Advanced Trauma Life Support® (ATLS®) Student Course Manual. 11th ed. 2025.";
 
 export const slides: Slide[] = [
-  {
-    id: "hook",
-    layout: "provocation",
-    body: "The clinical trial to determine if ATLS® improves patient outcomes",
-  },
   {
     id: "title",
     layout: "title",
@@ -133,7 +139,7 @@ export const slides: Slide[] = [
       "Department of Global Public Health, Karolinska Institutet, Stockholm",
       "Perioperative Medicine and Intensive Care, Karolinska University Hospital, Solna",
     ],
-    body: "Nothing to declare",
+    body: "Research support from the Swedish Research Council, the Laerdal Foundation, Region Stockholm, and the Swedish Society of Medicine. The trial pays for accredited ATLS® courses. No personal financial interests.",
   },
   {
     id: "section-problem",
@@ -149,28 +155,19 @@ export const slides: Slide[] = [
     imageAlt: "Illustration of a road traffic collision",
     imagePosition: "right",
     stats: [
-      { value: "~5M", label: "deaths globally each year", source: "1" },
+      { value: "4.3M", label: "deaths globally each year", source: "1" },
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
-      { value: "~2M", label: "quality-related deaths", source: "3" },
-      { value: "#1", label: "disease burden, ages 10–49", source: "4" },
+      { value: "~2M", label: "deaths from poor-quality care", source: "3" },
+      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "4" },
     ],
     references: [
-      {
-        id: "1",
-        text: "Naghavi M et al. Global burden of 292 causes of death in 204 countries and territories, 1990–2023. Lancet. 2025.",
-      },
-      {
-        id: "2",
-        text: "Peterson C et al. Economic Cost of Injury — United States, 2019. MMWR Morb Mortal Wkly Rep. 2021.",
-      },
+      { id: "1", text: "Naghavi M et al. Lancet. 2025." },
+      { id: "2", text: "Peterson C et al. MMWR Morb Mortal Wkly Rep. 2021;70:1655–1659." },
       {
         id: "3",
-        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
+        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm. 2018.",
       },
-      {
-        id: "4",
-        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries, 1990–2019. Lancet. 2020.",
-      },
+      { id: "4", text: "GBD 2019 Diseases and Injuries Collaborators. Lancet. 2020;396:1204–1222." },
     ],
   },
   {
@@ -198,87 +195,128 @@ export const slides: Slide[] = [
       { value: ">80", label: "countries worldwide" },
       { value: ">1M", label: "physicians trained" },
     ],
+    footer: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-providers",
     layout: "quote",
-    title: "Impact on clinicians' knowledge and skills",
+    title: "Impact on clinicians",
     body: "There is abundant evidence that ATLS® training improves knowledge base, psychomotor skills, application of skills in resuscitation, and the confidence and performance of clinicians. The organizational and procedural skills taught in the course are retained by course participants for at least 6 years, which may be the most significant impact.",
     cite: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-provider-evidence",
     layout: "evidence",
-    title: "Evidence on providers",
+    title: "Evidence on clinicians",
     evidence: [
       {
         id: "1",
-        claim: "Improves knowledge, psychomotor skills, confidence, and performance",
+        tag: "Three randomised studies",
+        claim: "Knowledge and trauma management skills improve after the course",
         source:
-          "Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
+          "Ali J et al. J Trauma. 1995;38:687–691; World J Surg. 1996;20:1121–1126; J Trauma. 1999;46:80–86.",
       },
       {
         id: "2",
-        claim: "Organizational and procedural skills retained ≥6 years",
+        tag: "60 physicians, six-year follow-up",
+        claim:
+          "Priorities and an organised approach hold at six years, but cognitive test scores fall within six months",
         source:
-          "Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+          "Ali J et al. Attrition of cognitive and trauma management skills after the ATLS course. J Trauma. 1996;40:860–866.",
       },
     ],
   },
   {
     id: "atls-outcomes-claim",
     layout: "quote",
-    title: "Impact on patient outcomes",
+    title: "Impact on patients",
     body: "ATLS® training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
     cite: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-patient-impact-sources",
     layout: "evidence",
-    title: "The evidence behind the claims",
+    title: "Evidence on patients",
     evidence: [
       {
         id: "1",
-        claim: "Decreased injury mortality in a developing country",
+        tag: "Before-and-after cohort",
+        claim: "Injury mortality fell after ATLS® training was introduced",
         source:
           "Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
       },
       {
         id: "2",
-        claim: "Lower per-capita injury death rates where clinicians have ATLS training",
-        source:
-          "Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
+        tag: "Ecological, US counties",
+        claim: "Counties with more ATLS-trained physicians had fewer injury deaths per capita",
+        source: "Rutledge R et al. Ann Surg. 1994;219:547–563.",
       },
       {
         id: "3",
-        claim: "Small ATLS-experienced team equivalent to a larger urban team",
-        source:
-          "Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
+        tag: "77 patients, TRISS",
+        claim: "A small trauma team matched a larger one, with more unexpected survivors than deaths",
+        source: "Deo SD, Knottenbelt JD, Peden MM. Injury. 1997;28:633–637.",
       },
       {
         id: "4",
-        claim: "More unexpected survivors than fatalities",
-        source:
-          "van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
+        tag: "63 patients",
+        claim: "Deaths in the first hour fell after ATLS®; overall mortality unchanged",
+        source: "van Olden GDJ et al. Am J Emerg Med. 2004;22:522–525.",
       },
     ],
   },
   {
     id: "atls-outcomes-reviews",
-    layout: "bullets",
+    layout: "evidence",
     title: "Systematic reviews",
-    bullets: [
-      "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
-      "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
-      "Jin et al. 2021 — certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78)",
-      "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
-      "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
+    evidence: [
+      {
+        id: "1",
+        tag: "23 studies",
+        claim: "Knowledge and skills clearly improve; strong evidence on mortality still lacking",
+        source: "Mohammad A et al. World J Surg. 2014;38:322–329.",
+      },
+      {
+        id: "2",
+        tag: "No eligible trials",
+        claim: "No controlled trial has tested whether ATLS® changes mortality or morbidity",
+        source: "Jayaraman S et al. Cochrane Database Syst Rev. 2014;(8):CD004173.",
+      },
+      {
+        id: "3",
+        tag: "Trauma-system quality improvement",
+        claim:
+          "Lower mortality with certified in-hospital trauma training in low- and middle-income countries, RR 0.71 (95% CI 0.62–0.78)",
+        source: "Jin J et al. World J Surg. 2021;45:1982–1998.",
+      },
+      {
+        id: "4",
+        tag: "7 studies",
+        claim: "No significant association with lower mortality, OR 0.68 (95% CI 0.39–1.20)",
+        source: "Putra AB et al. New Ropanasuri J Surg. 2023;8:2.",
+      },
+      {
+        id: "5",
+        tag: "17 studies, all observational",
+        claim:
+          "Lower mortality with trauma life support training, OR 0.60 (95% CI 0.48–0.75)",
+        source: "Nakhid Z et al. Scand J Trauma Resusc Emerg Med. 2026.",
+      },
     ],
+    footer:
+      "Jin et al. report risk ratios; the other reviews report odds ratios. No review has found randomised evidence that ATLS® itself changes patient outcomes.",
   },
   {
     id: "atls-forest",
     layout: "forest",
     title: "Updated systematic review",
+    source:
+      "Nakhid et al. 2026 (17 observational studies), plus Lule et al. 2026 — a cluster randomised trial of RTTDC, not ATLS®.",
+  },
+  {
+    id: "hook",
+    layout: "provocation",
+    body: "Thirty years of ATLS® in Sweden. No randomised trial has tested whether it saves lives.",
   },
   {
     id: "section-trial",
@@ -299,50 +337,30 @@ export const slides: Slide[] = [
     milestones: [
       {
         year: "2013",
-        label: "Multicentre research",
+        label: "A multicentre trauma cohort across India",
         image: "./milestones/multicentre.png",
         imageAlt: "Map of India with hospital sites",
         cite: "1",
       },
       {
         year: "2022–2023",
-        label: "Pilot and feasibility",
+        label: "A full-scale trial is feasible",
         image: "./milestones/pilot.png",
         imageAlt: "Clinicians discussing care in a hospital room",
         cite: "2",
       },
       {
         year: "2022–2023",
-        label: "Community consultations",
+        label: "Patients told us which outcomes matter",
         image: "./milestones/consultations.png",
         imageAlt: "Patient bedside discussion about ATLS",
         cite: "3",
       },
-      {
-        year: "2022–2026",
-        label: "Systematic review",
-        image: "./milestones/systematic-review.png",
-        imageAlt: "Nakhid et al. systematic review article in press",
-        cite: "4",
-      },
     ],
     references: [
-      {
-        id: "1",
-        text: "TITCO Consortium. Towards Improved Trauma Care Outcomes in India. www.titco.org.",
-      },
-      {
-        id: "2",
-        text: "Gerdin Wärnberg M et al. Feasibility of a cluster randomised trial on the effect of trauma life support training: a pilot study in India. BMJ Open. 2025;15:e099020.",
-      },
-      {
-        id: "3",
-        text: "David S, Gerdin Wärnberg M, TERN Collaborators. Patient-reported outcomes relevant to post-discharge trauma patients in urban India. medRxiv. 2024.",
-      },
-      {
-        id: "4",
-        text: "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026.",
-      },
+      { id: "1", text: "TITCO Consortium. Towards Improved Trauma Care Outcomes in India. www.titco.org" },
+      { id: "2", text: "Gerdin Wärnberg M et al. BMJ Open. 2025;15:e099020." },
+      { id: "3", text: "David S, Gerdin Wärnberg M, TERN Collaborators. medRxiv. 2024." },
     ],
   },
   {
@@ -355,9 +373,16 @@ export const slides: Slide[] = [
       { value: "30", label: "hospitals" },
       { value: "6", label: "batches" },
       { value: "5", label: "sequences" },
-      { value: "13", label: "months in trial" },
+      { value: "13", label: "months per hospital" },
     ],
-    footer: "Ongoing collaborations >10 years; ATLS® not yet standard",
+    footer:
+      "ATLS® is not yet standard care in these hospitals, which is why a randomised comparison there is still ethical. We have collaborated with them for more than ten years.",
+  },
+  {
+    id: "design-animation",
+    layout: "design-animation",
+    title: "How the trial unfolds",
+    designVariant: "main",
   },
   {
     id: "eligibility",
@@ -367,14 +392,14 @@ export const slides: Slide[] = [
       {
         heading: "Cluster",
         bullets: [
-          "Hospitals that admit or refer/transfer for admission at least 400 patients with trauma per year",
+          "Admits or refers for admission at least 400 patients with trauma per year",
           "Around-the-clock emergency surgical and orthopaedic services",
         ],
       },
       {
         heading: "Patient",
         bullets: [
-          "Adult trauma patients presenting to the emergency department of participating hospitals with a history of trauma",
+          "Adult patients presenting to the emergency department with a history of trauma",
           "Admitted, dies before admission, or transferred for admission",
           "Less than 48 hours since trauma",
         ],
@@ -383,14 +408,25 @@ export const slides: Slide[] = [
   },
   {
     id: "intervention",
-    layout: "two-col",
+    layout: "arms",
     title: "Intervention and control",
-    image: "./patient-review-before-illustration.png",
-    imageAlt: "Trauma team managing a patient in the emergency department",
-    imagePosition: "right",
-    bullets: [
-      "Control — standard care; trauma patients initially managed by 1st/2nd year residents without formal trauma training",
-      "Intervention — 2.5-day ATLS® course at accredited facility; 1–2 units per hospital trained",
+    arms: [
+      {
+        variant: "control",
+        tag: "Control",
+        title: "Standard care",
+        body: "Trauma patients are initially managed by first- and second-year residents without formal trauma training.",
+        image: "./patient-review-before-illustration.png",
+        imageAlt: "Trauma team managing a patient without formal trauma training",
+      },
+      {
+        variant: "intervention",
+        tag: "Intervention",
+        title: "ATLS® training",
+        body: "A 2.5-day ATLS® course at an accredited facility, with one to two units trained per hospital.",
+        image: "./training-illustration.png",
+        imageAlt: "ATLS course with an instructor teaching residents",
+      },
     ],
   },
   {
@@ -413,7 +449,7 @@ export const slides: Slide[] = [
   },
   {
     id: "secondary-outcomes",
-    layout: "outcomes",
+    layout: "outcome-list",
     title: "Secondary outcomes",
     outcomes: [
       {
@@ -423,7 +459,7 @@ export const slides: Slide[] = [
       },
       {
         tag: "Length of stay",
-        title: "ED, ICU, and hospital stay",
+        title: "Emergency department, intensive care, and hospital stay",
         detail: "From patient hospital records",
       },
       {
@@ -433,8 +469,8 @@ export const slides: Slide[] = [
       },
       {
         tag: "Process",
-        title: "Adherence to ATLS principles",
-        detail: "Nested staircase design",
+        title: "Adherence to ATLS® principles",
+        detail: "Measured around each transition in a nested staircase design",
       },
       {
         tag: "Patient-reported",
@@ -444,40 +480,25 @@ export const slides: Slide[] = [
     ],
   },
   {
-    id: "design-animation",
-    layout: "design-animation",
-    title: "How the trial unfolds",
-    designVariant: "main",
-  },
-  {
     id: "sample-size",
     layout: "stats",
     title: "Sample size",
     stats: [
       { value: "20→15%", label: "mortality reduction to detect" },
-      { value: "90%", label: "statistical power" },
-      { value: "30", label: "hospital clusters" },
-      { value: ">4,320", label: "patients required" },
+      { value: "~90%", label: "statistical power" },
+      { value: "≥4,320", label: "patients required" },
     ],
   },
   {
     id: "current-status",
-    layout: "stats",
+    layout: "status-map",
     title: "Current status",
-    image: "./patient-review-after-illustration.png",
-    imageAlt: "Trauma team reviewing a patient after ATLS training",
-    imagePosition: "right",
     stats: [
-      { value: "Batch 1", label: "completed (Feb 2025–Mar 2026)" },
+      { value: "10 of 30", label: "hospitals randomised" },
       { value: "~2,000", label: "patients included" },
-      { value: "Batch 2", label: "ongoing since Dec 2025" },
+      { value: "Batch 1", label: "complete (Feb 2025–Mar 2026)" },
       { value: "Batch 3", label: "starting" },
     ],
-  },
-  {
-    id: "participating-clusters",
-    layout: "sites-map",
-    title: "Hospitals currently in the trial",
   },
   {
     id: "implications",
@@ -529,13 +550,14 @@ export const slides: Slide[] = [
       { name: "Region Stockholm" },
       { name: "Swedish Society of Medicine" },
     ],
-    footer: "Additional support is needed to complete the trial through 2028–2029.",
+    footer: "Additional funding is needed to complete the trial through 2028.",
   },
   {
     id: "closing",
     layout: "closing",
     title: "Thank you",
     subtitle: "advancetrauma.info",
-    footer: "ADVANCE TRAUMA trial (NCT06321419)",
+    footer: "ADVANCE TRAUMA · NCT06321419",
+    body: "ATLS® is a registered trademark of the American College of Surgeons. This trial is independent and not endorsed by the College.",
   },
 ];

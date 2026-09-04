@@ -14,6 +14,11 @@ import { createSequencesChart, createSequencesLegend } from "./sequences";
 import { trialDesign, trialDesignStaircase } from "./figure-data";
 import { buildSitesLegendHtml, mountSitesMap, type SitesMapController } from "./sites-map";
 import { participatingSites } from "./data/sites";
+// Fonts are bundled rather than fetched from Google so the deck renders
+// identically on a venue network that blocks or throttles external requests.
+import "@fontsource-variable/eb-garamond";
+import "@fontsource-variable/roboto";
+import "@fontsource-variable/quicksand";
 import "./style.css";
 
 let currentIndex = 0;
@@ -114,19 +119,17 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--center">
           <h2 class="display" data-animate>${slide.title}</h2>
-          ${slide.subtitle ? `<p class="closing-link" data-animate><a href="https://www.advancetrauma.info">${slide.subtitle}</a></p>` : ""}
-          ${slide.footer ? `<p class="meta" data-animate>${slide.footer}</p>` : ""}
-        </div>
-      `;
-      break;
-
-    case "visual":
-      el.innerHTML = `
-        <div class="slide-inner slide-inner--visual">
-          ${slide.title ? `<h2 class="visual-title" data-animate>${slide.title}</h2>` : ""}
-          <figure class="visual-figure" data-animate>
-            <img src="${slide.image}" alt="${slide.imageAlt ?? ""}" loading="eager" />
+          <figure class="closing-qr" data-animate>
+            <img
+              src="./advancetrauma-qr.svg"
+              alt="QR code linking to advancetrauma.info"
+              width="256"
+              height="256"
+            />
           </figure>
+          ${slide.subtitle ? `<p class="closing-link" data-animate><a href="https://advancetrauma.info">${slide.subtitle}</a></p>` : ""}
+          ${slide.footer ? `<p class="meta" data-animate>${slide.footer}</p>` : ""}
+          ${slide.body ? `<p class="closing-trademark" data-animate>${slide.body}</p>` : ""}
         </div>
       `;
       break;
@@ -215,7 +218,6 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--evidence">
           <h2 data-animate>${slide.title}</h2>
-          ${slide.body ? `<p class="evidence-intro" data-animate>${slide.body}</p>` : ""}
           <ul class="paper-list" data-animate-group>
             ${(slide.evidence ?? [])
               .map(
@@ -236,47 +238,24 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "references":
-      el.innerHTML = `
-        <div class="slide-inner slide-inner--references">
-          <h2 data-animate>${slide.title}</h2>
-          ${slide.body ? `<p class="references-intro" data-animate>${slide.body}</p>` : ""}
-          ${
-            slide.references?.length
-              ? `<ol class="slide-references slide-references--standalone" data-animate>
-                  ${slide.references
-                    .map((ref) => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`)
-                    .join("")}
-                </ol>`
-              : ""
-          }
-          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
-        </div>
-      `;
-      break;
-
     case "aim":
       el.innerHTML = `
         <div class="slide-inner slide-inner--aim">
           <h2 data-animate>${slide.title}</h2>
-          <p class="statement" data-animate>${slide.body}</p>
+          <p class="aim-statement" data-animate>${slide.body}</p>
         </div>
       `;
       break;
 
-    case "outcomes": {
-      const items = slide.outcomes ?? [];
-      const isPrimary = Boolean(slide.body);
+    /* Cards here carry the follow-up method for the primary outcome. Outcomes
+       themselves are listed by the outcome-list layout, never carded. */
+    case "outcomes":
       el.innerHTML = `
-        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : ""}">
+        <div class="slide-inner slide-inner--outcomes">
           <h2 data-animate>${slide.title}</h2>
-          ${
-            slide.body
-              ? `<p class="statement statement--hero" data-animate>${slide.body}</p>`
-              : ""
-          }
-          <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
-            ${items
+          ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
+          <div class="outcomes-grid" data-animate-group>
+            ${(slide.outcomes ?? [])
               .map(
                 (item) => `
               <article class="panel outcome-card" data-animate>
@@ -291,43 +270,48 @@ function renderSlide(slide: Slide): HTMLElement {
         </div>
       `;
       break;
-    }
 
-    case "two-col":
+    case "outcome-list":
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--outcome-list">
           <h2 data-animate>${slide.title}</h2>
-          <div class="two-col">
-            <div class="two-col__content">
-              ${
-                slide.stats
-                  ? `<div class="inline-stats" data-animate-group>
-                      ${slide.stats
-                        .map(
-                          (s) => `
-                        <div class="inline-stat" data-animate>
-                          <span class="stat-value">${s.value}</span>
-                          <span class="stat-label">${s.label}</span>
-                        </div>`
-                        )
-                        .join("")}
-                    </div>`
-                  : ""
-              }
-              ${
-                slide.bullets
-                  ? `<ul class="bullet-list" data-animate-group>
-                      ${slide.bullets.map((b) => `<li data-animate>${b}</li>`).join("")}
-                    </ul>`
-                  : ""
-              }
-            </div>
-            ${
-              slide.image
-                ? `<figure class="slide-figure" data-animate><img src="${slide.image}" alt="${slide.imageAlt ?? ""}" /></figure>`
-                : ""
-            }
+          <ul class="outcome-list" data-animate-group>
+            ${(slide.outcomes ?? [])
+              .map(
+                (item) => `
+              <li class="outcome-list__row" data-animate>
+                ${item.tag ? `<span class="outcome-list__category">${item.tag}</span>` : ""}
+                <span class="outcome-list__title">${item.title}</span>
+                ${item.detail ? `<span class="outcome-list__detail">${item.detail}</span>` : ""}
+              </li>`
+              )
+              .join("")}
+          </ul>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "arms":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--arms">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="arms-grid" data-animate-group>
+            ${(slide.arms ?? [])
+              .map(
+                (arm) => `
+              <article class="panel arm-card arm-card--${arm.variant}" data-animate>
+                <span class="panel-tag">${arm.tag}</span>
+                <h3 class="arm-card__title">${arm.title}</h3>
+                <figure class="arm-card__figure">
+                  <img src="${arm.image}" alt="${arm.imageAlt}" />
+                </figure>
+                <p class="arm-card__text">${arm.body}</p>
+              </article>`
+              )
+              .join("")}
           </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
@@ -358,7 +342,6 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--milestones">
           <h2 data-animate>${slide.title}</h2>
-          ${slide.subtitle ? `<p class="milestones-subtitle" data-animate>${slide.subtitle}</p>` : ""}
           <div class="milestones-grid" data-animate-group>
             ${(slide.milestones ?? [])
               .map(
@@ -372,12 +355,12 @@ function renderSlide(slide: Slide): HTMLElement {
                     : ""
                 }
                 <div class="milestone-card__body">
-                  <p class="milestone-card__year">${m.year}${
+                  <p class="milestone-card__label">${m.label}${
                     m.cite
                       ? `<sup class="cite-ref" aria-label="Reference ${m.cite}">${m.cite}</sup>`
                       : ""
                   }</p>
-                  <p class="milestone-card__label">${m.label}</p>
+                  <p class="milestone-card__year">${m.year}</p>
                 </div>
               </article>`
               )
@@ -402,11 +385,7 @@ function renderSlide(slide: Slide): HTMLElement {
           <h2 data-animate>${slide.title}</h2>
           <div class="design-layout">
             <div class="design-copy" data-animate-group>
-              ${
-                slide.body
-                  ? `<p class="design-lead" data-animate>${slide.body}</p>`
-                  : ""
-              }
+              ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
               ${
                 slide.stats?.length
                   ? `<div class="design-metrics" data-animate>
@@ -429,17 +408,13 @@ function renderSlide(slide: Slide): HTMLElement {
                     </ul>`
                   : ""
               }
-              ${
-                slide.footer
-                  ? `<p class="design-note" data-animate>${slide.footer}</p>`
-                  : ""
-              }
             </div>
             <div class="design-figure" data-animate>
               <div class="wedge-legend-mount"></div>
-              <div class="wedge-container" id="wedge-mount"></div>
+              <div class="wedge-container" data-wedge-mount></div>
             </div>
           </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
@@ -464,7 +439,7 @@ function renderSlide(slide: Slide): HTMLElement {
             <p class="wedge-caption" aria-live="polite"></p>
             <div class="wedge-legend-mount"></div>
             <div class="wedge-chart-stack">
-              <div class="wedge-container wedge-container--animation" id="wedge-mount">
+              <div class="wedge-container wedge-container--animation" data-wedge-mount>
                 <div class="wedge-phase-callouts" hidden aria-hidden="true">
                   <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
                     <figure class="wedge-phase__figure">
@@ -511,16 +486,15 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "forest": {
+    case "forest":
       el.innerHTML = `
         <div class="slide-inner slide-inner--forest">
           <h2 data-animate>${slide.title}</h2>
-          ${slide.subtitle ? `<p class="forest-subtitle" data-animate>${slide.subtitle}</p>` : ""}
+          ${slide.source ? `<p class="slide-source" data-animate>${slide.source}</p>` : ""}
           <div id="forest-mount"></div>
         </div>
       `;
       break;
-    }
 
     case "implications":
       el.innerHTML = `
@@ -540,18 +514,34 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "sites-map":
+    case "status-map":
       el.innerHTML = `
-        <div class="slide-inner slide-inner--sites-map">
-          <header class="sites-map-header" data-animate>
-            <h2>${slide.title}</h2>
-            ${slide.subtitle ? `<p class="sites-map-subtitle">${slide.subtitle}</p>` : ""}
-          </header>
-          <div class="sites-legend" data-animate aria-label="Batch legend">
-            ${buildSitesLegendHtml()}
-            <span class="sites-legend__total">${participatingSites.length} hospitals</span>
+        <div class="slide-inner slide-inner--status-map">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="status-map-layout">
+            <div class="stats-grid" data-animate-group>
+              ${(slide.stats ?? [])
+                .map(
+                  (s) => `
+                <div class="panel stat-card" data-animate>
+                  <span class="stat-value">${s.value}</span>
+                  <span class="stat-label">${s.label}</span>
+                </div>`
+                )
+                .join("")}
+            </div>
+            <figure class="status-map-figure" data-animate>
+              <div
+                class="sites-map"
+                data-map
+                role="region"
+                aria-label="Map of the ${participatingSites.length} hospitals participating in the trial"
+              ></div>
+              <figcaption class="sites-legend">
+                ${buildSitesLegendHtml()}
+              </figcaption>
+            </figure>
           </div>
-          <div class="sites-map" data-map role="region" aria-label="Participating sites map"></div>
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
@@ -624,7 +614,7 @@ function mountSlides(): void {
     slidesEl.appendChild(el);
 
     if (slide.layout === "design" || slide.layout === "design-animation") {
-      const mount = el.querySelector("#wedge-mount");
+      const mount = el.querySelector("[data-wedge-mount]");
       if (mount) {
         if (slide.layout === "design") {
           const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
@@ -649,14 +639,14 @@ function mountSlides(): void {
         forestControllers.set(el, forest);
       }
     }
-    if (slide.layout === "sites-map") {
-      const mount = el.querySelector<HTMLElement>("[data-map]");
-      if (mount) {
-        void mountSitesMap(mount).then((controller) => {
-          sitesMapControllers.set(el, controller);
-          if (el.classList.contains("is-active")) controller.refresh();
-        });
-      }
+    // Keyed off the DOM, not the layout name, so any slide carrying a map works.
+    const mapMount = el.querySelector<HTMLElement>("[data-map]");
+    if (mapMount) {
+      void mountSitesMap(mapMount).then((controller) => {
+        sitesMapControllers.set(el, controller);
+        // Covers a deep link landing on the map slide before Leaflet resolves.
+        if (el.classList.contains("is-active")) controller.refresh();
+      });
     }
   });
 }
@@ -688,7 +678,10 @@ function thumbPreviewInner(slide: Slide): string {
     slide.layout === "stats" ||
     slide.layout === "evidence" ||
     slide.layout === "milestones" ||
-    slide.layout === "columns"
+    slide.layout === "columns" ||
+    slide.layout === "arms" ||
+    slide.layout === "outcome-list" ||
+    slide.layout === "status-map"
       ? `<div class="overview-thumb__chips" aria-hidden="true">
           <span class="overview-thumb__chip"></span>
           <span class="overview-thumb__chip overview-thumb__chip--accent"></span>
@@ -892,9 +885,9 @@ function animateSlideIn(slideEl: HTMLElement): void {
     forestControllers.get(slideEl)?.resetIdle();
   }
 
-  if (slideEl.dataset.layout === "sites-map") {
-    sitesMapControllers.get(slideEl)?.refresh();
-  }
+  // Leaflet must remeasure once the slide is on screen, or tiles render grey.
+  // The WeakMap returns undefined for every slide without a map.
+  sitesMapControllers.get(slideEl)?.refresh();
 
   const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");
   if (img) {
@@ -1003,7 +996,10 @@ function setupKeyboard(): void {
 
     const onStagedDesign = slides[currentIndex]?.layout === "design-animation";
 
-    if (e.key === " " && onStagedDesign && designReveal) {
+    // Space drives the animation only while it is still running. Once it has
+    // finished, Space advances the deck as it does everywhere else — otherwise
+    // the natural "I'm done here" keypress replays the whole sequence.
+    if (e.key === " " && onStagedDesign && designReveal && !designReveal.isComplete()) {
       e.preventDefault();
       designReveal.toggle();
       return;
