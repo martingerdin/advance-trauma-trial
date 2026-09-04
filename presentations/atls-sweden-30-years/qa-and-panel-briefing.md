@@ -76,7 +76,7 @@ Use this as a briefing, not a script. Prefer short, calm answers. Acknowledge th
 **Q. Nested staircase — isn’t that just more complexity?**  
 **Reply:** Process adherence, EQ-5D-5L, and WHODAS are expensive to collect. Nesting intensive measurement around each hospital’s transition lets us test the mechanism — did behaviour change? — without observing every patient in every period.
 
-**Q. Only ~1,200 patients so far and funding is incomplete — why present this now?**  
+**Q. With just over 2,000 injury records so far and incomplete funding, why present this now?**
 **Reply:** Because the anniversary is the right moment to ask Region 15 and ACS colleagues to own the evidence agenda with us. The design, rationale, and collaboration are mature; completing batches through 2028–2029 needs continued partnership and funding. Transparency about the gap is intentional.
 
 **Q. What if the trial is negative — will you say ATLS should be abandoned?**  
@@ -216,7 +216,7 @@ Use if the moderator asks you to connect your talk to the future discussion:
 | Aim | ATLS® training vs standard care → adult trauma outcomes |
 | Primary outcome | 30-day in-hospital mortality |
 | Sample size target | >4,320 patients · 20%→15% mortality · ~90% power |
-| Status (as in deck) | ~1,200 included · batch 2 started · completion ~Dec 2028 pending funding |
+| Status (as in deck) | >2,000 injury records · batch 2 in progress · completion ~Dec 2028 pending funding |
 | Funders so far | Swedish Research Council · Laerdal · Region Stockholm · Swedish Society of Medicine |
 | Pilot | NCT05417243 · feasibility published / supportive unpublished metrics |
 | Evidence bottom line | Skills ↑ · randomised patient-outcome evidence still missing |

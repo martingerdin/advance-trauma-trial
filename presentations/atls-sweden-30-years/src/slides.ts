@@ -48,6 +48,8 @@ export interface Funder {
 export interface ColumnGroup {
   heading: string;
   bullets: string[];
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface Slide {
@@ -75,7 +77,9 @@ export interface Slide {
     | "team"
     | "funding"
     | "sites-map"
+    | "status-map"
     | "columns"
+    | "intervention"
     | "provocation";
   title?: string;
   subtitle?: string;
@@ -104,11 +108,6 @@ const ATLS_MANUAL_CITE =
   "American College of Surgeons. Advanced Trauma Life Support® (ATLS®) Student Course Manual. 11th ed. 2025.";
 
 export const slides: Slide[] = [
-  {
-    id: "hook",
-    layout: "provocation",
-    body: "The clinical trial to determine if ATLS® improves patient outcomes",
-  },
   {
     id: "title",
     layout: "title",
@@ -157,19 +156,19 @@ export const slides: Slide[] = [
     references: [
       {
         id: "1",
-        text: "Naghavi M et al. Global burden of 292 causes of death in 204 countries and territories, 1990–2023. Lancet. 2025.",
+        text: "~5 million injury deaths globally each year — Naghavi M et al. Lancet. 2025.",
       },
       {
         id: "2",
-        text: "Peterson C et al. Economic Cost of Injury — United States, 2019. MMWR Morb Mortal Wkly Rep. 2021.",
+        text: "US injury economic cost ~$4.2 trillion (2019) — Peterson C et al. MMWR. 2021.",
       },
       {
         id: "3",
-        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
+        text: "~2 million deaths annually from poor-quality care — National Academies. 2018.",
       },
       {
         id: "4",
-        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries, 1990–2019. Lancet. 2020.",
+        text: "Leading disease burden, ages 10–49 — GBD 2019 Collaborators. Lancet. 2020.",
       },
     ],
   },
@@ -196,8 +195,9 @@ export const slides: Slide[] = [
     stats: [
       { value: "1978", label: "first course" },
       { value: ">80", label: "countries worldwide" },
-      { value: ">1M", label: "physicians trained" },
+      { value: ">1M", label: "clinicians trained" },
     ],
+    footer: ATLS_MANUAL_CITE,
   },
   {
     id: "atls-providers",
@@ -209,19 +209,19 @@ export const slides: Slide[] = [
   {
     id: "atls-provider-evidence",
     layout: "evidence",
-    title: "Evidence on providers",
+    title: "Evidence on clinicians' knowledge and skills",
     evidence: [
       {
         id: "1",
-        claim: "Improves knowledge, psychomotor skills, confidence, and performance",
+        claim: "Improves knowledge, psychomotor skills, confidence, and resuscitation performance",
         source:
-          "Ali J, Cohen R et al. World J Surg. 1996;20:1121–1125; J Trauma. 1994;36:695–702; J Trauma. 1995;38:687–691.",
+          "Ali J, Cohen R et al. World J Surg. 1996; J Trauma. 1994–1995.",
       },
       {
         id: "2",
-        claim: "Organizational and procedural skills retained ≥6 years",
+        claim: "Trauma priorities retained ≥6 years; cognitive test scores decline",
         source:
-          "Ali J, Cohen R et al. Attrition of cognitive and trauma management skills after ATLS. J Trauma. 1996;40:860–866.",
+          "Ali J, Cohen R. J Trauma. 1996;40:860–866.",
       },
     ],
   },
@@ -235,50 +235,52 @@ export const slides: Slide[] = [
   {
     id: "atls-patient-impact-sources",
     layout: "evidence",
-    title: "The evidence behind the claims",
+    title: "Evidence on patient outcomes",
     evidence: [
       {
         id: "1",
-        claim: "Decreased injury mortality in a developing country",
+        claim: "Injury mortality fell after ATLS introduction (before–after, Trinidad)",
         source:
-          "Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
+          "Ali J et al. J Trauma. 1993;34:890–899.",
       },
       {
         id: "2",
-        claim: "Lower per-capita injury death rates where clinicians have ATLS training",
+        claim: "Lower county trauma death rates where ATLS-trained physician density is higher (ecological)",
         source:
-          "Rutledge R et al. Association of medical manpower with county trauma death rates. Ann Surg. 1994;219:547–563.",
+          "Rutledge R et al. Ann Surg. 1994;219:547–563.",
       },
       {
         id: "3",
-        claim: "Small ATLS-experienced team equivalent to a larger urban team",
+        claim: "Small ATLS-experienced team matched survival of a larger urban team",
         source:
-          "Deo SD et al. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
+          "Deo SD et al. Injury. 1997;28:633–637.",
       },
       {
         id: "4",
-        claim: "More unexpected survivors than fatalities",
+        claim: "More unexpected survivors than fatalities (TRISS-based)",
         source:
-          "van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
+          "van Olden GDJ et al. Am J Emerg Med. 2004;22:522–525.",
       },
     ],
   },
   {
     id: "atls-outcomes-reviews",
     layout: "bullets",
-    title: "Systematic reviews",
+    title: "Evidence on patient outcomes — systematic reviews",
     bullets: [
-      "Mohammad et al. 2013 — educational impact established; strong evidence that ATLS reduces mortality still lacking",
-      "Jayaraman et al. 2014 (Cochrane) — no controlled-trial evidence that ATLS changes mortality or morbidity",
-      "Jin et al. 2021 — certified in-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78)",
-      "Putra et al. 2023 — ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20)",
-      "Nakhid et al. 2026 — trauma life support training associated with lower mortality (OR 0.60, 95% CI 0.48–0.75); all observational",
+      "Educational benefit established; strong mortality evidence still lacking — Mohammad et al. 2013",
+      "No RCT evidence that ATLS changes mortality or morbidity — Jayaraman et al. 2014 (Cochrane)",
+      "In-hospital trauma training associated with lower mortality (RR 0.71, 95% CI 0.62–0.78) — Jin et al. 2021",
+      "ATLS not significantly associated with lower mortality (OR 0.68, 95% CI 0.39–1.20) — Putra et al. 2023",
+      "Pooled observational association with lower mortality (OR 0.60, 95% CI 0.48–0.75); no RCTs — Nakhid et al. 2026",
     ],
+    footer: "Knowledge and skills improve consistently; causal effect on mortality remains unproven.",
   },
   {
     id: "atls-forest",
     layout: "forest",
-    title: "Updated systematic review",
+    title: "Evidence on patient outcomes — meta-analysis",
+    subtitle: "Observational studies only · pooled odds ratio when all studies are included",
   },
   {
     id: "section-trial",
@@ -329,19 +331,19 @@ export const slides: Slide[] = [
     references: [
       {
         id: "1",
-        text: "TITCO Consortium. Towards Improved Trauma Care Outcomes in India. www.titco.org.",
+        text: "Multicentre trauma research platform in India — TITCO Consortium. titco.org.",
       },
       {
         id: "2",
-        text: "Gerdin Wärnberg M et al. Feasibility of a cluster randomised trial on the effect of trauma life support training: a pilot study in India. BMJ Open. 2025;15:e099020.",
+        text: "Cluster RCT of ATLS feasible; high consent and low loss to follow-up — Gerdin Wärnberg M et al. BMJ Open. 2025.",
       },
       {
         id: "3",
-        text: "David S, Gerdin Wärnberg M, TERN Collaborators. Patient-reported outcomes relevant to post-discharge trauma patients in urban India. medRxiv. 2024.",
+        text: "Patient-reported outcome measures for Indian trauma (preprint) — David S et al. medRxiv. 2024.",
       },
       {
         id: "4",
-        text: "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026.",
+        text: "Trauma life support training associated with lower mortality in observational meta-analysis — Nakhid Z et al. Scand J Trauma Resusc Emerg Med. 2026.",
       },
     ],
   },
@@ -357,7 +359,36 @@ export const slides: Slide[] = [
       { value: "5", label: "sequences" },
       { value: "13", label: "months in trial" },
     ],
-    footer: "Ongoing collaborations >10 years; ATLS® not yet standard",
+    footer: "India: long-standing collaboration; ATLS® is not yet standard care",
+  },
+  {
+    id: "design-animation",
+    layout: "design-animation",
+    title: "How the trial unfolds",
+    designVariant: "main",
+  },
+  {
+    id: "intervention",
+    layout: "intervention",
+    title: "Intervention and control",
+    columns: [
+      {
+        heading: "Standard care",
+        image: "./patient-review-after-illustration.png",
+        imageAlt: "Trauma team managing a patient under standard care",
+        bullets: [
+          "Trauma patients initially managed by 1st/2nd year residents without formal trauma training",
+        ],
+      },
+      {
+        heading: "ATLS® training",
+        image: "./training-illustration.png",
+        imageAlt: "ATLS training session with instructor and students",
+        bullets: [
+          "2.5-day ATLS® course at an accredited facility; 1–2 units per hospital trained",
+        ],
+      },
+    ],
   },
   {
     id: "eligibility",
@@ -375,22 +406,10 @@ export const slides: Slide[] = [
         heading: "Patient",
         bullets: [
           "Adult trauma patients presenting to the emergency department of participating hospitals with a history of trauma",
-          "Admitted, dies before admission, or transferred for admission",
+          "Admitted, die before admission, or transferred for admission",
           "Less than 48 hours since trauma",
         ],
       },
-    ],
-  },
-  {
-    id: "intervention",
-    layout: "two-col",
-    title: "Intervention and control",
-    image: "./patient-review-before-illustration.png",
-    imageAlt: "Trauma team managing a patient in the emergency department",
-    imagePosition: "right",
-    bullets: [
-      "Control — standard care; trauma patients initially managed by 1st/2nd year residents without formal trauma training",
-      "Intervention — 2.5-day ATLS® course at accredited facility; 1–2 units per hospital trained",
     ],
   },
   {
@@ -444,12 +463,6 @@ export const slides: Slide[] = [
     ],
   },
   {
-    id: "design-animation",
-    layout: "design-animation",
-    title: "How the trial unfolds",
-    designVariant: "main",
-  },
-  {
     id: "sample-size",
     layout: "stats",
     title: "Sample size",
@@ -462,22 +475,15 @@ export const slides: Slide[] = [
   },
   {
     id: "current-status",
-    layout: "stats",
+    layout: "status-map",
     title: "Current status",
-    image: "./patient-review-after-illustration.png",
-    imageAlt: "Trauma team reviewing a patient after ATLS training",
-    imagePosition: "right",
+    subtitle: "10 of 30 hospitals enrolled",
     stats: [
-      { value: "Batch 1", label: "completed (Feb 2025–Mar 2026)" },
-      { value: "~2,000", label: "patients included" },
-      { value: "Batch 2", label: "ongoing since Dec 2025" },
+      { value: "Batch 1", label: "complete · Feb 2025–Mar 2026" },
+      { value: ">2,000", label: "injury records to date" },
+      { value: "Batch 2", label: "in progress · from Dec 2025" },
       { value: "Batch 3", label: "starting" },
     ],
-  },
-  {
-    id: "participating-clusters",
-    layout: "sites-map",
-    title: "Hospitals currently in the trial",
   },
   {
     id: "implications",
@@ -503,7 +509,7 @@ export const slides: Slide[] = [
         label: "The George Institute for Global Health",
         location: "New Delhi, India",
         members: [
-          { name: "Vivekanand Jha, Nobhojit Roy", role: "Co-principal Investigators" },
+          { name: "Vivekanand Jha, Nobhojit Roy", role: "Co-Principal Investigators" },
           { name: "Prashant Kharat, Debojit Basak, Monty Khajanchi, Abhinav Bassi", role: "Trial operations" },
           { name: "Hospital investigators & CRCs", role: "Sites across India" },
         ],

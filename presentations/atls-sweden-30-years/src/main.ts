@@ -112,10 +112,24 @@ function renderSlide(slide: Slide): HTMLElement {
 
     case "closing":
       el.innerHTML = `
-        <div class="slide-inner slide-inner--center">
-          <h2 class="display" data-animate>${slide.title}</h2>
-          ${slide.subtitle ? `<p class="closing-link" data-animate><a href="https://www.advancetrauma.info">${slide.subtitle}</a></p>` : ""}
-          ${slide.footer ? `<p class="meta" data-animate>${slide.footer}</p>` : ""}
+        <div class="slide-inner slide-inner--closing">
+          <div class="closing-layout">
+            <div class="closing-copy" data-animate>
+              <h2 class="display">${slide.title}</h2>
+              ${
+                slide.subtitle
+                  ? `<p class="closing-link"><a href="https://advancetrauma.info" target="_blank" rel="noopener noreferrer">${slide.subtitle}</a></p>`
+                  : ""
+              }
+              ${slide.footer ? `<p class="meta closing-meta">${slide.footer}</p>` : ""}
+            </div>
+            <aside class="closing-qr" data-animate aria-label="Scan for trial website">
+              <a class="closing-qr__link" href="https://advancetrauma.info" target="_blank" rel="noopener noreferrer">
+                <img class="closing-qr__image" src="./qr-advancetrauma.png" width="160" height="160" alt="QR code linking to advancetrauma.info" />
+              </a>
+              <p class="closing-qr__caption">Scan for updates</p>
+            </aside>
+          </div>
         </div>
       `;
       break;
@@ -258,8 +272,8 @@ function renderSlide(slide: Slide): HTMLElement {
     case "aim":
       el.innerHTML = `
         <div class="slide-inner slide-inner--aim">
-          <h2 data-animate>${slide.title}</h2>
-          <p class="statement" data-animate>${slide.body}</p>
+          <p class="aim-eyebrow" data-animate>${slide.title}</p>
+          <p class="aim-statement" data-animate>${slide.body}</p>
         </div>
       `;
       break;
@@ -268,25 +282,42 @@ function renderSlide(slide: Slide): HTMLElement {
       const items = slide.outcomes ?? [];
       const isPrimary = Boolean(slide.body);
       el.innerHTML = `
-        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : ""}">
+        <div class="slide-inner slide-inner--outcomes${isPrimary ? " slide-inner--outcomes-primary" : " slide-inner--outcomes-secondary"}">
           <h2 data-animate>${slide.title}</h2>
           ${
             slide.body
-              ? `<p class="statement statement--hero" data-animate>${slide.body}</p>`
+              ? `<p class="design-lead design-lead--outcome" data-animate>${slide.body}</p>`
               : ""
           }
-          <div class="outcomes-grid outcomes-grid--${items.length}${isPrimary ? " outcomes-grid--methods" : ""}" data-animate-group>
-            ${items
-              .map(
-                (item) => `
-              <article class="panel outcome-card" data-animate>
-                ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
-                <p class="outcome-card__title">${item.title}</p>
-                ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
-              </article>`
-              )
-              .join("")}
-          </div>
+          ${
+            isPrimary
+              ? `<div class="outcomes-grid outcomes-grid--${items.length} outcomes-grid--methods" data-animate-group>
+                  ${items
+                    .map(
+                      (item) => `
+                    <article class="panel outcome-card" data-animate>
+                      ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
+                      <p class="outcome-card__title">${item.title}</p>
+                      ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
+                    </article>`
+                    )
+                    .join("")}
+                </div>`
+              : `<ul class="outcome-list" data-animate-group>
+                  ${items
+                    .map(
+                      (item) => `
+                    <li class="outcome-list__item" data-animate>
+                      ${item.tag ? `<span class="outcome-list__tag">${item.tag}</span>` : ""}
+                      <div class="outcome-list__body">
+                        <p class="outcome-list__title">${item.title}</p>
+                        ${item.detail ? `<p class="outcome-list__detail">${item.detail}</p>` : ""}
+                      </div>
+                    </li>`
+                    )
+                    .join("")}
+                </ul>`
+          }
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
@@ -342,6 +373,13 @@ function renderSlide(slide: Slide): HTMLElement {
                 (col) => `
               <article class="panel column-card" data-animate>
                 <h3 class="column-card__heading">${col.heading}</h3>
+                ${
+                  col.image
+                    ? `<figure class="column-card__figure">
+                        <img src="${col.image}" alt="${col.imageAlt ?? ""}" />
+                      </figure>`
+                    : ""
+                }
                 <ul class="bullet-list">
                   ${col.bullets.map((b) => `<li>${b}</li>`).join("")}
                 </ul>
@@ -350,6 +388,40 @@ function renderSlide(slide: Slide): HTMLElement {
               .join("")}
           </div>
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "intervention":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--intervention">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="intervention-compare" data-animate-group>
+            ${(slide.columns ?? [])
+              .map(
+                (col, i) => `
+              <article class="intervention-arm intervention-arm--${i === 0 ? "control" : "intervention"}" data-animate>
+                <header class="intervention-arm__header">
+                  <span class="intervention-arm__badge">${i === 0 ? "Control" : "Intervention"}</span>
+                  <h3 class="intervention-arm__title">${col.heading}</h3>
+                </header>
+                ${
+                  col.image
+                    ? `<figure class="intervention-arm__figure">
+                        <img src="${col.image}" alt="${col.imageAlt ?? ""}" />
+                      </figure>`
+                    : ""
+                }
+                <p class="intervention-arm__copy">${col.bullets.join(" ")}</p>
+              </article>
+              ${
+                i === 0
+                  ? `<div class="intervention-compare__divider" aria-hidden="true"><span class="intervention-compare__vs">vs</span></div>`
+                  : ""
+              }`
+              )
+              .join("")}
+          </div>
         </div>
       `;
       break;
@@ -468,7 +540,7 @@ function renderSlide(slide: Slide): HTMLElement {
                 <div class="wedge-phase-callouts" hidden aria-hidden="true">
                   <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
                     <figure class="wedge-phase__figure">
-                      <img src="./patient-review-before-illustration.png" alt="" />
+                      <img src="./patient-review-after-illustration.png" alt="" />
                     </figure>
                     <div class="wedge-phase__copy">
                       <p class="wedge-phase__title">Standard care</p>
@@ -484,7 +556,7 @@ function renderSlide(slide: Slide): HTMLElement {
                   </article>
                   <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
                     <figure class="wedge-phase__figure">
-                      <img src="./patient-review-after-illustration.png" alt="" />
+                      <img src="./patient-review-before-illustration.png" alt="" />
                     </figure>
                     <div class="wedge-phase__copy">
                       <p class="wedge-phase__title">Intervention</p>
@@ -532,8 +604,8 @@ function renderSlide(slide: Slide): HTMLElement {
               <p>If ATLS<sup>®</sup> <strong>improves</strong> patient outcomes, it should be further promoted.</p>
             </div>
             <div class="panel implication-card implication-card--negative" data-animate>
-              <figure><img src="./training-illustration.png" alt="Training needs to evolve" /></figure>
-              <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training needs to change.</p>
+              <figure><img src="./needs-to-change-illustration.png" alt="Trauma life support training needs to change" /></figure>
+              <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training must evolve.</p>
             </div>
           </div>
         </div>
@@ -553,6 +625,42 @@ function renderSlide(slide: Slide): HTMLElement {
           </div>
           <div class="sites-map" data-map role="region" aria-label="Participating sites map"></div>
           ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "status-map":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--status-map">
+          <header class="status-map-header" data-animate>
+            <div class="status-map-header__titles">
+              <h2>${slide.title}</h2>
+              ${slide.subtitle ? `<p class="status-map-header__subtitle">${slide.subtitle}</p>` : ""}
+            </div>
+          </header>
+          <div class="status-map-layout">
+            <section class="status-map-stats" aria-label="Recruitment status">
+              <div class="status-map-stats__grid" data-animate-group>
+                ${(slide.stats ?? [])
+                  .map(
+                    (s) => `
+                  <div class="stat-card" data-animate>
+                    <span class="stat-value">${s.value}</span>
+                    <span class="stat-label">${s.label}</span>
+                  </div>`
+                  )
+                  .join("")}
+              </div>
+            </section>
+            <section class="status-map-panel" aria-label="Participating hospitals">
+              <div class="sites-legend" data-animate aria-label="Batch legend">
+                ${buildSitesLegendHtml()}
+                <span class="sites-legend__total">${participatingSites.length} / 30 hospital clusters</span>
+              </div>
+              <div class="sites-map sites-map--compact" data-map role="region" aria-label="Participating sites map"></div>
+            </section>
+          </div>
+          ${slide.footer ? `<p class="slide-footer status-map-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;
@@ -649,7 +757,7 @@ function mountSlides(): void {
         forestControllers.set(el, forest);
       }
     }
-    if (slide.layout === "sites-map") {
+    if (slide.layout === "sites-map" || slide.layout === "status-map") {
       const mount = el.querySelector<HTMLElement>("[data-map]");
       if (mount) {
         void mountSitesMap(mount).then((controller) => {
@@ -686,9 +794,11 @@ function thumbPreviewInner(slide: Slide): string {
   const label = slideThumbLabel(slide);
   const chips =
     slide.layout === "stats" ||
+    slide.layout === "status-map" ||
     slide.layout === "evidence" ||
     slide.layout === "milestones" ||
-    slide.layout === "columns"
+    slide.layout === "columns" ||
+    slide.layout === "intervention"
       ? `<div class="overview-thumb__chips" aria-hidden="true">
           <span class="overview-thumb__chip"></span>
           <span class="overview-thumb__chip overview-thumb__chip--accent"></span>
@@ -892,18 +1002,20 @@ function animateSlideIn(slideEl: HTMLElement): void {
     forestControllers.get(slideEl)?.resetIdle();
   }
 
-  if (slideEl.dataset.layout === "sites-map") {
+  if (slideEl.dataset.layout === "sites-map" || slideEl.dataset.layout === "status-map") {
     sitesMapControllers.get(slideEl)?.refresh();
   }
 
-  const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");
-  if (img) {
+  const imgs = slideEl.querySelectorAll<HTMLElement>(
+    ".slide-figure img, .visual-figure img, .intervention-arm__figure img"
+  );
+  imgs.forEach((img, i) => {
     animate(
       img,
       { transform: ["scale(0.92)", "scale(1)"], opacity: [0, 1] } as Record<string, unknown>,
-      { duration: 0.7, delay: 0.15, ease: "easeOut" }
+      { duration: 0.7, delay: 0.15 + i * 0.12, ease: "easeOut" }
     );
-  }
+  });
 }
 
 function goTo(index: number): void {

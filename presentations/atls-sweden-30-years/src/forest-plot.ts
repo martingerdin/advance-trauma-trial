@@ -65,7 +65,7 @@ function diamondPoints(
 
 function footerText(pooled: PooledEstimate, measure: string): string {
   return (
-    `Random-effects ${measure} ${pooled.rrFormatted} ` +
+    `Random-effects pooled ${measure} ${pooled.rrFormatted} ` +
     `(95% CI ${pooled.ciFormatted.replace("; ", "–")}); ` +
     `I² ${pooled.i2Rounded.toFixed(2)}; ` +
     `${pooled.numberOfStudies} ${pooled.numberOfStudies === 1 ? "study" : "studies"}`
@@ -586,11 +586,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
         footer.textContent = "Building the pooled estimate as studies appear (oldest → newest)";
         svg.setAttribute("aria-label", "Forest plot chronological reveal in progress");
       } else if (included.size === 0) {
-        emptyNote.setAttribute(
-          "y",
-          String(PAD_TOP + (data.studies.length * ROW_HEIGHT) / 2 + 4)
-        );
-        emptyNote.textContent = "Click Play timeline to start";
+        emptyNote.style.display = "none";
         footer.textContent = "Click Play timeline to start";
         svg.setAttribute("aria-label", "Empty forest plot. Click Play timeline to start.");
       } else {
@@ -623,7 +619,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
       footer.textContent = footerText(pooled, data.measure);
       svg.setAttribute(
         "aria-label",
-        `Forest plot of trauma life support training effect on mortality. Pooled odds ratio ${pooled.rrFormatted}, 95% CI ${pooled.ciFormatted}, ${pooled.numberOfStudies} studies`
+        `Forest plot of trauma life support training effect on mortality. Pooled ${data.measure} ${pooled.rrFormatted}, 95% CI ${pooled.ciFormatted}, ${pooled.numberOfStudies} studies`
       );
     }
     syncIdleChrome();
