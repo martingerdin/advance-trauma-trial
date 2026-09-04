@@ -586,11 +586,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
         footer.textContent = "Building the pooled estimate as studies appear (oldest → newest)";
         svg.setAttribute("aria-label", "Forest plot chronological reveal in progress");
       } else if (included.size === 0) {
-        emptyNote.setAttribute(
-          "y",
-          String(PAD_TOP + (data.studies.length * ROW_HEIGHT) / 2 + 4)
-        );
-        emptyNote.textContent = "Click Play timeline to start";
+        emptyNote.style.display = "none";
         footer.textContent = "Click Play timeline to start";
         svg.setAttribute("aria-label", "Empty forest plot. Click Play timeline to start.");
       } else {
