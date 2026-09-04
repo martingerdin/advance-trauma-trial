@@ -1,6 +1,13 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide } from "./slides";
-import { createSteppedWedgeSvg, setRevealMonth, focusViewBox, viewBoxString, syncAxisToStage } from "./stepped-wedge";
+import {
+  createSteppedWedgeSvg,
+  createWedgeLegend,
+  setRevealMonth,
+  focusViewBox,
+  viewBoxString,
+  syncAxisToStage,
+} from "./stepped-wedge";
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
 import { createSequencesChart, createSequencesLegend } from "./sequences";
@@ -374,13 +381,47 @@ function renderSlide(slide: Slide): HTMLElement {
 
     case "design":
       el.innerHTML = `
-        <div class="slide-inner">
+        <div class="slide-inner slide-inner--design">
           <h2 data-animate>${slide.title}</h2>
           <div class="design-layout">
-            <ul class="bullet-list design-bullets" data-animate-group>
-              ${(slide.bullets ?? []).map((b) => `<li data-animate>${b}</li>`).join("")}
-            </ul>
-            <div class="wedge-container" data-animate id="wedge-mount"></div>
+            <div class="design-copy" data-animate-group>
+              ${
+                slide.body
+                  ? `<p class="design-lead" data-animate>${slide.body}</p>`
+                  : ""
+              }
+              ${
+                slide.stats?.length
+                  ? `<div class="design-metrics" data-animate>
+                      ${slide.stats
+                        .map(
+                          (s) => `
+                        <div class="design-metric">
+                          <span class="stat-value">${s.value}</span>
+                          <span class="stat-label">${s.label}</span>
+                        </div>`
+                        )
+                        .join("")}
+                    </div>`
+                  : ""
+              }
+              ${
+                slide.bullets?.length
+                  ? `<ul class="bullet-list design-bullets" data-animate-group>
+                      ${slide.bullets.map((b) => `<li data-animate>${b}</li>`).join("")}
+                    </ul>`
+                  : ""
+              }
+              ${
+                slide.footer
+                  ? `<p class="design-note" data-animate>${slide.footer}</p>`
+                  : ""
+              }
+            </div>
+            <div class="design-figure" data-animate>
+              <div class="wedge-legend-mount"></div>
+              <div class="wedge-container" id="wedge-mount"></div>
+            </div>
           </div>
         </div>
       `;
@@ -571,6 +612,8 @@ function mountSlides(): void {
         if (slide.layout === "design") {
           const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
           mount.appendChild(createSteppedWedgeSvg(data));
+          const legendMount = el.querySelector(".wedge-legend-mount");
+          if (legendMount) legendMount.appendChild(createWedgeLegend(data));
         }
         // design-animation chart is mounted by startDesignReveal.
       }

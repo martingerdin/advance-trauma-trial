@@ -379,11 +379,14 @@ export const slides: Slide[] = [
     layout: "design",
     title: "Study design",
     designVariant: "main",
-    bullets: [
-      "Batched stepped-wedge cluster randomised trial",
-      "30 hospitals · 6 batches · 5 sequences · 13 months in trial",
-      "Conducted in India — ongoing collaborations >10 years; ATLS not yet standard",
+    body: "Batched stepped-wedge cluster randomised trial",
+    stats: [
+      { value: "30", label: "hospitals" },
+      { value: "6", label: "batches" },
+      { value: "5", label: "sequences" },
+      { value: "13", label: "months in trial" },
     ],
+    footer: "Conducted in India — ongoing collaborations >10 years; ATLS® not yet standard",
   },
   {
     id: "design-animation",
