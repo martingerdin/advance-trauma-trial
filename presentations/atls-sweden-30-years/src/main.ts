@@ -163,11 +163,11 @@ function renderSlide(slide: Slide): HTMLElement {
                 .join("")}
               ${
                 cardStats.length
-                  ? `<div class="${leadsWithFocus ? "qualifier-rail" : "stats-grid"}" data-animate-group>
+                  ? `<div class="${leadsWithFocus ? "rail rail--ruled" : "stats-grid"}" data-animate-group>
                       ${cardStats
                         .map(
                           (s) => `
-                        <div class="${leadsWithFocus ? "qualifier-rail__item" : "panel stat-card"}" data-animate>
+                        <div class="${leadsWithFocus ? "rail__item" : "panel stat-card"}" data-animate>
                           <span class="stat-value">${s.value}</span>
                           <span class="stat-label">${s.label}${statCite(s)}</span>
                         </div>`
@@ -276,11 +276,11 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner slide-inner--outcomes">
           <h2 data-animate>${slide.title}</h2>
           ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
-          <div class="qualifier-rail qualifier-rail--even" data-animate-group>
+          <div class="rail rail--ruled rail--even" data-animate-group>
             ${(slide.outcomes ?? [])
               .map(
                 (item) => `
-              <article class="qualifier-rail__item" data-animate>
+              <article class="rail__item" data-animate>
                 ${item.tag ? `<span class="outcome-term__source">${item.tag}</span>` : ""}
                 <p class="outcome-term__title">${item.title}</p>
                 ${item.detail ? `<p class="outcome-term__detail">${item.detail}</p>` : ""}
@@ -364,25 +364,25 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--milestones">
           <h2 data-animate>${slide.title}</h2>
-          <div class="milestones-grid" data-animate-group>
+          <div class="rail rail--stacked" data-animate-group>
             ${(slide.milestones ?? [])
               .map(
                 (m) => `
-              <article class="panel milestone-card" data-animate>
+              <article class="rail__item milestone" data-animate>
                 ${
                   m.image
-                    ? `<figure class="milestone-card__media">
+                    ? `<figure class="milestone__media">
                         <img src="${m.image}" alt="${m.imageAlt ?? ""}" />
                       </figure>`
                     : ""
                 }
-                <div class="milestone-card__body">
-                  <p class="milestone-card__label">${m.label}${
+                <div class="milestone__body">
+                  <p class="milestone__label">${m.label}${
                     m.cite
                       ? `<sup class="cite-ref" aria-label="Reference ${m.cite}">${m.cite}</sup>`
                       : ""
                   }</p>
-                  <p class="milestone-card__year">${m.year}</p>
+                  <p class="milestone__year">${m.year}</p>
                 </div>
               </article>`
               )
@@ -541,11 +541,11 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner slide-inner--status-map">
           <h2 data-animate>${slide.title}</h2>
           <div class="status-map-layout">
-            <div class="stats-grid" data-animate-group>
+            <div class="rail rail--stacked" data-animate-group>
               ${(slide.stats ?? [])
                 .map(
                   (s) => `
-                <div class="panel stat-card" data-animate>
+                <div class="rail__item" data-animate>
                   <span class="stat-value">${s.value}</span>
                   <span class="stat-label">${s.label}</span>
                 </div>`
@@ -576,14 +576,14 @@ function renderSlide(slide: Slide): HTMLElement {
             <h2>${slide.title}</h2>
             ${slide.subtitle ? `<p class="team-subtitle">${slide.subtitle}</p>` : ""}
           </header>
-          <div class="team-grid" data-animate-group>
+          <div class="rail rail--even" data-animate-group>
             ${(slide.teamGroups ?? [])
               .map(
                 (group) => `
-              <article class="panel team-card" data-animate>
-                <h3 class="team-card__label">${group.label}</h3>
-                <p class="team-card__location">${group.location}</p>
-                <ul class="team-card__members">
+              <article class="rail__item" data-animate>
+                <h3 class="team-group__label">${group.label}</h3>
+                <p class="team-group__location">${group.location}</p>
+                <ul class="team-group__members">
                   ${group.members
                     .map(
                       (m) => `
@@ -608,12 +608,12 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner slide-inner--funding">
           <h2 data-animate>${slide.title}</h2>
           ${slide.body ? `<p class="funding-intro" data-animate>${slide.body}</p>` : ""}
-          <div class="funding-grid" data-animate-group>
+          <div class="rail rail--even" data-animate-group>
             ${(slide.funders ?? [])
               .map(
                 (f) => `
-              <article class="panel funding-card" data-animate>
-                <p class="funding-card__name">${f.name}</p>
+              <article class="rail__item" data-animate>
+                <p class="funder__name">${f.name}</p>
               </article>`
               )
               .join("")}

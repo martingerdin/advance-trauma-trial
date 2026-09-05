@@ -755,7 +755,7 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     // Full set on screen → narrow to ATLS, same as clicking the ATLS chip.
     if (sameStudySet(included, allKeys)) {
       const atls = programmes.find((filter) => filter.label === "ATLS");
-      if (atls && !sameStudySet(atls.keys, allKeys)) {
+      if (atls && !sameStudySet(new Set(atls.keys), allKeys)) {
         setIncluded(atls.keys);
         return true;
       }

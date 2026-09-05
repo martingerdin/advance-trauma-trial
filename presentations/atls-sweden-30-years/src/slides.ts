@@ -549,6 +549,7 @@ export const slides: Slide[] = [
       { value: "~2,000", label: "patients included" },
       { value: "Batch 1", label: "complete (Feb 2025–Mar 2026)" },
       { value: "Batch 2", label: "ongoing since Dec 2025" },
+      { value: "Batch 3", label: "starting" },
     ],
   },
   {
