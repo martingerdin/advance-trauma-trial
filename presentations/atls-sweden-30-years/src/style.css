@@ -611,6 +611,25 @@ body {
   gap: 0.2rem;
 }
 
+.stat-focus {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-left: calc(-1 * var(--gutter));
+  padding: var(--space-2) 0 var(--space-2) var(--gutter);
+  border-left: 3px solid var(--accent);
+}
+
+.stat-focus .stat-value {
+  font-size: var(--fs-aim);
+  color: var(--ink);
+}
+
+.stat-focus .stat-label {
+  font-size: var(--fs-body);
+}
+
 /* Figures are Roboto: this build of EB Garamond has no lining-figure feature
    and its 3/5/7/9 hang below the baseline, so a stat grid set in it never
    shares one baseline. Roboto also gives us tabular numerals. */

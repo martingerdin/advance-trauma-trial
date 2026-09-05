@@ -14,6 +14,8 @@ export interface Stat {
   value: string;
   label: string;
   source?: string;
+  /** Full-width featured figure on a stats slide. */
+  focus?: boolean;
 }
 
 export interface Milestone {
@@ -529,9 +531,9 @@ export const slides: Slide[] = [
     layout: "stats",
     title: "Sample size",
     stats: [
+      { value: "≥4,320", label: "patients required", focus: true },
       { value: "20→15%", label: "mortality reduction to detect" },
       { value: "~90%", label: "statistical power" },
-      { value: "≥4,320", label: "patients required" },
     ],
   },
   {

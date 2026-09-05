@@ -143,7 +143,7 @@ function renderSlide(slide: Slide): HTMLElement {
               ${(slide.stats ?? [])
                 .map(
                   (s) => `
-                <div class="panel stat-card" data-animate>
+                <div class="${s.focus ? "stat-focus" : "panel stat-card"}" data-animate>
                   <span class="stat-value">${s.value}</span>
                   <span class="stat-label">${s.label}${
                     s.source
