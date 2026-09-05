@@ -199,7 +199,9 @@ body {
 }
 
 .slide-inner--outcomes > .lead {
-  margin-bottom: var(--space-5);
+  /* Hang only the accent; keep the words on the title column. */
+  margin: var(--space-3) 0 var(--space-5) calc(-3px - var(--space-3));
+  padding: 0 0 0 var(--space-3);
   /* The primary outcome is the headline of a trial talk: bigger than a lead,
      still clearly below the aim, which stays the largest line in the deck. */
   font-size: var(--fs-figure);
