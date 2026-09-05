@@ -367,7 +367,7 @@ export const slides: Slide[] = [
     id: "section-trial",
     layout: "section",
     title: "ADVANCE TRAUMA",
-    subtitle: "A stepped-wedge cluster randomised trial",
+    subtitle: "The clinical trial to determine if ATLS® improves patient outcomes",
   },
   {
     id: "aim",
