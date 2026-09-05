@@ -597,7 +597,7 @@ export const slides: Slide[] = [
       { name: "Region Stockholm" },
       { name: "Swedish Society of Medicine" },
     ],
-    footer: "Additional funding is needed to complete the trial through 2028–2029.",
+    footer: "Additional funding is needed to complete batch 4-6",
   },
   {
     id: "closing",

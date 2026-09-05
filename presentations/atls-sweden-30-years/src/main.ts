@@ -594,7 +594,7 @@ function renderSlide(slide: Slide): HTMLElement {
               )
               .join("")}
           </div>
-          ${slide.footer ? `<p class="funding-note" data-animate>${slide.footer}</p>` : ""}
+          ${slide.footer ? `<p class="funding-ask" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;

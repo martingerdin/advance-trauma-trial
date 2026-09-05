@@ -2521,6 +2521,22 @@ body {
   line-height: 1.25;
 }
 
+/* The ask is not another funder: no card, no left rule, an accent-tinted band
+   the whole width of the grid so it reads as the slide's closing sentence. */
+.funding-ask {
+  margin: var(--space-5) 0 0;
+  padding: clamp(0.9rem, 2vw, 1.3rem) clamp(1.05rem, 2.2vw, 1.5rem);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--surface));
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: var(--fs-card-title);
+  font-weight: 500;
+  color: var(--accent-text);
+  line-height: 1.35;
+  text-align: center;
+}
+
 /* ── Emphasis (d): footnote / source note ─────────────────────────
    A hairline above muted text at the smallest size in the deck. This is where
    sources, caveats and asides live — never a competing block. */
