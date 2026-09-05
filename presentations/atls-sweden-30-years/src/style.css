@@ -175,9 +175,10 @@ body {
 
 /* ── Alignment: title and body travel as one centred cluster ──────
    Content slides keep the heading with the body and centre that unit
-   vertically. Chart layouts still fill the leftover height under the
-   heading. Brand layouts (title, section, closing, provocation) centre
-   their whole canvas. */
+   vertically. Full-bleed chart slides (design-animation, sequences,
+   forest) still pin the heading and fill leftover height. Brand
+   layouts (title, section, closing, provocation) centre their whole
+   canvas. */
 
 .slide-inner--stats,
 .slide-inner--bullets,
@@ -198,13 +199,6 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-}
-
-/* Charts take the height under the heading instead of floating in leftover space. */
-.slide-inner > .design-layout,
-.slide-inner > .status-map-layout {
-  flex: 1;
-  min-height: 0;
 }
 
 .slide-inner--outcomes > .lead {
