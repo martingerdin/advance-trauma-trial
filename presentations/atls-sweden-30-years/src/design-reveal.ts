@@ -5,8 +5,11 @@ import {
   createWedgeLegend,
   fitSvgInContainer,
   focusViewBox,
+  layoutClusterPhases,
   lerpViewBox,
+  restoreClusterPhases,
   setRevealMonth,
+  siteSchematicSpans,
   syncAxisToStage,
   viewBoxString,
   type DesignFocusStage,
@@ -34,7 +37,7 @@ const STAGES: Array<{
   {
     id: "site",
     label: "One cluster",
-    caption: "One hospital, 13 months",
+    caption: "One hospital — three phases of care",
     // Phase pauses are manual (Space / play); no timed hold before the next stage.
     holdMs: 0,
   },
@@ -53,40 +56,15 @@ const STAGES: Array<{
   },
 ];
 
-const SITE_PHASES = [
-  { id: "standard-care", centerMonth: 2 },
-  { id: "transition", centerMonth: 4.5 },
-  { id: "intervention", centerMonth: 9 },
-] as const;
+const SITE_PHASE_IDS = ["standard-care", "transition", "intervention"] as const;
 
-type SitePhaseId = (typeof SITE_PHASES)[number]["id"];
+type SitePhaseId = (typeof SITE_PHASE_IDS)[number];
 
-/** One-site wipe segments: animate to endMonth, then wait for play. */
-const SITE_PHASE_SCRUBS: Array<{
-  id: SitePhaseId;
-  endMonth: number;
-  duration: number;
-  caption: string;
-}> = [
-  {
-    id: "standard-care",
-    endMonth: 4,
-    duration: 4,
-    caption: "Standard care — months 0–4",
-  },
-  {
-    id: "transition",
-    endMonth: 5,
-    duration: 2.5,
-    caption: "ATLS® course — months 4–5",
-  },
-  {
-    id: "intervention",
-    endMonth: 13,
-    duration: 5,
-    caption: "After training — months 5–13",
-  },
-];
+const SITE_PHASE_COPY: Record<SitePhaseId, { caption: string; duration: number }> = {
+  "standard-care": { caption: "Standard care", duration: 4 },
+  transition: { caption: "ATLS® course", duration: 2 },
+  intervention: { caption: "After training", duration: 4 },
+};
 
 function reduceMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -191,6 +169,21 @@ export function startDesignReveal(
 
   const shortEnd = Math.max(data.parameters.totalMonths, 13);
   const fullEnd = data.xMax;
+  const schematic = siteSchematicSpans(data);
+  const sitePhaseScrubs = SITE_PHASE_IDS.map((id) => ({
+    id,
+    endMonth: schematic[id].end,
+    duration: SITE_PHASE_COPY[id].duration,
+    caption: SITE_PHASE_COPY[id].caption,
+  }));
+
+  const applySiteSchematic = () => {
+    layoutClusterPhases(svg, data, 1, schematic);
+  };
+
+  const restoreRealClusterOne = () => {
+    restoreClusterPhases(svg, data, 1);
+  };
 
   const rows = () => Array.from(svg.querySelectorAll<SVGGElement>(".wedge-row"));
   const batchLabels = () => Array.from(svg.querySelectorAll<SVGTextElement>(".wedge-batch-label"));
@@ -225,9 +218,10 @@ export function startDesignReveal(
   };
 
   const phaseIsActive = (phaseId: SitePhaseId, month: number): boolean => {
-    if (phaseId === "standard-care") return month >= 0.2 && month < 4.15;
-    if (phaseId === "transition") return month >= 4 && month < 5.15;
-    return month >= 5;
+    const span = schematic[phaseId];
+    const eps = 0.15;
+    if (phaseId === "intervention") return month >= span.start - eps;
+    return month >= span.start - eps && month < span.end + eps;
   };
 
   const syncPhaseCallouts = (month: number, forceAll = false) => {
@@ -241,11 +235,11 @@ export function startDesignReveal(
       return;
     }
 
-    for (const phase of SITE_PHASES) {
-      const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phase.id}"]`);
+    for (const phaseId of SITE_PHASE_IDS) {
+      const el = phaseCallouts.querySelector<HTMLElement>(`.wedge-phase[data-phase="${phaseId}"]`);
       if (!el) continue;
-      const revealed = forceAll || unlockedSitePhases.has(phase.id);
-      const active = forceAll || (revealed && phaseIsActive(phase.id, month));
+      const revealed = forceAll || unlockedSitePhases.has(phaseId);
+      const active = forceAll || (revealed && phaseIsActive(phaseId, month));
       el.classList.toggle("is-revealed", revealed);
       el.classList.toggle("is-active", active);
       el.setAttribute("aria-hidden", revealed ? "false" : "true");
@@ -346,6 +340,7 @@ export function startDesignReveal(
   };
 
   // Start cropped to one site so the first paint is not the full 0–48 axis.
+  applySiteSchematic();
   setCamera(focusViewBox(data, "site"), "site");
   // Re-fit after layout — first paint often has a 0×0 container.
   requestAnimationFrame(() => {
@@ -447,6 +442,7 @@ export function startDesignReveal(
     complete = false;
     sitePhaseCaption = null;
     unlockedSitePhases.clear();
+    applySiteSchematic();
     syncUi();
 
     await clearPlot(token, animateIn);
@@ -457,15 +453,15 @@ export function startDesignReveal(
 
     if (!animateIn || reduceMotion()) {
       unlockedSitePhases.clear();
-      for (const phase of SITE_PHASES) unlockedSitePhases.add(phase.id);
+      for (const phaseId of SITE_PHASE_IDS) unlockedSitePhases.add(phaseId);
       setReveal(shortEnd, true);
       sitePhaseCaption = null;
       return;
     }
 
     let fromMonth = 0;
-    for (let i = 0; i < SITE_PHASE_SCRUBS.length; i++) {
-      const phase = SITE_PHASE_SCRUBS[i];
+    for (let i = 0; i < sitePhaseScrubs.length; i++) {
+      const phase = sitePhaseScrubs[i];
       sitePhaseCaption = phase.caption;
       // Unlock the illustration only as this phase's wipe begins (after play).
       unlockedSitePhases.add(phase.id);
@@ -492,6 +488,7 @@ export function startDesignReveal(
     const batchClusters = Array.from({ length: data.parameters.clustersPerBatch }, (_, i) => i + 1);
 
     await clearPlot(token, animateIn);
+    restoreRealClusterOne();
     await morphCamera("batch", token, animateIn ? 1.1 : 0);
     setRowVisibility(batchClusters, true);
     showBatchLabels([1]);
@@ -519,6 +516,7 @@ export function startDesignReveal(
     const allClusters = rows().map((r) => Number(r.dataset.cluster));
 
     await clearPlot(token, animateIn);
+    restoreRealClusterOne();
     await morphCamera("full", token, animateIn ? 1.4 : 0);
     setRowVisibility(allClusters, true);
     showBatchLabels(Array.from({ length: data.parameters.batches }, (_, i) => i + 1));

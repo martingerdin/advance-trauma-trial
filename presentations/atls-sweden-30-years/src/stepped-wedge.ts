@@ -74,6 +74,64 @@ export function stageMonthSpan(data: TrialDesignData, stage: DesignFocusStage): 
   return Math.max(data.parameters.totalMonths || 13, 13);
 }
 
+/**
+ * Schematic one-cluster phase spans: equal standard care and intervention so
+ * the intro does not imply every cluster follows sequence 1's calendar lengths.
+ * Total width matches `stageMonthSpan(..., "site")` for a smooth camera morph.
+ */
+export function siteSchematicSpans(data: TrialDesignData): Record<
+  "standard-care" | "transition" | "intervention",
+  { start: number; end: number }
+> {
+  const total = stageMonthSpan(data, "site");
+  const transition = Math.max(data.parameters.transitionMonths || 1, 1);
+  const side = (total - transition) / 2;
+  return {
+    "standard-care": { start: 0, end: side },
+    transition: { start: side, end: side + transition },
+    intervention: { start: side + transition, end: total },
+  };
+}
+
+/** Reposition a cluster's phase bars to the given month spans (site schematic or real data). */
+export function layoutClusterPhases(
+  svg: SVGSVGElement,
+  data: TrialDesignData,
+  cluster: number,
+  spans: Partial<Record<string, { start: number; end: number }>>
+): void {
+  const { xPadding } = data.geometry;
+  const row = svg.querySelector<SVGGElement>(`.wedge-row[data-cluster="${cluster}"]`);
+  if (!row) return;
+
+  row.querySelectorAll<SVGRectElement>(".wedge-segment").forEach((rect) => {
+    const phase = rect.dataset.phase;
+    if (!phase) return;
+    const span = spans[phase];
+    if (!span) return;
+    // Match createSteppedWedgeSvg: main and overlay use xPadding (site bars are main-only).
+    const pad = xPadding;
+    rect.setAttribute("x", String(monthX(span.start, pad)));
+    rect.setAttribute("width", String(Math.max((span.end - span.start - pad * 2) * MONTH_WIDTH, 1)));
+    rect.dataset.start = String(span.start);
+  });
+}
+
+/** Restore a cluster's bars to the trial-design segment geometry. */
+export function restoreClusterPhases(
+  svg: SVGSVGElement,
+  data: TrialDesignData,
+  cluster: number
+): void {
+  const spans: Record<string, { start: number; end: number }> = {};
+  for (const segment of data.segments) {
+    if (segment.cluster !== cluster || segment.layer === "background") continue;
+    const phaseSlug = segment.phase.toLowerCase().replace(/\s+/g, "-");
+    spans[phaseSlug] = { start: segment.start, end: segment.end };
+  }
+  layoutClusterPhases(svg, data, cluster, spans);
+}
+
 /** Camera framing for each reveal stage — tight crop (CSS/fit handles centering & scale). */
 export function focusViewBox(data: TrialDesignData, stage: DesignFocusStage): WedgeViewBox {
   const { clusters, clustersPerBatch } = data.parameters;
@@ -87,10 +145,9 @@ export function focusViewBox(data: TrialDesignData, stage: DesignFocusStage): We
 
   if (stage === "site") {
     const barY = clusterY(1, clusters);
-    const axisBottom = TOP_PAD + clusters * (ROW_HEIGHT + ROW_GAP) + AXIS_HEIGHT;
-    // Tight crop — phase callouts live in HTML above the SVG, not inside the viewBox.
-    const padY = 8;
-    return { x: 0, y: barY - padY, w: width, h: axisBottom - barY + padY * 2 };
+    // No month axis in the crop — schematic bar only (callouts sit in HTML above).
+    const padY = 10;
+    return { x: 0, y: barY - padY, w: width, h: ROW_HEIGHT + padY * 2 };
   }
 
   const topCluster = clustersPerBatch;
@@ -146,24 +203,24 @@ export function syncAxisToStage(
 ): void {
   const months = stageMonthSpan(data, stage);
   const plotCenterX = LABEL_LEFT + (months * MONTH_WIDTH) / 2;
+  // One-cluster intro is schematic — no month axis (avoids a fixed schedule reading).
+  const showTimeline = stage !== "site";
 
   svg.querySelectorAll<SVGElement>(".wedge-axis-tick").forEach((tick) => {
     const month = Number(tick.dataset.month);
-    const on = Number.isFinite(month) && month <= months + 0.01;
+    const on = showTimeline && Number.isFinite(month) && month <= months + 0.01;
     tick.setAttribute("opacity", on ? "1" : "0");
   });
 
   const xTitle = svg.querySelector<SVGTextElement>(".wedge-axis-xtitle");
   if (xTitle) {
+    xTitle.setAttribute("opacity", showTimeline ? "1" : "0");
     xTitle.setAttribute("x", String(plotCenterX));
     // Keep the title just under the visible cluster block for cropped stages.
     if (stage === "full") {
       const fullHeight = TOP_PAD + data.parameters.clusters * (ROW_HEIGHT + ROW_GAP) + AXIS_HEIGHT;
       xTitle.setAttribute("y", String(fullHeight - 4));
-    } else if (stage === "site") {
-      const barY = clusterY(1, data.parameters.clusters);
-      xTitle.setAttribute("y", String(barY + ROW_HEIGHT + AXIS_TITLE_OFFSET));
-    } else {
+    } else if (stage === "batch") {
       const topY = clusterY(data.parameters.clustersPerBatch, data.parameters.clusters);
       const blockH = data.parameters.clustersPerBatch * (ROW_HEIGHT + ROW_GAP);
       xTitle.setAttribute("y", String(topY + blockH + AXIS_TITLE_OFFSET));

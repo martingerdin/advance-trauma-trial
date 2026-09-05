@@ -1543,7 +1543,8 @@ body {
 
 .wedge-phase-callouts {
   display: none;
-  grid-template-columns: 4fr 1.6fr 8fr;
+  /* Equal standard-care / intervention columns (schematic bar); training stays narrow. */
+  grid-template-columns: 6fr 1fr 6fr;
   gap: 0.35rem;
   align-items: end;
   /* Match SVG left/right gutters (LABEL_LEFT / short width ≈ 10%) */
