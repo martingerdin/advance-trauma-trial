@@ -218,7 +218,7 @@ export const slides: Slide[] = [
       { value: ">80", label: "countries worldwide" },
       { value: ">1M", label: "physicians trained" },
     ],
-    footer: ATLS_MANUAL_CITE,
+    footer: "www.facs.org/quality-programs/trauma/education/advanced-trauma-life-support/",
   },
   {
     id: "atls-providers",
