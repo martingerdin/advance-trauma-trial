@@ -40,6 +40,11 @@ const overviewClose = document.getElementById("overview-close")!;
 const overviewBackdrop = document.getElementById("overview-backdrop")!;
 const overviewPanel = document.getElementById("overview-panel");
 
+function provocationStatements(slide: Slide): string[] {
+  if (slide.statements?.length) return slide.statements;
+  return slide.body ? [slide.body] : [];
+}
+
 function renderSlide(slide: Slide): HTMLElement {
   const el = document.createElement("article");
   el.className = `slide slide--${slide.layout}`;
@@ -61,7 +66,13 @@ function renderSlide(slide: Slide): HTMLElement {
     case "provocation":
       el.innerHTML = `
         <div class="slide-inner slide-inner--provocation">
-          <p class="provocation-statement" data-animate>${slide.body}</p>
+          <div class="provocation-stack" data-animate>
+            ${provocationStatements(slide)
+              .map(
+                (s) => `<div class="provocation-line"><p class="provocation-line__text">${s}</p></div>`
+              )
+              .join("")}
+          </div>
         </div>
       `;
       break;
@@ -674,8 +685,9 @@ function mountSlides(): void {
 }
 
 function slideThumbLabel(slide: Slide): string {
-  if (slide.layout === "provocation" && slide.body) {
-    return slide.body.length > 48 ? `${slide.body.slice(0, 45)}…` : slide.body;
+  if (slide.layout === "provocation") {
+    const opener = provocationStatements(slide)[0];
+    if (opener) return opener.length > 48 ? `${opener.slice(0, 45)}…` : opener;
   }
   return slide.title ?? slide.subtitle ?? slide.id;
 }
@@ -813,7 +825,36 @@ function updateUI(): void {
   updateOverviewActive();
 }
 
-function animateSlideIn(slideEl: HTMLElement): void {
+/**
+ * Provocation lines are held back and released one keypress at a time, with
+ * everything already said dimmed so the sentence being spoken is the only one
+ * at full strength. Arriving from behind shows the whole statement, so stepping
+ * back through the deck never replays a reveal the audience has already seen.
+ */
+function setProvocationStep(slideEl: HTMLElement, step: number): void {
+  const lines = Array.from(slideEl.querySelectorAll<HTMLElement>(".provocation-line"));
+  lines.forEach((line, i) => {
+    line.classList.toggle("is-revealed", i <= step);
+    line.classList.toggle("is-current", i === step);
+    line.setAttribute("aria-hidden", i <= step ? "false" : "true");
+  });
+  slideEl.dataset.provocationStep = String(step);
+}
+
+function advanceProvocation(slideEl: HTMLElement): boolean {
+  const total = slideEl.querySelectorAll(".provocation-line").length;
+  const step = Number(slideEl.dataset.provocationStep ?? "0");
+  if (step >= total - 1) return false;
+  setProvocationStep(slideEl, step + 1);
+  return true;
+}
+
+function animateSlideIn(slideEl: HTMLElement, direction: "forward" | "backward" = "forward"): void {
+  if (slideEl.dataset.layout === "provocation") {
+    const total = slideEl.querySelectorAll(".provocation-line").length;
+    setProvocationStep(slideEl, direction === "backward" ? total - 1 : 0);
+  }
+
   const targets = Array.from(slideEl.querySelectorAll<HTMLElement>("[data-animate]"));
   if (targets.length === 0) return;
 
@@ -924,6 +965,7 @@ function animateSlideIn(slideEl: HTMLElement): void {
 
 function goTo(index: number): void {
   if (isAnimating || index < 0 || index >= slides.length || index === currentIndex) return;
+  const direction = index > currentIndex ? "forward" : "backward";
   isAnimating = true;
   designReveal?.cancel();
   designReveal = null;
@@ -943,7 +985,7 @@ function goTo(index: number): void {
     next.setAttribute("aria-hidden", "false");
     currentIndex = index;
     updateUI();
-    animateSlideIn(next);
+    animateSlideIn(next, direction);
     animate(
       next,
       { opacity: [0, 1], transform: ["scale(1.02)", "scale(1)"] } as Record<string, unknown>,
@@ -968,6 +1010,10 @@ function next(): void {
  */
 function advanceAnimation(): boolean {
   const slide = slides[currentIndex];
+
+  if (slide?.layout === "provocation") {
+    return advanceProvocation(slidesEl.children[currentIndex] as HTMLElement);
+  }
 
   if (slide?.layout === "design-animation") {
     if (!designReveal || designReveal.isComplete()) return false;

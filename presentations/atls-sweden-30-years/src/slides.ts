@@ -92,6 +92,8 @@ export interface Slide {
   eyebrow?: string;
   body?: string;
   bullets?: string[];
+  /** Provocation lines, revealed one at a time as the presenter advances. */
+  statements?: string[];
   affiliations?: string[];
   stats?: Stat[];
   arms?: TrialArm[];
@@ -125,6 +127,16 @@ export const slides: Slide[] = [
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "ATLS® Sweden 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
+  },
+  {
+    id: "hook",
+    layout: "provocation",
+    statements: [
+      "ATLS® is the world’s trauma care standard — an amazing success story.",
+      "Observational evidence points to a large effect on patient outcomes.",
+      "No high-quality study has confirmed this effect.",
+      '<span class="wordmark">ADVANCE TRAUMA</span> is that study.',
+    ],
   },
   {
     id: "presenter",
@@ -344,11 +356,6 @@ export const slides: Slide[] = [
     title: "Updated systematic review",
     footer:
       "Nakhid et al. Scand J Trauma Resusc Emerg Med. 2026 (in press). Lule et al. 2026 — RTTDC, not ATLS®.",
-  },
-  {
-    id: "hook",
-    layout: "provocation",
-    body: "ATLS® is the world’s trauma care standard — an amazing success story. Observational evidence points to a large effect on patient outcomes. No high-quality study has confirmed it.",
   },
   {
     id: "section-trial",
