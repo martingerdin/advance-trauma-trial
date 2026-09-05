@@ -1,6 +1,7 @@
 import { animate, type AnimationPlaybackControls } from "motion";
 import type { TrialDesignData } from "./figure-data";
 import {
+  applyAxisChrome,
   createSteppedWedgeSvg,
   createWedgeLegend,
   fitSvgInContainer,
@@ -9,8 +10,11 @@ import {
   lerpViewBox,
   restoreClusterPhases,
   setRevealMonth,
+  setTimelineOpacity,
+  setYAxisTitleOpacity,
   siteSchematicSpans,
   syncAxisToStage,
+  syncClusterLabels,
   viewBoxString,
   type DesignFocusStage,
   type WedgeViewBox,
@@ -341,6 +345,7 @@ export function startDesignReveal(
 
   // Start cropped to one site so the first paint is not the full 0–48 axis.
   applySiteSchematic();
+  applyAxisChrome(svg, data, "site");
   setCamera(focusViewBox(data, "site"), "site");
   // Re-fit after layout — first paint often has a 0×0 container.
   requestAnimationFrame(() => {
@@ -354,15 +359,31 @@ export function startDesignReveal(
   resizeObserver.observe(mount);
   signal.addEventListener("abort", () => resizeObserver.disconnect());
 
-  const morphCamera = async (toStage: DesignRevealStage, token: number, duration = 1.2) => {
+  const morphCamera = async (
+    toStage: DesignRevealStage,
+    token: number,
+    duration = 1.2,
+    axisReveal: "instant" | "fade" | "hide" = "instant"
+  ) => {
     const from = parseViewBox(svg);
     const to = focusViewBox(data, toStage);
     syncAxisToStage(svg, data, toStage);
     svg.dataset.stage = toStage;
+
+    if (axisReveal === "fade" || axisReveal === "hide") {
+      setTimelineOpacity(svg, 0);
+      setYAxisTitleOpacity(svg, 0);
+      syncClusterLabels(svg, data, toStage, 0);
+    } else {
+      applyAxisChrome(svg, data, toStage);
+    }
+
     if (reduceMotion() || duration <= 0) {
       setCamera(to, toStage);
+      if (axisReveal !== "hide") applyAxisChrome(svg, data, toStage);
       return;
     }
+
     await gate(token);
     await track(
       animate(0, 1, {
@@ -373,6 +394,25 @@ export function startDesignReveal(
       token
     );
     setCamera(to, toStage);
+
+    if (axisReveal === "fade") {
+      await gate(token);
+      await track(
+        animate(0, 1, {
+          duration: 0.65,
+          ease: "easeOut",
+          onUpdate: (t) => {
+            setTimelineOpacity(svg, t);
+            setYAxisTitleOpacity(svg, t);
+            syncClusterLabels(svg, data, toStage, t);
+          },
+        }),
+        token
+      );
+      applyAxisChrome(svg, data, toStage);
+    } else if (axisReveal === "instant") {
+      applyAxisChrome(svg, data, toStage);
+    }
   };
 
   const setRowVisibility = (clusterIds: number[], visible: boolean) => {
@@ -446,7 +486,7 @@ export function startDesignReveal(
     syncUi();
 
     await clearPlot(token, animateIn);
-    await morphCamera("site", token, animateIn ? 0.9 : 0);
+    await morphCamera("site", token, animateIn ? 0.9 : 0, "hide");
     hideAllRows();
     setRowVisibility([1], true);
     showBatchLabels([1]);
@@ -489,7 +529,7 @@ export function startDesignReveal(
 
     await clearPlot(token, animateIn);
     restoreRealClusterOne();
-    await morphCamera("batch", token, animateIn ? 1.1 : 0);
+    await morphCamera("batch", token, animateIn ? 1.1 : 0, animateIn ? "fade" : "instant");
     setRowVisibility(batchClusters, true);
     showBatchLabels([1]);
     // Hide clusters outside this batch while the shared timeline plays.
@@ -517,7 +557,7 @@ export function startDesignReveal(
 
     await clearPlot(token, animateIn);
     restoreRealClusterOne();
-    await morphCamera("full", token, animateIn ? 1.4 : 0);
+    await morphCamera("full", token, animateIn ? 1.4 : 0, "instant");
     setRowVisibility(allClusters, true);
     showBatchLabels(Array.from({ length: data.parameters.batches }, (_, i) => i + 1));
 

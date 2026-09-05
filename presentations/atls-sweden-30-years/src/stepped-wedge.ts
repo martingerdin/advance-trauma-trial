@@ -214,7 +214,6 @@ export function syncAxisToStage(
 
   const xTitle = svg.querySelector<SVGTextElement>(".wedge-axis-xtitle");
   if (xTitle) {
-    xTitle.setAttribute("opacity", showTimeline ? "1" : "0");
     xTitle.setAttribute("x", String(plotCenterX));
     // Keep the title just under the visible cluster block for cropped stages.
     if (stage === "full") {
@@ -229,8 +228,63 @@ export function syncAxisToStage(
 
   const yLabel = svg.querySelector<SVGTextElement>(".wedge-axis-ylabel");
   const batchTitle = svg.querySelector<SVGTextElement>(".wedge-axis-batch-title");
-  if (yLabel) yLabel.setAttribute("opacity", stage === "full" ? "1" : "0");
+  if (yLabel) {
+    const yLabelX = 14;
+    let yLabelY: number;
+    if (stage === "batch") {
+      const topY = clusterY(data.parameters.clustersPerBatch, data.parameters.clusters);
+      const bottomY = clusterY(1, data.parameters.clusters) + ROW_HEIGHT;
+      yLabelY = (topY + bottomY) / 2;
+    } else {
+      yLabelY = TOP_PAD + (data.parameters.clusters * (ROW_HEIGHT + ROW_GAP)) / 2;
+    }
+    yLabel.setAttribute("x", String(yLabelX));
+    yLabel.setAttribute("y", String(yLabelY));
+    yLabel.setAttribute("transform", `rotate(-90 ${yLabelX} ${yLabelY})`);
+  }
   if (batchTitle) batchTitle.setAttribute("opacity", stage === "full" ? "1" : "0");
+}
+
+/** Timeline group opacity (0–1). Kept separate from sync so the batch intro can fade in. */
+export function setTimelineOpacity(svg: SVGSVGElement, opacity: number): void {
+  const timeline = svg.querySelector<SVGGElement>(".wedge-axis-timeline");
+  if (timeline) timeline.setAttribute("opacity", String(opacity));
+}
+
+/**
+ * Per-cluster y-axis numbers. Batch shows clusters 1–N alongside the "Cluster"
+ * axis title; site/full hide the numbers (full keeps the title only).
+ */
+export function syncClusterLabels(
+  svg: SVGSVGElement,
+  data: TrialDesignData,
+  stage: DesignFocusStage,
+  opacity = 1
+): void {
+  const maxCluster = stage === "batch" ? data.parameters.clustersPerBatch : 0;
+  svg.querySelectorAll<SVGTextElement>(".wedge-cluster-label").forEach((label) => {
+    const cluster = Number(label.dataset.cluster);
+    const on = cluster >= 1 && cluster <= maxCluster;
+    label.setAttribute("opacity", on ? String(opacity) : "0");
+  });
+}
+
+/** Y-axis title opacity (0–1). Separate so the batch intro can fade it with the timeline. */
+export function setYAxisTitleOpacity(svg: SVGSVGElement, opacity: number): void {
+  const yLabel = svg.querySelector<SVGTextElement>(".wedge-axis-ylabel");
+  if (yLabel) yLabel.setAttribute("opacity", String(opacity));
+}
+
+/** Apply stage axis chrome instantly (ticks in range + timeline/cluster visibility). */
+export function applyAxisChrome(
+  svg: SVGSVGElement,
+  data: TrialDesignData,
+  stage: DesignFocusStage
+): void {
+  syncAxisToStage(svg, data, stage);
+  setTimelineOpacity(svg, stage === "site" ? 0 : 1);
+  setYAxisTitleOpacity(svg, stage === "site" ? 0 : 1);
+  syncClusterLabels(svg, data, stage, stage === "batch" ? 1 : 0);
 }
 
 /** Fixed HTML legend — not affected by SVG viewBox zoom. */
@@ -378,6 +432,22 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   yLabel.textContent = data.labels.y;
   axis.appendChild(yLabel);
 
+  const clusterLabels = svgEl("g", { class: "wedge-cluster-labels" });
+  for (let cluster = 1; cluster <= clusters; cluster++) {
+    const label = svgEl("text", {
+      x: LABEL_LEFT - 8,
+      y: clusterY(cluster, clusters) + ROW_HEIGHT / 2 + 4,
+      class: "axis-label wedge-cluster-label",
+      "data-cluster": String(cluster),
+      "text-anchor": "end",
+      opacity: 0,
+    });
+    label.textContent = String(cluster);
+    clusterLabels.appendChild(label);
+  }
+  axis.appendChild(clusterLabels);
+
+  const timeline = svgEl("g", { class: "wedge-axis-timeline", opacity: 0 });
   const tickStep = data.xMax > 24 ? 4 : data.geometry.xBreakStep;
   for (let month = 0; month <= data.xMax; month += tickStep) {
     const x = monthX(month, 0);
@@ -404,7 +474,7 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
     });
     tickLabel.textContent = String(month);
     tick.appendChild(tickLabel);
-    axis.appendChild(tick);
+    timeline.appendChild(tick);
   }
 
   const siteMonths = stageMonthSpan(data, "site");
@@ -415,7 +485,8 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
     "text-anchor": "middle",
   });
   xTitle.textContent = data.labels.x;
-  axis.appendChild(xTitle);
+  timeline.appendChild(xTitle);
+  axis.appendChild(timeline);
 
   for (let batch = 1; batch <= batches; batch++) {
     const midCluster = (batch - 0.5) * clustersPerBatch;
@@ -457,6 +528,6 @@ export function createSteppedWedgeSvg(data: TrialDesignData = trialDesign): SVGS
   }
 
   svg.appendChild(axis);
-  syncAxisToStage(svg, data, "site");
+  applyAxisChrome(svg, data, "site");
   return svg;
 }

@@ -1694,6 +1694,12 @@ body {
   letter-spacing: 0.04em;
 }
 
+.stepped-wedge-chart .wedge-cluster-label {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  fill: var(--text-muted);
+}
+
 .wedge-segment {
   transform-box: fill-box;
 }

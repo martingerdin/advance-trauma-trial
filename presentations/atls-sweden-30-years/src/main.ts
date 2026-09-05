@@ -1,12 +1,12 @@
 import { animate, stagger } from "motion";
 import { slides, type Slide, type Stat } from "./slides";
 import {
+  applyAxisChrome,
   createSteppedWedgeSvg,
   createWedgeLegend,
   setRevealMonth,
   focusViewBox,
   viewBoxString,
-  syncAxisToStage,
 } from "./stepped-wedge";
 import { createForestPlot, type ForestPlotController } from "./forest-plot";
 import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
@@ -836,7 +836,7 @@ function animateSlideIn(slideEl: HTMLElement): void {
       const svg = slideEl.querySelector<SVGSVGElement>(".stepped-wedge-chart");
       if (svg) {
         svg.setAttribute("viewBox", viewBoxString(focusViewBox(data, "full")));
-        syncAxisToStage(svg, data, "full");
+        applyAxisChrome(svg, data, "full");
         setRevealMonth(svg, data.xMax);
       }
       rows.forEach((row) => {
