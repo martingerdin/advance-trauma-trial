@@ -160,7 +160,7 @@ export const slides: Slide[] = [
       { value: "4.3M", label: "deaths globally each year", source: "1" },
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
       { value: "2.1M", label: "quality-related trauma deaths in LMICs", source: "3" },
-      { value: "#1", label: "cause of lost healthy life, ages 10–24 and 25–49", source: "1" },
+      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "1" },
     ],
     references: [
       {
