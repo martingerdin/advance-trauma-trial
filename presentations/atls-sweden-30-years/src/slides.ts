@@ -342,7 +342,7 @@ export const slides: Slide[] = [
   {
     id: "hook",
     layout: "provocation",
-    body: "Thirty years of Swedish ATLS® prove we can teach at scale. No randomised trial has tested whether ATLS® saves lives.",
+    body: "ATLS® is the world’s trauma care standard — an amazing success story. Observational evidence points to a large effect on patient outcomes. No high-quality study has confirmed it.",
   },
   {
     id: "section-trial",

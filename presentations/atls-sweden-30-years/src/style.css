@@ -380,13 +380,12 @@ body {
 .provocation-statement {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: var(--fs-display);
+  font-size: var(--fs-figure);
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.35;
   letter-spacing: -0.015em;
   color: var(--text-inverse);
-  max-width: 22ch;
-  text-wrap: balance;
+  max-width: 32ch;
 }
 
 .overview-thumb__preview--provocation {
