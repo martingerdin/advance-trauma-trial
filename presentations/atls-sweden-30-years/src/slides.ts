@@ -171,8 +171,8 @@ export const slides: Slide[] = [
     stats: [
       { value: "~5M", label: "deaths globally each year", source: "1" },
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
-      { value: "2.1M", label: "quality-related trauma deaths in LMICs", source: "3" },
-      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "4" },
+      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "3" },
+      { value: "~2M", label: "quality-related deaths globally each year", source: "4" },
     ],
     references: [
       {
@@ -185,11 +185,11 @@ export const slides: Slide[] = [
       },
       {
         id: "3",
-        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
+        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries in 204 countries and territories, 1990–2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet. 2020;396:1204–1222.",
       },
       {
         id: "4",
-        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries in 204 countries and territories, 1990–2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet. 2020;396:1204–1222.",
+        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
       },
     ],
   },
