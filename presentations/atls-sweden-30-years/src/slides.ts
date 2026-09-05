@@ -364,8 +364,8 @@ export const slides: Slide[] = [
     title: "Previous work",
     milestones: [
       {
-        year: "2013",
-        label: "A multicentre trauma cohort across India",
+        year: "2013–2022",
+        label: "Multicentre observational and interventional studies",
         image: "./milestones/multicentre.png",
         imageAlt: "Map of India with hospital sites",
         cite: "1",
@@ -384,6 +384,13 @@ export const slides: Slide[] = [
         imageAlt: "Patient bedside discussion about ATLS",
         cite: "3",
       },
+      {
+        year: "2026",
+        label: "A systematic review of trauma life support training",
+        image: "./milestones/systematic-review.png",
+        imageAlt: "Nakhid et al. systematic review article",
+        cite: "4",
+      },
     ],
     references: [
       { id: "1", text: "TITCO Consortium. Towards Improved Trauma Care Outcomes in India. www.titco.org" },
@@ -394,6 +401,10 @@ export const slides: Slide[] = [
       {
         id: "3",
         text: "David S, Gerdin Wärnberg M, TERN Collaborators. Patient-reported outcomes relevant to post-discharge trauma patients in urban India. medRxiv. 2024.",
+      },
+      {
+        id: "4",
+        text: "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026;34:15.",
       },
     ],
   },
