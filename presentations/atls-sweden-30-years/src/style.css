@@ -672,29 +672,28 @@ body {
    at 400, not 600: a semibold serif at display size is what makes a long
    quotation hard to read. */
 
+.slide--quote {
+  background: color-mix(in srgb, var(--brand) 12%, var(--surface));
+}
+
 .quote-block {
   flex: 0 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding: clamp(1.3rem, 3vw, 2rem) clamp(1.3rem, 3vw, 2.1rem)
-    clamp(1.15rem, 2.6vw, 1.7rem) clamp(1.75rem, 3.8vw, 2.5rem);
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--brand);
-  border-radius: var(--radius);
+  padding: 0.55em 0 0;
 }
 
 .quote-block::before {
   content: "\201C";
   position: absolute;
-  top: 0.05em;
-  left: 0.28em;
+  top: -0.2em;
+  left: -0.12em;
   font-family: var(--font-heading);
   font-size: var(--fs-display);
   line-height: 1;
-  color: color-mix(in srgb, var(--brand) 18%, transparent);
+  color: color-mix(in srgb, var(--brand) 22%, transparent);
   pointer-events: none;
 }
 
@@ -725,7 +724,7 @@ body {
   font-weight: 400;
   color: var(--text-muted);
   line-height: 1.4;
-  max-width: 60ch;
+  max-width: none;
 }
 
 /* ── Emphasis (a): the aim ───────────────────────────────────────
@@ -2875,11 +2874,6 @@ body.overview-open #controls {
 @media (max-height: 820px) {
   .slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--presenter):not(.slide--aim) h2 {
     margin-bottom: var(--space-2);
-  }
-
-  .quote-block {
-    padding: clamp(1.1rem, 2.6vw, 1.8rem) clamp(1.1rem, 2.6vw, 1.8rem)
-      clamp(1rem, 2.2vw, 1.5rem) clamp(1.5rem, 3.4vw, 2.4rem);
   }
 
   .quote-block cite {
