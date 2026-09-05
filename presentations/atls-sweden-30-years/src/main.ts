@@ -934,6 +934,31 @@ function next(): void {
   goTo(currentIndex + 1);
 }
 
+/**
+ * A "next" keypress on a slide that carries an animation drives that animation
+ * instead of leaving the slide, and only advances the deck once the animation
+ * has finished. Returns true when the keypress was consumed.
+ *
+ * The on-screen navigation arrows deliberately bypass this: clicking them is an
+ * explicit request to change slide, whatever the animation is doing.
+ */
+function advanceAnimation(): boolean {
+  const slide = slides[currentIndex];
+
+  if (slide?.layout === "design-animation") {
+    if (!designReveal || designReveal.isComplete()) return false;
+    if (designReveal.isPaused()) designReveal.resume();
+    return true;
+  }
+
+  if (slide?.layout === "forest") {
+    const slideEl = slidesEl.children[currentIndex] as HTMLElement;
+    return forestControllers.get(slideEl)?.advance() ?? false;
+  }
+
+  return false;
+}
+
 function prev(): void {
   goTo(currentIndex - 1);
 }
@@ -1006,7 +1031,7 @@ function setupKeyboard(): void {
 
     if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
       e.preventDefault();
-      next();
+      if (!advanceAnimation()) next();
     } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
       e.preventDefault();
       prev();

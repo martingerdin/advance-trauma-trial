@@ -137,6 +137,12 @@ export interface ForestPlotController {
   abortReveal(): void;
   /** Empty chart with headers only; pulse Play timeline (slide-enter idle). */
   resetIdle(): void;
+  /**
+   * Drive the slide's animation one step for a "next" keypress. Returns true
+   * when the keypress was consumed, false once there is nothing left to show
+   * and the deck should advance instead.
+   */
+  advance(): boolean;
 }
 
 /**
@@ -736,6 +742,17 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     setIncluded(allKeys);
   }
 
+  function advance(): boolean {
+    // Mid-reveal the studies are already arriving on their own; swallow the
+    // key so the deck does not skip past a running animation.
+    if (revealing) return true;
+    if (isIdle()) {
+      void playChronologicalReveal();
+      return true;
+    }
+    return false;
+  }
+
   refresh();
 
   return {
@@ -746,5 +763,6 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     playChronologicalReveal,
     abortReveal,
     resetIdle,
+    advance,
   };
 }
