@@ -26,8 +26,9 @@
 
   /* Typography — three families, three jobs.
      Quicksand is the ADVANCE TRAUMA wordmark and sets nothing else: the title
-     slide's hero, and `.wordmark` where the name appears inside running text.
-     If you are reaching for it for anything else, you want --font-body.
+     slide's hero, the section-trial divider title, and `.wordmark` where the
+     name appears inside running text. If you are reaching for it for anything
+     else, you want --font-body.
      EB Garamond names slides (titles) and voices quotations — nothing else.
      Roboto carries every lead, label, figure, card heading and body string. */
   --font-display: "Quicksand Variable", Quicksand, system-ui, sans-serif;
@@ -269,6 +270,12 @@ body {
   font-weight: 600;
   letter-spacing: 0.03em;
   border-bottom-color: color-mix(in srgb, var(--text-inverse) 30%, transparent);
+}
+
+/* Section divider naming the trial — same Quicksand wordmark as the title hero */
+#slide-section-trial .section-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
 }
 
 .slide--title .subtitle,
