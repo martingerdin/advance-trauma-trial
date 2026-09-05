@@ -141,6 +141,8 @@ export interface ForestPlotController {
    * Drive the slide's animation one step for a "next" keypress. Returns true
    * when the keypress was consumed, false once there is nothing left to show
    * and the deck should advance instead.
+   *
+   * Sequence: idle → play timeline → (full set) → ATLS-only filter → leave slide.
    */
   advance(): boolean;
 }
@@ -749,6 +751,14 @@ export function createForestPlot(data: MetaAnalysisData = metaAnalysis): ForestP
     if (isIdle()) {
       void playChronologicalReveal();
       return true;
+    }
+    // Full set on screen → narrow to ATLS, same as clicking the ATLS chip.
+    if (sameStudySet(included, allKeys)) {
+      const atls = programmes.find((filter) => filter.label === "ATLS");
+      if (atls && !sameStudySet(atls.keys, allKeys)) {
+        setIncluded(atls.keys);
+        return true;
+      }
     }
     return false;
   }
