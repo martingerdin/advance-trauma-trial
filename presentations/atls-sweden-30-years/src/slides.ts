@@ -161,11 +161,17 @@ export const slides: Slide[] = [
       { value: "#1", label: "cause of lost healthy life, ages 10–24 and 25–49", source: "1" },
     ],
     references: [
-      { id: "1", text: "GBD 2019 Diseases and Injuries Collaborators. Lancet. 2020;396:1204–1222." },
-      { id: "2", text: "Peterson C et al. MMWR Morb Mortal Wkly Rep. 2021;70:1655–1659." },
+      {
+        id: "1",
+        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries in 204 countries and territories, 1990–2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet. 2020;396:1204–1222.",
+      },
+      {
+        id: "2",
+        text: "Peterson C et al. Economic cost of injury — United States, 2019. MMWR Morb Mortal Wkly Rep. 2021;70:1655–1659.",
+      },
       {
         id: "3",
-        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm. 2018.",
+        text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
       },
     ],
   },
@@ -210,13 +216,28 @@ export const slides: Slide[] = [
     evidence: [
       {
         id: "1",
-        tag: "One randomised, two controlled",
-        claim: "Knowledge and trauma management skills improve after the course",
+        tag: "Randomised, 32 physicians",
+        claim: "OSCE scores, priorities, and an organised approach improved after the course",
         source:
-          "Ali J et al. World J Surg. 1996;20:1121–1125 (randomised); J Trauma. 1995;38:687–691; J Trauma. 1994;36:695–702.",
+          "Ali J et al. Teaching effectiveness of the ATLS program as demonstrated by an OSCE for practicing physicians. World J Surg. 1996;20:1121–1125.",
       },
       {
         id: "2",
+        tag: "Controlled, 40 medical students",
+        claim: "Trauma management skills and knowledge improved after the course",
+        source:
+          "Ali J, Cohen R, Reznick R. Demonstration of acquisition of trauma management skills by senior medical students completing the ATLS program. J Trauma. 1995;38:687–691.",
+      },
+      {
+        id: "3",
+        tag: "Before-and-after, 212 physicians",
+        claim:
+          "Cognitive test scores rose, and colleagues judged ATLS-trained physicians more confident",
+        source:
+          "Ali J et al. Cognitive and attitudinal impact of the ATLS program in a developing country. J Trauma. 1994;36:695–702.",
+      },
+      {
+        id: "4",
         tag: "60 physicians, six-year follow-up",
         claim:
           "Priorities and an organised approach hold at six years, but cognitive test scores fall within six months",
@@ -248,19 +269,22 @@ export const slides: Slide[] = [
         id: "2",
         tag: "Ecological, US counties",
         claim: "Counties with more ATLS-trained physicians had fewer injury deaths per capita",
-        source: "Rutledge R et al. Ann Surg. 1994;219:547–563.",
+        source:
+          "Rutledge R et al. A population-based study of the association of medical manpower with county trauma death rates in the United States. Ann Surg. 1994;219:547–563.",
       },
       {
         id: "3",
         tag: "77 patients, TRISS",
         claim: "A small trauma team matched a larger one, with more unexpected survivors than deaths",
-        source: "Deo SD, Knottenbelt JD, Peden MM. Injury. 1997;28:633–637.",
+        source:
+          "Deo SD, Knottenbelt JD, Peden MM. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
       },
       {
         id: "4",
         tag: "63 patients",
         claim: "Deaths in the first hour fell after ATLS®; overall mortality unchanged",
-        source: "van Olden GDJ et al. Am J Emerg Med. 2004;22:522–525.",
+        source:
+          "van Olden GDJ et al. Clinical impact of advanced trauma life support. Am J Emerg Med. 2004;22:522–525.",
       },
     ],
   },
@@ -273,33 +297,38 @@ export const slides: Slide[] = [
         id: "1",
         tag: "23 studies",
         claim: "Knowledge and skills clearly improve; strong evidence on mortality still lacking",
-        source: "Mohammad A et al. World J Surg. 2014;38:322–329.",
+        source:
+          "Mohammad A et al. Educational and clinical impact of Advanced Trauma Life Support (ATLS) courses: a systematic review. World J Surg. 2014;38:322–329.",
       },
       {
         id: "2",
         tag: "No eligible trials",
         claim: "No controlled trial has tested whether ATLS® changes mortality or morbidity",
-        source: "Jayaraman S et al. Cochrane Database Syst Rev. 2014;(8):CD004173.",
+        source:
+          "Jayaraman S et al. Advanced trauma life support training for hospital staff. Cochrane Database Syst Rev. 2014;(8):CD004173.",
       },
       {
         id: "3",
         tag: "Quality improvement in LMICs",
         claim:
           "Lower mortality with certified in-hospital trauma training, RR 0.71 (95% CI 0.62–0.78)",
-        source: "Jin J et al. World J Surg. 2021;45:1982–1998.",
+        source:
+          "Jin J et al. Effectiveness of quality improvement processes, interventions, and structure in trauma systems in low- and middle-income countries: a systematic review and meta-analysis. World J Surg. 2021;45:1982–1998.",
       },
       {
         id: "4",
         tag: "7 studies",
         claim: "No significant association with lower mortality, OR 0.68 (95% CI 0.39–1.20)",
-        source: "Putra AB et al. New Ropanasuri J Surg. 2023;8(2).",
+        source:
+          "Putra AB et al. Impact of Advanced Trauma Life Support training for improving mortality outcome: a systematic review and meta-analysis. New Ropanasuri J Surg. 2023;8(2).",
       },
       {
         id: "5",
         tag: "17 studies, all observational",
         claim:
           "Lower mortality with trauma life support training, OR 0.60 (95% CI 0.48–0.75)",
-        source: "Nakhid Z et al. Scand J Trauma Resusc Emerg Med. 2026 (in press).",
+        source:
+          "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026 (in press).",
       },
     ],
     footer:
@@ -309,8 +338,8 @@ export const slides: Slide[] = [
     id: "atls-forest",
     layout: "forest",
     title: "Updated systematic review",
-    source:
-      "Nakhid et al. 2026, in press (17 observational studies), plus Lule et al. 2026 — a cluster randomised trial of RTTDC, not ATLS®.",
+    footer:
+      "Nakhid et al. Scand J Trauma Resusc Emerg Med. 2026 (in press). Lule et al. 2026 — RTTDC, not ATLS®.",
   },
   {
     id: "hook",
@@ -358,8 +387,14 @@ export const slides: Slide[] = [
     ],
     references: [
       { id: "1", text: "TITCO Consortium. Towards Improved Trauma Care Outcomes in India. www.titco.org" },
-      { id: "2", text: "Gerdin Wärnberg M et al. BMJ Open. 2025;15:e099020." },
-      { id: "3", text: "David S, Gerdin Wärnberg M, TERN Collaborators. medRxiv. 2024." },
+      {
+        id: "2",
+        text: "Gerdin Wärnberg M et al. Feasibility of a cluster randomised trial on the effect of trauma life support training: a pilot study in India. BMJ Open. 2025;15:e099020.",
+      },
+      {
+        id: "3",
+        text: "David S, Gerdin Wärnberg M, TERN Collaborators. Patient-reported outcomes relevant to post-discharge trauma patients in urban India. medRxiv. 2024.",
+      },
     ],
   },
   {

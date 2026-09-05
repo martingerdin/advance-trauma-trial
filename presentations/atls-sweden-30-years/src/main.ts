@@ -106,7 +106,7 @@ function renderSlide(slide: Slide): HTMLElement {
           ${
             slide.body
               ? `<section class="presenter-disclosure" data-animate>
-                  <h2 class="presenter-heading">Conflicts of interest</h2>
+                  <h2 class="presenter-heading">Disclosures</h2>
                   <p class="presenter-disclosure__text">${slide.body}</p>
                 </section>`
               : ""
@@ -490,8 +490,8 @@ function renderSlide(slide: Slide): HTMLElement {
       el.innerHTML = `
         <div class="slide-inner slide-inner--forest">
           <h2 data-animate>${slide.title}</h2>
-          ${slide.source ? `<p class="slide-source" data-animate>${slide.source}</p>` : ""}
           <div id="forest-mount"></div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
         </div>
       `;
       break;

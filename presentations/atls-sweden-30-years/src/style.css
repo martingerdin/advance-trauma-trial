@@ -164,11 +164,11 @@ body {
   min-height: 100%;
 }
 
-/* ── Alignment: one heading baseline, body centred beneath it ─────
-   Content slides pin the h2 to the top of the slide and let the dominant
-   content block centre in the space below, so the title does not move as the
-   presenter pages through. Only the four brand layouts (title, section,
-   closing, provocation) centre their whole canvas. */
+/* ── Alignment: title and body travel as one centred cluster ──────
+   Content slides keep the heading with the body and centre that unit
+   vertically. Chart layouts still fill the leftover height under the
+   heading. Brand layouts (title, section, closing, provocation) centre
+   their whole canvas. */
 
 .slide-inner--stats,
 .slide-inner--bullets,
@@ -187,40 +187,23 @@ body {
 .slide--implications .slide-inner {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 100%;
 }
 
-.slide-inner > .stats-layout,
-.slide-inner > .arms-grid,
-.slide-inner > .outcome-list,
-.slide-inner > .columns-grid,
-.slide-inner > .implications-grid,
-.slide-inner > .status-map-layout,
-.slide-inner > .team-grid,
-.slide-inner > .funding-grid,
-.slide-inner > .bullet-list,
-.slide-inner > .paper-list,
+/* Charts take the height under the heading instead of floating in leftover space. */
 .slide-inner > .design-layout,
-.slide-inner > .quote-block,
-.slide-inner--milestones > .milestones-grid {
-  margin-block: auto;
+.slide-inner > .status-map-layout {
+  flex: 1;
+  min-height: 0;
 }
 
-/* The primary outcome's lead and its cards travel together, so the auto space
-   goes above the lead and below the grid — one auto margin would top-align. */
 .slide-inner--outcomes > .lead {
-  margin-top: auto;
   margin-bottom: var(--space-5);
   /* The primary outcome is the headline of a trial talk: bigger than a lead,
      still clearly below the aim, which stays the largest line in the deck. */
   font-size: var(--fs-figure);
   max-width: 30ch;
-}
-
-.slide-inner--outcomes > .outcomes-grid {
-  margin-top: 0;
-  margin-bottom: auto;
 }
 
 .slide-inner--aim,
@@ -480,7 +463,7 @@ body {
 
 .presenter-list li {
   position: relative;
-  padding: 0.55em 0 0.55em 1.35em;
+  padding: 0.5em 0 0.5em 1.35em;
   border-bottom: 1px solid var(--border);
   font-size: clamp(0.95rem, 1.8vw, 1.15rem);
   color: var(--text);
@@ -531,19 +514,17 @@ body {
   color: var(--ink);
   font-weight: 600;
   line-height: 1.2;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding-bottom: var(--space-2);
-  margin: 0 0 var(--space-5);
+  margin: 0 0 var(--space-4);
   letter-spacing: -0.01em;
   flex-shrink: 0;
 }
 
-/* A lead or source line directly under the heading tightens the pair — except
-   on the outcomes slide, where the lead is the centred hero rather than a
-   subtitle and needs its auto margin (see below). */
+/* A lead or source line directly under the heading stays in the same cluster. */
 .slide-inner:not(.slide-inner--outcomes) > h2 + .lead,
 .slide-inner > h2 + .slide-source {
-  margin-top: calc(-1 * var(--space-5) + var(--space-3));
+  margin-top: calc(-1 * var(--space-4) + var(--space-2));
 }
 
 /* Source line under a heading — used where a figure needs attribution. */
@@ -591,7 +572,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 0.2em 0.55em;
+  padding: 0.16em 0.48em;
   width: fit-content;
   white-space: nowrap;
 }
@@ -602,7 +583,7 @@ body {
 
 .stats-layout {
   display: grid;
-  gap: 2rem;
+  gap: 1.6rem;
 }
 
 .stats-layout--with-image {
@@ -623,10 +604,10 @@ body {
 }
 
 .stat-card {
-  padding: 1.25rem 1rem;
+  padding: 1.1rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 /* Figures are Roboto: this build of EB Garamond has no lining-figure feature
@@ -658,8 +639,8 @@ body {
 }
 
 .slide-references {
-  margin-top: var(--space-5);
-  padding-top: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
   border-top: 1px solid var(--border);
   list-style: none;
   counter-reset: none;
@@ -697,8 +678,8 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding: clamp(1.5rem, 3.5vw, 2.4rem) clamp(1.5rem, 3.5vw, 2.4rem)
-    clamp(1.35rem, 3vw, 2rem) clamp(2rem, 4.5vw, 3rem);
+  padding: clamp(1.3rem, 3vw, 2rem) clamp(1.3rem, 3vw, 2.1rem)
+    clamp(1.15rem, 2.6vw, 1.7rem) clamp(1.75rem, 3.8vw, 2.5rem);
   background: var(--surface-muted);
   border: 1px solid var(--border);
   border-left: 3px solid var(--brand);
@@ -813,7 +794,7 @@ body {
 .outcomes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: var(--space-4);
+  gap: var(--space-3);
   width: 100%;
 }
 
@@ -827,7 +808,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding: clamp(1.1rem, 2.2vw, 1.4rem);
+  padding: clamp(1rem, 2vw, 1.3rem);
 }
 
 /* ── Outcome list (secondary outcomes) ──────────────────────────── */
@@ -844,7 +825,7 @@ body {
   grid-template-columns: minmax(7rem, 0.6fr) minmax(0, 1.25fr) minmax(0, 1.4fr);
   gap: var(--space-1) clamp(1rem, 2.5vw, 2rem);
   align-items: baseline;
-  padding: clamp(0.7rem, 1.7vh, 1.15rem) 0;
+  padding: clamp(0.6rem, 1.45vh, 1rem) 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -910,7 +891,7 @@ body {
 
 .bullet-list li {
   position: relative;
-  padding: 0.7em 0 0.7em 1.35em;
+  padding: 0.58em 0 0.58em 1.35em;
   border-bottom: 1px solid var(--border);
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   line-height: 1.45;
@@ -938,15 +919,15 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  border-left: 3px solid var(--brand);
+  border-left: 2px solid var(--light-blue);
 }
 
 .paper-list__item {
   display: grid;
-  grid-template-columns: 2rem 1fr;
-  gap: 0.85rem;
+  grid-template-columns: 1.75rem 1fr;
+  gap: 0.7rem;
   align-items: start;
-  padding: 0.85rem 0 0.85rem 1.1rem;
+  padding: 0.7rem 0 0.7rem 1rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -959,16 +940,16 @@ body {
   font-size: var(--fs-body);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: var(--brand-darker);
+  color: var(--brand);
   line-height: 1.3;
-  padding-top: 0.1rem;
+  padding-top: 0.08rem;
 }
 
 .paper-list__body {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.22rem;
 }
 
 .paper-list__primary {
@@ -985,11 +966,11 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body-sm);
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .paper-list__body .panel-tag {
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.08rem;
 }
 
 .slide-inner--evidence {
@@ -1005,7 +986,7 @@ body {
 .arms-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.25rem, 3vw, 2rem);
+  gap: clamp(1.15rem, 2.7vw, 1.75rem);
   width: 100%;
 }
 
@@ -1013,7 +994,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding: clamp(1.1rem, 2.2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 1.4rem);
 }
 
 /* Arm colours match the stepped-wedge legend on the design slides. */
@@ -1082,8 +1063,8 @@ body {
 .columns-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(1.25rem, 3vw, 2rem);
-  margin-top: 0.5rem;
+  gap: clamp(1.15rem, 2.7vw, 1.75rem);
+  margin-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -1093,7 +1074,7 @@ body {
 }
 
 .column-card {
-  padding: clamp(1.1rem, 2.2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 1.4rem);
 }
 
 .column-card:nth-child(2) {
@@ -1235,7 +1216,7 @@ body {
 .design-copy {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
   min-width: 0;
 }
 
@@ -1886,6 +1867,13 @@ body {
   display: flex;
 }
 
+.slide-inner--forest > .slide-footer {
+  max-width: none;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-top: var(--space-3);
+}
+
 .forest-controls {
   flex: 0 0 auto;
 }
@@ -2074,8 +2062,8 @@ body {
 .implications-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1rem;
+  gap: 1.6rem;
+  margin-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -2085,7 +2073,7 @@ body {
 }
 
 .implication-card {
-  padding: 1.5rem;
+  padding: 1.3rem 1.35rem;
   text-align: center;
 }
 
@@ -2098,7 +2086,7 @@ body {
 }
 
 .implication-card figure {
-  margin: 0 0 1rem;
+  margin: 0 0 0.85rem;
 }
 
 .implication-card img {
@@ -2396,7 +2384,7 @@ body {
 }
 
 .team-header {
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--space-4);
 }
 
 .team-header h2 {
@@ -2423,7 +2411,7 @@ body {
 }
 
 .team-card {
-  padding: clamp(1rem, 2vw, 1.35rem);
+  padding: clamp(0.95rem, 1.8vw, 1.25rem);
 }
 
 .team-card__label {
@@ -2438,7 +2426,7 @@ body {
 .team-card__location {
   font-size: var(--fs-body-sm);
   color: var(--text-muted);
-  margin: 0 0 1em;
+  margin: 0 0 0.55em;
 }
 
 .team-card__members {
@@ -2448,7 +2436,7 @@ body {
 }
 
 .team-card__members li {
-  padding: 0.65em 0;
+  padding: 0.55em 0;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -2495,7 +2483,7 @@ body {
 }
 
 .funding-card {
-  padding: clamp(1.15rem, 2.5vw, 1.75rem);
+  padding: clamp(1.05rem, 2.2vw, 1.5rem);
   text-align: center;
   border-left-color: var(--accent);
 }
@@ -2514,7 +2502,7 @@ body {
    sources, caveats and asides live — never a competing block. */
 
 .slide-footer {
-  margin: var(--space-6) 0 0;
+  margin: var(--space-5) 0 0;
   padding-top: var(--space-3);
   border-top: 1px solid var(--border);
   font-family: var(--font-body);
@@ -2524,13 +2512,7 @@ body {
   max-width: 68ch;
 }
 
-/* In flex-column layouts the note pins to the bottom of the slide. */
-.slide-inner--funding > .slide-footer,
-.slide-inner--arms > .slide-footer,
-.slide-inner--outcome-list > .slide-footer,
-.slide-inner--evidence > .slide-footer {
-  margin-top: auto;
-}
+/* Footnotes stay in the content cluster, not pinned to the slide floor. */
 
 /* ── Controls ─────────────────────────────────────────────────────── */
 
@@ -2889,7 +2871,7 @@ body.overview-open #controls {
 
 @media (max-height: 820px) {
   .slide:not(.slide--title):not(.slide--section):not(.slide--closing):not(.slide--presenter):not(.slide--aim) h2 {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-2);
   }
 
   .quote-block {
@@ -2916,19 +2898,19 @@ body.overview-open #controls {
   }
 
   .stat-card {
-    padding: var(--space-4) var(--space-3);
+    padding: var(--space-3) var(--space-3);
   }
 
   .team-card {
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-2) var(--space-3);
   }
 
   .team-card__members li {
-    padding: 0.5em 0;
+    padding: 0.28em 0;
   }
 
   .presenter-list li {
-    padding: 0.45em 0 0.45em 1.35em;
+    padding: 0.32em 0 0.32em 1.35em;
   }
 
   .presenter-disclosure {
@@ -2937,15 +2919,15 @@ body.overview-open #controls {
   }
 
   .slide-footer {
-    margin-top: var(--space-4);
+    margin-top: var(--space-2);
   }
 
   .paper-list__item {
-    padding-block: var(--space-2);
+    padding-block: 0.28rem;
   }
 
   .paper-list__body {
-    gap: 0.15rem;
+    gap: 0.08rem;
   }
 
   .paper-list__primary {
