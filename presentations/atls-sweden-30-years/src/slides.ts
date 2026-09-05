@@ -224,7 +224,7 @@ export const slides: Slide[] = [
     id: "atls-providers",
     layout: "quote",
     title: "Impact on clinicians",
-    body: "There is abundant evidence that ATLS® training improves knowledge base, psychomotor skills, application of skills in resuscitation, and the confidence and performance of clinicians. The organizational and procedural skills taught in the course are retained by course participants for at least 6 years, which may be the most significant impact.",
+    body: "There is abundant evidence that ATLS training improves knowledge base, psychomotor skills, application of skills in resuscitation, and the confidence and performance of clinicians. The organizational and procedural skills taught in the course are retained by course participants for at least 6 years, which may be the most significant impact.",
     cite: ATLS_MANUAL_CITE,
   },
   {
@@ -268,7 +268,7 @@ export const slides: Slide[] = [
     id: "atls-outcomes-claim",
     layout: "quote",
     title: "Impact on patients",
-    body: "ATLS® training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
+    body: "ATLS training in a developing country has resulted in a decrease in injury mortality. Lower-per-capita rates of deaths from injuries are observed in areas where clinicians have ATLS training. In one study, a small trauma care team led by a doctor with ATLS experience had equivalent patient survival when compared with a larger team with more doctors in an urban setting. In addition, there were more unexpected survivors than fatalities.",
     cite: ATLS_MANUAL_CITE,
   },
   {
@@ -281,7 +281,7 @@ export const slides: Slide[] = [
         tag: "Before-and-after cohort",
         claim: "Injury mortality fell after ATLS® training was introduced",
         source:
-          "Ali J et al. Trauma outcome improves following ATLS in a developing country. J Trauma. 1993;34:890–899.",
+          "Ali J et al. Trauma outcome improves following the Advanced Trauma Life Support program in a developing country. J Trauma. 1993;34:890–898.",
       },
       {
         id: "2",
@@ -293,7 +293,8 @@ export const slides: Slide[] = [
       {
         id: "3",
         tag: "77 patients, TRISS",
-        claim: "A small trauma team matched a larger one, with more unexpected survivors than deaths",
+        claim:
+          "A small trauma team matched TRISS-predicted survival, with more unexpected survivors than deaths",
         source:
           "Deo SD, Knottenbelt JD, Peden MM. Evaluation of a small trauma team for major resuscitation. Injury. 1997;28:633–637.",
       },
@@ -346,7 +347,7 @@ export const slides: Slide[] = [
         claim:
           "Lower mortality with trauma life support training, OR 0.60 (95% CI 0.48–0.75)",
         source:
-          "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026 (in press).",
+          "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026;34:15.",
       },
     ]
   },
@@ -355,7 +356,7 @@ export const slides: Slide[] = [
     layout: "forest",
     title: "Updated systematic review",
     footer:
-      "Nakhid et al. Scand J Trauma Resusc Emerg Med. 2026 (in press). Lule et al. 2026 — RTTDC, not ATLS®.",
+      "Nakhid et al. Scand J Trauma Resusc Emerg Med. Scand J Trauma Resusc Emerg Med. 2026;34:15. Lule et al. 2026 — RTTDC, not ATLS®.",
   },
   {
     id: "section-trial",
