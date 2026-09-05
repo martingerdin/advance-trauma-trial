@@ -330,9 +330,7 @@ export const slides: Slide[] = [
         source:
           "Nakhid Z et al. Effect of trauma life support training on patient outcomes: a systematic review and meta-analysis. Scand J Trauma Resusc Emerg Med. 2026 (in press).",
       },
-    ],
-    footer:
-      "Jin et al. report risk ratios; the others report odds ratios. No review has found randomised evidence on ATLS® itself.",
+    ]
   },
   {
     id: "atls-forest",
