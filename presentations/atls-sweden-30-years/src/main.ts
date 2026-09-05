@@ -247,8 +247,6 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    /* Cards here carry the follow-up method for the primary outcome. Outcomes
-       themselves are listed by the outcome-list layout, never carded. */
     case "outcomes":
       el.innerHTML = `
         <div class="slide-inner slide-inner--outcomes">
@@ -680,6 +678,7 @@ function thumbPreviewInner(slide: Slide): string {
     slide.layout === "milestones" ||
     slide.layout === "columns" ||
     slide.layout === "arms" ||
+    slide.layout === "outcomes" ||
     slide.layout === "outcome-list" ||
     slide.layout === "status-map"
       ? `<div class="overview-thumb__chips" aria-hidden="true">
