@@ -2001,6 +2001,8 @@ body {
   border-top: none;
   min-height: 1.5em;
   flex: 0 0 auto;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .forest-plot-chart {
