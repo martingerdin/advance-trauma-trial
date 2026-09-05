@@ -121,7 +121,7 @@ export const slides: Slide[] = [
     title: "ADVANCE TRAUMA",
     subtitle:
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
-    eyebrow: "Swedish ATLS Chapter — 30 Years · Region 15",
+    eyebrow: "ATLS® Sweden 30 Years · Region 15",
     footer: "NCT06321419 · advancetrauma.info",
   },
   {
@@ -372,14 +372,14 @@ export const slides: Slide[] = [
       },
       {
         year: "2022–2023",
-        label: "A full-scale trial is feasible",
+        label: "Feasibility study shows full-scale trial is feasible",
         image: "./milestones/pilot.png",
         imageAlt: "Clinicians discussing care in a hospital room",
         cite: "2",
       },
       {
         year: "2022–2023",
-        label: "Patients told us which outcomes matter",
+        label: "Interviews to understand which outcomes matter",
         image: "./milestones/consultations.png",
         imageAlt: "Patient bedside discussion about ATLS",
         cite: "3",
