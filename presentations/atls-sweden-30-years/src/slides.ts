@@ -157,15 +157,15 @@ export const slides: Slide[] = [
     imageAlt: "Illustration of a road traffic collision",
     imagePosition: "right",
     stats: [
-      { value: "4.3M", label: "deaths globally each year", source: "1" },
+      { value: "~5M", label: "deaths globally each year", source: "1" },
       { value: "$4.2T", label: "economic cost in the US alone", source: "2" },
       { value: "2.1M", label: "quality-related trauma deaths in LMICs", source: "3" },
-      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "1" },
+      { value: "#1", label: "cause of lost healthy life, ages 10–49", source: "4" },
     ],
     references: [
       {
         id: "1",
-        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries in 204 countries and territories, 1990–2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet. 2020;396:1204–1222.",
+        text: "GBD 2023 Causes of Death Collaborators. Global burden of 292 causes of death in 204 countries and territories and 660 subnational locations, 1990–2023: a systematic analysis for the Global Burden of Disease Study 2023. Lancet. 2025;406:1811–1872.",
       },
       {
         id: "2",
@@ -174,6 +174,10 @@ export const slides: Slide[] = [
       {
         id: "3",
         text: "National Academies of Sciences, Engineering, and Medicine. Crossing the Global Quality Chasm: Improving Health Care Worldwide. 2018.",
+      },
+      {
+        id: "4",
+        text: "GBD 2019 Diseases and Injuries Collaborators. Global burden of 369 diseases and injuries in 204 countries and territories, 1990–2019: a systematic analysis for the Global Burden of Disease Study 2019. Lancet. 2020;396:1204–1222.",
       },
     ],
   },
