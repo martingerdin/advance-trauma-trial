@@ -163,11 +163,11 @@ function renderSlide(slide: Slide): HTMLElement {
                 .join("")}
               ${
                 cardStats.length
-                  ? `<div class="${leadsWithFocus ? "stats-rail" : "stats-grid"}" data-animate-group>
+                  ? `<div class="${leadsWithFocus ? "qualifier-rail" : "stats-grid"}" data-animate-group>
                       ${cardStats
                         .map(
                           (s) => `
-                        <div class="${leadsWithFocus ? "stat-rail__item" : "panel stat-card"}" data-animate>
+                        <div class="${leadsWithFocus ? "qualifier-rail__item" : "panel stat-card"}" data-animate>
                           <span class="stat-value">${s.value}</span>
                           <span class="stat-label">${s.label}${statCite(s)}</span>
                         </div>`
@@ -276,14 +276,14 @@ function renderSlide(slide: Slide): HTMLElement {
         <div class="slide-inner slide-inner--outcomes">
           <h2 data-animate>${slide.title}</h2>
           ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
-          <div class="outcomes-grid" data-animate-group>
+          <div class="qualifier-rail qualifier-rail--even" data-animate-group>
             ${(slide.outcomes ?? [])
               .map(
                 (item) => `
-              <article class="panel outcome-card" data-animate>
-                ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
-                <p class="outcome-card__title">${item.title}</p>
-                ${item.detail ? `<p class="outcome-card__detail">${item.detail}</p>` : ""}
+              <article class="qualifier-rail__item" data-animate>
+                ${item.tag ? `<span class="outcome-term__source">${item.tag}</span>` : ""}
+                <p class="outcome-term__title">${item.title}</p>
+                ${item.detail ? `<p class="outcome-term__detail">${item.detail}</p>` : ""}
               </article>`
               )
               .join("")}
