@@ -418,8 +418,10 @@ export const slides: Slide[] = [
       { value: "5", label: "sequences" },
       { value: "13", label: "months per hospital" },
     ],
-    footer:
-      "ATLS® is not yet standard care in these hospitals, which is why a randomised comparison there is still ethical. We have collaborated with them for more than ten years.",
+    bullets: [
+      "More than ten years of collaboration with hospitals in India",
+      "ATLS® is not yet standard care in these hospitals, so a randomised comparison is still ethical",
+    ],
   },
   {
     id: "design-animation",

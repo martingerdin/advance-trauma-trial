@@ -1241,19 +1241,20 @@ body {
   font-size: var(--fs-body-sm);
 }
 
-.design-bullets li {
-  font-size: var(--fs-body);
+.design-notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.design-notes p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
   line-height: 1.4;
-  transition: opacity 0.25s var(--transition-smooth), color 0.25s;
-}
-
-.design-bullets li.is-emphasis {
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.design-bullets li.is-muted {
-  opacity: 0.45;
 }
 
 .design-figure {

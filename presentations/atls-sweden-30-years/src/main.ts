@@ -403,9 +403,9 @@ function renderSlide(slide: Slide): HTMLElement {
               }
               ${
                 slide.bullets?.length
-                  ? `<ul class="bullet-list design-bullets" data-animate-group>
-                      ${slide.bullets.map((b) => `<li data-animate>${b}</li>`).join("")}
-                    </ul>`
+                  ? `<div class="design-notes" data-animate>
+                      ${slide.bullets.map((b) => `<p>${b}</p>`).join("")}
+                    </div>`
                   : ""
               }
             </div>
