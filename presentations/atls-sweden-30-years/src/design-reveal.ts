@@ -33,7 +33,7 @@ const STAGES: Array<{
 }> = [
   {
     id: "site",
-    label: "One site",
+    label: "One cluster",
     caption: "One hospital, 13 months",
     // Phase pauses are manual (Space / play); no timed hold before the next stage.
     holdMs: 0,
@@ -42,7 +42,8 @@ const STAGES: Array<{
     id: "batch",
     label: "First batch",
     caption: "One batch — five hospitals, randomised transition months",
-    holdMs: 3500,
+    // Pause after this stage; Right Arrow / Full trial continues.
+    holdMs: 0,
   },
   {
     id: "full",
@@ -566,7 +567,9 @@ export function startDesignReveal(
         await animateStage(stage.id, token, true);
 
         const isLast = i === sequence.length - 1;
-        if (!autoContinue && !isLast) {
+        // Pause after First batch (and after any stage when started via a
+        // stage button) so Right Arrow / Full trial must continue the reveal.
+        if (!isLast && (stage.id === "batch" || !autoContinue)) {
           paused = true;
           syncUi();
           await gate(token);
