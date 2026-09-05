@@ -126,7 +126,7 @@ export const slides: Slide[] = [
     subtitle:
       "Effects of Advanced Trauma Life Support® Training Compared to Standard Care on Adult Trauma Patient Outcomes",
     eyebrow: "ATLS® Sweden 30 Years · Region 15",
-    footer: "NCT06321419 · advancetrauma.info",
+    footer: "NCT06321419 · advancetrauma.info/presentations/atls-sweden-30-years/",
   },
   {
     id: "hook",
