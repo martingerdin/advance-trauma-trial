@@ -1,5 +1,5 @@
 import { animate, stagger } from "motion";
-import { slides, type Slide } from "./slides";
+import { slides, type Slide, type Stat } from "./slides";
 import {
   createSteppedWedgeSvg,
   createWedgeLegend,
@@ -134,25 +134,48 @@ function renderSlide(slide: Slide): HTMLElement {
       `;
       break;
 
-    case "stats":
+    case "stats": {
+      const statCite = (s: Stat) =>
+        s.source ? `<sup class="cite-ref" aria-label="Reference ${s.source}">${s.source}</sup>` : "";
+      // A focus stat is the slide's headline figure, so it leads above the grid
+      // rather than sitting in it as an outsized card.
+      const focusStats = (slide.stats ?? []).filter((s) => s.focus);
+      const cardStats = (slide.stats ?? []).filter((s) => !s.focus);
+      // Once a headline figure leads the slide, the remaining figures are
+      // qualifiers to it, not peers of each other: a rail of hairline-divided
+      // columns reads that way, where two wide panels flanking one number read
+      // as filler.
+      const leadsWithFocus = focusStats.length > 0;
+
       el.innerHTML = `
         <div class="slide-inner slide-inner--stats">
           <h2 data-animate>${slide.title}</h2>
           <div class="stats-layout ${slide.image ? "stats-layout--with-image" : ""}">
-            <div class="stats-grid" data-animate-group>
-              ${(slide.stats ?? [])
+            <div class="stats-stack ${leadsWithFocus ? "stats-stack--lead" : ""}">
+              ${focusStats
                 .map(
                   (s) => `
-                <div class="${s.focus ? "stat-focus" : "panel stat-card"}" data-animate>
+                <p class="stat-focus" data-animate>
                   <span class="stat-value">${s.value}</span>
-                  <span class="stat-label">${s.label}${
-                    s.source
-                      ? `<sup class="cite-ref" aria-label="Reference ${s.source}">${s.source}</sup>`
-                      : ""
-                  }</span>
-                </div>`
+                  <span class="stat-label">${s.label}${statCite(s)}</span>
+                </p>`
                 )
                 .join("")}
+              ${
+                cardStats.length
+                  ? `<div class="${leadsWithFocus ? "stats-rail" : "stats-grid"}" data-animate-group>
+                      ${cardStats
+                        .map(
+                          (s) => `
+                        <div class="${leadsWithFocus ? "stat-rail__item" : "panel stat-card"}" data-animate>
+                          <span class="stat-value">${s.value}</span>
+                          <span class="stat-label">${s.label}${statCite(s)}</span>
+                        </div>`
+                        )
+                        .join("")}
+                    </div>`
+                  : ""
+              }
             </div>
             ${
               slide.image
@@ -173,6 +196,7 @@ function renderSlide(slide: Slide): HTMLElement {
         </div>
       `;
       break;
+    }
 
     case "quote":
       el.innerHTML = `

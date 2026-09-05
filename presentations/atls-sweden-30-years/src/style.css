@@ -598,6 +598,14 @@ body {
   }
 }
 
+/* Headline figure above, supporting cards below, with air between them. */
+.stats-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vh, 2.5rem);
+  min-width: 0;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -611,23 +619,87 @@ body {
   gap: 0.2rem;
 }
 
+/* A headline figure needs the space around it to read as emphasis, so it gets
+   a wider gap to its qualifiers than a grid of equals does. Its accent rule
+   also needs clearance from the heading's hairline, or the two read as one
+   bracket: aim for ~40px between them, whatever the heading gives back. */
+.stats-stack--lead {
+  gap: clamp(2rem, 6vh, 3.5rem);
+  margin-top: var(--space-5);
+}
+
+/* The slide's headline figure. Number and words share a baseline so the pair
+   reads as one line, not a figure stacked on a caption. Set below --fs-aim:
+   the aim stays the largest line in the deck. */
 .stat-focus {
-  grid-column: 1 / -1;
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  margin-left: calc(-1 * var(--gutter));
-  padding: var(--space-2) 0 var(--space-2) var(--gutter);
+  flex-wrap: wrap;
+  align-items: baseline;
+  /* Em-based so the pair keeps its proportion across the whole type scale. */
+  gap: 0 0.45em;
+  margin: 0 0 0 calc(-1 * var(--gutter));
+  padding: var(--space-3) 0 var(--space-3) var(--gutter);
   border-left: 3px solid var(--accent);
 }
 
 .stat-focus .stat-value {
-  font-size: var(--fs-aim);
+  font-size: var(--fs-display);
   color: var(--ink);
 }
 
+/* Full-strength text, not muted: these words finish the headline's sentence
+   rather than caption it. */
 .stat-focus .stat-label {
+  font-size: var(--fs-lead);
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Qualifiers under a headline figure — hairline-divided columns, no panel
+   chrome, so the eye reads the headline first and these as its terms. */
+.stats-rail {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+/* Content-width columns, not equal thirds of the measure: the qualifiers then
+   sit under the headline figure as one block instead of drifting to the far
+   edge of the slide. */
+.stat-rail__item {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  /* Padding rather than gap: it keeps each divider centred in its channel. */
+  padding-inline: clamp(1rem, 2.5vw, 2.25rem);
+}
+
+.stat-rail__item:first-child {
+  padding-inline-start: 0;
+}
+
+.stat-rail__item:not(:first-child) {
+  border-left: 1px solid var(--border);
+}
+
+.stat-rail__item .stat-label {
   font-size: var(--fs-body);
+}
+
+@media (max-width: 640px) {
+  .stat-rail__item,
+  .stat-rail__item:first-child {
+    flex: 0 0 100%;
+    padding-inline: 0;
+  }
+
+  .stat-rail__item:not(:first-child) {
+    border-left: none;
+    padding-top: var(--space-4);
+  }
 }
 
 /* Figures are Roboto: this build of EB Garamond has no lining-figure feature
@@ -2934,6 +3006,17 @@ body.overview-open #controls {
 
   .stat-card {
     padding: var(--space-3) var(--space-3);
+  }
+
+  /* The h2 rule above halves every heading's bottom margin; give the headline
+     figure back what it lost so its clearance holds on a 720p projector. */
+  .stats-stack--lead {
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+
+  .stats-rail {
+    padding-top: var(--space-4);
   }
 
   .team-card {
