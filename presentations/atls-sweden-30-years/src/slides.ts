@@ -196,6 +196,11 @@ export const slides: Slide[] = [
   {
     id: "section-atls",
     layout: "section",
+    title: "How do we improve trauma care quality?",
+  },
+  {
+    id: "section-atls",
+    layout: "section",
     title: "ATLS®",
     subtitle: "The most widely adopted trauma life support programme",
   },
