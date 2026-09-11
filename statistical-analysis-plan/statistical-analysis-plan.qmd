@@ -32,7 +32,7 @@ protocol.variables <- yaml::read_yaml("../protocol/_variables.yml")
 ## Changelog
 
 <!-- github-issue-11: changelog table only after version 1.0.0. -->
-Once version 1.0.0 is finalised, this section will be updated with a changelog.
+We will add a changelog here once we finalise version 1.0.0.
 
 ## Contributors
 
@@ -54,7 +54,7 @@ Once version 1.0.0 is finalised, this section will be updated with a changelog.
 <!-- sap-revision-todo J8 (GitHub #5): generative AI disclosure in administrative information. -->
 ## Use of generative artificial intelligence
 
-Generative artificial intelligence tools, including large language models accessed via Cursor, were used to assist with drafting, revising, and formatting this statistical analysis plan. All substantive statistical content was reviewed and approved by the authors, who take full responsibility for the final document.
+We used generative artificial intelligence tools, including large language models accessed via Cursor, to help draft, revise, and format this statistical analysis plan. We reviewed and approved all substantive statistical content, and we take full responsibility for the final document.
 
 {{< pagebreak >}}
 
@@ -96,11 +96,11 @@ We have designed and will analyse the trial within a superiority framework, with
 ## Trial design
 
 <!-- sap-revision-todo D3 (comments id=3 MGW, id=4 AO; Round Two): confirm design descriptors including allocation and repeated measures on clusters. -->
-This is a batched stepped-wedge cluster randomised trial, including a total of `r clusters` clusters (see @fig-trial-design). Each cluster is a hospital and represents the unit for randomisation, even if one or more units are trained in the same hospital. There are two intervention conditions: ATLS^®^ training and standard care.
+This is a batched stepped-wedge cluster randomised trial with `r clusters` clusters (see @fig-trial-design). Each cluster is one hospital, and we randomise hospitals, even when we train more than one unit of physicians in the same hospital. There are two intervention conditions: ATLS^®^ training and standard care.
 
-The trial will be composed of `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster allocated to each sequence of each batch (equal allocation across sequences) [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. Clusters are repeatedly measured across periods. The intervention will be implemented during a one-month transition period, which will be excluded from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
+The trial comprises `r batches` batches of identical `r total.months - 1`-period `r sequences`-sequence designs, with one cluster allocated to each sequence of each batch (equal allocation across sequences) [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. We measure clusters repeatedly across periods. We will implement the intervention during a one-month transition period, which we exclude from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
 
-Clusters will be sequentially allocated to batches based on when they enter the study, and within each batch clusters will then be randomised to an intervention implementation sequence. Individual patients will be included cross-sectionally for the primary outcome, although some secondary outcomes will be assessed at multiple follow-up time points. The anticipated trial period is from February 2025 to October 2029.
+Clusters will be sequentially allocated to batches based on when they enter the study, and within each batch clusters will then be randomised to an intervention implementation sequence. We include individual patients cross-sectionally for the primary outcome, although we assess some secondary outcomes at multiple follow-up time points. The anticipated trial period is from February 2025 to October 2029.
 
 ```{r}
 #| echo: false
@@ -125,7 +125,7 @@ knitr::include_graphics(
 )
 ```
 
-Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.  
+Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.
 
 ```{r}
 #| echo: false
@@ -156,25 +156,25 @@ knitr::include_graphics(
 
 ## Randomisation and inclusion
 
-We will enrol and assign clusters to batches once eligibility is confirmed and ethical approval is obtained. Each batch will include hospitals from different regions to optimise trial logistics and training delivery. Within each batch, clusters will be randomised to the intervention implementation sequences allocated to that batch. 
+We will enrol and assign clusters to batches once eligibility is confirmed and ethical approval is obtained. Each batch will include hospitals from different regions to optimise trial logistics and training delivery. Within each batch, clusters will be randomised to the intervention implementation sequences allocated to that batch.
 
-Randomisation is conducted at the cluster level and stratified by batch. Within each batch, allocation is balanced on cluster size, defined as the monthly volume of eligible patients, using covariate-constrained randomisation (CCR). CCR was selected to improve balance between intervention conditions on this key design variable.
+We randomise clusters, stratified by batch. Within each batch we balance allocation on cluster size, defined as the monthly volume of eligible patients, using covariate-constrained randomisation (CCR). We chose CCR to improve balance between intervention conditions on this key design variable.
 
-For example, in Batch 1, five clusters were randomised to one of five sequences using CCR. A statistician (JM) implemented a computer algorithm in R to evaluate all possible allocations (n = 120) and calculate a balance metric reflecting how evenly cluster size would be distributed between intervention and control conditions. For each allocation, the squared difference in anticipated cluster size between conditions was calculated; because only one covariate was used, this squared difference constituted the balance statistic.
+For example, in Batch 1, five clusters were randomised to one of five sequences using CCR. JM wrote an R program to enumerate all possible allocations (n = 120) and calculate a balance metric reflecting how evenly cluster size would be distributed between the two intervention conditions. For each allocation JM calculated the squared difference in anticipated cluster size between conditions; because there was only one covariate, this squared difference was the balance statistic.
 
-The 10% of allocations demonstrating the greatest imbalance were excluded, and the remaining allocations formed the candidate set. The final allocation was then selected at random from this set. Owing to limitations in the algorithm, the balance score was calculated assuming a complete design, although the trial design includes transition periods. This CCR procedure is repeated independently for each batch.
+We excluded the 10% of allocations with the greatest imbalance and kept the rest as the candidate set, then drew the final allocation at random from that set. Because of limitations in the algorithm, we calculated the balance score assuming a complete design, although the trial design includes transition periods. We will repeat this CCR procedure independently for each remaining batch.
 
-The random allocation sequence is generated by JM and communicated to the trial team to allow logistical arrangements, including securing places on upcoming ATLS^®^ training courses, to be initiated. Allocation order will be concealed from participating sites for as long as logistically feasible, recognising that advance planning is required to release physicians for training.
+JM generates the random allocation sequence for each batch and sends it to the Trial Team so they can begin logistical arrangements, including securing places on upcoming ATLS^®^ training courses. We will conceal the allocation order from participating clusters for as long as is logistically feasible, because releasing physicians for training requires advance planning.
 
 <!-- sap-revision-todo I4 (comments id=45 KH, id=46 AO): cross-ref nested staircase patient sampling. -->
-Random selection of patients for nested staircase outcome collection is separate from cluster randomisation and is described under Nested staircase design and secondary outcomes (stratified random sampling by shift).
+We select patients for the nested staircase outcomes separately from cluster randomisation, by stratified random sampling by shift (see Nested staircase design and secondary outcomes).
 
 ## Sample size calculations
 
 <!-- sap-revision-todo D4 (comments id=73 KH, id=74 AO, id=75 MGW): note design-phase Shiny CRT Calculator; no protocol cross-ref. -->
-Sample size calculations were performed during the trial design phase using the Shiny CRT Calculator [@Hemming2020Feb].
+We calculated the sample size during the trial design phase using the Shiny CRT Calculator [@Hemming2020Feb].
 
-### Main stepped wedge design and primary outcome
+### Main stepped-wedge design and primary outcome
 
 {{< include ../shared-assets/sample-size-calculations-main.qmd >}}
 
@@ -189,7 +189,7 @@ Sample size calculations were performed during the trial design phase using the 
 <!-- sap-revision-todo J4: content of the interim report to the joint SDMC (list only; detailed shells deferred). -->
 The Trial Team will prepare the interim analysis report for the joint Trial Steering and Data Monitoring Committee (SDMC), and the Trial Management Group will approve it before circulation. The report will follow the standard SDMC report template in the charter, except that it reports outcome data as completeness only, and will include:
 
-- trial progress: numbers of clusters included and dropping out; numbers of potentially eligible participants screened, participants included, participants who did not consent to out-of-hospital follow-up, and participants lost to follow-up, overall and by intervention condition;
+- trial progress: numbers of clusters included and dropping out; numbers of potentially eligible patients screened, patients included, patients who did not consent to out-of-hospital follow-up, and patients lost to follow-up, overall and by intervention condition;
 - adherence to the randomisation schedule and reasons for non-adherence;
 - summary statistics of included clusters and patient participants by intervention condition;
 - completeness of primary and secondary outcome data, overall and by intervention condition;
@@ -219,9 +219,9 @@ We will estimate the effect of ATLS^®^ training on 30-day in-hospital mortality
 
 ## Levels of statistical significance and confidence
 
-We will use a two-sided significance level of 0.05 for all analyses, and we will report 95% confidence intervals (CI) for all estimates. 
+We will use a two-sided significance level of 0.05 for all analyses, and we will report 95% confidence intervals (CI) for all estimates.
 
-## Type 1 error control
+## Type I error control
 
 We will not adjust for multiple testing because we do not regard any secondary outcome as singularly more important. We will interpret the secondary outcomes together and not over-emphasise a single statistically significant result when the others appear unchanged.
 
@@ -238,13 +238,13 @@ In every descriptive table in this plan we summarise discrete variables as frequ
 
 We define adherence to the intervention at the cluster and individual levels. It is distinct from the secondary outcome adherence to ATLS^®^ principles during resuscitation: we define and analyse that outcome under Outcomes and Analysis of secondary outcomes, and we do not use it to exclude patients from the primary analysis.
 
-At the cluster level, adherence means that ATLS^®^ training is delivered during the scheduled transition period for that cluster's randomised sequence, and that the cluster does not implement ATLS^®^ training before its scheduled transition. We will assess cluster-level adherence using the training log kept by the trial team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis (see Interim analysis).
+At the cluster level, adherence means that ATLS^®^ training is delivered during the scheduled transition period for that cluster's randomised sequence, and that the cluster does not implement ATLS^®^ training before its scheduled transition. We will assess cluster-level adherence using the training log kept by the Trial Team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. We will also review adherence to the randomisation schedule at the interim analysis (see Interim analysis).
 
 At the individual level, the cluster's scheduled transition date defines exposure to the intervention, as specified under @sec-analysis-sets. We classify patients by their period of admission.
 
 ### Protocol deviations
 
-A protocol deviation is any departure from the approved trial protocol, ICH-GCP, or applicable regulations. Consistent with the protocol, serious breaches and deviations that significantly affect, or are likely to affect, participant safety or integrity or the reliability of trial data will be reported without delay to the sponsor for assessment. Minor deviations that do not affect participant safety or integrity and do not materially affect the scientific value of the trial will be documented in the trial records of the principal investigator and the sponsor.
+A protocol deviation is any departure from the approved trial protocol, ICH-GCP, or applicable regulations. Consistent with the protocol, we will report to the sponsor without delay, for assessment, any serious breach or deviation that significantly affects, or is likely to affect, participant safety or integrity or the reliability of trial data. We will document minor deviations — those that do not affect participant safety or integrity and do not materially affect the scientific value of the trial — in the trial records of the principal investigator and the sponsor.
 
 We will summarise protocol deviations descriptively for the final analysis and review them at the interim analysis, overall and by intervention condition where informative, giving counts by type (cluster-level versus individual-level, and serious versus minor where classified) and narrative reasons. We will not exclude clusters or patients from the primary analysis because of a deviation; the primary analysis still uses scheduled intervention exposure and the outcome data available under the missing-data plan, as specified under @sec-analysis-sets.
 
@@ -252,7 +252,7 @@ We will summarise protocol deviations descriptively for the final analysis and r
 
 ## Eligibility criteria {#sec-eligibility-criteria}
 
-Our trial has eligibility criteria on the cluster and patient participant level. Below follow a summary of the eligibility criteria, full details are provided in the protocol.
+Our trial has eligibility criteria at the cluster and patient participant levels. We summarise them below; the protocol gives full details.
 
 ### Cluster eligibility criteria
 
@@ -268,7 +268,7 @@ Our trial has eligibility criteria on the cluster and patient participant level.
 <!-- github-issue-20: nested-staircase patient flow reported separately from main CONSORT. -->
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
-We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS^®^ training. Flow for nested-staircase secondary outcomes (adherence to ATLS^®^ principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a separate figure (@fig-consort-nested-staircase), showing patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS^®^ training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS^®^ training. A separate figure (@fig-consort-nested-staircase) shows flow for the nested-staircase secondary outcomes (adherence to ATLS^®^ principles, EQ-5D-5L, and WHODAS 2.0): patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS^®^ training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ```{r}
 #| echo: false
@@ -442,7 +442,7 @@ cat("\\end{landscape}\n")
 cat("\\restoregeometry\n")
 ```
 
-# Intercurrent events, populations and summary measures 
+# Intercurrent events, populations and summary measures
 
 ## Intercurrent events
 
@@ -460,11 +460,11 @@ At the individual level, patients cannot withdraw from the intervention. For len
 - **Death.** Relevant to length-of-stay and ICU outcomes and to survivor-only outcomes. As an intercurrent event, death is death before assessment of the outcome in question; later death is not an intercurrent event for earlier outcomes. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up (while-alive restriction). Those analyses therefore target effects in survivors at that time point; mortality is analysed separately as a primary and secondary outcome.
 - **Withdrawal of consent for non-routine data collection.** Relevant only to outcomes that require opt-in follow-up: all-cause mortality after the initial admission (when not available from records), return to work, quality of life, and disability. It is also relevant to the primary outcome when death after transfer cannot be ascertained from records and requires contact with the patient, a representative, or the receiving hospital. Withdrawal is not listed for routinely recorded in-hospital outcomes (length of stay and ICU admission) or for adherence, which are collected under opt-out consent. Participants who withdraw contribute observed non-routine outcomes up to withdrawal unless they also request removal of already collected data; subsequent missing values are handled under the missing-data plan (see @sec-missing-data).
 - **Loss to follow-up.** Relevant to the same contact-dependent outcomes as withdrawal. These events create missing outcome data and are handled under the missing-data plan.
-- **Incomplete observation of resuscitation.** Relevant only to adherence. The checklist is scored from observation of initial resuscitation up to one hour after the physician first sees the patient. Incomplete observation means that this window was not fully observed (for example the observer could not complete the 14-item checklist because care ended, the patient left the emergency department, or observation was interrupted). Unobserved or incompletely observed resuscitations are excluded from the adherence analysis (available-case analysis of the observed nested sample). Death during the observation window is treated in the same way.
+- **Incomplete observation of resuscitation.** Relevant only to adherence. We score the checklist by observing the initial resuscitation up to one hour after the physician first sees the patient. Observation is incomplete when we do not observe that whole window — for example when the observer could not complete the 14-item checklist because care ended, the patient left the emergency department, or observation was interrupted. We exclude unobserved and incompletely observed resuscitations from the adherence analysis (available-case analysis of the observed nested sample), and we treat death during the observation window the same way.
 
 Return to work is further restricted to patients for whom the outcome is relevant; that restriction defines the analysis set and is not an intercurrent event.
 
-Where a while-alive strategy is used, we assume that, conditional on the analysis model and design factors, death before the outcome assessment does not induce selection bias beyond what is addressed by analysing mortality separately; sensitivity of conclusions will rely on joint interpretation of mortality and survivor outcomes. Assumptions underlying each strategy will be considered when interpreting results and when checking model assumptions (see @sec-analysis-methods).
+Where we use a while-alive strategy, we assume that, conditional on the analysis model and design factors, death before we assess the outcome does not induce selection bias beyond what analysing mortality separately already addresses; we will therefore interpret mortality and survivor outcomes together. We will weigh the assumptions behind each strategy when we interpret results and when we check model assumptions (see @sec-analysis-methods).
 
 <!-- github-issue-23: ICE frequency shell grouped by outcome and applicable events. -->
 ```{r}
@@ -480,14 +480,14 @@ create_intercurrent_events_table()
 ## Population
 
 <!-- github-issue-24: draft target populations from analysis-set and eligibility text. -->
-The treatment effects estimated in this plan are defined for the trial’s eligible clusters and eligible patient participants, as specified under @sec-eligibility-criteria.
+We define the treatment effects in this plan for the trial's eligible clusters and eligible patient participants (see @sec-eligibility-criteria).
 
-- **Clusters.** Effects are estimated for participating hospitals (clusters) that meet cluster eligibility criteria and are randomised within the batched stepped-wedge design. Units within a hospital are part of the same cluster; the estimands are not defined separately by unit.
-- **Main stepped-wedge patient population.** For the primary outcome, all-cause mortality secondary outcomes, length of emergency department and hospital stay, and ICU admission, the target population is eligible trauma patients included in the main stepped-wedge trial during non-transition periods. Length of ICU stay is targeted among patients in that population who are admitted to ICU.
-- **Survivor populations.** Quality of life and disability effects are targeted among patients in the nested staircase sample who are alive at the relevant follow-up time point. Return-to-work effects are targeted among patients in the main stepped-wedge trial who are alive at the relevant follow-up and for whom return to work is relevant.
-- **Nested adherence population.** The adherence-to-ATLS^®^-principles effect is targeted among patients randomly selected for observation in the nested staircase design during the observation window.
+- **Clusters.** We estimate effects for participating hospitals (clusters) that meet the cluster eligibility criteria and that we randomise within the batched stepped-wedge design. Units within a hospital are part of the same cluster; we do not define the estimands separately by unit.
+- **Main stepped-wedge patient population.** For the primary outcome, all-cause mortality secondary outcomes, length of emergency department and hospital stay, and ICU admission, the target population is eligible trauma patients included in the main stepped-wedge trial during non-transition periods. For length of ICU stay the population is those patients who are admitted to ICU.
+- **Survivor populations.** We target quality of life and disability effects among patients in the nested staircase sample who are alive at the relevant follow-up time point, and return-to-work effects among patients in the main stepped-wedge trial who are alive at the relevant follow-up and for whom return to work is relevant.
+- **Nested adherence population.** We target the adherence-to-ATLS^®^-principles effect among the patients we randomly select for observation in the nested staircase design during the observation window.
 
-Which participants from each target population are included in a given analysis is specified under @sec-analysis-sets.
+@sec-analysis-sets specifies which patients from each target population enter a given analysis.
 
 ## Analysis sets {#sec-analysis-sets}
 
@@ -541,27 +541,27 @@ All models in this sequence will include a fixed effect for intervention exposur
 
 The model sequence is defined as follows:
 
-1. **Primary model**: a model including fixed effects for period, modelled as a categorical variable with separate period effects for each batch, and a fixed effect for intervention exposure. Clustering will be accounted for by including a random intercept for cluster and a random cluster-by-period effect, both assumed to follow a normal distribution. The model is specified in @eq-primary-model.
+1. **Primary model**: a model including fixed effects for period, modelled as a categorical variable with separate period effects for each batch, and a fixed effect for intervention exposure. Clustering will be accounted for by including a random intercept for cluster and a random cluster-by-period effect, both assumed to follow a normal distribution (@eq-primary-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-primary-model}
 
-2. **Simplified random effects structure**: a model including fixed effects for period and intervention exposure and a random intercept for cluster only, thereby removing the random cluster-by-period effect. The model is specified in @eq-simplified-random-effects-model.
+2. **Simplified random effects structure**: a model including fixed effects for period and intervention exposure and a random intercept for cluster only, thereby removing the random cluster-by-period effect (@eq-simplified-random-effects-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk}
 $$ {#eq-simplified-random-effects-model}
 
 <!-- sap-revision-todo B1 (comments id=191 KH, id=192 AO): state retained random effects and batch indexing for the shared period effects model. -->
-3. **Model with shared period effects**: a model in which fixed period effects are shared across batches, with time adjusted for using a common period effect or calendar time modelled directly (e.g., as a continuous covariate or using splines). A random intercept for cluster and a random cluster-by-period effect are retained; clusters remain indexed by batch, but the fixed period effects are common across batches. The model is specified in @eq-shared-period-model.
+3. **Model with shared period effects**: a model in which fixed period effects are shared across batches, with time adjusted for using a common period effect or calendar time modelled directly (e.g., as a continuous covariate or using splines). A random intercept for cluster and a random cluster-by-period effect are retained; clusters remain indexed by batch, but the fixed period effects are common across batches (@eq-shared-period-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
 = \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-shared-period-model}
 
-4. **Combined simplified model**: a model that includes both a simplified random effects structure (random intercept for cluster only) and shared period effects. This represents the most parsimonious mixed-effects model considered acceptable for the primary analysis. The model is specified in @eq-combined-simplified-model.
+4. **Combined simplified model**: a model that includes both a simplified random effects structure (random intercept for cluster only) and shared period effects. This represents the most parsimonious mixed-effects model considered acceptable for the primary analysis (@eq-combined-simplified-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
@@ -608,7 +608,7 @@ We will use model diagnostics to check distributional assumptions, convergence, 
 <!-- sap-revision-todo C5 (comments id=288, id=289 KH; id=290, id=291 AO): nested staircase collection; period effects on global timeline. -->
 Unless otherwise stated, we will analyse secondary outcomes within the same mixed-effects framework as the primary outcome: the fixed effects for time and intervention exposure and the random-effects structure of the model selected for the primary analysis, with the link function and outcome distribution adapted to the scale of the outcome. Below, "the model selected for the primary analysis" means the most complex model in the primary-analysis sequence that converges (see Analysis of the primary outcome). For the nested staircase outcomes (adherence, quality of life, and disability) we define period effects on the global study timeline rather than separately within each batch, and not all clusters contribute data in every period. For cumulative logit models our diagnostics will also assess the proportional-odds assumption.
 
-### All cause mortality within 24 hours, 30 days and three months of arrival at the emergency department
+### All-cause mortality within 24 hours, 30 days and three months of arrival at the emergency department
 
 We will analyse these outcomes as dichotomous variables using the mixed-effects binomial model selected for the primary analysis, with the logit and identity links, to estimate odds ratios and absolute risk differences.
 
@@ -650,7 +650,7 @@ We will analyse return to work as a dichotomous outcome using the mixed-effects 
 
 ### Length of emergency department stay
 
-We will analyse length of emergency department stay as a count outcome: the number of hours from arrival at the emergency department until ED exit. Exit may occur via ward admission, ICU admission, transfer to another hospital, death, or discharge home; all of these routes contribute the observed ED duration. We will estimate the effect of ATLS^®^ training on mean ED length of stay. We analyse mortality separately as a primary and secondary outcome rather than as a competing event.
+We will analyse length of emergency department stay as a count outcome: the number of hours from arrival at the emergency department (ED) until ED exit. Exit may occur via ward admission, ICU admission, transfer to another hospital, death, or discharge home; all of these routes contribute the observed ED duration. We will estimate the effect of ATLS^®^ training on mean ED length of stay. We analyse mortality separately as a primary and secondary outcome rather than as a competing event.
 
 <!-- github-issue-19: preferred LOS model with same convergence sequence as primary. -->
 The preferred model is a mixed-effects negative binomial regression with a log link, including fixed effects for intervention exposure and batch-specific categorical period effects, a random intercept for cluster, and a random cluster-by-period effect (@eq-length-of-stay-model). If this model does not converge, we will simplify the random-effects and period structure following the same sequence of decreasing complexity as for the primary outcome. The intervention effect $\theta$ is the log rate ratio for ED length of stay associated with ATLS^®^ exposure compared with standard care; we will also report the corresponding multiplicative effect on the mean count (rate ratio).
@@ -660,7 +660,7 @@ $$
 = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-length-of-stay-model}
 
-Where $Y_{bkti}$ is the length-of-stay count for patient $i$ in cluster $k$ during period $t$ in batch $b$, and all other terms are defined as in the primary analysis model. A dispersion parameter will be estimated as part of the negative binomial model.
+Where $Y_{bkti}$ is the length-of-stay count for patient $i$ in cluster $k$ during period $t$ in batch $b$, and all other terms are defined as in the primary analysis model. The negative binomial model also estimates a dispersion parameter.
 
 ### Length of hospital stay
 
@@ -691,7 +691,7 @@ Where $\mathbb{E}(Y_{bkti})$ denotes the expected adherence proportion. The inte
 <!--
 *Question:** Should we adjust for calendar time because the last batch will be two years later than the first batch?
 
-JK: Would this be instead of the beta_bt terms? That is, instead of separate period effects for each batch, just terms for each period would be included? (This is related to the question about 78 parameters in the model). The separate period effects for each batch will adjust for the calendar time. This is the model that makes the fewest assumptions about the period effects. 
+JK: Would this be instead of the beta_bt terms? That is, instead of separate period effects for each batch, just terms for each period would be included? (This is related to the question about 78 parameters in the model). The separate period effects for each batch will adjust for the calendar time. This is the model that makes the fewest assumptions about the period effects.
 
 We've done a bit of work recently which shows that if there are separate period effects in each batch but instead shared period effects are included, this can lead to quite a lot of bias in the estimation of the treatment effect. This work also seems to indicate that when separate period effects are included but the period effects are actually shared, this doesn't really have any deleterious impacts on the inference for the treatment effect. (However note that parameterisation of time wasn't the focus of the work we've done).
 
@@ -714,20 +714,20 @@ Intra-cluster and related correlation parameters will be derived from the estima
 ## Missing data {#sec-missing-data}
 
 <!-- sap-revision-todo A5 (comment id=260 AO): 10% primary-outcome missingness chooses available-case pipeline vs MICE; do not mix complete-case adjusted analyses with covariate imputation. -->
-We will present the frequency and percentage of missing data for all variables. Handling of missing data for the primary analysis will depend on the percentage of missing data for the primary outcome.
+We will present the frequency and percentage of missing data for all variables. How we handle missing data in the primary analysis will depend on the percentage of missing primary outcome data.
 
-If less than 10% of participants have a missing primary outcome, we will use an available-case approach. The primary unadjusted analysis will include all participants with observed primary outcome data. Adjusted analyses will be restricted to participants with complete data on the adjustment covariates, and the unadjusted analysis will be repeated in this complete-case population to allow the results of the unadjusted and adjusted analyses to be directly compared.
+If less than 10% of patients have a missing primary outcome, we will use an available-case approach. The primary unadjusted analysis will include all patients with observed primary outcome data. We will restrict adjusted analyses to patients with complete data on the adjustment covariates, and repeat the unadjusted analysis in this complete-case population so that the unadjusted and adjusted results are directly comparable.
 
 <!-- sap-revision-todo B7 (comments id=31 MGW, id=32 AO; Round Two): MI model reflects hospital clustering plus period and intervention exposure. -->
-If 10% or more of participants have a missing primary outcome, we will use multiple imputation by chained equations (MICE) under a missing-at-random assumption, imputing the primary outcome, secondary outcomes as required for analysis, and the covariates included in the fully adjusted model, with a minimum of 20 imputations. The imputation model will reflect the hierarchical data structure, including clustering at the hospital level and design variables such as period and intervention exposure. Unadjusted and adjusted analyses will then be conducted using the imputed datasets. We will also present the corresponding complete-case analyses for comparison. Secondary outcomes will not be imputed under the available-case approach.
+If 10% or more of patients have a missing primary outcome, we will use multiple imputation by chained equations (MICE) under a missing-at-random assumption, imputing the primary outcome, secondary outcomes as required for analysis, and the covariates included in the fully adjusted model, with a minimum of 20 imputations. The imputation model will reflect the hierarchical data structure, including clustering at the hospital level and design variables such as period and intervention exposure. We will then run the unadjusted and adjusted analyses on the imputed datasets, and also present the corresponding complete-case analyses for comparison. We will not impute secondary outcomes under the available-case approach.
 
 If there is evidence that data are missing not at random, we will explore this in a sensitivity analysis.
 
 <!-- 
-Thoughts on missing data: 
+Thoughts on missing data:
 
-Check nature of missing data, 
-If MCAR, complete case analysis is generally acceptable, as there would be no systematic differences between those with and without missing data. 
+Check nature of missing data,
+If MCAR, complete case analysis is generally acceptable, as there would be no systematic differences between those with and without missing data.
 If MAR, then MICE is appropriate.
 If MNAR, MICE may not fully address the missingness. In such cases, a sensitivity analysis exploring MNAR models might be useful (e.g., pattern mixture models or selection models).
 
@@ -765,14 +765,14 @@ Where:
 - $\rho$: the correlation between adjacent periods within the same cluster.
 - $\eta_{bkt}$: a normally distributed innovation with variance $\sigma^2_\eta$, which is distinct from the marginal cluster variance $\sigma^2_{\alpha}$ in @eq-distributional-assumptions.
 
-We note that this AR(1) formulation differs slightly from alternative parameterisations used elsewhere in which correlations are specified through a joint covariance matrix. Although both approaches capture decaying temporal correlation, the parameter $\rho$ is not directly equivalent to parameters used in other specifications and should not be interpreted interchangeably.
+This AR(1) formulation differs slightly from alternative parameterisations in which correlations are specified through a joint covariance matrix. Both capture decaying temporal correlation, but $\rho$ is not directly equivalent to the parameters of those specifications and should not be interpreted interchangeably.
 
 <!-- sap-revision-todo A6 (comments id=212 KH, id=213 AO): removed "Models with batch-specific secular trends" sensitivity; primary model already uses fixed batch-specific period effects β_bt (protocol-aligned); shared period effects remain in the convergence sequence. -->
 
 ### Models with random cluster by intervention effects
 
 <!-- sap-revision-todo A3 (comments id=220 KH, id=221 AO): dropped the over-complex three-way correlated RE section; retained a simplified random intervention slope with non-zero Cov(α,u) only (γ independent) to adhere to the protocol while addressing reviewer complexity concerns. -->
-To assess sensitivity to the assumption of a common intervention effect across clusters, we will extend the primary analysis model to allow the intervention effect to vary by cluster. Specifically, we will include a random cluster-level slope for the intervention exposure, with a non-zero covariance between this slope and the cluster random intercept (as anticipated in the protocol). The cluster-by-period random effect remains independent of both. The model is specified in @eq-model-random-cluster-intervention.
+To assess sensitivity to the assumption of a common intervention effect across clusters, we will extend the primary analysis model to allow the intervention effect to vary by cluster. Specifically, we will include a random cluster-level slope for the intervention exposure, with a non-zero covariance between this slope and the cluster random intercept (as anticipated in the protocol). The cluster-by-period random effect remains independent of both (@eq-model-random-cluster-intervention).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
@@ -781,7 +781,7 @@ $$ {#eq-model-random-cluster-intervention}
 
 Where:
 
-- $u_{bk}$ is a random effect representing cluster-specific deviations from the average intervention effect.
+- $u_{bk}$: a random effect representing cluster-specific deviations from the average intervention effect.
 - The cluster intercept and intervention slope are jointly normally distributed,
 $$
 \begin{pmatrix}
@@ -814,13 +814,13 @@ $$ {#eq-spline-model}
 
 Where:
 
-- $t$ denotes calendar time (period index) common to all batches.
-- $S_j(t, \{3,6,9\})$ denotes the $j$th natural cubic spline basis function, shared across batches.
-- $\beta_j$ is the coefficient for the $j$th spline basis function.
+- $t$: calendar time (period index) common to all batches.
+- $S_j(t, \{3,6,9\})$: the $j$th natural cubic spline basis function, shared across batches.
+- $\beta_j$: the coefficient for the $j$th spline basis function.
 
 ### Models exploring lag and weaning effects
 
-We will also extend the primary analysis model to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. This will allow us to model different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade). This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. The model is specified in @eq-lag-weaning-model.
+We will also extend the primary analysis model with an interaction between treatment and the number of periods since first treated, to examine whether longer exposure to the intervention changes outcomes. This lets us model lag effects, where the intervention takes time to become embedded in the culture before it has an effect, and weaning effects, where its effect fades. This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time (@eq-lag-weaning-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
@@ -838,7 +838,7 @@ Where a cluster's actual transition date differs from its scheduled date by more
 
 ## Adjusted analyses
 
-Fully adjusted covariate analysis will additionally adjust for<!--[^additional-covariates]--> (expected % missing data in parentheses):
+In the fully adjusted analysis we will additionally adjust for<!--[^additional-covariates]--> (expected % missing data in parentheses):
 
 -   Age (<5%)
 -   Sex (<5%)
@@ -891,7 +891,7 @@ create_safety_events_table()
 ## Statistical software
 
 <!-- github-issue-26: expand software note for checklist. -->
-We will use the R Statistical Software for all analyses [@R]. Specific packages for mixed-effects modelling, small-sample corrections, multiple imputation, and reporting tables will be selected closer to the time of analysis based on convergence behaviour and available methodology, and will be documented in the analysis code and final report.
+We will use the R Statistical Software for all analyses [@R]. We will select the packages for mixed-effects modelling, small-sample corrections, multiple imputation, and reporting tables closer to the time of analysis, based on convergence behaviour and available methodology, and document them in the analysis code and final report.
 
 ## Presentation of analysis results
 
@@ -901,7 +901,7 @@ We will report intervention-effect estimates for the primary and secondary outco
 
 ```{r}
 #| label: tbl-outcomes-analysis-results
-#| tbl-cap: "Shell table of key primary and secondary outcome analysis results"
+#| tbl-cap: "Key primary and secondary outcome analysis results"
 #| echo: false
 #| message: false
 #| warning: false
@@ -915,7 +915,7 @@ We will report the sensitivity, fully adjusted, and subgroup analyses of the pri
 
 ```{r}
 #| label: tbl-additional-analyses-results
-#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome"
+#| tbl-cap: "Sensitivity, fully adjusted, and subgroup analysis results for the primary outcome"
 #| echo: false
 #| message: false
 #| warning: false
@@ -965,7 +965,7 @@ create_outcomes_descriptive_table(all = TRUE)
 
 ```{r}
 #| label: tbl-outcomes-analysis-results-all
-#| tbl-cap: "Shell table of all primary and secondary outcome analysis results"
+#| tbl-cap: "All primary and secondary outcome analysis results"
 #| echo: false
 #| message: false
 #| warning: false
@@ -975,7 +975,7 @@ create_outcomes_analysis_results_table(all = TRUE)
 
 ```{r}
 #| label: tbl-correlation-parameters
-#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes"
+#| tbl-cap: "Within-cluster correlation parameters for all outcomes"
 #| echo: false
 #| message: false
 #| warning: false
