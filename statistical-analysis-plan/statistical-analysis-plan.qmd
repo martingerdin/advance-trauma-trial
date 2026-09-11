@@ -77,7 +77,8 @@ To compare the effects of ATLS^®^ training with standard care on outcomes in ad
 - To explore the effects of ATLS^®^ training on subgroups of patients compared to standard care.
 
 ## Framework {#sec-framework}
-We have designed and will analyse the trial within a superiority framework, with ATLS® training compared with standard care for the primary and secondary outcomes. 
+<!-- github-issue-13: CRT SAP reporting paper — clarify superiority framework plus statistical target of inference. -->
+We have designed and will analyse the trial within a superiority framework, with ATLS® training compared with standard care for the primary and secondary outcomes. The primary statistical target is a cluster-specific (conditional) intervention effect among eligible patient participants. It is not a marginal (population-averaged) effect, and it is not an equal-weight average across clusters. 
 
 <!-- github-issue-12: reorder sections to Round Two checklist sequence. -->
 
@@ -367,7 +368,8 @@ The analysis set will be specified for each analysis and corresponds to the targ
 <!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L/WHODAS in supplementary). -->
 Outcomes are measured on individual patients. Descriptive summaries of primary and secondary outcomes will be presented stratified by before and after ATLS® training and overall, using frequencies and percentages for dichotomous and categorical outcomes, medians and interquartile ranges (Q1–Q3) for continuous and count outcomes, and the same summary statistics as the patient characteristics tables otherwise. Missing values will be reported for each outcome. These descriptive summaries are unadjusted for clustering (patient-level summaries). We will present key outcome summaries in the results section, and all outcome summaries as supplementary tables. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
 
-Comparative effect measures for the intervention are listed by outcome in @tbl-outcomes-summary and are estimated from the mixed-effects models in @sec-analysis-methods. The effects are cluster-specific unless otherwise stated. The types of effect measures are as follows:
+<!-- github-issue-13: CRT SAP reporting paper — participant-level vs cluster-average; cluster-specific vs marginal. -->
+Comparative effect measures for the intervention are listed by outcome in @tbl-outcomes-summary and are estimated from the mixed-effects models in @sec-analysis-methods. These models provide cluster-specific (conditional) estimates of the intervention effect for patient-level outcomes; they are not marginal (population-averaged) estimates. The target of inference is the participant-level average among eligible patients in participating clusters, rather than an equal-weight average of cluster-level summaries. The types of effect measures are as follows:
 
 - **Dichotomous outcomes:** odds ratio (logit link) and absolute risk difference (identity link), where both links are used.
 - **Count (length-of-stay) outcomes:** rate ratio from a negative binomial model with log link.
@@ -386,7 +388,8 @@ Primary and secondary outcomes will be analysed with mixed-effects regression mo
 The primary outcome is in-hospital mortality within 30 days of arrival at the emergency department and will be analysed as a dichotomous variable. We will estimate the intervention effect as the odds ratio (OR) of death between the ATLS® and standard care arms, with an OR < 1 indicating lower odds of death in the ATLS® arm compared to the standard care arm and vice versa.  We will also estimate the absolute risk difference (ARD) of death between the ATLS® and standard care arms, with an ARD < 0 indicating lower risk of death in the ATLS® arm compared to the standard care arm and vice versa.
 
 <!-- sap-revision-todo B8 (comment id=20 AO; Round Two 27a): confirm hospital-level clustering, outcome-appropriate links, and cluster-specific intervention effect. -->
-We will use a mixed-effects binomial regression model to estimate the effect of ATLS® on mortality. The OR will be estimated using the logit link, and the ARD will be estimated using the identity link. These models account for clustering at the hospital level and provide cluster-specific estimates of the intervention effect. The primary analysis will be based on the most complex model that converges from a prespecified sequence of models of decreasing complexity. The analysis will proceed from the most complex model to progressively simpler models if there are convergence or numerical stability issues. The primary analysis will then be subject to sensitivity analyses. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
+<!-- github-issue-13: CRT SAP reporting paper — time-averaged (common) SW intervention effect vs period-specific effects. -->
+We will use a mixed-effects binomial regression model to estimate the effect of ATLS® on mortality. The OR will be estimated using the logit link, and the ARD will be estimated using the identity link. These models account for clustering at the hospital level and provide cluster-specific estimates of the intervention effect. The primary estimand is a common intervention effect across periods of ATLS® exposure (a time-averaged effect under a constant treatment-effect assumption), rather than separate period-specific effects after transition. The primary analysis will be based on the most complex model that converges from a prespecified sequence of models of decreasing complexity. The analysis will proceed from the most complex model to progressively simpler models if there are convergence or numerical stability issues. The primary analysis will then be subject to sensitivity analyses. If the binomial model with the logit link converges but the corresponding model with the identity link does not, then we will report only an OR. 
 
 All models in this sequence will include a fixed effect for intervention exposure and adjust for time, although the parametrisation of time and the random effects structure may be simplified.
 
@@ -704,7 +707,8 @@ Safety events, as defined in the trial protocol, will be summarised as counts an
 
 ## Statistical software {#sec-statistical-software}
 <!-- github-issue-26: expand software note for checklist. -->
-We will use the R Statistical Software for all analyses [@R]. Specific packages for mixed-effects modelling, small-sample corrections, multiple imputation, and reporting tables will be selected closer to the time of analysis based on convergence behaviour and available methodology, and will be documented in the analysis code and final report.
+<!-- github-issue-13: CRT SAP reporting paper — any mention of analysis code counts toward code-reporting item. -->
+We will use the R Statistical Software for all analyses [@R]. Specific packages for mixed-effects modelling, small-sample corrections, multiple imputation, and reporting tables will be selected closer to the time of analysis based on convergence behaviour and available methodology, and will be documented in the analysis code and final report. Analysis code used for the final analysis will be archived with the trial materials.
 
 ## Presentation of analysis results {#sec-presentation-of-analysis-results}
 <!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
