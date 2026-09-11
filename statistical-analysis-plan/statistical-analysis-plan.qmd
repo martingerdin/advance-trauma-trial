@@ -545,13 +545,13 @@ The model sequence is defined as follows:
 1. **Primary model**: a model including fixed effects for period, modelled as a categorical variable with separate period effects for each batch, and a fixed effect for intervention exposure. Clustering will be accounted for by including a random intercept for cluster and a random cluster-by-period effect, both assumed to follow a normal distribution. The model is specified in @eq-primary-model.
 
 $$
-g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk + γ_bkt
+g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-primary-model}
 
 2. **Simplified random effects structure**: a model including fixed effects for period and intervention exposure and a random intercept for cluster only, thereby removing the random cluster-by-period effect. The model is specified in @eq-simplified-random-effects-model.
 
 $$
-g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk
+g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk}
 $$ {#eq-simplified-random-effects-model}
 
 <!-- sap-revision-todo B1 (comments id=191 KH, id=192 AO): state retained random effects and batch indexing for the shared period effects model. -->
