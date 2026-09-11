@@ -788,15 +788,18 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 Time-adjusted within-cluster correlations and variance components will be presented as a supplementary table, as specified under Correlations. See @tbl-correlation-parameters.
 
 <!-- github-issue-33: move reporting shells to end matter; keep design figures and outcomes summary inline. -->
-# Shell tables and figures
+# Shell figures and tables
 
-Reporting shells cited in the plan are collected here for reference. Design figures and the outcomes summary table remain in the main text. Cross-references in the preceding sections point to these shells.
+## CONSORT diagrams
+
+<!-- github-issue-33: keep the three CONSORT shells consecutive; pin with fig-pos H so floats do not interleave tables. -->
 
 ```{r}
 #| echo: false
 #| label: fig-consort-clusters
 #| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches 1-6."
 #| fig.align: "center"
+#| fig-pos: H
 #| out-width: "100%"
 #| message: FALSE
 #| warning: FALSE
@@ -819,6 +822,7 @@ knitr::include_graphics(
 #| label: fig-consort-patients
 #| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall. The flowchart summarises data across all batches 1-6."
 #| fig.align: "center"
+#| fig-pos: H
 #| out-width: "100%"
 #| message: FALSE
 #| warning: FALSE
@@ -841,6 +845,7 @@ knitr::include_graphics(
 #| label: fig-consort-nested-staircase
 #| fig.cap: "Nested-staircase CONSORT diagram shell. Placeholders cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS training, and overall. Coloured strip cells mark staircase months; grey cells are outside nested data collection. The flowchart summarises data across all batches 1-6."
 #| fig.align: "center"
+#| fig-pos: H
 #| out-width: "100%"
 #| message: FALSE
 #| warning: FALSE
@@ -858,6 +863,8 @@ knitr::include_graphics(
   )
 )
 ```
+
+## Shell tables and figures for analysis results
 
 ```{r}
 #| label: tbl-cluster-characteristics

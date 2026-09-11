@@ -648,6 +648,22 @@ included cross-sectionally for the primary outcome, although some
 secondary outcomes will be assessed at multiple follow-up time points.
 The anticipated trial period is from February 2025 to October 2029.
 
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=5.9in,height=\textheight,keepaspectratio]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.0-staircase-months.png}
+
+}
+
+\caption{\label{fig-trial-design}Trial design. Lines represent the
+duration of patient inclusion across clusters and phases. Clusters will
+be sequentially allocated to a batch based on when they enter the study.
+Within each batch clusters will then be randomised to an intervention
+implementation sequence.}
+
+\end{figure}%
+
 Because certain secondary outcomes will be more burdensome to collect
 and because we anticipate larger effects on these outcomes, we will nest
 a staircase design within the main stepped-wedge design to measure these
@@ -656,6 +672,21 @@ Figure~\ref{fig-nested-staircase-design})\textsuperscript{2}. The
 staircase design will include a random subset of patients presenting
 during the three months preceding the transition phase, and the three
 months following the transition phase.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=5.9in,height=\textheight,keepaspectratio]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.3-staircase-months.png}
+
+}
+
+\caption{\label{fig-nested-staircase-design}Nested staircase design. The
+design includes a random subset of patients presenting during the three
+months preceding the transition phase, and the three months following
+the transition phase.}
+
+\end{figure}%
 
 \subsection{Intervention and control
 treatment}\label{intervention-and-control-treatment}
@@ -1206,6 +1237,59 @@ design}\label{collected-using-the-nested-staircase-design}
   has been discharged. This data will also be collected using a nested
   staircase design.
 \end{itemize}
+
+\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+\begin{landscape}
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
+\begingroup\fontsize{8}{10}\selectfont
+
+\begin{longtable}{p{0.2\linewidth}p{0.08\linewidth}p{0.07\linewidth}p{0.09\linewidth}p{0.13\linewidth}p{0.08\linewidth}p{0.1\linewidth}p{0.09\linewidth}}
+
+\caption{\label{tbl-outcomes-summary}Summary of outcomes, analysis sets,
+effect measures, and handling of intercurrent events}
+
+\tabularnewline
+
+\toprule
+Outcome & Design component & Data type & Analysis set & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
+\midrule
+\endfirsthead
+\multicolumn{8}{@{}l}{\textit{(continued)}}\\
+\toprule
+Outcome & Design component & Data type & Analysis set & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
+All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+Length of emergency department stay & Main stepped-wedge & Count (hours) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+\addlinespace
+Length of hospital stay & Main stepped-wedge & Count (days) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by whether ICU admission occurred first\\
+Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+\addlinespace
+Adherence to ATLS® principles during initial patient resuscitation & Nested staircase & Proportion & Observed nested sample & Mixed-effects beta (logit) & Logit-scale difference & Incomplete observation & Available-case in the observed nested sample\\
+Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+\addlinespace
+Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
+
+\end{longtable}
+
+\endgroup{}\end{landscape}
+\restoregeometry
 
 \section{Intercurrent events, populations and summary
 measures}\label{intercurrent-events-populations-and-summary-measures}
@@ -2109,42 +2193,11 @@ See Table~\ref{tbl-correlation-parameters}.
 
 \section{Shell tables and figures}\label{shell-tables-and-figures}
 
-The shell tables and figures cited in the plan are collected here for
-reference. Cross-references in the preceding sections point to these
-shells.
+Reporting shells cited in the plan are collected here for reference.
 
-\begin{figure}
+\subsection{CONSORT diagrams}\label{consort-diagrams}
 
-\centering{
-
-\includegraphics[width=5.9in,height=\textheight,keepaspectratio]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.0-staircase-months.png}
-
-}
-
-\caption{\label{fig-trial-design}Trial design. Lines represent the
-duration of patient inclusion across clusters and phases. Clusters will
-be sequentially allocated to a batch based on when they enter the study.
-Within each batch clusters will then be randomised to an intervention
-implementation sequence.}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=5.9in,height=\textheight,keepaspectratio]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.3-staircase-months.png}
-
-}
-
-\caption{\label{fig-nested-staircase-design}Nested staircase design. The
-design includes a random subset of patients presenting during the three
-months preceding the transition phase, and the three months following
-the transition phase.}
-
-\end{figure}%
-
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -2160,7 +2213,7 @@ data across all batches 1-6.}
 
 \end{figure}%
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -2176,7 +2229,7 @@ data across all batches 1-6.}
 
 \end{figure}%
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -2193,6 +2246,9 @@ staircase months; grey cells are outside nested data collection. The
 flowchart summarises data across all batches 1-6.}
 
 \end{figure}%
+
+\subsection{Shell tables and figures for analysis
+results}\label{shell-tables-and-figures-for-analysis-results}
 
 \begingroup\fontsize{8}{10}\selectfont
 
@@ -2320,59 +2376,6 @@ Imaging, n (\%) &  &  & \\
 
 \endgroup{}
 \par\raggedright
-
-\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
-\begin{landscape}
-\setlength{\tabcolsep}{3pt}
-\setlength{\LTleft}{\fill}
-\setlength{\LTright}{\fill}
-\begingroup\fontsize{8}{10}\selectfont
-
-\begin{longtable}{p{0.2\linewidth}p{0.08\linewidth}p{0.07\linewidth}p{0.09\linewidth}p{0.13\linewidth}p{0.08\linewidth}p{0.1\linewidth}p{0.09\linewidth}}
-
-\caption{\label{tbl-outcomes-summary}Summary of outcomes, analysis sets,
-effect measures, and handling of intercurrent events}
-
-\tabularnewline
-
-\toprule
-Outcome & Design component & Data type & Analysis set & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
-\midrule
-\endfirsthead
-\multicolumn{8}{@{}l}{\textit{(continued)}}\\
-\toprule
-Outcome & Design component & Data type & Analysis set & Main analysis model & Effect measure & Potential intercurrent events & Strategy for handling intercurrent events\\
-\midrule
-\endhead
-
-\endfoot
-\bottomrule
-\endlastfoot
-Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
-All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
-All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
-All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
-Length of emergency department stay & Main stepped-wedge & Count (hours) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
-\addlinespace
-Length of hospital stay & Main stepped-wedge & Count (days) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
-Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by whether ICU admission occurred first\\
-Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
-Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-\addlinespace
-Adherence to ATLS® principles during initial patient resuscitation & Nested staircase & Proportion & Observed nested sample & Mixed-effects beta (logit) & Logit-scale difference & Incomplete observation & Available-case in the observed nested sample\\
-Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-\addlinespace
-Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
-
-\end{longtable}
-
-\endgroup{}\end{landscape}
-\restoregeometry
 
 \begingroup\fontsize{8}{10}\selectfont
 
