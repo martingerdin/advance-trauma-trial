@@ -94,7 +94,7 @@ Clusters will be sequentially allocated to batches based on when they enter the 
 ```{r}
 #| echo: false
 #| label: fig-trial-design
-#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence. Intended for the main text."
+#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -119,7 +119,7 @@ Because certain secondary outcomes will be more burdensome to collect and becaus
 ```{r}
 #| echo: false
 #| label: fig-nested-staircase-design
-#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase. Intended for the supplementary material."
+#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -252,7 +252,7 @@ We will describe patient characteristics among all eligible patients over the en
 # Outcomes {#sec-outcomes}
 ## Outcomes {#sec-outcomes-overview}
 <!-- github-issue-67: point readers from the outcomes summary table to the strategy definitions. -->
-A summary of all outcomes, analysis sets, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-summary, which is intended for the supplementary material. The strategies named in the last column of that table are defined under @sec-strategies-for-handling-intercurrent-events. 
+A summary of all outcomes, analysis sets, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-summary. The strategies named in the last column of that table are defined under @sec-strategies-for-handling-intercurrent-events. 
 
 <!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer ICE per outcome; primary includes deaths after transfer. -->
 {{< include ../shared-assets/outcomes.qmd >}}
@@ -736,8 +736,7 @@ We will use the R Statistical Software for all analyses [@R]. Specific packages 
 ## Presentation of analysis results {#sec-presentation-of-analysis-results}
 <!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
 <!-- github-issue-34: outcome names as nested headers; effect measures indented with modify_indent. -->
-<!-- github-issue-72: captions state the intended destination of every table and figure. -->
-Captions state whether a table or figure is intended for the main text or the supplementary material of the trial report. Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text, and present all outcome analyses in the supplementary material. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
+Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text, and present all outcome analyses in the supplementary material. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
 
 <!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
 <!-- github-issue-34: analysis names as nested headers; OR/ARD indented with modify_indent. -->
@@ -751,6 +750,9 @@ Time-adjusted within-cluster correlations and variance components will be presen
 
 <!-- github-issue-33: move reporting shells to end matter; keep design figures and outcomes summary inline. -->
 # Shell figures and tables {#sec-shell-figures-and-tables}
+<!-- github-issue-72: the designation applies to the shells in this section, which are the tables and figures planned for the trial report. -->
+The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report.
+
 ## CONSORT diagrams {#sec-consort-diagrams}
 <!-- github-issue-33: keep the three CONSORT shells consecutive; pin with fig-pos H so floats do not interleave tables. -->
 
