@@ -172,8 +172,6 @@
 \RedeclareSectionCommand[beforeskip=1.5ex plus 0.5ex minus 0.2ex,afterskip=1ex plus 0.2ex]{subsection}
 \RedeclareSectionCommand[beforeskip=1ex plus 0.5ex minus 0.2ex,afterskip=0.5ex plus 0.2ex]{subsubsection}
 \RedeclareSectionCommand[beforeskip=0.5ex plus 0.3ex minus 0.1ex,afterskip=0.5ex plus 0.1ex]{paragraph}
-% github-issue-73: list the list of figures and list of tables in the table of contents
-\KOMAoptions{listof=totoc}
 % Table of contents: font sizes per level (section = largest, then step down)
 \RedeclareSectionCommand[
   tocentryformat=\usekomafont{disposition}\Large\bfseries,
@@ -437,8 +435,6 @@ Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 \setcounter{tocdepth}{4}
 \tableofcontents
 }
-\listoffigures
-\listoftables
 
 \newpage{}
 
@@ -1273,7 +1269,7 @@ design}\label{collected-using-the-nested-staircase-design}
 \caption{\label{tbl-outcomes-summary}Summary of outcomes, analysis sets,
 effect measures, and handling of intercurrent events. The strategies
 named in the last column are defined in the section Strategies for
-handling intercurrent events. Intended for the supplementary material.}
+handling intercurrent events.}
 
 \tabularnewline
 
@@ -1406,11 +1402,10 @@ intercurrent event.
 \subsubsection{Strategies for handling intercurrent
 events}\label{sec-strategies-for-handling-intercurrent-events}
 
-The strategies named in the last column of
-Table~\ref{tbl-outcomes-summary} are defined as follows, in the order in
-which they first appear in that table. Where two strategies are listed
-for an outcome, the second applies to any event not covered by the
-first.
+The strategies to handle intercurrent events are defined as follows, in
+the order in which they first appear in
+Table~\ref{tbl-outcomes-summary}. Where two strategies are listed for an
+outcome, the second applies to any event not covered by the first.
 
 \begin{itemize}
 \tightlist

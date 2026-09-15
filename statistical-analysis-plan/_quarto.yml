@@ -1,8 +1,5 @@
 toc: true
 toc-depth: 4
-# github-issue-73: list figures and tables after the table of contents
-lof: true
-lot: true
 number-sections: true
 number-depth: 4
 fig-caption: true
