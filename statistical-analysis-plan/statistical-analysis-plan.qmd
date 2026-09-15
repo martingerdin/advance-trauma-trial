@@ -804,7 +804,8 @@ knitr::include_graphics(
 )
 ```
 
-## Shell tables and figures for analysis results {#sec-shell-tables-and-figures-for-analysis-results}
+<!-- sap-coherence-review: this subsection holds the descriptive and supplementary shells as well as the analysis-results ones, so the heading named only part of its contents. -->
+## Descriptive, analysis and supplementary shells {#sec-descriptive-analysis-and-supplementary-shells}
 ```{r}
 #| label: tbl-cluster-characteristics
 #| tbl-cap: "Cluster characteristics"
