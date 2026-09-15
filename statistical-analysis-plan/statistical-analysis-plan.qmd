@@ -94,7 +94,7 @@ Clusters will be sequentially allocated to batches based on when they enter the 
 ```{r}
 #| echo: false
 #| label: fig-trial-design
-#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
+#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence. Intended for the main text."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -119,7 +119,7 @@ Because certain secondary outcomes will be more burdensome to collect and becaus
 ```{r}
 #| echo: false
 #| label: fig-nested-staircase-design
-#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase."
+#| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase. Intended for the supplementary material."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -235,23 +235,24 @@ Our trial has eligibility criteria on the cluster and patient participant level.
 <!-- github-issue-20: nested-staircase patient flow reported separately from main CONSORT. -->
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
-We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS® training. Flow for nested-staircase secondary outcomes (adherence to ATLS® principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a separate figure (@fig-consort-nested-staircase), showing patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS® training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in the main text, in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS® training. Flow for nested-staircase secondary outcomes (adherence to ATLS® principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a separate figure in the supplementary material (@fig-consort-nested-staircase), showing patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS® training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ## Baseline characteristics {#sec-baseline-characteristics}
 ### Cluster characteristics {#sec-cluster-characteristics}
 <!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
 <!-- github-issue-14: add state to cluster characteristics shell. -->
-We will describe cluster characteristics including state and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. State categories depend on the final set of participating clusters. See @tbl-cluster-characteristics for details.
+<!-- github-issue-72: state whether the shell is intended for the main text or the supplementary material. -->
+We will describe cluster characteristics including state and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. State categories depend on the final set of participating clusters. We will present these characteristics in the main text. See @tbl-cluster-characteristics for details.
 
 ### Patient characteristics {#sec-patient-characteristics}
 <!-- sap-revision-todo E1 (comments id=166 KH, id=167 AO): all eligible patients over entire trial; baseline = characteristics not outcomes. -->
 <!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
-We will describe patient characteristics among all eligible patients over the entire trial period, stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics (i.e. non-outcome variables). We will present key characteristics in the results section, and present all characteristics in a supplementary table. See @tbl-patient-characteristics for key characteristics and @tbl-patient-characteristics-all for all characteristics.
+We will describe patient characteristics among all eligible patients over the entire trial period, stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics (i.e. non-outcome variables). We will present key characteristics in the main text, and present all characteristics in the supplementary material. See @tbl-patient-characteristics for key characteristics and @tbl-patient-characteristics-all for all characteristics.
 
 # Outcomes {#sec-outcomes}
 ## Outcomes {#sec-outcomes-overview}
 <!-- github-issue-67: point readers from the outcomes summary table to the strategy definitions. -->
-A summary of all outcomes, analysis sets, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-summary. The strategies named in the last column of that table are defined under @sec-strategies-for-handling-intercurrent-events. 
+A summary of all outcomes, analysis sets, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-summary, which is intended for the supplementary material. The strategies named in the last column of that table are defined under @sec-strategies-for-handling-intercurrent-events. 
 
 <!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer ICE per outcome; primary includes deaths after transfer. -->
 {{< include ../shared-assets/outcomes.qmd >}}
@@ -276,7 +277,7 @@ names(outcomes.table) <- c(
 
 ```{r}
 #| label: tbl-outcomes-summary
-#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events."
+#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -323,7 +324,7 @@ cat("\\restoregeometry\n")
 # Intercurrent events, populations and summary measures {#sec-intercurrent-events-populations-and-summary-measures}
 ## Intercurrent events {#sec-intercurrent-events}
 <!-- github-issue-23: draft ICE strategies from outcomes-summary table and existing outcome analysis text. -->
-Intercurrent events are events occurring after intervention exposure that affect interpretation or occurrence of an outcome. Anticipated events and the strategy used for each outcome are summarised in @tbl-outcomes-summary. Frequencies will be summarised for each outcome as counts and percentages of patients with the event before assessment of that outcome, stratified by before and after ATLS training and overall. We will not adjust for clustering in these summaries. Denominators follow the analysis set for the outcome (main stepped-wedge trial or nested staircase sample). See @tbl-intercurrent-events.
+Intercurrent events are events occurring after intervention exposure that affect interpretation or occurrence of an outcome. Anticipated events and the strategy used for each outcome are summarised in @tbl-outcomes-summary. Frequencies will be summarised for each outcome as counts and percentages of patients with the event before assessment of that outcome, stratified by before and after ATLS training and overall. We will not adjust for clustering in these summaries. Denominators follow the analysis set for the outcome (main stepped-wedge trial or nested staircase sample). We will present these summaries in the supplementary material. See @tbl-intercurrent-events.
 
 At the cluster level, late or early transition relative to the scheduled date, incomplete delivery of ATLS® training, and cluster dropout are treated as protocol or adherence issues, as described under @sec-adherence-and-protocol-deviations, rather than as outcome-specific intercurrent events; exposure for analysis remains as defined under @sec-analysis-sets, with a sensitivity analysis using the actual transition date when the deviation exceeds four weeks.
 
@@ -381,7 +382,7 @@ Three further rules define the analysis set for each analysis. First, only patie
 ## Effect measures {#sec-effect-measures}
 <!-- github-issue-25: revise effect measures against checklist; keep descriptive shells and cross-ref analysis shells. -->
 <!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L/WHODAS in supplementary). -->
-Outcomes are measured on individual patients. Descriptive summaries of primary and secondary outcomes will be presented stratified by before and after ATLS® training and overall, using frequencies and percentages for dichotomous and categorical outcomes, medians and interquartile ranges (Q1–Q3) for continuous and count outcomes, and the same summary statistics as the patient characteristics tables otherwise. Missing values will be reported for each outcome. These descriptive summaries are unadjusted for clustering (patient-level summaries). We will present key outcome summaries in the results section, and all outcome summaries as supplementary tables. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
+Outcomes are measured on individual patients. Descriptive summaries of primary and secondary outcomes will be presented stratified by before and after ATLS® training and overall, using frequencies and percentages for dichotomous and categorical outcomes, medians and interquartile ranges (Q1–Q3) for continuous and count outcomes, and the same summary statistics as the patient characteristics tables otherwise. Missing values will be reported for each outcome. These descriptive summaries are unadjusted for clustering (patient-level summaries). We will present key outcome summaries in the main text, and all outcome summaries in the supplementary material. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
 
 <!-- github-issue-13: CRT SAP reporting paper — participant-level vs cluster-average; cluster-specific vs marginal. -->
 Comparative effect measures for the intervention are listed by outcome in @tbl-outcomes-summary and are estimated from the mixed-effects models in @sec-analysis-methods. These models provide cluster-specific (conditional) estimates of the intervention effect for patient-level outcomes; they are not marginal (population-averaged) estimates. The target of inference is the participant-level average among eligible patients in participating clusters, rather than an equal-weight average of cluster-level summaries. The types of effect measures are as follows:
@@ -722,7 +723,8 @@ Each subgroup analysis will use the same mixed-effects binomial model that is se
 
 ## Safety events {#sec-safety-events}
 <!-- sap-revision-todo J9 (GitHub #8): final-analysis safety event shell table; protocol-aligned definitions. -->
-Safety events, as defined in the trial protocol, will be summarised as counts and percentages of patients with at least one recorded event, stratified by before and after ATLS training and overall. We will not adjust for clustering in these summaries. See @tbl-safety-events for details.
+<!-- github-issue-72: state whether the shell is intended for the main text or the supplementary material. -->
+Safety events, as defined in the trial protocol, will be summarised as counts and percentages of patients with at least one recorded event, stratified by before and after ATLS training and overall. We will not adjust for clustering in these summaries. We will present these summaries in the main text. See @tbl-safety-events for details.
 
 ## Statistical software {#sec-statistical-software}
 <!-- github-issue-26: expand software note for checklist. -->
@@ -732,11 +734,12 @@ We will use the R Statistical Software for all analyses [@R]. Specific packages 
 ## Presentation of analysis results {#sec-presentation-of-analysis-results}
 <!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
 <!-- github-issue-34: outcome names as nested headers; effect measures indented with modify_indent. -->
-Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the results section, and present all outcome analyses as supplementary tables. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
+<!-- github-issue-72: captions state the intended destination of every table and figure. -->
+Every table and figure caption in this plan states whether the table or figure is intended for the main text or the supplementary material of the trial report. Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text, and present all outcome analyses in the supplementary material. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
 
 <!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
 <!-- github-issue-34: analysis names as nested headers; OR/ARD indented with modify_indent. -->
-Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will be reported in the same style. See @tbl-additional-analyses-results. Subgroup-specific intervention effects will also be presented in a forest plot with 95% CIs for the odds ratio and absolute risk difference. See @fig-subgroup-forest-plot.
+Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will be reported in the same style, in the supplementary material. See @tbl-additional-analyses-results. Subgroup-specific intervention effects will also be presented in the main text as a forest plot with 95% CIs for the odds ratio and absolute risk difference. See @fig-subgroup-forest-plot.
 
 <!-- sap-revision-todo J10 (GitHub #9): forest plot shell for primary-outcome subgroup analyses. -->
 
@@ -752,7 +755,7 @@ Time-adjusted within-cluster correlations and variance components will be presen
 ```{r}
 #| echo: false
 #| label: fig-consort-clusters
-#| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches 1-6."
+#| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches 1-6. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -775,7 +778,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-patients
-#| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall. The flowchart summarises data across all batches 1-6."
+#| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall. The flowchart summarises data across all batches 1-6. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -798,7 +801,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-nested-staircase
-#| fig.cap: "Nested-staircase CONSORT diagram shell. Placeholders cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS training, and overall. Coloured strip cells mark staircase months; grey cells are outside nested data collection. The flowchart summarises data across all batches 1-6."
+#| fig.cap: "Nested-staircase CONSORT diagram shell. Placeholders cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS training, and overall. Coloured strip cells mark staircase months; grey cells are outside nested data collection. The flowchart summarises data across all batches 1-6. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -823,7 +826,7 @@ knitr::include_graphics(
 <!-- github-issue-68: shells follow the order in which they are first mentioned in the text; keep each key shell immediately followed by its supplementary counterpart. -->
 ```{r}
 #| label: tbl-cluster-characteristics
-#| tbl-cap: "Cluster characteristics"
+#| tbl-cap: "Cluster characteristics. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -833,7 +836,7 @@ create_cluster_characteristics_table()
 
 ```{r}
 #| label: tbl-patient-characteristics
-#| tbl-cap: "Key patient characteristics"
+#| tbl-cap: "Key patient characteristics. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -843,7 +846,7 @@ create_patient_characteristics_table()
 
 ```{r}
 #| label: tbl-patient-characteristics-all
-#| tbl-cap: "All patient characteristics"
+#| tbl-cap: "All patient characteristics. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -853,7 +856,7 @@ create_patient_characteristics_table(all = TRUE)
 
 ```{r}
 #| label: tbl-intercurrent-events
-#| tbl-cap: "Intercurrent events by outcome"
+#| tbl-cap: "Intercurrent events by outcome. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -863,7 +866,7 @@ create_intercurrent_events_table()
 
 ```{r}
 #| label: tbl-outcomes-descriptive
-#| tbl-cap: "Descriptive summaries of key outcomes"
+#| tbl-cap: "Descriptive summaries of key outcomes. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -873,7 +876,7 @@ create_outcomes_descriptive_table()
 
 ```{r}
 #| label: tbl-outcomes-descriptive-all
-#| tbl-cap: "Descriptive summaries of all outcomes"
+#| tbl-cap: "Descriptive summaries of all outcomes. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -883,7 +886,7 @@ create_outcomes_descriptive_table(all = TRUE)
 
 ```{r}
 #| label: tbl-outcomes-analysis-results
-#| tbl-cap: "Shell table of key primary and secondary outcome analysis results"
+#| tbl-cap: "Shell table of key primary and secondary outcome analysis results. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -893,7 +896,7 @@ create_outcomes_analysis_results_table()
 
 ```{r}
 #| label: tbl-outcomes-analysis-results-all
-#| tbl-cap: "Shell table of all primary and secondary outcome analysis results"
+#| tbl-cap: "Shell table of all primary and secondary outcome analysis results. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -903,7 +906,7 @@ create_outcomes_analysis_results_table(all = TRUE)
 
 ```{r}
 #| label: tbl-additional-analyses-results
-#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome"
+#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -913,7 +916,7 @@ create_additional_analyses_results_table()
 
 ```{r}
 #| label: tbl-correlation-parameters
-#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes"
+#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -923,7 +926,7 @@ create_correlation_parameters_shell_table(all = TRUE)
 
 ```{r}
 #| label: fig-subgroup-forest-plot
-#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days. Estimates and confidence intervals are placeholders to be completed at analysis."
+#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days. Estimates and confidence intervals are placeholders to be completed at analysis. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| echo: false
@@ -940,7 +943,7 @@ knitr::include_graphics(
 
 ```{r}
 #| label: tbl-safety-events
-#| tbl-cap: "Safety events"
+#| tbl-cap: "Safety events. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
