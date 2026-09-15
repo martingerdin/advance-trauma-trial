@@ -211,7 +211,7 @@ In every descriptive table in this plan we summarise discrete variables as frequ
 <!-- github-issue-21: draft adherence and protocol deviations from existing SAP/protocol text (checklist 17a/17b). -->
 
 ### Adherence to the intervention {#sec-adherence-to-the-intervention}
-We define adherence to the intervention at the cluster and individual levels. It is distinct from the secondary outcome adherence to ATLS^®^ principles during resuscitation, which we define and analyse under @sec-outcomes and @sec-analysis-of-secondary-outcomes and do not use to exclude patients from the primary analysis.
+We define adherence to the intervention at the cluster and individual levels. It is distinct from the secondary outcome adherence to ATLS^®^ principles during resuscitation, which we define under @sec-outcomes, analyse under @sec-analysis-of-secondary-outcomes, and do not use to exclude patients from the primary analysis.
 
 At the cluster level, adherence means that ATLS^®^ training is delivered during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS^®^ training before its scheduled transition. We will assess cluster-level adherence using the training log kept by the Trial Team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. We will also review adherence to the randomisation schedule at the interim analysis; see @sec-interim-analysis.
 
@@ -353,7 +353,7 @@ We define the treatment effects in this plan for the trial’s eligible clusters
 - **Survivor populations.** We target quality of life and disability effects among patients in the nested staircase sample who are alive at the relevant follow-up time point, and return-to-work effects among patients in the main stepped-wedge trial who are alive at the relevant follow-up and for whom return to work is relevant.
 - **Nested adherence population.** We target the adherence-to-ATLS^®^-principles effect among the patients we randomly select for observation in the nested staircase design during the observation window.
 
-@sec-analysis-sets specifies which patients from each target population enter a given analysis.
+We specify which patients from each target population enter a given analysis under @sec-analysis-sets.
 
 ## Analysis sets {#sec-analysis-sets}
 <!-- sap-revision-todo A4 (comments id=102 KH, id=103 AO): clarify hospital→unit→patient hierarchy vs model RE; justify omitting unit-level RE; standardise on "units" (protocol term), not "teams". -->
