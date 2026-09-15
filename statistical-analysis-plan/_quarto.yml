@@ -4,6 +4,10 @@ number-sections: true
 number-depth: 4
 fig-caption: true
 link-bibliography: false
+# github-issue-39: render @sec- as "Title (Section N)"
+filters:
+  - quarto
+  - filters/sec-title-xref.lua
 titlepage-theme:
   page-color: "secondary"
   title-fontfamily: "Roboto"
@@ -29,5 +33,5 @@ format:
     keep-tex: true
     include-in-header: 
       file: in-header.tex
-  docx: default
+  # docx: default
   # html: default

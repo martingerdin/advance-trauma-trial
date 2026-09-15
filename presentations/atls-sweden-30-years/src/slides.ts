@@ -371,7 +371,7 @@ export const slides: Slide[] = [
   },
   {
     id: "aim",
-    layout: "aim",
+    layout: "aim",g
     title: "Aim",
     body: "To compare the effects of ATLS® training with standard care on outcomes in adult trauma patients",
   },
