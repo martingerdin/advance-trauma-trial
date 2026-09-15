@@ -277,7 +277,7 @@ names(outcomes.table) <- c(
 
 ```{r}
 #| label: tbl-outcomes-summary
-#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events. Intended for the supplementary material."
+#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events."
 #| echo: false
 #| message: false
 #| warning: false
@@ -342,7 +342,7 @@ Return to work is further restricted to patients for whom the outcome is relevan
 
 ### Strategies for handling intercurrent events {#sec-strategies-for-handling-intercurrent-events}
 <!-- github-issue-67: define the strategy labels used in the last column of the outcomes summary table. -->
-The strategies named in the last column of @tbl-outcomes-summary are defined as follows, in the order in which they first appear in that table. Where two strategies are listed for an outcome, the second applies to any event not covered by the first.
+The strategies to handle intercurrent events are defined as follows, in the order in which they first appear in @tbl-outcomes-summary. Where two strategies are listed for an outcome, the second applies to any event not covered by the first.
 
 - **Missing data.** The outcome is not observed and no value is constructed for it. Such observations are excluded from the analysis of that outcome under the available-case approach, or imputed under the multiple imputation approach, as specified under @sec-treatment-of-missing-data.
 - **Treatment policy (any setting).** The outcome is counted as recorded irrespective of where care was delivered after the patient left the randomised cluster. All-cause mortality therefore counts deaths in any setting, including after transfer or discharge.
