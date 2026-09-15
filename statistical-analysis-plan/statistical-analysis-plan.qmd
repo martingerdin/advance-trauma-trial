@@ -820,6 +820,7 @@ knitr::include_graphics(
 ```
 
 ## Shell tables and figures for analysis results {#sec-shell-tables-and-figures-for-analysis-results}
+<!-- github-issue-68: shells follow the order in which they are first mentioned in the text; keep each key shell immediately followed by its supplementary counterpart. -->
 ```{r}
 #| label: tbl-cluster-characteristics
 #| tbl-cap: "Cluster characteristics"
@@ -838,6 +839,16 @@ create_cluster_characteristics_table()
 #| warning: false
 #| results: asis
 create_patient_characteristics_table()
+```
+
+```{r}
+#| label: tbl-patient-characteristics-all
+#| tbl-cap: "All patient characteristics"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_patient_characteristics_table(all = TRUE)
 ```
 
 ```{r}
@@ -861,13 +872,13 @@ create_outcomes_descriptive_table()
 ```
 
 ```{r}
-#| label: tbl-safety-events
-#| tbl-cap: "Safety events"
+#| label: tbl-outcomes-descriptive-all
+#| tbl-cap: "Descriptive summaries of all outcomes"
 #| echo: false
 #| message: false
 #| warning: false
 #| results: asis
-create_safety_events_table()
+create_outcomes_descriptive_table(all = TRUE)
 ```
 
 ```{r}
@@ -881,6 +892,16 @@ create_outcomes_analysis_results_table()
 ```
 
 ```{r}
+#| label: tbl-outcomes-analysis-results-all
+#| tbl-cap: "Shell table of all primary and secondary outcome analysis results"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_outcomes_analysis_results_table(all = TRUE)
+```
+
+```{r}
 #| label: tbl-additional-analyses-results
 #| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome"
 #| echo: false
@@ -891,9 +912,20 @@ create_additional_analyses_results_table()
 ```
 
 ```{r}
+#| label: tbl-correlation-parameters
+#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes"
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+create_correlation_parameters_shell_table(all = TRUE)
+```
+
+```{r}
 #| label: fig-subgroup-forest-plot
 #| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days. Estimates and confidence intervals are placeholders to be completed at analysis."
 #| fig.align: "center"
+#| fig-pos: H
 #| echo: false
 #| message: false
 #| warning: false
@@ -907,43 +939,13 @@ knitr::include_graphics(
 ```
 
 ```{r}
-#| label: tbl-patient-characteristics-all
-#| tbl-cap: "All patient characteristics"
+#| label: tbl-safety-events
+#| tbl-cap: "Safety events"
 #| echo: false
 #| message: false
 #| warning: false
 #| results: asis
-create_patient_characteristics_table(all = TRUE)
-```
-
-```{r}
-#| label: tbl-outcomes-descriptive-all
-#| tbl-cap: "Descriptive summaries of all outcomes"
-#| echo: false
-#| message: false
-#| warning: false
-#| results: asis
-create_outcomes_descriptive_table(all = TRUE)
-```
-
-```{r}
-#| label: tbl-outcomes-analysis-results-all
-#| tbl-cap: "Shell table of all primary and secondary outcome analysis results"
-#| echo: false
-#| message: false
-#| warning: false
-#| results: asis
-create_outcomes_analysis_results_table(all = TRUE)
-```
-
-```{r}
-#| label: tbl-correlation-parameters
-#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes"
-#| echo: false
-#| message: false
-#| warning: false
-#| results: asis
-create_correlation_parameters_shell_table(all = TRUE)
+create_safety_events_table()
 ```
 
 # References {#sec-references .numbered}
