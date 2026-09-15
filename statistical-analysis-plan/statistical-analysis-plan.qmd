@@ -737,7 +737,7 @@ We will use the R Statistical Software for all analyses [@R]. Specific packages 
 <!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
 <!-- github-issue-34: outcome names as nested headers; effect measures indented with modify_indent. -->
 <!-- github-issue-72: captions state the intended destination of every table and figure. -->
-Every table and figure caption in this plan states whether the table or figure is intended for the main text or the supplementary material of the trial report. Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text, and present all outcome analyses in the supplementary material. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
+Captions state whether a table or figure is intended for the main text or the supplementary material of the trial report. Intervention-effect estimates for the primary and secondary outcomes will be reported with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text, and present all outcome analyses in the supplementary material. See @tbl-outcomes-analysis-results for key analyses and @tbl-outcomes-analysis-results-all for all analyses.
 
 <!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
 <!-- github-issue-34: analysis names as nested headers; OR/ARD indented with modify_indent. -->
