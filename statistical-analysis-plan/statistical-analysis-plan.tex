@@ -455,8 +455,7 @@ information}\label{sec-administrative-information}
 
 \subsection{Changelog}\label{sec-changelog}
 
-Once version 1.0.0 is finalised, this section will be updated with a
-changelog.
+We will add a changelog here once we finalise version 1.0.0.
 
 \subsection{Contributors}\label{sec-contributors}
 
@@ -504,11 +503,11 @@ Statistician \\
 \subsection{Use of generative artificial
 intelligence}\label{sec-use-of-generative-artificial-intelligence}
 
-Generative artificial intelligence tools, including large language
-models accessed via Cursor, were used to assist with drafting, revising,
-and formatting this statistical analysis plan. All substantive
-statistical content was reviewed and approved by the authors, who take
-full responsibility for the final document.
+We used generative artificial intelligence tools, including large
+language models accessed via Cursor, to help draft, revise, and format
+this statistical analysis plan. We reviewed and approved all substantive
+statistical content, and we take full responsibility for the final
+document.
 
 \newpage{}
 
@@ -607,8 +606,9 @@ care on outcomes in adult trauma patients.
   To estimate the effects of ATLS\textsuperscript{®} training on 30-day
   in-hospital mortality compared to standard care.
 \item
-  To assess the robustness of the main analysis results to different
-  model specifications through sensitivity analyses.
+  To assess how robust the main analysis results are to different model
+  specifications, exposure definitions, and missing-data assumptions,
+  through sensitivity analyses.
 \item
   To estimate the effects of ATLS\textsuperscript{®} training on
   secondary outcomes compared to standard care.
@@ -620,34 +620,37 @@ care on outcomes in adult trauma patients.
 \subsection{Framework}\label{sec-framework}
 
 We have designed and will analyse the trial within a superiority
-framework, with ATLS® training compared with standard care for the
-primary and secondary outcomes.
+framework, with ATLS\textsuperscript{®} training compared with standard
+care for the primary and secondary outcomes. We target a
+cluster-specific (conditional) intervention effect among eligible
+patient participants, not a marginal (population-averaged) effect and
+not an equal-weight average across clusters.
 
 \section{Study design}\label{sec-study-design}
 
 \subsection{Trial design}\label{sec-trial-design}
 
-This is a batched stepped-wedge cluster randomised trial, including a
-total of 30 clusters (see Figure~\ref{fig-trial-design}). Each cluster
-is a hospital and represents the unit for randomisation, even if one or
-more units are trained in the same hospital. There are two intervention
-conditions: ATLS® training and standard care.
+This is a batched stepped-wedge cluster randomised trial with 30
+clusters (see Figure~\ref{fig-trial-design}). Each cluster is one
+hospital, and we randomise hospitals, even when we train more than one
+unit of physicians in the same hospital. There are two intervention
+conditions: ATLS\textsuperscript{®} training and standard care.
 
-The trial will be composed of 6 batches of identical 12-period
-5-sequence designs, with one cluster allocated to each sequence of each
-batch (equal allocation across sequences)\textsuperscript{1}. Each
-period is one month, and each cluster will be in the trial for a total
-of 13 months. Clusters are repeatedly measured across periods. The
-intervention will be implemented during a one-month transition period,
-which will be excluded from the analysis. There will be an anticipated
-overlap of 6 months between successive batches.
+The trial comprises 6 batches of identical 12-period 5-sequence designs,
+with one cluster allocated to each sequence of each batch (equal
+allocation across sequences)\textsuperscript{1}. Each period is one
+month, and each cluster will be in the trial for a total of 13 months.
+We measure clusters repeatedly across periods. We will implement the
+intervention during a one-month transition period, which we exclude from
+the analysis. There will be an anticipated overlap of 6 months between
+successive batches.
 
 Clusters will be sequentially allocated to batches based on when they
 enter the study, and within each batch clusters will then be randomised
-to an intervention implementation sequence. Individual patients will be
-included cross-sectionally for the primary outcome, although some
-secondary outcomes will be assessed at multiple follow-up time points.
-The anticipated trial period is from February 2025 to October 2029.
+to an intervention implementation sequence. We include individual
+patients cross-sectionally for the primary outcome, although we assess
+some secondary outcomes at multiple follow-up time points. The
+anticipated trial period is from February 2025 to October 2029.
 
 \begin{figure}
 
@@ -657,8 +660,8 @@ The anticipated trial period is from February 2025 to October 2029.
 
 }
 
-\caption{\label{fig-trial-design}Trial design. Lines represent the
-duration of patient inclusion across clusters and phases. Clusters will
+\caption{\label{fig-trial-design}Trial design. Each line shows how long
+we include patients in a cluster, by batch and sequence. Clusters will
 be sequentially allocated to a batch based on when they enter the study.
 Within each batch clusters will then be randomised to an intervention
 implementation sequence.}
@@ -682,10 +685,9 @@ months following the transition phase.
 
 }
 
-\caption{\label{fig-nested-staircase-design}Nested staircase design. The
-design includes a random subset of patients presenting during the three
-months preceding the transition phase, and the three months following
-the transition phase.}
+\caption{\label{fig-nested-staircase-design}Nested staircase design. We
+include a random subset of patients presenting in the three months
+before and the three months after each cluster's transition phase.}
 
 \end{figure}%
 
@@ -746,48 +748,46 @@ hospitals from different regions to optimise trial logistics and
 training delivery. Within each batch, clusters will be randomised to the
 intervention implementation sequences allocated to that batch.
 
-Randomisation is conducted at the cluster level and stratified by batch.
-Within each batch, allocation is balanced on cluster size, defined as
-the monthly volume of eligible patients, using covariate-constrained
-randomisation (CCR). CCR was selected to improve balance between
-intervention conditions on this key design variable.
+We randomise clusters, stratified by batch. Within each batch we balance
+allocation on cluster size, defined as the monthly volume of eligible
+patients, using covariate-constrained randomisation (CCR). We chose CCR
+to improve balance between intervention conditions on this key design
+variable.
 
 For example, in Batch 1, five clusters were randomised to one of five
-sequences using CCR. A statistician (JM) implemented a computer
-algorithm in R to evaluate all possible allocations (n = 120) and
-calculate a balance metric reflecting how evenly cluster size would be
-distributed between intervention and control conditions. For each
-allocation, the squared difference in anticipated cluster size between
-conditions was calculated; because only one covariate was used, this
-squared difference constituted the balance statistic.
+sequences using CCR. JM wrote an R program to enumerate all possible
+allocations (n = 120) and calculate a balance metric reflecting how
+evenly cluster size would be distributed between the two intervention
+conditions. For each allocation JM calculated the squared difference in
+anticipated cluster size between conditions; because there was only one
+covariate, this squared difference was the balance statistic.
 
-The 10\% of allocations demonstrating the greatest imbalance were
-excluded, and the remaining allocations formed the candidate set. The
-final allocation was then selected at random from this set. Owing to
-limitations in the algorithm, the balance score was calculated assuming
-a complete design, although the trial design includes transition
-periods. This CCR procedure is repeated independently for each batch.
+We excluded the 10\% of allocations with the greatest imbalance and kept
+the rest as the candidate set, then drew the final allocation at random
+from that set. Because of limitations in the algorithm, we calculated
+the balance score assuming a complete design, although the trial design
+includes transition periods. We will repeat this CCR procedure
+independently for each remaining batch.
 
-The random allocation sequence is generated by JM and communicated to
-the trial team to allow logistical arrangements, including securing
-places on upcoming ATLS\textsuperscript{®} training courses, to be
-initiated. Allocation order will be concealed from participating sites
-for as long as logistically feasible, recognising that advance planning
-is required to release physicians for training.
+JM generates the random allocation sequence for each batch and sends it
+to the Trial Team so they can begin logistical arrangements, including
+securing places on upcoming ATLS\textsuperscript{®} training courses. We
+will conceal the allocation order from participating clusters for as
+long as is logistically feasible, because releasing physicians for
+training requires advance planning.
 
-Random selection of patients for nested staircase outcome collection is
-separate from cluster randomisation and is described under
+We select patients for the nested staircase outcomes separately from
+cluster randomisation, by stratified random sampling by shift; see
 Nested staircase design and secondary outcomes
-(Section~\ref{sec-nested-staircase-design-and-secondary-outcomes})
-(stratified random sampling by shift).
+(Section~\ref{sec-nested-staircase-design-and-secondary-outcomes}).
 
 \subsection{Sample size
 calculations}\label{sec-sample-size-calculations}
 
-Sample size calculations were performed during the trial design phase
-using the Shiny CRT Calculator\textsuperscript{4}.
+We calculated the sample size during the trial design phase using the
+Shiny CRT Calculator\textsuperscript{4}.
 
-\subsubsection{Main stepped wedge design and primary
+\subsubsection{Main stepped-wedge design and primary
 outcome}\label{sec-main-stepped-wedge-design-and-primary-outcome}
 
 With 30 clusters across 6 batches and a total sample size of 4320 our
@@ -881,30 +881,29 @@ time point of the interim analysis will be associated with major
 statistical uncertainties.
 
 The Trial Team will prepare the interim analysis report for the joint
-Trial Steering and Data Monitoring Committee (SDMC), for approval by the
-Trial Management Group before circulation. The report will follow the
-standard SDMC report template in the SDMC charter and will include:
+Trial Steering and Data Monitoring Committee (SDMC), and the Trial
+Management Group will approve it before circulation. The report will
+follow the standard SDMC report template in the charter, except that it
+reports outcome data as completeness only, and will include:
 
 \begin{itemize}
 \tightlist
 \item
   trial progress: numbers of clusters included and dropping out; numbers
-  of potentially eligible participants screened, participants included,
-  participants who did not consent to out-of-hospital follow-up, and
-  participants lost to follow-up, overall and by intervention condition;
+  of potentially eligible patients screened, patients included, patients
+  who did not consent to out-of-hospital follow-up, and patients lost to
+  follow-up, overall and by intervention condition;
 \item
   adherence to the randomisation schedule and reasons for non-adherence;
 \item
   summary statistics of included clusters and patient participants by
-  intervention condition, to monitor for differential recruitment or
-  ascertainment;
-\item
-  completeness of primary and secondary outcome data, overall and by
-  intervention condition, without presenting outcome values by
   intervention condition;
 \item
-  ATLS® training delivery, including numbers of physicians trained in
-  each hospital;
+  completeness of primary and secondary outcome data, overall and by
+  intervention condition;
+\item
+  ATLS\textsuperscript{®} training delivery, including numbers of
+  physicians trained in each hospital;
 \item
   protocol deviations and proposed protocol amendments;
 \item
@@ -915,10 +914,10 @@ standard SDMC report template in the SDMC charter and will include:
   the SDMC recommendation.
 \end{itemize}
 
-Outcomes will not be compared across intervention conditions in the
-interim report, to avoid biasing the SDMC or Trial Management Group. The
-SDMC will use the interim report to advise whether the trial remains
-feasible and should continue as planned.
+We will not present or compare outcome values by intervention condition
+in the interim report, to avoid biasing the SDMC or Trial Management
+Group. The SDMC will use the interim report to advise whether the trial
+remains feasible and should continue as planned.
 
 \subsection{Final analysis}\label{sec-final-analysis}
 
@@ -929,14 +928,13 @@ final analysis once all trial data are available.
 
 \subsection{Statistical hypotheses}\label{sec-statistical-hypotheses}
 
-The primary analysis will estimate the effect of ATLS training on 30-day
-in-hospital mortality compared with standard care. The treatment effect
-will be expressed as an odds ratio (OR) and as an absolute risk
-difference (ARD). An OR \textless{} 1 or ARD \textless{} 0 indicates
-lower mortality among patients treated in hospitals after ATLS
-implementation compared with standard care. Based on our pilot study and
-systematic review of the literature, we expect the intervention to
-reduce mortality.
+We will estimate the effect of ATLS\textsuperscript{®} training on
+30-day in-hospital mortality compared with standard care, as an odds
+ratio (OR) and as an absolute risk difference (ARD). An OR \textless{} 1
+or ARD \textless{} 0 indicates lower mortality among patients treated in
+hospitals after ATLS\textsuperscript{®} implementation than under
+standard care. Based on our pilot study and systematic review of the
+literature, we expect the intervention to reduce mortality.
 
 \subsection{Levels of statistical significance and
 confidence}\label{sec-levels-of-statistical-significance-and-confidence}
@@ -944,77 +942,84 @@ confidence}\label{sec-levels-of-statistical-significance-and-confidence}
 We will use a two-sided significance level of 0.05 for all analyses, and
 we will report 95\% confidence intervals (CI) for all estimates.
 
-\subsection{Type 1 error control}\label{sec-type-1-error-control}
+\subsection{Type I error control}\label{sec-type-i-error-control}
 
-We will not adjust for multiple testing because no secondary outcome is
-regarded as singularly more important.
+We will not adjust for multiple testing because we do not regard any
+secondary outcome as singularly more important. We will interpret the
+secondary outcomes together and not over-emphasise a single
+statistically significant result when the others appear unchanged.
 
-\subsection{Adherence and Protocol
+\subsection{Descriptive summaries}\label{sec-descriptive-summaries}
+
+In every descriptive table in this plan we summarise discrete variables
+as frequencies and percentages, and continuous and count variables as
+medians and interquartile ranges (Q1--Q3); where a variable fits
+neither, we use the summary statistic given in the patient
+characteristics tables. We report missing values for each variable, and
+we do not adjust any of these summaries for clustering. Where a table
+has a key and an all version, we present the key version in the results
+section and the all version as a supplementary table.
+
+\subsection{Adherence and protocol
 deviations}\label{sec-adherence-and-protocol-deviations}
 
 \subsubsection{Adherence to the
 intervention}\label{sec-adherence-to-the-intervention}
 
-Adherence to the intervention is defined at the cluster and individual
-levels and is distinct from the secondary outcome adherence to ATLS®
-principles during resuscitation (see Analysis of secondary outcomes
-(Section~\ref{sec-analysis-of-secondary-outcomes})).
-
-At the cluster level, adherence means that ATLS® training is delivered
-during the scheduled transition period for that cluster's randomised
-sequence, and that the cluster does not implement ATLS® training before
-its scheduled transition. We will assess cluster level adherence using
-the training log kept by the trial team. We will summarise cluster-level
-adherence descriptively, including the number and proportion of clusters
-that completed training as scheduled and the reasons for any
-non-adherence to the randomisation schedule. Adherence to the
-randomisation schedule is also reviewed at the interim analysis (see
-Interim analysis (Section~\ref{sec-interim-analysis})).
-
-At the individual level, exposure to the intervention is defined by the
-cluster's scheduled transition date, as specified under Analysis sets
-(Section~\ref{sec-analysis-sets}). Patients are classified according to
-the period of admission, and the primary analysis includes eligible
-patients irrespective of whether care was delivered by a trained
-physician. If a cluster's actual transition date differs from the
-scheduled date by more than four weeks, exposure will be redefined using
-the actual transition date in a sensitivity analysis (see Analysis sets
-(Section~\ref{sec-analysis-sets})).
-
-Process adherence to ATLS® principles during initial resuscitation is a
-nested-staircase secondary outcome and is defined and analysed in
-Outcomes (Section~\ref{sec-outcomes-overview}) and
+We define adherence to the intervention at the cluster and individual
+levels. It is distinct from the secondary outcome adherence to
+ATLS\textsuperscript{®} principles during resuscitation, which we define
+under Outcomes (Section~\ref{sec-outcomes}), analyse under
 Analysis of secondary outcomes
-(Section~\ref{sec-analysis-of-secondary-outcomes}); it is not used to
+(Section~\ref{sec-analysis-of-secondary-outcomes}), and do not use to
 exclude patients from the primary analysis.
+
+At the cluster level, adherence means that ATLS\textsuperscript{®}
+training is delivered during the scheduled transition period for that
+cluster's randomised sequence, and that the cluster does not implement
+ATLS\textsuperscript{®} training before its scheduled transition. We
+will assess cluster-level adherence using the training log kept by the
+Trial Team. We will summarise cluster-level adherence descriptively,
+including the number and proportion of clusters that completed training
+as scheduled and the reasons for any non-adherence to the randomisation
+schedule. We will also review adherence to the randomisation schedule at
+the interim analysis; see Interim analysis
+(Section~\ref{sec-interim-analysis}).
+
+At the individual level, the cluster's scheduled transition date defines
+exposure to the intervention, as specified under Analysis sets
+(Section~\ref{sec-analysis-sets}). We classify patients by their period
+of admission.
 
 \subsubsection{Protocol deviations}\label{sec-protocol-deviations}
 
 A protocol deviation is any departure from the approved trial protocol,
-ICH-GCP, or applicable regulations. Consistent with the protocol,
-serious breaches and deviations that significantly affect, or are likely
-to affect, participant safety or integrity or the reliability of trial
-data will be reported without delay to the sponsor for assessment. Minor
-deviations that do not affect participant safety or integrity and do not
-materially affect the scientific value of the trial will be documented
-in the trial records of the principal investigator and the sponsor.
+ICH-GCP, or applicable regulations. Consistent with the protocol, we
+will report to the sponsor without delay, for assessment, any serious
+breach or deviation that significantly affects, or is likely to affect,
+participant safety or integrity or the reliability of trial data. We
+will document minor deviations --- those that do not affect participant
+safety or integrity and do not materially affect the scientific value of
+the trial --- in the trial records of the principal investigator and the
+sponsor.
 
-Protocol deviations will be summarised descriptively for the final
-analysis (and reviewed at interim analysis), overall and by intervention
-condition where informative, including counts by type (cluster-level
-versus individual-level, and serious versus minor where classified) and
-narrative reasons. Deviations will not be used to exclude clusters or
-patients from the primary analysis; the primary analysis remains based
-on scheduled intervention exposure and available outcome data as
-specified under Analysis sets (Section~\ref{sec-analysis-sets}).
+We will summarise protocol deviations descriptively for the final
+analysis and review them at the interim analysis, overall and by
+intervention condition where informative, giving counts by type
+(cluster-level versus individual-level, and serious versus minor where
+classified) and narrative reasons. We will not exclude clusters or
+patients from the primary analysis because of a deviation; the primary
+analysis still uses scheduled intervention exposure and the outcome data
+available under the missing-data plan, as specified under Analysis sets
+(Section~\ref{sec-analysis-sets}).
 
 \section{Trial sample}\label{sec-trial-sample}
 
 \subsection{Eligibility criteria}\label{sec-eligibility-criteria}
 
-Our trial has eligibility criteria on the cluster and patient
-participant level. Below follow a summary of the eligibility criteria,
-full details are provided in the protocol.
+Our trial has eligibility criteria at the cluster and patient
+participant levels. We summarise them below; the protocol gives full
+details.
 
 \subsubsection{Cluster eligibility
 criteria}\label{sec-cluster-eligibility-criteria}
@@ -1113,8 +1118,7 @@ criteria:
   the emergency department.
 \end{itemize}
 
-\subsection{Study withdrawal and
-follow-up}\label{sec-study-withdrawal-and-follow-up}
+\subsection{Participant flow}\label{sec-participant-flow}
 
 We will use CONSORT diagrams to display the flow of clusters and
 patients through the main batched stepped-wedge trial, reported as two
@@ -1125,14 +1129,15 @@ practice\textsuperscript{14}: a cluster-level diagram
 will report numbers randomly assigned or included, losses and exclusions
 after randomisation (with reasons), and numbers analysed for the primary
 outcome. The patient diagram will also summarise flow before and after
-ATLS® training. Flow for nested-staircase secondary outcomes (adherence
-to ATLS® principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a
-separate figure (Figure~\ref{fig-consort-nested-staircase}), showing
-patients in the staircase periods, losses and exclusions, and numbers
-analysed, by sequence, before and after ATLS® training, and overall. We
-will present cluster-level summaries of the intervention effect. We will
-report the study according to the CONSORT guidelines for stepped-wedge
-randomised trials\textsuperscript{15}.
+ATLS\textsuperscript{®} training. A separate figure
+(Figure~\ref{fig-consort-nested-staircase}) shows flow for the
+nested-staircase secondary outcomes (adherence to
+ATLS\textsuperscript{®} principles, EQ-5D-5L, and WHODAS 2.0): patients
+in the staircase periods, losses and exclusions, and numbers analysed,
+by sequence, before and after ATLS\textsuperscript{®} training, and
+overall. We will present cluster-level summaries of the intervention
+effect. We will report the study according to the CONSORT guidelines for
+stepped-wedge randomised trials\textsuperscript{15}.
 
 \subsection{Baseline
 characteristics}\label{sec-baseline-characteristics}
@@ -1140,33 +1145,23 @@ characteristics}\label{sec-baseline-characteristics}
 \subsubsection{Cluster
 characteristics}\label{sec-cluster-characteristics}
 
-We will describe cluster characteristics including state and size using
-frequencies and percentages for discrete variables and medians and
-interquartile ranges (Q1-Q3) for continuous variables. State categories
-depend on the final set of participating clusters. See
-Table~\ref{tbl-cluster-characteristics} for details.
+We will describe cluster characteristics including state and size, where
+the state categories depend on the final set of participating clusters
+(Table~\ref{tbl-cluster-characteristics}).
 
 \subsubsection{Patient
 characteristics}\label{sec-patient-characteristics}
 
 We will describe patient characteristics among all eligible patients
-over the entire trial period, stratified by before and after ATLS
-training and overall, using frequencies and percentages for discrete
-variables and medians and interquartile ranges (Q1-Q3) for continuous
-variables. Missing values will be reported for each characteristic. We
-will not adjust for clustering when presenting baseline characteristics
-(i.e.~non-outcome variables). We will present key characteristics in the
-results section, and present all characteristics in a supplementary
-table. See Table~\ref{tbl-patient-characteristics} for key
-characteristics and Table~\ref{tbl-patient-characteristics-all} for all
-characteristics.
+over the entire trial period, stratified by before and after
+ATLS\textsuperscript{®} training and overall
+(Table~\ref{tbl-patient-characteristics} for key characteristics,
+Table~\ref{tbl-patient-characteristics-all} for all characteristics).
 
 \section{Outcomes}\label{sec-outcomes}
 
-\subsection{Outcomes}\label{sec-outcomes-overview}
-
-A summary of all outcomes, analysis sets, effect measures, and handling
-of intercurrent events is provided in Table~\ref{tbl-outcomes-summary}.
+Table~\ref{tbl-outcomes-summary} summarises all outcomes, analysis sets,
+effect measures, and how we handle intercurrent events.
 
 \subsubsection{Primary outcome}\label{primary-outcome}
 
@@ -1276,14 +1271,14 @@ Outcome & Design component & Data type & Analysis set & Main analysis model & Ef
 \bottomrule
 \endlastfoot
 Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
-All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
-All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
-All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
-Length of emergency department stay & Main stepped-wedge & Count (hours) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Main stepped-wedge, outcome observed & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Main stepped-wedge, outcome observed & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Main stepped-wedge, outcome observed & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Treatment policy (any setting); missing data otherwise\\
+Length of emergency department stay & Main stepped-wedge & Count (hours) & Main stepped-wedge, outcome observed & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
 \addlinespace
-Length of hospital stay & Main stepped-wedge & Count (days) & Primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
-Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Primary analysis set & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by whether ICU admission occurred first\\
-Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, primary analysis set & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+Length of hospital stay & Main stepped-wedge & Count (days) & Main stepped-wedge, outcome observed & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
+Intensive care unit (ICU) admission & Main stepped-wedge & Dichotomous & Main stepped-wedge, outcome observed & Mixed-effects binomial (logit, identity) & OR; ARD & Death; transfer & Classified by whether ICU admission occurred first\\
+Length of intensive care unit stay & Main stepped-wedge & Count (days) & ICU admissions, outcome observed & Mixed-effects negative binomial (log) & Rate ratio & Death; transfer & Observed stay truncated by death or transfer\\
 Return to work at 30 days after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 30 days, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 Return to work at three months after arrival at the emergency department & Main stepped-wedge & Dichotomous & Alive at 3 months, outcome relevant & Mixed-effects binomial (logit, identity) & OR; ARD & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 \addlinespace
@@ -1291,10 +1286,10 @@ Adherence to ATLS® principles during initial patient resuscitation & Nested sta
 Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 \addlinespace
-Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Ordinal mixed; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
+Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 30 days, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Alive at 3 months, nested sample & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
 
 \end{longtable}
 
@@ -1306,29 +1301,32 @@ measures}\label{sec-intercurrent-events-populations-and-summary-measures}
 
 \subsection{Intercurrent events}\label{sec-intercurrent-events}
 
-Intercurrent events are events occurring after intervention exposure
-that affect interpretation or occurrence of an outcome. Anticipated
-events and the strategy used for each outcome are summarised in
-Table~\ref{tbl-outcomes-summary}. Frequencies will be summarised for
-each outcome as counts and percentages of patients with the event before
-assessment of that outcome, stratified by before and after ATLS training
-and overall. We will not adjust for clustering in these summaries.
-Denominators follow the analysis set for the outcome (main stepped-wedge
-trial or nested staircase sample). See
+Intercurrent events occur after intervention exposure and affect whether
+an outcome occurs or how we interpret it.
+Table~\ref{tbl-outcomes-summary} lists the anticipated events and the
+strategy we use for each outcome. For each outcome we will report counts
+and percentages of patients with the event before we assess that
+outcome, stratified by before and after ATLS\textsuperscript{®} training
+and overall. Denominators follow the analysis set for the outcome (main
+stepped-wedge trial or nested staircase sample). See
 Table~\ref{tbl-intercurrent-events}.
 
-At the cluster level, late or early transition relative to the scheduled
-date, incomplete delivery of ATLS® training, and cluster dropout are
-treated as protocol or adherence issues (see
-Adherence and Protocol deviations
-(Section~\ref{sec-adherence-and-protocol-deviations})) rather than as
-outcome-specific intercurrent events; exposure for analysis remains as
-defined under Analysis sets (Section~\ref{sec-analysis-sets}), with a
-sensitivity analysis using the actual transition date when the deviation
-exceeds four weeks.
+At the cluster level we treat late or early transition relative to the
+scheduled date, incomplete delivery of ATLS\textsuperscript{®} training,
+and cluster dropout as protocol or adherence issues, as described under
+Adherence and protocol deviations
+(Section~\ref{sec-adherence-and-protocol-deviations}), rather than as
+outcome-specific intercurrent events. We still define exposure for these
+clusters as specified under Analysis sets
+(Section~\ref{sec-analysis-sets}).
 
 At the individual level, patients cannot withdraw from the intervention.
-The events below, and the outcomes to which they apply, are as follows.
+For length of emergency department, hospital, and intensive care unit
+(ICU) stay, the observed stay is the completed duration to exit; death
+and transfer truncate it, and we do not treat either as censoring. For
+ICU admission we record whether the patient was admitted to ICU before
+death or transfer; patients who die or are transferred without being
+admitted to ICU count as not admitted.
 
 \begin{itemize}
 \tightlist
@@ -1336,22 +1334,16 @@ The events below, and the outcomes to which they apply, are as follows.
   \textbf{Transfer to another hospital.} Relevant to length-of-stay and
   ICU outcomes. It is not an intercurrent event for mortality outcomes,
   because the primary outcome includes in-hospital deaths after transfer
-  and all-cause mortality counts deaths regardless of care setting. For
-  length of emergency department, hospital, and ICU stay, transfer ends
-  the observed stay and is not treated as censoring. ICU admission is
-  classified according to whether admission occurred before transfer.
+  and all-cause mortality counts deaths regardless of care setting.
 \item
   \textbf{Death.} Relevant to length-of-stay and ICU outcomes and to
   survivor-only outcomes. As an intercurrent event, death is death
   before assessment of the outcome in question; later death is not an
-  intercurrent event for earlier outcomes. Observed length of stay is
-  the completed duration to exit; death truncates the observed stay and
-  is not treated as censoring. ICU admission is classified according to
-  whether admission occurred before death. Quality of life, disability,
+  intercurrent event for earlier outcomes. Quality of life, disability,
   and return to work are defined only among patients alive at the
   relevant follow-up (while-alive restriction). Those analyses therefore
   target effects in survivors at that time point; mortality is analysed
-  separately.
+  separately as a primary and secondary outcome.
 \item
   \textbf{Withdrawal of consent for non-routine data collection.}
   Relevant only to outcomes that require opt-in follow-up: all-cause
@@ -1365,126 +1357,119 @@ The events below, and the outcomes to which they apply, are as follows.
   consent. Participants who withdraw contribute observed non-routine
   outcomes up to withdrawal unless they also request removal of already
   collected data; subsequent missing values are handled under the
-  missing-data plan (see Missing data
-  (Section~\ref{sec-treatment-of-missing-data})).
+  missing-data plan; see Missing data (Section~\ref{sec-missing-data}).
 \item
   \textbf{Loss to follow-up.} Relevant to the same contact-dependent
   outcomes as withdrawal. These events create missing outcome data and
   are handled under the missing-data plan.
 \item
   \textbf{Incomplete observation of resuscitation.} Relevant only to
-  adherence. The checklist is scored from observation of initial
+  adherence. We score the checklist by observing the initial
   resuscitation up to one hour after the physician first sees the
-  patient. Incomplete observation means that this window was not fully
-  observed (for example the observer could not complete the 14-item
-  checklist because care ended, the patient left the emergency
-  department, or observation was interrupted). Unobserved or
-  incompletely observed resuscitations are excluded from the adherence
-  analysis (available-case analysis of the observed nested sample).
-  Death during the observation window is treated in the same way.
+  patient. Observation is incomplete when we do not observe that whole
+  window --- for example when the observer could not complete the
+  14-item checklist because care ended, the patient left the emergency
+  department, or observation was interrupted. We exclude unobserved and
+  incompletely observed resuscitations from the adherence analysis
+  (available-case analysis of the observed nested sample), and we treat
+  death during the observation window the same way.
 \end{itemize}
 
 Return to work is further restricted to patients for whom the outcome is
 relevant; that restriction defines the analysis set and is not an
 intercurrent event.
 
-Where a while-alive strategy is used, we assume that, conditional on the
-analysis model and design factors, death before the outcome assessment
-does not induce selection bias beyond what is addressed by analysing
-mortality separately; sensitivity of conclusions will rely on joint
-interpretation of mortality and survivor outcomes. Assumptions
-underlying each strategy will be considered when interpreting results
-and when checking model assumptions (see Analysis methods
-(Section~\ref{sec-analysis-methods})).
+Where we use a while-alive strategy, we assume that, conditional on the
+analysis model and design factors, death before we assess the outcome
+does not induce selection bias beyond what analysing mortality
+separately already addresses; we will therefore interpret mortality and
+survivor outcomes together. We will weigh the assumptions behind each
+strategy when we interpret results and when we check model assumptions;
+see Analysis methods (Section~\ref{sec-analysis-methods}).
 
 \subsection{Population}\label{sec-population}
 
-The treatment effects estimated in this plan are defined for the trial's
-eligible clusters and eligible patient participants, as specified under
+We define the treatment effects in this plan for the trial's eligible
+clusters and eligible patient participants, as specified under
 Eligibility criteria (Section~\ref{sec-eligibility-criteria}).
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Clusters.} Effects are estimated for participating hospitals
-  (clusters) that meet cluster eligibility criteria and are randomised
-  within the batched stepped-wedge design. Units within a hospital are
-  part of the same cluster; the estimands are not defined separately by
-  unit.
+  \textbf{Clusters.} We estimate effects for participating hospitals
+  (clusters) that meet the cluster eligibility criteria and that we
+  randomise within the batched stepped-wedge design. Units within a
+  hospital are part of the same cluster; we do not define the estimands
+  separately by unit.
 \item
   \textbf{Main stepped-wedge patient population.} For the primary
   outcome, all-cause mortality secondary outcomes, length of emergency
   department and hospital stay, and ICU admission, the target population
   is eligible trauma patients included in the main stepped-wedge trial
-  during non-transition periods. Length of ICU stay is targeted among
-  patients in that population who are admitted to ICU.
+  during non-transition periods. For length of ICU stay the population
+  is those patients who are admitted to ICU.
 \item
-  \textbf{Survivor populations.} Quality of life and disability effects
-  are targeted among patients in the nested staircase sample who are
-  alive at the relevant follow-up time point. Return-to-work effects are
-  targeted among patients in the main stepped-wedge trial who are alive
+  \textbf{Survivor populations.} We target quality of life and
+  disability effects among patients in the nested staircase sample who
+  are alive at the relevant follow-up time point, and return-to-work
+  effects among patients in the main stepped-wedge trial who are alive
   at the relevant follow-up and for whom return to work is relevant.
 \item
-  \textbf{Nested adherence population.} The
-  adherence-to-ATLS®-principles effect is targeted among patients
-  randomly selected for observation in the nested staircase design
-  during the observation window.
+  \textbf{Nested adherence population.} We target the
+  adherence-to-ATLS\textsuperscript{®}-principles effect among the
+  patients we randomly select for observation in the nested staircase
+  design during the observation window.
 \end{itemize}
 
-Which participants from each target population are included in a given
-analysis is specified under Analysis sets
-(Section~\ref{sec-analysis-sets}).
+We specify which patients from each target population enter a given
+analysis under Analysis sets (Section~\ref{sec-analysis-sets}).
 
 \subsection{Analysis sets}\label{sec-analysis-sets}
 
-The trial has a hierarchical structure in which hospitals represent the
-clusters, units within hospitals deliver care, and individual patients
-constitute the unit of observation and analysis. Randomisation is
-performed at the hospital level, with all trained units within the same
-hospital treated as part of the same cluster. Analysis models therefore
-account for clustering at the hospital level and do not include a
-separate random effect for unit within hospital. The primary analysis
-set will include all observations within clusters with available data on
-the primary outcome and irrespective of the receipt of the intervention.
+The trial is hierarchical: hospitals are the clusters, units within
+hospitals deliver care, and individual patients are the level of
+observation and analysis. We randomise hospitals and treat all trained
+units within a hospital as part of the same cluster. Our models
+therefore account for clustering at the hospital level and do not
+include a separate random effect for unit within hospital. The primary
+analysis set will include all observations within clusters that have
+primary outcome data, whether or not the patient received the
+intervention and whether or not a trained physician delivered their
+care.
 
-Clusters and observations within clusters will be considered exposed to
-the intervention after the date at which the cluster was scheduled to
-transition. All data will be included with the exception of the
-transition phases. Group allocation for a patient depends on the period
-in which the patient was admitted to the hospital. If clusters deviate
-considerably from the scheduled date of transition, defined as more than
-four weeks, we will conduct a sensitivity analysis using the actual date
-of transition to define exposure.
+We will treat clusters, and the observations within them, as exposed to
+the intervention after the cluster's scheduled transition date. We will
+include all data except the transition phases. A patient's intervention
+condition depends on the period in which they were admitted. We will
+also define exposure by the actual transition date in a sensitivity
+analysis; see Exposure defined by the actual transition date
+(Section~\ref{sec-exposure-defined-by-the-actual-transition-date}).
 
-The analysis set will be specified for each analysis and corresponds to
-the target population for that outcome (see Population
-(Section~\ref{sec-population})), restricted to participants with
-observed outcome data and any further outcome-specific constraints in
+We specify the analysis set for each analysis. It is the target
+population for that outcome under Population
+(Section~\ref{sec-population}), restricted to patients with observed
+outcome data and to any further outcome-specific constraints in
 Table~\ref{tbl-outcomes-summary}. For adjusted analyses under the
-available-case approach, the analysis set will be restricted to
-participants with complete covariate data, as described in Missing data
-(Section~\ref{sec-treatment-of-missing-data}).
+available-case approach we restrict the analysis set to patients with
+complete covariate data, as described in Missing data
+(Section~\ref{sec-missing-data}).
 
 \subsection{Effect measures}\label{sec-effect-measures}
 
-Outcomes are measured on individual patients. Descriptive summaries of
-primary and secondary outcomes will be presented stratified by before
-and after ATLS® training and overall, using frequencies and percentages
-for dichotomous and categorical outcomes, medians and interquartile
-ranges (Q1--Q3) for continuous and count outcomes, and the same summary
-statistics as the patient characteristics tables otherwise. Missing
-values will be reported for each outcome. These descriptive summaries
-are unadjusted for clustering (patient-level summaries). We will present
-key outcome summaries in the results section, and all outcome summaries
-as supplementary tables. See Table~\ref{tbl-outcomes-descriptive} for
-key outcomes and Table~\ref{tbl-outcomes-descriptive-all} for all
-outcomes.
+We measure all outcomes on individual patients, so these are
+patient-level summaries. We will summarise the primary and secondary
+outcomes stratified by before and after ATLS\textsuperscript{®} training
+and overall (Table~\ref{tbl-outcomes-descriptive} for key outcomes,
+Table~\ref{tbl-outcomes-descriptive-all} for all outcomes).
 
-Comparative effect measures for the intervention are listed by outcome
-in Table~\ref{tbl-outcomes-summary} and are estimated from the
-mixed-effects models in Analysis methods
-(Section~\ref{sec-analysis-methods}). The effects are cluster-specific
-unless otherwise stated. The types of effect measures are as follows:
+Table~\ref{tbl-outcomes-summary} lists the comparative effect measures
+by outcome; we estimate them from the mixed-effects models in
+Analysis methods (Section~\ref{sec-analysis-methods}). These models give
+cluster-specific (conditional) estimates of the intervention effect for
+patient-level outcomes, not marginal (population-averaged) estimates. We
+target the patient-level average among eligible patients in
+participating clusters, rather than an equal-weight average of
+cluster-level summaries. The types of effect measures are as follows:
 
 \begin{itemize}
 \tightlist
@@ -1512,54 +1497,51 @@ Table~\ref{tbl-additional-analyses-results}).
 
 \section{Analysis methods}\label{sec-analysis-methods}
 
-\subsection{Analysis methods}\label{sec-analysis-methods-overview}
-
-Primary and secondary outcomes will be analysed with mixed-effects
+We will analyse the primary and secondary outcomes with mixed-effects
 regression models that account for clustering at the hospital level and
-target cluster-specific intervention effects, using link functions and
-outcome distributions matched to each data type (see Effect measures
-(Section~\ref{sec-effect-measures}) and the subsections below). Standard
-errors will be model-based; small-sample adjustments (including
-Kenward--Roger degrees-of-freedom corrections where relevant) and
-Wald-type confidence intervals will be used as specified under
+target cluster-specific intervention effects, matching the link function
+and outcome distribution to each outcome's data type; see
+Effect measures (Section~\ref{sec-effect-measures}) and the subsections
+below. We will use model-based standard errors, small-sample adjustments
+(including Kenward--Roger degrees-of-freedom corrections where
+relevant), and Wald-type confidence intervals, as specified under
 Analysis of the primary outcome
-(Section~\ref{sec-analysis-of-the-primary-outcome}). Estimation will be
-by maximum likelihood with a Laplace approximation for the random
-effects, with the software implementation chosen closer to analysis.
-Covariate adjustment for the fully adjusted analysis is specified under
-Adjusted analyses (Section~\ref{sec-adjusted-analyses}). Model
-diagnostics will assess distributional assumptions, convergence, and
-(where relevant) intercurrent-event strategy assumptions noted under
+(Section~\ref{sec-analysis-of-the-primary-outcome}). We will fit the
+models by maximum likelihood with a Laplace approximation for the random
+effects, and choose the software implementation closer to analysis. We
+specify the covariate adjustment for the fully adjusted analysis under
+Adjusted analyses (Section~\ref{sec-adjusted-analyses}). Our model
+diagnostics will assess distributional assumptions, convergence, and,
+where relevant, the intercurrent-event strategy assumptions noted under
 Intercurrent events (Section~\ref{sec-intercurrent-events}). If the
-preferred primary model does not converge, the prespecified sequence of
-simpler models under Analysis of the primary outcome
-(Section~\ref{sec-analysis-of-the-primary-outcome}) will be used.
+preferred primary model does not converge, we will use the prespecified
+sequence of simpler models under Analysis of the primary outcome
+(Section~\ref{sec-analysis-of-the-primary-outcome}).
 
-\subsubsection{Analysis of the primary
+\subsection{Analysis of the primary
 outcome}\label{sec-analysis-of-the-primary-outcome}
 
 The primary outcome is in-hospital mortality within 30 days of arrival
-at the emergency department and will be analysed as a dichotomous
-variable. We will estimate the intervention effect as the odds ratio
-(OR) of death between the ATLS® and standard care arms, with an OR
-\textless{} 1 indicating lower odds of death in the ATLS® arm compared
-to the standard care arm and vice versa. We will also estimate the
-absolute risk difference (ARD) of death between the ATLS® and standard
-care arms, with an ARD \textless{} 0 indicating lower risk of death in
-the ATLS® arm compared to the standard care arm and vice versa.
+at the emergency department, which we will analyse as a dichotomous
+variable. We will estimate the odds ratio (OR) and the absolute risk
+difference (ARD) of death under ATLS\textsuperscript{®} compared with
+standard care.
 
 We will use a mixed-effects binomial regression model to estimate the
-effect of ATLS® on mortality. The OR will be estimated using the logit
-link, and the ARD will be estimated using the identity link. These
-models account for clustering at the hospital level and provide
-cluster-specific estimates of the intervention effect. The primary
-analysis will be based on the most complex model that converges from a
-prespecified sequence of models of decreasing complexity. The analysis
-will proceed from the most complex model to progressively simpler models
-if there are convergence or numerical stability issues. The primary
-analysis will then be subject to sensitivity analyses. If the binomial
-model with the logit link converges but the corresponding model with the
-identity link does not, then we will report only an OR.
+effect of ATLS\textsuperscript{®} on mortality. We will estimate the OR
+using the logit link and the ARD using the identity link. These models
+account for clustering at the hospital level and give cluster-specific
+estimates of the intervention effect. Our primary estimand is a common
+intervention effect across periods of ATLS\textsuperscript{®} exposure
+--- a time-averaged effect under a constant treatment-effect assumption
+--- rather than separate period-specific effects after transition. For
+the primary analysis we will fit a prespecified sequence of models of
+decreasing complexity and report the most complex one that converges,
+moving to simpler models only if we meet convergence or numerical
+stability problems. We will then run the sensitivity analyses specified
+below. If the binomial model with the logit link converges but the
+corresponding model with the identity link does not, then we will report
+only an OR.
 
 All models in this sequence will include a fixed effect for intervention
 exposure and adjust for time, although the parametrisation of time and
@@ -1576,12 +1558,11 @@ The model sequence is defined as follows:
   each batch, and a fixed effect for intervention exposure. Clustering
   will be accounted for by including a random intercept for cluster and
   a random cluster-by-period effect, both assumed to follow a normal
-  distribution. The model is specified in
-  Equation~\ref{eq-primary-model}.
+  distribution (Equation~\ref{eq-primary-model}).
 \end{enumerate}
 
 \begin{equation}\phantomsection\label{eq-primary-model}{
-g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk + γ_bkt
+g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
 \begin{enumerate}
@@ -1591,13 +1572,12 @@ g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk + γ_bkt
 \item
   \textbf{Simplified random effects structure}: a model including fixed
   effects for period and intervention exposure and a random intercept
-  for cluster only, thereby removing the random cluster-by-period
-  effect. The model is specified in
-  Equation~\ref{eq-simplified-random-effects-model}.
+  for cluster only, thereby removing the random cluster-by-period effect
+  (Equation~\ref{eq-simplified-random-effects-model}).
 \end{enumerate}
 
 \begin{equation}\phantomsection\label{eq-simplified-random-effects-model}{
-g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk
+g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk}
 }\end{equation}
 
 \begin{enumerate}
@@ -1611,8 +1591,7 @@ g\{\Pr(Y_{bkti} = 1)\} = μ + β_bt + θ X_bkt + α_bk
   continuous covariate or using splines). A random intercept for cluster
   and a random cluster-by-period effect are retained; clusters remain
   indexed by batch, but the fixed period effects are common across
-  batches. The model is specified in
-  Equation~\ref{eq-shared-period-model}.
+  batches (Equation~\ref{eq-shared-period-model}).
 \end{enumerate}
 
 \begin{equation}\phantomsection\label{eq-shared-period-model}{
@@ -1628,8 +1607,8 @@ g\{\Pr(Y_{bkti} = 1)\}
   \textbf{Combined simplified model}: a model that includes both a
   simplified random effects structure (random intercept for cluster
   only) and shared period effects. This represents the most parsimonious
-  mixed-effects model considered acceptable for the primary analysis.
-  The model is specified in Equation~\ref{eq-combined-simplified-model}.
+  mixed-effects model considered acceptable for the primary analysis
+  (Equation~\ref{eq-combined-simplified-model}).
 \end{enumerate}
 
 \begin{equation}\phantomsection\label{eq-combined-simplified-model}{
@@ -1649,12 +1628,16 @@ Where:
   \(\theta\): \textbf{the intervention effect}, represented as a fixed
   effect of intervention exposure (the primary estimand); under the
   logit link this represents the log-odds ratio for death associated
-  with ATLS® exposure compared with standard care, and under the
-  identity link it represents the absolute risk difference.
+  with ATLS\textsuperscript{®} exposure compared with standard care, and
+  under the identity link it represents the absolute risk difference.
 \item
   \(\Pr(Y_{bkti} = 1)\): the probability of death for patient
-  \(i = 1, \dotsc, m\) in cluster \(k = 1, \dotsc, 30\) during period
-  \(t = 1, \dotsc, 12\) in batch \(b = 1, \dotsc, 6\).
+  \(i = 1, \dotsc, m_{bkt}\) in cluster \(k = 1, \dotsc, 5\) during
+  period \(t = 1, \dotsc, 12\) in batch \(b = 1, \dotsc, 6\), giving 30
+  clusters in total.
+\item
+  \(m_{bkt}\): the number of patients in cluster \(k\) during period
+  \(t\) in batch \(b\).
 \item
   \(\mu\): the intercept, representing the value of the linear predictor
   for the reference levels of all fixed effects, with random effects
@@ -1667,8 +1650,8 @@ Where:
   total of 6 \(\times\) (12) period effects.
 \item
   \(X_{bkt}\): the intervention exposure indicator for cluster \(k\)
-  during period \(t\) in batch \(b\), with \(X_{bkt} = 1\) for ATLS® and
-  \(X_{bkt} = 0\) for standard care.
+  during period \(t\) in batch \(b\), with \(X_{bkt} = 1\) for
+  ATLS\textsuperscript{®} and \(X_{bkt} = 0\) for standard care.
 \item
   \(\alpha_{bk}\): a normally distributed random effect for cluster
   \(k\) in batch \(b\), representing between-cluster (hospital-level)
@@ -1691,62 +1674,59 @@ Equation~\ref{eq-distributional-assumptions}.
 \end{aligned}
 }\end{equation}
 
-Standard errors will be model-based. Confidence intervals will be
-Wald-type. To correct potential inflation of the type I error rate due
-to the small number of clusters, a small-sample correction will be
-applied. Our primary method will be the Kenward--Roger
-correction\textsuperscript{17}, but this choice may be updated based on
+We will use model-based standard errors and Wald-type confidence
+intervals. Because few clusters can inflate the type I error rate, we
+will apply a small-sample correction. We will use the Kenward--Roger
+correction\textsuperscript{17}, but may revise that choice in light of
 methodological developments available closer to the end of patient
-inclusion. The correction applied may also differ for outcomes collected
-via the complete stepped-wedge design and the incomplete nested
-staircase designs.
+inclusion. We may use a different correction for outcomes collected in
+the complete stepped-wedge design and in the incomplete nested staircase
+designs.
 
-The general estimation framework for the mixed-effects models is maximum
-likelihood, with a Laplace approximation used to integrate out the
-random effects. The specific R package and numerical implementation are
-not prespecified (see Statistical software
-(Section~\ref{sec-statistical-software})).
+We will fit the mixed-effects models by maximum likelihood, using a
+Laplace approximation to integrate out the random effects; we do not
+prespecify the R package or numerical implementation, as noted under
+Statistical software (Section~\ref{sec-statistical-software}).
 
-Model diagnostics will be used to assess distributional assumptions and
+We will use model diagnostics to check distributional assumptions and
 model convergence.
 
-\subsubsection{Analysis of secondary
+\subsection{Analysis of secondary
 outcomes}\label{sec-analysis-of-secondary-outcomes}
 
-Unless otherwise stated, secondary outcomes will be analysed using the
-same mixed-effects modelling framework as specified for the primary
-outcome, including fixed effects for time and intervention exposure and
-random effects for cluster and cluster-by-period, with the link function
-and outcome distribution adapted to the scale of the outcome. Effect
-measures are odds ratios and absolute risk differences for binary
-outcomes, rate ratios for count (length-of-stay) outcomes, cumulative
-odds ratios for ordinal outcomes, mean differences for continuous
-outcomes, and a logit-scale difference for the adherence proportion.
-These models provide cluster-specific estimates of the intervention
-effect for patient-level outcomes. For cumulative logit models,
-diagnostics will also assess the proportional-odds assumption.
+Unless otherwise stated, we will analyse secondary outcomes within the
+same mixed-effects framework as the primary outcome: the fixed effects
+for time and intervention exposure and the random-effects structure of
+the model selected for the primary analysis, with the link function and
+outcome distribution adapted to the scale of the outcome. Below, ``the
+model selected for the primary analysis'' means the most complex model
+in that sequence that converges; see Analysis of the primary outcome
+(Section~\ref{sec-analysis-of-the-primary-outcome}). For the nested
+staircase outcomes (adherence, quality of life, and disability) we
+define period effects on the global study timeline rather than
+separately within each batch, and not all clusters contribute data in
+every period. For cumulative logit models our diagnostics will also
+assess the proportional-odds assumption.
 
-\paragraph{All cause mortality within 24 hours, 30 days and three months
-of arrival at the emergency
+\subsubsection{All-cause mortality within 24 hours, 30 days and three
+months of arrival at the emergency
 department}\label{sec-all-cause-mortality-within-24-hours-30-days-and-three-months-of-arrival-at-the-emergency-department}
 
-These outcomes will be analysed as dichotomous variables using the
-mixed-effects binomial model with the logit and identity links specified
-in Equation~\ref{eq-primary-model}, to estimate odds ratios and absolute
-risk differences.
+We will analyse these outcomes as dichotomous variables using the
+mixed-effects binomial model selected for the primary analysis, with the
+logit and identity links, to estimate odds ratios and absolute risk
+differences.
 
-\paragraph{Quality of life within seven days of discharge, and at 30
+\subsubsection{Quality of life within seven days of discharge, and at 30
 days and three months of arrival at the emergency department, among
 survivors}\label{sec-quality-of-life-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department-among-survivors}
 
-Quality of life will be measured within the nested staircase design
-using the official and validated translations of the EQ-5D-5L. The
-EQ-5D-5L yields two outcome types: five ordinal domain scores (mobility,
-self-care, usual activities, pain/discomfort, and anxiety/depression),
-each rated on a Likert scale from 1 to 5, and a visual analogue scale
-(VAS) ranging from 0 to 100. For these analyses, period effects are
-defined on the global study timeline (not separately within each batch),
-and not all clusters contribute data in every period.
+We measure quality of life within the nested staircase design, using the
+official and validated translations of the EQ-5D-5L. It yields two
+outcome types: five ordinal domain scores (mobility, self-care, usual
+activities, pain/discomfort, and anxiety/depression), each rated on a
+Likert scale from 1 to 5, and a visual analogue scale (VAS) ranging from
+0 to 100.
 
 For each of the five ordinal domains, we will use a mixed-effects
 cumulative logit (proportional odds) model:
@@ -1767,61 +1747,55 @@ mixed-effects model:
 \quad \epsilon_{bkti} \sim \mathcal{N}(0,\sigma^2)
 }\end{equation}
 
-\paragraph{Disability within seven days of discharge, and at 30 days and
-three months of arrival at the emergency department, among
+\subsubsection{Disability within seven days of discharge, and at 30 days
+and three months of arrival at the emergency department, among
 survivors}\label{sec-disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department-among-survivors}
 
-Disability will be measured within the nested staircase design using the
-WHO Disability Assessment Schedule 2.0 (WHODAS 2.0)\textsuperscript{18}.
-This tool assesses six domains of functioning: cognition, mobility,
+We measure disability within the nested staircase design using the WHO
+Disability Assessment Schedule 2.0 (WHODAS 2.0)\textsuperscript{18},
+which assesses six domains of functioning: cognition, mobility,
 self-care, getting along, life activities, and participation. Each
-domain is rated on a likert scale from 1 to 5, with 1 indicating no
-difficulties and 5 indicating extreme difficulties. As for quality of
-life, period effects are defined on the global study timeline, and not
-all clusters contribute data in every period. We will analyse each
-domain separately using a mixed effects ordinal model as specified in
-Equation~\ref{eq-ordinal-model}. We will also calculate a WHODAS 2.0
-summary score using the method referred to as the ``complex scoring''
-method. This method involves summing the item scores within each of the
-six domains, then summing the scores of all domains, and finally
-transforming the total score to a 0-100 scale. We will analyse the
-summary score using a linear mixed effects model as specified in
-Equation~\ref{eq-linear-model}.
+domain is rated on a Likert scale from 1 to 5, with 1 indicating no
+difficulties and 5 indicating extreme difficulties. We will analyse each
+domain separately using a mixed-effects cumulative logit model
+(Equation~\ref{eq-ordinal-model}). We will also calculate a WHODAS 2.0
+summary score using the ``complex scoring'' method: we sum the item
+scores within each of the six domains, sum the six domain scores, and
+transform the total to a 0--100 scale. We will analyse the summary score
+using a linear mixed-effects model (Equation~\ref{eq-linear-model}).
 
-\paragraph{Return to work at 30 days and three months after arrival at
-the emergency department, among
+\subsubsection{Return to work at 30 days and three months after arrival
+at the emergency department, among
 survivors}\label{sec-return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department-among-survivors}
 
-Return to work will be analysed as a dichotomous outcome using the same
-mixed-effects binomial model that is selected for the primary analysis
-under Analysis of the primary outcome
-(Section~\ref{sec-analysis-of-the-primary-outcome}) (the most complex
-model in that sequence that converges), with the logit and identity
-links, to estimate odds ratios and absolute risk differences.
+We will analyse return to work as a dichotomous outcome using the
+mixed-effects binomial model selected for the primary analysis, with the
+logit and identity links, to estimate odds ratios and absolute risk
+differences.
 
-\paragraph{Length of emergency department
+\subsubsection{Length of emergency department
 stay}\label{sec-length-of-emergency-department-stay}
 
-Length of emergency department stay will be analysed as a count outcome:
-the number of hours from arrival at the emergency department until ED
-exit. Exit may occur via ward admission, ICU admission, transfer to
+We will analyse length of emergency department stay as a count outcome:
+the number of hours from arrival at the emergency department (ED) until
+ED exit. Exit may occur via ward admission, ICU admission, transfer to
 another hospital, death, or discharge home; all of these routes
-contribute the observed ED duration. The purpose of the analysis is to
-estimate the effect of ATLS® on mean ED length of stay. Death and
-transfer truncate the observed stay and are not treated as censoring;
-mortality is analysed separately as a primary and secondary outcome.
+contribute the observed ED duration. We will estimate the effect of
+ATLS\textsuperscript{®} training on mean ED length of stay. We analyse
+mortality separately as a primary and secondary outcome rather than as a
+competing event.
 
 The preferred model is a mixed-effects negative binomial regression with
 a log link, including fixed effects for intervention exposure and
 batch-specific categorical period effects, a random intercept for
-cluster, and a random cluster-by-period effect, as specified in
-Equation~\ref{eq-length-of-stay-model}. If this model does not converge,
-we will simplify the random-effects and period structure following the
-same sequence of decreasing complexity as for the primary outcome. The
-intervention effect \(\theta\) is the log rate ratio for ED length of
-stay associated with ATLS® exposure compared with standard care; we will
-also report the corresponding multiplicative effect on the mean count
-(rate ratio).
+cluster, and a random cluster-by-period effect
+(Equation~\ref{eq-length-of-stay-model}). If this model does not
+converge, we will simplify the random-effects and period structure
+following the same sequence of decreasing complexity as for the primary
+outcome. The intervention effect \(\theta\) is the log rate ratio for ED
+length of stay associated with ATLS\textsuperscript{®} exposure compared
+with standard care; we will also report the corresponding multiplicative
+effect on the mean count (rate ratio).
 
 \begin{equation}\phantomsection\label{eq-length-of-stay-model}{
 \log\{\mathbb{E}(Y_{bkti})\}
@@ -1830,56 +1804,50 @@ also report the corresponding multiplicative effect on the mean count
 
 Where \(Y_{bkti}\) is the length-of-stay count for patient \(i\) in
 cluster \(k\) during period \(t\) in batch \(b\), and all other terms
-are defined as in the primary analysis model. A dispersion parameter
-will be estimated as part of the negative binomial model.
+are defined as in the primary analysis model. The negative binomial
+model also estimates a dispersion parameter.
 
-\paragraph{Length of hospital stay}\label{sec-length-of-hospital-stay}
+\subsubsection{Length of hospital
+stay}\label{sec-length-of-hospital-stay}
 
-Length of hospital stay will be analysed as a count outcome: the number
+We will analyse length of hospital stay as a count outcome: the number
 of days from arrival at the emergency department to hospital discharge
-(or death in hospital). The analysis uses the same preferred negative
-binomial specification and the same convergence sequence as for ED
-length of stay (Equation~\ref{eq-length-of-stay-model}), with the same
-handling of death and transfer.
+(or death in hospital). We will use the same preferred negative binomial
+specification and the same convergence sequence as for ED length of stay
+(Equation~\ref{eq-length-of-stay-model}).
 
-\paragraph{Intensive care unit
+\subsubsection{Intensive care unit
 admission}\label{sec-intensive-care-unit-admission}
 
-Intensive care unit admission will be analysed as a dichotomous outcome
-using the mixed-effects binomial model with the logit and identity links
-specified in Equation~\ref{eq-primary-model}, to estimate odds ratios
-and absolute risk differences. Patients who die or are transferred
-without ICU admission will be classified according to whether ICU
-admission occurred before that event.
+We will analyse intensive care unit admission as a dichotomous outcome
+using the mixed-effects binomial model selected for the primary
+analysis, with the logit and identity links, to estimate odds ratios and
+absolute risk differences.
 
-\paragraph{Length of intensive care unit
+\subsubsection{Length of intensive care unit
 stay}\label{sec-length-of-intensive-care-unit-stay}
 
-Length of intensive care unit stay will be analysed as a count outcome
+We will analyse length of intensive care unit stay as a count outcome
 among patients admitted to ICU: the number of days from ICU admission to
-ICU discharge (or death in ICU). The analysis uses the same preferred
-negative binomial specification and the same convergence sequence as for
-the other length-of-stay outcomes
-(Equation~\ref{eq-length-of-stay-model}), with the same handling of
-death and transfer.
+ICU discharge (or death in ICU). We will use the same preferred negative
+binomial specification and the same convergence sequence as for the
+other length-of-stay outcomes (Equation~\ref{eq-length-of-stay-model}).
 
-\paragraph{\texorpdfstring{Adherence to ATLS\textsuperscript{®}
+\subsubsection{\texorpdfstring{Adherence to ATLS\textsuperscript{®}
 principles during initial patient
 resuscitation}{Adherence to ATLS® principles during initial patient resuscitation}}\label{sec-adherence-to-atls-principles-during-initial-patient-resuscitation}
 
-We will assess adherence to ATLS® principles within the nested staircase
-design, in both the standard care and ATLS® periods, using a 14-item
-checklist that covers the key steps of the ATLS® primary survey.
-Adherence will be measured as the percentage of completed checklist
-items (completion of all 14 steps corresponds to 100\% adherence). For
-these analyses, period effects are defined on the global study timeline
-(not separately within each batch), and not all clusters contribute data
-in every period. This outcome will be analysed using a mixed-effects
-beta regression model with a logit link, with the percentage first
-expressed as a proportion on the 0--1 scale:
+We assess adherence to ATLS\textsuperscript{®} principles within the
+nested staircase design, in both the standard care and the
+ATLS\textsuperscript{®} periods, as the percentage of completed items on
+a 14-item checklist that covers the key steps of the
+ATLS\textsuperscript{®} primary survey, where all 14 steps completed is
+100\% adherence. We will rescale the percentage to a proportion on the
+0--1 scale and analyse it with a mixed-effects beta regression model
+with a logit link:
 
 \begin{equation}\phantomsection\label{eq-beta-model}{
-g\{\mathbb{E}(Y_{bkti})\}
+\text{logit}\{\mathbb{E}(Y_{bkti})\}
 = \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
@@ -1897,78 +1865,81 @@ We will report time-adjusted within-cluster correlations for all
 outcomes with 95\% CIs, including the intra-cluster correlation (ICC)
 and within- and between-period correlations implied by the assumed
 correlation structures, together with all estimated variance components.
-For binary outcomes, these correlations will additionally be reported on
-the latent scale.
+For binary and ordinal outcomes we will additionally report these
+correlations on the latent scale; for continuous outcomes the latent and
+observed scales coincide.
 
 Intra-cluster and related correlation parameters will be derived from
 the estimated variance components of the fitted models. For models with
 an AR(1) within-cluster structure, the correlation parameter will be
-estimated directly from the AR(1) structure. These parameters will be
-presented as a supplementary table. See
-Table~\ref{tbl-correlation-parameters}.
+estimated directly from the AR(1) structure. We will present these
+parameters in a supplementary table
+(Table~\ref{tbl-correlation-parameters}).
 
-\subsection{Missing data}\label{sec-treatment-of-missing-data}
+\subsection{Missing data}\label{sec-missing-data}
 
 We will present the frequency and percentage of missing data for all
-variables. Handling of missing data for the primary analysis will depend
-on the percentage of missing data for the primary outcome.
+variables. How we handle missing data in the primary analysis will
+depend on the percentage of missing primary outcome data.
 
-If less than 10\% of participants have a missing primary outcome, we
-will use an available-case approach. The primary unadjusted analysis
-will include all participants with observed primary outcome data.
-Adjusted analyses will be restricted to participants with complete data
-on the adjustment covariates, and the unadjusted analysis will be
-repeated in this complete-case population to allow the results of the
-unadjusted and adjusted analyses to be directly compared.
+If less than 10\% of patients have a missing primary outcome, we will
+use an available-case approach. The primary unadjusted analysis will
+include all patients with observed primary outcome data. We will
+restrict adjusted analyses to patients with complete data on the
+adjustment covariates, and repeat the unadjusted analysis in this
+complete-case population so that the unadjusted and adjusted results are
+directly comparable.
 
-If 10\% or more of participants have a missing primary outcome, we will
-use multiple imputation by chained equations (MICE) under a
+If 10\% or more of patients have a missing primary outcome, we will use
+multiple imputation by chained equations (MICE) under a
 missing-at-random assumption, imputing the primary outcome, secondary
 outcomes as required for analysis, and the covariates included in the
 fully adjusted model, with a minimum of 20 imputations. The imputation
 model will reflect the hierarchical data structure, including clustering
 at the hospital level and design variables such as period and
-intervention exposure. Unadjusted and adjusted analyses will then be
-conducted using the imputed datasets. We will also present the
-corresponding complete-case analyses for comparison. Secondary outcomes
-will not be imputed under the available-case approach.
+intervention exposure. We will then run the unadjusted and adjusted
+analyses on the imputed datasets, and also present the corresponding
+complete-case analyses for comparison. We will not impute secondary
+outcomes under the available-case approach.
 
 If there is evidence that data are missing not at random, we will
 explore this in a sensitivity analysis.
 
 \subsection{Sensitivity analyses}\label{sec-sensitivity-analyses}
 
-We will conduct sensitivity analyses to assess the robustness of the
-primary analysis results to different modelling assumptions. In all
-sensitivity analyses, the focus will be on the stability of the
-estimated intervention effect \(\theta\). Unless otherwise stated, each
-sensitivity analysis will be operationalised using two separate models,
-one with the logit link and one with the identity link. If a sensitivity
-model does not converge, we will report that fact and, where feasible,
-fit the next simpler random-effects or period specification analogous to
-the primary-analysis convergence sequence.
-
-\paragraph{Models with autoregressive within-cluster
-correlation}\label{sec-models-with-autoregressive-within-cluster-correlation}
+We will conduct sensitivity analyses to assess how robust the primary
+analysis results are to the modelling assumptions, the definition of
+intervention exposure, and the missing-data assumption, focusing
+throughout on the stability of the estimated intervention effect
+\(\theta\). Unless otherwise stated, each sensitivity analysis uses two
+separate models, one with the logit link and one with the identity link.
+If a sensitivity model does not converge, we will report that and, where
+feasible, fit the next simpler random-effects or period specification,
+analogous to the primary-analysis convergence sequence.
 
 We will explore whether models with more complex correlation structures
-provide a better fit to the data. These models are not used as primary
-analysis models because there is limited understanding of when such
-models converge and how best to choose between different plausible
-correlation structures. Instead, we include these models as sensitivity
-analyses.
+fit the data better. We do not use them for the primary analysis because
+it is not well understood when they converge or how best to choose
+between plausible correlation structures.
 
-We will first explore whether allowing temporal correlation of outcomes
-within clusters affects inference on the intervention effect.
-Specifically, we will consider a discrete time-decay correlation
+\subsubsection{Models with autoregressive within-cluster
+correlation}\label{sec-models-with-autoregressive-within-cluster-correlation}
+
+We will first explore whether allowing temporal correlation between
+outcomes within a cluster changes our inference about the intervention
+effect. Specifically, we will consider a discrete time-decay correlation
 structure by specifying a random cluster effect with an autoregressive
 structure of order one (AR(1)), described in Equation~\ref{eq-ar1}. This
 parameterisation assumes that correlations between cluster-level random
 effects decay geometrically with increasing temporal separation between
 periods.
 
+The AR(1) process replaces the random intercept \(\alpha_{bk}\) of the
+primary analysis model; all other terms, including the cluster-by-period
+random effect \(\gamma_{bkt}\), are unchanged.
+
 \begin{equation}\phantomsection\label{eq-ar1}{
-\alpha_{bk,t} = \rho \alpha_{bk,t-1} + \epsilon_{t}, \quad \epsilon_{t} \sim \mathcal{N}(0, \sigma^2_\alpha)
+\alpha_{bk,t} = \rho \alpha_{bk,t-1} + \eta_{bkt}, \quad \eta_{bkt} \sim \mathcal{N}(0, \sigma^2_\eta)
 }\end{equation}
 
 Where:
@@ -1976,23 +1947,25 @@ Where:
 \begin{itemize}
 \tightlist
 \item
-  \(\rho\) is the correlation parameter governing the association
-  between adjacent periods within the same cluster.
+  \(\alpha_{bk,t}\): the random effect for cluster \(k\) in period \(t\)
+  in batch \(b\).
 \item
-  \(\alpha_{bk,t}\) is the random effect for cluster \(k\) in period
-  \(t\) in batch \(b\).
+  \(\rho\): the correlation between adjacent periods within the same
+  cluster.
 \item
-  \(\epsilon_t\) is a normally distributed error term.
+  \(\eta_{bkt}\): a normally distributed innovation with variance
+  \(\sigma^2_\eta\), which is distinct from the marginal cluster
+  variance \(\sigma^2_{\alpha}\) in
+  Equation~\ref{eq-distributional-assumptions}.
 \end{itemize}
 
-We note that this AR(1) formulation differs slightly from alternative
-parameterisations used elsewhere in which correlations are specified
-through a joint covariance matrix. Although both approaches capture
-decaying temporal correlation, the parameter \(\rho\) is not directly
-equivalent to parameters used in other specifications and should not be
-interpreted interchangeably.
+This AR(1) formulation differs slightly from alternative
+parameterisations in which correlations are specified through a joint
+covariance matrix. Both capture decaying temporal correlation, but
+\(\rho\) is not directly equivalent to the parameters of those
+specifications and should not be interpreted interchangeably.
 
-\paragraph{Models with random cluster by intervention
+\subsubsection{Models with random cluster by intervention
 effects}\label{sec-models-with-random-cluster-by-intervention-effects}
 
 To assess sensitivity to the assumption of a common intervention effect
@@ -2001,8 +1974,8 @@ intervention effect to vary by cluster. Specifically, we will include a
 random cluster-level slope for the intervention exposure, with a
 non-zero covariance between this slope and the cluster random intercept
 (as anticipated in the protocol). The cluster-by-period random effect
-remains independent of both. The model is specified in
-Equation~\ref{eq-model-random-cluster-intervention}.
+remains independent of both
+(Equation~\ref{eq-model-random-cluster-intervention}).
 
 \begin{equation}\phantomsection\label{eq-model-random-cluster-intervention}{
 g\{\Pr(Y_{bkti} = 1)\}
@@ -2014,7 +1987,7 @@ Where:
 \begin{itemize}
 \tightlist
 \item
-  \(u_{bk}\) is a random effect representing cluster-specific deviations
+  \(u_{bk}\): a random effect representing cluster-specific deviations
   from the average intervention effect.
 \item
   The cluster intercept and intervention slope are jointly normally
@@ -2040,7 +2013,7 @@ Where:
   of \((\alpha_{bk}, u_{bk})\).
 \end{itemize}
 
-\paragraph{Models with time modelled with a spline
+\subsubsection{Models with time modelled with a spline
 function}\label{sec-models-with-time-modelled-with-a-spline-function}
 
 We will further explore the potential for a time-varying treatment
@@ -2063,28 +2036,26 @@ Where:
 \begin{itemize}
 \tightlist
 \item
-  \(t\) denotes calendar time (period index) common to all batches.
+  \(t\): calendar time (period index) common to all batches.
 \item
-  \(S_j(t, \{3,6,9\})\) denotes the \(j\)th natural cubic spline basis
+  \(S_j(t, \{3,6,9\})\): the \(j\)th natural cubic spline basis
   function, shared across batches.
 \item
-  \(\beta_j\) is the coefficient for the \(j\)th spline basis function.
+  \(\beta_j\): the coefficient for the \(j\)th spline basis function.
 \end{itemize}
 
-\paragraph{Models exploring lag and weaning
+\subsubsection{Models exploring lag and weaning
 effects}\label{sec-models-exploring-lag-and-weaning-effects}
 
-We will also extend the primary analysis model to include an interaction
-between treatment and number of periods since first treated, to examine
-if there is any indication of a relationship between duration of
-exposure to the intervention and outcomes. This will allow us to model
-different lag effects (whereby it takes time for the intervention to
-become embedded within the culture before its impact can properly start
-to be realised); as well as weaning effects (whereby the effect of the
-intervention starts to decrease -- or fade). This type of analysis
-attempts to disentangle how some clusters end up having a long exposure
-to the intervention and others have a much shorter exposure time. The
-model is specified in Equation~\ref{eq-lag-weaning-model}.
+We will also extend the primary analysis model with an interaction
+between treatment and the number of periods since first treated, to
+examine whether longer exposure to the intervention changes outcomes.
+This lets us model lag effects, where the intervention takes time to
+become embedded in the culture before it has an effect, and weaning
+effects, where its effect fades. This type of analysis attempts to
+disentangle how some clusters end up having a long exposure to the
+intervention and others have a much shorter exposure time
+(Equation~\ref{eq-lag-weaning-model}).
 
 \begin{equation}\phantomsection\label{eq-lag-weaning-model}{
 g\{\Pr(Y_{bkti} = 1)\}
@@ -2097,9 +2068,20 @@ Where \(\theta_{\text{int}}\) represents the interaction between
 intervention exposure and time since first treated, and \(T_{bkt}\) is
 the number of periods since first exposure.
 
-\subsubsection{Adjusted analyses}\label{sec-adjusted-analyses}
+\subsubsection{Exposure defined by the actual transition
+date}\label{sec-exposure-defined-by-the-actual-transition-date}
 
-Fully adjusted covariate analysis will additionally adjust for (expected
+Where a cluster's actual transition date differs from its scheduled date
+by more than four weeks, we will refit the primary analysis model with
+the intervention exposure indicator \(X_{bkt}\) defined by the actual
+rather than the scheduled transition date. We exclude observations in
+the month of the actual transition, as we do for the scheduled
+transition, and leave all other model terms unchanged. We will report
+the number of clusters for which we redefine exposure.
+
+\subsection{Adjusted analyses}\label{sec-adjusted-analyses}
+
+In the fully adjusted analysis we will additionally adjust for (expected
 \% missing data in parentheses):
 
 \begin{itemize}
@@ -2119,11 +2101,9 @@ Fully adjusted covariate analysis will additionally adjust for (expected
 \end{itemize}
 
 These are known individual-level prognostic factors for the primary
-outcome. These covariates will be included in the models specified in
-Equation~\ref{eq-primary-model} as fixed effects. We will model the
-continuous covariates assuming linear effects. We will assume no
-interaction between subgroups and secular time trends, which may be
-evaluated in future analyses if indicated.
+outcome. We will add these covariates as fixed effects to the model
+selected for the primary analysis. We will model the continuous
+covariates assuming linear effects.
 
 \subsection{Subgroup analyses}\label{sec-subgroup-analyses}
 
@@ -2137,8 +2117,8 @@ We will perform the following subgroup analyses of the primary outcome:
   category; the number of states depends on the final set of
   participating clusters and cannot be prespecified;
 \item
-  age groups, defined as older adolescents (15-19 years), young adults
-  (20-24 years), adults (25-59 years), and older adults (60 years and
+  age groups, defined as older adolescents (15--19 years), young adults
+  (20--24 years), adults (25--59 years), and older adults (60 years and
   older)\textsuperscript{20};
 \item
   sex, using the levels male and female;
@@ -2158,61 +2138,53 @@ We will perform the following subgroup analyses of the primary outcome:
   than 20)
 \end{itemize}
 
-Each subgroup analysis will use the same mixed-effects binomial model
-that is selected for the primary analysis under
-Analysis of the primary outcome
-(Section~\ref{sec-analysis-of-the-primary-outcome}) (the most complex
-model in that sequence that converges), with the logit and identity
-links as for the primary outcome. We will add the subgroup variable and
-the interaction between the subgroup variable and intervention exposure
-as fixed effects. Subgroup-specific intervention effects (odds ratios
-and absolute risk differences) will be obtained from that model as the
-intervention effect within each subgroup level, combining the main
-intervention effect with the corresponding interaction term, and will be
-reported with 95\% CIs. We will also report the interaction p-value as a
-test of heterogeneity across subgroup levels. Results will be presented
-in Table~\ref{tbl-additional-analyses-results} and as a forest plot of
-subgroup-specific intervention effects with 95\% CIs (see
-Figure~\ref{fig-subgroup-forest-plot}).
+As in the protocol, we treat geographical region as our primary subgroup
+and the rest as exploratory.
+
+Each subgroup analysis will use the mixed-effects binomial model
+selected for the primary analysis, with the logit and identity links. We
+will add the subgroup variable and the interaction between the subgroup
+variable and intervention exposure as fixed effects. From that model we
+will obtain the intervention effect within each subgroup level, as odds
+ratios and absolute risk differences, by combining the main intervention
+effect with the corresponding interaction term, and report each with a
+95\% CI. We will also report the interaction p-value as a test of
+heterogeneity across subgroup levels. We will assume no interaction
+between subgroups and secular time trends, which may be evaluated in
+future analyses if indicated.
 
 \subsection{Safety events}\label{sec-safety-events}
 
-Safety events, as defined in the trial protocol, will be summarised as
+We will summarise safety events, as defined in the trial protocol, as
 counts and percentages of patients with at least one recorded event,
-stratified by before and after ATLS training and overall. We will not
-adjust for clustering in these summaries. See
-Table~\ref{tbl-safety-events} for details.
+stratified by before and after ATLS\textsuperscript{®} training and
+overall (Table~\ref{tbl-safety-events}).
 
 \subsection{Statistical software}\label{sec-statistical-software}
 
 We will use the R Statistical Software for all
-analyses\textsuperscript{22}. Specific packages for mixed-effects
-modelling, small-sample corrections, multiple imputation, and reporting
-tables will be selected closer to the time of analysis based on
-convergence behaviour and available methodology, and will be documented
-in the analysis code and final report.
+analyses\textsuperscript{22}. We will select the packages for
+mixed-effects modelling, small-sample corrections, multiple imputation,
+and reporting tables closer to the time of analysis, based on
+convergence behaviour and available methodology, and document them in
+the analysis code and final report. We will archive the analysis code
+used for the final analysis with the trial materials.
 
 \subsection{Presentation of analysis
 results}\label{sec-presentation-of-analysis-results}
 
-Intervention-effect estimates for the primary and secondary outcomes
-will be reported with 95\% CIs and p-values, using the effect measures
-specified for each outcome. We will present key outcome analyses in the
-results section, and present all outcome analyses as supplementary
-tables. See Table~\ref{tbl-outcomes-analysis-results} for key analyses
-and Table~\ref{tbl-outcomes-analysis-results-all} for all analyses.
+We will report intervention-effect estimates for the primary and
+secondary outcomes with 95\% CIs and p-values, using the effect measures
+specified for each outcome (Table~\ref{tbl-outcomes-analysis-results}
+for key analyses, Table~\ref{tbl-outcomes-analysis-results-all} for all
+analyses).
 
-Sensitivity, fully adjusted, and subgroup analyses of the primary
-outcome will be reported in the same style. See
-Table~\ref{tbl-additional-analyses-results}. Subgroup-specific
-intervention effects will also be presented in a forest plot with 95\%
-CIs for the odds ratio and absolute risk difference. See
-Figure~\ref{fig-subgroup-forest-plot}.
-
-Time-adjusted within-cluster correlations and variance components will
-be presented as a supplementary table, as specified under Correlations
-(Section~\ref{sec-correlations}). See
-Table~\ref{tbl-correlation-parameters}.
+We will report the sensitivity, fully adjusted, and subgroup analyses of
+the primary outcome in the same style
+(Table~\ref{tbl-additional-analyses-results}), and present the
+subgroup-specific intervention effects in a forest plot with 95\% CIs
+for the odds ratio and absolute risk difference
+(Figure~\ref{fig-subgroup-forest-plot}).
 
 \section{Shell figures and tables}\label{sec-shell-figures-and-tables}
 
@@ -2229,8 +2201,8 @@ Table~\ref{tbl-correlation-parameters}.
 \caption{\label{fig-consort-clusters}Cluster-level CONSORT diagram
 shell. Placeholders cover clusters assessed and randomised, losses and
 exclusions after randomisation with reasons, and clusters included in
-the primary analysis, by sequence and overall. The flowchart summarises
-data across all batches 1-6.}
+the primary analysis, by sequence and overall. The flowchart pools all
+six batches.}
 
 \end{figure}%
 
@@ -2245,8 +2217,8 @@ data across all batches 1-6.}
 \caption{\label{fig-consort-patients}Patient-level CONSORT diagram
 shell. Placeholders cover patients entered, losses and exclusions from
 the primary analysis with reasons, and patients analysed, by sequence,
-before and after ATLS training, and overall. The flowchart summarises
-data across all batches 1-6.}
+before and after ATLS\textsuperscript{®} training, and overall. The
+flowchart pools all six batches.}
 
 \end{figure}%
 
@@ -2262,14 +2234,14 @@ data across all batches 1-6.}
 diagram shell. Placeholders cover patients in staircase periods, the
 shift-stratified nested sample, losses and exclusions with reasons, and
 patients analysed for nested-staircase secondary outcomes, by sequence,
-before and after ATLS training, and overall. Coloured strip cells mark
-staircase months; grey cells are outside nested data collection. The
-flowchart summarises data across all batches 1-6.}
+before and after ATLS\textsuperscript{®} training, and overall. Coloured
+strip cells mark staircase months; grey cells are outside nested data
+collection. The flowchart pools all six batches.}
 
 \end{figure}%
 
-\subsection{Shell tables and figures for analysis
-results}\label{sec-shell-tables-and-figures-for-analysis-results}
+\subsection{Descriptive, analysis and supplementary
+shells}\label{sec-descriptive-analysis-and-supplementary-shells}
 
 \begingroup\fontsize{8}{10}\selectfont
 
@@ -2552,17 +2524,17 @@ Return to work at three months, n (\%) &  &  & \\
 Adherence to ATLS principles (\%), Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{6} & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
-EQ-5D-5L index score, Median (Q1, Q3) &  &  \vphantom{2} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{2} & \\
 \hspace{1em}Missing &  &  \vphantom{5} & \\
 WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{2} & \\
 \hspace{1em}Missing &  &  \vphantom{4} & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L index score, Median (Q1, Q3) &  &  \vphantom{1} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{1} & \\
 \hspace{1em}Missing &  &  \vphantom{3} & \\
 WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{1} & \\
 \hspace{1em}Missing &  &  \vphantom{2} & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L index score, Median (Q1, Q3) &  &  & \\
+EQ-5D-5L VAS, Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{1} & \\
 WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  & \\
@@ -2619,8 +2591,8 @@ Events assessed as probably related to the trial or intervention, n (\%) &  &  &
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-outcomes-analysis-results}Shell table of key primary
-and secondary outcome analysis results}
+\caption{\label{tbl-outcomes-analysis-results}Key primary and secondary
+outcome analysis results}
 
 \tabularnewline
 
@@ -2705,9 +2677,8 @@ Disability &  &  & \\
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.5\linewidth}*{3}{>{\centering\arraybackslash}p{0.113\linewidth}}>{\centering\arraybackslash}p{0.113\linewidth}>{\centering\arraybackslash}p{0.113\linewidth}>{\centering\arraybackslash}p{0.113\linewidth}>{\centering\arraybackslash}p{0.113\linewidth}>{\centering\arraybackslash}p{0.113\linewidth}>{\centering\arraybackslash}p{0.113\linewidth}}
 
-\caption{\label{tbl-additional-analyses-results}Shell table of
-sensitivity, fully adjusted, and subgroup analysis results for the
-primary outcome}
+\caption{\label{tbl-additional-analyses-results}Sensitivity, fully
+adjusted, and subgroup analysis results for the primary outcome}
 
 \tabularnewline
 
@@ -3060,238 +3031,232 @@ all outcomes}
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
 In-hospital mortality within 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{52} & \\
+\hspace{1em}Missing &  &  \vphantom{49} & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
 All-cause mortality within 24 hours, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{51} & \\
-All-cause mortality within 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{50} & \\
-All-cause mortality within three months, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{49} & \\
-Length of emergency department stay (hours), Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{48} & \\
-Length of hospital stay (days), Median (Q1, Q3) &  &  & \\
+All-cause mortality within 30 days, n (\%) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{47} & \\
-Intensive care unit admission, n (\%) &  &  & \\
+All-cause mortality within three months, n (\%) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{46} & \\
-Length of intensive care unit stay (days), Median (Q1, Q3) &  &  & \\
+Length of emergency department stay (hours), Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{45} & \\
-Return to work at 30 days, n (\%) &  &  & \\
+Length of hospital stay (days), Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{44} & \\
-Return to work at three months, n (\%) &  &  & \\
+Intensive care unit admission, n (\%) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{43} & \\
+Length of intensive care unit stay (days), Median (Q1, Q3) &  &  & \\
+\hspace{1em}Missing &  &  \vphantom{42} & \\
+Return to work at 30 days, n (\%) &  &  & \\
+\hspace{1em}Missing &  &  \vphantom{41} & \\
+Return to work at three months, n (\%) &  &  & \\
+\hspace{1em}Missing &  &  \vphantom{40} & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS principles (\%), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{42} & \\
+\hspace{1em}Missing &  &  \vphantom{39} & \\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
-EQ-5D-5L index score, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{41} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{2} & \\
+\hspace{1em}Missing &  &  \vphantom{38} & \\
 WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{40} & \\
+\hspace{1em}Missing &  &  \vphantom{37} & \\
 EQ-5D-5L mobility, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no problems in walking about &  &  \vphantom{2} & \\
 \hspace{1em}2. I have slight problems in walking about &  &  \vphantom{2} & \\
 \hspace{1em}3. I have moderate problems in walking about &  &  \vphantom{2} & \\
 \hspace{1em}4. I have severe problems in walking about &  &  \vphantom{2} & \\
 \hspace{1em}5. I am unable to walk about &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{39} & \\
+\hspace{1em}Missing &  &  \vphantom{36} & \\
 EQ-5D-5L self-care, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no problems washing or dressing myself &  &  \vphantom{2} & \\
 \hspace{1em}2. I have slight problems washing or dressing myself &  &  \vphantom{2} & \\
 \hspace{1em}3. I have moderate problems washing or dressing myself &  &  \vphantom{2} & \\
 \hspace{1em}4. I have severe problems washing or dressing myself &  &  \vphantom{2} & \\
 \hspace{1em}5. I am unable to wash or dress myself &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{38} & \\
+\hspace{1em}Missing &  &  \vphantom{35} & \\
 EQ-5D-5L usual activities, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no problems doing my usual activities &  &  \vphantom{2} & \\
 \hspace{1em}2. I have slight problems doing my usual activities &  &  \vphantom{2} & \\
 \hspace{1em}3. I have moderate problems doing my usual activities &  &  \vphantom{2} & \\
 \hspace{1em}4. I have severe problems doing my usual activities &  &  \vphantom{2} & \\
 \hspace{1em}5. I am unable to do my usual activities &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{37} & \\
+\hspace{1em}Missing &  &  \vphantom{34} & \\
 EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no pain or discomfort &  &  \vphantom{2} & \\
 \hspace{1em}2. I have slight pain or discomfort &  &  \vphantom{2} & \\
 \hspace{1em}3. I have moderate pain or discomfort &  &  \vphantom{2} & \\
 \hspace{1em}4. I have severe pain or discomfort &  &  \vphantom{2} & \\
 \hspace{1em}5. I have extreme pain or discomfort &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{36} & \\
+\hspace{1em}Missing &  &  \vphantom{33} & \\
 EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I am not anxious or depressed &  &  \vphantom{2} & \\
 \hspace{1em}2. I am slightly anxious or depressed &  &  \vphantom{2} & \\
 \hspace{1em}3. I am moderately anxious or depressed &  &  \vphantom{2} & \\
 \hspace{1em}4. I am severely anxious or depressed &  &  \vphantom{2} & \\
 \hspace{1em}5. I am extremely anxious or depressed &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{35} & \\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{34} & \\
+\hspace{1em}Missing &  &  \vphantom{32} & \\
 WHODAS 2.0 cognition, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. None &  &  \vphantom{17} & \\
 \hspace{1em}2. Mild &  &  \vphantom{17} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{17} & \\
 \hspace{1em}4. Severe &  &  \vphantom{17} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{17} & \\
-\hspace{1em}Missing &  &  \vphantom{33} & \\
+\hspace{1em}Missing &  &  \vphantom{31} & \\
 WHODAS 2.0 mobility, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. None &  &  \vphantom{16} & \\
 \hspace{1em}2. Mild &  &  \vphantom{16} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{16} & \\
 \hspace{1em}4. Severe &  &  \vphantom{16} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{16} & \\
-\hspace{1em}Missing &  &  \vphantom{32} & \\
+\hspace{1em}Missing &  &  \vphantom{30} & \\
 WHODAS 2.0 self-care, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. None &  &  \vphantom{15} & \\
 \hspace{1em}2. Mild &  &  \vphantom{15} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{15} & \\
 \hspace{1em}4. Severe &  &  \vphantom{15} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{15} & \\
-\hspace{1em}Missing &  &  \vphantom{31} & \\
+\hspace{1em}Missing &  &  \vphantom{29} & \\
 WHODAS 2.0 getting along, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. None &  &  \vphantom{14} & \\
 \hspace{1em}2. Mild &  &  \vphantom{14} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{14} & \\
 \hspace{1em}4. Severe &  &  \vphantom{14} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{14} & \\
-\hspace{1em}Missing &  &  \vphantom{30} & \\
+\hspace{1em}Missing &  &  \vphantom{28} & \\
 WHODAS 2.0 life activities, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. None &  &  \vphantom{13} & \\
 \hspace{1em}2. Mild &  &  \vphantom{13} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{13} & \\
 \hspace{1em}4. Severe &  &  \vphantom{13} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{13} & \\
-\hspace{1em}Missing &  &  \vphantom{29} & \\
+\hspace{1em}Missing &  &  \vphantom{27} & \\
 WHODAS 2.0 participation, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. None &  &  \vphantom{12} & \\
 \hspace{1em}2. Mild &  &  \vphantom{12} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{12} & \\
 \hspace{1em}4. Severe &  &  \vphantom{12} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{12} & \\
-\hspace{1em}Missing &  &  \vphantom{28} & \\
-\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L index score, Median (Q1, Q3) &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{27} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{1} & \\
 \hspace{1em}Missing &  &  \vphantom{26} & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
+EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{1} & \\
+\hspace{1em}Missing &  &  \vphantom{25} & \\
+WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{1} & \\
+\hspace{1em}Missing &  &  \vphantom{24} & \\
 EQ-5D-5L mobility, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. I have no problems in walking about &  &  \vphantom{1} & \\
 \hspace{1em}2. I have slight problems in walking about &  &  \vphantom{1} & \\
 \hspace{1em}3. I have moderate problems in walking about &  &  \vphantom{1} & \\
 \hspace{1em}4. I have severe problems in walking about &  &  \vphantom{1} & \\
 \hspace{1em}5. I am unable to walk about &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{25} & \\
+\hspace{1em}Missing &  &  \vphantom{23} & \\
 EQ-5D-5L self-care, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. I have no problems washing or dressing myself &  &  \vphantom{1} & \\
 \hspace{1em}2. I have slight problems washing or dressing myself &  &  \vphantom{1} & \\
 \hspace{1em}3. I have moderate problems washing or dressing myself &  &  \vphantom{1} & \\
 \hspace{1em}4. I have severe problems washing or dressing myself &  &  \vphantom{1} & \\
 \hspace{1em}5. I am unable to wash or dress myself &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{24} & \\
+\hspace{1em}Missing &  &  \vphantom{22} & \\
 EQ-5D-5L usual activities, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. I have no problems doing my usual activities &  &  \vphantom{1} & \\
 \hspace{1em}2. I have slight problems doing my usual activities &  &  \vphantom{1} & \\
 \hspace{1em}3. I have moderate problems doing my usual activities &  &  \vphantom{1} & \\
 \hspace{1em}4. I have severe problems doing my usual activities &  &  \vphantom{1} & \\
 \hspace{1em}5. I am unable to do my usual activities &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{23} & \\
+\hspace{1em}Missing &  &  \vphantom{21} & \\
 EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. I have no pain or discomfort &  &  \vphantom{1} & \\
 \hspace{1em}2. I have slight pain or discomfort &  &  \vphantom{1} & \\
 \hspace{1em}3. I have moderate pain or discomfort &  &  \vphantom{1} & \\
 \hspace{1em}4. I have severe pain or discomfort &  &  \vphantom{1} & \\
 \hspace{1em}5. I have extreme pain or discomfort &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{22} & \\
+\hspace{1em}Missing &  &  \vphantom{20} & \\
 EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. I am not anxious or depressed &  &  \vphantom{1} & \\
 \hspace{1em}2. I am slightly anxious or depressed &  &  \vphantom{1} & \\
 \hspace{1em}3. I am moderately anxious or depressed &  &  \vphantom{1} & \\
 \hspace{1em}4. I am severely anxious or depressed &  &  \vphantom{1} & \\
 \hspace{1em}5. I am extremely anxious or depressed &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{21} & \\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{20} & \\
+\hspace{1em}Missing &  &  \vphantom{19} & \\
 WHODAS 2.0 cognition, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. None &  &  \vphantom{11} & \\
 \hspace{1em}2. Mild &  &  \vphantom{11} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{11} & \\
 \hspace{1em}4. Severe &  &  \vphantom{11} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{11} & \\
-\hspace{1em}Missing &  &  \vphantom{19} & \\
+\hspace{1em}Missing &  &  \vphantom{18} & \\
 WHODAS 2.0 mobility, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. None &  &  \vphantom{10} & \\
 \hspace{1em}2. Mild &  &  \vphantom{10} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{10} & \\
 \hspace{1em}4. Severe &  &  \vphantom{10} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{10} & \\
-\hspace{1em}Missing &  &  \vphantom{18} & \\
+\hspace{1em}Missing &  &  \vphantom{17} & \\
 WHODAS 2.0 self-care, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. None &  &  \vphantom{9} & \\
 \hspace{1em}2. Mild &  &  \vphantom{9} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{9} & \\
 \hspace{1em}4. Severe &  &  \vphantom{9} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{9} & \\
-\hspace{1em}Missing &  &  \vphantom{17} & \\
+\hspace{1em}Missing &  &  \vphantom{16} & \\
 WHODAS 2.0 getting along, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. None &  &  \vphantom{8} & \\
 \hspace{1em}2. Mild &  &  \vphantom{8} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{8} & \\
 \hspace{1em}4. Severe &  &  \vphantom{8} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{8} & \\
-\hspace{1em}Missing &  &  \vphantom{16} & \\
+\hspace{1em}Missing &  &  \vphantom{15} & \\
 WHODAS 2.0 life activities, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. None &  &  \vphantom{7} & \\
 \hspace{1em}2. Mild &  &  \vphantom{7} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{7} & \\
 \hspace{1em}4. Severe &  &  \vphantom{7} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{7} & \\
-\hspace{1em}Missing &  &  \vphantom{15} & \\
+\hspace{1em}Missing &  &  \vphantom{14} & \\
 WHODAS 2.0 participation, n (\%) &  &  \vphantom{1} & \\
 \hspace{1em}1. None &  &  \vphantom{6} & \\
 \hspace{1em}2. Mild &  &  \vphantom{6} & \\
 \hspace{1em}3. Moderate &  &  \vphantom{6} & \\
 \hspace{1em}4. Severe &  &  \vphantom{6} & \\
 \hspace{1em}5. Extreme or cannot do &  &  \vphantom{6} & \\
-\hspace{1em}Missing &  &  \vphantom{14} & \\
-\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L index score, Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{13} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
+EQ-5D-5L VAS, Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{12} & \\
+WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
+\hspace{1em}Missing &  &  \vphantom{11} & \\
 EQ-5D-5L mobility, n (\%) &  &  & \\
 \hspace{1em}1. I have no problems in walking about &  &  & \\
 \hspace{1em}2. I have slight problems in walking about &  &  & \\
 \hspace{1em}3. I have moderate problems in walking about &  &  & \\
 \hspace{1em}4. I have severe problems in walking about &  &  & \\
 \hspace{1em}5. I am unable to walk about &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{11} & \\
+\hspace{1em}Missing &  &  \vphantom{10} & \\
 EQ-5D-5L self-care, n (\%) &  &  & \\
 \hspace{1em}1. I have no problems washing or dressing myself &  &  & \\
 \hspace{1em}2. I have slight problems washing or dressing myself &  &  & \\
 \hspace{1em}3. I have moderate problems washing or dressing myself &  &  & \\
 \hspace{1em}4. I have severe problems washing or dressing myself &  &  & \\
 \hspace{1em}5. I am unable to wash or dress myself &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{10} & \\
+\hspace{1em}Missing &  &  \vphantom{9} & \\
 EQ-5D-5L usual activities, n (\%) &  &  & \\
 \hspace{1em}1. I have no problems doing my usual activities &  &  & \\
 \hspace{1em}2. I have slight problems doing my usual activities &  &  & \\
 \hspace{1em}3. I have moderate problems doing my usual activities &  &  & \\
 \hspace{1em}4. I have severe problems doing my usual activities &  &  & \\
 \hspace{1em}5. I am unable to do my usual activities &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{9} & \\
+\hspace{1em}Missing &  &  \vphantom{8} & \\
 EQ-5D-5L pain/discomfort, n (\%) &  &  & \\
 \hspace{1em}1. I have no pain or discomfort &  &  & \\
 \hspace{1em}2. I have slight pain or discomfort &  &  & \\
 \hspace{1em}3. I have moderate pain or discomfort &  &  & \\
 \hspace{1em}4. I have severe pain or discomfort &  &  & \\
 \hspace{1em}5. I have extreme pain or discomfort &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{8} & \\
+\hspace{1em}Missing &  &  \vphantom{7} & \\
 EQ-5D-5L anxiety/depression, n (\%) &  &  & \\
 \hspace{1em}1. I am not anxious or depressed &  &  & \\
 \hspace{1em}2. I am slightly anxious or depressed &  &  & \\
 \hspace{1em}3. I am moderately anxious or depressed &  &  & \\
 \hspace{1em}4. I am severely anxious or depressed &  &  & \\
 \hspace{1em}5. I am extremely anxious or depressed &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{7} & \\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  & \\
 \hspace{1em}Missing &  &  \vphantom{6} & \\
 WHODAS 2.0 cognition, n (\%) &  &  & \\
 \hspace{1em}1. None &  &  \vphantom{5} & \\
@@ -3348,8 +3313,8 @@ WHODAS 2.0 participation, n (\%) &  &  & \\
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-outcomes-analysis-results-all}Shell table of all
-primary and secondary outcome analysis results}
+\caption{\label{tbl-outcomes-analysis-results-all}All primary and
+secondary outcome analysis results}
 
 \tabularnewline
 
@@ -3494,8 +3459,8 @@ WHODAS 2.0 summary score &  &  & \\
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.5\linewidth}*{2}{>{\centering\arraybackslash}p{0.17\linewidth}}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}}
 
-\caption{\label{tbl-correlation-parameters}Shell table of within-cluster
-correlation parameters for all outcomes}
+\caption{\label{tbl-correlation-parameters}Within-cluster correlation
+parameters for all outcomes}
 
 \tabularnewline
 
@@ -3628,6 +3593,9 @@ Cluster-by-period variance &  & \\
 Intra-cluster correlation (ICC) &  & \\
 Within-period correlation &  & \\
 Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
 AR(1) within-period correlation &  & \\
 AR(1) correlation decay parameter (rho) &  & \\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life at 30 days}}\\
@@ -3636,6 +3604,9 @@ Cluster-by-period variance &  & \\
 Intra-cluster correlation (ICC) &  & \\
 Within-period correlation &  & \\
 Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
 AR(1) within-period correlation &  & \\
 AR(1) correlation decay parameter (rho) &  & \\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life at three months}}\\
@@ -3644,6 +3615,9 @@ Cluster-by-period variance &  & \\
 Intra-cluster correlation (ICC) &  & \\
 Within-period correlation &  & \\
 Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
 AR(1) within-period correlation &  & \\
 AR(1) correlation decay parameter (rho) &  & \\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability within seven days of discharge}}\\
@@ -3652,6 +3626,9 @@ Cluster-by-period variance &  & \\
 Intra-cluster correlation (ICC) &  & \\
 Within-period correlation &  & \\
 Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
 AR(1) within-period correlation &  & \\
 AR(1) correlation decay parameter (rho) &  & \\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at 30 days}}\\
@@ -3660,6 +3637,9 @@ Cluster-by-period variance &  & \\
 Intra-cluster correlation (ICC) &  & \\
 Within-period correlation &  & \\
 Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
 AR(1) within-period correlation &  & \\
 AR(1) correlation decay parameter (rho) &  & \\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at three months}}\\
@@ -3668,6 +3648,9 @@ Cluster-by-period variance &  & \\
 Intra-cluster correlation (ICC) &  & \\
 Within-period correlation &  & \\
 Between-period correlation &  & \\
+Latent-scale ICC &  & \\
+Latent-scale within-period correlation &  & \\
+Latent-scale between-period correlation &  & \\
 AR(1) within-period correlation &  & \\
 AR(1) correlation decay parameter (rho) &  & \\
 \bottomrule
