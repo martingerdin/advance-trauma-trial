@@ -4,13 +4,22 @@ subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Stan
 titlepage-footer: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 bibliography: ../shared-assets/bibliography.bib
 csl: nature.csl
+# Cache chunk output so prose edits do not rebuild shell tables/figures.
+# Refresh with: quarto render statistical-analysis-plan.qmd --cache-refresh
+execute:
+  cache: true
 ---
 
 ```{r setup}
 #| echo: FALSE
+#| cache: false
 
 noacsr::source_all_functions()
 attach(global_variables())
+# Invalidate cached table chunks when the outcomes summary JSON changes.
+knitr::opts_chunk$set(
+  cache.extra = file.info("tables/outcomes-summary.json")$mtime
+)
 ```
 
 {{< pagebreak >}}
@@ -20,7 +29,9 @@ attach(global_variables())
 # Administrative information {#sec-administrative-information}
 ## Study identifiers {#sec-study-identifiers}
 ```{r}
+#| label: protocol-variables
 #| echo: FALSE
+#| cache: false
 
 protocol.variables <- yaml::read_yaml("../protocol/_variables.yml")
 ```
