@@ -321,7 +321,9 @@ consort_render <- function(canvas,
 #'
 #' Shell flowchart for cluster (hospital) flow through a batched stepped-wedge
 #' trial, following a two-figure reporting approach (cluster figure separate
-#' from the patient figure). Placeholders (`n=`) are completed at reporting.
+#' from the patient figure). By default `n=` placeholders are filled with
+#' reproducible simulated counts; set `use.simulated.data = FALSE` for empty
+#' `n=` tokens.
 #'
 #' @param sequences Numeric. Number of sequences (columns). Default 5.
 #' @param batches Numeric. Number of batches (shown in the figure note). Default 6.
@@ -332,6 +334,9 @@ consort_render <- function(canvas,
 #' @param return.figure Logical. Return ggplot if TRUE. Default TRUE.
 #' @param save Logical. Save to disk if TRUE. Default TRUE.
 #' @param device Character. Device for `ggsave`. Default `"png"`.
+#' @param use.simulated.data Logical. If TRUE (default), fill `n=` with
+#'     simulated counts.
+#' @param seed Integer. RNG seed for simulated counts.
 #' @return A ggplot object or the saved file name.
 #'
 #' @examples
@@ -347,7 +352,9 @@ create_cluster_consort_diagram <- function(sequences = 5,
                                            page.width.mm = 174,
                                            return.figure = TRUE,
                                            save = TRUE,
-                                           device = "png") {
+                                           device = "png",
+                                           use.simulated.data = TRUE,
+                                           seed = shell_simulated_data_seed()) {
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
     assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
@@ -359,6 +366,8 @@ create_cluster_consort_diagram <- function(sequences = 5,
         is.numeric(transition.months) && length(transition.months) == 1 &&
             transition.months >= 0
     )
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     fills <- consort_condition_fills()
     control.fill <- unname(fills["control"])
@@ -379,33 +388,65 @@ create_cluster_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    top.label <- "Clusters assessed for eligibility (n=)"
-    rand.label <- "Clusters randomised (n=)"
-    excl.pre.label <- consort_bullet_list(
-        "Excluded before randomisation (n=):",
-        c(
-            "Not meeting inclusion criteria (n=)",
-            "Declined to participate (n=)",
-            "Other reasons (n=)"
-        )
+    counts <- if (isTRUE(use.simulated.data)) {
+        simulate_cluster_consort_counts(sequences = n.seq, seed = seed)
+    } else {
+        NULL
+    }
+
+    fill_n <- function(text, values = NULL) {
+        if (!isTRUE(use.simulated.data)) {
+            text
+        } else {
+            fill_consort_n(text, values)
+        }
+    }
+
+    top.label <- fill_n("Clusters assessed for eligibility (n=)", counts$assessed)
+    rand.label <- fill_n("Clusters randomised (n=)", counts$randomised)
+    excl.pre.label <- fill_n(
+        consort_bullet_list(
+            "Excluded before randomisation (n=):",
+            c(
+                "Not meeting inclusion criteria (n=)",
+                "Declined to participate (n=)",
+                "Other reasons (n=)"
+            )
+        ),
+        if (is.null(counts)) {
+            NULL
+        } else {
+            c(
+                counts$excluded.pre,
+                counts$excl.not.meeting,
+                counts$excl.declined,
+                counts$excl.other.pre
+            )
+        }
     )
-    excl.post.label <- consort_bullet_list(
-        "Lost/excluded (n=; reasons):",
-        c(
-            "Withdrawn (n=)",
-            "No outcome data (n=)",
-            "Other (n=)"
-        )
+    total.included.label <- fill_n(
+        "Clusters included in primary analysis (n=)",
+        counts$total.included
     )
-    included.label <- "Clusters included in primary analysis (n=)"
-    total.included.label <- "Clusters included in primary analysis (n=)"
-    total.excl.label <- consort_bullet_list(
-        "Clusters excluded after randomisation (n=):",
-        c(
-            "Withdrawn (n=)",
-            "No outcome data (n=)",
-            "Other (n=)"
-        )
+    total.excl.label <- fill_n(
+        consort_bullet_list(
+            "Clusters excluded after randomisation (n=):",
+            c(
+                "Withdrawn (n=)",
+                "No outcome data (n=)",
+                "Other (n=)"
+            )
+        ),
+        if (is.null(counts)) {
+            NULL
+        } else {
+            c(
+                counts$total.excluded.post,
+                counts$total.withdrawn,
+                counts$total.no.outcome,
+                counts$total.other.post
+            )
+        }
     )
 
     y <- 0
@@ -444,8 +485,46 @@ create_cluster_consort_diagram <- function(sequences = 5,
 
     strip.h <- 1.8
     title.h <- 2.4
-    excl.post.h <- consort_box_height(excl.post.label, wrap.chars, canvas = canvas)
-    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    ## Use the longest per-sequence exclusion/included labels for box height when
+    ## simulated counts differ across sequences.
+    excl.post.labels <- lapply(seq_len(n.seq), function(k) {
+        fill_n(
+            consort_bullet_list(
+                "Lost/excluded (n=; reasons):",
+                c(
+                    "Withdrawn (n=)",
+                    "No outcome data (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(
+                    counts$excluded.post[k],
+                    counts$withdrawn[k],
+                    counts$no.outcome[k],
+                    counts$other.post[k]
+                )
+            }
+        )
+    })
+    included.labels <- lapply(seq_len(n.seq), function(k) {
+        fill_n(
+            "Clusters included in primary analysis (n=)",
+            if (is.null(counts)) NULL else counts$included[k]
+        )
+    })
+    excl.post.h <- max(vapply(
+        excl.post.labels,
+        function(label) consort_box_height(label, wrap.chars, canvas = canvas),
+        numeric(1)
+    ))
+    included.h <- max(vapply(
+        included.labels,
+        function(label) consort_box_height(label, wrap.chars, canvas = canvas),
+        numeric(1)
+    ))
     seq.block.top <- y
     seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.post.h -
         gap.excl.incl - included.h
@@ -487,7 +566,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.left[k] + 0.4, excl.top - canvas$pad,
-            consort_wrap_preserve(excl.post.label, wrap.chars),
+            consort_wrap_preserve(excl.post.labels[[k]], wrap.chars),
             hjust = 0, vjust = 1
         )
 
@@ -502,7 +581,7 @@ create_cluster_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.center[k], incl.top - included.h / 2,
-            consort_wrap(included.label, wrap.chars)
+            consort_wrap(included.labels[[k]], wrap.chars)
         )
     }
 
@@ -589,7 +668,9 @@ create_patient_consort_diagram <- function(sequences = 5,
                                            page.width.mm = 174,
                                            return.figure = TRUE,
                                            save = TRUE,
-                                           device = "png") {
+                                           device = "png",
+                                           use.simulated.data = TRUE,
+                                           seed = shell_simulated_data_seed()) {
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
     assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
@@ -601,6 +682,8 @@ create_patient_consort_diagram <- function(sequences = 5,
         is.numeric(transition.months) && length(transition.months) == 1 &&
             transition.months >= 0
     )
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     fills <- consort_condition_fills()
     control.fill <- unname(fills["control"])
@@ -622,52 +705,118 @@ create_patient_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    top.label <- "Patients entered the trial (n=)"
-    excl.label <- consort_bullet_list(
-        "Lost/excluded (n=; reasons):",
-        c(
-            "Lost to follow-up (n=)",
-            "Withdrew consent (n=)",
-            "Other (n=)"
+    counts <- if (isTRUE(use.simulated.data)) {
+        simulate_patient_consort_counts(sequences = n.seq, seed = seed)
+    } else {
+        NULL
+    }
+    fill_n <- function(text, values = NULL) {
+        if (!isTRUE(use.simulated.data)) {
+            text
+        } else {
+            fill_consort_n(text, values)
+        }
+    }
+
+    top.label <- fill_n("Patients entered the trial (n=)", counts$entered)
+    excl.labels <- lapply(seq_len(n.seq), function(k) {
+        fill_n(
+            consort_bullet_list(
+                "Lost/excluded (n=; reasons):",
+                c(
+                    "Lost to follow-up (n=)",
+                    "Withdrew consent (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(counts$excluded[k], counts$lost[k], counts$withdrew[k], counts$other[k])
+            }
         )
-    )
-    included.label <- "Patients included in primary analysis (n=)"
+    })
+    included.labels <- lapply(seq_len(n.seq), function(k) {
+        fill_n(
+            "Patients included in primary analysis (n=)",
+            if (is.null(counts)) NULL else counts$included[k]
+        )
+    })
     before.label <- paste(
         "Before ATLS training",
-        "Patients (n=)",
-        "Included in primary analysis (n=)",
-        consort_bullet_list(
-            "Excluded (n=; reasons):",
-            c(
-                "Lost to follow-up (n=)",
-                "Withdrew consent (n=)",
-                "Other (n=)"
-            )
+        fill_n("Patients (n=)", counts$before.entered),
+        fill_n("Included in primary analysis (n=)", counts$before.included),
+        fill_n(
+            consort_bullet_list(
+                "Excluded (n=; reasons):",
+                c(
+                    "Lost to follow-up (n=)",
+                    "Withdrew consent (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(
+                    counts$before.excluded,
+                    counts$before.excl.lost,
+                    counts$before.excl.withdrew,
+                    counts$before.excl.other
+                )
+            }
         ),
         sep = "\n"
     )
     after.label <- paste(
         "After ATLS training",
-        "Patients (n=)",
-        "Included in primary analysis (n=)",
+        fill_n("Patients (n=)", counts$after.entered),
+        fill_n("Included in primary analysis (n=)", counts$after.included),
+        fill_n(
+            consort_bullet_list(
+                "Excluded (n=; reasons):",
+                c(
+                    "Lost to follow-up (n=)",
+                    "Withdrew consent (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(
+                    counts$after.excluded,
+                    counts$after.excl.lost,
+                    counts$after.excl.withdrew,
+                    counts$after.excl.other
+                )
+            }
+        ),
+        sep = "\n"
+    )
+    total.included.label <- fill_n(
+        "Patients included in primary analysis (n=)",
+        counts$total.included
+    )
+    total.excl.label <- fill_n(
         consort_bullet_list(
-            "Excluded (n=; reasons):",
+            "Patients excluded from primary analysis (n=):",
             c(
                 "Lost to follow-up (n=)",
                 "Withdrew consent (n=)",
                 "Other (n=)"
             )
         ),
-        sep = "\n"
-    )
-    total.included.label <- "Patients included in primary analysis (n=)"
-    total.excl.label <- consort_bullet_list(
-        "Patients excluded from primary analysis (n=):",
-        c(
-            "Lost to follow-up (n=)",
-            "Withdrew consent (n=)",
-            "Other (n=)"
-        )
+        if (is.null(counts)) {
+            NULL
+        } else {
+            c(
+                counts$total.excluded,
+                counts$total.lost,
+                counts$total.withdrew,
+                counts$total.other
+            )
+        }
     )
 
     y <- 0
@@ -687,8 +836,16 @@ create_patient_consort_diagram <- function(sequences = 5,
 
     strip.h <- 1.8
     title.h <- 2.4
-    excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
-    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    excl.h <- max(vapply(
+        excl.labels,
+        function(label) consort_box_height(label, wrap.chars, canvas = canvas),
+        numeric(1)
+    ))
+    included.h <- max(vapply(
+        included.labels,
+        function(label) consort_box_height(label, wrap.chars, canvas = canvas),
+        numeric(1)
+    ))
     seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.h -
         gap.excl.incl - included.h
 
@@ -729,7 +886,7 @@ create_patient_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.left[k] + 0.4, excl.top - canvas$pad,
-            consort_wrap_preserve(excl.label, wrap.chars),
+            consort_wrap_preserve(excl.labels[[k]], wrap.chars),
             hjust = 0, vjust = 1
         )
 
@@ -744,7 +901,7 @@ create_patient_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.center[k], incl.top - included.h / 2,
-            consort_wrap(included.label, wrap.chars)
+            consort_wrap(included.labels[[k]], wrap.chars)
         )
     }
 
@@ -857,7 +1014,9 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
                                                     page.width.mm = 174,
                                                     return.figure = TRUE,
                                                     save = TRUE,
-                                                    device = "png") {
+                                                    device = "png",
+                                                    use.simulated.data = TRUE,
+                                                    seed = shell_simulated_data_seed()) {
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
     assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
@@ -873,6 +1032,8 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
         is.numeric(staircase.months) && length(staircase.months) == 1 &&
             staircase.months > 0
     )
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     fills <- consort_condition_fills()
     control.fill <- unname(fills["control"])
@@ -892,47 +1053,126 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    top.label <- "Patients in staircase periods (n=)"
-    not.sampled.label <- consort_bullet_list(
-        "Not sampled for nested staircase outcomes (n=):",
-        c(
-            "Outside randomised shifts (n=)",
-            "Other (n=)"
-        )
-    )
-    sampled.label <- "Sampled for nested staircase outcomes (n=)"
-    excl.label <- consort_bullet_list(
-        "Lost/excluded (n=; reasons):",
-        c(
-            "Lost to follow-up (n=)",
-            "Withdrew consent (n=)",
-            "Other (n=)"
-        )
-    )
-    included.label <- "Analysed for nested staircase outcomes (n=)"
-    before.label <- paste(
-        "Before ATLS training",
-        "In staircase windows (n=)",
-        "Sampled (n=)",
-        "Analysed (n=)",
+    counts <- if (isTRUE(use.simulated.data)) {
+        simulate_nested_staircase_consort_counts(sequences = n.seq, seed = seed)
+    } else {
+        NULL
+    }
+    fill_n <- function(text, values = NULL) {
+        if (!isTRUE(use.simulated.data)) {
+            text
+        } else {
+            fill_consort_n(text, values)
+        }
+    }
+
+    top.label <- fill_n("Patients in staircase periods (n=)", counts$in.windows)
+    not.sampled.label <- fill_n(
         consort_bullet_list(
-            "Excluded (n=; reasons):",
+            "Not sampled for nested staircase outcomes (n=):",
             c(
-                "Lost to follow-up (n=)",
-                "Withdrew consent (n=)",
-                "Died before follow-up (n=)",
+                "Outside randomised shifts (n=)",
                 "Other (n=)"
             )
+        ),
+        if (is.null(counts)) {
+            NULL
+        } else {
+            c(counts$not.sampled, counts$outside.shifts, counts$other.not.sampled)
+        }
+    )
+    sampled.label <- fill_n(
+        "Sampled for nested staircase outcomes (n=)",
+        counts$sampled
+    )
+    excl.labels <- lapply(seq_len(n.seq), function(k) {
+        fill_n(
+            consort_bullet_list(
+                "Lost/excluded (n=; reasons):",
+                c(
+                    "Lost to follow-up (n=)",
+                    "Withdrew consent (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(counts$excluded[k], counts$lost[k], counts$withdrew[k], counts$other[k])
+            }
+        )
+    })
+    included.labels <- lapply(seq_len(n.seq), function(k) {
+        fill_n(
+            "Analysed for nested staircase outcomes (n=)",
+            if (is.null(counts)) NULL else counts$analysed[k]
+        )
+    })
+    before.label <- paste(
+        "Before ATLS training",
+        fill_n("In staircase windows (n=)", counts$before.in.windows),
+        fill_n("Sampled (n=)", counts$before.sampled),
+        fill_n("Analysed (n=)", counts$before.analysed),
+        fill_n(
+            consort_bullet_list(
+                "Excluded (n=; reasons):",
+                c(
+                    "Lost to follow-up (n=)",
+                    "Withdrew consent (n=)",
+                    "Died before follow-up (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(
+                    counts$before.excluded,
+                    counts$before.lost,
+                    counts$before.withdrew,
+                    counts$before.died,
+                    counts$before.other
+                )
+            }
         ),
         sep = "\n"
     )
     after.label <- paste(
         "After ATLS training",
-        "In staircase windows (n=)",
-        "Sampled (n=)",
-        "Analysed (n=)",
+        fill_n("In staircase windows (n=)", counts$after.in.windows),
+        fill_n("Sampled (n=)", counts$after.sampled),
+        fill_n("Analysed (n=)", counts$after.analysed),
+        fill_n(
+            consort_bullet_list(
+                "Excluded (n=; reasons):",
+                c(
+                    "Lost to follow-up (n=)",
+                    "Withdrew consent (n=)",
+                    "Died before follow-up (n=)",
+                    "Other (n=)"
+                )
+            ),
+            if (is.null(counts)) {
+                NULL
+            } else {
+                c(
+                    counts$after.excluded,
+                    counts$after.lost,
+                    counts$after.withdrew,
+                    counts$after.died,
+                    counts$after.other
+                )
+            }
+        ),
+        sep = "\n"
+    )
+    total.included.label <- fill_n(
+        "Analysed for nested staircase outcomes (n=)",
+        counts$total.analysed
+    )
+    total.excl.label <- fill_n(
         consort_bullet_list(
-            "Excluded (n=; reasons):",
+            "Excluded from nested staircase analyses (n=):",
             c(
                 "Lost to follow-up (n=)",
                 "Withdrew consent (n=)",
@@ -940,17 +1180,17 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
                 "Other (n=)"
             )
         ),
-        sep = "\n"
-    )
-    total.included.label <- "Analysed for nested staircase outcomes (n=)"
-    total.excl.label <- consort_bullet_list(
-        "Excluded from nested staircase analyses (n=):",
-        c(
-            "Lost to follow-up (n=)",
-            "Withdrew consent (n=)",
-            "Died before follow-up (n=)",
-            "Other (n=)"
-        )
+        if (is.null(counts)) {
+            NULL
+        } else {
+            c(
+                counts$total.excluded,
+                counts$total.lost,
+                counts$total.withdrew,
+                as.integer(round(counts$total.other * 0.4)),
+                counts$total.other - as.integer(round(counts$total.other * 0.4))
+            )
+        }
     )
 
     y <- 0
@@ -990,8 +1230,16 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
 
     strip.h <- 1.8
     title.h <- 2.4
-    excl.h <- consort_box_height(excl.label, wrap.chars, canvas = canvas)
-    included.h <- consort_box_height(included.label, wrap.chars, canvas = canvas)
+    excl.h <- max(vapply(
+        excl.labels,
+        function(label) consort_box_height(label, wrap.chars, canvas = canvas),
+        numeric(1)
+    ))
+    included.h <- max(vapply(
+        included.labels,
+        function(label) consort_box_height(label, wrap.chars, canvas = canvas),
+        numeric(1)
+    ))
     seq.block.bottom <- y - title.h - strip.h - gap.strip.excl - excl.h -
         gap.excl.incl - included.h
 
@@ -1033,7 +1281,7 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.left[k] + 0.4, excl.top - canvas$pad,
-            consort_wrap_preserve(excl.label, wrap.chars),
+            consort_wrap_preserve(excl.labels[[k]], wrap.chars),
             hjust = 0, vjust = 1
         )
 
@@ -1048,7 +1296,7 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
         )
         canvas <- consort_add_text(
             canvas, col.center[k], incl.top - included.h / 2,
-            consort_wrap(included.label, wrap.chars)
+            consort_wrap(included.labels[[k]], wrap.chars)
         )
     }
 

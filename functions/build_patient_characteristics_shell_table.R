@@ -190,7 +190,9 @@ format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels)
 #' Shared implementation for patient baseline characteristic shell tables. Takes
 #' a list of variable requests, resolves each against the REDCap data
 #' dictionary where appropriate, and returns a `gtsummary` table stratified by
-#' ATLS training period with blanked body cells.
+#' ATLS training period. By default the body is filled with reproducible
+#' simulated summary statistics so the shell shows how completed tables will
+#' look; set `use.simulated.data = FALSE` for a blank template.
 #'
 #' @param data A data frame. A REDCap trial-data dictionary (metadata).
 #' @param requests A list of variable request lists, each with elements `field`,
@@ -215,6 +217,12 @@ format_section_rows_in_latex <- function(kable.latex, n.columns, section.labels)
 #' @param indent.labels Logical. If TRUE, indent `row_type == "label"` rows
 #'     with [gtsummary::modify_indent()]. Used when those rows sit under
 #'     nested outcome headers (e.g. intercurrent events).
+#' @param use.simulated.data Logical. If TRUE (default), populate statistic
+#'     cells from simulated data. If FALSE, blank the body cells.
+#' @param n.per.group Integer. Simulated rows per stratum when
+#'     `use.simulated.data` is TRUE. Defaults to `120`.
+#' @param seed Integer. RNG seed for simulated data. Defaults to
+#'     [shell_simulated_data_seed()].
 #' @return A `gtsummary` or `kableExtra` table object, or, when `longtable =
 #'     TRUE` in LaTeX output, a `knitr_asis` object containing raw LaTeX.
 build_patient_characteristics_shell_table <- function(data,
@@ -229,10 +237,16 @@ build_patient_characteristics_shell_table <- function(data,
                                                       missing = "always",
                                                       spanning.header = "**ATLS training**",
                                                       force.stat.label = NULL,
-                                                      indent.labels = FALSE) {
+                                                      indent.labels = FALSE,
+                                                      use.simulated.data = TRUE,
+                                                      n.per.group = 120L,
+                                                      seed = shell_simulated_data_seed()) {
     cell.placeholder <- ""
     dichotomous.value <- "Yes"
     missing.text <- "Missing"
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.numeric(n.per.group) && length(n.per.group) == 1 && n.per.group >= 1)
+    assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     specifications <- lapply(requests, function(request) {
         if (identical(request$source, "dictionary")) {
@@ -276,14 +290,28 @@ build_patient_characteristics_shell_table <- function(data,
     specifications <- Filter(Negate(is.null), specifications)
     assertthat::assert_that(length(specifications) > 0, msg = "None of the requested characteristics were found.")
 
-    n.rows <- length(groups)
-    shell.data <- data.frame(group = factor(groups, levels = groups))
-    for (specification in specifications) {
-        if (specification$type == "continuous") {
-            shell.data[[specification$field_name]] <- as.numeric(seq_len(n.rows))
-        } else {
-            values <- rep(specification$levels, length.out = n.rows)
-            shell.data[[specification$field_name]] <- factor(values, levels = specification$levels)
+    if (isTRUE(use.simulated.data)) {
+        shell.data <- build_simulated_shell_data(
+            specifications = specifications,
+            groups = groups,
+            n.per.group = as.integer(n.per.group),
+            group.column = "group",
+            seed = seed,
+            missing = missing
+        )
+    } else {
+        n.rows <- length(groups)
+        shell.data <- data.frame(group = factor(groups, levels = groups))
+        for (specification in specifications) {
+            if (specification$type == "continuous") {
+                shell.data[[specification$field_name]] <- as.numeric(seq_len(n.rows))
+            } else {
+                values <- rep(specification$levels, length.out = n.rows)
+                shell.data[[specification$field_name]] <- factor(
+                    values,
+                    levels = specification$levels
+                )
+            }
         }
     }
 
@@ -319,18 +347,20 @@ build_patient_characteristics_shell_table <- function(data,
         patient.table <- gtsummary::add_overall(patient.table, last = TRUE)
     }
 
-    patient.table <- gtsummary::modify_table_body(
-        patient.table,
-        function(table.body) {
-            statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
-            for (statistic.column in statistic.columns) {
-                table.body[[statistic.column]][table.body$row_type %in% c("level", "missing")] <- cell.placeholder
-                table.body[[statistic.column]][table.body$row_type == "label" &
-                    table.body$var_type %in% c("continuous", "dichotomous")] <- cell.placeholder
+    if (!isTRUE(use.simulated.data)) {
+        patient.table <- gtsummary::modify_table_body(
+            patient.table,
+            function(table.body) {
+                statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
+                for (statistic.column in statistic.columns) {
+                    table.body[[statistic.column]][table.body$row_type %in% c("level", "missing")] <- cell.placeholder
+                    table.body[[statistic.column]][table.body$row_type == "label" &
+                        table.body$var_type %in% c("continuous", "dichotomous")] <- cell.placeholder
+                }
+                table.body
             }
-            table.body
-        }
-    )
+        )
+    }
 
     patient.table <- patient.table |>
         gtsummary::modify_header(
