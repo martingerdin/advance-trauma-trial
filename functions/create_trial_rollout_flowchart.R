@@ -188,14 +188,17 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     )
 
     library(ggplot2)
+    ## Three legend rows via separate aesthetics: alpha (planned inclusion),
+    ## fill (scheduled phases), shape (training).
     trial.rollout.figure <- ggplot() +
         geom_rect(
             data = planned.inclusion,
             aes(
                 xmin = start, xmax = end,
                 ymin = y - planned.half.height, ymax = y + planned.half.height,
-                fill = phase
-            )
+                alpha = phase
+            ),
+            fill = "#d0d0d0"
         ) +
         geom_rect(
             data = phases,
@@ -230,21 +233,30 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     }
 
     trial.rollout.figure <- trial.rollout.figure +
+        scale_alpha_manual(
+            name = "Planned patient inclusion",
+            values = c("Planned patient inclusion" = 1),
+            breaks = "Planned patient inclusion",
+            labels = c("Planned patient inclusion" = "")
+        ) +
         scale_fill_manual(
+            name = "Scheduled phases",
             values = c(
-                "Planned patient inclusion" = "#d0d0d0",
                 "Standard care" = color.palette[1],
                 "Planned transition period" = color.palette[2],
                 "Intervention" = color.palette[3]
             ),
             breaks = c(
-                "Planned patient inclusion",
                 "Standard care",
                 "Planned transition period",
                 "Intervention"
             )
         ) +
-        scale_shape_manual(values = c("Actual training" = 23)) +
+        scale_shape_manual(
+            name = "Actual training dates",
+            values = c("Actual training" = 23),
+            labels = c("Actual training" = "")
+        ) +
         scale_y_continuous(
             breaks = y.breaks,
             labels = cluster.levels,
@@ -265,18 +277,29 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
         theme_bw() +
         theme(
             legend.position = "bottom",
-            legend.box = "horizontal",
+            legend.box = "vertical",
             legend.box.just = "left",
-            legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
+            legend.margin = margin(t = 2, r = 0, b = 0, l = 0),
+            legend.spacing.y = unit(0.15, "cm"),
             legend.spacing.x = unit(0.4, "cm"),
             axis.text.x = element_text(angle = 45, hjust = 1)
         ) +
         guides(
-            fill = guide_legend(order = 1, nrow = 1, title.position = "top"),
-            shape = guide_legend(
+            alpha = guide_legend(
+                order = 1,
+                nrow = 1,
+                title.position = "left",
+                override.aes = list(fill = "#d0d0d0", colour = NA, alpha = 1)
+            ),
+            fill = guide_legend(
                 order = 2,
                 nrow = 1,
-                title.position = "top",
+                title.position = "left"
+            ),
+            shape = guide_legend(
+                order = 3,
+                nrow = 1,
+                title.position = "left",
                 override.aes = list(
                     size = 2.4,
                     colour = "black",
@@ -287,9 +310,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
         ) +
         labs(
             x = "Calendar date",
-            y = "Cluster",
-            fill = "Legend",
-            shape = ""
+            y = "Cluster"
         )
 
     if (save) {
@@ -298,7 +319,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             file.name,
             trial.rollout.figure,
             width = 15,
-            height = 14,
+            height = 16,
             units = "cm"
         )
     }
