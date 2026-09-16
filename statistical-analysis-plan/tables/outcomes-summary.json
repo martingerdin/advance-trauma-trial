@@ -73,7 +73,7 @@
     "outcome": "Length of intensive care unit stay",
     "design_component": "Main stepped-wedge",
     "data_type": "Count (days)",
-    "analysis_set": "ICU admissions, primary analysis set",
+    "analysis_set": "ICU admissions",
     "main_analysis_model": "Mixed-effects negative binomial (log)",
     "effect_measure": "Rate ratio",
     "potential_intercurrent_events": "Death; transfer",
