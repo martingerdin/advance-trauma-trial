@@ -18,7 +18,10 @@ noacsr::source_all_functions()
 attach(global_variables())
 # Invalidate cached table chunks when the outcomes summary JSON changes.
 knitr::opts_chunk$set(
-  cache.extra = file.info("tables/outcomes-summary.json")$mtime
+  cache.extra = list(
+    file.info("tables/outcomes-summary.json")$mtime,
+    file.info("tables/cluster-rollout.csv")$mtime
+  )
 )
 ```
 
@@ -149,6 +152,9 @@ knitr::include_graphics(
   )
 )
 ```
+
+<!-- github-issue-75: shell of actual roll-out (standard care, transition, intervention, training dots) driven by tables/cluster-rollout.csv. -->
+We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the observed standard-care, transition, and intervention periods, with ATLS^®^ training dates overlaid (@fig-trial-rollout).
 
 ## Intervention and control treatment {#sec-intervention-and-control-treatment}
 {{< include ../shared-assets/intervention-and-control-treatment.qmd >}}
@@ -783,6 +789,27 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 # Shell figures and tables {#sec-shell-figures-and-tables}
 <!-- github-issue-72: the designation applies to the shells in this section, which are the tables and figures planned for the trial report. -->
 The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report.
+
+## Trial roll-out {#sec-trial-rollout}
+<!-- github-issue-75: actual roll-out shell; dates from tables/cluster-rollout.csv. -->
+
+```{r}
+#| echo: false
+#| label: fig-trial-rollout
+#| fig.cap: "Shell figure of the actual trial roll-out. Placeholder dates will be replaced with the observed standard-care, transition, and intervention periods for each cluster, with ATLS® training dates shown as points. Intended for the supplementary material."
+#| fig.align: "center"
+#| fig-pos: H
+#| out-width: "100%"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics(
+  create_trial_rollout_flowchart(
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
 
 ## CONSORT diagrams {#sec-consort-diagrams}
 <!-- github-issue-33: keep the three CONSORT shells consecutive; pin with fig-pos H so floats do not interleave tables. -->
