@@ -177,14 +177,14 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             axis.text.x = element_text(angle = 45, hjust = 1)
         ) +
         guides(
-            fill = guide_legend(order = 1, nrow = 1, title.position = "left"),
-            shape = guide_legend(order = 2, nrow = 1, title.position = "left")
+            fill = guide_legend(order = 1, nrow = 1, title.position = "top"),
+            shape = guide_legend(order = 2, nrow = 1, title.position = "top")
         ) +
         labs(
             x = "Calendar date",
             y = "Cluster",
             fill = "Legend",
-            shape = NULL
+            shape = ""
         )
 
     if (save) {
@@ -193,7 +193,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             file.name,
             trial.rollout.figure,
             width = 15,
-            height = 9,
+            height = 12,
             units = "cm"
         )
     }
