@@ -187,7 +187,10 @@ build_correlation_parameters_shell_specs <- function(data, all = FALSE) {
 
     for (i in seq_len(nrow(data))) {
         section <- format_outcomes_analysis_results_label(data$outcome[[i]])
-        is.binary <- grepl("Dichotomous", data$data_type[[i]], ignore.case = TRUE)
+        has.latent.scale <- grepl(
+            "Dichotomous|Ordinal", data$data_type[[i]],
+            ignore.case = TRUE
+        )
 
         add.spec(section, "Cluster variance")
         add.spec(section, "Cluster-by-period variance")
@@ -195,7 +198,7 @@ build_correlation_parameters_shell_specs <- function(data, all = FALSE) {
         add.spec(section, "Within-period correlation")
         add.spec(section, "Between-period correlation")
 
-        if (is.binary) {
+        if (has.latent.scale) {
             add.spec(section, "Latent-scale ICC")
             add.spec(section, "Latent-scale within-period correlation")
             add.spec(section, "Latent-scale between-period correlation")

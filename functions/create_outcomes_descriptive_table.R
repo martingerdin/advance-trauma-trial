@@ -212,8 +212,8 @@ create_outcomes_descriptive_table <- function(data = NULL,
         ## Key summaries first within each follow-up section
         requests <- c(requests, list(
             list(
-                field = paste0("eq5d_index_", timepoint$slug),
-                label = "EQ-5D-5L index score",
+                field = paste0("eq5d_vas_", timepoint$slug),
+                label = "EQ-5D-5L VAS",
                 source = "external",
                 summary = "continuous",
                 section = timepoint$section
@@ -238,13 +238,6 @@ create_outcomes_descriptive_table <- function(data = NULL,
                     section = timepoint$section
                 )))
             }
-            requests <- c(requests, list(list(
-                field = paste0("eq5d_vas_", timepoint$slug),
-                label = "EQ-5D-5L VAS",
-                source = "external",
-                summary = "continuous",
-                section = timepoint$section
-            )))
             for (domain in whodas.domains) {
                 requests <- c(requests, list(list(
                     field = paste0("whodas_", domain$slug, "_", timepoint$slug),

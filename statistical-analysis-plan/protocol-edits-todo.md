@@ -32,9 +32,36 @@ Minimal protocol changes needed to stay consistent with the revised Statistical 
 
 ---
 
+## Outright errors in the shared includes (found during the SAP coherence review)
+
+These are misspellings, grammar faults and one American spelling in files that render into both documents, so we cannot fix them during the SAP revision. They are not style preferences: each one is wrong as written. Strings are exact.
+
+| # | File (`../shared-assets/`) | Current | Corrected |
+|---|---|---|---|
+| [ ] P5 | `intervention-and-control-treatment.qmd`:1 | `the training slot alloted to them` | `the training slot allotted to them` |
+| [ ] P6 | `intervention-and-control-treatment.qmd`:3 | `We will train the number units of physicians needed` | `We will train the number of units of physicians needed` |
+| [ ] P7 | `intervention-and-control-treatment.qmd`:3 | `which on average should be mean that we can train` | `which should mean that we can train` |
+| [ ] P8 | `intervention-and-control-treatment.qmd`:5 | `The course includes intial treatment and resuscitation` | `The course includes initial treatment and resuscitation` |
+| [ ] P9 | `intervention-and-control-treatment.qmd`:5 | `Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation.` | `Learning is based on practical scenario-driven skill stations and lectures, and the course includes a final performance proficiency evaluation.` |
+| [ ] P10 | `eligibility-criteria-patient-participant.qmd`:3 and :13 | `**Patients participants**` (twice) | `**Patient participants**` |
+| [ ] P11 | `eligibility-criteria-cluster.qmd`:11 | `- admits or refers/transfers for admission at least 12 patients` | `- admit or refer/transfer for admission at least 12 patients` |
+| [ ] P12 | `eligibility-criteria-cluster.qmd`:12 | `- no more than 25% of physicians providing initial trauma care trained in…` | `- have no more than 25% of physicians providing initial trauma care trained in…` |
+| [ ] P13 | `eligibility-criteria-cluster.qmd`:20 | `other major interventions[^note:major-interventions] that affects trauma care` | `…that affect trauma care` |
+| [ ] P14 | `eligibility-criteria-cluster.qmd`:24 | `not limited to implementing of a trauma team approach` | `not limited to implementing a trauma team approach` |
+| [ ] P15 | `synopsis.qmd`:34 | `lack a legally authorized representative` | `lack a legally authorised representative` |
+| [ ] P16 | `sample-size-calculations-main.qmd`:1 | `We assume that each cluster will contribute…, but allowed for` | `We assumed that each cluster would contribute…, and allowed for` |
+
+Notes on the two judgement calls. **P9** is two faults in one string: `Leaning` for `Learning`, and a coordination fault, since learning does not "include" an evaluation — the course does. If the team wants the minimal fix, correct the spelling only and keep the coordination fault on this list. **P12** is here because the bullet has no verb and so does not complete its stem; the parallel criterion on line 8 of the same file does carry one (`have at most 25% of physicians …`).
+
+The `EQ5D5L` spelling in `outcomes.qmd`:19 is the same defect and is already tracked as P3 above.
+
+A longer list of **style** points in the same files — passive voice, nominalisations, `control` for `standard care`, `study sites` for `clusters`, hyphenation and dash characters — came out of the same review. They are reported in the pull request rather than recorded here, because none of them is an error and none is worth an amendment on its own.
+
+---
+
 ## Parking lot (only if a later SAP decision forces it)
 
-- [ ] **P4 (from I1) — optional sync.** Protocol still includes `../shared-assets/sample-size-calculations.qmd`, which says “simple random sampling on the shift level”; the SAP nested include correctly says stratified random sampling by shift. *Minimal edit when amending the protocol: align that phrase (or switch the protocol include to the nested/main split used by the SAP).*
+- [ ] **P4 (from I1) — upgraded from optional.** Protocol still includes `../shared-assets/sample-size-calculations.qmd`, which says “simple random sampling on the shift level”; the SAP nested include correctly says stratified random sampling by shift. That file is superseded: it duplicates `sample-size-calculations-main.qmd` word for word and survives only because `protocol/protocol.qmd`:806 still includes it. *Minimal edit when amending the protocol: replace that include with the two split includes (`sample-size-calculations-main.qmd` and `sample-size-calculations-nested.qmd`) and delete the superseded file.* Doing so also removes the `powere` typo, a second `EQ5D5L`, the outdated sampling phrase, and 18 lines of duplication in one move. Do **not** edit the superseded file in place: that would put a third variant into circulation.
 
 _Add further minimal protocol edits here only when an approved SAP change creates a new material conflict that cannot be resolved by adjusting the SAP._
 
