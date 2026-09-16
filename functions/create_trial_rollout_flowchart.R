@@ -1,21 +1,27 @@
 #' Create a shell flowchart of the actual trial roll-out
 #'
-#' Reads per-cluster calendar dates from `tables/cluster-rollout.csv` (or a
-#' supplied data frame) and draws a stepped-wedge-style figure with the same
-#' phase colours as the trial-design flowchart (standard care, transition,
-#' intervention). ATLS® training dates are overlaid as points. The CSV is the
-#' operational source of truth: fill in real dates (and optional site names) as
-#' clusters progress; placeholder dates mirror the intended design schedule
-#' from a February 2025 origin.
+#' Reads per-cluster phase dates from `tables/cluster-rollout.csv` and training
+#' courses from `tables/cluster-training.csv` (one row per course, so a cluster
+#' may appear more than once). Draws a stepped-wedge-style figure with the same
+#' phase colours as the trial-design flowchart. Each training course is marked
+#' with a diamond sitting on top of that cluster's bar (at the course midpoint).
+#' Rows are spaced so markers do not spill into neighbouring bars. Placeholder
+#' dates mirror the intended design schedule from a February 2025 origin.
 #'
-#' Expected columns: `cluster`, `batch`, `sequence`, `site_id` (e.g. `B1S1`),
+#' Roll-out columns: `cluster`, `batch`, `sequence`, `site_id` (e.g. `B1S1`),
 #' `site_name` (optional), `standard_care_start`, `standard_care_end`,
 #' `transition_start`, `transition_end`, `intervention_start`,
-#' `intervention_end`, `training_start`, `training_end`.
+#' `intervention_end`.
+#'
+#' Training columns: `site_id`, `cluster`, `training_start`, `training_end`.
 #' Date columns are ISO `YYYY-MM-DD`.
 #'
 #' @param path Character. Path to the roll-out CSV when `data` is NULL.
+#' @param training.path Character. Path to the training CSV when `training` is
+#'     NULL.
 #' @param data A data frame or NULL. If NULL, read `path`.
+#' @param training A data frame or NULL. If NULL, read `training.path`. May be
+#'     empty (zero rows) if no courses are recorded yet.
 #' @param return.figure Logical. If TRUE, return the ggplot object.
 #' @param save Logical. If TRUE, save the figure to disk.
 #' @param device Character. Device passed to `ggplot2::ggsave()`.
@@ -28,12 +34,16 @@
 #' create_trial_rollout_flowchart(save = FALSE)
 #' }
 create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
+                                           training.path = "tables/cluster-training.csv",
                                            data = NULL,
+                                           training = NULL,
                                            return.figure = TRUE,
                                            save = TRUE,
                                            device = "png") {
     assertthat::assert_that(is.null(data) || is.data.frame(data))
+    assertthat::assert_that(is.null(training) || is.data.frame(training))
     assertthat::assert_that(is.character(path) && length(path) == 1)
+    assertthat::assert_that(is.character(training.path) && length(training.path) == 1)
     assertthat::assert_that(is.logical(return.figure) && length(return.figure) == 1)
     assertthat::assert_that(is.logical(save) && length(save) == 1)
     assertthat::assert_that(is.character(device) && length(device) == 1)
@@ -41,25 +51,40 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     if (is.null(data)) {
         data <- utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
     }
+    if (is.null(training)) {
+        training <- utils::read.csv(
+            training.path,
+            stringsAsFactors = FALSE,
+            check.names = FALSE
+        )
+    }
 
     required.columns <- c(
         "cluster", "batch", "sequence", "site_id",
         "standard_care_start", "standard_care_end",
         "transition_start", "transition_end",
-        "intervention_start", "intervention_end",
-        "training_start", "training_end"
+        "intervention_start", "intervention_end"
     )
     missing.columns <- setdiff(required.columns, names(data))
     assertthat::assert_that(
         length(missing.columns) == 0,
-        msg = paste("Missing columns:", paste(missing.columns, collapse = ", "))
+        msg = paste("Missing roll-out columns:", paste(missing.columns, collapse = ", "))
+    )
+
+    training.columns <- c("site_id", "cluster", "training_start", "training_end")
+    missing.training <- setdiff(training.columns, names(training))
+    assertthat::assert_that(
+        length(missing.training) == 0,
+        msg = paste(
+            "Missing training columns:",
+            paste(missing.training, collapse = ", ")
+        )
     )
 
     date.columns <- c(
         "standard_care_start", "standard_care_end",
         "transition_start", "transition_end",
-        "intervention_start", "intervention_end",
-        "training_start", "training_end"
+        "intervention_start", "intervention_end"
     )
     for (column in date.columns) {
         data[[column]] <- as.Date(data[[column]])
@@ -68,7 +93,14 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     assertthat::assert_that(all(data$standard_care_start <= data$standard_care_end))
     assertthat::assert_that(all(data$transition_start <= data$transition_end))
     assertthat::assert_that(all(data$intervention_start <= data$intervention_end))
-    assertthat::assert_that(all(data$training_start <= data$training_end))
+
+    if (nrow(training) > 0) {
+        training$training_start <- as.Date(training$training_start)
+        training$training_end <- as.Date(training$training_end)
+        assertthat::assert_that(!anyNA(training[c("training_start", "training_end")]))
+        assertthat::assert_that(all(training$training_start <= training$training_end))
+        assertthat::assert_that(all(training$cluster %in% data$cluster))
+    }
 
     clusters.n <- nrow(data)
     batches.n <- length(unique(data$batch))
@@ -98,24 +130,55 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             stringsAsFactors = FALSE
         )
     )
-    ## One point per training day (inclusive), overlaid on the phase bars.
-    training.points <- do.call(rbind, lapply(seq_len(nrow(data)), function(i) {
-        days <- seq(data$training_start[i], data$training_end[i], by = "day")
-        data.frame(
-            cluster = data$cluster[i],
-            date = days,
-            marker = "Actual training days",
+
+    ## Space cluster rows farther apart so training diamonds can sit on top of
+    ## each bar without spilling into the row above.
+    row.spacing <- 1.4
+    bar.half.height <- 0.3
+    training.y.offset <- 0.38
+    phases$y <- phases$cluster * row.spacing
+
+    ## One diamond per training course, sitting on top of that cluster's bar.
+    if (nrow(training) > 0) {
+        training.marks <- data.frame(
+            cluster = training$cluster,
+            date = training$training_start +
+                as.numeric(training$training_end - training$training_start) / 2,
+            y = training$cluster * row.spacing + training.y.offset,
+            marker = "Actual training",
             stringsAsFactors = FALSE
         )
-    }))
+    } else {
+        training.marks <- data.frame(
+            cluster = integer(),
+            date = as.Date(character()),
+            y = numeric(),
+            marker = character(),
+            stringsAsFactors = FALSE
+        )
+    }
+
+    ## Match the trial-design flowchart gap (~0.1 study month). On a multi-year
+    ## calendar axis that needs several days each side so the background shows
+    ## between adjacent phase bars.
+    phase.gap.days <- 3
+
+    cluster.levels <- sort(unique(data$cluster))
+    y.breaks <- cluster.levels * row.spacing
+    batch.levels <- sort(unique(data$batch))
+    batch.breaks <- vapply(
+        batch.levels,
+        function(batch) mean(data$cluster[data$batch == batch] * row.spacing),
+        numeric(1)
+    )
 
     library(ggplot2)
     trial.rollout.figure <- ggplot() +
         geom_rect(
             data = phases,
             aes(
-                xmin = start + 0.1, xmax = end - 0.1,
-                ymin = cluster - 0.3, ymax = cluster + 0.3,
+                xmin = start + phase.gap.days, xmax = end - phase.gap.days,
+                ymin = y - bar.half.height, ymax = y + bar.half.height,
                 fill = phase
             ),
             alpha = 0.8
@@ -123,21 +186,27 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
         geom_rect(
             data = phases,
             aes(
-                xmin = start + 0.1, xmax = end - 0.1,
-                ymin = cluster - 0.3, ymax = cluster + 0.3
+                xmin = start + phase.gap.days, xmax = end - phase.gap.days,
+                ymin = y - bar.half.height, ymax = y + bar.half.height
             ),
             fill = NA,
             color = "black",
             linewidth = 0.3
-        ) +
-        geom_point(
-            data = training.points,
-            aes(x = date, y = cluster, shape = marker),
-            color = "black",
-            fill = "white",
-            size = 1.6,
-            stroke = 0.4
-        ) +
+        )
+
+    if (nrow(training.marks) > 0) {
+        trial.rollout.figure <- trial.rollout.figure +
+            geom_point(
+                data = training.marks,
+                aes(x = date, y = y, shape = marker),
+                colour = "black",
+                fill = "white",
+                size = 1.6,
+                stroke = 0.5
+            )
+    }
+
+    trial.rollout.figure <- trial.rollout.figure +
         scale_fill_manual(
             values = c(
                 "Standard care" = color.palette[1],
@@ -146,19 +215,16 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             ),
             breaks = c("Standard care", "Planned transition period", "Intervention")
         ) +
-        scale_shape_manual(values = c("Actual training days" = 21)) +
+        scale_shape_manual(values = c("Actual training" = 23)) +
         scale_y_continuous(
-            breaks = sort(unique(data$cluster)),
-            limits = c(0.5, max(data$cluster) + 0.5),
+            breaks = y.breaks,
+            labels = cluster.levels,
+            limits = c(min(y.breaks) - 0.55, max(y.breaks) + 0.65),
             guide = guide_axis(n.dodge = 2),
             sec.axis = sec_axis(
                 trans = ~.,
-                breaks = seq(
-                    clusters.per.batch / 2,
-                    by = clusters.per.batch,
-                    length.out = batches.n
-                ),
-                labels = sort(unique(data$batch)),
+                breaks = batch.breaks,
+                labels = batch.levels,
                 name = "Batch"
             )
         ) +
@@ -178,7 +244,17 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
         ) +
         guides(
             fill = guide_legend(order = 1, nrow = 1, title.position = "top"),
-            shape = guide_legend(order = 2, nrow = 1, title.position = "top")
+            shape = guide_legend(
+                order = 2,
+                nrow = 1,
+                title.position = "top",
+                override.aes = list(
+                    size = 2.4,
+                    colour = "black",
+                    fill = "white",
+                    stroke = 0.5
+                )
+            )
         ) +
         labs(
             x = "Calendar date",
@@ -193,7 +269,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             file.name,
             trial.rollout.figure,
             width = 15,
-            height = 12,
+            height = 14,
             units = "cm"
         )
     }

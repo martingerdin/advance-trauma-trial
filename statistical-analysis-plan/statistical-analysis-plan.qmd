@@ -20,7 +20,8 @@ attach(global_variables())
 knitr::opts_chunk$set(
   cache.extra = list(
     file.info("tables/outcomes-summary.json")$mtime,
-    file.info("tables/cluster-rollout.csv")$mtime
+    file.info("tables/cluster-rollout.csv")$mtime,
+    file.info("tables/cluster-training.csv")$mtime
   )
 )
 ```
@@ -153,8 +154,8 @@ knitr::include_graphics(
 )
 ```
 
-<!-- github-issue-75: shell of actual roll-out (standard care, transition, intervention, training dots) driven by tables/cluster-rollout.csv. -->
-We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the observed standard-care, transition, and intervention periods, with ATLS^®^ training dates overlaid (@fig-trial-rollout).
+<!-- github-issue-75: shell of actual roll-out; phases in tables/cluster-rollout.csv, courses in tables/cluster-training.csv. -->
+We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the observed standard-care, transition, and intervention periods, with each ATLS^®^ training course marked on top of that cluster's bar (@fig-trial-rollout).
 
 ## Intervention and control treatment {#sec-intervention-and-control-treatment}
 {{< include ../shared-assets/intervention-and-control-treatment.qmd >}}
@@ -791,12 +792,12 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report.
 
 ## Trial roll-out {#sec-trial-rollout}
-<!-- github-issue-75: actual roll-out shell; dates from tables/cluster-rollout.csv. -->
+<!-- github-issue-75: actual roll-out shell; phases from cluster-rollout.csv, courses from cluster-training.csv. -->
 
 ```{r}
 #| echo: false
 #| label: fig-trial-rollout
-#| fig.cap: "Shell figure of the actual trial roll-out. Placeholder dates will be replaced with the observed standard-care, transition, and intervention periods for each cluster, with ATLS® training dates shown as points. Intended for the supplementary material."
+#| fig.cap: "Shell figure of the actual trial roll-out. Placeholder dates will be replaced with the observed standard-care, transition, and intervention periods for each cluster. Each ATLS® training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
