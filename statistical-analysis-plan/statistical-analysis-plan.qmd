@@ -155,7 +155,7 @@ knitr::include_graphics(
 ```
 
 <!-- github-issue-75: shell of actual roll-out; phases in tables/cluster-rollout.csv, courses in tables/cluster-training.csv. -->
-We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the observed standard-care, transition, and intervention periods, with each ATLS^®^ training course marked on top of that cluster's bar (@fig-trial-rollout).
+We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the planned patient-inclusion window together with the observed standard-care, transition, and intervention periods, and marking each ATLS^®^ training course on top of that cluster's bar (@fig-trial-rollout).
 
 ## Intervention and control treatment {#sec-intervention-and-control-treatment}
 {{< include ../shared-assets/intervention-and-control-treatment.qmd >}}
@@ -797,7 +797,7 @@ The captions in this section state whether each table or figure is intended for 
 ```{r}
 #| echo: false
 #| label: fig-trial-rollout
-#| fig.cap: "Shell figure of the actual trial roll-out. Placeholder dates will be replaced with the observed standard-care, transition, and intervention periods for each cluster. Each ATLS® training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Intended for the supplementary material."
+#| fig.cap: "Shell figure of the actual trial roll-out. Light gray bars show the planned patient-inclusion window. Coloured bars show the observed standard-care, transition, and intervention periods. Each ATLS® training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Placeholder dates will be replaced with observed dates. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"

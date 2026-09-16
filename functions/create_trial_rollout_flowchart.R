@@ -2,16 +2,17 @@
 #'
 #' Reads per-cluster phase dates from `tables/cluster-rollout.csv` and training
 #' courses from `tables/cluster-training.csv` (one row per course, so a cluster
-#' may appear more than once). Draws a stepped-wedge-style figure with the same
-#' phase colours as the trial-design flowchart. Each training course is marked
+#' may appear more than once). Light gray bars show the planned patient-inclusion
+#' window; coloured bars show the observed standard-care, transition, and
+#' intervention periods (trial-design colours). Each training course is marked
 #' with a diamond sitting on top of that cluster's bar (at the course midpoint).
 #' Rows are spaced so markers do not spill into neighbouring bars. Placeholder
 #' dates mirror the intended design schedule from a February 2025 origin.
 #'
 #' Roll-out columns: `cluster`, `batch`, `sequence`, `site_id` (e.g. `B1S1`),
-#' `site_name` (optional), `standard_care_start`, `standard_care_end`,
-#' `transition_start`, `transition_end`, `intervention_start`,
-#' `intervention_end`.
+#' `site_name` (optional), `planned_inclusion_start`, `planned_inclusion_end`,
+#' `standard_care_start`, `standard_care_end`, `transition_start`,
+#' `transition_end`, `intervention_start`, `intervention_end`.
 #'
 #' Training columns: `site_id`, `cluster`, `training_start`, `training_end`.
 #' Date columns are ISO `YYYY-MM-DD`.
@@ -61,6 +62,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
 
     required.columns <- c(
         "cluster", "batch", "sequence", "site_id",
+        "planned_inclusion_start", "planned_inclusion_end",
         "standard_care_start", "standard_care_end",
         "transition_start", "transition_end",
         "intervention_start", "intervention_end"
@@ -82,6 +84,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     )
 
     date.columns <- c(
+        "planned_inclusion_start", "planned_inclusion_end",
         "standard_care_start", "standard_care_end",
         "transition_start", "transition_end",
         "intervention_start", "intervention_end"
@@ -90,6 +93,9 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
         data[[column]] <- as.Date(data[[column]])
     }
     assertthat::assert_that(!anyNA(data[date.columns]))
+    assertthat::assert_that(
+        all(data$planned_inclusion_start <= data$planned_inclusion_end)
+    )
     assertthat::assert_that(all(data$standard_care_start <= data$standard_care_end))
     assertthat::assert_that(all(data$transition_start <= data$transition_end))
     assertthat::assert_that(all(data$intervention_start <= data$intervention_end))
@@ -102,10 +108,15 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
         assertthat::assert_that(all(training$cluster %in% data$cluster))
     }
 
-    clusters.n <- nrow(data)
-    batches.n <- length(unique(data$batch))
-    clusters.per.batch <- clusters.n / batches.n
     color.palette <- unname(colors())
+
+    planned.inclusion <- data.frame(
+        cluster = data$cluster,
+        start = data$planned_inclusion_start,
+        end = data$planned_inclusion_end,
+        phase = "Planned patient inclusion",
+        stringsAsFactors = FALSE
+    )
 
     phases <- rbind(
         data.frame(
@@ -134,8 +145,12 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     ## Space cluster rows farther apart so training diamonds can sit on top of
     ## each bar without spilling into the row above.
     row.spacing <- 1.4
-    bar.half.height <- 0.3
-    training.y.offset <- 0.38
+    bar.half.height <- 0.28
+    ## Taller than actual phase bars so planned start/end remains visible when
+    ## the coloured periods fully cover the planned window horizontally.
+    planned.half.height <- 0.48
+    training.y.offset <- 0.52
+    planned.inclusion$y <- planned.inclusion$cluster * row.spacing
     phases$y <- phases$cluster * row.spacing
 
     ## One diamond per training course, sitting on top of that cluster's bar.
@@ -175,13 +190,21 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     library(ggplot2)
     trial.rollout.figure <- ggplot() +
         geom_rect(
+            data = planned.inclusion,
+            aes(
+                xmin = start, xmax = end,
+                ymin = y - planned.half.height, ymax = y + planned.half.height,
+                fill = phase
+            )
+        ) +
+        geom_rect(
             data = phases,
             aes(
                 xmin = start + phase.gap.days, xmax = end - phase.gap.days,
                 ymin = y - bar.half.height, ymax = y + bar.half.height,
                 fill = phase
             ),
-            alpha = 0.8
+            alpha = 0.9
         ) +
         geom_rect(
             data = phases,
@@ -209,11 +232,17 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
     trial.rollout.figure <- trial.rollout.figure +
         scale_fill_manual(
             values = c(
+                "Planned patient inclusion" = "#d0d0d0",
                 "Standard care" = color.palette[1],
                 "Planned transition period" = color.palette[2],
                 "Intervention" = color.palette[3]
             ),
-            breaks = c("Standard care", "Planned transition period", "Intervention")
+            breaks = c(
+                "Planned patient inclusion",
+                "Standard care",
+                "Planned transition period",
+                "Intervention"
+            )
         ) +
         scale_shape_manual(values = c("Actual training" = 23)) +
         scale_y_continuous(
