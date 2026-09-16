@@ -1,9 +1,10 @@
 #' Create a shell table of primary and secondary analysis results
 #'
-#' Builds a blank `gtsummary` results shell in the style of
+#' Builds a `gtsummary` results shell in the style of
 #' `gtsummary::tbl_regression`. One stacked regression row is created for each
-#' outcome–effect-measure combination. Estimate, confidence-interval, and
-#' p-value cells are blanked for the analysis plan. Design sections nest
+#' outcome–effect-measure combination. By default Estimate, confidence-interval,
+#' and p-value cells are filled with reproducible simulated values; set
+#' `use.simulated.data = FALSE` for a blank template. Design sections nest
 #' outcome names as headers, with effect-measure labels indented underneath
 #' via [gtsummary::modify_indent()] (avoiding repeated outcome names).
 #'
@@ -18,6 +19,8 @@
 #'     VAS and WHODAS domain scores for supplementary reporting.
 #' @param label.width Numeric. Fraction of linewidth for the outcome column in
 #'     LaTeX output. Defaults to `0.46`.
+#' @param use.simulated.data Logical. If TRUE (default), fill estimate cells
+#'     with simulated values. If FALSE, blank them.
 #' @return A `gtsummary` table (or LaTeX `kableExtra` longtable under
 #'     `knitr::is_latex_output()`).
 #'
@@ -33,11 +36,13 @@ create_outcomes_analysis_results_table <- function(
     data = NULL,
     path = "tables/outcomes-summary.json",
     all = FALSE,
-    label.width = 0.46) {
+    label.width = 0.46,
+    use.simulated.data = TRUE) {
     assertthat::assert_that(is.null(data) || is.data.frame(data))
     assertthat::assert_that(is.character(path) && length(path) == 1)
     assertthat::assert_that(is.logical(all) && length(all) == 1)
     assertthat::assert_that(is.numeric(label.width) && length(label.width) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
 
     if (is.null(data)) {
         data <- jsonlite::fromJSON(path)
@@ -57,7 +62,8 @@ create_outcomes_analysis_results_table <- function(
             row.label = specs[[i]]$label,
             measure = specs[[i]]$measure,
             variable.name = specs[[i]]$field,
-            seed = i
+            seed = i,
+            use.simulated.data = use.simulated.data
         ) |>
             gtsummary::modify_header(
                 label ~ "**Outcome**",
@@ -371,22 +377,28 @@ format_outcomes_analysis_results_label <- function(outcome) {
     label
 }
 
-#' Build one blanked `tbl_regression` row for the analysis-results shell
+#' Build one `tbl_regression` row for the analysis-results shell
 #'
 #' @param row.label Character. Label shown in the characteristic column.
 #' @param measure Character. Effect-measure code from the outcomes summary.
 #' @param variable.name Character. Unique variable name used for section headers.
-#' @param seed Integer. RNG seed for the placeholder data.
+#' @param seed Integer. RNG seed for the simulated estimates.
+#' @param use.simulated.data Logical. If TRUE, fill estimate cells with
+#'     simulated values. If FALSE, blank them.
 #' @return A one-row `gtsummary` table.
 create_outcomes_analysis_results_shell_row <- function(row.label,
                                                        measure,
                                                        variable.name = "intervention",
-                                                       seed = 1L) {
+                                                       seed = 1L,
+                                                       use.simulated.data = TRUE) {
     assertthat::assert_that(is.character(row.label) && length(row.label) == 1)
     assertthat::assert_that(is.character(measure) && length(measure) == 1)
     assertthat::assert_that(is.character(variable.name) && length(variable.name) == 1)
     assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
 
+    ## Minimal fitted model supplies the tbl_regression layout; estimates are
+    ## replaced below with either simulated values or blanks.
     set.seed(as.integer(seed))
     n <- 40L
     intervention <- stats::rbinom(n, 1L, 0.5)
@@ -409,6 +421,12 @@ create_outcomes_analysis_results_shell_row <- function(row.label,
         exponentiate <- TRUE
     }
 
+    simulated <- if (isTRUE(use.simulated.data)) {
+        simulate_shell_effect_estimate(measure = measure, seed = seed)
+    } else {
+        NULL
+    }
+
     gtsummary::tbl_regression(
         model,
         exponentiate = exponentiate,
@@ -419,18 +437,34 @@ create_outcomes_analysis_results_shell_row <- function(row.label,
                 table.body$row_type == "label"
             table.body <- table.body[keep, , drop = FALSE]
             table.body$variable <- variable.name
-            numeric.columns <- intersect(
-                c(
-                    "estimate", "std.error", "statistic",
-                    "conf.low", "conf.high", "ci", "p.value"
-                ),
-                names(table.body)
-            )
-            for (column.name in numeric.columns) {
-                if (is.numeric(table.body[[column.name]])) {
-                    table.body[[column.name]] <- NA_real_
-                } else {
-                    table.body[[column.name]] <- NA_character_
+            if (isTRUE(use.simulated.data)) {
+                table.body$estimate <- simulated$estimate
+                table.body$conf.low <- simulated$conf.low
+                table.body$conf.high <- simulated$conf.high
+                if ("p.value" %in% names(table.body)) {
+                    table.body$p.value <- simulated$p.value
+                }
+                if ("ci" %in% names(table.body)) {
+                    table.body$ci <- paste0(
+                        format(round(simulated$conf.low, 2), nsmall = 2),
+                        ", ",
+                        format(round(simulated$conf.high, 2), nsmall = 2)
+                    )
+                }
+            } else {
+                numeric.columns <- intersect(
+                    c(
+                        "estimate", "std.error", "statistic",
+                        "conf.low", "conf.high", "ci", "p.value"
+                    ),
+                    names(table.body)
+                )
+                for (column.name in numeric.columns) {
+                    if (is.numeric(table.body[[column.name]])) {
+                        table.body[[column.name]] <- NA_real_
+                    } else {
+                        table.body[[column.name]] <- NA_character_
+                    }
                 }
             }
             table.body
