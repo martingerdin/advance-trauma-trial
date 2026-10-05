@@ -66,7 +66,7 @@ We will add a changelog here once we finalise version 1.0.0.
 
 <!-- sap-revision-todo J8 (GitHub #5): generative AI disclosure in administrative information. -->
 ## Use of generative artificial intelligence {#sec-use-of-generative-artificial-intelligence}
-We used generative artificial intelligence tools, including large language models accessed via Cursor, to help draft, revise, and format this statistical analysis plan. We reviewed and approved all substantive statistical content, and we take full responsibility for the final document.
+We used generative artificial intelligence tools, including large language models accessed via Cursor, to help draft, revise, and format this statistical analysis plan. We reviewed and approved all content, and we take full responsibility for the final document.
 
 {{< pagebreak >}}
 
@@ -129,12 +129,12 @@ knitr::include_graphics(
 )
 ```
 
-Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.
+Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition period, and the three months following the transition period.
 
 ```{r}
 #| echo: false
 #| label: fig-nested-staircase-design
-#| fig.cap: "Nested staircase design. We include a random subset of patients presenting in the three months before and the three months after each cluster's transition phase."
+#| fig.cap: "Nested staircase design. We include a random subset of patients presenting in the three months before and the three months after each cluster's transition period."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -155,7 +155,7 @@ knitr::include_graphics(
 ```
 
 <!-- github-issue-75: shell of actual roll-out; phases in tables/cluster-rollout.csv, courses in tables/cluster-training.csv. -->
-We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the planned patient-inclusion window together with the observed standard-care, transition, and intervention periods, and marking each ATLS^®^ training course on top of that cluster's bar (@fig-trial-rollout).
+We will report the actual roll-out of the trial in the supplementary material, showing for each cluster the planned periods of patient inclusion together with the observed standard-care, transition, and intervention periods, and marking the actual dates of each ATLS^®^ training course (@fig-trial-rollout).
 
 ## Intervention and control treatment {#sec-intervention-and-control-treatment}
 {{< include ../shared-assets/intervention-and-control-treatment.qmd >}}
@@ -176,7 +176,7 @@ We select patients for the nested staircase outcomes separately from cluster ran
 
 ## Sample size calculations {#sec-sample-size-calculations}
 <!-- sap-revision-todo D4 (comments id=73 KH, id=74 AO, id=75 MGW): note design-phase Shiny CRT Calculator; no protocol cross-ref. -->
-We calculated the sample size during the trial design phase using the Shiny CRT Calculator [@Hemming2020Feb].
+We calculated the sample size when we designed the trial using the Shiny CRT Calculator [@Hemming2020Feb].
 
 ### Main stepped-wedge design and primary outcome {#sec-main-stepped-wedge-design-and-primary-outcome}
 {{< include ../shared-assets/sample-size-calculations-main.qmd >}}
@@ -188,7 +188,7 @@ We calculated the sample size during the trial design phase using the Shiny CRT 
 {{< include ../shared-assets/interim-analysis.qmd >}}
 
 <!-- sap-revision-todo J4: content of the interim report to the joint SDMC (list only; detailed shells deferred). -->
-The Trial Team will prepare the interim analysis report for the joint Trial Steering and Data Monitoring Committee (SDMC), and the Trial Management Group will approve it before circulation. The report will follow the standard SDMC report template in the charter, except that it reports outcome data as completeness only, and will include:
+The Trial Team will prepare the interim analysis report for the joint Trial Steering and Data Monitoring Committee (SDMC), and the Trial Management Group will approve it before circulation. The report will include:
 
 - trial progress: numbers of clusters included and dropping out; numbers of potentially eligible patients screened, patients included, patients who did not consent to out-of-hospital follow-up, and patients lost to follow-up, overall and by intervention condition;
 - adherence to the randomisation schedule and reasons for non-adherence;
@@ -196,9 +196,8 @@ The Trial Team will prepare the interim analysis report for the joint Trial Stee
 - completeness of primary and secondary outcome data, overall and by intervention condition;
 - ATLS^®^ training delivery, including numbers of physicians trained in each hospital;
 - protocol deviations and proposed protocol amendments;
-- safety events, as defined for SDMC monitoring;
-- relevant external evidence; and
-- the SDMC recommendation.
+- safety events, as defined for SDMC monitoring; and
+- relevant external evidence.
 
 We will not present or compare outcome values by intervention condition in the interim report, to avoid biasing the SDMC or Trial Management Group. The SDMC will use the interim report to advise whether the trial remains feasible and should continue as planned.
 
@@ -223,7 +222,7 @@ We will not adjust for multiple testing because we do not regard any secondary o
 
 <!-- sap-coherence-review (R2-03, R1 conflict 5): descriptive-summary conventions were stated three to five times each and had begun to drift; hoisted here because they govern tables in Trial sample, Intercurrent events, Effect measures and Safety events. -->
 ## Descriptive summaries {#sec-descriptive-summaries}
-In every descriptive table in this plan we summarise discrete variables as frequencies and percentages, and continuous and count variables as medians and interquartile ranges (Q1–Q3); where a variable fits neither, we use the summary statistic given in the patient characteristics tables. We report missing values for each variable, and we do not adjust any of these summaries for clustering. Where a table has a key and an all version, we present the key version in the results section and the all version as a supplementary table.
+In every descriptive table we summarise discrete variables as frequencies and percentages, and continuous and count variables as medians and interquartile ranges (Q1–Q3). We report missing values for each variable, and we do not adjust any of these summaries for clustering. Where a table has a key and an all version, for example for patient characteristics, we plan to present the key version in the manuscript's results section and the all version as a supplementary table.
 
 ## Adherence and protocol deviations {#sec-adherence-and-protocol-deviations}
 <!-- github-issue-21: draft adherence and protocol deviations from existing SAP/protocol text (checklist 17a/17b). -->
@@ -231,7 +230,7 @@ In every descriptive table in this plan we summarise discrete variables as frequ
 ### Adherence to the intervention {#sec-adherence-to-the-intervention}
 Adherence to the intervention is defined at the cluster and individual levels and is distinct from the secondary outcome adherence to ATLS® principles during resuscitation, see @sec-analysis-of-secondary-outcomes.
 
-At the cluster level, adherence means that ATLS® training is delivered during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS® training before its scheduled transition. We will assess cluster level adherence using the training log kept  by the trial team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis, see @sec-interim-analysis.
+At the cluster level, adherence means that ATLS^®^ training is delivered during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS^®^ training before its scheduled transition. We will assess cluster level adherence using the training log kept  by the trial team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis, see @sec-interim-analysis.
 
 <!-- github-issue-69: classify patients by arrival at the emergency department, since eligible patients include those who die before admission and those transferred out from the emergency department. -->
 At the individual level, exposure to the intervention is defined by the cluster’s scheduled transition date, and patients are classified by the period in which they arrived at the emergency department, see @sec-analysis-sets. The primary analysis includes eligible patients irrespective of whether care was delivered by a trained physician.
@@ -360,7 +359,7 @@ At the individual level, patients cannot withdraw from the intervention. For len
 - **Death.** Relevant to length-of-stay and ICU outcomes and to survivor-only outcomes. As an intercurrent event, death is death before assessment of the outcome in question; later death is not an intercurrent event for earlier outcomes. Observed length of stay is the completed duration to exit; death truncates the observed stay and is not treated as censoring. ICU admission is classified according to whether admission occurred before death. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up (while-alive restriction). Those analyses therefore target effects in survivors at that time point; mortality is analysed separately.
 - **Withdrawal of consent for non-routine data collection.** Relevant only to outcomes that require opt-in follow-up: all-cause mortality after the initial admission (when not available from records), return to work, quality of life, and disability. It is also relevant to the primary outcome when death after transfer cannot be ascertained from records and requires contact with the patient, a representative, or the receiving hospital. Withdrawal is not listed for routinely recorded in-hospital outcomes (length of stay and ICU admission) or for adherence, which are collected under opt-out consent. Participants who withdraw contribute observed non-routine outcomes up to withdrawal unless they also request removal of already collected data; subsequent missing values are handled under the missing-data plan, see @sec-missing-data.
 - **Loss to follow-up.** Relevant to the same contact-dependent outcomes as withdrawal. These events create missing outcome data and are handled under the missing-data plan.
-- **Incomplete observation of resuscitation.** Relevant only to adherence. We score the checklist by observing the initial resuscitation up to one hour after the physician first sees the patient. Observation is incomplete when we do not observe that whole window — for example when the observer could not complete the 14-item checklist because care ended, the patient left the emergency department, or observation was interrupted. We exclude unobserved and incompletely observed resuscitations from the adherence analysis (available-case analysis of the observed nested sample), and we treat death during the observation window the same way.
+- **Incomplete observation of resuscitation.** Relevant only to adherence. We score the checklist by observing the initial resuscitation up to one hour after the physician first sees the patient. Observation is incomplete when we do not observe that whole time window — for example when the observer could not complete the 14-item checklist because care ended, the patient left the emergency department, or observation was interrupted. We exclude unobserved and incompletely observed resuscitations from the adherence analysis (available-case analysis of the observed nested sample), and we treat death during the observation window the same way.
 
 Return to work is further restricted to patients for whom the outcome is relevant, as defined under @sec-analysis-sets; that restriction defines the analysis set and is not an intercurrent event.
 
@@ -798,7 +797,7 @@ The captions in this section state whether each table or figure is intended for 
 ```{r}
 #| echo: false
 #| label: fig-trial-rollout
-#| fig.cap: "Shell figure of the actual trial roll-out. Light gray bars show the planned patient-inclusion window. Coloured bars show the observed standard-care, transition, and intervention periods. Each ATLS® training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Placeholder dates will be replaced with observed dates. Intended for the supplementary material."
+#| fig.cap: "Shell figure of the actual trial roll-out. Light gray bars show the planned patient-inclusion periods. Coloured bars show the observed standard-care, transition, and intervention periods. Each ATLS® training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Placeholder dates will be replaced with observed dates. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"

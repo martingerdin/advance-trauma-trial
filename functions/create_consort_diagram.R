@@ -1110,7 +1110,7 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
     })
     before.label <- paste(
         "Before ATLS training",
-        fill_n("In staircase windows (n=)", counts$before.in.windows),
+        fill_n("In staircase periods (n=)", counts$before.in.windows),
         fill_n("Sampled (n=)", counts$before.sampled),
         fill_n("Analysed (n=)", counts$before.analysed),
         fill_n(
@@ -1139,7 +1139,7 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
     )
     after.label <- paste(
         "After ATLS training",
-        fill_n("In staircase windows (n=)", counts$after.in.windows),
+        fill_n("In staircase periods (n=)", counts$after.in.windows),
         fill_n("Sampled (n=)", counts$after.sampled),
         fill_n("Analysed (n=)", counts$after.analysed),
         fill_n(
@@ -1215,10 +1215,13 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
     y <- stem.bottom - 3.0
     canvas <- consort_add_segment(canvas, 50, 50, stem.bottom, y, arrow = TRUE)
 
-    sampled.h <- consort_box_height(sampled.label, 50, canvas = canvas)
-    canvas <- consort_add_box(canvas, 18, 82, y - sampled.h, y, box.fill)
+    ## Same wrap width for height and text so the label does not overflow.
+    sampled.wrap <- 35
+    sampled.h <- consort_box_height(sampled.label, sampled.wrap, canvas = canvas) +
+        0.5 * canvas$line.h
+    canvas <- consort_add_box(canvas, 15, 85, y - sampled.h, y, box.fill)
     canvas <- consort_add_text(
-        canvas, 50, y - sampled.h / 2, consort_wrap(sampled.label, 45)
+        canvas, 50, y - sampled.h / 2, consort_wrap(sampled.label, sampled.wrap)
     )
     sampled.bottom <- y - sampled.h
     y <- sampled.bottom - 6.0
