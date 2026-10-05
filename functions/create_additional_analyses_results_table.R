@@ -1,13 +1,15 @@
 #' Create a shell table of sensitivity, adjusted, and subgroup analysis results
 #'
-#' Blank `gtsummary::tbl_regression`-style shell for primary-outcome sensitivity
+#' `gtsummary::tbl_regression`-style shell for primary-outcome sensitivity
 #' analyses, the fully adjusted analysis, and subgroup analyses. Layout matches
 #' the main analysis-results shells: top-level section headers, nested analysis
 #' names, effect-measure labels indented with [gtsummary::modify_indent()], and
-#' blank Estimate / 95% CI / p-value columns.
+#' Estimate / 95% CI / p-value columns filled with simulated values by default.
 #'
 #' @param label.width Numeric. Fraction of linewidth for the label column in
 #'     LaTeX output. Defaults to `0.50`.
+#' @param use.simulated.data Logical. If TRUE (default), fill estimate cells
+#'     with simulated values. If FALSE, blank them.
 #' @return A `gtsummary` table (or LaTeX `kableExtra` longtable under
 #'     `knitr::is_latex_output()`).
 #'
@@ -18,8 +20,11 @@
 #' \dontrun{
 #' create_additional_analyses_results_table()
 #' }
-create_additional_analyses_results_table <- function(label.width = 0.50) {
+create_additional_analyses_results_table <- function(
+    label.width = 0.50,
+    use.simulated.data = TRUE) {
     assertthat::assert_that(is.numeric(label.width) && length(label.width) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
 
     specs <- build_additional_analyses_results_specs()
 
@@ -28,7 +33,8 @@ create_additional_analyses_results_table <- function(label.width = 0.50) {
             row.label = specs[[i]]$label,
             measure = specs[[i]]$measure,
             variable.name = specs[[i]]$field,
-            seed = i
+            seed = i,
+            use.simulated.data = use.simulated.data
         ) |>
             gtsummary::modify_header(
                 label ~ "**Analysis**",

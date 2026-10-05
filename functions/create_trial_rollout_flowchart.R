@@ -130,7 +130,7 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             cluster = data$cluster,
             start = data$transition_start,
             end = data$transition_end,
-            phase = "Planned transition period",
+            phase = "Transition period",
             stringsAsFactors = FALSE
         ),
         data.frame(
@@ -243,12 +243,12 @@ create_trial_rollout_flowchart <- function(path = "tables/cluster-rollout.csv",
             name = "Scheduled phases",
             values = c(
                 "Standard care" = color.palette[1],
-                "Planned transition period" = color.palette[2],
+                "Transition period" = color.palette[2],
                 "Intervention" = color.palette[3]
             ),
             breaks = c(
                 "Standard care",
-                "Planned transition period",
+                "Transition period",
                 "Intervention"
             )
         ) +

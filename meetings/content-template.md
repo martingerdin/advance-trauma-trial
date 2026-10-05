@@ -4,9 +4,9 @@ Examples: `Meeting notes — Trial team — 24 August 2026` or `Meeting notes �
 
 ## Instructions (delete this section before publishing)
 
-Use this template for TMG meetings, weekly trial team meetings, and similar ADVANCE TRAUMA meetings.
+Use this template for TMG meetings, weekly trial team meetings, and similar ADVANCE TRAUMA meetings. Author in Word; conversion to website `content.md` is done separately (agent + `docx-to-content-md.py`).
 
-For a clean Word to Markdown conversion:
+For a clean Word document that converts well:
 
 1. Keep Heading 1 for the title and Heading 2 for sections only (do not use Heading 3, and do not bold plain paragraphs to fake headings).
 2. Rename or replace the placeholder sections below to match the agenda.
@@ -15,7 +15,6 @@ For a clean Word to Markdown conversion:
 5. Keep column headers and variable names **bold**; keep categorical levels in regular weight (including Missing rows, which report missingness for the variable above).
 6. Prefer numbered or bulleted lists for narrative updates.
 7. Avoid text boxes, shapes, and pasted screenshots of tables.
-8. When finished, convert with: `pandoc content.docx -t gfm -o content.md`
 
 Copy this file into the meeting folder as `content.docx`. The optional worked-example tables at the end are from a TMG meeting; delete them when they are not needed.
 

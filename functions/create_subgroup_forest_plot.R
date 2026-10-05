@@ -3,8 +3,9 @@
 #' Builds a template forest plot showing the layout for subgroup-specific
 #' intervention effects on in-hospital mortality within 30 days. Grouping
 #' variable names appear as bold headers with indented level labels underneath
-#' in a dedicated label column. Estimates and confidence intervals are
-#' placeholders to be completed at analysis.
+#' in a dedicated label column. By default estimates and confidence intervals
+#' are filled with reproducible simulated values; set `use.simulated.data =
+#' FALSE` for null-effect placeholders.
 #'
 #' @param page.width.mm Numeric. Width of the saved figure in millimetres.
 #' @param row.height.mm Numeric. Vertical space allocated to each row.
@@ -14,6 +15,9 @@
 #' @param return.figure Logical. If TRUE, return the combined patchwork object.
 #' @param save Logical. If TRUE, save the figure to disk.
 #' @param device Character. Device passed to `ggplot2::ggsave()`.
+#' @param use.simulated.data Logical. If TRUE (default), draw simulated
+#'     subgroup estimates. If FALSE, draw null-effect placeholders.
+#' @param seed Integer. RNG seed for simulated estimates.
 #' @return A patchwork object if `return.figure` is TRUE; otherwise the saved
 #'     file name.
 #'
@@ -30,7 +34,9 @@ create_subgroup_forest_plot <- function(page.width.mm = 174,
                                         label.width = 0.42,
                                         return.figure = TRUE,
                                         save = TRUE,
-                                        device = "png") {
+                                        device = "png",
+                                        use.simulated.data = TRUE,
+                                        seed = shell_simulated_data_seed()) {
     library(ggplot2)
     library(patchwork)
 
@@ -42,6 +48,8 @@ create_subgroup_forest_plot <- function(page.width.mm = 174,
     assertthat::assert_that(is.logical(return.figure) && length(return.figure) == 1)
     assertthat::assert_that(is.logical(save) && length(save) == 1)
     assertthat::assert_that(is.character(device) && length(device) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     measures <- c("Odds ratio", "Absolute risk difference")
     measure.labels <- c(
@@ -57,18 +65,42 @@ create_subgroup_forest_plot <- function(page.width.mm = 174,
     build_measure_data <- function(measure) {
         measure.rows <- layout
         measure.rows$measure <- measure
-        measure.rows$estimate <- ifelse(measure.rows$row_type == "level",
-            ifelse(measure == "Odds ratio", 1, 0),
-            NA_real_
-        )
-        measure.rows$ci_low <- ifelse(measure.rows$row_type == "level",
-            ifelse(measure == "Odds ratio", 0.85, -0.05),
-            NA_real_
-        )
-        measure.rows$ci_high <- ifelse(measure.rows$row_type == "level",
-            ifelse(measure == "Odds ratio", 1.15, 0.05),
-            NA_real_
-        )
+        level.index <- which(measure.rows$row_type == "level")
+        n.levels <- length(level.index)
+        if (isTRUE(use.simulated.data) && n.levels > 0L) {
+            set.seed(as.integer(seed) + if (measure == "Odds ratio") 0L else 100L)
+            if (measure == "Odds ratio") {
+                log.est <- stats::rnorm(n.levels, mean = -0.12, sd = 0.2)
+                se <- abs(stats::rnorm(n.levels, mean = 0.14, sd = 0.04)) + 0.05
+                estimate <- exp(log.est)
+                ci.low <- exp(log.est - 1.96 * se)
+                ci.high <- exp(log.est + 1.96 * se)
+            } else {
+                estimate <- stats::rnorm(n.levels, mean = -0.02, sd = 0.03)
+                se <- abs(stats::rnorm(n.levels, mean = 0.018, sd = 0.005)) + 0.008
+                ci.low <- estimate - 1.96 * se
+                ci.high <- estimate + 1.96 * se
+            }
+            measure.rows$estimate <- NA_real_
+            measure.rows$ci_low <- NA_real_
+            measure.rows$ci_high <- NA_real_
+            measure.rows$estimate[level.index] <- estimate
+            measure.rows$ci_low[level.index] <- ci.low
+            measure.rows$ci_high[level.index] <- ci.high
+        } else {
+            measure.rows$estimate <- ifelse(measure.rows$row_type == "level",
+                ifelse(measure == "Odds ratio", 1, 0),
+                NA_real_
+            )
+            measure.rows$ci_low <- ifelse(measure.rows$row_type == "level",
+                ifelse(measure == "Odds ratio", 0.85, -0.05),
+                NA_real_
+            )
+            measure.rows$ci_high <- ifelse(measure.rows$row_type == "level",
+                ifelse(measure == "Odds ratio", 1.15, 0.05),
+                NA_real_
+            )
+        }
         measure.rows
     }
 

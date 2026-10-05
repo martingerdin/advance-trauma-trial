@@ -265,12 +265,12 @@ We will use CONSORT diagrams to display the flow of clusters and patients throug
 <!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
 <!-- github-issue-14: add state to cluster characteristics shell. -->
 <!-- github-issue-72: state whether the shell is intended for the main text or the supplementary material. -->
-We will describe cluster characteristics including state and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. State categories depend on the final set of participating clusters. We will present these characteristics in the main text. See @tbl-cluster-characteristics for details.
+We will describe cluster characteristics including state and size using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. State categories depend on the final set of participating clusters. We will present these characteristics in the main text. See @tbl-cluster-characteristics for a shell with simulated data.
 
 ### Patient characteristics {#sec-patient-characteristics}
 <!-- sap-revision-todo E1 (comments id=166 KH, id=167 AO): all eligible patients over entire trial; baseline = characteristics not outcomes. -->
 <!-- sap-revision-todo J7: non-floating longtable so placement stays in document order. -->
-We will describe patient characteristics among all eligible patients over the entire trial period, stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics (i.e. non-outcome variables). We will present key characteristics in the main text, see @tbl-patient-characteristics, and present all characteristics in the supplementary material, see @tbl-patient-characteristics-all.
+We will describe patient characteristics among all eligible patients over the entire trial period, stratified by before and after ATLS training and overall, using frequencies and percentages for discrete variables and medians and interquartile ranges (Q1-Q3) for continuous variables. Missing values will be reported for each characteristic. We will not adjust for clustering when presenting baseline characteristics (i.e. non-outcome variables). We will present key characteristics in the main text, see @tbl-patient-characteristics, and present all characteristics in the supplementary material, see @tbl-patient-characteristics-all. Both shells use simulated data.
 
 # Outcomes {#sec-outcomes}
 ## Outcomes {#sec-outcomes-overview}
@@ -789,7 +789,8 @@ Sensitivity, fully adjusted, and subgroup analyses of the primary outcome will b
 <!-- github-issue-33: move reporting shells to end matter; keep design figures and outcomes summary inline. -->
 # Shell figures and tables {#sec-shell-figures-and-tables}
 <!-- github-issue-72: the designation applies to the shells in this section, which are the tables and figures planned for the trial report. -->
-The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report.
+<!-- github-issue-76: populate shells with simulated data and state that clearly. -->
+The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report. Values in the shells are simulated so the layout can be reviewed before data collection is complete; they are not trial results.
 
 ## Trial roll-out {#sec-trial-rollout}
 <!-- github-issue-75: actual roll-out shell; phases from cluster-rollout.csv, courses from cluster-training.csv. -->
@@ -818,7 +819,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-clusters
-#| fig.cap: "Cluster-level CONSORT diagram shell. Placeholders cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches 1-6. Intended for the main text."
+#| fig.cap: "Cluster-level CONSORT diagram shell with simulated counts. Boxes cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches 1-6. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -841,7 +842,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-patients
-#| fig.cap: "Patient-level CONSORT diagram shell. Placeholders cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall. The flowchart summarises data across all batches 1-6. Intended for the main text."
+#| fig.cap: "Patient-level CONSORT diagram shell with simulated counts. Boxes cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS training, and overall. The flowchart summarises data across all batches 1-6. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -864,7 +865,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-nested-staircase
-#| fig.cap: "Nested-staircase CONSORT diagram shell. Placeholders cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS training, and overall. Coloured strip cells mark staircase months; grey cells are outside nested data collection. The flowchart summarises data across all batches 1-6. Intended for the supplementary material."
+#| fig.cap: "Nested-staircase CONSORT diagram shell with simulated counts. Boxes cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS training, and overall. Coloured strip cells mark staircase months; grey cells are outside nested data collection. The flowchart summarises data across all batches 1-6. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -889,7 +890,7 @@ knitr::include_graphics(
 <!-- github-issue-68: shells follow the order in which they are first mentioned in the text; keep each key shell immediately followed by its supplementary counterpart. -->
 ```{r}
 #| label: tbl-cluster-characteristics
-#| tbl-cap: "Cluster characteristics. Intended for the main text."
+#| tbl-cap: "Cluster characteristics (simulated data). Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -899,7 +900,7 @@ create_cluster_characteristics_table()
 
 ```{r}
 #| label: tbl-patient-characteristics
-#| tbl-cap: "Key patient characteristics. Intended for the main text."
+#| tbl-cap: "Key patient characteristics (simulated data). Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -909,7 +910,7 @@ create_patient_characteristics_table()
 
 ```{r}
 #| label: tbl-patient-characteristics-all
-#| tbl-cap: "All patient characteristics. Intended for the supplementary material."
+#| tbl-cap: "All patient characteristics (simulated data). Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -919,7 +920,7 @@ create_patient_characteristics_table(all = TRUE)
 
 ```{r}
 #| label: tbl-intercurrent-events
-#| tbl-cap: "Intercurrent events by outcome. Intended for the supplementary material."
+#| tbl-cap: "Intercurrent events by outcome (simulated data). Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -929,7 +930,7 @@ create_intercurrent_events_table()
 
 ```{r}
 #| label: tbl-outcomes-descriptive
-#| tbl-cap: "Descriptive summaries of key outcomes. Intended for the main text."
+#| tbl-cap: "Descriptive summaries of key outcomes (simulated data). Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -939,7 +940,7 @@ create_outcomes_descriptive_table()
 
 ```{r}
 #| label: tbl-outcomes-descriptive-all
-#| tbl-cap: "Descriptive summaries of all outcomes. Intended for the supplementary material."
+#| tbl-cap: "Descriptive summaries of all outcomes (simulated data). Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -949,7 +950,7 @@ create_outcomes_descriptive_table(all = TRUE)
 
 ```{r}
 #| label: tbl-outcomes-analysis-results
-#| tbl-cap: "Shell table of key primary and secondary outcome analysis results. Intended for the main text."
+#| tbl-cap: "Shell table of key primary and secondary outcome analysis results (simulated data). Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -959,7 +960,7 @@ create_outcomes_analysis_results_table()
 
 ```{r}
 #| label: tbl-outcomes-analysis-results-all
-#| tbl-cap: "Shell table of all primary and secondary outcome analysis results. Intended for the supplementary material."
+#| tbl-cap: "Shell table of all primary and secondary outcome analysis results (simulated data). Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -969,7 +970,7 @@ create_outcomes_analysis_results_table(all = TRUE)
 
 ```{r}
 #| label: tbl-additional-analyses-results
-#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome. Intended for the supplementary material."
+#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome (simulated data). Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -979,7 +980,7 @@ create_additional_analyses_results_table()
 
 ```{r}
 #| label: tbl-correlation-parameters
-#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes. Intended for the supplementary material."
+#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes (simulated data). Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -989,7 +990,7 @@ create_correlation_parameters_shell_table(all = TRUE)
 
 ```{r}
 #| label: fig-subgroup-forest-plot
-#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days. Estimates and confidence intervals are placeholders to be completed at analysis. Intended for the main text."
+#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days (simulated data). Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| echo: false
@@ -1006,7 +1007,7 @@ knitr::include_graphics(
 
 ```{r}
 #| label: tbl-safety-events
-#| tbl-cap: "Safety events. Intended for the main text."
+#| tbl-cap: "Safety events (simulated data). Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false

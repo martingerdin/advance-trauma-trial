@@ -1,0 +1,36 @@
+---
+description: >-
+  Convert ADVANCE TRAUMA meeting Word notes (.docx) to website content.md
+  (trial-team / TMG / similar folders with website.json).
+globs: "**/website.json,**/*.docx,**/content.md"
+alwaysApply: false
+---
+
+# Meeting notes: DOCX → content.md
+
+When asked to publish or convert meeting notes for the website:
+
+1. Find the `.docx` in the meeting folder (alongside or instead of `content.md`).
+2. Run the converter from the `meetings/` directory:
+
+   ```bash
+   ./docx-to-content-md.py path/to/notes.docx \
+     --title "Meeting notes — Trial team — 18 September 2026"
+   ```
+
+   Default output: `content.md` next to the `.docx`. Pass `--title` when the Word title is messy.
+
+3. Match style to an existing example, e.g. `trial-management-group/20260824/content.md`:
+   - Title: `Meeting notes — {TMG|Trial team} — {D Month YYYY}`
+   - Numbered `##` sections; GFM **pipe** tables (no HTML `<table>`)
+   - Bold column headers and variable names; categorical levels (Transport, Missing, …) unbolded
+   - Light editorial cleanup of multi-paragraph Word cells; keep facts from the source
+
+4. Ensure `website.json` lists `{ "path": "content.md", "role": "content" }`.
+
+Do **not** use plain `pandoc -t gfm` alone: cells with paragraphs/lists become HTML or get dropped. The script uses a two-pass pandoc conversion (`markdown-raw_html` → `gfm`). Equivalent:
+
+```bash
+pandoc notes.docx -t markdown-raw_html --wrap=none --columns=9999 \
+  | pandoc -f markdown -t gfm --wrap=none --columns=9999 -o content.md
+```

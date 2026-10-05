@@ -1,11 +1,11 @@
 #' Create a shell table of within-cluster correlation parameters
 #'
-#' Blank `gtsummary::tbl_regression`-style shell for variance components and
+#' `gtsummary::tbl_regression`-style shell for variance components and
 #' time-adjusted within-cluster correlations (ICC, within- and between-period
 #' correlations), with latent-scale correlations for binary outcomes and AR(1)
 #' parameters from the autoregressive sensitivity analysis. Layout matches the
-#' analysis-results shells: outcome section headers and blank Estimate / 95% CI
-#' columns (no p-values).
+#' analysis-results shells: outcome section headers and Estimate / 95% CI
+#' columns filled with simulated values by default (no p-values).
 #'
 #' @param data A data frame or NULL. Outcomes summary with columns `outcome`
 #'     and `data_type`. If NULL, reads `path`.
@@ -16,6 +16,8 @@
 #'     outcomes summary (without expanding EQ-5D-5L/WHODAS domains).
 #' @param label.width Numeric. Fraction of linewidth for the parameter column
 #'     in LaTeX output. Defaults to `0.50`.
+#' @param use.simulated.data Logical. If TRUE (default), fill estimate cells
+#'     with simulated correlation values. If FALSE, blank them.
 #' @return A `gtsummary` table (or LaTeX `kableExtra` longtable under
 #'     `knitr::is_latex_output()`).
 #'
@@ -31,11 +33,13 @@ create_correlation_parameters_shell_table <- function(
     data = NULL,
     path = "tables/outcomes-summary.json",
     all = FALSE,
-    label.width = 0.50) {
+    label.width = 0.50,
+    use.simulated.data = TRUE) {
     assertthat::assert_that(is.null(data) || is.data.frame(data))
     assertthat::assert_that(is.character(path) && length(path) == 1)
     assertthat::assert_that(is.logical(all) && length(all) == 1)
     assertthat::assert_that(is.numeric(label.width) && length(label.width) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
 
     if (is.null(data)) {
         data <- jsonlite::fromJSON(path)
@@ -51,12 +55,33 @@ create_correlation_parameters_shell_table <- function(
     specs <- build_correlation_parameters_shell_specs(data = data, all = all)
 
     tables <- lapply(seq_along(specs), function(i) {
-        create_outcomes_analysis_results_shell_row(
+        row <- create_outcomes_analysis_results_shell_row(
             row.label = specs[[i]]$label,
             measure = "mean difference",
             variable.name = specs[[i]]$field,
-            seed = i
-        ) |>
+            seed = i,
+            use.simulated.data = FALSE
+        )
+        if (isTRUE(use.simulated.data)) {
+            simulated <- simulate_shell_correlation_estimate(
+                label = specs[[i]]$label,
+                seed = i
+            )
+            row <- gtsummary::modify_table_body(row, function(table.body) {
+                table.body$estimate <- simulated$estimate
+                table.body$conf.low <- simulated$conf.low
+                table.body$conf.high <- simulated$conf.high
+                if ("ci" %in% names(table.body)) {
+                    table.body$ci <- paste0(
+                        format(round(simulated$conf.low, 3), nsmall = 3),
+                        ", ",
+                        format(round(simulated$conf.high, 3), nsmall = 3)
+                    )
+                }
+                table.body
+            })
+        }
+        row |>
             gtsummary::modify_header(
                 label ~ "**Parameter**",
                 estimate ~ "**Estimate**",

@@ -5,9 +5,9 @@
 #' stepped-wedge trial. The set of characteristics, their variable type and their
 #' response options are pulled from the REDCap cluster-screening data dictionary
 #' (metadata), so the table stays in sync with the data actually collected. The
-#' table is laid out with `gtsummary`; the body cells are then replaced with
-#' placeholders for the summary statistics, because this is an analysis plan
-#' rather than a report and no data are summarised yet.
+#' table is laid out with `gtsummary`. By default the body is filled with
+#' reproducible simulated summary statistics; set `use.simulated.data = FALSE`
+#' for blank placeholders.
 #'
 #' @param data A data frame or NULL. The REDCap cluster-screening data
 #'     dictionary (metadata), with the columns `field_name`, `field_type` and
@@ -25,6 +25,11 @@
 #'     display. Defaults to the trial-wide value from `global_variables()`.
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
 #'     Defaults to TRUE.
+#' @param use.simulated.data Logical. If TRUE (default), populate statistic
+#'     cells from simulated data. If FALSE, blank the body cells.
+#' @param n.per.sequence Integer. Simulated clusters per sequence when
+#'     `use.simulated.data` is TRUE. Defaults to `6`.
+#' @param seed Integer. RNG seed for simulated data.
 #' @return A `gtsummary` table object (class `tbl_summary`), or a `knitr_asis`
 #'     longtable under `knitr::is_latex_output()`.
 #'
@@ -60,13 +65,19 @@ create_cluster_characteristics_table <- function(data = NULL,
                                                  url.name = "TGI_REDCAP_URL",
                                                  api.key.name = "TGI_REDCAP_CLUSTER_SCREENING_API_KEY",
                                                  sequences = global_variables()$sequences,
-                                                 include.overall = TRUE) {
+                                                 include.overall = TRUE,
+                                                 use.simulated.data = TRUE,
+                                                 n.per.sequence = 6L,
+                                                 seed = shell_simulated_data_seed()) {
     ## Check arguments
     assertthat::assert_that(is.null(data) || is.data.frame(data))
     assertthat::assert_that(is.character(url.name) && length(url.name) == 1)
     assertthat::assert_that(is.character(api.key.name) && length(api.key.name) == 1)
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.logical(include.overall) && length(include.overall) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.numeric(n.per.sequence) && length(n.per.sequence) == 1 && n.per.sequence >= 1)
+    assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     ## Fetch the cluster-screening data dictionary from REDCap unless one was
     ## supplied directly.
@@ -115,7 +126,7 @@ create_cluster_characteristics_table <- function(data = NULL,
         )
     )
 
-    ## Placeholder summary statistics for the shell table
+    ## Placeholder summary statistics for blank shells
     categorical.placeholder <- ""
     continuous.placeholder <- ""
 
@@ -139,19 +150,28 @@ create_cluster_characteristics_table <- function(data = NULL,
         specification
     })
 
-    ## Build a small placeholder data set so that gtsummary lays out every
-    ## response option for every sequence. The values themselves are immaterial:
-    ## the body cells are overwritten with placeholders below, and defining the
-    ## categorical variables as factors guarantees that all levels are shown.
+    ## Build shell data: simulated cluster rows by default, or a minimal layout
+    ## scaffold when blank placeholders are requested.
     sequence.levels <- paste("Sequence", seq_len(sequences))
-    n.rows <- length(sequence.levels)
-    shell.data <- data.frame(sequence = factor(sequence.levels, levels = sequence.levels))
-    for (specification in specifications) {
-        if (specification$type == "categorical") {
-            values <- rep(specification$levels, length.out = n.rows)
-            shell.data[[specification$field_name]] <- factor(values, levels = specification$levels)
-        } else {
-            shell.data[[specification$field_name]] <- as.numeric(seq_len(n.rows))
+    if (isTRUE(use.simulated.data)) {
+        shell.data <- build_simulated_shell_data(
+            specifications = specifications,
+            groups = sequence.levels,
+            n.per.group = as.integer(n.per.sequence),
+            group.column = "sequence",
+            seed = seed,
+            missing = "no"
+        )
+    } else {
+        n.rows <- length(sequence.levels)
+        shell.data <- data.frame(sequence = factor(sequence.levels, levels = sequence.levels))
+        for (specification in specifications) {
+            if (specification$type == "categorical") {
+                values <- rep(specification$levels, length.out = n.rows)
+                shell.data[[specification$field_name]] <- factor(values, levels = specification$levels)
+            } else {
+                shell.data[[specification$field_name]] <- as.numeric(seq_len(n.rows))
+            }
         }
     }
 
@@ -182,24 +202,24 @@ create_cluster_characteristics_table <- function(data = NULL,
         cluster.table <- gtsummary::add_overall(cluster.table, last = TRUE)
     }
 
-    ## Replace the computed body cells with placeholders so the table reads as a
-    ## shell: every statistic cell shows the format that will be reported rather
-    ## than a value derived from the placeholder data.
-    cluster.table <- gtsummary::modify_table_body(
-        cluster.table,
-        function(table.body) {
-            statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
-            for (statistic.column in statistic.columns) {
-                table.body[[statistic.column]][table.body$row_type == "level"] <- categorical.placeholder
-                table.body[[statistic.column]][table.body$row_type == "label" & table.body$var_type == "continuous"] <- continuous.placeholder
+    if (!isTRUE(use.simulated.data)) {
+        ## Replace the computed body cells with placeholders so the table reads as a
+        ## blank shell: every statistic cell shows the format that will be reported.
+        cluster.table <- gtsummary::modify_table_body(
+            cluster.table,
+            function(table.body) {
+                statistic.columns <- grep("^stat_", names(table.body), value = TRUE)
+                for (statistic.column in statistic.columns) {
+                    table.body[[statistic.column]][table.body$row_type == "level"] <- categorical.placeholder
+                    table.body[[statistic.column]][table.body$row_type == "label" & table.body$var_type == "continuous"] <- continuous.placeholder
+                }
+                table.body
             }
-            table.body
-        }
-    )
+        )
+    }
 
-    ## Tidy the column headers (plain sequence labels, no placeholder sample
-    ## sizes), group the sequence columns under a spanning header, and document
-    ## the shell with a caption.
+    ## Tidy the column headers, group the sequence columns under a spanning
+    ## header, and document the statistic labels.
     cluster.table <- cluster.table |>
         gtsummary::modify_header(gtsummary::all_stat_cols() ~ "**{level}**") |>
         gtsummary::modify_spanning_header(
