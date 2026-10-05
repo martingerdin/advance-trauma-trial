@@ -124,6 +124,20 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \usepackage{scrlayer-scrpage}
 \usepackage{lastpage}
 \usepackage{fontspec}
@@ -678,9 +692,10 @@ before and the three months after each cluster's transition phase.}
 \end{figure}%
 
 We will report the actual roll-out of the trial in the supplementary
-material, showing for each cluster the observed start and end of patient
-inclusion, the ATLS\textsuperscript{®} training dates, and the planned
-transition period (Figure~\ref{fig-trial-rollout}).
+material, showing for each cluster the planned patient-inclusion window
+together with the observed standard-care, transition, and intervention
+periods, and marking each ATLS\textsuperscript{®} training course on top
+of that cluster's bar (Figure~\ref{fig-trial-rollout}).
 
 \subsection{Intervention and control
 treatment}\label{sec-intervention-and-control-treatment}
@@ -1146,7 +1161,7 @@ frequencies and percentages for discrete variables and medians and
 interquartile ranges (Q1-Q3) for continuous variables. State categories
 depend on the final set of participating clusters. We will present these
 characteristics in the main text. See
-Table~\ref{tbl-cluster-characteristics} for details.
+Table~\ref{tbl-cluster-characteristics} for a shell with simulated data.
 
 \subsubsection{Patient
 characteristics}\label{sec-patient-characteristics}
@@ -1160,7 +1175,8 @@ will not adjust for clustering when presenting baseline characteristics
 (i.e.~non-outcome variables). We will present key characteristics in the
 main text, see Table~\ref{tbl-patient-characteristics}, and present all
 characteristics in the supplementary material, see
-Table~\ref{tbl-patient-characteristics-all}.
+Table~\ref{tbl-patient-characteristics-all}. Both shells use simulated
+data.
 
 \section{Outcomes}\label{sec-outcomes}
 
@@ -2319,7 +2335,8 @@ risk difference. See Figure~\ref{fig-subgroup-forest-plot}.
 
 The captions in this section state whether each table or figure is
 intended for the main text or the supplementary material of the trial
-report.
+report. Values in the shells are simulated so the layout can be reviewed
+before data collection is complete; they are not trial results.
 
 \subsection{Trial roll-out}\label{sec-trial-rollout}
 
@@ -2332,11 +2349,12 @@ report.
 }
 
 \caption{\label{fig-trial-rollout}Shell figure of the actual trial
-roll-out. Placeholder dates will be replaced with the observed start and
-end of patient inclusion, ATLS® training dates, and the planned
-transition period for each cluster. Short training intervals are drawn
-with a minimum width so they remain visible. Intended for the
-supplementary material.}
+roll-out. Light gray bars show the planned patient-inclusion window.
+Coloured bars show the observed standard-care, transition, and
+intervention periods. Each ATLS® training course is marked with a
+diamond on top of that cluster's bar; a cluster may have more than one
+course. Placeholder dates will be replaced with observed dates. Intended
+for the supplementary material.}
 
 \end{figure}%
 
@@ -2350,11 +2368,11 @@ supplementary material.}
 
 }
 
-\caption{\label{fig-consort-clusters}Cluster-level CONSORT diagram
-shell. Placeholders cover clusters assessed and randomised, losses and
-exclusions after randomisation with reasons, and clusters included in
-the primary analysis, by sequence and overall. The flowchart summarises
-data across all batches 1-6. Intended for the main text.}
+\caption{\label{fig-consort-clusters}Cluster-level CONSORT diagram shell
+with simulated counts. Boxes cover clusters assessed and randomised,
+losses and exclusions after randomisation with reasons, and clusters
+included in the primary analysis, by sequence and overall. The flowchart
+summarises data across all batches 1-6. Intended for the main text.}
 
 \end{figure}%
 
@@ -2366,11 +2384,12 @@ data across all batches 1-6. Intended for the main text.}
 
 }
 
-\caption{\label{fig-consort-patients}Patient-level CONSORT diagram
-shell. Placeholders cover patients entered, losses and exclusions from
-the primary analysis with reasons, and patients analysed, by sequence,
-before and after ATLS training, and overall. The flowchart summarises
-data across all batches 1-6. Intended for the main text.}
+\caption{\label{fig-consort-patients}Patient-level CONSORT diagram shell
+with simulated counts. Boxes cover patients entered, losses and
+exclusions from the primary analysis with reasons, and patients
+analysed, by sequence, before and after ATLS training, and overall. The
+flowchart summarises data across all batches 1-6. Intended for the main
+text.}
 
 \end{figure}%
 
@@ -2383,13 +2402,13 @@ data across all batches 1-6. Intended for the main text.}
 }
 
 \caption{\label{fig-consort-nested-staircase}Nested-staircase CONSORT
-diagram shell. Placeholders cover patients in staircase periods, the
-shift-stratified nested sample, losses and exclusions with reasons, and
-patients analysed for nested-staircase secondary outcomes, by sequence,
-before and after ATLS training, and overall. Coloured strip cells mark
-staircase months; grey cells are outside nested data collection. The
-flowchart summarises data across all batches 1-6. Intended for the
-supplementary material.}
+diagram shell with simulated counts. Boxes cover patients in staircase
+periods, the shift-stratified nested sample, losses and exclusions with
+reasons, and patients analysed for nested-staircase secondary outcomes,
+by sequence, before and after ATLS training, and overall. Coloured strip
+cells mark staircase months; grey cells are outside nested data
+collection. The flowchart summarises data across all batches 1-6.
+Intended for the supplementary material.}
 
 \end{figure}%
 
@@ -2402,8 +2421,8 @@ results}\label{sec-shell-tables-and-figures-for-analysis-results}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.24\linewidth}*{6}{>{\centering\arraybackslash}p{0.1\linewidth}}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}}
 
-\caption{\label{tbl-cluster-characteristics}Cluster characteristics.
-Intended for the main text.}
+\caption{\label{tbl-cluster-characteristics}Cluster characteristics
+(simulated data). Intended for the main text.}
 
 \tabularnewline
 
@@ -2426,28 +2445,28 @@ Intended for the main text.}
 \endlastfoot
 
 State, n (\%) &  &  &  &  &  & \\
-\hspace{1em}States depend on participating clusters &  &  &  &  &  & \\
-Monthly trauma patient volume, Median (Q1, Q3) &  &  &  &  &  & \\
-Hospital beds, Median (Q1, Q3) &  &  &  &  &  & \\
-Intensive care unit beds, Median (Q1, Q3) &  &  &  &  &  & \\
-Dedicated trauma beds, Median (Q1, Q3) &  &  &  &  &  & \\
+\hspace{1em}States depend on participating clusters & 6 (100\%) & 6 (100\%) & 6 (100\%) & 6 (100\%) & 6 (100\%) & 30 (100\%)\\
+Monthly trauma patient volume, Median (Q1, Q3) & 85 (56, 89) & 98 (92, 140) & 129 (96, 143) & 94 (60, 143) & 81 (54, 94) & 93 (77, 135)\\
+Hospital beds, Median (Q1, Q3) & 96 (72, 145) & 89 (75, 125) & 129 (81, 133) & 90 (51, 119) & 93 (60, 137) & 96 (72, 133)\\
+Intensive care unit beds, Median (Q1, Q3) & 59 (41, 74) & 96 (79, 107) & 57 (48, 72) & 88 (82, 131) & 72 (52, 103) & 77 (50, 101)\\
+Dedicated trauma beds, Median (Q1, Q3) & 134 (89, 162) & 87 (43, 179) & 95 (84, 141) & 106 (46, 175) & 121 (66, 136) & 111 (66, 154)\\
 Specialities available around the clock, n (\%) &  &  &  &  &  & \\
-\hspace{1em}General surgery &  &  &  &  &  & \\
-\hspace{1em}Orthopaedics &  &  &  &  &  & \\
-\hspace{1em}Neurosurgery &  &  &  &  &  & \\
-\hspace{1em}Vascular surgery &  &  &  &  &  & \\
-\hspace{1em}Interventional radiology &  &  &  &  &  & \\
-\hspace{1em}Emergency medicine &  &  &  &  &  & \\
+\hspace{1em}General surgery & 1 (17\%) & 0 (0\%) & 2 (33\%) & 3 (50\%) & 1 (17\%) & 7 (23\%)\\
+\hspace{1em}Orthopaedics & 1 (17\%) & 1 (17\%) & 2 (33\%) & 1 (17\%) & 3 (50\%) & 8 (27\%)\\
+\hspace{1em}Neurosurgery & 2 (33\%) & 3 (50\%) & 1 (17\%) & 0 (0\%) & 1 (17\%) & 7 (23\%)\\
+\hspace{1em}Vascular surgery & 1 (17\%) & 2 (33\%) & 1 (17\%) & 2 (33\%) & 1 (17\%) & 7 (23\%)\\
+\hspace{1em}Interventional radiology & 1 (17\%) & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%) & 1 (3.3\%)\\
+\hspace{1em}Emergency medicine & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%)\\
 Facilities available around the clock, n (\%) &  &  &  &  &  & \\
-\hspace{1em}X-ray &  &  &  &  &  & \\
-\hspace{1em}Ultrasound/FAST &  &  &  &  &  & \\
-\hspace{1em}CT &  &  &  &  &  & \\
-\hspace{1em}MRI &  &  &  &  &  & \\
-\hspace{1em}Blood bank &  &  &  &  &  & \\
+\hspace{1em}X-ray & 2 (33\%) & 1 (17\%) & 1 (17\%) & 2 (33\%) & 0 (0\%) & 6 (20\%)\\
+\hspace{1em}Ultrasound/FAST & 2 (33\%) & 2 (33\%) & 2 (33\%) & 2 (33\%) & 0 (0\%) & 8 (27\%)\\
+\hspace{1em}CT & 1 (17\%) & 1 (17\%) & 1 (17\%) & 1 (17\%) & 1 (17\%) & 5 (17\%)\\
+\hspace{1em}MRI & 1 (17\%) & 2 (33\%) & 0 (0\%) & 0 (0\%) & 3 (50\%) & 6 (20\%)\\
+\hspace{1em}Blood bank & 0 (0\%) & 0 (0\%) & 2 (33\%) & 1 (17\%) & 2 (33\%) & 5 (17\%)\\
 Initial resuscitation provider, n (\%) &  &  &  &  &  & \\
-\hspace{1em}Casualty medical officers &  &  &  &  &  & \\
-\hspace{1em}Emergency medicine residents &  &  &  &  &  & \\
-\hspace{1em}Surgical residents &  &  &  &  &  & \\
+\hspace{1em}Casualty medical officers & 5 (83\%) & 3 (50\%) & 4 (67\%) & 5 (83\%) & 4 (67\%) & 21 (70\%)\\
+\hspace{1em}Emergency medicine residents & 1 (17\%) & 3 (50\%) & 2 (33\%) & 1 (17\%) & 2 (33\%) & 9 (30\%)\\
+\hspace{1em}Surgical residents & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%) & 0 (0\%)\\
 \bottomrule
 
 \end{longtable}
@@ -2461,8 +2480,8 @@ Initial resuscitation provider, n (\%) &  &  &  &  &  & \\
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
-\caption{\label{tbl-patient-characteristics}Key patient characteristics.
-Intended for the main text.}
+\caption{\label{tbl-patient-characteristics}Key patient characteristics
+(simulated data). Intended for the main text.}
 
 \tabularnewline
 
@@ -2484,40 +2503,40 @@ Intended for the main text.}
 \bottomrule
 \endlastfoot
 
-Age (years), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{11} & \\
+Age (years), Median (Q1, Q3) & 38 (29, 48) & 40 (28, 49) & 38 (29, 48)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{3} 10\\
 Sex, n (\%) &  &  & \\
-\hspace{1em}Female &  &  & \\
-\hspace{1em}Male &  &  & \\
-\hspace{1em}Other &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{10} & \\
-Transferred in, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{9} & \\
+\hspace{1em}Female & 48 (42\%) & 57 (49\%) & 105 (46\%)\\
+\hspace{1em}Male & 46 (41\%) & 39 (33\%) & 85 (37\%)\\
+\hspace{1em}Other & 19 (17\%) & 21 (18\%) & 40 (17\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{1} 10\\
+Transferred in, n (\%) & 43 (37\%) & 34 (30\%) & 77 (33\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{3} 10\\
 Mechanism of injury, n (\%) &  &  & \\
-\hspace{1em}Road traffic injury &  &  & \\
-\hspace{1em}Fall &  &  & \\
-\hspace{1em}Assault &  &  & \\
-\hspace{1em}Other &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{8} & \\
-Injury Severity Score, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{7} & \\
-Glasgow Coma Scale score, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{6} & \\
-Systolic blood pressure (mmHg), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{5} & \\
-Respiratory rate (breaths/min), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{4} & \\
-Oxygen saturation (\%), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{3} & \\
-Surgery, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{2} & \\
-Transfusion, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{1} & \\
+\hspace{1em}Road traffic injury & 49 (43\%) & 45 (39\%) & 94 (41\%)\\
+\hspace{1em}Fall & 26 (23\%) & 31 (27\%) & 57 (25\%)\\
+\hspace{1em}Assault & 32 (28\%) & 27 (23\%) & 59 (26\%)\\
+\hspace{1em}Other & 7 (6.1\%) & 13 (11\%) & 20 (8.7\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{2} 10\\
+Injury Severity Score, Median (Q1, Q3) & 9 (5, 17) & 10 (6, 15) & 10 (6, 16)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{1} 10\\
+Glasgow Coma Scale score, Median (Q1, Q3) & 14.00 (12.00, 15.00) & 13.00 (12.00, 15.00) & 13.00 (12.00, 15.00)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{1} 10\\
+Systolic blood pressure (mmHg), Median (Q1, Q3) & 118 (102, 134) & 122 (108, 134) & 120 (105, 134)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{2} 10\\
+Respiratory rate (breaths/min), Median (Q1, Q3) & 20.1 (16.7, 22.2) & 20.7 (16.9, 24.0) & 20.2 (16.8, 23.0)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{1} 10\\
+Oxygen saturation (\%), Median (Q1, Q3) & 95.1 (92.3, 98.7) & 96.2 (93.7, 98.6) & 95.7 (92.7, 98.7)\\
+\hspace{1em}Missing & 5 & 5 & 10\\
+Surgery, n (\%) & 39 (34\%) & 34 (30\%) & 73 (32\%)\\
+\hspace{1em}Missing & 4 & 6 & 10\\
+Transfusion, n (\%) & 38 (33\%) & 38 (33\%) & 76 (33\%)\\
+\hspace{1em}Missing & 6 & 4 & 10\\
 Imaging, n (\%) &  &  & \\
-\hspace{1em}Ultrasound &  &  & \\
-\hspace{1em}X-ray &  &  & \\
-\hspace{1em}CT &  &  & \\
-\hspace{1em}Missing &  &  & \\
+\hspace{1em}Ultrasound & 59 (52\%) & 62 (53\%) & 121 (53\%)\\
+\hspace{1em}X-ray & 37 (33\%) & 30 (26\%) & 67 (29\%)\\
+\hspace{1em}CT & 17 (15\%) & 25 (21\%) & 42 (18\%)\\
+\hspace{1em}Missing & 7 & 3 & 10\\
 \bottomrule
 
 \end{longtable}
@@ -2532,7 +2551,8 @@ Imaging, n (\%) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-patient-characteristics-all}All patient
-characteristics. Intended for the supplementary material.}
+characteristics (simulated data). Intended for the supplementary
+material.}
 
 \tabularnewline
 
@@ -2554,183 +2574,183 @@ characteristics. Intended for the supplementary material.}
 \bottomrule
 \endlastfoot
 
-Age (years), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{32} & \\
+Age (years), Median (Q1, Q3) & 38 (29, 48) & 40 (28, 49) & 38 (29, 48)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{8} 10\\
 Sex, n (\%) &  &  & \\
-\hspace{1em}Female &  &  & \\
-\hspace{1em}Male &  &  & \\
-\hspace{1em}Other &  &  \vphantom{5} & \\
-\hspace{1em}Missing &  &  \vphantom{31} & \\
+\hspace{1em}Female & 48 (42\%) & 57 (49\%) & 105 (46\%)\\
+\hspace{1em}Male & 46 (41\%) & 39 (33\%) & 85 (37\%)\\
+\hspace{1em}Other & 19 (17\%) & 21 (18\%) & 40 (17\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{5} 10\\
 Marital status, n (\%) &  &  & \\
-\hspace{1em}Never married &  &  & \\
-\hspace{1em}Currently married &  &  & \\
-\hspace{1em}Separated &  &  & \\
-\hspace{1em}Divorced &  &  & \\
-\hspace{1em}Widowed &  &  & \\
-\hspace{1em}Cohabiting &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{30} & \\
+\hspace{1em}Never married & 25 (22\%) & 27 (23\%) & 52 (23\%)\\
+\hspace{1em}Currently married & 29 (25\%) & 37 (32\%) & 66 (29\%)\\
+\hspace{1em}Separated & 18 (16\%) & 18 (16\%) & 36 (16\%)\\
+\hspace{1em}Divorced & 23 (20\%) & 24 (21\%) & 47 (20\%)\\
+\hspace{1em}Widowed & 12 (10\%) & 7 (6.1\%) & 19 (8.3\%)\\
+\hspace{1em}Cohabiting & 8 (7.0\%) & 2 (1.7\%) & 10 (4.3\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{8} 10\\
 Education level, n (\%) &  &  & \\
-\hspace{1em}Not attended school &  &  & \\
-\hspace{1em}Primary school &  &  & \\
-\hspace{1em}Secondary school &  &  & \\
-\hspace{1em}Higher secondary school &  &  & \\
-\hspace{1em}Graduate &  &  & \\
-\hspace{1em}Post graduate and above &  &  & \\
-\hspace{1em}Other &  &  \vphantom{4} & \\
-\hspace{1em}Missing &  &  \vphantom{29} & \\
+\hspace{1em}Not attended school & 26 (23\%) & 33 (28\%) & 59 (26\%)\\
+\hspace{1em}Primary school & 31 (27\%) & 18 (16\%) & 49 (21\%)\\
+\hspace{1em}Secondary school & 14 (12\%) & 16 (14\%) & 30 (13\%)\\
+\hspace{1em}Higher secondary school & 20 (18\%) & 20 (17\%) & 40 (17\%)\\
+\hspace{1em}Graduate & 15 (13\%) & 16 (14\%) & 31 (13\%)\\
+\hspace{1em}Post graduate and above & 6 (5.3\%) & 9 (7.8\%) & 15 (6.5\%)\\
+\hspace{1em}Other & 2 (1.8\%) & 4 (3.4\%) & 6 (2.6\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{7} 10\\
 Main work status, n (\%) &  &  & \\
-\hspace{1em}Paid work, such as daily wage earner, teacher, factory worker and government employee &  &  & \\
-\hspace{1em}Self-employed, such as own your business or farming &  &  & \\
-\hspace{1em}Non-paid work, such as volunteer or charity &  &  & \\
-\hspace{1em}Student &  &  & \\
-\hspace{1em}Keeping house/homemaker &  &  & \\
-\hspace{1em}Retired &  &  & \\
-\hspace{1em}Unemployed (health reasons) &  &  & \\
-\hspace{1em}Unemployed (other reasons) &  &  & \\
-\hspace{1em}Other &  &  \vphantom{3} & \\
-\hspace{1em}No income &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{28} & \\
+\hspace{1em}Paid work, such as daily wage earner, teacher, factory worker and government employee & 28 (24\%) & 28 (24\%) & 56 (24\%)\\
+\hspace{1em}Self-employed, such as own your business or farming & 21 (18\%) & 18 (16\%) & 39 (17\%)\\
+\hspace{1em}Non-paid work, such as volunteer or charity & 9 (7.8\%) & 15 (13\%) & 24 (10\%)\\
+\hspace{1em}Student & 12 (10\%) & 9 (7.8\%) & 21 (9.1\%)\\
+\hspace{1em}Keeping house/homemaker & 13 (11\%) & 11 (9.6\%) & 24 (10\%)\\
+\hspace{1em}Retired & 10 (8.7\%) & 10 (8.7\%) & 20 (8.7\%)\\
+\hspace{1em}Unemployed (health reasons) & 12 (10\%) & 8 (7.0\%) & 20 (8.7\%)\\
+\hspace{1em}Unemployed (other reasons) & 8 (7.0\%) & 7 (6.1\%) & 15 (6.5\%)\\
+\hspace{1em}Other & 2 (1.7\%) & 7 (6.1\%) & 9 (3.9\%)\\
+\hspace{1em}No income & 0 (0\%) & 2 (1.7\%) & 2 (0.9\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{7} 10\\
 Income level (INR per month), n (\%) &  &  & \\
-\hspace{1em}Below 10,000 &  &  & \\
-\hspace{1em}10,001-20,000 &  &  & \\
-\hspace{1em}20,001-30,000 &  &  & \\
-\hspace{1em}30,001-50,000 &  &  & \\
-\hspace{1em}50,001-80,000 &  &  & \\
-\hspace{1em}80,001-1,00,000 &  &  & \\
-\hspace{1em}Above 1,00,000 &  &  & \\
-\hspace{1em}No income &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{27} & \\
+\hspace{1em}Below 10,000 & 20 (17\%) & 22 (19\%) & 42 (18\%)\\
+\hspace{1em}10,001-20,000 & 28 (24\%) & 16 (14\%) & 44 (19\%)\\
+\hspace{1em}20,001-30,000 & 19 (16\%) & 18 (16\%) & 37 (16\%)\\
+\hspace{1em}30,001-50,000 & 17 (15\%) & 17 (15\%) & 34 (15\%)\\
+\hspace{1em}50,001-80,000 & 14 (12\%) & 16 (14\%) & 30 (13\%)\\
+\hspace{1em}80,001-1,00,000 & 9 (7.7\%) & 13 (12\%) & 22 (9.6\%)\\
+\hspace{1em}Above 1,00,000 & 9 (7.7\%) & 9 (8.0\%) & 18 (7.8\%)\\
+\hspace{1em}No income & 1 (0.9\%) & 2 (1.8\%) & 3 (1.3\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{1} 10\\
 Comorbidities (Charlson Comorbidity Index), n (\%) &  &  & \\
-\hspace{1em}Myocardial infarction &  &  & \\
-\hspace{1em}Congestive heart failure &  &  & \\
-\hspace{1em}Peripheral vascular disease &  &  & \\
-\hspace{1em}Cerebrovascular disease &  &  & \\
-\hspace{1em}Dementia &  &  & \\
-\hspace{1em}Chronic pulmonary disease &  &  & \\
-\hspace{1em}Rheumatologic disease &  &  & \\
-\hspace{1em}Peptic ulcer disease &  &  & \\
-\hspace{1em}Liver disease &  &  & \\
-\hspace{1em}Diabetes &  &  & \\
-\hspace{1em}Hemiplegia or paraplegia &  &  & \\
-\hspace{1em}Renal disease &  &  & \\
-\hspace{1em}Malignancy &  &  & \\
-\hspace{1em}Leukemia &  &  & \\
-\hspace{1em}Lymphoma &  &  & \\
-\hspace{1em}AIDS &  &  & \\
-\hspace{1em}None &  &  \vphantom{3} & \\
-\hspace{1em}Other &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{26} & \\
+\hspace{1em}Myocardial infarction & 14 (12\%) & 13 (12\%) & 27 (12\%)\\
+\hspace{1em}Congestive heart failure & 7 (5.9\%) & 10 (9.0\%) & 17 (7.4\%)\\
+\hspace{1em}Peripheral vascular disease & 9 (7.6\%) & 8 (7.2\%) & 17 (7.4\%)\\
+\hspace{1em}Cerebrovascular disease & 15 (13\%) & 9 (8.1\%) & 24 (10\%)\\
+\hspace{1em}Dementia & 12 (10\%) & 8 (7.2\%) & 20 (8.7\%)\\
+\hspace{1em}Chronic pulmonary disease & 11 (9.2\%) & 7 (6.3\%) & 18 (7.8\%)\\
+\hspace{1em}Rheumatologic disease & 15 (13\%) & 7 (6.3\%) & 22 (9.6\%)\\
+\hspace{1em}Peptic ulcer disease & 6 (5.0\%) & 10 (9.0\%) & 16 (7.0\%)\\
+\hspace{1em}Liver disease & 5 (4.2\%) & 6 (5.4\%) & 11 (4.8\%)\\
+\hspace{1em}Diabetes & 5 (4.2\%) & 5 (4.5\%) & 10 (4.3\%)\\
+\hspace{1em}Hemiplegia or paraplegia & 4 (3.4\%) & 8 (7.2\%) & 12 (5.2\%)\\
+\hspace{1em}Renal disease & 1 (0.8\%) & 7 (6.3\%) & 8 (3.5\%)\\
+\hspace{1em}Malignancy & 2 (1.7\%) & 1 (0.9\%) & 3 (1.3\%)\\
+\hspace{1em}Leukemia & 1 (0.8\%) & 4 (3.6\%) & 5 (2.2\%)\\
+\hspace{1em}Lymphoma & 4 (3.4\%) & 4 (3.6\%) & 8 (3.5\%)\\
+\hspace{1em}AIDS & 4 (3.4\%) & 1 (0.9\%) & 5 (2.2\%)\\
+\hspace{1em}None & 3 (2.5\%) & 3 (2.7\%) & 6 (2.6\%)\\
+\hspace{1em}Other & 1 (0.8\%) & 0 (0\%) & 1 (0.4\%)\\
+\hspace{1em}Missing & 1 & 9 & 10\\
 Severity of liver disease, n (\%) &  &  & \\
-\hspace{1em}None &  &  \vphantom{2} & \\
-\hspace{1em}Mild &  &  & \\
-\hspace{1em}Moderate or severe &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{25} & \\
+\hspace{1em}None & 64 (56\%) & 61 (53\%) & 125 (54\%)\\
+\hspace{1em}Mild & 26 (23\%) & 36 (31\%) & 62 (27\%)\\
+\hspace{1em}Moderate or severe & 24 (21\%) & 19 (16\%) & 43 (19\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{6} 10\\
 Severity of diabetes, n (\%) &  &  & \\
-\hspace{1em}None &  &  \vphantom{1} & \\
-\hspace{1em}Controlled &  &  & \\
-\hspace{1em}Uncontrolled &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{24} & \\
+\hspace{1em}None & 58 (51\%) & 65 (56\%) & 123 (53\%)\\
+\hspace{1em}Controlled & 38 (33\%) & 31 (27\%) & 69 (30\%)\\
+\hspace{1em}Uncontrolled & 18 (16\%) & 20 (17\%) & 38 (17\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{5} 10\\
 Severity of malignancy, n (\%) &  &  & \\
-\hspace{1em}None &  &  & \\
-\hspace{1em}Localized &  &  & \\
-\hspace{1em}Metastatic tumor &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{23} & \\
+\hspace{1em}None & 51 (44\%) & 45 (39\%) & 96 (42\%)\\
+\hspace{1em}Localized & 43 (37\%) & 45 (39\%) & 88 (38\%)\\
+\hspace{1em}Metastatic tumor & 21 (18\%) & 25 (22\%) & 46 (20\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{6} 10\\
 Clinical Frailty Scale, n (\%) &  &  & \\
-\hspace{1em}1. Very Fit &  &  & \\
-\hspace{1em}2. Fit &  &  & \\
-\hspace{1em}3. Managing well &  &  & \\
-\hspace{1em}4. Living with very mild frailty &  &  & \\
-\hspace{1em}5. Living with mild frailty &  &  & \\
-\hspace{1em}6. Living with moderate frailty &  &  & \\
-\hspace{1em}7. Living with severe frailty &  &  & \\
-\hspace{1em}8. Living with very severe frailty &  &  & \\
-\hspace{1em}9. Terminally ill &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{22} & \\
+\hspace{1em}1. Very Fit & 23 (20\%) & 24 (21\%) & 47 (20\%)\\
+\hspace{1em}2. Fit & 19 (16\%) & 20 (18\%) & 39 (17\%)\\
+\hspace{1em}3. Managing well & 20 (17\%) & 18 (16\%) & 38 (17\%)\\
+\hspace{1em}4. Living with very mild frailty & 24 (21\%) & 15 (13\%) & 39 (17\%)\\
+\hspace{1em}5. Living with mild frailty & 6 (5.1\%) & 11 (9.7\%) & 17 (7.4\%)\\
+\hspace{1em}6. Living with moderate frailty & 12 (10\%) & 7 (6.2\%) & 19 (8.3\%)\\
+\hspace{1em}7. Living with severe frailty & 6 (5.1\%) & 10 (8.8\%) & 16 (7.0\%)\\
+\hspace{1em}8. Living with very severe frailty & 4 (3.4\%) & 4 (3.5\%) & 8 (3.5\%)\\
+\hspace{1em}9. Terminally ill & 3 (2.6\%) & 4 (3.5\%) & 7 (3.0\%)\\
+\hspace{1em}Missing & 3 & 7 & 10\\
 Mode of transport, n (\%) &  &  & \\
-\hspace{1em}Ambulance &  &  & \\
-\hspace{1em}Police &  &  & \\
-\hspace{1em}Private vehicle &  &  & \\
-\hspace{1em}Walking &  &  & \\
-\hspace{1em}Others &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{21} & \\
-Transferred in, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{20} & \\
+\hspace{1em}Ambulance & 37 (32\%) & 47 (41\%) & 84 (37\%)\\
+\hspace{1em}Police & 26 (23\%) & 23 (20\%) & 49 (21\%)\\
+\hspace{1em}Private vehicle & 24 (21\%) & 24 (21\%) & 48 (21\%)\\
+\hspace{1em}Walking & 21 (18\%) & 12 (10\%) & 33 (14\%)\\
+\hspace{1em}Others & 6 (5.3\%) & 10 (8.6\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{4} 10\\
+Transferred in, n (\%) & 36 (32\%) & 33 (28\%) & 69 (30\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{4} 10\\
 Mechanism of injury, n (\%) &  &  & \\
-\hspace{1em}Road traffic injury &  &  & \\
-\hspace{1em}Fall &  &  & \\
-\hspace{1em}Assault &  &  & \\
-\hspace{1em}Other &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{19} & \\
-Injury Severity Score, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{18} & \\
+\hspace{1em}Road traffic injury & 47 (41\%) & 50 (43\%) & 97 (42\%)\\
+\hspace{1em}Fall & 30 (26\%) & 29 (25\%) & 59 (26\%)\\
+\hspace{1em}Assault & 23 (20\%) & 23 (20\%) & 46 (20\%)\\
+\hspace{1em}Other & 14 (12\%) & 14 (12\%) & 28 (12\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{3} 10\\
+Injury Severity Score, Median (Q1, Q3) & 9 (6, 15) & 9 (6, 17) & 9 (6, 15)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{2} 10\\
 Injury source data, n (\%) &  &  & \\
-\hspace{1em}Medical record &  &  & \\
-\hspace{1em}X-ray report &  &  & \\
-\hspace{1em}CT-report &  &  & \\
-\hspace{1em}Surgical notes &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{17} & \\
-Glasgow Coma Scale score, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{16} & \\
-Systolic blood pressure (mmHg), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{15} & \\
-Diastolic blood pressure (mmHg), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{14} & \\
-Heart rate (beats/min), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{13} & \\
-Respiratory rate (breaths/min), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{12} & \\
-Oxygen saturation (\%), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{11} & \\
-Body temperature (°F), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{10} & \\
+\hspace{1em}Medical record & 50 (43\%) & 45 (39\%) & 95 (41\%)\\
+\hspace{1em}X-ray report & 31 (27\%) & 32 (28\%) & 63 (27\%)\\
+\hspace{1em}CT-report & 23 (20\%) & 22 (19\%) & 45 (20\%)\\
+\hspace{1em}Surgical notes & 11 (9.6\%) & 16 (14\%) & 27 (12\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{5} 10\\
+Glasgow Coma Scale score, Median (Q1, Q3) & 14.00 (12.00, 15.00) & 14.00 (12.00, 15.00) & 14.00 (12.00, 15.00)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{4} 10\\
+Systolic blood pressure (mmHg), Median (Q1, Q3) & 123 (109, 135) & 114 (102, 134) & 120 (105, 135)\\
+\hspace{1em}Missing & 2 & 8 & 10\\
+Diastolic blood pressure (mmHg), Median (Q1, Q3) & 72 (64, 81) & 74 (65, 83) & 73 (65, 82)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{3} 10\\
+Heart rate (beats/min), Median (Q1, Q3) & 91 (80, 103) & 89 (80, 100) & 90 (80, 102)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{3} 10\\
+Respiratory rate (breaths/min), Median (Q1, Q3) & 20.6 (16.3, 23.5) & 19.4 (16.3, 22.7) & 20.4 (16.3, 23.0)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{2} 10\\
+Oxygen saturation (\%), Median (Q1, Q3) & 95.5 (93.5, 98.1) & 96.4 (93.7, 98.6) & 95.9 (93.6, 98.5)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{2} 10\\
+Body temperature (°F), Median (Q1, Q3) & 98.45 (97.71, 99.16) & 98.40 (97.63, 99.33) & 98.43 (97.70, 99.28)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{4} 10\\
 Emergency department disposition, n (\%) &  &  & \\
-\hspace{1em}Admitted &  &  & \\
-\hspace{1em}Referred or transferred for admission &  &  & \\
-\hspace{1em}Dead &  &  \vphantom{1} & \\
-\hspace{1em}Others &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{9} & \\
+\hspace{1em}Admitted & 40 (35\%) & 41 (36\%) & 81 (35\%)\\
+\hspace{1em}Referred or transferred for admission & 38 (33\%) & 45 (39\%) & 83 (36\%)\\
+\hspace{1em}Dead & 24 (21\%) & 20 (17\%) & 44 (19\%)\\
+\hspace{1em}Others & 13 (11\%) & 9 (7.8\%) & 22 (9.6\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{1} 10\\
 Type of admitting ward, n (\%) &  &  & \\
-\hspace{1em}General surgery &  &  & \\
-\hspace{1em}Orthopaedics &  &  & \\
-\hspace{1em}Neurosurgery &  &  & \\
-\hspace{1em}Intensive care unit &  &  & \\
-\hspace{1em}High dependency unit &  &  & \\
-\hspace{1em}Medicine &  &  & \\
-\hspace{1em}Trauma ward &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{8} & \\
+\hspace{1em}General surgery & 26 (23\%) & 38 (32\%) & 64 (28\%)\\
+\hspace{1em}Orthopaedics & 22 (19\%) & 22 (19\%) & 44 (19\%)\\
+\hspace{1em}Neurosurgery & 22 (19\%) & 18 (15\%) & 40 (17\%)\\
+\hspace{1em}Intensive care unit & 12 (11\%) & 16 (14\%) & 28 (12\%)\\
+\hspace{1em}High dependency unit & 16 (14\%) & 10 (8.5\%) & 26 (11\%)\\
+\hspace{1em}Medicine & 10 (8.8\%) & 7 (6.0\%) & 17 (7.4\%)\\
+\hspace{1em}Trauma ward & 5 (4.4\%) & 6 (5.1\%) & 11 (4.8\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{1} 10\\
 Hospital disposition, n (\%) &  &  & \\
-\hspace{1em}Alive &  &  & \\
-\hspace{1em}Dead &  &  & \\
-\hspace{1em}Transferred for admission &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{7} & \\
-Transferred to another hospital, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{6} & \\
-Surgery, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{5} & \\
+\hspace{1em}Alive & 51 (44\%) & 59 (51\%) & 110 (48\%)\\
+\hspace{1em}Dead & 43 (37\%) & 40 (35\%) & 83 (36\%)\\
+\hspace{1em}Transferred for admission & 21 (18\%) & 16 (14\%) & 37 (16\%)\\
+\hspace{1em}Missing & 5 & 5 & 10\\
+Transferred to another hospital, n (\%) & 34 (29\%) & 40 (35\%) & 74 (32\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{3} 10\\
+Surgery, n (\%) & 47 (41\%) & 34 (29\%) & 81 (35\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{1} 10\\
 Preoperative ASA score, n (\%) &  &  & \\
-\hspace{1em}1. A normal healthy patient &  &  & \\
-\hspace{1em}2. A patient with mild systemic disease &  &  & \\
-\hspace{1em}3. A patient with severe systemic disease &  &  & \\
-\hspace{1em}4. A patient with severe systemic disease that is a constant threat to life &  &  & \\
-\hspace{1em}5. A moribund patient who is not expected to survive without the operation &  &  & \\
-\hspace{1em}6. A declared brain-dead patient whose organs are being removed for donor purposes &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{4} & \\
-Transfusion, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{3} & \\
+\hspace{1em}1. A normal healthy patient & 39 (35\%) & 37 (32\%) & 76 (33\%)\\
+\hspace{1em}2. A patient with mild systemic disease & 24 (21\%) & 30 (26\%) & 54 (23\%)\\
+\hspace{1em}3. A patient with severe systemic disease & 21 (19\%) & 19 (16\%) & 40 (17\%)\\
+\hspace{1em}4. A patient with severe systemic disease that is a constant threat to life & 10 (8.8\%) & 15 (13\%) & 25 (11\%)\\
+\hspace{1em}5. A moribund patient who is not expected to survive without the operation & 14 (12\%) & 10 (8.5\%) & 24 (10\%)\\
+\hspace{1em}6. A declared brain-dead patient whose organs are being removed for donor purposes & 5 (4.4\%) & 6 (5.1\%) & 11 (4.8\%)\\
+\hspace{1em}Missing & 7 & 3 & 10\\
+Transfusion, n (\%) & 37 (32\%) & 35 (30\%) & 72 (31\%)\\
+\hspace{1em}Missing & 6 & 4 & 10\\
 Type of blood product, n (\%) &  &  & \\
-\hspace{1em}Packed red blood cells &  &  & \\
-\hspace{1em}Platelets &  &  & \\
-\hspace{1em}Fresh frozen plasma &  &  & \\
-\hspace{1em}Whole blood &  &  & \\
-\hspace{1em}Other &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{2} & \\
-Number of units transfused, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{1} & \\
+\hspace{1em}Packed red blood cells & 40 (34\%) & 37 (32\%) & 77 (33\%)\\
+\hspace{1em}Platelets & 36 (31\%) & 32 (28\%) & 68 (30\%)\\
+\hspace{1em}Fresh frozen plasma & 19 (16\%) & 25 (22\%) & 44 (19\%)\\
+\hspace{1em}Whole blood & 13 (11\%) & 9 (7.9\%) & 22 (9.6\%)\\
+\hspace{1em}Other & 8 (6.9\%) & 11 (9.6\%) & 19 (8.3\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{2} 10\\
+Number of units transfused, Median (Q1, Q3) & 2.00 (1.00, 4.00) & 2.00 (1.00, 3.00) & 2.00 (1.00, 3.00)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{1} 10\\
 Imaging, n (\%) &  &  & \\
-\hspace{1em}Ultrasound &  &  & \\
-\hspace{1em}X-ray &  &  & \\
-\hspace{1em}CT &  &  & \\
-\hspace{1em}Missing &  &  & \\
+\hspace{1em}Ultrasound & 56 (48\%) & 60 (53\%) & 116 (50\%)\\
+\hspace{1em}X-ray & 43 (37\%) & 37 (32\%) & 80 (35\%)\\
+\hspace{1em}CT & 17 (15\%) & 17 (15\%) & 34 (15\%)\\
+\hspace{1em}Missing & 4 & 6 & 10\\
 \bottomrule
 
 \end{longtable}
@@ -2744,8 +2764,8 @@ Imaging, n (\%) &  &  & \\
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-intercurrent-events}Intercurrent events by outcome.
-Intended for the supplementary material.}
+\caption{\label{tbl-intercurrent-events}Intercurrent events by outcome
+(simulated data). Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -2769,68 +2789,68 @@ Intended for the supplementary material.}
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
 In-hospital mortality within 30 days &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{11} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{11} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 42 (35\%) & 36 (30\%) & 78 \vphantom{1} (33\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 39 (33\%) & 81 (34\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
 All-cause mortality within 24 hours &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{10} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{10} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 37 (31\%) & 45 (38\%) & 82 (34\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 34 (28\%) & 76 (32\%)\\
 All-cause mortality within 30 days &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{9} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{9} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 40 (33\%) & 46 (38\%) & 86 (36\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 43 (36\%) & 39 (33\%) & 82 (34\%)\\
 All-cause mortality within three months &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{8} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{8} & \\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 39 (33\%) & 39 (33\%) & 78 (33\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 38 (32\%) & 32 (27\%) & 70 (29\%)\\
 Length of emergency department stay &  &  & \\
-\hspace{1em}Death, n (\%) &  &  \vphantom{3} & \\
-\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{3} & \\
+\hspace{1em}Death, n (\%) & 43 (36\%) & 39 (33\%) & 82 (34\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 38 (32\%) & 39 (33\%) & 77 (32\%)\\
 Length of hospital stay &  &  & \\
-\hspace{1em}Death, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Death, n (\%) & 35 (29\%) & 41 (34\%) & 76 (32\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 42 (35\%) & 31 (26\%) & 73 (30\%)\\
 Intensive care unit (ICU) admission &  &  & \\
-\hspace{1em}Death, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}Transfer to another hospital, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Death, n (\%) & 38 (32\%) & 37 (31\%) & 75 (31\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 37 (31\%) & 37 (31\%) & 74 (31\%)\\
 Length of intensive care unit stay &  &  & \\
-\hspace{1em}Death, n (\%) &  &  & \\
-\hspace{1em}Transfer to another hospital, n (\%) &  &  & \\
+\hspace{1em}Death, n (\%) & 36 (30\%) & 38 (32\%) & 74 (31\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 39 (33\%) & 38 (32\%) & 77 (32\%)\\
 Return to work at 30 days &  &  & \\
-\hspace{1em}Death before 30 days, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{7} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{7} & \\
+\hspace{1em}Death before 30 days, n (\%) & 36 (30\%) & 41 (34\%) & 77 (32\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 39 (33\%) & 40 (33\%) & 79 (33\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 40 (33\%) & 47 (39\%) & 87 (36\%)\\
 Return to work at three months &  &  & \\
-\hspace{1em}Death before three months, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{6} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{6} & \\
+\hspace{1em}Death before three months, n (\%) & 35 (29\%) & 53 (44\%) & 88 (37\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 41 (34\%) & 47 (39\%) & 88 (37\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 42 (35\%) & 84 (35\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS® principles &  &  & \\
-\hspace{1em}Incomplete observation of resuscitation, n (\%) &  &  & \\
+\hspace{1em}Incomplete observation of resuscitation, n (\%) & 33 (28\%) & 38 (32\%) & 71 (30\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
 Quality of life &  &  \vphantom{2} & \\
-\hspace{1em}Death before assessment, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{5} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{5} & \\
+\hspace{1em}Death before assessment, n (\%) & 36 (30\%) & 38 (32\%) & 74 (31\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 45 (38\%) & 37 (31\%) & 82 (34\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 43 (36\%) & 44 (37\%) & 87 (36\%)\\
 Disability &  &  \vphantom{2} & \\
-\hspace{1em}Death before assessment, n (\%) &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{4} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{4} & \\
+\hspace{1em}Death before assessment, n (\%) & 30 (25\%) & 39 (33\%) & 69 (29\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 41 (34\%) & 43 (36\%) & 84 (35\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 39 (33\%) & 36 (30\%) & 75 (31\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  \vphantom{1} & \\
-\hspace{1em}Death before 30 days, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{3} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{3} & \\
+\hspace{1em}Death before 30 days, n (\%) & 44 (37\%) & 30 (25\%) & 74 (31\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 38 (32\%) & 33 (28\%) & 71 (30\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 36 (30\%) & 43 (36\%) & 79 (33\%)\\
 Disability &  &  \vphantom{1} & \\
-\hspace{1em}Death before 30 days, n (\%) &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{2} & \\
+\hspace{1em}Death before 30 days, n (\%) & 45 (38\%) & 42 (35\%) & 87 (36\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 38 (32\%) & 34 (28\%) & 72 (30\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 40 (33\%) & 82 (34\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  & \\
-\hspace{1em}Death before three months, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}Death before three months, n (\%) & 43 (36\%) & 35 (29\%) & 78 (33\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 32 (27\%) & 40 (33\%) & 72 (30\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 45 (38\%) & 44 (37\%) & 89 (37\%)\\
 Disability &  &  & \\
-\hspace{1em}Death before three months, n (\%) &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) &  &  & \\
-\hspace{1em}Loss to follow-up, n (\%) &  &  & \\
+\hspace{1em}Death before three months, n (\%) & 27 (23\%) & 38 (32\%) & 65 (27\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 42 (35\%) & 36 (30\%) & 78 (33\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 38 (32\%) & 34 (28\%) & 72 (30\%)\\
 \bottomrule
 
 \end{longtable}
@@ -2845,7 +2865,7 @@ Disability &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-outcomes-descriptive}Descriptive summaries of key
-outcomes. Intended for the main text.}
+outcomes (simulated data). Intended for the main text.}
 
 \tabularnewline
 
@@ -2868,45 +2888,45 @@ outcomes. Intended for the main text.}
 \endlastfoot
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
-In-hospital mortality within 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{16} & \\
+In-hospital mortality within 30 days, n (\%) & 39 (34\%) & 35 (30\%) & 74 (32\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{6} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
-All-cause mortality within 24 hours, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{15} & \\
-All-cause mortality within 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{14} & \\
-All-cause mortality within three months, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{13} & \\
-Length of emergency department stay (hours), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{12} & \\
-Length of hospital stay (days), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{11} & \\
-Intensive care unit admission, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{10} & \\
-Length of intensive care unit stay (days), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{9} & \\
-Return to work at 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{8} & \\
-Return to work at three months, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{7} & \\
+All-cause mortality within 24 hours, n (\%) & 42 (37\%) & 34 (29\%) & 76 (33\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{5} 10\\
+All-cause mortality within 30 days, n (\%) & 41 (36\%) & 42 (36\%) & 83 (36\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{4} 10\\
+All-cause mortality within three months, n (\%) & 40 (35\%) & 40 (34\%) & 80 (35\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{3} 10\\
+Length of emergency department stay (hours), Median (Q1, Q3) & 49 (41, 59) & 48 (38, 59) & 49 (39, 59)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{3} 10\\
+Length of hospital stay (days), Median (Q1, Q3) & 51 (42, 63) & 51 (42, 59) & 51 (42, 61)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{2} 10\\
+Intensive care unit admission, n (\%) & 43 (37\%) & 35 (31\%) & 78 (34\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{2} 10\\
+Length of intensive care unit stay (days), Median (Q1, Q3) & 50 (43, 59) & 53 (40, 62) & 51 (41, 60)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{1} 10\\
+Return to work at 30 days, n (\%) & 33 (29\%) & 30 (26\%) & 63 (27\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{2} 10\\
+Return to work at three months, n (\%) & 39 (35\%) & 35 (30\%) & 74 (32\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{1} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
-Adherence to ATLS principles (\%), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{6} & \\
+Adherence to ATLS principles (\%), Median (Q1, Q3) & 49 (38, 58) & 49 (38, 62) & 49 (38, 59)\\
+\hspace{1em}Missing & 7 & 3 & 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{5} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{4} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) & 61 (50, 73) & 64 (52, 77) & 63 (51, 76)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{1} 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 27 (16, 38) & 25 (18, 37) & 26 (17, 38)\\
+\hspace{1em}Missing & 4 & 6 & 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{3} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{2} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) & 63 (50, 76) & 64 (53, 77) & 64 (53, 77)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{1} 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 26 (17, 35) & 28 (18, 38) & 27 (18, 37)\\
+\hspace{1em}Missing & 6 & 4 & 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{1} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  & \\
+EQ-5D-5L VAS, Median (Q1, Q3) & 60 (48, 72) & 62 (52, 74) & 61 (50, 73)\\
+\hspace{1em}Missing & 5 & 5 & 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 25 (17, 35) & 31 (19, 39) & 27 (18, 37)\\
+\hspace{1em}Missing & 3 & 7 & 10\\
 \bottomrule
 
 \end{longtable}
@@ -2921,7 +2941,7 @@ WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-outcomes-descriptive-all}Descriptive summaries of
-all outcomes. Intended for the supplementary material.}
+all outcomes (simulated data). Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -2944,276 +2964,276 @@ all outcomes. Intended for the supplementary material.}
 \endlastfoot
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
-In-hospital mortality within 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{49} & \\
+In-hospital mortality within 30 days, n (\%) & 39 (34\%) & 35 (30\%) & 74 (32\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{16} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
-All-cause mortality within 24 hours, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{48} & \\
-All-cause mortality within 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{47} & \\
-All-cause mortality within three months, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{46} & \\
-Length of emergency department stay (hours), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{45} & \\
-Length of hospital stay (days), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{44} & \\
-Intensive care unit admission, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{43} & \\
-Length of intensive care unit stay (days), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{42} & \\
-Return to work at 30 days, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{41} & \\
-Return to work at three months, n (\%) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{40} & \\
+All-cause mortality within 24 hours, n (\%) & 42 (37\%) & 34 (29\%) & 76 (33\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{15} 10\\
+All-cause mortality within 30 days, n (\%) & 41 (36\%) & 42 (36\%) & 83 (36\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{14} 10\\
+All-cause mortality within three months, n (\%) & 40 (35\%) & 40 (34\%) & 80 (35\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{5} 10\\
+Length of emergency department stay (hours), Median (Q1, Q3) & 49 (41, 59) & 48 (38, 59) & 49 (39, 59)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{13} 10\\
+Length of hospital stay (days), Median (Q1, Q3) & 51 (42, 63) & 51 (42, 59) & 51 (42, 61)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{12} 10\\
+Intensive care unit admission, n (\%) & 43 (37\%) & 35 (31\%) & 78 (34\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{6} 10\\
+Length of intensive care unit stay (days), Median (Q1, Q3) & 50 (43, 59) & 53 (40, 62) & 51 (41, 60)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{11} 10\\
+Return to work at 30 days, n (\%) & 33 (29\%) & 30 (26\%) & 63 (27\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{4} 10\\
+Return to work at three months, n (\%) & 39 (35\%) & 35 (30\%) & 74 (32\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{3} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
-Adherence to ATLS principles (\%), Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{39} & \\
+Adherence to ATLS principles (\%), Median (Q1, Q3) & 49 (38, 58) & 49 (38, 62) & 49 (38, 59)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{2} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{38} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{37} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) & 61 (50, 73) & 64 (52, 77) & 63 (51, 76)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{5} 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 27 (16, 38) & 25 (18, 37) & 26 (17, 38)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{10} 10\\
 EQ-5D-5L mobility, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. I have no problems in walking about &  &  \vphantom{2} & \\
-\hspace{1em}2. I have slight problems in walking about &  &  \vphantom{2} & \\
-\hspace{1em}3. I have moderate problems in walking about &  &  \vphantom{2} & \\
-\hspace{1em}4. I have severe problems in walking about &  &  \vphantom{2} & \\
-\hspace{1em}5. I am unable to walk about &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{36} & \\
+\hspace{1em}1. I have no problems in walking about & 33 (29\%) & 40 (34\%) & 73 (32\%)\\
+\hspace{1em}2. I have slight problems in walking about & 28 (25\%) & 30 (26\%) & 58 (25\%)\\
+\hspace{1em}3. I have moderate problems in walking about & 22 (19\%) & 22 (19\%) & 44 (19\%)\\
+\hspace{1em}4. I have severe problems in walking about & 23 (20\%) & 15 (13\%) & 38 (17\%)\\
+\hspace{1em}5. I am unable to walk about & 8 (7.0\%) & 9 (7.8\%) & 17 (7.4\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{10} 10\\
 EQ-5D-5L self-care, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. I have no problems washing or dressing myself &  &  \vphantom{2} & \\
-\hspace{1em}2. I have slight problems washing or dressing myself &  &  \vphantom{2} & \\
-\hspace{1em}3. I have moderate problems washing or dressing myself &  &  \vphantom{2} & \\
-\hspace{1em}4. I have severe problems washing or dressing myself &  &  \vphantom{2} & \\
-\hspace{1em}5. I am unable to wash or dress myself &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{35} & \\
+\hspace{1em}1. I have no problems washing or dressing myself & 23 (20\%) & 37 (32\%) & 60 (26\%)\\
+\hspace{1em}2. I have slight problems washing or dressing myself & 32 (28\%) & 33 (29\%) & 65 (28\%)\\
+\hspace{1em}3. I have moderate problems washing or dressing myself & 31 (27\%) & 15 (13\%) & 46 (20\%)\\
+\hspace{1em}4. I have severe problems washing or dressing myself & 19 (17\%) & 23 (20\%) & 42 (18\%)\\
+\hspace{1em}5. I am unable to wash or dress myself & 10 (8.7\%) & 7 (6.1\%) & 17 (7.4\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{6} 10\\
 EQ-5D-5L usual activities, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. I have no problems doing my usual activities &  &  \vphantom{2} & \\
-\hspace{1em}2. I have slight problems doing my usual activities &  &  \vphantom{2} & \\
-\hspace{1em}3. I have moderate problems doing my usual activities &  &  \vphantom{2} & \\
-\hspace{1em}4. I have severe problems doing my usual activities &  &  \vphantom{2} & \\
-\hspace{1em}5. I am unable to do my usual activities &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{34} & \\
+\hspace{1em}1. I have no problems doing my usual activities & 44 (39\%) & 38 (33\%) & 82 (36\%)\\
+\hspace{1em}2. I have slight problems doing my usual activities & 32 (28\%) & 34 (29\%) & 66 (29\%)\\
+\hspace{1em}3. I have moderate problems doing my usual activities & 24 (21\%) & 22 (19\%) & 46 (20\%)\\
+\hspace{1em}4. I have severe problems doing my usual activities & 11 (9.6\%) & 14 (12\%) & 25 (11\%)\\
+\hspace{1em}5. I am unable to do my usual activities & 3 (2.6\%) & 8 (6.9\%) & 11 (4.8\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{9} 10\\
 EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. I have no pain or discomfort &  &  \vphantom{2} & \\
-\hspace{1em}2. I have slight pain or discomfort &  &  \vphantom{2} & \\
-\hspace{1em}3. I have moderate pain or discomfort &  &  \vphantom{2} & \\
-\hspace{1em}4. I have severe pain or discomfort &  &  \vphantom{2} & \\
-\hspace{1em}5. I have extreme pain or discomfort &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{33} & \\
+\hspace{1em}1. I have no pain or discomfort & 36 (31\%) & 45 (39\%) & 81 (35\%)\\
+\hspace{1em}2. I have slight pain or discomfort & 30 (26\%) & 28 (25\%) & 58 (25\%)\\
+\hspace{1em}3. I have moderate pain or discomfort & 20 (17\%) & 18 (16\%) & 38 (17\%)\\
+\hspace{1em}4. I have severe pain or discomfort & 18 (16\%) & 17 (15\%) & 35 (15\%)\\
+\hspace{1em}5. I have extreme pain or discomfort & 12 (10\%) & 6 (5.3\%) & 18 (7.8\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{9} 10\\
 EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. I am not anxious or depressed &  &  \vphantom{2} & \\
-\hspace{1em}2. I am slightly anxious or depressed &  &  \vphantom{2} & \\
-\hspace{1em}3. I am moderately anxious or depressed &  &  \vphantom{2} & \\
-\hspace{1em}4. I am severely anxious or depressed &  &  \vphantom{2} & \\
-\hspace{1em}5. I am extremely anxious or depressed &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{32} & \\
+\hspace{1em}1. I am not anxious or depressed & 46 (40\%) & 43 (37\%) & 89 (39\%)\\
+\hspace{1em}2. I am slightly anxious or depressed & 21 (18\%) & 27 (23\%) & 48 (21\%)\\
+\hspace{1em}3. I am moderately anxious or depressed & 24 (21\%) & 26 (23\%) & 50 (22\%)\\
+\hspace{1em}4. I am severely anxious or depressed & 16 (14\%) & 10 (8.7\%) & 26 (11\%)\\
+\hspace{1em}5. I am extremely anxious or depressed & 8 (7.0\%) & 9 (7.8\%) & 17 (7.4\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{5} 10\\
 WHODAS 2.0 cognition, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None &  &  \vphantom{17} & \\
-\hspace{1em}2. Mild &  &  \vphantom{17} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{17} & \\
-\hspace{1em}4. Severe &  &  \vphantom{17} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{17} & \\
-\hspace{1em}Missing &  &  \vphantom{31} & \\
+\hspace{1em}1. None & 36 (32\%) & 39 (34\%) & 75 (33\%)\\
+\hspace{1em}2. Mild & 28 (25\%) & 31 (27\%) & 59 (26\%)\\
+\hspace{1em}3. Moderate & 25 (22\%) & 17 (15\%) & 42 (18\%)\\
+\hspace{1em}4. Severe & 15 (13\%) & 18 (16\%) & 33 (14\%)\\
+\hspace{1em}5. Extreme or cannot do & 10 (8.8\%) & 11 (9.5\%) & 21 (9.1\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{8} 10\\
 WHODAS 2.0 mobility, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None &  &  \vphantom{16} & \\
-\hspace{1em}2. Mild &  &  \vphantom{16} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{16} & \\
-\hspace{1em}4. Severe &  &  \vphantom{16} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{16} & \\
-\hspace{1em}Missing &  &  \vphantom{30} & \\
+\hspace{1em}1. None & 42 (37\%) & 34 (29\%) & 76 (33\%)\\
+\hspace{1em}2. Mild & 27 (24\%) & 38 (33\%) & 65 (28\%)\\
+\hspace{1em}3. Moderate & 26 (23\%) & 30 (26\%) & 56 \vphantom{1} (24\%)\\
+\hspace{1em}4. Severe & 14 (12\%) & 12 (10\%) & 26 (11\%)\\
+\hspace{1em}5. Extreme or cannot do & 5 (4.4\%) & 2 (1.7\%) & 7 (3.0\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{7} 10\\
 WHODAS 2.0 self-care, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None &  &  \vphantom{15} & \\
-\hspace{1em}2. Mild &  &  \vphantom{15} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{15} & \\
-\hspace{1em}4. Severe &  &  \vphantom{15} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{15} & \\
-\hspace{1em}Missing &  &  \vphantom{29} & \\
+\hspace{1em}1. None & 38 (33\%) & 28 (25\%) & 66 (29\%)\\
+\hspace{1em}2. Mild & 29 (25\%) & 39 (34\%) & 68 (30\%)\\
+\hspace{1em}3. Moderate & 21 (18\%) & 27 (24\%) & 48 (21\%)\\
+\hspace{1em}4. Severe & 18 (16\%) & 13 (11\%) & 31 (13\%)\\
+\hspace{1em}5. Extreme or cannot do & 10 (8.6\%) & 7 (6.1\%) & 17 (7.4\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{8} 10\\
 WHODAS 2.0 getting along, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None &  &  \vphantom{14} & \\
-\hspace{1em}2. Mild &  &  \vphantom{14} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{14} & \\
-\hspace{1em}4. Severe &  &  \vphantom{14} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{14} & \\
-\hspace{1em}Missing &  &  \vphantom{28} & \\
+\hspace{1em}1. None & 43 (37\%) & 39 (34\%) & 82 (36\%)\\
+\hspace{1em}2. Mild & 30 (26\%) & 24 (21\%) & 54 (23\%)\\
+\hspace{1em}3. Moderate & 26 (23\%) & 30 (26\%) & 56 (24\%)\\
+\hspace{1em}4. Severe & 10 (8.7\%) & 13 (11\%) & 23 (10\%)\\
+\hspace{1em}5. Extreme or cannot do & 6 (5.2\%) & 9 (7.8\%) & 15 (6.5\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{4} 10\\
 WHODAS 2.0 life activities, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None &  &  \vphantom{13} & \\
-\hspace{1em}2. Mild &  &  \vphantom{13} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{13} & \\
-\hspace{1em}4. Severe &  &  \vphantom{13} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{13} & \\
-\hspace{1em}Missing &  &  \vphantom{27} & \\
+\hspace{1em}1. None & 28 (24\%) & 54 (47\%) & 82 (36\%)\\
+\hspace{1em}2. Mild & 33 (29\%) & 25 (22\%) & 58 (25\%)\\
+\hspace{1em}3. Moderate & 27 (23\%) & 22 (19\%) & 49 (21\%)\\
+\hspace{1em}4. Severe & 22 (19\%) & 7 (6.1\%) & 29 (13\%)\\
+\hspace{1em}5. Extreme or cannot do & 5 (4.3\%) & 7 (6.1\%) & 12 \vphantom{1} (5.2\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{3} 10\\
 WHODAS 2.0 participation, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None &  &  \vphantom{12} & \\
-\hspace{1em}2. Mild &  &  \vphantom{12} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{12} & \\
-\hspace{1em}4. Severe &  &  \vphantom{12} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{12} & \\
-\hspace{1em}Missing &  &  \vphantom{26} & \\
+\hspace{1em}1. None & 36 (31\%) & 34 (30\%) & 70 (30\%)\\
+\hspace{1em}2. Mild & 32 (28\%) & 32 (28\%) & 64 (28\%)\\
+\hspace{1em}3. Moderate & 26 (23\%) & 24 (21\%) & 50 (22\%)\\
+\hspace{1em}4. Severe & 16 (14\%) & 18 (16\%) & 34 (15\%)\\
+\hspace{1em}5. Extreme or cannot do & 5 (4.3\%) & 7 (6.1\%) & 12 (5.2\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{2} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{25} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{24} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) & 62 (54, 76) & 60 (49, 71) & 61 (50, 73)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{7} 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 27 (16, 35) & 27 (17, 41) & 27 (17, 37)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{6} 10\\
 EQ-5D-5L mobility, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no problems in walking about &  &  \vphantom{1} & \\
-\hspace{1em}2. I have slight problems in walking about &  &  \vphantom{1} & \\
-\hspace{1em}3. I have moderate problems in walking about &  &  \vphantom{1} & \\
-\hspace{1em}4. I have severe problems in walking about &  &  \vphantom{1} & \\
-\hspace{1em}5. I am unable to walk about &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{23} & \\
+\hspace{1em}1. I have no problems in walking about & 39 (34\%) & 42 (36\%) & 81 (35\%)\\
+\hspace{1em}2. I have slight problems in walking about & 26 (23\%) & 30 (26\%) & 56 (24\%)\\
+\hspace{1em}3. I have moderate problems in walking about & 25 (22\%) & 22 (19\%) & 47 (20\%)\\
+\hspace{1em}4. I have severe problems in walking about & 16 (14\%) & 16 (14\%) & 32 (14\%)\\
+\hspace{1em}5. I am unable to walk about & 8 (7.0\%) & 6 (5.2\%) & 14 (6.1\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{5} 10\\
 EQ-5D-5L self-care, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no problems washing or dressing myself &  &  \vphantom{1} & \\
-\hspace{1em}2. I have slight problems washing or dressing myself &  &  \vphantom{1} & \\
-\hspace{1em}3. I have moderate problems washing or dressing myself &  &  \vphantom{1} & \\
-\hspace{1em}4. I have severe problems washing or dressing myself &  &  \vphantom{1} & \\
-\hspace{1em}5. I am unable to wash or dress myself &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{22} & \\
+\hspace{1em}1. I have no problems washing or dressing myself & 36 (31\%) & 37 (32\%) & 73 (32\%)\\
+\hspace{1em}2. I have slight problems washing or dressing myself & 33 (28\%) & 30 (26\%) & 63 (27\%)\\
+\hspace{1em}3. I have moderate problems washing or dressing myself & 29 (25\%) & 25 (22\%) & 54 (23\%)\\
+\hspace{1em}4. I have severe problems washing or dressing myself & 12 (10\%) & 19 (17\%) & 31 (13\%)\\
+\hspace{1em}5. I am unable to wash or dress myself & 6 (5.2\%) & 3 (2.6\%) & 9 (3.9\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{6} 10\\
 EQ-5D-5L usual activities, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no problems doing my usual activities &  &  \vphantom{1} & \\
-\hspace{1em}2. I have slight problems doing my usual activities &  &  \vphantom{1} & \\
-\hspace{1em}3. I have moderate problems doing my usual activities &  &  \vphantom{1} & \\
-\hspace{1em}4. I have severe problems doing my usual activities &  &  \vphantom{1} & \\
-\hspace{1em}5. I am unable to do my usual activities &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{21} & \\
+\hspace{1em}1. I have no problems doing my usual activities & 35 (31\%) & 40 (34\%) & 75 (33\%)\\
+\hspace{1em}2. I have slight problems doing my usual activities & 21 (19\%) & 31 (26\%) & 52 (23\%)\\
+\hspace{1em}3. I have moderate problems doing my usual activities & 28 (25\%) & 18 (15\%) & 46 (20\%)\\
+\hspace{1em}4. I have severe problems doing my usual activities & 20 (18\%) & 18 (15\%) & 38 (17\%)\\
+\hspace{1em}5. I am unable to do my usual activities & 9 (8.0\%) & 10 (8.5\%) & 19 (8.3\%)\\
+\hspace{1em}Missing & 7 & 3 & \vphantom{1} 10\\
 EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no pain or discomfort &  &  \vphantom{1} & \\
-\hspace{1em}2. I have slight pain or discomfort &  &  \vphantom{1} & \\
-\hspace{1em}3. I have moderate pain or discomfort &  &  \vphantom{1} & \\
-\hspace{1em}4. I have severe pain or discomfort &  &  \vphantom{1} & \\
-\hspace{1em}5. I have extreme pain or discomfort &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{20} & \\
+\hspace{1em}1. I have no pain or discomfort & 45 (39\%) & 43 (37\%) & 88 (38\%)\\
+\hspace{1em}2. I have slight pain or discomfort & 29 (25\%) & 30 (26\%) & 59 (26\%)\\
+\hspace{1em}3. I have moderate pain or discomfort & 13 (11\%) & 22 (19\%) & 35 (15\%)\\
+\hspace{1em}4. I have severe pain or discomfort & 21 (18\%) & 14 (12\%) & 35 (15\%)\\
+\hspace{1em}5. I have extreme pain or discomfort & 6 (5.3\%) & 7 (6.0\%) & 13 (5.7\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{4} 10\\
 EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I am not anxious or depressed &  &  \vphantom{1} & \\
-\hspace{1em}2. I am slightly anxious or depressed &  &  \vphantom{1} & \\
-\hspace{1em}3. I am moderately anxious or depressed &  &  \vphantom{1} & \\
-\hspace{1em}4. I am severely anxious or depressed &  &  \vphantom{1} & \\
-\hspace{1em}5. I am extremely anxious or depressed &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{19} & \\
+\hspace{1em}1. I am not anxious or depressed & 39 (34\%) & 37 (32\%) & 76 (33\%)\\
+\hspace{1em}2. I am slightly anxious or depressed & 32 (28\%) & 37 (32\%) & 69 (30\%)\\
+\hspace{1em}3. I am moderately anxious or depressed & 20 (17\%) & 18 (16\%) & 38 (17\%)\\
+\hspace{1em}4. I am severely anxious or depressed & 18 (16\%) & 14 (12\%) & 32 (14\%)\\
+\hspace{1em}5. I am extremely anxious or depressed & 6 (5.2\%) & 9 (7.8\%) & 15 (6.5\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{1} 10\\
 WHODAS 2.0 cognition, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None &  &  \vphantom{11} & \\
-\hspace{1em}2. Mild &  &  \vphantom{11} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{11} & \\
-\hspace{1em}4. Severe &  &  \vphantom{11} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{11} & \\
-\hspace{1em}Missing &  &  \vphantom{18} & \\
+\hspace{1em}1. None & 40 (34\%) & 39 (34\%) & 79 (34\%)\\
+\hspace{1em}2. Mild & 36 (31\%) & 31 (27\%) & 67 (29\%)\\
+\hspace{1em}3. Moderate & 20 (17\%) & 25 (22\%) & 45 (20\%)\\
+\hspace{1em}4. Severe & 12 (10\%) & 9 (7.9\%) & 21 (9.1\%)\\
+\hspace{1em}5. Extreme or cannot do & 8 (6.9\%) & 10 (8.8\%) & 18 (7.8\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{5} 10\\
 WHODAS 2.0 mobility, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None &  &  \vphantom{10} & \\
-\hspace{1em}2. Mild &  &  \vphantom{10} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{10} & \\
-\hspace{1em}4. Severe &  &  \vphantom{10} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{10} & \\
-\hspace{1em}Missing &  &  \vphantom{17} & \\
+\hspace{1em}1. None & 34 (30\%) & 36 (31\%) & 70 (30\%)\\
+\hspace{1em}2. Mild & 34 (30\%) & 34 (30\%) & 68 (30\%)\\
+\hspace{1em}3. Moderate & 21 (18\%) & 29 (25\%) & 50 (22\%)\\
+\hspace{1em}4. Severe & 18 (16\%) & 11 (9.6\%) & 29 (13\%)\\
+\hspace{1em}5. Extreme or cannot do & 8 (7.0\%) & 5 (4.3\%) & 13 (5.7\%)\\
+\hspace{1em}Missing & 5 & 5 & 10\\
 WHODAS 2.0 self-care, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None &  &  \vphantom{9} & \\
-\hspace{1em}2. Mild &  &  \vphantom{9} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{9} & \\
-\hspace{1em}4. Severe &  &  \vphantom{9} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{9} & \\
-\hspace{1em}Missing &  &  \vphantom{16} & \\
+\hspace{1em}1. None & 42 (36\%) & 37 (33\%) & 79 (34\%)\\
+\hspace{1em}2. Mild & 32 (27\%) & 29 (26\%) & 61 (27\%)\\
+\hspace{1em}3. Moderate & 20 (17\%) & 26 (23\%) & 46 (20\%)\\
+\hspace{1em}4. Severe & 13 (11\%) & 15 (13\%) & 28 (12\%)\\
+\hspace{1em}5. Extreme or cannot do & 10 (8.5\%) & 6 (5.3\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{4} 10\\
 WHODAS 2.0 getting along, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None &  &  \vphantom{8} & \\
-\hspace{1em}2. Mild &  &  \vphantom{8} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{8} & \\
-\hspace{1em}4. Severe &  &  \vphantom{8} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{8} & \\
-\hspace{1em}Missing &  &  \vphantom{15} & \\
+\hspace{1em}1. None & 42 (36\%) & 34 (30\%) & 76 (33\%)\\
+\hspace{1em}2. Mild & 29 (25\%) & 30 (27\%) & 59 (26\%)\\
+\hspace{1em}3. Moderate & 22 (19\%) & 27 (24\%) & 49 (21\%)\\
+\hspace{1em}4. Severe & 16 (14\%) & 14 (13\%) & 30 (13\%)\\
+\hspace{1em}5. Extreme or cannot do & 9 (7.6\%) & 7 (6.3\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 2 & 8 & 10\\
 WHODAS 2.0 life activities, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None &  &  \vphantom{7} & \\
-\hspace{1em}2. Mild &  &  \vphantom{7} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{7} & \\
-\hspace{1em}4. Severe &  &  \vphantom{7} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{7} & \\
-\hspace{1em}Missing &  &  \vphantom{14} & \\
+\hspace{1em}1. None & 38 (32\%) & 45 (40\%) & 83 (36\%)\\
+\hspace{1em}2. Mild & 32 (27\%) & 31 (27\%) & 63 (27\%)\\
+\hspace{1em}3. Moderate & 23 (20\%) & 19 (17\%) & 42 (18\%)\\
+\hspace{1em}4. Severe & 9 (7.7\%) & 12 (11\%) & 21 (9.1\%)\\
+\hspace{1em}5. Extreme or cannot do & 15 (13\%) & 6 (5.3\%) & 21 (9.1\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{3} 10\\
 WHODAS 2.0 participation, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None &  &  \vphantom{6} & \\
-\hspace{1em}2. Mild &  &  \vphantom{6} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{6} & \\
-\hspace{1em}4. Severe &  &  \vphantom{6} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{6} & \\
-\hspace{1em}Missing &  &  \vphantom{13} & \\
+\hspace{1em}1. None & 41 (35\%) & 43 (38\%) & 84 (37\%)\\
+\hspace{1em}2. Mild & 28 (24\%) & 26 (23\%) & 54 (23\%)\\
+\hspace{1em}3. Moderate & 22 (19\%) & 25 (22\%) & 47 \vphantom{1} (20\%)\\
+\hspace{1em}4. Severe & 16 (14\%) & 13 (11\%) & 29 (13\%)\\
+\hspace{1em}5. Extreme or cannot do & 9 (7.8\%) & 7 (6.1\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{4} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{12} & \\
-WHODAS 2.0 summary score, Median (Q1, Q3) &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{11} & \\
+EQ-5D-5L VAS, Median (Q1, Q3) & 60 (48, 74) & 60 (50, 69) & 60 (49, 72)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{3} 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 30 (19, 41) & 29 (18, 39) & 30 (19, 40)\\
+\hspace{1em}Missing & 1 & 9 & 10\\
 EQ-5D-5L mobility, n (\%) &  &  & \\
-\hspace{1em}1. I have no problems in walking about &  &  & \\
-\hspace{1em}2. I have slight problems in walking about &  &  & \\
-\hspace{1em}3. I have moderate problems in walking about &  &  & \\
-\hspace{1em}4. I have severe problems in walking about &  &  & \\
-\hspace{1em}5. I am unable to walk about &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{10} & \\
+\hspace{1em}1. I have no problems in walking about & 30 (26\%) & 40 (34\%) & 70 (30\%)\\
+\hspace{1em}2. I have slight problems in walking about & 36 (32\%) & 32 (28\%) & 68 (30\%)\\
+\hspace{1em}3. I have moderate problems in walking about & 25 (22\%) & 24 (21\%) & 49 (21\%)\\
+\hspace{1em}4. I have severe problems in walking about & 16 (14\%) & 11 (9.5\%) & 27 (12\%)\\
+\hspace{1em}5. I am unable to walk about & 7 (6.1\%) & 9 (7.8\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{3} 10\\
 EQ-5D-5L self-care, n (\%) &  &  & \\
-\hspace{1em}1. I have no problems washing or dressing myself &  &  & \\
-\hspace{1em}2. I have slight problems washing or dressing myself &  &  & \\
-\hspace{1em}3. I have moderate problems washing or dressing myself &  &  & \\
-\hspace{1em}4. I have severe problems washing or dressing myself &  &  & \\
-\hspace{1em}5. I am unable to wash or dress myself &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{9} & \\
+\hspace{1em}1. I have no problems washing or dressing myself & 31 (26\%) & 38 (34\%) & 69 (30\%)\\
+\hspace{1em}2. I have slight problems washing or dressing myself & 31 (26\%) & 22 (19\%) & 53 (23\%)\\
+\hspace{1em}3. I have moderate problems washing or dressing myself & 25 (21\%) & 30 (27\%) & 55 (24\%)\\
+\hspace{1em}4. I have severe problems washing or dressing myself & 18 (15\%) & 15 (13\%) & 33 (14\%)\\
+\hspace{1em}5. I am unable to wash or dress myself & 12 (10\%) & 8 (7.1\%) & 20 (8.7\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{2} 10\\
 EQ-5D-5L usual activities, n (\%) &  &  & \\
-\hspace{1em}1. I have no problems doing my usual activities &  &  & \\
-\hspace{1em}2. I have slight problems doing my usual activities &  &  & \\
-\hspace{1em}3. I have moderate problems doing my usual activities &  &  & \\
-\hspace{1em}4. I have severe problems doing my usual activities &  &  & \\
-\hspace{1em}5. I am unable to do my usual activities &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{8} & \\
+\hspace{1em}1. I have no problems doing my usual activities & 44 (38\%) & 41 (36\%) & 85 (37\%)\\
+\hspace{1em}2. I have slight problems doing my usual activities & 34 (29\%) & 33 (29\%) & 67 (29\%)\\
+\hspace{1em}3. I have moderate problems doing my usual activities & 21 (18\%) & 20 (18\%) & 41 (18\%)\\
+\hspace{1em}4. I have severe problems doing my usual activities & 9 (7.8\%) & 13 (11\%) & 22 (9.6\%)\\
+\hspace{1em}5. I am unable to do my usual activities & 8 (6.9\%) & 7 (6.1\%) & 15 (6.5\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{2} 10\\
 EQ-5D-5L pain/discomfort, n (\%) &  &  & \\
-\hspace{1em}1. I have no pain or discomfort &  &  & \\
-\hspace{1em}2. I have slight pain or discomfort &  &  & \\
-\hspace{1em}3. I have moderate pain or discomfort &  &  & \\
-\hspace{1em}4. I have severe pain or discomfort &  &  & \\
-\hspace{1em}5. I have extreme pain or discomfort &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{7} & \\
+\hspace{1em}1. I have no pain or discomfort & 37 (32\%) & 31 (27\%) & 68 (30\%)\\
+\hspace{1em}2. I have slight pain or discomfort & 35 (31\%) & 28 (24\%) & 63 (27\%)\\
+\hspace{1em}3. I have moderate pain or discomfort & 10 (8.8\%) & 27 (23\%) & 37 (16\%)\\
+\hspace{1em}4. I have severe pain or discomfort & 17 (15\%) & 19 (16\%) & 36 (16\%)\\
+\hspace{1em}5. I have extreme pain or discomfort & 15 (13\%) & 11 (9.5\%) & 26 (11\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{2} 10\\
 EQ-5D-5L anxiety/depression, n (\%) &  &  & \\
-\hspace{1em}1. I am not anxious or depressed &  &  & \\
-\hspace{1em}2. I am slightly anxious or depressed &  &  & \\
-\hspace{1em}3. I am moderately anxious or depressed &  &  & \\
-\hspace{1em}4. I am severely anxious or depressed &  &  & \\
-\hspace{1em}5. I am extremely anxious or depressed &  &  & \\
-\hspace{1em}Missing &  &  \vphantom{6} & \\
+\hspace{1em}1. I am not anxious or depressed & 39 (33\%) & 35 (31\%) & 74 (32\%)\\
+\hspace{1em}2. I am slightly anxious or depressed & 28 (24\%) & 33 (29\%) & 61 (27\%)\\
+\hspace{1em}3. I am moderately anxious or depressed & 28 (24\%) & 24 (21\%) & 52 (23\%)\\
+\hspace{1em}4. I am severely anxious or depressed & 10 (8.5\%) & 12 (11\%) & 22 (9.6\%)\\
+\hspace{1em}5. I am extremely anxious or depressed & 12 (10\%) & 9 (8.0\%) & 21 (9.1\%)\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{1} 10\\
 WHODAS 2.0 cognition, n (\%) &  &  & \\
-\hspace{1em}1. None &  &  \vphantom{5} & \\
-\hspace{1em}2. Mild &  &  \vphantom{5} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{5} & \\
-\hspace{1em}4. Severe &  &  \vphantom{5} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{5} & \\
-\hspace{1em}Missing &  &  \vphantom{5} & \\
+\hspace{1em}1. None & 38 (33\%) & 44 (38\%) & 82 (36\%)\\
+\hspace{1em}2. Mild & 32 (28\%) & 33 (28\%) & 65 (28\%)\\
+\hspace{1em}3. Moderate & 18 (16\%) & 20 (17\%) & 38 (17\%)\\
+\hspace{1em}4. Severe & 20 (18\%) & 13 (11\%) & 33 (14\%)\\
+\hspace{1em}5. Extreme or cannot do & 6 (5.3\%) & 6 (5.2\%) & 12 (5.2\%)\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{1} 10\\
 WHODAS 2.0 mobility, n (\%) &  &  & \\
-\hspace{1em}1. None &  &  \vphantom{4} & \\
-\hspace{1em}2. Mild &  &  \vphantom{4} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{4} & \\
-\hspace{1em}4. Severe &  &  \vphantom{4} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{4} & \\
-\hspace{1em}Missing &  &  \vphantom{4} & \\
+\hspace{1em}1. None & 38 (34\%) & 37 (32\%) & 75 (33\%)\\
+\hspace{1em}2. Mild & 33 (29\%) & 36 (31\%) & 69 (30\%)\\
+\hspace{1em}3. Moderate & 24 (21\%) & 25 (21\%) & 49 (21\%)\\
+\hspace{1em}4. Severe & 12 (11\%) & 14 (12\%) & 26 (11\%)\\
+\hspace{1em}5. Extreme or cannot do & 6 (5.3\%) & 5 (4.3\%) & 11 (4.8\%)\\
+\hspace{1em}Missing & 7 & 3 & 10\\
 WHODAS 2.0 self-care, n (\%) &  &  & \\
-\hspace{1em}1. None &  &  \vphantom{3} & \\
-\hspace{1em}2. Mild &  &  \vphantom{3} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{3} & \\
-\hspace{1em}4. Severe &  &  \vphantom{3} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{3} & \\
-\hspace{1em}Missing &  &  \vphantom{3} & \\
+\hspace{1em}1. None & 37 (32\%) & 37 (32\%) & 74 (32\%)\\
+\hspace{1em}2. Mild & 35 (31\%) & 33 (28\%) & 68 (30\%)\\
+\hspace{1em}3. Moderate & 22 (19\%) & 25 (22\%) & 47 (20\%)\\
+\hspace{1em}4. Severe & 12 (11\%) & 15 (13\%) & 27 (12\%)\\
+\hspace{1em}5. Extreme or cannot do & 8 (7.0\%) & 6 (5.2\%) & 14 (6.1\%)\\
+\hspace{1em}Missing & 6 & 4 & 10\\
 WHODAS 2.0 getting along, n (\%) &  &  & \\
-\hspace{1em}1. None &  &  \vphantom{2} & \\
-\hspace{1em}2. Mild &  &  \vphantom{2} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{2} & \\
-\hspace{1em}4. Severe &  &  \vphantom{2} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{2} & \\
-\hspace{1em}Missing &  &  \vphantom{2} & \\
+\hspace{1em}1. None & 35 (30\%) & 38 (33\%) & 73 (32\%)\\
+\hspace{1em}2. Mild & 34 (29\%) & 34 (30\%) & 68 (30\%)\\
+\hspace{1em}3. Moderate & 27 (23\%) & 14 (12\%) & 41 (18\%)\\
+\hspace{1em}4. Severe & 13 (11\%) & 21 (18\%) & 34 (15\%)\\
+\hspace{1em}5. Extreme or cannot do & 7 (6.0\%) & 7 (6.1\%) & 14 (6.1\%)\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{1} 10\\
 WHODAS 2.0 life activities, n (\%) &  &  & \\
-\hspace{1em}1. None &  &  \vphantom{1} & \\
-\hspace{1em}2. Mild &  &  \vphantom{1} & \\
-\hspace{1em}3. Moderate &  &  \vphantom{1} & \\
-\hspace{1em}4. Severe &  &  \vphantom{1} & \\
-\hspace{1em}5. Extreme or cannot do &  &  \vphantom{1} & \\
-\hspace{1em}Missing &  &  \vphantom{1} & \\
+\hspace{1em}1. None & 37 (32\%) & 36 (32\%) & 73 (32\%)\\
+\hspace{1em}2. Mild & 30 (26\%) & 31 (27\%) & 61 (27\%)\\
+\hspace{1em}3. Moderate & 27 (23\%) & 20 (18\%) & 47 (20\%)\\
+\hspace{1em}4. Severe & 17 (15\%) & 17 (15\%) & 34 (15\%)\\
+\hspace{1em}5. Extreme or cannot do & 6 (5.1\%) & 9 (8.0\%) & 15 (6.5\%)\\
+\hspace{1em}Missing & 3 & 7 & 10\\
 WHODAS 2.0 participation, n (\%) &  &  & \\
-\hspace{1em}1. None &  &  & \\
-\hspace{1em}2. Mild &  &  & \\
-\hspace{1em}3. Moderate &  &  & \\
-\hspace{1em}4. Severe &  &  & \\
-\hspace{1em}5. Extreme or cannot do &  &  & \\
-\hspace{1em}Missing &  &  & \\
+\hspace{1em}1. None & 43 (37\%) & 42 (37\%) & 85 (37\%)\\
+\hspace{1em}2. Mild & 31 (27\%) & 33 (29\%) & 64 (28\%)\\
+\hspace{1em}3. Moderate & 18 (16\%) & 19 (17\%) & 37 (16\%)\\
+\hspace{1em}4. Severe & 21 (18\%) & 14 (12\%) & 35 (15\%)\\
+\hspace{1em}5. Extreme or cannot do & 3 (2.6\%) & 6 (5.3\%) & 9 (3.9\%)\\
+\hspace{1em}Missing & 4 & 6 & 10\\
 \bottomrule
 
 \end{longtable}
@@ -3228,7 +3248,8 @@ WHODAS 2.0 participation, n (\%) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
 \caption{\label{tbl-outcomes-analysis-results}Shell table of key primary
-and secondary outcome analysis results. Intended for the main text.}
+and secondary outcome analysis results (simulated data). Intended for
+the main text.}
 
 \tabularnewline
 
@@ -3248,57 +3269,57 @@ and secondary outcome analysis results. Intended for the main text.}
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
 In-hospital mortality within 30 days &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{6} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{6} & \\
+\hspace{1em}Odds ratio & 0.77 & 0.55, 1.07 & 0.12\\
+\hspace{1em}Absolute risk difference & -0.04 & -0.08, 0.00 & 0.043\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
 All-cause mortality within 24 hours &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{5} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{5} & \\
+\hspace{1em}Odds ratio & 0.72 & 0.54, 0.97 & 0.029\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.02 & \vphantom{1} 0.4\\
 All-cause mortality within 30 days &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{4} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{4} & \\
+\hspace{1em}Odds ratio & 0.74 & 0.49, 1.13 & 0.2\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.02 & 0.4\\
 All-cause mortality within three months &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{3} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{3} & \\
+\hspace{1em}Odds ratio & 1.30 & 1.04, 1.62 & 0.020\\
+\hspace{1em}Absolute risk difference & -0.02 & -0.07, 0.03 & 0.4\\
 Length of emergency department stay &  &  & \\
-\hspace{1em}Rate ratio &  &  \vphantom{2} & \\
+\hspace{1em}Rate ratio & 0.84 & 0.68, 1.04 & 0.10\\
 Length of hospital stay &  &  & \\
-\hspace{1em}Rate ratio &  &  \vphantom{1} & \\
+\hspace{1em}Rate ratio & 0.93 & 0.72, 1.18 & 0.5\\
 Intensive care unit (ICU) admission &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{2} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{2} & \\
+\hspace{1em}Odds ratio & 0.77 & 0.56, 1.06 & 0.11\\
+\hspace{1em}Absolute risk difference & -0.06 & -0.11, 0.00 & 0.041\\
 Length of intensive care unit stay &  &  & \\
-\hspace{1em}Rate ratio &  &  & \\
+\hspace{1em}Rate ratio & 0.99 & 0.78, 1.25 & >0.9\\
 Return to work at 30 days &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{1} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{1} & \\
+\hspace{1em}Odds ratio & 0.76 & 0.49, 1.20 & 0.2\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.07, 0.04 & 0.6\\
 Return to work at three months &  &  & \\
-\hspace{1em}Odds ratio &  &  & \\
-\hspace{1em}Absolute risk difference &  &  & \\
+\hspace{1em}Odds ratio & 0.94 & 0.69, 1.27 & 0.7\\
+\hspace{1em}Absolute risk difference & -0.05 & -0.08, -0.01 & 0.021\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS® principles &  &  & \\
-\hspace{1em}Logit-scale difference &  &  & \\
+\hspace{1em}Logit-scale difference & 0.00 & -0.05, 0.06 & >0.9\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
 Quality of life &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{5} & \\
-\hspace{1em}Mean difference &  &  \vphantom{5} & \\
+\hspace{1em}Cumulative odds ratio & 0.69 & 0.49, 0.98 & 0.038\\
+\hspace{1em}Mean difference & 0.01 & -0.02, 0.04 & 0.6\\
 Disability &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{4} & \\
-\hspace{1em}Mean difference &  &  \vphantom{4} & \\
+\hspace{1em}Cumulative odds ratio & 0.99 & 0.70, 1.42 & >0.9\\
+\hspace{1em}Mean difference & -0.03 & -0.10, 0.03 & 0.3\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{3} & \\
-\hspace{1em}Mean difference &  &  \vphantom{3} & \\
+\hspace{1em}Cumulative odds ratio & 0.89 & 0.67, 1.18 & 0.4\\
+\hspace{1em}Mean difference & -0.03 & -0.08, 0.01 & 0.14\\
 Disability &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{2} & \\
-\hspace{1em}Mean difference &  &  \vphantom{2} & \\
+\hspace{1em}Cumulative odds ratio & 0.83 & 0.66, 1.04 & 0.11\\
+\hspace{1em}Mean difference & -0.07 & -0.12, -0.02 & 0.004\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{1} & \\
-\hspace{1em}Mean difference &  &  \vphantom{1} & \\
+\hspace{1em}Cumulative odds ratio & 1.21 & 0.81, 1.82 & 0.3\\
+\hspace{1em}Mean difference & -0.07 & -0.11, -0.03 & <0.001\\
 Disability &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  & \\
-\hspace{1em}Mean difference &  &  & \\
+\hspace{1em}Cumulative odds ratio & 0.68 & 0.55, 0.85 & <0.001\\
+\hspace{1em}Mean difference & -0.05 & -0.09, -0.02 & 0.004\\
 \bottomrule
 \multicolumn{4}{l}{\rule{0pt}{1em}Abbreviations: CI = Confidence Interval, IRR = Incidence Rate Ratio, OR = Odds Ratio}\\
 
@@ -3314,8 +3335,8 @@ Disability &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
 \caption{\label{tbl-outcomes-analysis-results-all}Shell table of all
-primary and secondary outcome analysis results. Intended for the
-supplementary material.}
+primary and secondary outcome analysis results (simulated data).
+Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -3335,117 +3356,117 @@ supplementary material.}
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
 In-hospital mortality within 30 days &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{6} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{6} & \\
+\hspace{1em}Odds ratio & 0.77 & 0.55, 1.07 & 0.12\\
+\hspace{1em}Absolute risk difference & -0.04 & -0.08, 0.00 & 0.043\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
 All-cause mortality within 24 hours &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{5} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{5} & \\
+\hspace{1em}Odds ratio & 0.72 & 0.54, 0.97 & 0.029\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.02 & \vphantom{1} 0.4\\
 All-cause mortality within 30 days &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{4} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{4} & \\
+\hspace{1em}Odds ratio & 0.74 & 0.49, 1.13 & 0.2\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.02 & 0.4\\
 All-cause mortality within three months &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{3} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{3} & \\
+\hspace{1em}Odds ratio & 1.30 & 1.04, 1.62 & 0.020\\
+\hspace{1em}Absolute risk difference & -0.02 & -0.07, 0.03 & 0.4\\
 Length of emergency department stay &  &  & \\
-\hspace{1em}Rate ratio &  &  \vphantom{2} & \\
+\hspace{1em}Rate ratio & 0.84 & 0.68, 1.04 & 0.10\\
 Length of hospital stay &  &  & \\
-\hspace{1em}Rate ratio &  &  \vphantom{1} & \\
+\hspace{1em}Rate ratio & 0.93 & 0.72, 1.18 & 0.5\\
 Intensive care unit (ICU) admission &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{2} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{2} & \\
+\hspace{1em}Odds ratio & 0.77 & 0.56, 1.06 & 0.11\\
+\hspace{1em}Absolute risk difference & -0.06 & -0.11, 0.00 & 0.041\\
 Length of intensive care unit stay &  &  & \\
-\hspace{1em}Rate ratio &  &  & \\
+\hspace{1em}Rate ratio & 0.99 & 0.78, 1.25 & >0.9\\
 Return to work at 30 days &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{1} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{1} & \\
+\hspace{1em}Odds ratio & 0.76 & 0.49, 1.20 & 0.2\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.07, 0.04 & 0.6\\
 Return to work at three months &  &  & \\
-\hspace{1em}Odds ratio &  &  & \\
-\hspace{1em}Absolute risk difference &  &  & \\
+\hspace{1em}Odds ratio & 0.94 & 0.69, 1.27 & 0.7\\
+\hspace{1em}Absolute risk difference & -0.05 & -0.08, -0.01 & 0.021\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS® principles &  &  & \\
-\hspace{1em}Logit-scale difference &  &  & \\
+\hspace{1em}Logit-scale difference & 0.00 & -0.05, 0.06 & >0.9\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
 EQ-5D-5L mobility &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{32} & \\
+\hspace{1em}Cumulative odds ratio & 0.69 & 0.49, 0.98 & 0.038\\
 EQ-5D-5L self-care &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{31} & \\
+\hspace{1em}Cumulative odds ratio & 1.06 & 0.81, 1.39 & 0.7\\
 EQ-5D-5L usual activities &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{30} & \\
+\hspace{1em}Cumulative odds ratio & 0.99 & 0.70, 1.42 & >0.9\\
 EQ-5D-5L pain/discomfort &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{29} & \\
+\hspace{1em}Cumulative odds ratio & 0.78 & 0.47, 1.31 & 0.4\\
 EQ-5D-5L anxiety/depression &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{28} & \\
+\hspace{1em}Cumulative odds ratio & 0.89 & 0.67, 1.18 & 0.4\\
 EQ-5D-5L VAS &  &  \vphantom{2} & \\
-\hspace{1em}Mean difference &  &  \vphantom{5} & \\
+\hspace{1em}Mean difference & -0.03 & -0.08, 0.01 & 0.14\\
 WHODAS 2.0 cognition &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{27} & \\
+\hspace{1em}Cumulative odds ratio & 0.83 & 0.66, 1.04 & 0.11\\
 WHODAS 2.0 mobility &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{26} & \\
+\hspace{1em}Cumulative odds ratio & 0.59 & 0.39, 0.88 & 0.010\\
 WHODAS 2.0 self-care &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{25} & \\
+\hspace{1em}Cumulative odds ratio & 1.21 & 0.81, 1.82 & 0.3\\
 WHODAS 2.0 getting along &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{24} & \\
+\hspace{1em}Cumulative odds ratio & 0.61 & 0.45, 0.83 & 0.002\\
 WHODAS 2.0 life activities &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{23} & \\
+\hspace{1em}Cumulative odds ratio & 0.68 & 0.55, 0.85 & <0.001\\
 WHODAS 2.0 participation &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{22} & \\
+\hspace{1em}Cumulative odds ratio & 0.68 & 0.51, 0.91 & 0.009\\
 WHODAS 2.0 summary score &  &  \vphantom{2} & \\
-\hspace{1em}Mean difference &  &  \vphantom{4} & \\
+\hspace{1em}Mean difference & -0.02 & -0.06, 0.02 & 0.3\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
 EQ-5D-5L mobility &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{21} & \\
+\hspace{1em}Cumulative odds ratio & 0.86 & 0.59, 1.26 & 0.4\\
 EQ-5D-5L self-care &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{20} & \\
+\hspace{1em}Cumulative odds ratio & 0.84 & 0.62, 1.15 & 0.3\\
 EQ-5D-5L usual activities &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{19} & \\
+\hspace{1em}Cumulative odds ratio & 0.84 & 0.56, 1.26 & 0.4\\
 EQ-5D-5L pain/discomfort &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{18} & \\
+\hspace{1em}Cumulative odds ratio & 1.04 & 0.75, 1.44 & 0.8\\
 EQ-5D-5L anxiety/depression &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{17} & \\
+\hspace{1em}Cumulative odds ratio & 0.91 & 0.62, 1.33 & 0.6\\
 EQ-5D-5L VAS &  &  \vphantom{1} & \\
-\hspace{1em}Mean difference &  &  \vphantom{3} & \\
+\hspace{1em}Mean difference & -0.02 & -0.06, 0.03 & 0.4\\
 WHODAS 2.0 cognition &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{16} & \\
+\hspace{1em}Cumulative odds ratio & 0.82 & 0.65, 1.04 & 0.10\\
 WHODAS 2.0 mobility &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{15} & \\
+\hspace{1em}Cumulative odds ratio & 0.83 & 0.67, 1.03 & 0.10\\
 WHODAS 2.0 self-care &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{14} & \\
+\hspace{1em}Cumulative odds ratio & 0.94 & 0.66, 1.33 & 0.7\\
 WHODAS 2.0 getting along &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{13} & \\
+\hspace{1em}Cumulative odds ratio & 0.75 & 0.54, 1.04 & 0.081\\
 WHODAS 2.0 life activities &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{12} & \\
+\hspace{1em}Cumulative odds ratio & 1.10 & 0.84, 1.44 & 0.5\\
 WHODAS 2.0 participation &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{11} & \\
+\hspace{1em}Cumulative odds ratio & 0.85 & 0.71, 1.03 & 0.11\\
 WHODAS 2.0 summary score &  &  \vphantom{1} & \\
-\hspace{1em}Mean difference &  &  \vphantom{2} & \\
+\hspace{1em}Mean difference & 0.00 & -0.04, 0.04 & 0.9\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
 EQ-5D-5L mobility &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{10} & \\
+\hspace{1em}Cumulative odds ratio & 0.92 & 0.71, 1.19 & 0.5\\
 EQ-5D-5L self-care &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{9} & \\
+\hspace{1em}Cumulative odds ratio & 0.73 & 0.53, 1.02 & 0.064\\
 EQ-5D-5L usual activities &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{8} & \\
+\hspace{1em}Cumulative odds ratio & 1.23 & 0.85, 1.78 & 0.3\\
 EQ-5D-5L pain/discomfort &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{7} & \\
+\hspace{1em}Cumulative odds ratio & 0.89 & 0.81, 0.98 & 0.019\\
 EQ-5D-5L anxiety/depression &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{6} & \\
+\hspace{1em}Cumulative odds ratio & 0.81 & 0.62, 1.06 & 0.12\\
 EQ-5D-5L VAS &  &  & \\
-\hspace{1em}Mean difference &  &  \vphantom{1} & \\
+\hspace{1em}Mean difference & -0.01 & -0.04, 0.02 & 0.7\\
 WHODAS 2.0 cognition &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{5} & \\
+\hspace{1em}Cumulative odds ratio & 0.99 & 0.75, 1.30 & >0.9\\
 WHODAS 2.0 mobility &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{4} & \\
+\hspace{1em}Cumulative odds ratio & 0.72 & 0.54, 0.96 & 0.023\\
 WHODAS 2.0 self-care &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{3} & \\
+\hspace{1em}Cumulative odds ratio & 0.89 & 0.72, 1.10 & 0.3\\
 WHODAS 2.0 getting along &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{2} & \\
+\hspace{1em}Cumulative odds ratio & 1.21 & 0.85, 1.72 & 0.3\\
 WHODAS 2.0 life activities &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  \vphantom{1} & \\
+\hspace{1em}Cumulative odds ratio & 0.88 & 0.74, 1.04 & 0.14\\
 WHODAS 2.0 participation &  &  & \\
-\hspace{1em}Cumulative odds ratio &  &  & \\
+\hspace{1em}Cumulative odds ratio & 0.82 & 0.63, 1.08 & 0.2\\
 WHODAS 2.0 summary score &  &  & \\
-\hspace{1em}Mean difference &  &  & \\
+\hspace{1em}Mean difference & -0.04 & -0.06, -0.02 & <0.001\\
 \bottomrule
 \multicolumn{4}{l}{\rule{0pt}{1em}Abbreviations: CI = Confidence Interval, IRR = Incidence Rate Ratio, OR = Odds Ratio}\\
 
@@ -3462,7 +3483,8 @@ WHODAS 2.0 summary score &  &  & \\
 
 \caption{\label{tbl-additional-analyses-results}Shell table of
 sensitivity, fully adjusted, and subgroup analysis results for the
-primary outcome. Intended for the supplementary material.}
+primary outcome (simulated data). Intended for the supplementary
+material.}
 
 \tabularnewline
 
@@ -3482,72 +3504,72 @@ primary outcome. Intended for the supplementary material.}
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Sensitivity analyses}}\\
 Autoregressive within-cluster correlation (AR(1)) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{21} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{21} & \\
+\hspace{1em}Odds ratio & 0.77 & 0.55, 1.07 & 0.12\\
+\hspace{1em}Absolute risk difference & -0.04 & -0.08, 0.00 & 0.043\\
 Random cluster-by-intervention effects &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{20} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{20} & \\
+\hspace{1em}Odds ratio & 0.72 & 0.54, 0.97 & 0.029\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.02 & \vphantom{1} 0.4\\
 Time modelled with a spline function &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{19} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{19} & \\
+\hspace{1em}Odds ratio & 0.74 & 0.49, 1.13 & 0.2\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.02 & 0.4\\
 Lag and weaning effects (intervention) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{18} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{18} & \\
+\hspace{1em}Odds ratio & 1.30 & 1.04, 1.62 & 0.020\\
+\hspace{1em}Absolute risk difference & -0.02 & -0.07, 0.03 & \vphantom{2} 0.4\\
 Lag and weaning effects (periods since first exposure) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{17} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{17} & \\
+\hspace{1em}Odds ratio & 0.75 & 0.58, 0.96 & 0.024\\
+\hspace{1em}Absolute risk difference & -0.02 & -0.06, 0.02 & 0.3\\
 Actual date of transition for intervention exposure &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{16} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{16} & \\
+\hspace{1em}Odds ratio & 0.77 & 0.56, 1.06 & 0.11\\
+\hspace{1em}Absolute risk difference & -0.06 & -0.11, 0.00 & 0.041\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Fully adjusted analysis}}\\
-\hspace{1em}Odds ratio &  &  \vphantom{15} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{15} & \\
+\hspace{1em}Odds ratio & 0.95 & 0.71, 1.27 & 0.7\\
+\hspace{1em}Absolute risk difference & -0.04 & -0.09, 0.02 & 0.2\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Subgroup analyses}}\\
 Geographical region (state-specific estimates; states depend on participating clusters) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{14} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{14} & \\
+\hspace{1em}Odds ratio & 0.90 & 0.57, 1.42 & 0.7\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.03 & 0.7\\
 Age group: Older adolescents (15-19 years) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{13} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{13} & \\
+\hspace{1em}Odds ratio & 0.72 & 0.53, 0.97 & 0.034\\
+\hspace{1em}Absolute risk difference & 0.00 & -0.05, 0.06 & >0.9\\
 Age group: Young adults (20-24 years) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{12} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{12} & \\
+\hspace{1em}Odds ratio & 0.69 & 0.49, 0.98 & 0.038\\
+\hspace{1em}Absolute risk difference & 0.01 & -0.02, 0.04 & 0.6\\
 Age group: Adults (25-59 years) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{11} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{11} & \\
+\hspace{1em}Odds ratio & 0.99 & 0.70, 1.42 & >0.9\\
+\hspace{1em}Absolute risk difference & -0.03 & -0.10, 0.03 & 0.3\\
 Age group: Older adults (60 years and older) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{10} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{10} & \\
+\hspace{1em}Odds ratio & 0.89 & 0.67, 1.18 & 0.4\\
+\hspace{1em}Absolute risk difference & -0.03 & -0.08, 0.01 & 0.14\\
 Sex: Male &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{9} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{9} & \\
+\hspace{1em}Odds ratio & 0.83 & 0.66, 1.04 & 0.11\\
+\hspace{1em}Absolute risk difference & -0.07 & -0.12, -0.02 & 0.004\\
 Sex: Female &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{8} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{8} & \\
+\hspace{1em}Odds ratio & 1.21 & 0.81, 1.82 & 0.3\\
+\hspace{1em}Absolute risk difference & -0.07 & -0.11, -0.03 & <0.001\\
 Clinical cohort: Blunt multisystem trauma &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{7} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{7} & \\
+\hspace{1em}Odds ratio & 0.68 & 0.55, 0.85 & <0.001\\
+\hspace{1em}Absolute risk difference & -0.05 & -0.09, -0.02 & 0.004\\
 Clinical cohort: Penetrating trauma &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{6} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{6} & \\
+\hspace{1em}Odds ratio & 0.87 & 0.64, 1.17 & 0.4\\
+\hspace{1em}Absolute risk difference & -0.02 & -0.07, 0.03 & \vphantom{1} 0.4\\
 Clinical cohort: Severe isolated traumatic brain injury &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{5} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{5} & \\
+\hspace{1em}Odds ratio & 0.84 & 0.62, 1.15 & 0.3\\
+\hspace{1em}Absolute risk difference & -0.02 & -0.07, 0.03 & 0.4\\
 Major trauma: ISS >=16 &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{4} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{4} & \\
+\hspace{1em}Odds ratio & 1.04 & 0.75, 1.44 & 0.8\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.06, 0.04 & 0.6\\
 Major trauma: ISS <16 &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{3} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{3} & \\
+\hspace{1em}Odds ratio & 0.88 & 0.62, 1.24 & 0.5\\
+\hspace{1em}Absolute risk difference & -0.03 & -0.06, 0.00 & 0.074\\
 Cluster size: Small (<12 patients/month) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{2} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{2} & \\
+\hspace{1em}Odds ratio & 0.83 & 0.67, 1.03 & 0.10\\
+\hspace{1em}Absolute risk difference & -0.01 & -0.05, 0.04 & 0.7\\
 Cluster size: Medium (12-20 patients/month) &  &  & \\
-\hspace{1em}Odds ratio &  &  \vphantom{1} & \\
-\hspace{1em}Absolute risk difference &  &  \vphantom{1} & \\
+\hspace{1em}Odds ratio & 0.75 & 0.54, 1.04 & 0.081\\
+\hspace{1em}Absolute risk difference & 0.01 & -0.02, 0.05 & 0.4\\
 Cluster size: Large (>20 patients/month) &  &  & \\
-\hspace{1em}Odds ratio &  &  & \\
-\hspace{1em}Absolute risk difference &  &  & \\
+\hspace{1em}Odds ratio & 0.85 & 0.71, 1.03 & 0.11\\
+\hspace{1em}Absolute risk difference & 0.00 & -0.04, 0.04 & 0.9\\
 \bottomrule
 \multicolumn{4}{l}{\rule{0pt}{1em}Abbreviations: CI = Confidence Interval, OR = Odds Ratio}\\
 
@@ -3563,8 +3585,8 @@ Cluster size: Large (>20 patients/month) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.5\linewidth}*{2}{>{\centering\arraybackslash}p{0.17\linewidth}}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}}
 
 \caption{\label{tbl-correlation-parameters}Shell table of within-cluster
-correlation parameters for all outcomes. Intended for the supplementary
-material.}
+correlation parameters for all outcomes (simulated data). Intended for
+the supplementary material.}
 
 \tabularnewline
 
@@ -3583,180 +3605,180 @@ material.}
 \endlastfoot
 
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{In-hospital mortality within 30 days}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.32 & 0.12, 0.53\\
+Cluster-by-period variance & 0.29 & 0.09, 0.50\\
+Intra-cluster correlation (ICC) & 0.03 & 0.00, 0.09\\
+Within-period correlation & 0.07 & 0.06, 0.09\\
+Between-period correlation & 0.03 & 0.00, 0.09\\
+Latent-scale ICC & 0.08 & 0.00, 0.15\\
+Latent-scale within-period correlation & 0.12 & 0.07, 0.16\\
+Latent-scale between-period correlation & 0.06 & 0.03, 0.10\\
+AR(1) within-period correlation & 0.03 & 0.02, 0.05\\
+AR(1) correlation decay parameter (rho) & 0.74 & 0.61, 0.86\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{All-cause mortality within 24 hours}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.33 & 0.13, 0.53\\
+Cluster-by-period variance & 0.22 & 0.00, 0.48\\
+Intra-cluster correlation (ICC) & 0.09 & 0.05, 0.13\\
+Within-period correlation & 0.04 & 0.00, 0.09\\
+Between-period correlation & 0.08 & 0.04, 0.11\\
+Latent-scale ICC & 0.09 & 0.05, 0.12\\
+Latent-scale within-period correlation & 0.03 & 0.00, 0.11\\
+Latent-scale between-period correlation & 0.10 & 0.04, 0.16\\
+AR(1) within-period correlation & 0.02 & 0.00, 0.07\\
+AR(1) correlation decay parameter (rho) & 0.87 & 0.70, 1.1\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{All-cause mortality within 30 days}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.50 & 0.28, 0.71\\
+Cluster-by-period variance & 0.34 & 0.05, 0.63\\
+Intra-cluster correlation (ICC) & 0.07 & 0.04, 0.11\\
+Within-period correlation & 0.04 & 0.01, 0.08\\
+Between-period correlation & 0.06 & 0.00, 0.11\\
+Latent-scale ICC & 0.01 & 0.00, 0.05\\
+Latent-scale within-period correlation & 0.12 & 0.09, 0.14\\
+Latent-scale between-period correlation & 0.01 & 0.00, 0.04\\
+AR(1) within-period correlation & 0.02 & 0.00, 0.06\\
+AR(1) correlation decay parameter (rho) & 0.59 & 0.44, 0.73\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{All-cause mortality within three months}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.41 & 0.22, 0.60\\
+Cluster-by-period variance & 0.40 & 0.17, 0.63\\
+Intra-cluster correlation (ICC) & 0.06 & 0.01, 0.10\\
+Within-period correlation & 0.06 & 0.00, 0.15\\
+Between-period correlation & 0.10 & 0.09, 0.12\\
+Latent-scale ICC & 0.08 & 0.02, 0.13\\
+Latent-scale within-period correlation & 0.07 & 0.04, 0.10\\
+Latent-scale between-period correlation & 0.05 & 0.04, 0.07\\
+AR(1) within-period correlation & 0.06 & 0.02, 0.09\\
+AR(1) correlation decay parameter (rho) & 0.80 & 0.61, 1.0\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Length of emergency department stay}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.30 & 0.10, 0.51\\
+Cluster-by-period variance & 0.56 & 0.39, 0.74\\
+Intra-cluster correlation (ICC) & 0.06 & 0.00, 0.13\\
+Within-period correlation & 0.09 & 0.05, 0.13\\
+Between-period correlation & 0.08 & 0.04, 0.12\\
+AR(1) within-period correlation & 0.03 & 0.00, 0.07\\
+AR(1) correlation decay parameter (rho) & 0.91 & 0.78, 1.0\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Length of hospital stay}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.42 & 0.34, 0.51\\
+Cluster-by-period variance & 0.36 & 0.19, 0.53\\
+Intra-cluster correlation (ICC) & 0.09 & 0.04, 0.13\\
+Within-period correlation & 0.10 & 0.06, 0.13\\
+Between-period correlation & 0.03 & 0.00, 0.11\\
+AR(1) within-period correlation & 0.07 & 0.04, 0.10\\
+AR(1) correlation decay parameter (rho) & 0.91 & 0.75, 1.1\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Intensive care unit (ICU) admission}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.41 & 0.29, 0.54\\
+Cluster-by-period variance & 0.37 & 0.19, 0.55\\
+Intra-cluster correlation (ICC) & 0.04 & 0.00, 0.09\\
+Within-period correlation & 0.05 & 0.01, 0.08\\
+Between-period correlation & 0.01 & 0.00, 0.06\\
+Latent-scale ICC & 0.09 & 0.05, 0.14\\
+Latent-scale within-period correlation & 0.05 & 0.00, 0.12\\
+Latent-scale between-period correlation & 0.10 & 0.05, 0.14\\
+AR(1) within-period correlation & 0.11 & 0.07, 0.15\\
+AR(1) correlation decay parameter (rho) & 0.57 & 0.38, 0.75\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Length of intensive care unit stay}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.26 & 0.10, 0.42\\
+Cluster-by-period variance & 0.68 & 0.47, 0.88\\
+Intra-cluster correlation (ICC) & 0.11 & 0.07, 0.14\\
+Within-period correlation & 0.11 & 0.06, 0.17\\
+Between-period correlation & 0.07 & 0.01, 0.13\\
+AR(1) within-period correlation & 0.02 & 0.00, 0.09\\
+AR(1) correlation decay parameter (rho) & 0.67 & 0.52, 0.83\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Return to work at 30 days}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.56 & 0.32, 0.81\\
+Cluster-by-period variance & 0.38 & 0.18, 0.59\\
+Intra-cluster correlation (ICC) & 0.09 & 0.04, 0.14\\
+Within-period correlation & 0.03 & 0.02, 0.05\\
+Between-period correlation & 0.08 & 0.02, 0.14\\
+Latent-scale ICC & 0.04 & 0.00, 0.10\\
+Latent-scale within-period correlation & 0.09 & 0.03, 0.16\\
+Latent-scale between-period correlation & 0.11 & 0.06, 0.15\\
+AR(1) within-period correlation & 0.06 & 0.01, 0.11\\
+AR(1) correlation decay parameter (rho) & 0.61 & 0.41, 0.81\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Return to work at three months}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.25 & 0.05, 0.46\\
+Cluster-by-period variance & 0.12 & 0.00, 0.31\\
+Intra-cluster correlation (ICC) & 0.09 & 0.05, 0.14\\
+Within-period correlation & 0.06 & 0.04, 0.09\\
+Between-period correlation & 0.09 & 0.05, 0.14\\
+Latent-scale ICC & 0.01 & 0.00, 0.05\\
+Latent-scale within-period correlation & 0.06 & 0.03, 0.08\\
+Latent-scale between-period correlation & 0.02 & 0.00, 0.09\\
+AR(1) within-period correlation & 0.07 & 0.00, 0.14\\
+AR(1) correlation decay parameter (rho) & 0.74 & 0.60, 0.88\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Adherence to ATLS® principles}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.22 & 0.05, 0.40\\
+Cluster-by-period variance & 0.36 & 0.19, 0.53\\
+Intra-cluster correlation (ICC) & 0.11 & 0.06, 0.16\\
+Within-period correlation & 0.03 & 0.00, 0.08\\
+Between-period correlation & 0.07 & 0.00, 0.15\\
+AR(1) within-period correlation & 0.01 & 0.00, 0.07\\
+AR(1) correlation decay parameter (rho) & 0.72 & 0.59, 0.85\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life within seven days of discharge}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.43 & 0.21, 0.64\\
+Cluster-by-period variance & 0.34 & 0.14, 0.54\\
+Intra-cluster correlation (ICC) & 0.05 & 0.03, 0.07\\
+Within-period correlation & 0.07 & 0.02, 0.12\\
+Between-period correlation & 0.03 & 0.01, 0.06\\
+Latent-scale ICC & 0.05 & 0.00, 0.11\\
+Latent-scale within-period correlation & 0.02 & 0.00, 0.11\\
+Latent-scale between-period correlation & 0.03 & 0.00, 0.10\\
+AR(1) within-period correlation & 0.07 & 0.05, 0.08\\
+AR(1) correlation decay parameter (rho) & 0.72 & 0.58, 0.86\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life at 30 days}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.16 & 0.00, 0.41\\
+Cluster-by-period variance & 0.43 & 0.18, 0.69\\
+Intra-cluster correlation (ICC) & 0.08 & 0.02, 0.13\\
+Within-period correlation & 0.05 & 0.00, 0.12\\
+Between-period correlation & 0.07 & 0.02, 0.13\\
+Latent-scale ICC & 0.07 & 0.04, 0.10\\
+Latent-scale within-period correlation & 0.09 & 0.06, 0.12\\
+Latent-scale between-period correlation & 0.09 & 0.05, 0.13\\
+AR(1) within-period correlation & 0.09 & 0.07, 0.11\\
+AR(1) correlation decay parameter (rho) & 0.57 & 0.35, 0.78\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Quality of life at three months}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.14 & 0.00, 0.35\\
+Cluster-by-period variance & 0.37 & 0.19, 0.55\\
+Intra-cluster correlation (ICC) & 0.05 & 0.00, 0.13\\
+Within-period correlation & 0.11 & 0.04, 0.18\\
+Between-period correlation & 0.04 & 0.00, 0.10\\
+Latent-scale ICC & 0.02 & 0.00, 0.06\\
+Latent-scale within-period correlation & 0.10 & 0.07, 0.13\\
+Latent-scale between-period correlation & 0.08 & 0.03, 0.13\\
+AR(1) within-period correlation & 0.04 & 0.02, 0.07\\
+AR(1) correlation decay parameter (rho) & 0.82 & 0.61, 1.0\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability within seven days of discharge}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.27 & 0.11, 0.42\\
+Cluster-by-period variance & 0.60 & 0.42, 0.77\\
+Intra-cluster correlation (ICC) & 0.03 & 0.00, 0.06\\
+Within-period correlation & 0.09 & 0.01, 0.16\\
+Between-period correlation & 0.07 & 0.00, 0.13\\
+Latent-scale ICC & 0.03 & 0.00, 0.09\\
+Latent-scale within-period correlation & 0.05 & 0.03, 0.07\\
+Latent-scale between-period correlation & 0.05 & 0.00, 0.09\\
+AR(1) within-period correlation & 0.08 & 0.04, 0.13\\
+AR(1) correlation decay parameter (rho) & 0.76 & 0.67, 0.85\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at 30 days}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.41 & 0.21, 0.60\\
+Cluster-by-period variance & 0.63 & 0.41, 0.86\\
+Intra-cluster correlation (ICC) & 0.09 & 0.06, 0.12\\
+Within-period correlation & 0.11 & 0.05, 0.17\\
+Between-period correlation & 0.11 & 0.10, 0.12\\
+Latent-scale ICC & 0.02 & 0.00, 0.07\\
+Latent-scale within-period correlation & 0.09 & 0.04, 0.14\\
+Latent-scale between-period correlation & 0.03 & 0.00, 0.09\\
+AR(1) within-period correlation & 0.08 & 0.02, 0.13\\
+AR(1) correlation decay parameter (rho) & 0.57 & 0.45, 0.69\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at three months}}\\
-Cluster variance &  & \\
-Cluster-by-period variance &  & \\
-Intra-cluster correlation (ICC) &  & \\
-Within-period correlation &  & \\
-Between-period correlation &  & \\
-Latent-scale ICC &  & \\
-Latent-scale within-period correlation &  & \\
-Latent-scale between-period correlation &  & \\
-AR(1) within-period correlation &  & \\
-AR(1) correlation decay parameter (rho) &  & \\
+Cluster variance & 0.49 & 0.35, 0.64\\
+Cluster-by-period variance & 0.20 & 0.01, 0.40\\
+Intra-cluster correlation (ICC) & 0.06 & 0.00, 0.13\\
+Within-period correlation & 0.12 & 0.08, 0.16\\
+Between-period correlation & 0.12 & 0.07, 0.17\\
+Latent-scale ICC & 0.09 & 0.03, 0.15\\
+Latent-scale within-period correlation & 0.10 & 0.05, 0.14\\
+Latent-scale between-period correlation & 0.02 & 0.00, 0.06\\
+AR(1) within-period correlation & 0.07 & 0.05, 0.08\\
+AR(1) correlation decay parameter (rho) & 0.84 & 0.61, 1.1\\
 \bottomrule
 \multicolumn{3}{l}{\rule{0pt}{1em}Abbreviation: CI = Confidence Interval}\\
 
@@ -3775,8 +3797,7 @@ AR(1) correlation decay parameter (rho) &  & \\
 
 \caption{\label{fig-subgroup-forest-plot}Forest plot of
 subgroup-specific intervention effects on in-hospital mortality within
-30 days. Estimates and confidence intervals are placeholders to be
-completed at analysis. Intended for the main text.}
+30 days (simulated data). Intended for the main text.}
 
 \end{figure}%
 
@@ -3786,8 +3807,8 @@ completed at analysis. Intended for the main text.}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-safety-events}Safety events. Intended for the main
-text.}
+\caption{\label{tbl-safety-events}Safety events (simulated data).
+Intended for the main text.}
 
 \tabularnewline
 
@@ -3809,11 +3830,11 @@ text.}
 \bottomrule
 \endlastfoot
 
-Prolonged mechanical ventilation (>7 days), n (\%) &  &  & \\
-Initiation of renal replacement therapy, n (\%) &  &  & \\
-Prolonged (>2 days) or renewed use of vasopressors such as norepinephrine or vasopressin, n (\%) &  &  & \\
-Other reported safety events, n (\%) &  &  & \\
-Events assessed as probably related to the trial or intervention, n (\%) &  &  & \\
+Prolonged mechanical ventilation (>7 days), n (\%) & 42 (35\%) & 36 (30\%) & 78 (33\%)\\
+Initiation of renal replacement therapy, n (\%) & 42 (35\%) & 39 (33\%) & 81 (34\%)\\
+Prolonged (>2 days) or renewed use of vasopressors such as norepinephrine or vasopressin, n (\%) & 37 (31\%) & 45 (38\%) & 82 (34\%)\\
+Other reported safety events, n (\%) & 42 (35\%) & 34 (28\%) & 76 (32\%)\\
+Events assessed as probably related to the trial or intervention, n (\%) & 40 (33\%) & 46 (38\%) & 86 (36\%)\\
 \bottomrule
 
 \end{longtable}
