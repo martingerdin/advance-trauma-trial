@@ -129,12 +129,12 @@ knitr::include_graphics(
 )
 ```
 
-Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting in the three months before and the three months after each cluster's transition period.
+Because certain secondary outcomes will be more burdensome to collect and because we anticipate larger effects on these outcomes, we will nest a staircase design within the main stepped-wedge design to measure these outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting in the three months before and the three months after each cluster's scheduled transition period.
 
 ```{r}
 #| echo: false
 #| label: fig-nested-staircase-design
-#| fig.cap: "Nested staircase design. We include a random subset of patients presenting in the three months before and the three months after each cluster's transition period."
+#| fig.cap: "Nested staircase design. We include a random subset of patients presenting in the three months before and the three months after each cluster's scheduled transition period."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -357,10 +357,10 @@ At the cluster level, we treat early or late transition, incomplete delivery of 
 At the individual level, the intervention is training of hospital staff, so patients cannot discontinue or withdraw from it. The anticipated patient-level intercurrent events are:
 
 <!-- github-issue-23: transfer is part of the mortality outcome definitions, not an ICE. -->
-<!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer handling for length of stay and ICU admission, stated once here. -->
+<!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer relevance for length of stay and ICU admission stated here; handling defined once under Strategies. -->
 - **Transfer to another hospital.** Relevant to length of emergency department, hospital, and intensive care unit (ICU) stay and to ICU admission. Transfer is not an intercurrent event for mortality outcomes, because the primary outcome includes in-hospital deaths after transfer and all-cause mortality counts deaths in any setting.
 <!-- github-issue-23: death as ICE is death before that outcome's assessment. -->
-- **Death.** Death is an intercurrent event only for outcomes assessed after it. For length of stay and ICU admission it is handled in the same way as transfer. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up.
+- **Death.** Death is an intercurrent event only for outcomes assessed after it. For length of stay and ICU admission it is handled in the same way as transfer, see @sec-strategies-for-handling-intercurrent-events. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up.
 - **Withdrawal of consent for non-routine data collection.** Relevant to outcomes that need opt-in follow-up, namely return to work, quality of life, disability, and all-cause mortality when not available from records. It is also relevant to the primary outcome when death after transfer cannot be ascertained from records. It is not relevant to length of stay, ICU admission, or adherence, which are collected under opt-out consent. Patients who withdraw contribute outcomes observed before withdrawal unless they also ask for their data to be removed. Missing values are handled under @sec-missing-data.
 - **Loss to follow-up.** Relevant to the same outcomes as withdrawal. Missing values are handled under @sec-missing-data.
 <!-- Observation window is a ceiling, not a minimum: resuscitation ending early (ED exit or death) completes the observation and unperformed items count as non-adherence. -->
@@ -398,7 +398,7 @@ A population is the group of patients to which an estimated effect applies. An a
 An observation is one presentation by an eligible patient to the emergency department of a participating cluster. It belongs to the cluster the patient presented to and to the period in which the patient arrived. An observation is exposed to the intervention if the patient arrived after the period in which the cluster was scheduled to transition, and to standard care otherwise, irrespective of when the cluster was in fact trained or who delivered the care, see @sec-adherence-and-protocol-deviations and @sec-exposure-defined-by-the-actual-date-of-transition.
 
 <!-- Round Two checklist item 24 (AO/MGW): three named sets; the first retains the protocol wording (protocol.qmd, Statistics, General principles). -->
-- **Primary analysis set.** All randomised clusters and all eligible patients, that is all observations within clusters with available data, irrespective of the receipt of the intervention, with the exception of the transition periods. A cluster that leaves the trial early contributes the periods it completed. Used for the outcomes collected in the main stepped-wedge design.
+- **Primary analysis set.** All randomised clusters and all eligible patients, that is all observations within clusters with available data, irrespective of the receipt of the intervention, with the exception of the transition periods. A cluster that leaves the trial early, or is still in the trial when the trial stops, contributes the periods it completed. Used for the outcomes collected in the main stepped-wedge design.
 - **Nested sample.** The observations for the patients randomly selected for nested staircase data collection, see @sec-nested-staircase-design-and-secondary-outcomes. Used for quality of life and disability.
 - **Observed nested sample.** The observations in the nested sample with a completely observed resuscitation, see @sec-intercurrent-events. Used for adherence to ATLS^®^ principles.
 
@@ -411,7 +411,7 @@ Outcomes are measured on individual patients. We will summarise the primary and 
 
 <!-- github-issue-13: CRT SAP reporting paper — participant-level vs cluster-average; cluster-specific vs marginal. -->
 <!-- sap-revision-todo H1 (comments id=14, id=15, id=17 MGW/AO; Round Two): effect measures by outcome type; no HR after A2; cluster-specific estimates. -->
-@tbl-outcomes-summary lists the comparative effect measure for each outcome. We estimate them from the mixed-effects models described under @sec-analysis-methods. These models give cluster-specific (conditional) estimates of the intervention effect, not marginal (population-averaged) estimates, and they weight patients rather than clusters equally, see @sec-framework. The effect measures by outcome type are:
+@tbl-outcomes-summary lists the comparative effect measure for each outcome. We estimate them from the mixed-effects models described under @sec-analysis-methods. These models give cluster-specific (conditional) estimates of the intervention effect, not marginal (population-averaged) estimates. The target is an average over patients rather than over clusters, see @sec-framework. The effect measures by outcome type are:
 
 - **Dichotomous outcomes:** odds ratio from a binomial model with a logit link, and absolute risk difference from a binomial model with an identity link.
 - **Count (length-of-stay) outcomes:** rate ratio from a negative binomial model with a log link.
@@ -428,7 +428,7 @@ We will analyse the primary and secondary outcomes with mixed-effects regression
 Randomisation is at the hospital level, and all participating units within a hospital belong to the same cluster. The models therefore include a random effect at the hospital level and no separate random effect for unit within hospital.
 
 <!-- sap-revision-todo A1 (comments id=199 KH, id=200 AO); B4 (comment id=23 AO; Round Two 27b): general estimation framework is ML with Laplace; package/implementation not prespecified. -->
-Unless stated otherwise, the following specifications apply to all analyses in this section. We will estimate the models by maximum likelihood, using a Laplace approximation to integrate over the random effects. We do not prespecify the R package or numerical implementation, see @sec-statistical-software.
+Unless stated otherwise, the following specifications apply to all analyses in this section. We will estimate the models by maximum likelihood, using a Laplace approximation to integrate over the random effects. Linear mixed models are the exception, and we will estimate them by restricted maximum likelihood (REML), which the Kenward–Roger correction requires. We do not prespecify the R package or numerical implementation, see @sec-statistical-software.
 
 <!-- sap-revision-todo B3 (comments id=21, id=22 AO; Round Two 27c/27d): model-based SEs, small-sample adjustments, Wald-type CIs. -->
 Standard errors will be model-based, and confidence intervals will be Wald-type. Because the trial has few clusters, we will apply a small-sample correction to avoid inflating the type I error rate. For linear mixed models, we plan to use the Kenward–Roger correction [@grantham_evaluating_2022]. Small-sample corrections for binomial and other non-linear mixed models are an area of active research, so we will choose the correction for these models closer to the end of patient inclusion, based on the best available evidence at that time. The correction may also differ between outcomes collected in the complete stepped-wedge design and in the incomplete nested staircase design.
@@ -460,28 +460,29 @@ g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk}
 $$ {#eq-simplified-random-effects-model}
 
 <!-- sap-revision-todo B1 (comments id=191 KH, id=192 AO): state retained random effects and batch indexing for the shared period effects model. -->
-3. **Model with shared period effects**: the primary model with fixed period effects shared across batches instead of estimated separately for each batch. Time is adjusted for with a common categorical period effect or with calendar time modelled directly, for example as a continuous covariate or with splines. The model keeps the random intercept for cluster and the random cluster-by-period effect, and clusters remain indexed by batch (@eq-shared-period-model).
+<!-- Shared period effects are calendar-month effects (48 months in the design matrix), not a within-batch period index shared across batches; see JK's note below eq-beta-model. -->
+3. **Model with shared period effects**: the primary model with categorical fixed effects for calendar month instead of separate period effects for each batch. Batches share the effects of the months in which they overlap. Alternatively, calendar time may be modelled directly, for example as a continuous covariate or with splines. The model keeps the random intercept for cluster and the random cluster-by-period effect, and clusters remain indexed by batch (@eq-shared-period-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-shared-period-model}
 
 4. **Combined simplified model**: a model with shared period effects and a random intercept for cluster only. This is the simplest model we consider acceptable for the primary analysis (@eq-combined-simplified-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk}
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk}
 $$ {#eq-combined-simplified-model}
 
 Where:
 
 - $g(\cdot)$: the link function, specified as either the logit link, $g(p) = \log\{p/(1-p)\}$, or the identity link, $g(p) = p$, depending on the estimand of interest.
-- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m_{bkt}$ in cluster $k = 1, \dotsc, `r clusters / batches`$ during period $t = 1, \dotsc, `r total.months - 1`$ in batch $b = 1, \dotsc, `r batches`$, giving `r clusters` clusters in total.
+- $\Pr(Y_{bkti} = 1)$: the probability of death for patient $i = 1, \dotsc, m_{bkt}$ in cluster $k$ during period $t = 1, \dotsc, `r total.months`$ in batch $b$. The planned design has `r batches` batches of `r clusters / batches` clusters, giving `r clusters` clusters in total. A cluster that completes the trial contributes `r total.months - transition.months` periods, because its transition period is excluded.
 - $m_{bkt}$: the number of patients in cluster $k$ during period $t$ in batch $b$.
 - $\mu$: the intercept, representing the value of the linear predictor for the reference levels of all fixed effects, with random effects equal to zero.
-- $\beta_t$: the fixed effect of period $t$, shared across batches.
-- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, giving `r batches` $\times$ (`r total.months - 1`) period effects in total.
+- $\beta_{bt}$: the fixed effect of period $t$ in batch $b$, with one effect for each period of each batch. The planned design has `r batches` $\times$ `r total.months` = `r batches * total.months` period effects.
+- $\beta_{c(b,t)}$: the fixed effect of calendar month $c(b,t)$, the month of the trial in which period $t$ of batch $b$ falls. Batches share the effects of the months in which they overlap, so there is one effect for each calendar month of the trial. The number of calendar months depends on when each batch starts and is `r batches * total.months - (batches - 1) * batches.overlap.months` in the planned design.
 - $\theta$: **the intervention effect**, the fixed effect of intervention exposure and the primary estimand. Under the logit link, $\theta$ is the log odds ratio for death under ATLS^®^ compared with standard care. Under the identity link, it is the absolute risk difference.
 - $X_{bkt}$: the intervention exposure indicator for cluster $k$ during period $t$ in batch $b$, with $X_{bkt} = 1$ for ATLS^®^ and $X_{bkt} = 0$ for standard care.
 - $\alpha_{bk}$: a normally distributed random effect for cluster $k$ in batch $b$, representing between-cluster (hospital-level) variability in the outcome.
@@ -502,7 +503,7 @@ $$ {#eq-distributional-assumptions}
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): diagnostics for secondary models, including proportional odds for ordinal outcomes. -->
 <!-- sap-revision-todo H1 (comments id=14, id=15, id=17 MGW/AO; Round Two): effect measures by outcome type; no HR after A2; cluster-specific estimates. -->
 <!-- github-issue-71: carry over the primary-analysis model specification instead of repeating the convergence sequence for every secondary outcome. -->
-Unless stated otherwise, we will analyse each secondary outcome with the period parametrisation and random effects structure of the model selected for the primary analysis under @sec-analysis-of-the-primary-outcome. The link function and outcome distribution are chosen to suit each outcome, with the effect measures listed under @sec-effect-measures. We will not repeat the model sequence for each secondary outcome. If the selected model does not converge for a secondary outcome, we will continue down the same sequence for that outcome. We will report which model we used for each outcome. For outcomes collected in the nested staircase design, period effects are shared across batches rather than estimated separately for each batch, while the random effects structure still follows the primary analysis.
+Unless stated otherwise, we will analyse each secondary outcome with the period parametrisation and random effects structure of the model selected for the primary analysis under @sec-analysis-of-the-primary-outcome. The link function and outcome distribution are chosen to suit each outcome, with the effect measures listed under @sec-effect-measures. We will not repeat the model sequence for each secondary outcome. If the selected model does not converge for a secondary outcome, we will continue down the same sequence for that outcome. We will report which model we used for each outcome. For outcomes collected in the nested staircase design, period effects are calendar-month effects shared across batches, as in the model with shared period effects, rather than separate effects for each batch. The random effects structure still follows the primary analysis.
 
 For cumulative logit models, we will also check the proportional odds assumption.
 
@@ -519,7 +520,7 @@ For each of the five ordinal domains, we will use a mixed-effects cumulative log
 
 $$
 \text{logit}\{\Pr(Y_{bkti} \leq j)\}
-= \mu_j + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu_j + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-ordinal-model}
 
 Where $\mu_j$ is the intercept for category $j$, and all other terms are defined as in the primary analysis model.
@@ -528,7 +529,7 @@ The VAS will be analysed as a continuous outcome using a linear mixed-effects mo
 
 $$
 \text{VAS}_{bkti}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
 \quad \epsilon_{bkti} \sim \mathcal{N}(0,\sigma^2)
 $$ {#eq-linear-model}
 
@@ -575,7 +576,7 @@ We assess adherence to ATLS^®^ principles within the nested staircase design, i
 
 $$
 \text{logit}\{\mathbb{E}(Y_{bkti})\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-beta-model}
 
 Where $\mathbb{E}(Y_{bkti})$ is the expected adherence proportion, and $\theta$ is the difference in expected adherence proportion on the logit scale. The beta distribution excludes 0 and 1, so we will transform observed proportions to lie in the open interval $(0,1)$ before fitting the model. The model also estimates a precision (dispersion) parameter.
@@ -695,17 +696,18 @@ with $\sigma_{\alpha u} \neq 0$ allowed.
 - $\gamma_{bkt} \sim \mathcal{N}(0,\sigma^2_{\gamma})$ is independent of $(\alpha_{bk}, u_{bk})$.
 
 ### Models with time modelled with a spline function {#sec-models-with-time-modelled-with-a-spline-function}
-To explore whether the categorical period effects are both parsimonious and adequate to represent any underlying secular trend, we will replace them with a natural cubic spline of calendar time shared across all batches. The spline has interior knots at periods 3, 6 and 9 and boundary knots at the first and last periods. A natural cubic spline is linear beyond its boundary knots, so three interior knots give four basis functions in addition to the intercept. The model is specified in @eq-spline-model.
+To explore whether the categorical period effects are both parsimonious and adequate to represent any underlying secular trend, we will replace them with a natural cubic spline of calendar month shared across all batches. The spline has interior knots every 12 months from the first calendar month of the trial, excluding any knot within six months of the last calendar month, and boundary knots at the first and last calendar months. A natural cubic spline is linear beyond its boundary knots, so $K$ interior knots give $K + 1$ basis functions in addition to the intercept. With the planned `r batches * total.months - (batches - 1) * batches.overlap.months` calendar months, the interior knots fall at months 12, 24 and 36, giving four basis functions. The model is specified in @eq-spline-model.
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \sum_{j=1}^{4} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \sum_{j=1}^{K+1} \beta_j S_j\{c(b,t)\} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-spline-model}
 
 Where:
 
-- $t$: calendar time (period index) common to all batches.
-- $S_j(t, \{3,6,9\})$: the $j$th natural cubic spline basis function, shared across batches.
+- $c(b,t)$: the calendar month in which period $t$ of batch $b$ falls, as defined for the primary analysis model.
+- $K$: the number of interior knots.
+- $S_j\{c(b,t)\}$: the $j$th natural cubic spline basis function of calendar month, shared across batches.
 - $\beta_j$: the coefficient for the $j$th spline basis function.
 
 ### Models exploring lag and weaning effects {#sec-models-exploring-lag-and-weaning-effects}
@@ -810,7 +812,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-clusters
-#| fig.cap: "Cluster-level CONSORT diagram shell with simulated counts. Boxes cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across batches 1–6. Intended for the main text."
+#| fig.cap: "Cluster-level CONSORT diagram shell with simulated counts. Boxes cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. The flowchart summarises data across all batches. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -833,7 +835,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-patients
-#| fig.cap: "Patient-level CONSORT diagram shell with simulated counts. Boxes cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS^®^ training, and overall. The flowchart summarises data across batches 1–6. Intended for the main text."
+#| fig.cap: "Patient-level CONSORT diagram shell with simulated counts. Boxes cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS^®^ training, and overall. The flowchart summarises data across all batches. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
@@ -856,7 +858,7 @@ knitr::include_graphics(
 ```{r}
 #| echo: false
 #| label: fig-consort-nested-staircase
-#| fig.cap: "Nested-staircase CONSORT diagram shell with simulated counts. Boxes cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS^®^ training, and overall. Coloured strip cells mark staircase months, and grey cells are outside nested data collection. The flowchart summarises data across batches 1–6. Intended for the supplementary material."
+#| fig.cap: "Nested-staircase CONSORT diagram shell with simulated counts. Boxes cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS^®^ training, and overall. Coloured strip cells mark staircase months, and grey cells are outside nested data collection. The flowchart summarises data across all batches. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"

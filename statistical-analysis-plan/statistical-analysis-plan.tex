@@ -124,20 +124,6 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \usepackage{scrlayer-scrpage}
 \usepackage{lastpage}
 \usepackage{fontspec}
@@ -1350,9 +1336,11 @@ patient-level intercurrent events are:
 \item
   \textbf{Death.} Death is an intercurrent event only for outcomes
   assessed after it. For length of stay and ICU admission it is handled
-  in the same way as transfer. Quality of life, disability, and return
-  to work are defined only among patients alive at the relevant
-  follow-up.
+  in the same way as transfer, see
+  Strategies for handling intercurrent events
+  (Section~\ref{sec-strategies-for-handling-intercurrent-events}).
+  Quality of life, disability, and return to work are defined only among
+  patients alive at the relevant follow-up.
 \item
   \textbf{Withdrawal of consent for non-routine data collection.}
   Relevant to outcomes that need opt-in follow-up, namely return to
@@ -1515,9 +1503,10 @@ Table~\ref{tbl-outcomes-summary} lists the comparative effect measure
 for each outcome. We estimate them from the mixed-effects models
 described under Analysis methods (Section~\ref{sec-analysis-methods}).
 These models give cluster-specific (conditional) estimates of the
-intervention effect, not marginal (population-averaged) estimates, and
-they weight patients rather than clusters equally, see Framework
-(Section~\ref{sec-framework}). The effect measures by outcome type are:
+intervention effect, not marginal (population-averaged) estimates. The
+target is an average over patients rather than over clusters, see
+Framework (Section~\ref{sec-framework}). The effect measures by outcome
+type are:
 
 \begin{itemize}
 \tightlist
@@ -1554,14 +1543,20 @@ effect for unit within hospital.
 Unless stated otherwise, the following specifications apply to all
 analyses in this section. We will estimate the models by maximum
 likelihood, using a Laplace approximation to integrate over the random
-effects. We do not prespecify the R package or numerical implementation,
-see Statistical software (Section~\ref{sec-statistical-software}).
+effects. Linear mixed models are the exception, and we will estimate
+them by restricted maximum likelihood (REML), which the Kenward--Roger
+correction requires. We do not prespecify the R package or numerical
+implementation, see Statistical software
+(Section~\ref{sec-statistical-software}).
 
 Standard errors will be model-based, and confidence intervals will be
 Wald-type. Because the trial has few clusters, we will apply a
-small-sample correction to avoid inflating the type I error rate. We
-will choose the correction closer to the end of patient inclusion, based
-on the best available evidence at that time\textsuperscript{17}. The
+small-sample correction to avoid inflating the type I error rate. For
+linear mixed models, we plan to use the Kenward--Roger
+correction\textsuperscript{17}. Small-sample corrections for binomial
+and other non-linear mixed models are an area of active research, so we
+will choose the correction for these models closer to the end of patient
+inclusion, based on the best available evidence at that time. The
 correction may also differ between outcomes collected in the complete
 stepped-wedge design and in the incomplete nested staircase design.
 
@@ -1730,9 +1725,9 @@ sequence for each secondary outcome. If the selected model does not
 converge for a secondary outcome, we will continue down the same
 sequence for that outcome. We will report which model we used for each
 outcome. For outcomes collected in the nested staircase design, period
-effects are shared across batches rather than estimated separately for
-each batch, while the random effects structure still follows the primary
-analysis.
+effects are defined on a single timeline for the whole study rather than
+separately for each batch, while the random effects structure still
+follows the primary analysis.
 
 For cumulative logit models, we will also check the proportional odds
 assumption.
