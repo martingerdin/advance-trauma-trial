@@ -124,6 +124,20 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \usepackage{scrlayer-scrpage}
 \usepackage{lastpage}
 \usepackage{fontspec}
@@ -498,6 +512,20 @@ and we take full responsibility for the final document.
 
 \section{Introduction}\label{sec-introduction}
 
+\subsection{Visual abstract}\label{sec-visual-abstract}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=22.22in,height=\textheight,keepaspectratio]{../shared-assets/advance-trauma-visual-abstract.png}
+
+}
+
+\caption{\label{fig-visual-abstract}ADVANCE TRAUMA visual abstract.}
+
+\end{figure}%
+
 \subsection{Trial synopsis}\label{sec-trial-synopsis}
 
 \textbf{Title} Effects of Advanced Trauma Life
@@ -660,7 +688,7 @@ outcomes (see
 Figure~\ref{fig-nested-staircase-design})\textsuperscript{2}. The
 staircase design will include a random subset of patients presenting in
 the three months before and the three months after each cluster's
-transition period.
+scheduled transition period.
 
 \begin{figure}
 
@@ -672,7 +700,8 @@ transition period.
 
 \caption{\label{fig-nested-staircase-design}Nested staircase design. We
 include a random subset of patients presenting in the three months
-before and the three months after each cluster's transition period.}
+before and the three months after each cluster's scheduled transition
+period.}
 
 \end{figure}%
 
@@ -1467,8 +1496,9 @@ Exposure defined by the actual date of transition
   eligible patients, that is all observations within clusters with
   available data, irrespective of the receipt of the intervention, with
   the exception of the transition periods. A cluster that leaves the
-  trial early contributes the periods it completed. Used for the
-  outcomes collected in the main stepped-wedge design.
+  trial early, or is still in the trial when the trial stops,
+  contributes the periods it completed. Used for the outcomes collected
+  in the main stepped-wedge design.
 \item
   \textbf{Nested sample.} The observations for the patients randomly
   selected for nested staircase data collection, see
@@ -1624,18 +1654,18 @@ g\{\Pr(Y_{bkti} = 1)\} = \mu + \beta_{bt} + \theta X_{bkt} + \alpha_{bk}
 \tightlist
 \item
   \textbf{Model with shared period effects}: the primary model with
-  fixed period effects shared across batches instead of estimated
-  separately for each batch. Time is adjusted for with a common
-  categorical period effect or with calendar time modelled directly, for
-  example as a continuous covariate or with splines. The model keeps the
-  random intercept for cluster and the random cluster-by-period effect,
-  and clusters remain indexed by batch
+  categorical fixed effects for calendar month instead of separate
+  period effects for each batch. Batches share the effects of the months
+  in which they overlap. Alternatively, calendar time may be modelled
+  directly, for example as a continuous covariate or with splines. The
+  model keeps the random intercept for cluster and the random
+  cluster-by-period effect, and clusters remain indexed by batch
   (Equation~\ref{eq-shared-period-model}).
 \end{enumerate}
 
 \begin{equation}\phantomsection\label{eq-shared-period-model}{
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
 \begin{enumerate}
@@ -1651,7 +1681,7 @@ g\{\Pr(Y_{bkti} = 1)\}
 
 \begin{equation}\phantomsection\label{eq-combined-simplified-model}{
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk}
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk}
 }\end{equation}
 
 Where:
@@ -1664,9 +1694,11 @@ Where:
   depending on the estimand of interest.
 \item
   \(\Pr(Y_{bkti} = 1)\): the probability of death for patient
-  \(i = 1, \dotsc, m_{bkt}\) in cluster \(k = 1, \dotsc, 5\) during
-  period \(t = 1, \dotsc, 12\) in batch \(b = 1, \dotsc, 6\), giving 30
-  clusters in total.
+  \(i = 1, \dotsc, m_{bkt}\) in cluster \(k\) during period
+  \(t = 1, \dotsc, 13\) in batch \(b\). The planned design has 6 batches
+  of 5 clusters, giving 30 clusters in total. A cluster that completes
+  the trial contributes 12 periods, because its transition period is
+  excluded.
 \item
   \(m_{bkt}\): the number of patients in cluster \(k\) during period
   \(t\) in batch \(b\).
@@ -1675,10 +1707,16 @@ Where:
   for the reference levels of all fixed effects, with random effects
   equal to zero.
 \item
-  \(\beta_t\): the fixed effect of period \(t\), shared across batches.
+  \(\beta_{bt}\): the fixed effect of period \(t\) in batch \(b\), with
+  one effect for each period of each batch. The planned design has 6
+  \(\times\) 13 = 78 period effects.
 \item
-  \(\beta_{bt}\): the fixed effect of period \(t\) in batch \(b\),
-  giving 6 \(\times\) (12) period effects in total.
+  \(\beta_{c(b,t)}\): the fixed effect of calendar month \(c(b,t)\), the
+  month of the trial in which period \(t\) of batch \(b\) falls. Batches
+  share the effects of the months in which they overlap, so there is one
+  effect for each calendar month of the trial. The number of calendar
+  months depends on when each batch starts and is 48 in the planned
+  design.
 \item
   \(\theta\): \textbf{the intervention effect}, the fixed effect of
   intervention exposure and the primary estimand. Under the logit link,
@@ -1725,9 +1763,9 @@ sequence for each secondary outcome. If the selected model does not
 converge for a secondary outcome, we will continue down the same
 sequence for that outcome. We will report which model we used for each
 outcome. For outcomes collected in the nested staircase design, period
-effects are defined on a single timeline for the whole study rather than
-separately for each batch, while the random effects structure still
-follows the primary analysis.
+effects are calendar-month effects shared across batches, as in the
+model with shared period effects, rather than separate effects for each
+batch. The random effects structure still follows the primary analysis.
 
 For cumulative logit models, we will also check the proportional odds
 assumption.
@@ -1756,7 +1794,7 @@ cumulative logit (proportional odds) model:
 
 \begin{equation}\phantomsection\label{eq-ordinal-model}{
 \text{logit}\{\Pr(Y_{bkti} \leq j)\}
-= \mu_j + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu_j + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
 Where \(\mu_j\) is the intercept for category \(j\), and all other terms
@@ -1767,7 +1805,7 @@ mixed-effects model:
 
 \begin{equation}\phantomsection\label{eq-linear-model}{
 \text{VAS}_{bkti}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt} + \epsilon_{bkti},
 \quad \epsilon_{bkti} \sim \mathcal{N}(0,\sigma^2)
 }\end{equation}
 
@@ -1865,7 +1903,7 @@ logit link:
 
 \begin{equation}\phantomsection\label{eq-beta-model}{
 \text{logit}\{\mathbb{E}(Y_{bkti})\}
-= \mu + \beta_{t} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \beta_{c(b,t)} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
 Where \(\mathbb{E}(Y_{bkti})\) is the expected adherence proportion, and
@@ -2037,16 +2075,19 @@ function}\label{sec-models-with-time-modelled-with-a-spline-function}
 
 To explore whether the categorical period effects are both parsimonious
 and adequate to represent any underlying secular trend, we will replace
-them with a natural cubic spline of calendar time shared across all
-batches. The spline has interior knots at periods 3, 6 and 9 and
-boundary knots at the first and last periods. A natural cubic spline is
-linear beyond its boundary knots, so three interior knots give four
-basis functions in addition to the intercept. The model is specified in
-Equation~\ref{eq-spline-model}.
+them with a natural cubic spline of calendar month shared across all
+batches. The spline has interior knots every 12 months from the first
+calendar month of the trial, excluding any knot within six months of the
+last calendar month, and boundary knots at the first and last calendar
+months. A natural cubic spline is linear beyond its boundary knots, so
+\(K\) interior knots give \(K + 1\) basis functions in addition to the
+intercept. With the planned 48 calendar months, the interior knots fall
+at months 12, 24 and 36, giving four basis functions. The model is
+specified in Equation~\ref{eq-spline-model}.
 
 \begin{equation}\phantomsection\label{eq-spline-model}{
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \sum_{j=1}^{4} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \sum_{j=1}^{K+1} \beta_j S_j\{c(b,t)\} + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
 Where:
@@ -2054,10 +2095,13 @@ Where:
 \begin{itemize}
 \tightlist
 \item
-  \(t\): calendar time (period index) common to all batches.
+  \(c(b,t)\): the calendar month in which period \(t\) of batch \(b\)
+  falls, as defined for the primary analysis model.
 \item
-  \(S_j(t, \{3,6,9\})\): the \(j\)th natural cubic spline basis
-  function, shared across batches.
+  \(K\): the number of interior knots.
+\item
+  \(S_j\{c(b,t)\}\): the \(j\)th natural cubic spline basis function of
+  calendar month, shared across batches.
 \item
   \(\beta_j\): the coefficient for the \(j\)th spline basis function.
 \end{itemize}
@@ -2235,7 +2279,7 @@ Intended for the supplementary material.}
 with simulated counts. Boxes cover clusters assessed and randomised,
 losses and exclusions after randomisation with reasons, and clusters
 included in the primary analysis, by sequence and overall. The flowchart
-summarises data across batches 1--6. Intended for the main text.}
+summarises data across all batches. Intended for the main text.}
 
 \end{figure}%
 
@@ -2251,8 +2295,8 @@ summarises data across batches 1--6. Intended for the main text.}
 with simulated counts. Boxes cover patients entered, losses and
 exclusions from the primary analysis with reasons, and patients
 analysed, by sequence, before and after ATLS\textsuperscript{®}
-training, and overall. The flowchart summarises data across batches
-1--6. Intended for the main text.}
+training, and overall. The flowchart summarises data across all batches.
+Intended for the main text.}
 
 \end{figure}%
 
@@ -2270,8 +2314,8 @@ periods, the shift-stratified nested sample, losses and exclusions with
 reasons, and patients analysed for nested-staircase secondary outcomes,
 by sequence, before and after ATLS\textsuperscript{®} training, and
 overall. Coloured strip cells mark staircase months, and grey cells are
-outside nested data collection. The flowchart summarises data across
-batches 1--6. Intended for the supplementary material.}
+outside nested data collection. The flowchart summarises data across all
+batches. Intended for the supplementary material.}
 
 \end{figure}%
 

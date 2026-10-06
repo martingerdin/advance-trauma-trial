@@ -71,6 +71,19 @@ We used generative artificial intelligence tools, including large language model
 {{< pagebreak >}}
 
 # Introduction {#sec-introduction}
+
+## Visual abstract {#sec-visual-abstract}
+```{r}
+#| echo: false
+#| label: fig-visual-abstract
+#| fig.cap: "ADVANCE TRAUMA visual abstract."
+#| fig.align: "center"
+#| message: FALSE
+#| warning: FALSE
+
+knitr::include_graphics("../shared-assets/advance-trauma-visual-abstract.png")
+```
+
 ## Trial synopsis {#sec-trial-synopsis}
 {{< include ../shared-assets/synopsis.qmd >}}
 
@@ -187,19 +200,20 @@ When we designed the trial, we calculated the sample size using the Shiny CRT Ca
 ## Interim analysis {#sec-interim-analysis}
 {{< include ../shared-assets/interim-analysis.qmd >}}
 
-<!-- sap-revision-todo J4: content of the interim report to the joint SDMC (list only; detailed shells deferred). -->
-The Trial Team will prepare the interim analysis report for the joint Trial Steering and Data Monitoring Committee (SDMC), and the Trial Management Group will approve it before circulation. The report will include:
+<!-- sap-revision-todo J4: content of the SDMC report after each batch, including the interim report (list only; detailed shells deferred). -->
+The joint Trial Steering and Data Monitoring Committee (SDMC) will meet after each batch has completed the trial. For each meeting, the Trial Team will prepare a report, and the Trial Management Group will approve it before circulation. The report prepared after half of the batches have completed the trial is the interim analysis report. Each report will include:
 
-- trial progress, overall and by intervention condition: the number of clusters included and dropping out, and the number of potentially eligible patients screened, patients included, patients who did not consent to out-of-hospital follow-up, and patients lost to follow-up
+- trial progress, overall, by batch and by intervention condition: the number of clusters included and dropping out, and the number of potentially eligible patients screened, patients included, patients who did not consent to out-of-hospital follow-up, and patients lost to follow-up
 - adherence to the randomisation schedule and reasons for non-adherence
 - summary statistics of included clusters and patient participants by intervention condition
 - completeness of primary and secondary outcome data, overall and by intervention condition
+- summary statistics of primary and secondary outcomes, pooled across intervention conditions and periods
 - ATLS^®^ training delivery, including the number of physicians trained in each hospital
 - protocol deviations and proposed protocol amendments
 - safety events, as defined for SDMC monitoring
 - relevant external evidence
 
-We will not present or compare outcome values by intervention condition in the interim report, to avoid biasing the SDMC or Trial Management Group. The SDMC will use the interim report to advise whether the trial remains feasible and should continue as planned.
+We will not present or compare outcome values by intervention condition in these reports, to avoid biasing the SDMC or Trial Management Group. The SDMC will use each report to advise whether the trial remains feasible and should continue as planned.
 
 <!--
 Removed the recalculation of the sample size from the interim analysis after discussion with Karla and James on 2024-10-16. The rationale was that the estimates would be associated with so much uncertainty and that it wouldn't change things.
@@ -230,7 +244,7 @@ In every descriptive table we summarise discrete variables as frequencies and pe
 ### Adherence to the intervention {#sec-adherence-to-the-intervention}
 Adherence to the intervention is defined at the cluster and individual levels. It is distinct from the secondary outcome adherence to ATLS^®^ principles during initial patient resuscitation, see @sec-adherence-to-atls-principles-during-initial-patient-resuscitation. That outcome is not used to exclude patients from the primary analysis.
 
-At the cluster level, adherence means that the cluster receives ATLS^®^ training during the transition period scheduled for its randomised sequence and does not implement ATLS^®^ training earlier. We will assess cluster-level adherence using the training log kept by the Trial Team. We will report the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. We also review adherence to the randomisation schedule at the interim analysis, see @sec-interim-analysis.
+At the cluster level, adherence means that the cluster receives ATLS^®^ training during the transition period scheduled for its randomised sequence and does not implement ATLS^®^ training earlier. We will assess cluster-level adherence using the training log kept by the Trial Team. We will report the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. We also review adherence to the randomisation schedule in each report to the SDMC, see @sec-interim-analysis.
 
 <!-- github-issue-69: classify patients by arrival at the emergency department, since eligible patients include those who die before admission and those transferred out from the emergency department. -->
 At the individual level, exposure to the intervention is defined by the cluster's scheduled transition date, and patients are classified by the period in which they arrived at the emergency department, see @sec-analysis-sets. The primary analysis includes eligible patients irrespective of whether care was delivered by a trained physician.
@@ -238,7 +252,7 @@ At the individual level, exposure to the intervention is defined by the cluster'
 ### Protocol deviations {#sec-protocol-deviations}
 A protocol deviation is any departure from the approved trial protocol, ICH-GCP, or applicable regulations. As stated in the protocol, we will report any serious breach or deviation to the sponsor without delay for assessment. A deviation is serious if it significantly affects, or is likely to affect, participant safety or integrity or the reliability of trial data. Minor deviations do not affect participant safety or integrity and do not materially affect the scientific value of the trial. We will document them in the trial records of the principal investigator and the sponsor.
 
-We will summarise protocol deviations at the interim and final analyses, overall and by intervention condition where informative. We will give counts by type, cluster-level or individual-level and serious or minor where classified, together with the reasons. We will not exclude clusters or patients from the primary analysis because of a deviation. Exposure is still defined by the scheduled transition date, see @sec-analysis-sets.
+We will summarise protocol deviations in each report to the SDMC and at the final analysis, overall and by intervention condition where informative. We will give counts by type, cluster-level or individual-level and serious or minor where classified, together with the reasons. We will not exclude clusters or patients from the primary analysis because of a deviation. Exposure is still defined by the scheduled transition date, see @sec-analysis-sets.
 
 # Trial sample {#sec-trial-sample}
 ## Eligibility criteria {#sec-eligibility-criteria}
