@@ -259,7 +259,7 @@ We will use CONSORT diagrams to show the flow of clusters and patients through t
 
 A separate figure in the supplementary material will show flow for the nested-staircase outcomes, which are adherence to ATLS^®^ principles, EQ-5D-5L, and WHODAS 2.0 (@fig-consort-nested-staircase). It will show patients in the staircase periods, losses and exclusions, and the numbers analysed, by sequence, before and after ATLS^®^ training, and overall.
 
-We will present cluster-level summaries of the intervention effect. We will report the trial according to the CONSORT extension for stepped-wedge cluster randomised trials [@Hemming2018].
+We will report the trial according to the CONSORT extension for stepped-wedge cluster randomised trials [@Hemming2018].
 
 ## Baseline characteristics {#sec-baseline-characteristics}
 ### Cluster characteristics {#sec-cluster-characteristics}
@@ -406,7 +406,7 @@ Each analysis includes the observations in its analysis set that belong to the p
 
 ## Effect measures {#sec-effect-measures}
 <!-- github-issue-25: revise effect measures against checklist; keep descriptive shells and cross-ref analysis shells. -->
-<!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L/WHODAS in supplementary). -->
+<!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L in supplementary). -->
 Outcomes are measured on individual patients. We will summarise the primary and secondary outcomes before and after ATLS^®^ training and overall, as specified under @sec-descriptive-summaries. We will present key outcomes in the main text (@tbl-outcomes-descriptive) and all outcomes in the supplementary material (@tbl-outcomes-descriptive-all).
 
 <!-- github-issue-13: CRT SAP reporting paper — participant-level vs cluster-average; cluster-specific vs marginal. -->
@@ -415,7 +415,7 @@ Outcomes are measured on individual patients. We will summarise the primary and 
 
 - **Dichotomous outcomes:** odds ratio from a binomial model with a logit link, and absolute risk difference from a binomial model with an identity link.
 - **Count (length-of-stay) outcomes:** rate ratio from a negative binomial model with a log link.
-- **Ordinal outcomes (EQ-5D-5L domains and WHODAS 2.0 domain scores):** cumulative odds ratio from a cumulative logit model.
+- **Ordinal outcomes (EQ-5D-5L domains):** cumulative odds ratio from a cumulative logit model.
 - **Continuous outcomes (EQ-5D-5L VAS and WHODAS 2.0 summary score):** mean difference from a linear mixed model.
 - **Adherence proportion:** difference on the logit scale from a beta regression model.
 
@@ -431,7 +431,7 @@ Randomisation is at the hospital level, and all participating units within a hos
 Unless stated otherwise, the following specifications apply to all analyses in this section. We will estimate the models by maximum likelihood, using a Laplace approximation to integrate over the random effects. We do not prespecify the R package or numerical implementation, see @sec-statistical-software.
 
 <!-- sap-revision-todo B3 (comments id=21, id=22 AO; Round Two 27c/27d): model-based SEs, small-sample adjustments, Wald-type CIs. -->
-Standard errors will be model-based, and confidence intervals will be Wald-type. Because the trial has few clusters, we will apply a small-sample correction to avoid inflating the type I error rate. We plan to use the Kenward–Roger correction [@grantham_evaluating_2022], but we may change this choice based on methodological developments closer to the end of patient inclusion. The correction may also differ between outcomes collected in the complete stepped-wedge design and in the incomplete nested staircase design.
+Standard errors will be model-based, and confidence intervals will be Wald-type. Because the trial has few clusters, we will apply a small-sample correction to avoid inflating the type I error rate. For linear mixed models, we plan to use the Kenward–Roger correction [@grantham_evaluating_2022]. Small-sample corrections for binomial and other non-linear mixed models are an area of active research, so we will choose the correction for these models closer to the end of patient inclusion, based on the best available evidence at that time. The correction may also differ between outcomes collected in the complete stepped-wedge design and in the incomplete nested staircase design.
 
 <!-- sap-revision-todo B2 (comments id=24 MGW, id=25 AO; Round Two): state that diagnostics will check distributional assumptions and convergence. -->
 We will use model diagnostics to check distributional assumptions and model convergence.
@@ -533,7 +533,8 @@ $$
 $$ {#eq-linear-model}
 
 ### Disability within seven days of discharge, and at 30 days and three months of arrival at the emergency department, among survivors {#sec-disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department-among-survivors}
-We measure disability within the nested staircase design using the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0) [@ustun_measuring_2010], which assesses six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each domain is rated on a Likert scale from 1 to 5, with 1 indicating no difficulties and 5 indicating extreme difficulties. We will analyse each domain separately using a mixed-effects cumulative logit model (@eq-ordinal-model). We will also calculate a WHODAS 2.0 summary score using the "complex scoring" method: we sum the item scores within each of the six domains, sum the six domain scores, and transform the total to a 0–100 scale. We will analyse the summary score using a linear mixed-effects model (@eq-linear-model).
+<!-- WHODAS 2.0 is the 12-item version (CRF items S1–S12); domain scores are not reliable with two items per domain, so only the summary score is analysed. -->
+We measure disability within the nested staircase design using the 12-item version of the WHO Disability Assessment Schedule 2.0 (WHODAS 2.0) [@ustun_measuring_2010]. It covers six domains of functioning: cognition, mobility, self-care, getting along, life activities, and participation. Each item is rated from 1 (no difficulty) to 5 (extreme difficulty or cannot do). We will calculate a summary score from 0 to 100 using the WHODAS 2.0 "complex scoring" method, and we will not calculate domain scores. We will analyse the summary score with a linear mixed-effects model (@eq-linear-model).
 
 ### Return to work at 30 days and three months after arrival at the emergency department, among survivors {#sec-return-to-work-at-30-days-and-three-months-after-arrival-at-the-emergency-department-among-survivors}
 <!-- github-issue-10: align RTW with binary OR and ARD (same as primary mortality). -->
@@ -694,11 +695,11 @@ with $\sigma_{\alpha u} \neq 0$ allowed.
 - $\gamma_{bkt} \sim \mathcal{N}(0,\sigma^2_{\gamma})$ is independent of $(\alpha_{bk}, u_{bk})$.
 
 ### Models with time modelled with a spline function {#sec-models-with-time-modelled-with-a-spline-function}
-We will further explore the potential for a time-varying treatment effect [@kenny_analysis_2022]. To explore whether the categorical period effects are both parsimonious and adequate to represent any underlying secular trend, we will model calendar time with a natural cubic spline basis shared across all batches, with knots at the equally spaced periods 3, 6 and 9. This will result in five spline basis functions, because the natural cubic splines are modelled with three degrees of freedom but are constrained to be linear before the first and after the last knot. The model is specified in @eq-spline-model.
+To explore whether the categorical period effects are both parsimonious and adequate to represent any underlying secular trend, we will replace them with a natural cubic spline of calendar time shared across all batches. The spline has interior knots at periods 3, 6 and 9 and boundary knots at the first and last periods. A natural cubic spline is linear beyond its boundary knots, so three interior knots give four basis functions in addition to the intercept. The model is specified in @eq-spline-model.
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \sum_{j=1}^{5} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \sum_{j=1}^{4} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 $$ {#eq-spline-model}
 
 Where:
@@ -708,7 +709,7 @@ Where:
 - $\beta_j$: the coefficient for the $j$th spline basis function.
 
 ### Models exploring lag and weaning effects {#sec-models-exploring-lag-and-weaning-effects}
-We will also extend the primary analysis model with an interaction between intervention exposure and the number of periods since the cluster was first exposed, to examine whether longer exposure to the intervention changes outcomes. This lets us model lag effects, where the intervention takes time to become embedded in the culture before it has an effect, and weaning effects, where its effect fades. The analysis uses the fact that some clusters are exposed to the intervention for much longer than others (@eq-lag-weaning-model).
+We will also extend the primary analysis model with an interaction between intervention exposure and the number of periods since the cluster was first exposed, to examine whether longer exposure to the intervention changes outcomes [@kenny_analysis_2022]. This lets us model lag effects, where the intervention takes time to become embedded in the culture before it has an effect, and weaning effects, where its effect fades. The analysis uses the fact that some clusters are exposed to the intervention for much longer than others (@eq-lag-weaning-model).
 
 $$
 g\{\Pr(Y_{bkti} = 1)\}

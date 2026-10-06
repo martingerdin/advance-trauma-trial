@@ -124,6 +124,20 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \usepackage{scrlayer-scrpage}
 \usepackage{lastpage}
 \usepackage{fontspec}
@@ -1121,8 +1135,7 @@ the staircase periods, losses and exclusions, and the numbers analysed,
 by sequence, before and after ATLS\textsuperscript{®} training, and
 overall.
 
-We will present cluster-level summaries of the intervention effect. We
-will report the trial according to the CONSORT extension for
+We will report the trial according to the CONSORT extension for
 stepped-wedge cluster randomised trials\textsuperscript{15}.
 
 \subsection{Baseline
@@ -1285,10 +1298,10 @@ Adherence to ATLS® principles during initial patient resuscitation & Nested sta
 Quality of life within seven days of discharge & Nested staircase & Ordinal EQ-5D-5L; VAS & Trauma patients alive at follow-up & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 Quality of life at 30 days after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Trauma patients alive at follow-up & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 Quality of life at three months after arrival at the emergency department & Nested staircase & Ordinal EQ-5D-5L; VAS & Trauma patients alive at follow-up & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Disability within seven days of discharge & Nested staircase & Ordinal WHODAS 2.0; summary score & Trauma patients alive at follow-up & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability within seven days of discharge & Nested staircase & Continuous (WHODAS 2.0 summary score) & Trauma patients alive at follow-up & Linear mixed & Mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
 \addlinespace
-Disability at 30 days after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Trauma patients alive at follow-up & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
-Disability at three months after arrival at the emergency department & Nested staircase & Ordinal WHODAS 2.0; summary score & Trauma patients alive at follow-up & Cumulative logit; linear mixed & COR; mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
+Disability at 30 days after arrival at the emergency department & Nested staircase & Continuous (WHODAS 2.0 summary score) & Trauma patients alive at follow-up & Linear mixed & Mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\
+Disability at three months after arrival at the emergency department & Nested staircase & Continuous (WHODAS 2.0 summary score) & Trauma patients alive at follow-up & Linear mixed & Mean difference & Death; loss to follow-up; withdrawal & While-alive; missing data otherwise\\*
 
 \end{longtable}
 
@@ -1516,8 +1529,8 @@ they weight patients rather than clusters equally, see Framework
   \textbf{Count (length-of-stay) outcomes:} rate ratio from a negative
   binomial model with a log link.
 \item
-  \textbf{Ordinal outcomes (EQ-5D-5L domains and WHODAS 2.0 domain
-  scores):} cumulative odds ratio from a cumulative logit model.
+  \textbf{Ordinal outcomes (EQ-5D-5L domains):} cumulative odds ratio
+  from a cumulative logit model.
 \item
   \textbf{Continuous outcomes (EQ-5D-5L VAS and WHODAS 2.0 summary
   score):} mean difference from a linear mixed model.
@@ -1547,11 +1560,10 @@ see Statistical software (Section~\ref{sec-statistical-software}).
 Standard errors will be model-based, and confidence intervals will be
 Wald-type. Because the trial has few clusters, we will apply a
 small-sample correction to avoid inflating the type I error rate. We
-plan to use the Kenward--Roger correction\textsuperscript{17}, but we
-may change this choice based on methodological developments closer to
-the end of patient inclusion. The correction may also differ between
-outcomes collected in the complete stepped-wedge design and in the
-incomplete nested staircase design.
+will choose the correction closer to the end of patient inclusion, based
+on the best available evidence at that time\textsuperscript{17}. The
+correction may also differ between outcomes collected in the complete
+stepped-wedge design and in the incomplete nested staircase design.
 
 We will use model diagnostics to check distributional assumptions and
 model convergence.
@@ -1768,18 +1780,15 @@ mixed-effects model:
 and three months of arrival at the emergency department, among
 survivors}\label{sec-disability-within-seven-days-of-discharge-and-at-30-days-and-three-months-of-arrival-at-the-emergency-department-among-survivors}
 
-We measure disability within the nested staircase design using the WHO
-Disability Assessment Schedule 2.0 (WHODAS 2.0)\textsuperscript{18},
-which assesses six domains of functioning: cognition, mobility,
-self-care, getting along, life activities, and participation. Each
-domain is rated on a Likert scale from 1 to 5, with 1 indicating no
-difficulties and 5 indicating extreme difficulties. We will analyse each
-domain separately using a mixed-effects cumulative logit model
-(Equation~\ref{eq-ordinal-model}). We will also calculate a WHODAS 2.0
-summary score using the ``complex scoring'' method: we sum the item
-scores within each of the six domains, sum the six domain scores, and
-transform the total to a 0--100 scale. We will analyse the summary score
-using a linear mixed-effects model (Equation~\ref{eq-linear-model}).
+We measure disability within the nested staircase design using the
+12-item version of the WHO Disability Assessment Schedule 2.0 (WHODAS
+2.0)\textsuperscript{18}. It covers six domains of functioning:
+cognition, mobility, self-care, getting along, life activities, and
+participation. Each item is rated from 1 (no difficulty) to 5 (extreme
+difficulty or cannot do). We will calculate a summary score from 0 to
+100 using the WHODAS 2.0 ``complex scoring'' method, and we will not
+calculate domain scores. We will analyse the summary score with a linear
+mixed-effects model (Equation~\ref{eq-linear-model}).
 
 \subsubsection{Return to work at 30 days and three months after arrival
 at the emergency department, among
@@ -2031,19 +2040,18 @@ Where:
 \subsubsection{Models with time modelled with a spline
 function}\label{sec-models-with-time-modelled-with-a-spline-function}
 
-We will further explore the potential for a time-varying treatment
-effect\textsuperscript{19}. To explore whether the categorical period
-effects are both parsimonious and adequate to represent any underlying
-secular trend, we will model calendar time with a natural cubic spline
-basis shared across all batches, with knots at the equally spaced
-periods 3, 6 and 9. This will result in five spline basis functions,
-because the natural cubic splines are modelled with three degrees of
-freedom but are constrained to be linear before the first and after the
-last knot. The model is specified in Equation~\ref{eq-spline-model}.
+To explore whether the categorical period effects are both parsimonious
+and adequate to represent any underlying secular trend, we will replace
+them with a natural cubic spline of calendar time shared across all
+batches. The spline has interior knots at periods 3, 6 and 9 and
+boundary knots at the first and last periods. A natural cubic spline is
+linear beyond its boundary knots, so three interior knots give four
+basis functions in addition to the intercept. The model is specified in
+Equation~\ref{eq-spline-model}.
 
 \begin{equation}\phantomsection\label{eq-spline-model}{
 g\{\Pr(Y_{bkti} = 1)\}
-= \mu + \sum_{j=1}^{5} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
+= \mu + \sum_{j=1}^{4} \beta_j S_j(t, \{3,6,9\}) + \theta X_{bkt} + \alpha_{bk} + \gamma_{bkt}
 }\end{equation}
 
 Where:
@@ -2065,11 +2073,12 @@ effects}\label{sec-models-exploring-lag-and-weaning-effects}
 We will also extend the primary analysis model with an interaction
 between intervention exposure and the number of periods since the
 cluster was first exposed, to examine whether longer exposure to the
-intervention changes outcomes. This lets us model lag effects, where the
-intervention takes time to become embedded in the culture before it has
-an effect, and weaning effects, where its effect fades. The analysis
-uses the fact that some clusters are exposed to the intervention for
-much longer than others (Equation~\ref{eq-lag-weaning-model}).
+intervention changes outcomes\textsuperscript{19}. This lets us model
+lag effects, where the intervention takes time to become embedded in the
+culture before it has an effect, and weaning effects, where its effect
+fades. The analysis uses the fact that some clusters are exposed to the
+intervention for much longer than others
+(Equation~\ref{eq-lag-weaning-model}).
 
 \begin{equation}\phantomsection\label{eq-lag-weaning-model}{
 g\{\Pr(Y_{bkti} = 1)\}
@@ -2824,22 +2833,22 @@ all outcomes (simulated data). Intended for the supplementary material.}
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
 In-hospital mortality within 30 days, n (\%) & 39 (34\%) & 35 (30\%) & 74 (32\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{16} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{7} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
 All-cause mortality within 24 hours, n (\%) & 42 (37\%) & 34 (29\%) & 76 (33\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{15} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{6} 10\\
 All-cause mortality within 30 days, n (\%) & 41 (36\%) & 42 (36\%) & 83 (36\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{14} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{5} 10\\
 All-cause mortality within three months, n (\%) & 40 (35\%) & 40 (34\%) & 80 (35\%)\\
 \hspace{1em}Missing & 7 & 3 & \vphantom{5} 10\\
 Length of emergency department stay (hours), Median (Q1, Q3) & 49 (41, 59) & 48 (38, 59) & 49 (39, 59)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{13} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{4} 10\\
 Length of hospital stay (days), Median (Q1, Q3) & 51 (42, 63) & 51 (42, 59) & 51 (42, 61)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{12} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{3} 10\\
 Intensive care unit admission, n (\%) & 43 (37\%) & 35 (31\%) & 78 (34\%)\\
-\hspace{1em}Missing & 3 & 7 & \vphantom{6} 10\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{3} 10\\
 Length of intensive care unit stay (days), Median (Q1, Q3) & 50 (43, 59) & 53 (40, 62) & 51 (41, 60)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{11} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{2} 10\\
 Return to work at 30 days, n (\%) & 33 (29\%) & 30 (26\%) & 63 (27\%)\\
 \hspace{1em}Missing & 7 & 3 & \vphantom{4} 10\\
 Return to work at three months, n (\%) & 39 (35\%) & 35 (30\%) & 74 (32\%)\\
@@ -2849,16 +2858,16 @@ Adherence to ATLS principles (\%), Median (Q1, Q3) & 49 (38, 58) & 49 (38, 62) &
 \hspace{1em}Missing & 7 & 3 & \vphantom{2} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
 EQ-5D-5L VAS, Median (Q1, Q3) & 61 (50, 73) & 64 (52, 77) & 63 (51, 76)\\
-\hspace{1em}Missing & 3 & 7 & \vphantom{5} 10\\
+\hspace{1em}Missing & 3 & 7 & \vphantom{2} 10\\
 WHODAS 2.0 summary score, Median (Q1, Q3) & 27 (16, 38) & 25 (18, 37) & 26 (17, 38)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{10} 10\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{3} 10\\
 EQ-5D-5L mobility, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no problems in walking about & 33 (29\%) & 40 (34\%) & 73 (32\%)\\
 \hspace{1em}2. I have slight problems in walking about & 28 (25\%) & 30 (26\%) & 58 (25\%)\\
 \hspace{1em}3. I have moderate problems in walking about & 22 (19\%) & 22 (19\%) & 44 (19\%)\\
 \hspace{1em}4. I have severe problems in walking about & 23 (20\%) & 15 (13\%) & 38 (17\%)\\
 \hspace{1em}5. I am unable to walk about & 8 (7.0\%) & 9 (7.8\%) & 17 (7.4\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{10} 10\\
+\hspace{1em}Missing & 6 & 4 & \vphantom{1} 10\\
 EQ-5D-5L self-care, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no problems washing or dressing myself & 23 (20\%) & 37 (32\%) & 60 (26\%)\\
 \hspace{1em}2. I have slight problems washing or dressing myself & 32 (28\%) & 33 (29\%) & 65 (28\%)\\
@@ -2872,14 +2881,14 @@ EQ-5D-5L usual activities, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}3. I have moderate problems doing my usual activities & 24 (21\%) & 22 (19\%) & 46 (20\%)\\
 \hspace{1em}4. I have severe problems doing my usual activities & 11 (9.6\%) & 14 (12\%) & 25 (11\%)\\
 \hspace{1em}5. I am unable to do my usual activities & 3 (2.6\%) & 8 (6.9\%) & 11 (4.8\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{9} 10\\
+\hspace{1em}Missing & 6 & 4 & 10\\
 EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I have no pain or discomfort & 36 (31\%) & 45 (39\%) & 81 (35\%)\\
 \hspace{1em}2. I have slight pain or discomfort & 30 (26\%) & 28 (25\%) & 58 (25\%)\\
 \hspace{1em}3. I have moderate pain or discomfort & 20 (17\%) & 18 (16\%) & 38 (17\%)\\
 \hspace{1em}4. I have severe pain or discomfort & 18 (16\%) & 17 (15\%) & 35 (15\%)\\
 \hspace{1em}5. I have extreme pain or discomfort & 12 (10\%) & 6 (5.3\%) & 18 (7.8\%)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{9} 10\\
+\hspace{1em}Missing & 4 & 6 & \vphantom{2} 10\\
 EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}1. I am not anxious or depressed & 46 (40\%) & 43 (37\%) & 89 (39\%)\\
 \hspace{1em}2. I am slightly anxious or depressed & 21 (18\%) & 27 (23\%) & 48 (21\%)\\
@@ -2887,212 +2896,86 @@ EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{2} & \\
 \hspace{1em}4. I am severely anxious or depressed & 16 (14\%) & 10 (8.7\%) & 26 (11\%)\\
 \hspace{1em}5. I am extremely anxious or depressed & 8 (7.0\%) & 9 (7.8\%) & 17 (7.4\%)\\
 \hspace{1em}Missing & 5 & 5 & \vphantom{5} 10\\
-WHODAS 2.0 cognition, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None & 36 (32\%) & 39 (34\%) & 75 (33\%)\\
-\hspace{1em}2. Mild & 28 (25\%) & 31 (27\%) & 59 (26\%)\\
-\hspace{1em}3. Moderate & 25 (22\%) & 17 (15\%) & 42 (18\%)\\
-\hspace{1em}4. Severe & 15 (13\%) & 18 (16\%) & 33 (14\%)\\
-\hspace{1em}5. Extreme or cannot do & 10 (8.8\%) & 11 (9.5\%) & 21 (9.1\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{8} 10\\
-WHODAS 2.0 mobility, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None & 42 (37\%) & 34 (29\%) & 76 (33\%)\\
-\hspace{1em}2. Mild & 27 (24\%) & 38 (33\%) & 65 (28\%)\\
-\hspace{1em}3. Moderate & 26 (23\%) & 30 (26\%) & 56 \vphantom{1} (24\%)\\
-\hspace{1em}4. Severe & 14 (12\%) & 12 (10\%) & 26 (11\%)\\
-\hspace{1em}5. Extreme or cannot do & 5 (4.4\%) & 2 (1.7\%) & 7 (3.0\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{7} 10\\
-WHODAS 2.0 self-care, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None & 38 (33\%) & 28 (25\%) & 66 (29\%)\\
-\hspace{1em}2. Mild & 29 (25\%) & 39 (34\%) & 68 (30\%)\\
-\hspace{1em}3. Moderate & 21 (18\%) & 27 (24\%) & 48 (21\%)\\
-\hspace{1em}4. Severe & 18 (16\%) & 13 (11\%) & 31 (13\%)\\
-\hspace{1em}5. Extreme or cannot do & 10 (8.6\%) & 7 (6.1\%) & 17 (7.4\%)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{8} 10\\
-WHODAS 2.0 getting along, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None & 43 (37\%) & 39 (34\%) & 82 (36\%)\\
-\hspace{1em}2. Mild & 30 (26\%) & 24 (21\%) & 54 (23\%)\\
-\hspace{1em}3. Moderate & 26 (23\%) & 30 (26\%) & 56 (24\%)\\
-\hspace{1em}4. Severe & 10 (8.7\%) & 13 (11\%) & 23 (10\%)\\
-\hspace{1em}5. Extreme or cannot do & 6 (5.2\%) & 9 (7.8\%) & 15 (6.5\%)\\
-\hspace{1em}Missing & 5 & 5 & \vphantom{4} 10\\
-WHODAS 2.0 life activities, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None & 28 (24\%) & 54 (47\%) & 82 (36\%)\\
-\hspace{1em}2. Mild & 33 (29\%) & 25 (22\%) & 58 (25\%)\\
-\hspace{1em}3. Moderate & 27 (23\%) & 22 (19\%) & 49 (21\%)\\
-\hspace{1em}4. Severe & 22 (19\%) & 7 (6.1\%) & 29 (13\%)\\
-\hspace{1em}5. Extreme or cannot do & 5 (4.3\%) & 7 (6.1\%) & 12 \vphantom{1} (5.2\%)\\
-\hspace{1em}Missing & 5 & 5 & \vphantom{3} 10\\
-WHODAS 2.0 participation, n (\%) &  &  \vphantom{2} & \\
-\hspace{1em}1. None & 36 (31\%) & 34 (30\%) & 70 (30\%)\\
-\hspace{1em}2. Mild & 32 (28\%) & 32 (28\%) & 64 (28\%)\\
-\hspace{1em}3. Moderate & 26 (23\%) & 24 (21\%) & 50 (22\%)\\
-\hspace{1em}4. Severe & 16 (14\%) & 18 (16\%) & 34 (15\%)\\
-\hspace{1em}5. Extreme or cannot do & 5 (4.3\%) & 7 (6.1\%) & 12 (5.2\%)\\
-\hspace{1em}Missing & 5 & 5 & \vphantom{2} 10\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) & 62 (54, 76) & 60 (49, 71) & 61 (50, 73)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{7} 10\\
-WHODAS 2.0 summary score, Median (Q1, Q3) & 27 (16, 35) & 27 (17, 41) & 27 (17, 37)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{6} 10\\
-EQ-5D-5L mobility, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no problems in walking about & 39 (34\%) & 42 (36\%) & 81 (35\%)\\
-\hspace{1em}2. I have slight problems in walking about & 26 (23\%) & 30 (26\%) & 56 (24\%)\\
-\hspace{1em}3. I have moderate problems in walking about & 25 (22\%) & 22 (19\%) & 47 (20\%)\\
-\hspace{1em}4. I have severe problems in walking about & 16 (14\%) & 16 (14\%) & 32 (14\%)\\
-\hspace{1em}5. I am unable to walk about & 8 (7.0\%) & 6 (5.2\%) & 14 (6.1\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{5} 10\\
-EQ-5D-5L self-care, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no problems washing or dressing myself & 36 (31\%) & 37 (32\%) & 73 (32\%)\\
-\hspace{1em}2. I have slight problems washing or dressing myself & 33 (28\%) & 30 (26\%) & 63 (27\%)\\
-\hspace{1em}3. I have moderate problems washing or dressing myself & 29 (25\%) & 25 (22\%) & 54 (23\%)\\
-\hspace{1em}4. I have severe problems washing or dressing myself & 12 (10\%) & 19 (17\%) & 31 (13\%)\\
-\hspace{1em}5. I am unable to wash or dress myself & 6 (5.2\%) & 3 (2.6\%) & 9 (3.9\%)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{6} 10\\
-EQ-5D-5L usual activities, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no problems doing my usual activities & 35 (31\%) & 40 (34\%) & 75 (33\%)\\
-\hspace{1em}2. I have slight problems doing my usual activities & 21 (19\%) & 31 (26\%) & 52 (23\%)\\
-\hspace{1em}3. I have moderate problems doing my usual activities & 28 (25\%) & 18 (15\%) & 46 (20\%)\\
-\hspace{1em}4. I have severe problems doing my usual activities & 20 (18\%) & 18 (15\%) & 38 (17\%)\\
-\hspace{1em}5. I am unable to do my usual activities & 9 (8.0\%) & 10 (8.5\%) & 19 (8.3\%)\\
+EQ-5D-5L VAS, Median (Q1, Q3) & 63 (51, 73) & 59 (50, 69) & 60 (50, 72)\\
+\hspace{1em}Missing & 2 & 8 & \vphantom{2} 10\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 31 (18, 39) & 28 (16, 37) & 29 (17, 38)\\
 \hspace{1em}Missing & 7 & 3 & \vphantom{1} 10\\
-EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I have no pain or discomfort & 45 (39\%) & 43 (37\%) & 88 (38\%)\\
-\hspace{1em}2. I have slight pain or discomfort & 29 (25\%) & 30 (26\%) & 59 (26\%)\\
-\hspace{1em}3. I have moderate pain or discomfort & 13 (11\%) & 22 (19\%) & 35 (15\%)\\
-\hspace{1em}4. I have severe pain or discomfort & 21 (18\%) & 14 (12\%) & 35 (15\%)\\
-\hspace{1em}5. I have extreme pain or discomfort & 6 (5.3\%) & 7 (6.0\%) & 13 (5.7\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{4} 10\\
-EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. I am not anxious or depressed & 39 (34\%) & 37 (32\%) & 76 (33\%)\\
-\hspace{1em}2. I am slightly anxious or depressed & 32 (28\%) & 37 (32\%) & 69 (30\%)\\
-\hspace{1em}3. I am moderately anxious or depressed & 20 (17\%) & 18 (16\%) & 38 (17\%)\\
-\hspace{1em}4. I am severely anxious or depressed & 18 (16\%) & 14 (12\%) & 32 (14\%)\\
-\hspace{1em}5. I am extremely anxious or depressed & 6 (5.2\%) & 9 (7.8\%) & 15 (6.5\%)\\
-\hspace{1em}Missing & 5 & 5 & \vphantom{1} 10\\
-WHODAS 2.0 cognition, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None & 40 (34\%) & 39 (34\%) & 79 (34\%)\\
-\hspace{1em}2. Mild & 36 (31\%) & 31 (27\%) & 67 (29\%)\\
-\hspace{1em}3. Moderate & 20 (17\%) & 25 (22\%) & 45 (20\%)\\
-\hspace{1em}4. Severe & 12 (10\%) & 9 (7.9\%) & 21 (9.1\%)\\
-\hspace{1em}5. Extreme or cannot do & 8 (6.9\%) & 10 (8.8\%) & 18 (7.8\%)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{5} 10\\
-WHODAS 2.0 mobility, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None & 34 (30\%) & 36 (31\%) & 70 (30\%)\\
-\hspace{1em}2. Mild & 34 (30\%) & 34 (30\%) & 68 (30\%)\\
-\hspace{1em}3. Moderate & 21 (18\%) & 29 (25\%) & 50 (22\%)\\
-\hspace{1em}4. Severe & 18 (16\%) & 11 (9.6\%) & 29 (13\%)\\
-\hspace{1em}5. Extreme or cannot do & 8 (7.0\%) & 5 (4.3\%) & 13 (5.7\%)\\
-\hspace{1em}Missing & 5 & 5 & 10\\
-WHODAS 2.0 self-care, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None & 42 (36\%) & 37 (33\%) & 79 (34\%)\\
-\hspace{1em}2. Mild & 32 (27\%) & 29 (26\%) & 61 (27\%)\\
-\hspace{1em}3. Moderate & 20 (17\%) & 26 (23\%) & 46 (20\%)\\
-\hspace{1em}4. Severe & 13 (11\%) & 15 (13\%) & 28 (12\%)\\
-\hspace{1em}5. Extreme or cannot do & 10 (8.5\%) & 6 (5.3\%) & 16 (7.0\%)\\
-\hspace{1em}Missing & 3 & 7 & \vphantom{4} 10\\
-WHODAS 2.0 getting along, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None & 42 (36\%) & 34 (30\%) & 76 (33\%)\\
-\hspace{1em}2. Mild & 29 (25\%) & 30 (27\%) & 59 (26\%)\\
-\hspace{1em}3. Moderate & 22 (19\%) & 27 (24\%) & 49 (21\%)\\
-\hspace{1em}4. Severe & 16 (14\%) & 14 (13\%) & 30 (13\%)\\
-\hspace{1em}5. Extreme or cannot do & 9 (7.6\%) & 7 (6.3\%) & 16 (7.0\%)\\
-\hspace{1em}Missing & 2 & 8 & 10\\
-WHODAS 2.0 life activities, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None & 38 (32\%) & 45 (40\%) & 83 (36\%)\\
-\hspace{1em}2. Mild & 32 (27\%) & 31 (27\%) & 63 (27\%)\\
-\hspace{1em}3. Moderate & 23 (20\%) & 19 (17\%) & 42 (18\%)\\
-\hspace{1em}4. Severe & 9 (7.7\%) & 12 (11\%) & 21 (9.1\%)\\
-\hspace{1em}5. Extreme or cannot do & 15 (13\%) & 6 (5.3\%) & 21 (9.1\%)\\
-\hspace{1em}Missing & 3 & 7 & \vphantom{3} 10\\
-WHODAS 2.0 participation, n (\%) &  &  \vphantom{1} & \\
-\hspace{1em}1. None & 41 (35\%) & 43 (38\%) & 84 (37\%)\\
-\hspace{1em}2. Mild & 28 (24\%) & 26 (23\%) & 54 (23\%)\\
-\hspace{1em}3. Moderate & 22 (19\%) & 25 (22\%) & 47 \vphantom{1} (20\%)\\
-\hspace{1em}4. Severe & 16 (14\%) & 13 (11\%) & 29 (13\%)\\
-\hspace{1em}5. Extreme or cannot do & 9 (7.8\%) & 7 (6.1\%) & 16 (7.0\%)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{4} 10\\
-\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
-EQ-5D-5L VAS, Median (Q1, Q3) & 60 (48, 74) & 60 (50, 69) & 60 (49, 72)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{3} 10\\
-WHODAS 2.0 summary score, Median (Q1, Q3) & 30 (19, 41) & 29 (18, 39) & 30 (19, 40)\\
-\hspace{1em}Missing & 1 & 9 & 10\\
-EQ-5D-5L mobility, n (\%) &  &  & \\
-\hspace{1em}1. I have no problems in walking about & 30 (26\%) & 40 (34\%) & 70 (30\%)\\
-\hspace{1em}2. I have slight problems in walking about & 36 (32\%) & 32 (28\%) & 68 (30\%)\\
-\hspace{1em}3. I have moderate problems in walking about & 25 (22\%) & 24 (21\%) & 49 (21\%)\\
-\hspace{1em}4. I have severe problems in walking about & 16 (14\%) & 11 (9.5\%) & 27 (12\%)\\
-\hspace{1em}5. I am unable to walk about & 7 (6.1\%) & 9 (7.8\%) & 16 (7.0\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{3} 10\\
-EQ-5D-5L self-care, n (\%) &  &  & \\
-\hspace{1em}1. I have no problems washing or dressing myself & 31 (26\%) & 38 (34\%) & 69 (30\%)\\
-\hspace{1em}2. I have slight problems washing or dressing myself & 31 (26\%) & 22 (19\%) & 53 (23\%)\\
-\hspace{1em}3. I have moderate problems washing or dressing myself & 25 (21\%) & 30 (27\%) & 55 (24\%)\\
-\hspace{1em}4. I have severe problems washing or dressing myself & 18 (15\%) & 15 (13\%) & 33 (14\%)\\
-\hspace{1em}5. I am unable to wash or dress myself & 12 (10\%) & 8 (7.1\%) & 20 (8.7\%)\\
-\hspace{1em}Missing & 3 & 7 & \vphantom{2} 10\\
-EQ-5D-5L usual activities, n (\%) &  &  & \\
-\hspace{1em}1. I have no problems doing my usual activities & 44 (38\%) & 41 (36\%) & 85 (37\%)\\
-\hspace{1em}2. I have slight problems doing my usual activities & 34 (29\%) & 33 (29\%) & 67 (29\%)\\
-\hspace{1em}3. I have moderate problems doing my usual activities & 21 (18\%) & 20 (18\%) & 41 (18\%)\\
-\hspace{1em}4. I have severe problems doing my usual activities & 9 (7.8\%) & 13 (11\%) & 22 (9.6\%)\\
-\hspace{1em}5. I am unable to do my usual activities & 8 (6.9\%) & 7 (6.1\%) & 15 (6.5\%)\\
-\hspace{1em}Missing & 4 & 6 & \vphantom{2} 10\\
-EQ-5D-5L pain/discomfort, n (\%) &  &  & \\
-\hspace{1em}1. I have no pain or discomfort & 37 (32\%) & 31 (27\%) & 68 (30\%)\\
-\hspace{1em}2. I have slight pain or discomfort & 35 (31\%) & 28 (24\%) & 63 (27\%)\\
-\hspace{1em}3. I have moderate pain or discomfort & 10 (8.8\%) & 27 (23\%) & 37 (16\%)\\
-\hspace{1em}4. I have severe pain or discomfort & 17 (15\%) & 19 (16\%) & 36 (16\%)\\
-\hspace{1em}5. I have extreme pain or discomfort & 15 (13\%) & 11 (9.5\%) & 26 (11\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{2} 10\\
-EQ-5D-5L anxiety/depression, n (\%) &  &  & \\
-\hspace{1em}1. I am not anxious or depressed & 39 (33\%) & 35 (31\%) & 74 (32\%)\\
-\hspace{1em}2. I am slightly anxious or depressed & 28 (24\%) & 33 (29\%) & 61 (27\%)\\
-\hspace{1em}3. I am moderately anxious or depressed & 28 (24\%) & 24 (21\%) & 52 (23\%)\\
-\hspace{1em}4. I am severely anxious or depressed & 10 (8.5\%) & 12 (11\%) & 22 (9.6\%)\\
-\hspace{1em}5. I am extremely anxious or depressed & 12 (10\%) & 9 (8.0\%) & 21 (9.1\%)\\
+EQ-5D-5L mobility, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}1. I have no problems in walking about & 26 (22\%) & 49 (43\%) & 75 (33\%)\\
+\hspace{1em}2. I have slight problems in walking about & 36 (31\%) & 22 (19\%) & 58 (25\%)\\
+\hspace{1em}3. I have moderate problems in walking about & 26 (22\%) & 23 (20\%) & 49 (21\%)\\
+\hspace{1em}4. I have severe problems in walking about & 24 (21\%) & 12 (11\%) & 36 (16\%)\\
+\hspace{1em}5. I am unable to walk about & 5 (4.3\%) & 7 (6.2\%) & 12 (5.2\%)\\
 \hspace{1em}Missing & 3 & 7 & \vphantom{1} 10\\
-WHODAS 2.0 cognition, n (\%) &  &  & \\
-\hspace{1em}1. None & 38 (33\%) & 44 (38\%) & 82 (36\%)\\
-\hspace{1em}2. Mild & 32 (28\%) & 33 (28\%) & 65 (28\%)\\
-\hspace{1em}3. Moderate & 18 (16\%) & 20 (17\%) & 38 (17\%)\\
-\hspace{1em}4. Severe & 20 (18\%) & 13 (11\%) & 33 (14\%)\\
-\hspace{1em}5. Extreme or cannot do & 6 (5.3\%) & 6 (5.2\%) & 12 (5.2\%)\\
-\hspace{1em}Missing & 6 & 4 & \vphantom{1} 10\\
-WHODAS 2.0 mobility, n (\%) &  &  & \\
-\hspace{1em}1. None & 38 (34\%) & 37 (32\%) & 75 (33\%)\\
-\hspace{1em}2. Mild & 33 (29\%) & 36 (31\%) & 69 (30\%)\\
-\hspace{1em}3. Moderate & 24 (21\%) & 25 (21\%) & 49 (21\%)\\
-\hspace{1em}4. Severe & 12 (11\%) & 14 (12\%) & 26 (11\%)\\
-\hspace{1em}5. Extreme or cannot do & 6 (5.3\%) & 5 (4.3\%) & 11 (4.8\%)\\
+EQ-5D-5L self-care, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}1. I have no problems washing or dressing myself & 36 (32\%) & 39 (33\%) & 75 (33\%)\\
+\hspace{1em}2. I have slight problems washing or dressing myself & 32 (28\%) & 30 (26\%) & 62 (27\%)\\
+\hspace{1em}3. I have moderate problems washing or dressing myself & 22 (19\%) & 24 (21\%) & 46 (20\%)\\
+\hspace{1em}4. I have severe problems washing or dressing myself & 17 (15\%) & 17 (15\%) & 34 (15\%)\\
+\hspace{1em}5. I am unable to wash or dress myself & 6 (5.3\%) & 7 (6.0\%) & 13 (5.7\%)\\
 \hspace{1em}Missing & 7 & 3 & 10\\
-WHODAS 2.0 self-care, n (\%) &  &  & \\
-\hspace{1em}1. None & 37 (32\%) & 37 (32\%) & 74 (32\%)\\
-\hspace{1em}2. Mild & 35 (31\%) & 33 (28\%) & 68 (30\%)\\
-\hspace{1em}3. Moderate & 22 (19\%) & 25 (22\%) & 47 (20\%)\\
-\hspace{1em}4. Severe & 12 (11\%) & 15 (13\%) & 27 (12\%)\\
-\hspace{1em}5. Extreme or cannot do & 8 (7.0\%) & 6 (5.2\%) & 14 (6.1\%)\\
-\hspace{1em}Missing & 6 & 4 & 10\\
-WHODAS 2.0 getting along, n (\%) &  &  & \\
-\hspace{1em}1. None & 35 (30\%) & 38 (33\%) & 73 (32\%)\\
-\hspace{1em}2. Mild & 34 (29\%) & 34 (30\%) & 68 (30\%)\\
-\hspace{1em}3. Moderate & 27 (23\%) & 14 (12\%) & 41 (18\%)\\
-\hspace{1em}4. Severe & 13 (11\%) & 21 (18\%) & 34 (15\%)\\
-\hspace{1em}5. Extreme or cannot do & 7 (6.0\%) & 7 (6.1\%) & 14 (6.1\%)\\
+EQ-5D-5L usual activities, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}1. I have no problems doing my usual activities & 32 (28\%) & 35 (30\%) & 67 (29\%)\\
+\hspace{1em}2. I have slight problems doing my usual activities & 37 (32\%) & 25 (22\%) & 62 (27\%)\\
+\hspace{1em}3. I have moderate problems doing my usual activities & 27 (23\%) & 32 (28\%) & 59 (26\%)\\
+\hspace{1em}4. I have severe problems doing my usual activities & 10 (8.7\%) & 12 (10\%) & 22 (9.6\%)\\
+\hspace{1em}5. I am unable to do my usual activities & 9 (7.8\%) & 11 (9.6\%) & 20 (8.7\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{4} 10\\
+EQ-5D-5L pain/discomfort, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}1. I have no pain or discomfort & 42 (36\%) & 42 (38\%) & 84 (37\%)\\
+\hspace{1em}2. I have slight pain or discomfort & 29 (25\%) & 29 (26\%) & 58 (25\%)\\
+\hspace{1em}3. I have moderate pain or discomfort & 22 (19\%) & 18 (16\%) & 40 (17\%)\\
+\hspace{1em}4. I have severe pain or discomfort & 16 (14\%) & 13 (12\%) & 29 (13\%)\\
+\hspace{1em}5. I have extreme pain or discomfort & 9 (7.6\%) & 10 (8.9\%) & 19 (8.3\%)\\
+\hspace{1em}Missing & 2 & 8 & \vphantom{1} 10\\
+EQ-5D-5L anxiety/depression, n (\%) &  &  \vphantom{1} & \\
+\hspace{1em}1. I am not anxious or depressed & 39 (33\%) & 33 (29\%) & 72 (31\%)\\
+\hspace{1em}2. I am slightly anxious or depressed & 30 (25\%) & 33 (29\%) & 63 (27\%)\\
+\hspace{1em}3. I am moderately anxious or depressed & 22 (19\%) & 26 (23\%) & 48 (21\%)\\
+\hspace{1em}4. I am severely anxious or depressed & 21 (18\%) & 13 (12\%) & 34 (15\%)\\
+\hspace{1em}5. I am extremely anxious or depressed & 6 (5.1\%) & 7 (6.3\%) & 13 (5.7\%)\\
+\hspace{1em}Missing & 2 & 8 & 10\\
+\multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
+EQ-5D-5L VAS, Median (Q1, Q3) & 64 (47, 78) & 60 (48, 72) & 62 (47, 74)\\
 \hspace{1em}Missing & 4 & 6 & \vphantom{1} 10\\
-WHODAS 2.0 life activities, n (\%) &  &  & \\
-\hspace{1em}1. None & 37 (32\%) & 36 (32\%) & 73 (32\%)\\
-\hspace{1em}2. Mild & 30 (26\%) & 31 (27\%) & 61 (27\%)\\
-\hspace{1em}3. Moderate & 27 (23\%) & 20 (18\%) & 47 (20\%)\\
-\hspace{1em}4. Severe & 17 (15\%) & 17 (15\%) & 34 (15\%)\\
-\hspace{1em}5. Extreme or cannot do & 6 (5.1\%) & 9 (8.0\%) & 15 (6.5\%)\\
-\hspace{1em}Missing & 3 & 7 & 10\\
-WHODAS 2.0 participation, n (\%) &  &  & \\
-\hspace{1em}1. None & 43 (37\%) & 42 (37\%) & 85 (37\%)\\
-\hspace{1em}2. Mild & 31 (27\%) & 33 (29\%) & 64 (28\%)\\
-\hspace{1em}3. Moderate & 18 (16\%) & 19 (17\%) & 37 (16\%)\\
-\hspace{1em}4. Severe & 21 (18\%) & 14 (12\%) & 35 (15\%)\\
-\hspace{1em}5. Extreme or cannot do & 3 (2.6\%) & 6 (5.3\%) & 9 (3.9\%)\\
+WHODAS 2.0 summary score, Median (Q1, Q3) & 31 (20, 39) & 31 (15, 39) & 31 (19, 39)\\
 \hspace{1em}Missing & 4 & 6 & 10\\
+EQ-5D-5L mobility, n (\%) &  &  & \\
+\hspace{1em}1. I have no problems in walking about & 51 (44\%) & 39 (35\%) & 90 (39\%)\\
+\hspace{1em}2. I have slight problems in walking about & 30 (26\%) & 29 (26\%) & 59 (26\%)\\
+\hspace{1em}3. I have moderate problems in walking about & 13 (11\%) & 21 (19\%) & 34 (15\%)\\
+\hspace{1em}4. I have severe problems in walking about & 16 (14\%) & 15 (13\%) & 31 (13\%)\\
+\hspace{1em}5. I am unable to walk about & 7 (6.0\%) & 9 (8.0\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 3 & 7 & 10\\
+EQ-5D-5L self-care, n (\%) &  &  & \\
+\hspace{1em}1. I have no problems washing or dressing myself & 40 (35\%) & 41 (36\%) & 81 (35\%)\\
+\hspace{1em}2. I have slight problems washing or dressing myself & 30 (26\%) & 38 (33\%) & 68 (30\%)\\
+\hspace{1em}3. I have moderate problems washing or dressing myself & 22 (19\%) & 14 (12\%) & 36 (16\%)\\
+\hspace{1em}4. I have severe problems washing or dressing myself & 15 (13\%) & 14 (12\%) & 29 (13\%)\\
+\hspace{1em}5. I am unable to wash or dress myself & 8 (7.0\%) & 8 (7.0\%) & 16 (7.0\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{3} 10\\
+EQ-5D-5L usual activities, n (\%) &  &  & \\
+\hspace{1em}1. I have no problems doing my usual activities & 39 (34\%) & 40 (35\%) & 79 (34\%)\\
+\hspace{1em}2. I have slight problems doing my usual activities & 35 (30\%) & 36 (31\%) & 71 (31\%)\\
+\hspace{1em}3. I have moderate problems doing my usual activities & 19 (17\%) & 22 (19\%) & 41 (18\%)\\
+\hspace{1em}4. I have severe problems doing my usual activities & 14 (12\%) & 8 (7.0\%) & 22 (9.6\%)\\
+\hspace{1em}5. I am unable to do my usual activities & 8 (7.0\%) & 9 (7.8\%) & 17 (7.4\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{2} 10\\
+EQ-5D-5L pain/discomfort, n (\%) &  &  & \\
+\hspace{1em}1. I have no pain or discomfort & 35 (30\%) & 37 (32\%) & 72 (31\%)\\
+\hspace{1em}2. I have slight pain or discomfort & 29 (25\%) & 37 (32\%) & 66 (29\%)\\
+\hspace{1em}3. I have moderate pain or discomfort & 24 (21\%) & 26 (23\%) & 50 (22\%)\\
+\hspace{1em}4. I have severe pain or discomfort & 19 (17\%) & 11 (9.6\%) & 30 (13\%)\\
+\hspace{1em}5. I have extreme pain or discomfort & 8 (7.0\%) & 4 (3.5\%) & 12 (5.2\%)\\
+\hspace{1em}Missing & 5 & 5 & \vphantom{1} 10\\
+EQ-5D-5L anxiety/depression, n (\%) &  &  & \\
+\hspace{1em}1. I am not anxious or depressed & 40 (35\%) & 41 (36\%) & 81 (35\%)\\
+\hspace{1em}2. I am slightly anxious or depressed & 32 (28\%) & 28 (24\%) & 60 (26\%)\\
+\hspace{1em}3. I am moderately anxious or depressed & 23 (20\%) & 23 (20\%) & 46 (20\%)\\
+\hspace{1em}4. I am severely anxious or depressed & 12 (10\%) & 16 (14\%) & 28 (12\%)\\
+\hspace{1em}5. I am extremely anxious or depressed & 8 (7.0\%) & 7 (6.1\%) & 15 (6.5\%)\\
+\hspace{1em}Missing & 5 & 5 & 10\\
 \bottomrule
 
 \end{longtable}
@@ -3163,22 +3046,19 @@ Quality of life &  &  \vphantom{2} & \\
 \hspace{1em}Cumulative odds ratio & 0.69 & 0.49, 0.98 & 0.038\\
 \hspace{1em}Mean difference & 0.01 & -0.02, 0.04 & 0.6\\
 Disability &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 0.99 & 0.70, 1.42 & >0.9\\
-\hspace{1em}Mean difference & -0.03 & -0.10, 0.03 & 0.3\\
+\hspace{1em}Mean difference & 0.00 & -0.04, 0.04 & >0.9\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.89 & 0.67, 1.18 & 0.4\\
-\hspace{1em}Mean difference & -0.03 & -0.08, 0.01 & 0.14\\
+\hspace{1em}Cumulative odds ratio & 0.78 & 0.47, 1.31 & 0.4\\
+\hspace{1em}Mean difference & -0.02 & -0.05, 0.02 & 0.4\\
 Disability &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.83 & 0.66, 1.04 & 0.11\\
-\hspace{1em}Mean difference & -0.07 & -0.12, -0.02 & 0.004\\
+\hspace{1em}Mean difference & -0.03 & -0.08, 0.01 & 0.14\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  & \\
-\hspace{1em}Cumulative odds ratio & 1.21 & 0.81, 1.82 & 0.3\\
-\hspace{1em}Mean difference & -0.07 & -0.11, -0.03 & <0.001\\
+\hspace{1em}Cumulative odds ratio & 0.83 & 0.66, 1.04 & 0.11\\
+\hspace{1em}Mean difference & -0.07 & -0.12, -0.02 & 0.004\\
 Disability &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.68 & 0.55, 0.85 & <0.001\\
-\hspace{1em}Mean difference & -0.05 & -0.09, -0.02 & 0.004\\
+\hspace{1em}Mean difference & 0.03 & -0.02, 0.08 & 0.3\\
 \bottomrule
 \multicolumn{4}{l}{\rule{0pt}{1em}Abbreviations: CI = Confidence Interval, IRR = Incidence Rate Ratio, OR = Odds Ratio}\\
 
@@ -3258,74 +3138,38 @@ EQ-5D-5L anxiety/depression &  &  \vphantom{2} & \\
 \hspace{1em}Cumulative odds ratio & 0.89 & 0.67, 1.18 & 0.4\\
 EQ-5D-5L VAS &  &  \vphantom{2} & \\
 \hspace{1em}Mean difference & -0.03 & -0.08, 0.01 & 0.14\\
-WHODAS 2.0 cognition &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 0.83 & 0.66, 1.04 & 0.11\\
-WHODAS 2.0 mobility &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 0.59 & 0.39, 0.88 & 0.010\\
-WHODAS 2.0 self-care &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 1.21 & 0.81, 1.82 & 0.3\\
-WHODAS 2.0 getting along &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 0.61 & 0.45, 0.83 & 0.002\\
-WHODAS 2.0 life activities &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 0.68 & 0.55, 0.85 & <0.001\\
-WHODAS 2.0 participation &  &  \vphantom{2} & \\
-\hspace{1em}Cumulative odds ratio & 0.68 & 0.51, 0.91 & 0.009\\
-WHODAS 2.0 summary score &  &  \vphantom{2} & \\
-\hspace{1em}Mean difference & -0.02 & -0.06, 0.02 & 0.3\\
+Disability &  &  \vphantom{2} & \\
+\hspace{1em}Mean difference & -0.03 & -0.05, 0.00 & 0.087\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
 EQ-5D-5L mobility &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.86 & 0.59, 1.26 & 0.4\\
+\hspace{1em}Cumulative odds ratio & 0.59 & 0.39, 0.88 & 0.010\\
 EQ-5D-5L self-care &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.84 & 0.62, 1.15 & 0.3\\
+\hspace{1em}Cumulative odds ratio & 1.21 & 0.81, 1.82 & 0.3\\
 EQ-5D-5L usual activities &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.84 & 0.56, 1.26 & 0.4\\
+\hspace{1em}Cumulative odds ratio & 0.61 & 0.45, 0.83 & 0.002\\
 EQ-5D-5L pain/discomfort &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 1.04 & 0.75, 1.44 & 0.8\\
+\hspace{1em}Cumulative odds ratio & 0.68 & 0.55, 0.85 & <0.001\\
 EQ-5D-5L anxiety/depression &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.91 & 0.62, 1.33 & 0.6\\
+\hspace{1em}Cumulative odds ratio & 0.68 & 0.51, 0.91 & 0.009\\
 EQ-5D-5L VAS &  &  \vphantom{1} & \\
-\hspace{1em}Mean difference & -0.02 & -0.06, 0.03 & 0.4\\
-WHODAS 2.0 cognition &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.82 & 0.65, 1.04 & 0.10\\
-WHODAS 2.0 mobility &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.83 & 0.67, 1.03 & 0.10\\
-WHODAS 2.0 self-care &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.94 & 0.66, 1.33 & 0.7\\
-WHODAS 2.0 getting along &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.75 & 0.54, 1.04 & 0.081\\
-WHODAS 2.0 life activities &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 1.10 & 0.84, 1.44 & 0.5\\
-WHODAS 2.0 participation &  &  \vphantom{1} & \\
-\hspace{1em}Cumulative odds ratio & 0.85 & 0.71, 1.03 & 0.11\\
-WHODAS 2.0 summary score &  &  \vphantom{1} & \\
-\hspace{1em}Mean difference & 0.00 & -0.04, 0.04 & 0.9\\
+\hspace{1em}Mean difference & -0.02 & -0.06, 0.02 & 0.3\\
+Disability &  &  \vphantom{1} & \\
+\hspace{1em}Mean difference & -0.02 & -0.07, 0.03 & 0.4\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
 EQ-5D-5L mobility &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.92 & 0.71, 1.19 & 0.5\\
+\hspace{1em}Cumulative odds ratio & 0.84 & 0.62, 1.15 & 0.3\\
 EQ-5D-5L self-care &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.73 & 0.53, 1.02 & 0.064\\
+\hspace{1em}Cumulative odds ratio & 0.84 & 0.56, 1.26 & 0.4\\
 EQ-5D-5L usual activities &  &  & \\
-\hspace{1em}Cumulative odds ratio & 1.23 & 0.85, 1.78 & 0.3\\
+\hspace{1em}Cumulative odds ratio & 1.04 & 0.75, 1.44 & 0.8\\
 EQ-5D-5L pain/discomfort &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.89 & 0.81, 0.98 & 0.019\\
+\hspace{1em}Cumulative odds ratio & 0.91 & 0.62, 1.33 & 0.6\\
 EQ-5D-5L anxiety/depression &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.81 & 0.62, 1.06 & 0.12\\
+\hspace{1em}Cumulative odds ratio & 0.88 & 0.62, 1.24 & 0.5\\
 EQ-5D-5L VAS &  &  & \\
-\hspace{1em}Mean difference & -0.01 & -0.04, 0.02 & 0.7\\
-WHODAS 2.0 cognition &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.99 & 0.75, 1.30 & >0.9\\
-WHODAS 2.0 mobility &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.72 & 0.54, 0.96 & 0.023\\
-WHODAS 2.0 self-care &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.89 & 0.72, 1.10 & 0.3\\
-WHODAS 2.0 getting along &  &  & \\
-\hspace{1em}Cumulative odds ratio & 1.21 & 0.85, 1.72 & 0.3\\
-WHODAS 2.0 life activities &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.88 & 0.74, 1.04 & 0.14\\
-WHODAS 2.0 participation &  &  & \\
-\hspace{1em}Cumulative odds ratio & 0.82 & 0.63, 1.08 & 0.2\\
-WHODAS 2.0 summary score &  &  & \\
-\hspace{1em}Mean difference & -0.04 & -0.06, -0.02 & <0.001\\
+\hspace{1em}Mean difference & -0.03 & -0.06, 0.00 & 0.074\\
+Disability &  &  & \\
+\hspace{1em}Mean difference & -0.02 & -0.05, 0.00 & 0.075\\
 \bottomrule
 \multicolumn{4}{l}{\rule{0pt}{1em}Abbreviations: CI = Confidence Interval, IRR = Incidence Rate Ratio, OR = Odds Ratio}\\
 
@@ -3611,33 +3455,24 @@ Cluster-by-period variance & 0.60 & 0.42, 0.77\\
 Intra-cluster correlation (ICC) & 0.03 & 0.00, 0.06\\
 Within-period correlation & 0.09 & 0.01, 0.16\\
 Between-period correlation & 0.07 & 0.00, 0.13\\
-Latent-scale ICC & 0.03 & 0.00, 0.09\\
-Latent-scale within-period correlation & 0.05 & 0.03, 0.07\\
-Latent-scale between-period correlation & 0.05 & 0.00, 0.09\\
-AR(1) within-period correlation & 0.08 & 0.04, 0.13\\
-AR(1) correlation decay parameter (rho) & 0.76 & 0.67, 0.85\\
+AR(1) within-period correlation & 0.03 & 0.00, 0.09\\
+AR(1) correlation decay parameter (rho) & 0.67 & 0.60, 0.75\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at 30 days}}\\
-Cluster variance & 0.41 & 0.21, 0.60\\
-Cluster-by-period variance & 0.63 & 0.41, 0.86\\
-Intra-cluster correlation (ICC) & 0.09 & 0.06, 0.12\\
-Within-period correlation & 0.11 & 0.05, 0.17\\
-Between-period correlation & 0.11 & 0.10, 0.12\\
-Latent-scale ICC & 0.02 & 0.00, 0.07\\
-Latent-scale within-period correlation & 0.09 & 0.04, 0.14\\
-Latent-scale between-period correlation & 0.03 & 0.00, 0.09\\
-AR(1) within-period correlation & 0.08 & 0.02, 0.13\\
-AR(1) correlation decay parameter (rho) & 0.57 & 0.45, 0.69\\
+Cluster variance & 0.34 & 0.16, 0.53\\
+Cluster-by-period variance & 0.45 & 0.20, 0.70\\
+Intra-cluster correlation (ICC) & 0.07 & 0.05, 0.10\\
+Within-period correlation & 0.07 & 0.03, 0.11\\
+Between-period correlation & 0.12 & 0.04, 0.19\\
+AR(1) within-period correlation & 0.09 & 0.06, 0.12\\
+AR(1) correlation decay parameter (rho) & 0.88 & 0.71, 1.0\\
 \multicolumn{3}{@{\extracolsep{\fill}}l}{\textbf{Disability at three months}}\\
-Cluster variance & 0.49 & 0.35, 0.64\\
-Cluster-by-period variance & 0.20 & 0.01, 0.40\\
-Intra-cluster correlation (ICC) & 0.06 & 0.00, 0.13\\
-Within-period correlation & 0.12 & 0.08, 0.16\\
-Between-period correlation & 0.12 & 0.07, 0.17\\
-Latent-scale ICC & 0.09 & 0.03, 0.15\\
-Latent-scale within-period correlation & 0.10 & 0.05, 0.14\\
-Latent-scale between-period correlation & 0.02 & 0.00, 0.06\\
-AR(1) within-period correlation & 0.07 & 0.05, 0.08\\
-AR(1) correlation decay parameter (rho) & 0.84 & 0.61, 1.1\\
+Cluster variance & 0.59 & 0.37, 0.81\\
+Cluster-by-period variance & 0.20 & 0.00, 0.42\\
+Intra-cluster correlation (ICC) & 0.09 & 0.04, 0.14\\
+Within-period correlation & 0.03 & 0.00, 0.09\\
+Between-period correlation & 0.08 & 0.02, 0.13\\
+AR(1) within-period correlation & 0.02 & 0.00, 0.06\\
+AR(1) correlation decay parameter (rho) & 0.84 & 0.73, 0.95\\
 \bottomrule
 \multicolumn{3}{l}{\rule{0pt}{1em}Abbreviation: CI = Confidence Interval}\\
 

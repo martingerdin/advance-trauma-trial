@@ -3,8 +3,9 @@
 #' Builds a shell (template) table illustrating how primary and secondary
 #' outcomes will be summarised before and after ATLS training is implemented in
 #' a cluster. Dichotomous outcomes are reported as n (\%); continuous outcomes
-#' are reported as median (Q1-Q3); ordinal EQ-5D-5L and WHODAS domain scores are
-#' reported as n (\%) by level. Derived outcomes (mortality at specified time
+#' are reported as median (Q1-Q3); ordinal EQ-5D-5L domain scores are reported
+#' as n (\%) by level. Disability is reported as the WHODAS 2.0 (12-item)
+#' summary score only. Derived outcomes (mortality at specified time
 #' points, lengths of stay, adherence proportion, EQ-5D-5L index/VAS, and WHODAS
 #' summary scores) are specified directly rather than from single REDCap fields.
 #' Missing values are shown for every outcome. The table is laid out with
@@ -19,8 +20,8 @@
 #' @param all Logical. If FALSE (the default), the table shows key outcome
 #'     summaries for the main results (headline mortality, lengths of stay,
 #'     return to work, adherence, EQ-5D-5L index, and WHODAS summary scores).
-#'     If TRUE, the table also includes EQ-5D-5L domains and VAS and WHODAS
-#'     domain scores at each follow-up time point for supplementary reporting.
+#'     If TRUE, the table also includes EQ-5D-5L domains at each follow-up
+#'     time point for supplementary reporting.
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
 #' @return A `gtsummary` or `kableExtra` table object for short output formats,
 #'     or a `knitr_asis` object containing a page-breaking `longtable` for
@@ -82,14 +83,6 @@ create_outcomes_descriptive_table <- function(data = NULL,
     )
     adherence.section <- sections$nested_resuscitation
     main.section <- sections$main_stepped_wedge
-    ## WHODAS 2.0 difficulty response scale (same wording across domains)
-    whodas.levels <- c(
-        "1. None",
-        "2. Mild",
-        "3. Moderate",
-        "4. Severe",
-        "5. Extreme or cannot do"
-    )
     eq5d.domains <- list(
         list(
             slug = "mobility",
@@ -147,15 +140,6 @@ create_outcomes_descriptive_table <- function(data = NULL,
             )
         )
     )
-    whodas.domains <- list(
-        list(slug = "cognition", label = "cognition"),
-        list(slug = "mobility", label = "mobility"),
-        list(slug = "self_care", label = "self-care"),
-        list(slug = "getting_along", label = "getting along"),
-        list(slug = "life_activities", label = "life activities"),
-        list(slug = "participation", label = "participation")
-    )
-
     requests <- list(
         ## Primary outcome
         list(field = "inhospital_mortality_30d",
@@ -235,16 +219,6 @@ create_outcomes_descriptive_table <- function(data = NULL,
                     source = "external",
                     summary = "categorical",
                     levels = domain$levels,
-                    section = timepoint$section
-                )))
-            }
-            for (domain in whodas.domains) {
-                requests <- c(requests, list(list(
-                    field = paste0("whodas_", domain$slug, "_", timepoint$slug),
-                    label = paste0("WHODAS 2.0 ", domain$label),
-                    source = "external",
-                    summary = "categorical",
-                    levels = whodas.levels,
                     section = timepoint$section
                 )))
             }

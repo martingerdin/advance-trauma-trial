@@ -15,8 +15,9 @@
 #'     is NULL. Defaults to `"tables/outcomes-summary.json"`.
 #' @param all Logical. If FALSE (the default), the table shows key
 #'     outcome–effect-measure rows from the outcomes summary. If TRUE, nested
-#'     quality-of-life and disability rows are expanded to EQ-5D-5L domains and
-#'     VAS and WHODAS domain scores for supplementary reporting.
+#'     quality-of-life rows are expanded to EQ-5D-5L domains and VAS for
+#'     supplementary reporting. Disability is reported as the WHODAS 2.0
+#'     summary score only.
 #' @param label.width Numeric. Fraction of linewidth for the outcome column in
 #'     LaTeX output. Defaults to `0.46`.
 #' @param use.simulated.data Logical. If TRUE (default), fill estimate cells
@@ -188,7 +189,7 @@ create_outcomes_analysis_results_table <- function(
 #' Build analysis-results shell row specifications from the outcomes summary
 #'
 #' @param data Data frame of outcomes summary rows.
-#' @param all Logical. Expand nested QoL/disability to domain-level rows.
+#' @param all Logical. Expand nested QoL to EQ-5D-5L domain-level rows.
 #' @return A list of specs with `field`, `label`, `measure`, `effect_measure`,
 #'     `outcome_type`, `design`, `timing`, and `section` (`section` is a
 #'     character vector: design header then outcome name).
@@ -207,14 +208,6 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
         "usual activities",
         "pain/discomfort",
         "anxiety/depression"
-    )
-    whodas.domains <- c(
-        "cognition",
-        "mobility",
-        "self-care",
-        "getting along",
-        "life activities",
-        "participation"
     )
     section.order <- outcomes_shell_section_order()
 
@@ -262,11 +255,12 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
             )
         }
 
-        expand.nested <- isTRUE(all) && grepl("^(Quality of life|Disability)\\b", outcome)
+        expand.nested <- isTRUE(all) && grepl("^Quality of life\\b", outcome)
 
         if (!expand.nested) {
             measures <- trimws(unlist(strsplit(effect.measure, ";", fixed = TRUE)))
             measures <- measures[nzchar(measures)]
+            measures <- sub("^Mean difference$", "mean difference", measures)
             for (measure in measures) {
                 add.spec(
                     outcome.label,
@@ -279,41 +273,22 @@ build_outcomes_analysis_results_specs <- function(data, all = FALSE) {
             next
         }
 
-        if (grepl("^Quality of life\\b", outcome)) {
-            for (domain in eq5d.domains) {
-                add.spec(
-                    paste0("EQ-5D-5L ", domain),
-                    "COR",
-                    grouping$outcome_type,
-                    grouping$design,
-                    grouping$timing
-                )
-            }
+        for (domain in eq5d.domains) {
             add.spec(
-                "EQ-5D-5L VAS",
-                "mean difference",
-                grouping$outcome_type,
-                grouping$design,
-                grouping$timing
-            )
-        } else {
-            for (domain in whodas.domains) {
-                add.spec(
-                    paste0("WHODAS 2.0 ", domain),
-                    "COR",
-                    grouping$outcome_type,
-                    grouping$design,
-                    grouping$timing
-                )
-            }
-            add.spec(
-                "WHODAS 2.0 summary score",
-                "mean difference",
+                paste0("EQ-5D-5L ", domain),
+                "COR",
                 grouping$outcome_type,
                 grouping$design,
                 grouping$timing
             )
         }
+        add.spec(
+            "EQ-5D-5L VAS",
+            "mean difference",
+            grouping$outcome_type,
+            grouping$design,
+            grouping$timing
+        )
     }
 
     section.ranks <- match(

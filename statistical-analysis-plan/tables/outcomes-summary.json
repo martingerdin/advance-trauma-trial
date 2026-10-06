@@ -142,30 +142,30 @@
   {
     "outcome": "Disability within seven days of discharge",
     "design_component": "Nested staircase",
-    "data_type": "Ordinal WHODAS 2.0; summary score",
+    "data_type": "Continuous (WHODAS 2.0 summary score)",
     "population": "Trauma patients alive at follow-up",
-    "main_analysis_model": "Cumulative logit; linear mixed",
-    "effect_measure": "COR; mean difference",
+    "main_analysis_model": "Linear mixed",
+    "effect_measure": "Mean difference",
     "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
     "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Disability at 30 days after arrival at the emergency department",
     "design_component": "Nested staircase",
-    "data_type": "Ordinal WHODAS 2.0; summary score",
+    "data_type": "Continuous (WHODAS 2.0 summary score)",
     "population": "Trauma patients alive at follow-up",
-    "main_analysis_model": "Cumulative logit; linear mixed",
-    "effect_measure": "COR; mean difference",
+    "main_analysis_model": "Linear mixed",
+    "effect_measure": "Mean difference",
     "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
     "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   },
   {
     "outcome": "Disability at three months after arrival at the emergency department",
     "design_component": "Nested staircase",
-    "data_type": "Ordinal WHODAS 2.0; summary score",
+    "data_type": "Continuous (WHODAS 2.0 summary score)",
     "population": "Trauma patients alive at follow-up",
-    "main_analysis_model": "Cumulative logit; linear mixed",
-    "effect_measure": "COR; mean difference",
+    "main_analysis_model": "Linear mixed",
+    "effect_measure": "Mean difference",
     "potential_intercurrent_events": "Death; loss to follow-up; withdrawal",
     "strategy_for_handling_intercurrent_events": "While-alive; missing data otherwise"
   }
