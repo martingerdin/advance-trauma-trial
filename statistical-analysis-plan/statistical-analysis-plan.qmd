@@ -228,14 +228,14 @@ In every descriptive table we summarise discrete variables as frequencies and pe
 <!-- github-issue-21: draft adherence and protocol deviations from existing SAP/protocol text (checklist 17a/17b). -->
 
 ### Adherence to the intervention {#sec-adherence-to-the-intervention}
-Adherence to the intervention is defined at the cluster and individual levels and is distinct from the secondary outcome adherence to ATLS® principles during resuscitation, see @sec-analysis-of-secondary-outcomes.
+Adherence to the intervention is defined at the cluster and individual levels and is distinct from the secondary outcome adherence to ATLS^®^ principles during resuscitation, see @sec-analysis-of-secondary-outcomes.
 
 At the cluster level, adherence means that ATLS^®^ training is delivered during the scheduled transition period for that cluster’s randomised sequence, and that the cluster does not implement ATLS^®^ training before its scheduled transition. We will assess cluster level adherence using the training log kept  by the trial team. We will summarise cluster-level adherence descriptively, including the number and proportion of clusters that completed training as scheduled and the reasons for any non-adherence to the randomisation schedule. Adherence to the randomisation schedule is also reviewed at the interim analysis, see @sec-interim-analysis.
 
 <!-- github-issue-69: classify patients by arrival at the emergency department, since eligible patients include those who die before admission and those transferred out from the emergency department. -->
 At the individual level, exposure to the intervention is defined by the cluster’s scheduled transition date, and patients are classified by the period in which they arrived at the emergency department, see @sec-analysis-sets. The primary analysis includes eligible patients irrespective of whether care was delivered by a trained physician.
 
-Process adherence to ATLS® principles during initial resuscitation is a nested-staircase secondary outcome and is defined and analysed in @sec-outcomes-overview and @sec-analysis-of-secondary-outcomes; it is not used to exclude patients from the primary analysis.
+Process adherence to ATLS^®^ principles during initial resuscitation is a nested-staircase secondary outcome and is defined and analysed in @sec-outcomes-overview and @sec-analysis-of-secondary-outcomes; it is not used to exclude patients from the primary analysis.
 
 ### Protocol deviations {#sec-protocol-deviations}
 A protocol deviation is any departure from the approved trial protocol, ICH-GCP, or applicable regulations. Consistent with the protocol, we will report to the sponsor without delay, for assessment, any serious breach or deviation that significantly affects, or is likely to affect, participant safety or integrity or the reliability of trial data. We will document minor deviations — those that do not affect participant safety or integrity and do not materially affect the scientific value of the trial — in the trial records of the principal investigator and the sponsor.
@@ -257,7 +257,7 @@ Our trial has eligibility criteria at the cluster and patient participant levels
 <!-- github-issue-20: nested-staircase patient flow reported separately from main CONSORT. -->
 
 <!-- sap-revision-todo H3 (comment id=9 MGW; Round Two): stepped-wedge CONSORT extension for flow diagram. -->
-We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in the main text, in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS® training. Flow for nested-staircase secondary outcomes (adherence to ATLS® principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a separate figure in the supplementary material (@fig-consort-nested-staircase), showing patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS® training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
+We will use CONSORT diagrams to display the flow of clusters and patients through the main batched stepped-wedge trial, reported as two figures in the main text, in line with recent batched stepped-wedge practice [@escp_eagle_2024]: a cluster-level diagram (@fig-consort-clusters) and a patient-level diagram (@fig-consort-patients). For each sequence, the diagrams will report numbers randomly assigned or included, losses and exclusions after randomisation (with reasons), and numbers analysed for the primary outcome. The patient diagram will also summarise flow before and after ATLS^®^ training. Flow for nested-staircase secondary outcomes (adherence to ATLS^®^ principles, EQ-5D-5L, and WHODAS 2.0) will be reported in a separate figure in the supplementary material (@fig-consort-nested-staircase), showing patients in the staircase periods, losses and exclusions, and numbers analysed, by sequence, before and after ATLS^®^ training, and overall. We will present cluster-level summaries of the intervention effect. We will report the study according to the CONSORT guidelines for stepped-wedge randomised trials [@Hemming2018].
 
 ## Baseline characteristics {#sec-baseline-characteristics}
 ### Cluster characteristics {#sec-cluster-characteristics}
@@ -274,7 +274,7 @@ We will describe patient characteristics among all eligible patients over the en
 # Outcomes {#sec-outcomes}
 ## Outcomes {#sec-outcomes-overview}
 <!-- github-issue-67: point readers from the outcomes summary table to the strategy definitions. -->
-A summary of all outcomes, analysis sets, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-summary. The strategies named in the last column of that table are defined under @sec-strategies-for-handling-intercurrent-events. 
+A summary of all outcomes, populations, effect measures, and handling of intercurrent events is provided in @tbl-outcomes-summary. The strategies named in the last column of that table are defined under @sec-strategies-for-handling-intercurrent-events. 
 
 <!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer ICE per outcome; primary includes deaths after transfer. -->
 {{< include ../shared-assets/outcomes.qmd >}}
@@ -289,7 +289,7 @@ names(outcomes.table) <- c(
   "Outcome",
   "Design component",
   "Data type",
-  "Analysis set",
+  "Population",
   "Main analysis model",
   "Effect measure",
   "Potential intercurrent events",
@@ -299,7 +299,7 @@ names(outcomes.table) <- c(
 
 ```{r}
 #| label: tbl-outcomes-summary
-#| tbl-cap: "Summary of outcomes, analysis sets, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events."
+#| tbl-cap: "Summary of outcomes, populations, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events."
 #| echo: false
 #| message: false
 #| warning: false
@@ -346,33 +346,33 @@ cat("\\restoregeometry\n")
 # Intercurrent events, populations and summary measures {#sec-intercurrent-events-populations-and-summary-measures}
 ## Intercurrent events {#sec-intercurrent-events}
 <!-- github-issue-23: draft ICE strategies from outcomes-summary table and existing outcome analysis text. -->
-Intercurrent events are events occurring after intervention exposure that affect interpretation or occurrence of an outcome. Anticipated events and the strategy used for each outcome are summarised in @tbl-outcomes-summary. Frequencies will be summarised for each outcome as counts and percentages of patients with the event before assessment of that outcome, stratified by before and after ATLS training and overall. We will not adjust for clustering in these summaries. Denominators are the primary analysis set or the nested sample, before the outcome-specific restrictions under @sec-analysis-sets, so that events that remove a patient from an analysis set are still counted. We will present these summaries in the supplementary material. See @tbl-intercurrent-events.
+Intercurrent events are patient-level events after intervention exposure that affect the occurrence or interpretation of an outcome. @tbl-outcomes-summary lists the anticipated events and the handling strategy for each outcome. The strategies are defined under @sec-strategies-for-handling-intercurrent-events. 
 
-At the cluster level, late or early transition relative to the scheduled date, incomplete delivery of ATLS® training, and cluster dropout are treated as protocol or adherence issues, as described under @sec-adherence-and-protocol-deviations, rather than as outcome-specific intercurrent events; exposure for analysis remains as defined under @sec-analysis-sets.
+We will report each event as the count and percentage of patients with the event before the outcome was assessed, stratified by before and after ATLS^®^ training and overall. We will not adjust for clustering in these summaries. Denominators are the primary analysis set or the nested sample before any outcome-specific restriction, so that events that remove a patient from an analysis set are still counted. We will present these summaries in the supplementary material, see @tbl-intercurrent-events.
 
-<!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer handling for length of stay and ICU admission, stated once here. -->
-At the individual level, patients cannot withdraw from the intervention. For length of emergency department, hospital, and intensive care unit (ICU) stay, the observed stay is the completed duration to exit; death and transfer truncate it, and we do not treat either as censoring. For ICU admission we record whether the patient was admitted to ICU before death or transfer; patients who die or are transferred without being admitted to ICU count as not admitted.
+At the cluster level, early or late transition, incomplete delivery of ATLS^®^ training, and cluster dropout are treated as protocol or adherence issues rather than intercurrent events, as described under @sec-adherence-and-protocol-deviations. Exposure remains as defined under @sec-analysis-sets.
+
+At the individual level, the intervention is training of hospital staff, so patients cannot discontinue or withdraw from it, meaning that withdrawal from the intervention cannot be an intercurrent event. Instead, the anticipated patient-level intercurrent events are:
 
 <!-- github-issue-23: transfer is part of the mortality outcome definitions, not an ICE. -->
-- **Transfer to another hospital.** Relevant to length-of-stay and ICU outcomes. It is not an intercurrent event for mortality outcomes, because the primary outcome includes in-hospital deaths after transfer and all-cause mortality counts deaths regardless of care setting.
+<!-- sap-revision-todo C1 (comments id=55, id=56 KH; id=57, id=58 AO/MGW; Round Two id=11): death/transfer handling for length of stay and ICU admission, stated once here. -->
+- **Transfer to another hospital.** Relevant to length of emergency department, hospital, and intensive care unit (ICU) stay and to ICU admission. The observed stay is the completed duration to exit, including exit by transfer, and is not censored. ICU admission counts only if it occurred before transfer. Transfer is not an intercurrent event for mortality outcomes, because the primary outcome includes in-hospital deaths after transfer and all-cause mortality counts deaths in any setting.
 <!-- github-issue-23: death as ICE is death before that outcome's assessment. -->
-- **Death.** Relevant to length-of-stay and ICU outcomes and to survivor-only outcomes. As an intercurrent event, death is death before assessment of the outcome in question; later death is not an intercurrent event for earlier outcomes. Observed length of stay is the completed duration to exit; death truncates the observed stay and is not treated as censoring. ICU admission is classified according to whether admission occurred before death. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up (while-alive restriction). Those analyses therefore target effects in survivors at that time point; mortality is analysed separately.
-- **Withdrawal of consent for non-routine data collection.** Relevant only to outcomes that require opt-in follow-up: all-cause mortality after the initial admission (when not available from records), return to work, quality of life, and disability. It is also relevant to the primary outcome when death after transfer cannot be ascertained from records and requires contact with the patient, a representative, or the receiving hospital. Withdrawal is not listed for routinely recorded in-hospital outcomes (length of stay and ICU admission) or for adherence, which are collected under opt-out consent. Participants who withdraw contribute observed non-routine outcomes up to withdrawal unless they also request removal of already collected data; subsequent missing values are handled under the missing-data plan, see @sec-missing-data.
-- **Loss to follow-up.** Relevant to the same contact-dependent outcomes as withdrawal. These events create missing outcome data and are handled under the missing-data plan.
-- **Incomplete observation of resuscitation.** Relevant only to adherence. We score the checklist by observing the initial resuscitation up to one hour after the physician first sees the patient. Observation is incomplete when we do not observe that whole time window — for example when the observer could not complete the 14-item checklist because care ended, the patient left the emergency department, or observation was interrupted. We exclude unobserved and incompletely observed resuscitations from the adherence analysis (available-case analysis of the observed nested sample), and we treat death during the observation window the same way.
-
-Return to work is further restricted to patients for whom the outcome is relevant, as defined under @sec-analysis-sets; that restriction defines the analysis set and is not an intercurrent event.
+- **Death.** Death is an intercurrent event only for outcomes assessed after it. For length of stay and ICU admission it is handled in the same way as transfer. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up. The estimated effects therefore apply to survivors at that time point, and mortality is analysed separately.
+- **Withdrawal of consent for non-routine data collection.** Relevant to outcomes that need opt-in follow-up, namely return to work, quality of life, disability, and all-cause mortality when not available from records. It is also relevant to the primary outcome when death after transfer cannot be ascertained from records. It is not relevant to length of stay, ICU admission, or adherence, which are collected under opt-out consent. Patients who withdraw contribute outcomes observed before withdrawal unless they also ask for their data to be removed. Missing values are handled under @sec-missing-data.
+- **Loss to follow-up.** Relevant to the same outcomes as withdrawal. Missing values are handled under @sec-missing-data.
+<!-- Observation window is a ceiling, not a minimum: resuscitation ending early (ED exit or death) completes the observation and unperformed items count as non-adherence. -->
+- **Incomplete observation of resuscitation.** Relevant only to ATLS^®^ adherence. We score the checklist by observing the initial resuscitation until it ends or until one hour after the physician first sees the patient, whichever comes first. Items not completed by then count as not adhered to, including when the patient leaves the emergency department or dies before one hour. Observation is incomplete only when the observer could not follow the resuscitation to that point, for example because the observer arrived late or was interrupted. We exclude unobserved and incompletely observed resuscitations from the adherence analysis.
 
 ### Strategies for handling intercurrent events {#sec-strategies-for-handling-intercurrent-events}
 <!-- github-issue-67: define the strategy labels used in the last column of the outcomes summary table. -->
 The strategies to handle intercurrent events are defined as follows, in the order in which they first appear in @tbl-outcomes-summary. Where two strategies are listed for an outcome, the second applies to any event not covered by the first.
 
 - **Missing data.** The outcome is not observed and no value is constructed for it. Such observations are excluded from the analysis of that outcome under the available-case approach, or imputed under the multiple imputation approach, as specified under @sec-missing-data.
-- **Treatment policy (any setting).** The outcome is counted as recorded irrespective of where care was delivered after the patient left the randomised cluster. All-cause mortality therefore counts deaths in any setting, including after transfer or discharge.
 - **Observed stay truncated by death or transfer.** The length of stay is the completed duration until the patient leaves the unit, including when the patient leaves by dying or being transferred. These stays enter the analysis at their observed value and are not treated as censored.
 - **Classified by whether ICU admission occurred first.** Patients who die or are transferred count as admitted to intensive care only if the admission occurred before that event. The outcome is therefore defined for every patient in the analysis set.
 - **While-alive.** The outcome is defined only among patients alive at the assessment time point. The estimated effect applies to survivors at that time point, and mortality is analysed separately.
-- **Available-case in the observed nested sample.** The outcome is analysed among the resuscitations that were fully observed. Unobserved and incompletely observed resuscitations are excluded.
+- **Available-case in the observed nested sample.** The outcome is analysed among the resuscitations that were observed until they ended or until one hour had passed, whichever came first. Unobserved and incompletely observed resuscitations are excluded.
 
 Where a while-alive strategy is used, we assume that, conditional on the analysis model and design factors, death before the outcome assessment does not induce selection bias beyond what is addressed by analysing mortality separately; sensitivity of conclusions will rely on joint interpretation of mortality and survivor outcomes. Assumptions underlying each strategy will be considered when interpreting results and when checking model assumptions, see @sec-analysis-methods.
 
@@ -381,12 +381,13 @@ Where a while-alive strategy is used, we assume that, conditional on the analysi
 ## Population {#sec-population}
 <!-- github-issue-24: draft target populations from analysis-set and eligibility text. -->
 <!-- github-issue-69: define population and analysis set where populations are introduced. -->
-A population is the group of clusters and patients to which an estimated effect applies. An analysis set is the subset of a population whose observations enter a given analysis, as defined under @sec-analysis-sets. The treatment effects estimated in this plan are defined for the trial’s eligible clusters and eligible patient participants, as specified under @sec-eligibility-criteria.
+<!-- Round Two checklist items 23, 24 and 26 (AO/MGW); sap-revision-todo H4: populations defined here and named in @tbl-outcomes-summary; analysis sets reduced to one general rule under @sec-analysis-sets. -->
+A population is the group of patients to which an estimated effect applies. An analysis set is the observations that enter a given analysis, as defined under @sec-analysis-sets. @tbl-outcomes-summary names the population for each outcome.
 
-- **Clusters.** We estimate effects for participating hospitals (clusters) that meet the cluster eligibility criteria and that we randomise within the batched stepped-wedge design. Units within a hospital are part of the same cluster; we do not define the estimands separately by unit.
-- **Main stepped-wedge patient population.** For the primary outcome, all-cause mortality secondary outcomes, length of emergency department and hospital stay, and ICU admission, the target population is eligible trauma patients included in the main stepped-wedge trial during non-transition periods. For length of ICU stay the population is those patients who are admitted to ICU.
-- **Survivor populations.** We target quality of life and disability effects among patients in the nested staircase sample who are alive at the relevant follow-up time point, and return-to-work effects among patients in the main stepped-wedge trial who are alive at the relevant follow-up and for whom return to work is relevant.
-- **Nested adherence population.** We target the adherence-to-ATLS^®^-principles effect among the patients we randomly select for observation in the nested staircase design during the observation window.
+- **Trauma patients.** Patients aged 15 years or older who present to the emergency department with trauma requiring admission. This is the population for the primary outcome, all-cause mortality, length of emergency department and hospital stay, ICU admission, and adherence to ATLS^®^ principles.
+- **Trauma patients admitted to ICU.** The population for length of ICU stay.
+- **Trauma patients alive at follow-up.** Trauma patients who were alive when the outcome was assessed, within seven days of discharge, at 30 days, or at three months after arrival at the emergency department. These are the populations for quality of life and disability. The estimated effects apply to survivors at that time point, and mortality is analysed separately.
+- **Trauma patients alive at follow-up and working at inclusion.** Trauma patients who were alive at 30 days or at three months after arrival at the emergency department and who were working at the time of inclusion. Working means paid or unpaid work, studying or keeping house. These are the populations for return to work.
 
 ## Analysis sets {#sec-analysis-sets}
 <!-- sap-revision-todo H4 (comments id=12 MGW, id=13 AO; Round Two): specify target population per analysis including LOS/ICU and nested survivors. -->
@@ -398,23 +399,15 @@ An observation is classified as exposed to the intervention if the patient arriv
 
 The observations for the patients selected for nested staircase data collection form the nested sample. These patients are drawn by stratified random sampling by shift during the three months before and the three months after the transition period, see @sec-nested-staircase-design-and-secondary-outcomes.
 
-@tbl-outcomes-summary names an analysis set for each outcome. The sets are defined as follows, in the order in which they first appear in that table.
+<!-- Round Two checklist item 24 (AO/MGW): one general rule replaces the list of named sets; first sentence retains the protocol wording (protocol.qmd, Statistics, General principles). -->
+The primary analysis set includes all randomised clusters and all eligible patients, that is all observations within clusters with available data, irrespective of the receipt of the intervention, with the exception of the transition periods. The analysis of an outcome collected in the main stepped-wedge design includes the observations in the primary analysis set that belong to the population of that outcome and have an observed outcome value. The analysis of an outcome collected in the nested staircase design includes the observations in the nested sample in the same way. For adherence to ATLS^®^ principles, the analysis includes the observations in the nested sample for which the resuscitation was observed until it ended or until one hour after the physician first saw the patient, whichever came first (the observed nested sample), see @sec-intercurrent-events.
 
-- **Primary analysis set.** All observations, conditioned on the missing data strategy used. This set is used for the primary outcome and for the secondary outcomes collected with the main stepped-wedge design.
-- **ICU admissions.** The observations for patients in the primary analysis set who were admitted to intensive care.
-- **Alive at 30 days and working at the time of inclusion.** The observations for patients who were alive 30 days after arrival at the emergency department and who were working at the time of inclusion. Working means paid or unpaid work, studying or keeping house.
-- **Alive at 3 months and working at the time of inclusion.** The same restriction applied three months after arrival at the emergency department.
-- **Observed nested sample.** The observations in the nested sample for which the resuscitation was observed in full.
-- **Alive, nested sample.** The observations in the nested sample for patients who were alive when the outcome was assessed.
-- **Alive at 30 days, nested sample.** The observations in the nested sample for patients who were alive 30 days after arrival at the emergency department.
-- **Alive at 3 months, nested sample.** The observations in the nested sample for patients who were alive three months after arrival at the emergency department.
-
-An analysis includes the observations in the analysis set for that outcome whose outcome value is observed. Under multiple imputation, observations with a missing outcome are retained and the value is imputed, see @sec-missing-data. Adjusted analyses under the available-case approach include only observations with complete data on the adjustment covariates.
+Under multiple imputation, observations with a missing outcome are retained and the value is imputed, see @sec-missing-data. Adjusted analyses under the available-case approach include only observations with complete data on the adjustment covariates.
 
 ## Effect measures {#sec-effect-measures}
 <!-- github-issue-25: revise effect measures against checklist; keep descriptive shells and cross-ref analysis shells. -->
 <!-- sap-revision-todo J1: key vs all descriptive outcome shell tables (domain-level EQ-5D-5L/WHODAS in supplementary). -->
-Outcomes are measured on individual patients. Descriptive summaries of primary and secondary outcomes will be presented stratified by before and after ATLS® training and overall, using frequencies and percentages for dichotomous and categorical outcomes, medians and interquartile ranges (Q1–Q3) for continuous and count outcomes, and the same summary statistics as the patient characteristics tables otherwise. Missing values will be reported for each outcome. These descriptive summaries are unadjusted for clustering (patient-level summaries). We will present key outcome summaries in the main text, and all outcome summaries in the supplementary material. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
+Outcomes are measured on individual patients. Descriptive summaries of primary and secondary outcomes will be presented stratified by before and after ATLS^®^ training and overall, using frequencies and percentages for dichotomous and categorical outcomes, medians and interquartile ranges (Q1–Q3) for continuous and count outcomes, and the same summary statistics as the patient characteristics tables otherwise. Missing values will be reported for each outcome. These descriptive summaries are unadjusted for clustering (patient-level summaries). We will present key outcome summaries in the main text, and all outcome summaries in the supplementary material. See @tbl-outcomes-descriptive for key outcomes and @tbl-outcomes-descriptive-all for all outcomes.
 
 <!-- github-issue-13: CRT SAP reporting paper — participant-level vs cluster-average; cluster-specific vs marginal. -->
 <!-- sap-revision-todo H1 (comments id=14, id=15, id=17 MGW/AO; Round Two): effect measures by outcome type; no HR after A2; cluster-specific estimates. -->
@@ -557,7 +550,7 @@ We will analyse length of emergency department stay as a count outcome: the numb
 
 <!-- github-issue-19: preferred LOS model with same convergence sequence as primary. -->
 <!-- github-issue-71: period and random effects structure carried over from the primary analysis. -->
-The model is a mixed-effects negative binomial regression with a log link, including a fixed effect for intervention exposure and the period parametrisation and random effects structure selected for the primary analysis. @eq-length-of-stay-model shows this model with batch-specific categorical period effects, a random intercept for cluster, and a random cluster-by-period effect; if a simpler structure was selected for the primary analysis, that structure is used here instead. If the model does not converge for this outcome, we will simplify it further by continuing down the same sequence. The intervention effect $\theta$ is the log rate ratio for ED length of stay associated with ATLS® exposure compared with standard care; we will also report the corresponding multiplicative effect on the mean count (rate ratio).
+The model is a mixed-effects negative binomial regression with a log link, including a fixed effect for intervention exposure and the period parametrisation and random effects structure selected for the primary analysis. @eq-length-of-stay-model shows this model with batch-specific categorical period effects, a random intercept for cluster, and a random cluster-by-period effect; if a simpler structure was selected for the primary analysis, that structure is used here instead. If the model does not converge for this outcome, we will simplify it further by continuing down the same sequence. The intervention effect $\theta$ is the log rate ratio for ED length of stay associated with ATLS^®^ exposure compared with standard care; we will also report the corresponding multiplicative effect on the mean count (rate ratio).
 
 $$
 \log\{\mathbb{E}(Y_{bkti})\}
@@ -577,7 +570,7 @@ Intensive care unit admission will be analysed as a dichotomous outcome using th
 Length of intensive care unit stay will be analysed as a count outcome among patients admitted to ICU: the number of days from ICU admission to ICU discharge (or death in ICU). The analysis uses the same negative binomial specification as for the other length-of-stay outcomes (@eq-length-of-stay-model), with the same handling of death and transfer.
 
 ### Adherence to ATLS^®^ principles during initial patient resuscitation {#sec-adherence-to-atls-principles-during-initial-patient-resuscitation}
-<!-- sap-revision-todo C3 (comment id=361 KH): checklist assessed in both standard-care and ATLS® periods. -->
+<!-- sap-revision-todo C3 (comment id=361 KH): checklist assessed in both standard-care and ATLS^®^ periods. -->
 <!-- sap-revision-todo C4 (comments id=61 KH, id=62 AO, id=63 MGW): express adherence as percentage; 14/14 = 100%; duplicate paragraph already removed. -->
 We assess adherence to ATLS^®^ principles within the nested staircase design, in both the standard care and the ATLS^®^ periods, as the percentage of completed items on a 14-item checklist that covers the key steps of the ATLS^®^ primary survey, where all 14 steps completed is 100% adherence. We will rescale the percentage to a proportion on the 0–1 scale and analyse it with a mixed-effects beta regression model with a logit link:
 
@@ -797,7 +790,7 @@ The captions in this section state whether each table or figure is intended for 
 ```{r}
 #| echo: false
 #| label: fig-trial-rollout
-#| fig.cap: "Shell figure of the actual trial roll-out. Light gray bars show the planned patient-inclusion periods. Coloured bars show the observed standard-care, transition, and intervention periods. Each ATLS® training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Placeholder dates will be replaced with observed dates. Intended for the supplementary material."
+#| fig.cap: "Shell figure of the actual trial roll-out. Light gray bars show the planned patient-inclusion periods. Coloured bars show the observed standard-care, transition, and intervention periods. Each ATLS^®^ training course is marked with a diamond on top of that cluster's bar; a cluster may have more than one course. Placeholder dates will be replaced with observed dates. Intended for the supplementary material."
 #| fig.align: "center"
 #| fig-pos: H
 #| out-width: "100%"
