@@ -1,4 +1,4 @@
-release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE, cache.refresh = FALSE) {
+release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE, cache.refresh = TRUE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
 
