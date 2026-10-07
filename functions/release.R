@@ -1,4 +1,4 @@
-release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE, tag = TRUE) {
+release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
 
@@ -221,25 +221,27 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         }
     }
 
-    # Commit changes and tag release
+    # Commit changes in this document directory. Changes elsewhere in the
+    # repository stay as they are, including any files already staged there.
     release.string <- stringr::str_replace_all(document.name, "-", " ") |>
         stringr::str_to_lower()
     if (commit && !recompile.only && !test) {
         version.indicator.string <- ifelse(pre.release, "pre-release version", "version")
-        base.git.path <- git2r::discover_repository(".") |>
-            stringr::str_remove("/.git")
-        git2r::commit(
-            repo = ".",
-            all = TRUE,
-            message = paste0("Release ", release.string, " ", version.indicator.string, " ", new.version.string)
-        )
-
-        #     ## if (tag) {
-        #     ##    git2r::tag(
-        #     ##        object = ".",
-        #     ##        name = stringr::str_to_sentence(paste0(document.name, " ", new.version.string)),
-        #     ##        message = paste0("Release ATLS vs standard care trial ", document.name, " version ", new.version.string)
-        #     ##    )
-        #     ## }
+        repo.root <- normalizePath(git2r::workdir(git2r::repository(".")), winslash = "/")
+        working.dir <- normalizePath(getwd(), winslash = "/")
+        relative.dir <- substring(working.dir, nchar(repo.root) + 1)
+        relative.dir <- sub("^/", "", relative.dir)
+        if (!nzchar(relative.dir)) {
+            relative.dir <- "."
+        }
+        commit.message <- paste0("Release ", release.string, " ", version.indicator.string, " ", new.version.string)
+        git.add <- system2("git", c("-C", repo.root, "add", "-A", "--", relative.dir))
+        if (!identical(git.add, 0L)) {
+            stop("Could not stage the release")
+        }
+        git.commit <- system2("git", c("-C", repo.root, "commit", "--only", "-m", commit.message, "--", relative.dir))
+        if (!identical(git.commit, 0L)) {
+            stop("Could not commit the release")
+        }
     }
 }
