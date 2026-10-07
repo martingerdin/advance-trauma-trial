@@ -1,4 +1,4 @@
-release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, commit = TRUE, tag = TRUE) {
+release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE, tag = TRUE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
 
@@ -9,7 +9,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     assert_that(file.exists(file.name), msg = paste0("File ", file.name, " does not exist"))
 
     # Confirm the release date
-    if (!is.null(release.date)) {
+    if (!is.null(release.date) && !test) {
         message <- paste0("Is this the correct release date? (YYYY-MM-DD) ", release.date)
         use.release.date <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
         if (!use.release.date) {
@@ -30,13 +30,13 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     current.pre.release <- length(version) > 3
 
     # If the current version is a pre-release, then the new version should either be the next version of the pre-release or the just the version without the pre-release indicator
-    if (current.pre.release && is.null(pre.release) && !recompile.only) {
+    if (current.pre.release && is.null(pre.release) && !recompile.only && !test) {
         message <- paste0("The current version is pre-release version ", current.version, ". Increment the pre-release version?")
         pre.release <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
     }
 
     # If the current version is not a pre-release and it is not indicated whether this new version should be, then check
-    if (is.null(pre.release) && !recompile.only) {
+    if (is.null(pre.release) && !recompile.only && !test) {
         message <- paste0("You have not indicated whether this is a pre-release. Is this a pre-release?")
         pre.release <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
     }
@@ -47,7 +47,8 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         is.null(patch) &&
         ((is.null(pre.release) || pre.release) &&
             (is.null(current.pre.release) || !current.pre.release)) &&
-        !recompile.only) {
+        !recompile.only &&
+        !test) {
         message <- "No version increment specified. Increment patch version?"
         patch <- utils::menu(c("Yes", "No"), title = message, graphics = FALSE) == 1
         major <- FALSE
@@ -66,33 +67,36 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
             patch ||
             pre.release ||
             current.pre.release ||
-            recompile.only,
-        msg = "At least one of major, minor, patch, pre.release or recompile.only must be TRUE"
+            recompile.only ||
+            test,
+        msg = "At least one of major, minor, patch, pre.release, recompile.only or test must be TRUE"
     )
     assert_that(!(major && minor), msg = "major and minor cannot both be TRUE")
     assert_that(!(major && patch), msg = "major and patch cannot both be TRUE")
     assert_that(!(minor && patch), msg = "minor and patch cannot both be TRUE")
     assert_that(!(recompile.only && (major || minor || patch || pre.release)), msg = "recompile.only cannot be TRUE if any of major, minor, patch or pre.release is TRUE")
+    assert_that(!(test && (major || minor || patch || pre.release || recompile.only)), msg = "test cannot be TRUE if any of major, minor, patch, pre.release or recompile.only is TRUE")
     assert_that(is.logical(recompile.only) & length(recompile.only) == 1, msg = "recompile.only must be a logical")
+    assert_that(is.logical(test) & length(test) == 1, msg = "test must be a logical")
     assert_that(is.logical(commit) & length(commit) == 1, msg = "commit must be a logical")
 
     # If the next version is a pre-release but the current version is not, then major, minor or patch must be TRUE
-    if (pre.release && !current.pre.release && !recompile.only) {
+    if (pre.release && !current.pre.release && !recompile.only && !test) {
         assert_that(major || minor || patch, msg = "If the next version is a pre-release but the current version is not, then major, minor or patch must be TRUE")
     }
 
     # If the current version is a pre-release but the next version is not, then the new version is the current version without the pre-release indicator
-    if (current.pre.release && !pre.release && !recompile.only) {
+    if (current.pre.release && !pre.release && !recompile.only && !test) {
         new.version.string <- paste0(version[1:3], collapse = ".")
     }
 
     # If the current version is just recompiled, then the new version is the current version
-    if (recompile.only) {
+    if (recompile.only || test) {
         new.version.string <- current.version
     }
 
     # Bump version if recompile.only is FALSE, and the current version is not a pre-release, or if the current version is a pre-release and pre.release is TRUE
-    if (!recompile.only && !current.pre.release) {
+    if (!recompile.only && !test && !current.pre.release) {
         # Increment version
         if (major) {
             version[1] <- version[1] + 1
@@ -109,25 +113,25 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     }
 
     # Set version type if the new version is not a pre-release but the current version is a pre-release
-    if (!recompile.only && !pre.release && current.pre.release) {
+    if (!recompile.only && !test && !pre.release && current.pre.release) {
         version.type <- "Version"
     }
 
     # If the current version isn't a pre-release and the new version is a pre-release, then set the pre-release version to 1
-    if (!recompile.only && !current.pre.release && pre.release) {
+    if (!recompile.only && !test && !current.pre.release && pre.release) {
         new.version.string <- paste0(new.version.string, "-1")
         version.type <- "Pre-release version"
     }
 
     # If the current version is a pre-release and the new version is a pre-release, then increment the pre-release version
-    if (!recompile.only && current.pre.release && pre.release) {
+    if (!recompile.only && !test && current.pre.release && pre.release) {
         version[4] <- version[4] + 1
         new.version.string <- paste0(paste0(version[1:3], collapse = "."), "-", version[4])
         version.type <- "Pre-release version"
     }
 
     # Ask for confirmation
-    if (!recompile.only) {
+    if (!recompile.only && !test) {
         message <- paste0(
             "Release version ", new.version.string, "?"
         )
@@ -147,8 +151,18 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         }
     }
 
+    if (test) {
+        message <- paste0(
+            "Compile ", file.name, " without creating a release?"
+        )
+        compile.file <- utils::menu(c("Yes", "Abort"), title = message, graphics = FALSE) == 1
+        if (!compile.file) {
+            stop("Compile aborted")
+        }
+    }
+
     # Release new version
-    if (!recompile.only) {
+    if (!recompile.only && !test) {
         # Update version
         description$version <- new.version.string
 
@@ -189,26 +203,28 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     release.document.name <- paste0(document.name, "-v", new.version.string, "-", description$date)
 
     # Move compiled files to the release folder
-    dir.create("releases", showWarnings = FALSE)
-    new.version.dir.name <- paste0("v", new.version.string, "-", description$date)
-    dir.create(file.path("releases", new.version.dir.name), showWarnings = FALSE)
-    files.to.move <- fs::dir_ls(".",
-        type = "file",
-        glob = paste0(document.name, "*")
-    ) |>
-        stringr::str_subset("html|pdf|docx")
-    for (file in files.to.move) {
-        fs::file_copy(
-            file,
-            file.path("releases", new.version.dir.name, paste0(release.document.name, ".", tools::file_ext(file))),
-            overwrite = TRUE
-        )
+    if (!test) {
+        dir.create("releases", showWarnings = FALSE)
+        new.version.dir.name <- paste0("v", new.version.string, "-", description$date)
+        dir.create(file.path("releases", new.version.dir.name), showWarnings = FALSE)
+        files.to.move <- fs::dir_ls(".",
+            type = "file",
+            glob = paste0(document.name, "*")
+        ) |>
+            stringr::str_subset("html|pdf|docx")
+        for (file in files.to.move) {
+            fs::file_copy(
+                file,
+                file.path("releases", new.version.dir.name, paste0(release.document.name, ".", tools::file_ext(file))),
+                overwrite = TRUE
+            )
+        }
     }
 
     # Commit changes and tag release
     release.string <- stringr::str_replace_all(document.name, "-", " ") |>
         stringr::str_to_lower()
-    if (commit && !recompile.only) {
+    if (commit && !recompile.only && !test) {
         version.indicator.string <- ifelse(pre.release, "pre-release version", "version")
         base.git.path <- git2r::discover_repository(".") |>
             stringr::str_remove("/.git")
