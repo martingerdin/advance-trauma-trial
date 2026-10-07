@@ -1,4 +1,4 @@
-release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE) {
+release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.release = NULL, release.date = NULL, recompile.only = FALSE, test = FALSE, commit = TRUE, cache.refresh = FALSE) {
     # Define borrowed functions
     assert_that <- assertthat::assert_that
 
@@ -188,6 +188,7 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     quarto::quarto_render(
         file.name,
         output_format = "all",
+        cache_refresh = cache.refresh,
         metadata = if (!is.null(word.template)) list("reference-doc" = normalizePath(word.template))
     )
     word.document <- sub("\\.qmd$", ".docx", file.name)
