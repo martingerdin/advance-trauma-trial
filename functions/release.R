@@ -240,7 +240,9 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
         if (!identical(git.add, 0L)) {
             stop("Could not stage the release")
         }
-        git.commit <- system2("git", c("-C", repo.root, "commit", "--only", "-m", commit.message, "--", relative.dir))
+        # system2 passes this through a shell, so the message must be quoted or
+        # git treats each word as a path.
+        git.commit <- system2("git", c("-C", repo.root, "commit", "--only", "-m", shQuote(commit.message), "--", relative.dir))
         if (!identical(git.commit, 0L)) {
             stop("Could not commit the release")
         }
