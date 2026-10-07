@@ -46,6 +46,7 @@ postprocess_word_document <- function(file.name, settings = NULL) {
     set_word_update_fields(file.path(temp.dir, "word/settings.xml"))
 
     document <- fill_word_table_of_contents(document, settings)
+    document <- repair_word_flextable_markup(document)
     writeLines(document, document.path, useBytes = TRUE)
 
     zip_word_document(temp.dir, file.name)
@@ -253,6 +254,63 @@ keep_title_page_on_first_section <- function(document) {
     head <- substr(document, 1, first + attr(first, "match.length") - 1)
     tail <- gsub("<w:titlePg\\s*/>", "", substr(document, first + attr(first, "match.length"), nchar(document)))
     paste0(head, tail)
+}
+
+#' Make flextable markup acceptable to Word
+#'
+#' Flextable writes table properties in an order Word rejects, and omits the
+#' value Word requires on `tblLook`. Word then reports unreadable content and
+#' repairs the tables. Only those short elements are rewritten.
+repair_word_flextable_markup <- function(document) {
+    document <- gsub(
+        "<w:tblLayout w:type=\"fixed\"/><w:jc w:val=\"center\"/>",
+        "<w:jc w:val=\"center\"/><w:tblLayout w:type=\"fixed\"/>",
+        document,
+        fixed = TRUE
+    )
+    document <- gsub(
+        "(<w:tcBorders>)<w:bottom ([^>]*)/><w:top ([^>]*)/><w:left ([^>]*)/><w:right ([^>]*)/>",
+        "\\1<w:top \\3/><w:left \\4/><w:bottom \\2/><w:right \\5/>",
+        document,
+        perl = TRUE
+    )
+    document <- gsub(
+        "(<w:tcMar>)<w:top ([^>]*)/><w:bottom ([^>]*)/><w:left ([^>]*)/><w:right ([^>]*)/>",
+        "\\1<w:top \\2/><w:left \\4/><w:bottom \\3/><w:right \\5/>",
+        document,
+        perl = TRUE
+    )
+    add_word_table_look_values(document)
+}
+
+add_word_table_look_values <- function(document) {
+    matches <- gregexpr("<w:tblLook\\b[^>]*/>", document, perl = TRUE)[[1]]
+    if (matches[1] < 0) {
+        return(document)
+    }
+    lengths <- attr(matches, "match.length")
+    for (i in rev(seq_along(matches))) {
+        tag <- substr(document, matches[i], matches[i] + lengths[i] - 1L)
+        if (grepl("w:val=", tag, fixed = TRUE)) {
+            next
+        }
+        flag <- function(name, bit) {
+            if (!grepl(paste0("w:", name, '="'), tag, fixed = TRUE)) {
+                return(0L)
+            }
+            value <- sub(paste0('.*w:', name, '="([^"]*)".*'), "\\1", tag)
+            if (value %in% c("1", "true", "on")) bit else 0L
+        }
+        value <- flag("firstRow", 32L) + flag("lastRow", 64L) + flag("firstColumn", 128L) +
+            flag("lastColumn", 256L) + flag("noHBand", 512L) + flag("noVBand", 1024L)
+        tag <- sub("/>$", sprintf(' w:val="%04X"/>', value), tag)
+        document <- paste0(
+            substr(document, 1, matches[i] - 1L),
+            tag,
+            substr(document, matches[i] + lengths[i], nchar(document))
+        )
+    }
+    document
 }
 
 set_word_update_fields <- function(settings.path) {

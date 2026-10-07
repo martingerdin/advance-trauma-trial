@@ -22,6 +22,25 @@ if (!isTRUE(knitr::is_latex_output()) && requireNamespace("flextable", quietly =
     font.size = 8,
     theme_fun = flextable::theme_booktabs
   )
+  # gtsummary otherwise prints with gt. Its autofit step sizes each column to
+  # the full label, which is wider than the page and clips the first column.
+  # Scale those widths so the table fits and the text wraps.
+  if (isTRUE(knitr::pandoc_to("docx")) && requireNamespace("gtsummary", quietly = TRUE)) {
+    fit_word_table <- function(x, max.width = 5.5) {
+      widths <- x$body$colwidths
+      total <- sum(widths)
+      if (!is.finite(total) || total <= max.width) {
+        return(x)
+      }
+      flextable::width(x, width = as.numeric(widths) * max.width / total)
+    }
+    gtsummary::set_gtsummary_theme(list(
+      `pkgwide-str:print_engine` = "flextable",
+      `as_flex_table-lst:addl_cmds` = list(
+        valign = rlang::expr(fit_word_table())
+      )
+    ))
+  }
 }
 # Invalidate cached table chunks when the outcomes summary JSON changes.
 knitr::opts_chunk$set(

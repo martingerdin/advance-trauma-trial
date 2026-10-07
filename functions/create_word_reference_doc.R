@@ -243,20 +243,23 @@ word_character_style <- function(id, run) {
 #'     template already contains when it cannot be parsed.
 #' @return A `w:style` element.
 word_table_style <- function(styles) {
-    rule <- function(edges) {
+    # Cell borders belong in tcBorders. tblBorders is only valid on the table,
+    # and Word repairs a document that puts tblBorders inside tcPr.
+    rule <- function(edges, cell = FALSE) {
         borders <- vapply(c("top", "left", "bottom", "right", "insideH", "insideV"), function(edge) {
             if (edge %in% edges) {
                 return(sprintf('<w:%s w:val="single" w:sz="6" w:space="0" w:color="000000" />', edge))
             }
             sprintf('<w:%s w:val="nil" />', edge)
         }, character(1))
-        paste0("<w:tblBorders>", paste(borders, collapse = ""), "</w:tblBorders>")
+        tag <- if (cell) "tcBorders" else "tblBorders"
+        paste0("<w:", tag, ">", paste(borders, collapse = ""), "</w:", tag, ">")
     }
     sprintf(
-        '<w:style w:type="table" w:default="1" w:styleId="Table"><w:name w:val="Table" /><w:basedOn w:val="TableNormal" /><w:tblPr>%s<w:tblCellMar><w:top w:w="40" w:type="dxa" /><w:left w:w="60" w:type="dxa" /><w:bottom w:w="40" w:type="dxa" /><w:right w:w="60" w:type="dxa" /></w:tblCellMar></w:tblPr><w:tblStylePr w:type="firstRow"><w:tcPr>%s</w:tcPr></w:tblStylePr><w:tblStylePr w:type="lastRow"><w:tcPr>%s</w:tcPr></w:tblStylePr></w:style>',
+        '<w:style w:type="table" w:default="1" w:styleId="Table"><w:name w:val="Table" /><w:tblPr>%s<w:tblCellMar><w:top w:w="40" w:type="dxa" /><w:left w:w="60" w:type="dxa" /><w:bottom w:w="40" w:type="dxa" /><w:right w:w="60" w:type="dxa" /></w:tblCellMar></w:tblPr><w:tblStylePr w:type="firstRow"><w:tcPr>%s</w:tcPr></w:tblStylePr><w:tblStylePr w:type="lastRow"><w:tcPr>%s</w:tcPr></w:tblStylePr></w:style>',
         rule(c("insideH")),
-        rule(c("top", "bottom")),
-        rule("bottom")
+        rule(c("top", "bottom"), cell = TRUE),
+        rule("bottom", cell = TRUE)
     )
 }
 
