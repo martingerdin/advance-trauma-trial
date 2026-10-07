@@ -725,7 +725,7 @@ create_patient_consort_diagram <- function(sequences = 5,
                 "Lost/excluded (n=; reasons):",
                 c(
                     "Lost to follow-up (n=)",
-                    "Withdrew consent (n=)",
+                    "Opted out or asked for data removal (n=)",
                     "Other (n=)"
                 )
             ),
@@ -751,7 +751,7 @@ create_patient_consort_diagram <- function(sequences = 5,
                 "Excluded (n=; reasons):",
                 c(
                     "Lost to follow-up (n=)",
-                    "Withdrew consent (n=)",
+                    "Opted out or asked for data removal (n=)",
                     "Other (n=)"
                 )
             ),
@@ -777,7 +777,7 @@ create_patient_consort_diagram <- function(sequences = 5,
                 "Excluded (n=; reasons):",
                 c(
                     "Lost to follow-up (n=)",
-                    "Withdrew consent (n=)",
+                    "Opted out or asked for data removal (n=)",
                     "Other (n=)"
                 )
             ),
@@ -803,7 +803,7 @@ create_patient_consort_diagram <- function(sequences = 5,
             "Patients excluded from primary analysis (n=):",
             c(
                 "Lost to follow-up (n=)",
-                "Withdrew consent (n=)",
+                "Opted out or asked for data removal (n=)",
                 "Other (n=)"
             )
         ),

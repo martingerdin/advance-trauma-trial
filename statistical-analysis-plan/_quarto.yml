@@ -33,5 +33,7 @@ format:
     keep-tex: true
     include-in-header: 
       file: in-header.tex
-  # docx: default
+  docx:
+    toc: true
+    number-sections: true
   # html: default

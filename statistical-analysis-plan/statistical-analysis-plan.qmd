@@ -16,6 +16,13 @@ execute:
 
 noacsr::source_all_functions()
 attach(global_variables())
+if (!isTRUE(knitr::is_latex_output()) && requireNamespace("flextable", quietly = TRUE)) {
+  flextable::set_flextable_defaults(
+    font.family = "EB Garamond",
+    font.size = 8,
+    theme_fun = flextable::theme_booktabs
+  )
+}
 # Invalidate cached table chunks when the outcomes summary JSON changes.
 knitr::opts_chunk$set(
   cache.extra = list(
@@ -80,6 +87,7 @@ We used generative artificial intelligence tools, including large language model
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
+#| out-width: "100%"
 
 knitr::include_graphics("../shared-assets/advance-trauma-visual-abstract.png")
 ```
@@ -313,6 +321,10 @@ names(outcomes.table) <- c(
 )
 ```
 
+```{=openxml}
+<w:p><w:pPr><w:pStyle w:val="word-landscape-start" /></w:pPr></w:p>
+```
+
 ```{r}
 #| label: tbl-outcomes-summary
 #| tbl-cap: "Summary of outcomes, populations, effect measures, and handling of intercurrent events. The strategies named in the last column are defined in the section Strategies for handling intercurrent events."
@@ -323,40 +335,58 @@ names(outcomes.table) <- c(
 ncol.outcomes <- ncol(outcomes.table)
 # Column widths sum to 0.84\\linewidth so tabcolsep does not overflow the text block
 col.widths <- c(0.20, 0.08, 0.07, 0.09, 0.13, 0.08, 0.10, 0.09)
-col.align <- sprintf("p{%s\\linewidth}", col.widths)
 
-outcomes.kable <- knitr::kable(
-  outcomes.table,
-  format = "latex",
-  booktabs = TRUE,
-  longtable = TRUE,
-  align = col.align
-) |>
-  kableExtra::kable_styling(
-    latex_options = c("repeat_header"),
-    font_size = 8
+if (isTRUE(knitr::is_latex_output())) {
+  col.align <- sprintf("p{%s\\linewidth}", col.widths)
+  outcomes.kable <- knitr::kable(
+    outcomes.table,
+    format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    align = col.align
+  ) |>
+    kableExtra::kable_styling(
+      latex_options = c("repeat_header"),
+      font_size = 8
+    )
+
+  # kableExtra repeat_header uses the wrong colspan for p{} column alignments
+  outcomes.latex <- as.character(outcomes.kable)
+  outcomes.latex <- gsub(
+    sprintf("\\\\multicolumn\\{%d\\}", ncol.outcomes * 2 - 2),
+    sprintf("\\\\multicolumn{%d}", ncol.outcomes),
+    outcomes.latex
   )
 
-# kableExtra repeat_header uses the wrong colspan for p{} column alignments
-outcomes.latex <- as.character(outcomes.kable)
-outcomes.latex <- gsub(
-  sprintf("\\\\multicolumn\\{%d\\}", ncol.outcomes * 2 - 2),
-  sprintf("\\\\multicolumn{%d}", ncol.outcomes),
-  outcomes.latex
-)
+  # Margins for the landscape table pages. Because pdflscape rotates the page,
+  # geometry's top/bottom control the VISUAL left/right (the long edge) and
+  # left/right control the VISUAL top/bottom. \newgeometry must come BEFORE
+  # \begin{landscape} so the landscape text block is built from these margins.
+  cat("\\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}\n")
+  cat("\\begin{landscape}\n")
+  cat("\\setlength{\\tabcolsep}{3pt}\n")
+  cat("\\setlength{\\LTleft}{\\fill}\n")
+  cat("\\setlength{\\LTright}{\\fill}\n")
+  cat(outcomes.latex)
+  cat("\\end{landscape}\n")
+  cat("\\restoregeometry\n")
+} else if (requireNamespace("flextable", quietly = TRUE)) {
+  # Landscape text width of an A4 page with 2 cm margins, in inches
+  landscape.width <- 10.08
+  outcomes.flextable <- flextable::flextable(outcomes.table) |>
+    flextable::font(fontname = "EB Garamond", part = "all") |>
+    flextable::fontsize(size = 8, part = "all") |>
+    flextable::theme_booktabs() |>
+    flextable::align(align = "left", part = "all") |>
+    flextable::width(width = landscape.width * col.widths / sum(col.widths))
+  knitr::knit_print(outcomes.flextable)
+} else {
+  knitr::kable(outcomes.table)
+}
+```
 
-# Margins for the landscape table pages. Because pdflscape rotates the page,
-# geometry's top/bottom control the VISUAL left/right (the long edge) and
-# left/right control the VISUAL top/bottom. \newgeometry must come BEFORE
-# \begin{landscape} so the landscape text block is built from these margins.
-cat("\\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}\n")
-cat("\\begin{landscape}\n")
-cat("\\setlength{\\tabcolsep}{3pt}\n")
-cat("\\setlength{\\LTleft}{\\fill}\n")
-cat("\\setlength{\\LTright}{\\fill}\n")
-cat(outcomes.latex)
-cat("\\end{landscape}\n")
-cat("\\restoregeometry\n")
+```{=openxml}
+<w:p><w:pPr><w:pStyle w:val="word-landscape-end" /></w:pPr></w:p>
 ```
 
 # Intercurrent events, populations and summary measures {#sec-intercurrent-events-populations-and-summary-measures}
@@ -375,8 +405,8 @@ At the individual level, the intervention is training of hospital staff, so pati
 - **Transfer to another hospital.** Relevant to length of emergency department, hospital, and intensive care unit (ICU) stay and to ICU admission. Transfer is not an intercurrent event for mortality outcomes, because the primary outcome includes in-hospital deaths after transfer and all-cause mortality counts deaths in any setting.
 <!-- github-issue-23: death as ICE is death before that outcome's assessment. -->
 - **Death.** Death is an intercurrent event only for outcomes assessed after it. For length of stay and ICU admission it is handled in the same way as transfer, see @sec-strategies-for-handling-intercurrent-events. Quality of life, disability, and return to work are defined only among patients alive at the relevant follow-up.
-- **Withdrawal of consent for non-routine data collection.** Relevant to outcomes that need opt-in follow-up, namely return to work, quality of life, disability, and all-cause mortality when not available from records. It is also relevant to the primary outcome when death after transfer cannot be ascertained from records. It is not relevant to length of stay, ICU admission, or adherence, which are collected under opt-out consent. Patients who withdraw contribute outcomes observed before withdrawal unless they also ask for their data to be removed. Missing values are handled under @sec-missing-data.
-- **Loss to follow-up.** Relevant to the same outcomes as withdrawal. Missing values are handled under @sec-missing-data.
+- **Withdrawal of consent for non-routine data collection.** Relevant to outcomes that need opt-in follow-up, namely return to work, quality of life, disability, and all-cause mortality when not available from records. It is not relevant to the primary outcome, length of stay, ICU admission, or adherence, which are collected under opt-out consent. Patients who withdraw contribute outcomes observed before withdrawal unless they also ask for their data to be removed. Missing values are handled under @sec-missing-data.
+- **Loss to follow-up.** Relevant to the same outcomes as withdrawal, and to the primary outcome for patients transferred to another hospital. Missing values are handled under @sec-missing-data.
 <!-- Observation window is a ceiling, not a minimum: resuscitation ending early (ED exit or death) completes the observation and unperformed items count as non-adherence. -->
 - **Incomplete observation of resuscitation.** Relevant only to ATLS^®^ adherence. We score the checklist by observing the initial resuscitation until it ends or until one hour after the physician first sees the patient, whichever comes first. Items not completed by then count as not adhered to, including when the patient leaves the emergency department or dies before one hour. Observation is incomplete only when the observer could not follow the resuscitation to that point, for example because the observer arrived late or was interrupted. We exclude unobserved and incompletely observed resuscitations from the adherence analysis.
 
@@ -797,7 +827,7 @@ We will report the sensitivity, fully adjusted, and subgroup analyses of the pri
 # Shell figures and tables {#sec-shell-figures-and-tables}
 <!-- github-issue-72: the designation applies to the shells in this section, which are the tables and figures planned for the trial report. -->
 <!-- github-issue-76: populate shells with simulated data and state that clearly. -->
-The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report. Values in the shells are simulated so the layout can be reviewed before data collection is complete. They are not trial results.
+The captions in this section state whether each table or figure is intended for the main text or the supplementary material of the trial report. Values in the shells are simulated so the layout can be reviewed before data collection is complete.
 
 ## Trial roll-out {#sec-trial-rollout}
 <!-- github-issue-75: actual roll-out shell; phases from cluster-rollout.csv, courses from cluster-training.csv. -->
@@ -846,6 +876,8 @@ knitr::include_graphics(
 )
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| echo: false
 #| label: fig-consort-patients
@@ -868,6 +900,8 @@ knitr::include_graphics(
   )
 )
 ```
+
+{{< pagebreak >}}
 
 ```{r}
 #| echo: false
@@ -893,11 +927,13 @@ knitr::include_graphics(
 )
 ```
 
+{{< pagebreak >}}
+
 ## Shell tables and figures for analysis results {#sec-shell-tables-and-figures-for-analysis-results}
 <!-- github-issue-68: shells follow the order in which they are first mentioned in the text; keep each key shell immediately followed by its supplementary counterpart. -->
 ```{r}
 #| label: tbl-cluster-characteristics
-#| tbl-cap: "Cluster characteristics (simulated data). Intended for the main text."
+#| tbl-cap: "Cluster characteristics. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -905,9 +941,11 @@ knitr::include_graphics(
 create_cluster_characteristics_table()
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-patient-characteristics
-#| tbl-cap: "Key patient characteristics (simulated data). Intended for the main text."
+#| tbl-cap: "Key patient characteristics. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -915,9 +953,11 @@ create_cluster_characteristics_table()
 create_patient_characteristics_table()
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-patient-characteristics-all
-#| tbl-cap: "All patient characteristics (simulated data). Intended for the supplementary material."
+#| tbl-cap: "All patient characteristics. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -925,9 +965,11 @@ create_patient_characteristics_table()
 create_patient_characteristics_table(all = TRUE)
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-intercurrent-events
-#| tbl-cap: "Intercurrent events by outcome (simulated data). Intended for the supplementary material."
+#| tbl-cap: "Intercurrent events by outcome. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -935,9 +977,11 @@ create_patient_characteristics_table(all = TRUE)
 create_intercurrent_events_table()
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-outcomes-descriptive
-#| tbl-cap: "Descriptive summaries of key outcomes (simulated data). Intended for the main text."
+#| tbl-cap: "Descriptive summaries of key outcomes. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -945,9 +989,11 @@ create_intercurrent_events_table()
 create_outcomes_descriptive_table()
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-outcomes-descriptive-all
-#| tbl-cap: "Descriptive summaries of all outcomes (simulated data). Intended for the supplementary material."
+#| tbl-cap: "Descriptive summaries of all outcomes. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -955,9 +1001,11 @@ create_outcomes_descriptive_table()
 create_outcomes_descriptive_table(all = TRUE)
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-outcomes-analysis-results
-#| tbl-cap: "Shell table of key primary and secondary outcome analysis results (simulated data). Intended for the main text."
+#| tbl-cap: "Shell table of key primary and secondary outcome analysis results. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
@@ -965,9 +1013,11 @@ create_outcomes_descriptive_table(all = TRUE)
 create_outcomes_analysis_results_table()
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-outcomes-analysis-results-all
-#| tbl-cap: "Shell table of all primary and secondary outcome analysis results (simulated data). Intended for the supplementary material."
+#| tbl-cap: "Shell table of all primary and secondary outcome analysis results. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -975,9 +1025,11 @@ create_outcomes_analysis_results_table()
 create_outcomes_analysis_results_table(all = TRUE)
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-additional-analyses-results
-#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome (simulated data). Intended for the supplementary material."
+#| tbl-cap: "Shell table of sensitivity, fully adjusted, and subgroup analysis results for the primary outcome. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -985,9 +1037,11 @@ create_outcomes_analysis_results_table(all = TRUE)
 create_additional_analyses_results_table()
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-correlation-parameters
-#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes (simulated data). Intended for the supplementary material."
+#| tbl-cap: "Shell table of within-cluster correlation parameters for all outcomes. Intended for the supplementary material."
 #| echo: false
 #| message: false
 #| warning: false
@@ -995,9 +1049,11 @@ create_additional_analyses_results_table()
 create_correlation_parameters_shell_table(all = TRUE)
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: fig-subgroup-forest-plot
-#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days (simulated data). Intended for the main text."
+#| fig.cap: "Forest plot of subgroup-specific intervention effects on in-hospital mortality within 30 days. Intended for the main text."
 #| fig.align: "center"
 #| fig-pos: H
 #| echo: false
@@ -1012,15 +1068,19 @@ knitr::include_graphics(
 )
 ```
 
+{{< pagebreak >}}
+
 ```{r}
 #| label: tbl-safety-events
-#| tbl-cap: "Safety events (simulated data). Intended for the main text."
+#| tbl-cap: "Safety events. Intended for the main text."
 #| echo: false
 #| message: false
 #| warning: false
 #| results: asis
 create_safety_events_table()
 ```
+
+{{< pagebreak >}}
 
 # References {#sec-references .numbered}
 ::: {#refs}

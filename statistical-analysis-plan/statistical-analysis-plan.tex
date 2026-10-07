@@ -518,7 +518,7 @@ and we take full responsibility for the final document.
 
 \centering{
 
-\includegraphics[width=22.22in,height=\textheight,keepaspectratio]{../shared-assets/advance-trauma-visual-abstract.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../shared-assets/advance-trauma-visual-abstract.png}
 
 }
 
@@ -896,18 +896,21 @@ No efficacy stopping is planned because any estimates obtained at the
 time point of the interim analysis will be associated with major
 statistical uncertainties.
 
-The Trial Team will prepare the interim analysis report for the joint
-Trial Steering and Data Monitoring Committee (SDMC), and the Trial
-Management Group will approve it before circulation. The report will
-include:
+The joint Trial Steering and Data Monitoring Committee (SDMC) will meet
+after each batch has completed the trial. For each meeting, the Trial
+Team will prepare a report, and the Trial Management Group will approve
+it before circulation. The report prepared after half of the batches
+have completed the trial is the interim analysis report. Each report
+will include:
 
 \begin{itemize}
 \tightlist
 \item
-  trial progress, overall and by intervention condition: the number of
-  clusters included and dropping out, and the number of potentially
-  eligible patients screened, patients included, patients who did not
-  consent to out-of-hospital follow-up, and patients lost to follow-up
+  trial progress, overall, by batch and by intervention condition: the
+  number of clusters included and dropping out, and the number of
+  potentially eligible patients screened, patients included, patients
+  who did not consent to out-of-hospital follow-up, and patients lost to
+  follow-up
 \item
   adherence to the randomisation schedule and reasons for non-adherence
 \item
@@ -916,6 +919,9 @@ include:
 \item
   completeness of primary and secondary outcome data, overall and by
   intervention condition
+\item
+  summary statistics of primary and secondary outcomes, pooled across
+  intervention conditions and periods
 \item
   ATLS\textsuperscript{®} training delivery, including the number of
   physicians trained in each hospital
@@ -928,9 +934,9 @@ include:
 \end{itemize}
 
 We will not present or compare outcome values by intervention condition
-in the interim report, to avoid biasing the SDMC or Trial Management
-Group. The SDMC will use the interim report to advise whether the trial
-remains feasible and should continue as planned.
+in these reports, to avoid biasing the SDMC or Trial Management Group.
+The SDMC will use each report to advise whether the trial remains
+feasible and should continue as planned.
 
 \subsection{Final analysis}\label{sec-final-analysis}
 
@@ -993,8 +999,8 @@ ATLS\textsuperscript{®} training earlier. We will assess cluster-level
 adherence using the training log kept by the Trial Team. We will report
 the number and proportion of clusters that completed training as
 scheduled and the reasons for any non-adherence to the randomisation
-schedule. We also review adherence to the randomisation schedule at the
-interim analysis, see Interim analysis
+schedule. We also review adherence to the randomisation schedule in each
+report to the SDMC, see Interim analysis
 (Section~\ref{sec-interim-analysis}).
 
 At the individual level, exposure to the intervention is defined by the
@@ -1016,13 +1022,14 @@ integrity and do not materially affect the scientific value of the
 trial. We will document them in the trial records of the principal
 investigator and the sponsor.
 
-We will summarise protocol deviations at the interim and final analyses,
-overall and by intervention condition where informative. We will give
-counts by type, cluster-level or individual-level and serious or minor
-where classified, together with the reasons. We will not exclude
-clusters or patients from the primary analysis because of a deviation.
-Exposure is still defined by the scheduled transition date, see
-Analysis sets (Section~\ref{sec-analysis-sets}).
+We will summarise protocol deviations in each report to the SDMC and at
+the final analysis, overall and by intervention condition where
+informative. We will give counts by type, cluster-level or
+individual-level and serious or minor where classified, together with
+the reasons. We will not exclude clusters or patients from the primary
+analysis because of a deviation. Exposure is still defined by the
+scheduled transition date, see Analysis sets
+(Section~\ref{sec-analysis-sets}).
 
 \section{Trial sample}\label{sec-trial-sample}
 
@@ -1297,7 +1304,7 @@ Outcome & Design component & Data type & Population & Main analysis model & Effe
 \endfoot
 \bottomrule
 \endlastfoot
-Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Trauma patients & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
+Primary outcome: In-hospital mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Trauma patients & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up & Missing data\\
 All-cause mortality within 24 hours of arrival at the emergency department & Main stepped-wedge & Dichotomous & Trauma patients & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
 All-cause mortality within 30 days of arrival at the emergency department & Main stepped-wedge & Dichotomous & Trauma patients & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
 All-cause mortality within three months of arrival at the emergency department & Main stepped-wedge & Dichotomous & Trauma patients & Mixed-effects binomial (logit, identity) & OR; ARD & Loss to follow-up; withdrawal & Missing data\\
@@ -1374,16 +1381,16 @@ patient-level intercurrent events are:
   \textbf{Withdrawal of consent for non-routine data collection.}
   Relevant to outcomes that need opt-in follow-up, namely return to
   work, quality of life, disability, and all-cause mortality when not
-  available from records. It is also relevant to the primary outcome
-  when death after transfer cannot be ascertained from records. It is
-  not relevant to length of stay, ICU admission, or adherence, which are
-  collected under opt-out consent. Patients who withdraw contribute
-  outcomes observed before withdrawal unless they also ask for their
-  data to be removed. Missing values are handled under Missing data
+  available from records. It is not relevant to the primary outcome,
+  length of stay, ICU admission, or adherence, which are collected under
+  opt-out consent. Patients who withdraw contribute outcomes observed
+  before withdrawal unless they also ask for their data to be removed.
+  Missing values are handled under Missing data
   (Section~\ref{sec-missing-data}).
 \item
   \textbf{Loss to follow-up.} Relevant to the same outcomes as
-  withdrawal. Missing values are handled under Missing data
+  withdrawal, and to the primary outcome for patients transferred to
+  another hospital. Missing values are handled under Missing data
   (Section~\ref{sec-missing-data}).
 \item
   \textbf{Incomplete observation of resuscitation.} Relevant only to
@@ -2243,7 +2250,7 @@ of ORs and ARDs with 95\% CIs (Figure~\ref{fig-subgroup-forest-plot}).
 The captions in this section state whether each table or figure is
 intended for the main text or the supplementary material of the trial
 report. Values in the shells are simulated so the layout can be reviewed
-before data collection is complete. They are not trial results.
+before data collection is complete.
 
 \subsection{Trial roll-out}\label{sec-trial-rollout}
 
@@ -2283,6 +2290,8 @@ summarises data across all batches. Intended for the main text.}
 
 \end{figure}%
 
+\newpage{}
+
 \begin{figure}[H]
 
 \centering{
@@ -2299,6 +2308,8 @@ training, and overall. The flowchart summarises data across all batches.
 Intended for the main text.}
 
 \end{figure}%
+
+\newpage{}
 
 \begin{figure}[H]
 
@@ -2319,6 +2330,8 @@ batches. Intended for the supplementary material.}
 
 \end{figure}%
 
+\newpage{}
+
 \subsection{Shell tables and figures for analysis
 results}\label{sec-shell-tables-and-figures-for-analysis-results}
 
@@ -2328,8 +2341,8 @@ results}\label{sec-shell-tables-and-figures-for-analysis-results}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.24\linewidth}*{6}{>{\centering\arraybackslash}p{0.1\linewidth}}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}}
 
-\caption{\label{tbl-cluster-characteristics}Cluster characteristics
-(simulated data). Intended for the main text.}
+\caption{\label{tbl-cluster-characteristics}Cluster characteristics.
+Intended for the main text.}
 
 \tabularnewline
 
@@ -2381,14 +2394,16 @@ Initial resuscitation provider, n (\%) &  &  &  &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
-\caption{\label{tbl-patient-characteristics}Key patient characteristics
-(simulated data). Intended for the main text.}
+\caption{\label{tbl-patient-characteristics}Key patient characteristics.
+Intended for the main text.}
 
 \tabularnewline
 
@@ -2451,6 +2466,8 @@ Imaging, n (\%) &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
@@ -2458,8 +2475,7 @@ Imaging, n (\%) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-patient-characteristics-all}All patient
-characteristics (simulated data). Intended for the supplementary
-material.}
+characteristics. Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -2665,14 +2681,16 @@ Imaging, n (\%) &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-intercurrent-events}Intercurrent events by outcome
-(simulated data). Intended for the supplementary material.}
+\caption{\label{tbl-intercurrent-events}Intercurrent events by outcome.
+Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -2696,74 +2714,75 @@ Imaging, n (\%) &  &  & \\
 
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Primary outcome}}\\
 In-hospital mortality within 30 days &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 42 (35\%) & 36 (30\%) & 78 \vphantom{1} (33\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 39 (33\%) & 81 (34\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 36 (30\%) & 78 \vphantom{1} (33\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes (main stepped-wedge design)}}\\
 All-cause mortality within 24 hours &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 37 (31\%) & 45 (38\%) & 82 (34\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 34 (28\%) & 76 (32\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 42 (35\%) & 39 (33\%) & 81 (34\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 37 (31\%) & 45 (38\%) & 82 (34\%)\\
 All-cause mortality within 30 days &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 40 (33\%) & 46 (38\%) & 86 (36\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 43 (36\%) & 39 (33\%) & 82 (34\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 42 (35\%) & 34 (28\%) & 76 (32\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 40 (33\%) & 46 (38\%) & 86 (36\%)\\
 All-cause mortality within three months &  &  & \\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 39 (33\%) & 39 (33\%) & 78 (33\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 38 (32\%) & 32 (27\%) & 70 (29\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 43 (36\%) & 39 (33\%) & 82 (34\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 39 (33\%) & 39 (33\%) & 78 (33\%)\\
 Length of emergency department stay &  &  & \\
-\hspace{1em}Death, n (\%) & 43 (36\%) & 39 (33\%) & 82 (34\%)\\
-\hspace{1em}Transfer to another hospital, n (\%) & 38 (32\%) & 39 (33\%) & 77 (32\%)\\
+\hspace{1em}Death, n (\%) & 38 (32\%) & 32 (27\%) & 70 (29\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 43 (36\%) & 39 (33\%) & 82 (34\%)\\
 Length of hospital stay &  &  & \\
-\hspace{1em}Death, n (\%) & 35 (29\%) & 41 (34\%) & 76 (32\%)\\
-\hspace{1em}Transfer to another hospital, n (\%) & 42 (35\%) & 31 (26\%) & 73 (30\%)\\
+\hspace{1em}Death, n (\%) & 38 (32\%) & 39 (33\%) & 77 (32\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 35 (29\%) & 41 (34\%) & 76 (32\%)\\
 Intensive care unit (ICU) admission &  &  & \\
-\hspace{1em}Death, n (\%) & 38 (32\%) & 37 (31\%) & 75 (31\%)\\
-\hspace{1em}Transfer to another hospital, n (\%) & 37 (31\%) & 37 (31\%) & 74 (31\%)\\
+\hspace{1em}Death, n (\%) & 42 (35\%) & 31 (26\%) & 73 (30\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 38 (32\%) & 37 (31\%) & 75 (31\%)\\
 Length of intensive care unit stay &  &  & \\
-\hspace{1em}Death, n (\%) & 36 (30\%) & 38 (32\%) & 74 (31\%)\\
-\hspace{1em}Transfer to another hospital, n (\%) & 39 (33\%) & 38 (32\%) & 77 (32\%)\\
+\hspace{1em}Death, n (\%) & 37 (31\%) & 37 (31\%) & 74 (31\%)\\
+\hspace{1em}Transfer to another hospital, n (\%) & 36 (30\%) & 38 (32\%) & 74 (31\%)\\
 Return to work at 30 days &  &  & \\
-\hspace{1em}Death before 30 days, n (\%) & 36 (30\%) & 41 (34\%) & 77 (32\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 39 (33\%) & 40 (33\%) & 79 (33\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 40 (33\%) & 47 (39\%) & 87 (36\%)\\
+\hspace{1em}Death before 30 days, n (\%) & 39 (33\%) & 38 (32\%) & 77 (32\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 36 (30\%) & 41 (34\%) & 77 (32\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 39 (33\%) & 40 (33\%) & 79 (33\%)\\
 Return to work at three months &  &  & \\
-\hspace{1em}Death before three months, n (\%) & 35 (29\%) & 53 (44\%) & 88 (37\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 41 (34\%) & 47 (39\%) & 88 (37\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 42 (35\%) & 84 (35\%)\\
+\hspace{1em}Death before three months, n (\%) & 40 (33\%) & 47 (39\%) & 87 (36\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 35 (29\%) & 53 (44\%) & 88 (37\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 41 (34\%) & 47 (39\%) & 88 (37\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes during initial resuscitation (nested staircase design)}}\\
 Adherence to ATLS® principles &  &  & \\
-\hspace{1em}Incomplete observation of resuscitation, n (\%) & 33 (28\%) & 38 (32\%) & 71 (30\%)\\
+\hspace{1em}Incomplete observation of resuscitation, n (\%) & 42 (35\%) & 42 (35\%) & 84 (35\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes within seven days of discharge (nested staircase design)}}\\
 Quality of life &  &  \vphantom{2} & \\
-\hspace{1em}Death before assessment, n (\%) & 36 (30\%) & 38 (32\%) & 74 (31\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 45 (38\%) & 37 (31\%) & 82 (34\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 43 (36\%) & 44 (37\%) & 87 (36\%)\\
+\hspace{1em}Death before assessment, n (\%) & 33 (28\%) & 38 (32\%) & 71 (30\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 36 (30\%) & 38 (32\%) & 74 (31\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 45 (38\%) & 37 (31\%) & 82 (34\%)\\
 Disability &  &  \vphantom{2} & \\
-\hspace{1em}Death before assessment, n (\%) & 30 (25\%) & 39 (33\%) & 69 (29\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 41 (34\%) & 43 (36\%) & 84 (35\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 39 (33\%) & 36 (30\%) & 75 (31\%)\\
+\hspace{1em}Death before assessment, n (\%) & 43 (36\%) & 44 (37\%) & 87 (36\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 30 (25\%) & 39 (33\%) & 69 (29\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 41 (34\%) & 43 (36\%) & 84 (35\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at 30 days after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  \vphantom{1} & \\
-\hspace{1em}Death before 30 days, n (\%) & 44 (37\%) & 30 (25\%) & 74 (31\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 38 (32\%) & 33 (28\%) & 71 (30\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 36 (30\%) & 43 (36\%) & 79 (33\%)\\
+\hspace{1em}Death before 30 days, n (\%) & 39 (33\%) & 36 (30\%) & 75 (31\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 44 (37\%) & 30 (25\%) & 74 (31\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 38 (32\%) & 33 (28\%) & 71 (30\%)\\
 Disability &  &  \vphantom{1} & \\
-\hspace{1em}Death before 30 days, n (\%) & 45 (38\%) & 42 (35\%) & 87 (36\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 38 (32\%) & 34 (28\%) & 72 (30\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 40 (33\%) & 82 (34\%)\\
+\hspace{1em}Death before 30 days, n (\%) & 36 (30\%) & 43 (36\%) & 79 (33\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 45 (38\%) & 42 (35\%) & 87 (36\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 38 (32\%) & 34 (28\%) & 72 (30\%)\\
 \multicolumn{4}{@{\extracolsep{\fill}}l}{\textbf{Secondary outcomes at three months after arrival at the emergency department (nested staircase design)}}\\
 Quality of life &  &  & \\
-\hspace{1em}Death before three months, n (\%) & 43 (36\%) & 35 (29\%) & 78 (33\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 32 (27\%) & 40 (33\%) & 72 (30\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 45 (38\%) & 44 (37\%) & 89 (37\%)\\
+\hspace{1em}Death before three months, n (\%) & 42 (35\%) & 40 (33\%) & 82 (34\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 43 (36\%) & 35 (29\%) & 78 (33\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 32 (27\%) & 40 (33\%) & 72 (30\%)\\
 Disability &  &  & \\
-\hspace{1em}Death before three months, n (\%) & 27 (23\%) & 38 (32\%) & 65 (27\%)\\
-\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 42 (35\%) & 36 (30\%) & 78 (33\%)\\
-\hspace{1em}Loss to follow-up, n (\%) & 38 (32\%) & 34 (28\%) & 72 (30\%)\\
+\hspace{1em}Death before three months, n (\%) & 45 (38\%) & 44 (37\%) & 89 (37\%)\\
+\hspace{1em}Withdrawal of consent for non-routine data collection, n (\%) & 27 (23\%) & 38 (32\%) & 65 (27\%)\\
+\hspace{1em}Loss to follow-up, n (\%) & 42 (35\%) & 36 (30\%) & 78 (33\%)\\
 \bottomrule
 
 \end{longtable}
 
 \endgroup{}
 \par\raggedright
+
+\newpage{}
 
 \begingroup\fontsize{8}{10}\selectfont
 
@@ -2772,7 +2791,7 @@ Disability &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-outcomes-descriptive}Descriptive summaries of key
-outcomes (simulated data). Intended for the main text.}
+outcomes. Intended for the main text.}
 
 \tabularnewline
 
@@ -2841,6 +2860,8 @@ WHODAS 2.0 summary score, Median (Q1, Q3) & 25 (17, 35) & 31 (19, 39) & 27 (18, 
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
@@ -2848,7 +2869,7 @@ WHODAS 2.0 summary score, Median (Q1, Q3) & 25 (17, 35) & 31 (19, 39) & 27 (18, 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.34\linewidth}*{3}{>{\centering\arraybackslash}p{0.167\linewidth}}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}>{\centering\arraybackslash}p{0.167\linewidth}}
 
 \caption{\label{tbl-outcomes-descriptive-all}Descriptive summaries of
-all outcomes (simulated data). Intended for the supplementary material.}
+all outcomes. Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -3022,6 +3043,8 @@ EQ-5D-5L anxiety/depression, n (\%) &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
@@ -3029,8 +3052,7 @@ EQ-5D-5L anxiety/depression, n (\%) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
 \caption{\label{tbl-outcomes-analysis-results}Shell table of key primary
-and secondary outcome analysis results (simulated data). Intended for
-the main text.}
+and secondary outcome analysis results. Intended for the main text.}
 
 \tabularnewline
 
@@ -3106,6 +3128,8 @@ Disability &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
@@ -3113,8 +3137,8 @@ Disability &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
 \caption{\label{tbl-outcomes-analysis-results-all}Shell table of all
-primary and secondary outcome analysis results (simulated data).
-Intended for the supplementary material.}
+primary and secondary outcome analysis results. Intended for the
+supplementary material.}
 
 \tabularnewline
 
@@ -3217,6 +3241,8 @@ Disability &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
@@ -3225,8 +3251,7 @@ Disability &  &  & \\
 
 \caption{\label{tbl-additional-analyses-results}Shell table of
 sensitivity, fully adjusted, and subgroup analysis results for the
-primary outcome (simulated data). Intended for the supplementary
-material.}
+primary outcome. Intended for the supplementary material.}
 
 \tabularnewline
 
@@ -3320,6 +3345,8 @@ Cluster size: Large (>20 patients/month) &  &  & \\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begingroup\fontsize{8}{10}\selectfont
 
 \setlength{\tabcolsep}{3pt}
@@ -3327,8 +3354,8 @@ Cluster size: Large (>20 patients/month) &  &  & \\
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.5\linewidth}*{2}{>{\centering\arraybackslash}p{0.17\linewidth}}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}}
 
 \caption{\label{tbl-correlation-parameters}Shell table of within-cluster
-correlation parameters for all outcomes (simulated data). Intended for
-the supplementary material.}
+correlation parameters for all outcomes. Intended for the supplementary
+material.}
 
 \tabularnewline
 
@@ -3520,6 +3547,8 @@ AR(1) correlation decay parameter (rho) & 0.84 & 0.73, 0.95\\
 \endgroup{}
 \par\raggedright
 
+\newpage{}
+
 \begin{figure}[H]
 
 \centering{
@@ -3530,9 +3559,11 @@ AR(1) correlation decay parameter (rho) & 0.84 & 0.73, 0.95\\
 
 \caption{\label{fig-subgroup-forest-plot}Forest plot of
 subgroup-specific intervention effects on in-hospital mortality within
-30 days (simulated data). Intended for the main text.}
+30 days. Intended for the main text.}
 
 \end{figure}%
+
+\newpage{}
 
 \begingroup\fontsize{8}{10}\selectfont
 
@@ -3540,8 +3571,8 @@ subgroup-specific intervention effects on in-hospital mortality within
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.46\linewidth}*{3}{>{\centering\arraybackslash}p{0.127\linewidth}}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}>{\centering\arraybackslash}p{0.127\linewidth}}
 
-\caption{\label{tbl-safety-events}Safety events (simulated data).
-Intended for the main text.}
+\caption{\label{tbl-safety-events}Safety events. Intended for the main
+text.}
 
 \tabularnewline
 
@@ -3574,6 +3605,8 @@ Events assessed as probably related to the trial or intervention, n (\%) & 40 (3
 
 \endgroup{}
 \par\raggedright
+
+\newpage{}
 
 \section{References}\label{sec-references}
 

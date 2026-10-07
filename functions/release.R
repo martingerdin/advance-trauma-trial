@@ -167,7 +167,19 @@ release <- function(file.name, major = NULL, minor = NULL, patch = NULL, pre.rel
     }
 
     # Compile file
-    quarto::quarto_render(file.name, output_format = "all")
+    word.settings <- tryCatch(read_pdf_layout_settings(file.name), error = function(e) NULL)
+    word.template <- if (!is.null(word.settings)) {
+        tryCatch(create_word_reference_doc(file.name, word.settings, output.file = tempfile(fileext = ".docx")), error = function(e) NULL)
+    }
+    quarto::quarto_render(
+        file.name,
+        output_format = "all",
+        metadata = if (!is.null(word.template)) list("reference-doc" = normalizePath(word.template))
+    )
+    word.document <- sub("\\.qmd$", ".docx", file.name)
+    if (file.exists(word.document)) {
+        tryCatch(postprocess_word_document(word.document, word.settings), error = function(e) NULL)
+    }
 
     # Use file.name to define a document.name that can be used in the commit message
     document.name <- file.name |>

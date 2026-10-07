@@ -144,13 +144,13 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 
 - [x] **J3. Add summary shell table of the results of the sensitivity, subgroup and fully adjusted analyses.** — `@tbl-additional-analyses-results`; primary-outcome shell with Sensitivity / Fully adjusted / Subgroup sections
 
-- [x] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — awaiting approval: single Interim analysis list (aligned former outline; detailed shells deferred) — [#1](https://github.com/martingerdin/advance-trauma-trial/issues/1)
+- [x] **J4. Add section on what to report to the joint Trial Steering and Data Monitoring Committee (TSDMC) for the interim analyses** — single Interim analysis list (aligned former outline; detailed shells deferred) — [#1](https://github.com/martingerdin/advance-trauma-trial/issues/1)
 
-- [x] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — awaiting approval — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
+- [x] **J5. Add none levels to patient characteristics "Severity of liver disease", "Severity of diabetes", and "Severity of malignancy". These should be none if Charlson Comorbidity Index is none** — [#2](https://github.com/martingerdin/advance-trauma-trial/issues/2)
 
 - [x] **J6. Check SAP for measures that need to be reported and suggest additional tables and figures, for example on ICC** — `@tbl-correlation-parameters` supplementary shell for all outcomes (ICC, variance components, latent-scale additional for binary, AR(1) parameters) — [#3](https://github.com/martingerdin/advance-trauma-trial/issues/3)
 
-- [x] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — awaiting approval: cluster + key patient shells converted to non-floating longtables — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
+- [x] **J7. Check table placement, now Table 4 comes before Table 2 and 3. Problem with the floating environment in latex?** — cluster + key patient shells converted to non-floating longtables — [#4](https://github.com/martingerdin/advance-trauma-trial/issues/4)
 
 - [x] **J8. Add generative AI statement.** Add a statement describing the use of generative AI in creating and revising the SAP. — [#5](https://github.com/martingerdin/advance-trauma-trial/issues/5)
 
@@ -161,12 +161,12 @@ Actionable changes to the Statistical Analysis Plan, derived from reviewer comme
 ## Additional checks after manual review
 
 - [x] Remove changelog. Should only appear after version 1.0.0 — [#11](https://github.com/martingerdin/advance-trauma-trial/issues/11)
-- [ ] Revise the order of sections according to the draft checklist — [#12](https://github.com/martingerdin/advance-trauma-trial/issues/12)
-- [ ] Check that we are in line with the recommendations of the published paper [Review of the quality of reporting of statistical analysis plans for cluster randomized trials](https://www.sciencedirect.com/science/article/pii/S0895435625000599) — [#13](https://github.com/martingerdin/advance-trauma-trial/issues/13)
-- [ ] Add state to table of cluster characteristics — [#14](https://github.com/martingerdin/advance-trauma-trial/issues/14)
-- [ ] Check SAP revisions B3, A1, B2, B5 and B6 for repetitions — [#15](https://github.com/martingerdin/advance-trauma-trial/issues/15)
-- [ ] Specify how the subgroup-specific effects are estimated in the Subgroup analyses section — [#16](https://github.com/martingerdin/advance-trauma-trial/issues/16)
-- [ ] Check if the subgroup analyses should be conducted according to the model specified in `@eq-primary-model`, or if we should state that we'll use the model that converged in the prespecified sequence of models used to analyse the primary outcome — [#17](https://github.com/martingerdin/advance-trauma-trial/issues/17)
-- [ ] For return to work, check if we should refer to `@eq-primary-model`, or if we should state that we'll use the model that converged in the prespecified sequence of models used to analyse the primary outcome — [#18](https://github.com/martingerdin/advance-trauma-trial/issues/18)
-- [ ] For length of emergency department stay, we specify a model in `@eq-length-of-stay-model`. Should this be more flexible depending on which model converges? — [#19](https://github.com/martingerdin/advance-trauma-trial/issues/19)
-- [ ] CONSORT flowchart does not include anything about the flow of patients, only clusters. Research alternative designs — [#20](https://github.com/martingerdin/advance-trauma-trial/issues/20) _(partially addressed: main patient CONSORT + nested-staircase CONSORT shell `@fig-consort-nested-staircase`; leave open until user confirms)_
+- [x] Revise the order of sections according to the draft checklist — [#12](https://github.com/martingerdin/advance-trauma-trial/issues/12)
+- [x] Check that we are in line with the recommendations of the published paper [Review of the quality of reporting of statistical analysis plans for cluster randomized trials](https://www.sciencedirect.com/science/article/pii/S0895435625000599) — [#13](https://github.com/martingerdin/advance-trauma-trial/issues/13)
+- [x] Add state to table of cluster characteristics — [#14](https://github.com/martingerdin/advance-trauma-trial/issues/14)
+- [x] Check SAP revisions B3, A1, B2, B5 and B6 for repetitions — [#15](https://github.com/martingerdin/advance-trauma-trial/issues/15)
+- [x] Specify how the subgroup-specific effects are estimated in the Subgroup analyses section — [#16](https://github.com/martingerdin/advance-trauma-trial/issues/16)
+- [x] Check if the subgroup analyses should be conducted according to the model specified in `@eq-primary-model`, or if we should state that we'll use the model that converged in the prespecified sequence of models used to analyse the primary outcome — [#17](https://github.com/martingerdin/advance-trauma-trial/issues/17)
+- [x] For return to work, check if we should refer to `@eq-primary-model`, or if we should state that we'll use the model that converged in the prespecified sequence of models used to analyse the primary outcome — [#18](https://github.com/martingerdin/advance-trauma-trial/issues/18)
+- [x] For length of emergency department stay, we specify a model in `@eq-length-of-stay-model`. Should this be more flexible depending on which model converges? — [#19](https://github.com/martingerdin/advance-trauma-trial/issues/19)
+- [x] CONSORT flowchart does not include anything about the flow of patients, only clusters. Research alternative designs — [#20](https://github.com/martingerdin/advance-trauma-trial/issues/20) _(main patient CONSORT + nested-staircase CONSORT shell `@fig-consort-nested-staircase`)_

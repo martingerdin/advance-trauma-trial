@@ -6,7 +6,7 @@
     "population": "Trauma patients",
     "main_analysis_model": "Mixed-effects binomial (logit, identity)",
     "effect_measure": "OR; ARD",
-    "potential_intercurrent_events": "Loss to follow-up; withdrawal",
+    "potential_intercurrent_events": "Loss to follow-up",
     "strategy_for_handling_intercurrent_events": "Missing data"
   },
   {
