@@ -336,7 +336,13 @@ consort_render <- function(canvas,
 #' @param device Character. Device for `ggsave`. Default `"png"`.
 #' @param use.simulated.data Logical. If TRUE (default), fill `n=` with
 #'     simulated counts.
+#' @param counts List or NULL. Optional prepared counts with the same named
+#'     elements as the output of the corresponding `simulate_*_consort_counts()`
+#'     function. When provided (non-empty), these fill the `n=` placeholders
+#'     instead of simulated counts. Defaults to `list()`.
 #' @param seed Integer. RNG seed for simulated counts.
+#' @param file.name Character or NULL. Output file path when `save` is TRUE.
+#'     Defaults to NULL, which uses the standard `consort-diagram-*` file name.
 #' @return A ggplot object or the saved file name.
 #'
 #' @examples
@@ -354,7 +360,9 @@ create_cluster_consort_diagram <- function(sequences = 5,
                                            save = TRUE,
                                            device = "png",
                                            use.simulated.data = TRUE,
-                                           seed = shell_simulated_data_seed()) {
+                                           seed = shell_simulated_data_seed(),
+                                           counts = list(),
+                                           file.name = NULL) {
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
     assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
@@ -367,6 +375,8 @@ create_cluster_consort_diagram <- function(sequences = 5,
             transition.months >= 0
     )
     assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.list(counts))
+    assertthat::assert_that(is.null(file.name) || is.character(file.name))
     assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     fills <- consort_condition_fills()
@@ -388,14 +398,16 @@ create_cluster_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    counts <- if (isTRUE(use.simulated.data)) {
+    counts <- if (length(counts) > 0) {
+        counts
+    } else if (isTRUE(use.simulated.data)) {
         simulate_cluster_consort_counts(sequences = n.seq, seed = seed)
     } else {
         NULL
     }
 
     fill_n <- function(text, values = NULL) {
-        if (!isTRUE(use.simulated.data)) {
+        if (is.null(counts)) {
             text
         } else {
             fill_consort_n(text, values)
@@ -639,7 +651,11 @@ create_cluster_consort_diagram <- function(sequences = 5,
         canvas = canvas,
         y.top = 1,
         y.bottom = y.bottom,
-        file.name = paste0("consort-diagram-clusters-", n.seq, "-sequences.", device),
+        file.name = if (is.null(file.name)) {
+            paste0("consort-diagram-clusters-", n.seq, "-sequences.", device)
+        } else {
+            file.name
+        },
         return.figure = return.figure,
         save = save,
         device = device
@@ -670,7 +686,9 @@ create_patient_consort_diagram <- function(sequences = 5,
                                            save = TRUE,
                                            device = "png",
                                            use.simulated.data = TRUE,
-                                           seed = shell_simulated_data_seed()) {
+                                           seed = shell_simulated_data_seed(),
+                                           counts = list(),
+                                           file.name = NULL) {
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
     assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
@@ -683,6 +701,8 @@ create_patient_consort_diagram <- function(sequences = 5,
             transition.months >= 0
     )
     assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.list(counts))
+    assertthat::assert_that(is.null(file.name) || is.character(file.name))
     assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     fills <- consort_condition_fills()
@@ -705,13 +725,15 @@ create_patient_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    counts <- if (isTRUE(use.simulated.data)) {
+    counts <- if (length(counts) > 0) {
+        counts
+    } else if (isTRUE(use.simulated.data)) {
         simulate_patient_consort_counts(sequences = n.seq, seed = seed)
     } else {
         NULL
     }
     fill_n <- function(text, values = NULL) {
-        if (!isTRUE(use.simulated.data)) {
+        if (is.null(counts)) {
             text
         } else {
             fill_consort_n(text, values)
@@ -982,7 +1004,11 @@ create_patient_consort_diagram <- function(sequences = 5,
         canvas = canvas,
         y.top = 1,
         y.bottom = y.bottom,
-        file.name = paste0("consort-diagram-patients-", n.seq, "-sequences.", device),
+        file.name = if (is.null(file.name)) {
+            paste0("consort-diagram-patients-", n.seq, "-sequences.", device)
+        } else {
+            file.name
+        },
         return.figure = return.figure,
         save = save,
         device = device
@@ -1016,7 +1042,9 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
                                                     save = TRUE,
                                                     device = "png",
                                                     use.simulated.data = TRUE,
-                                                    seed = shell_simulated_data_seed()) {
+                                                    seed = shell_simulated_data_seed(),
+                                                    counts = list(),
+                                                    file.name = NULL) {
     assertthat::assert_that(is.numeric(sequences) && length(sequences) == 1 && sequences > 0)
     assertthat::assert_that(is.numeric(batches) && length(batches) == 1 && batches > 0)
     assertthat::assert_that(is.numeric(total.months) && length(total.months) == 1 && total.months > 0)
@@ -1033,6 +1061,8 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
             staircase.months > 0
     )
     assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
+    assertthat::assert_that(is.list(counts))
+    assertthat::assert_that(is.null(file.name) || is.character(file.name))
     assertthat::assert_that(is.numeric(seed) && length(seed) == 1)
 
     fills <- consort_condition_fills()
@@ -1053,13 +1083,15 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
     gap.strip.excl <- 3.0
     gap.excl.incl <- 3.0
 
-    counts <- if (isTRUE(use.simulated.data)) {
+    counts <- if (length(counts) > 0) {
+        counts
+    } else if (isTRUE(use.simulated.data)) {
         simulate_nested_staircase_consort_counts(sequences = n.seq, seed = seed)
     } else {
         NULL
     }
     fill_n <- function(text, values = NULL) {
-        if (!isTRUE(use.simulated.data)) {
+        if (is.null(counts)) {
             text
         } else {
             fill_consort_n(text, values)
@@ -1399,9 +1431,13 @@ create_nested_staircase_consort_diagram <- function(sequences = 5,
         canvas = canvas,
         y.top = 1,
         y.bottom = y.bottom,
-        file.name = paste0(
-            "consort-diagram-nested-staircase-", n.seq, "-sequences.", device
-        ),
+        file.name = if (is.null(file.name)) {
+            paste0(
+                "consort-diagram-nested-staircase-", n.seq, "-sequences.", device
+            )
+        } else {
+            file.name
+        },
         return.figure = return.figure,
         save = save,
         device = device

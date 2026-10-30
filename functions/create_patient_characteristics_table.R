@@ -39,6 +39,9 @@
 #'     (outcomes, administrative fields and free-text fields are excluded).
 #' @param include.overall Logical. If TRUE an "Overall" column is appended.
 #'     Defaults to TRUE.
+#' @param use.simulated.data Logical. If TRUE (default), populate statistic cells
+#'     with simulated values for layout review; if FALSE, leave the cells blank
+#'     for completion with observed trial data.
 #' @return A `gtsummary` table object (class `tbl_summary`), or, for PDF/LaTeX
 #'     output, a `kableExtra` table sized to fit the text block.
 #'
@@ -71,6 +74,7 @@ create_patient_characteristics_table <- function(data = NULL,
                                                      "Other"
                                                  ),
                                                  all = FALSE,
+                                                 use.simulated.data = TRUE,
                                                  include.overall = TRUE) {
     assertthat::assert_that(is.null(data) || is.data.frame(data))
     assertthat::assert_that(is.character(url.name) && length(url.name) == 1)
@@ -78,6 +82,7 @@ create_patient_characteristics_table <- function(data = NULL,
     assertthat::assert_that(is.character(groups) && length(groups) >= 2)
     assertthat::assert_that(is.character(mechanism.levels) && length(mechanism.levels) >= 2)
     assertthat::assert_that(is.logical(all) && length(all) == 1)
+    assertthat::assert_that(is.logical(use.simulated.data) && length(use.simulated.data) == 1)
     assertthat::assert_that(is.logical(include.overall) && length(include.overall) == 1)
 
     if (is.null(data)) {
@@ -170,7 +175,8 @@ create_patient_characteristics_table <- function(data = NULL,
         include.overall = include.overall,
         ## Always use longtable in PDF so key tables stay in document order
         ## (floating `table` environments can drift past later longtables).
-        longtable = TRUE
+        longtable = TRUE,
+        use.simulated.data = use.simulated.data
     )
 }
 

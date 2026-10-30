@@ -14,7 +14,8 @@ build_interim_count_shell_table <- function(requests,
                                             groups = interim_analysis_report_groups(),
                                             include.overall = TRUE,
                                             label.header = "**Metric**",
-                                            label.width = 0.40) {
+                                            label.width = 0.40,
+                                            use.simulated.data = FALSE) {
     build_patient_characteristics_shell_table(
         data = data.frame(),
         requests = requests,
@@ -25,7 +26,8 @@ build_interim_count_shell_table <- function(requests,
         missing = "no",
         spanning.header = "**Intervention condition**",
         label.width = label.width,
-        force.stat.label = "n"
+        force.stat.label = "n",
+        use.simulated.data = use.simulated.data
     )
 }
 
@@ -36,6 +38,7 @@ build_interim_count_shell_table <- function(requests,
 #' @return A shell table (or LaTeX longtable under `knitr::is_latex_output()`).
 create_interim_trial_progress_table <- function(
     groups = interim_analysis_report_groups(),
+    use.simulated.data = FALSE,
     include.overall = TRUE) {
     requests <- list(
         list(
@@ -85,13 +88,15 @@ create_interim_trial_progress_table <- function(
         requests = requests,
         groups = groups,
         include.overall = include.overall,
-        label.width = 0.40
+        label.width = 0.40,
+        use.simulated.data = use.simulated.data
     )
 }
 
 #' Randomisation-schedule adherence for the interim report
 create_interim_randomisation_adherence_table <- function(
     groups = interim_analysis_report_groups(),
+    use.simulated.data = FALSE,
     include.overall = TRUE) {
     requests <- list(
         list(
@@ -120,7 +125,8 @@ create_interim_randomisation_adherence_table <- function(
         requests = requests,
         groups = groups,
         include.overall = include.overall,
-        label.width = 0.46
+        label.width = 0.46,
+        use.simulated.data = use.simulated.data
     )
 }
 
@@ -135,6 +141,7 @@ create_interim_randomisation_adherence_table <- function(
 create_interim_outcome_completeness_table <- function(
     path = "tables/outcomes-summary.json",
     groups = interim_analysis_report_groups(),
+    use.simulated.data = FALSE,
     include.overall = TRUE,
     key.only = TRUE) {
     assertthat::assert_that(is.character(path) && length(path) == 1)
@@ -184,13 +191,15 @@ create_interim_outcome_completeness_table <- function(
         groups = groups,
         include.overall = include.overall,
         label.header = "**Outcome completeness**",
-        label.width = 0.42
+        label.width = 0.42,
+        use.simulated.data = use.simulated.data
     )
 }
 
 #' ATLS training delivery counts for the interim report
 create_interim_training_table <- function(
     groups = interim_analysis_report_groups(),
+    use.simulated.data = FALSE,
     include.overall = TRUE) {
     requests <- list(
         list(
@@ -212,13 +221,15 @@ create_interim_training_table <- function(
         requests = requests,
         groups = groups,
         include.overall = include.overall,
-        label.width = 0.46
+        label.width = 0.46,
+        use.simulated.data = use.simulated.data
     )
 }
 
 #' Protocol deviations for the interim report
 create_interim_protocol_deviations_table <- function(
     groups = interim_analysis_report_groups(),
+    use.simulated.data = FALSE,
     include.overall = TRUE) {
     requests <- list(
         list(
@@ -240,19 +251,22 @@ create_interim_protocol_deviations_table <- function(
         requests = requests,
         groups = groups,
         include.overall = include.overall,
-        label.width = 0.40
+        label.width = 0.40,
+        use.simulated.data = use.simulated.data
     )
 }
 
 #' Safety events for the interim report
 create_interim_safety_events_table <- function(
     groups = interim_analysis_report_groups(),
+    use.simulated.data = FALSE,
     include.overall = TRUE) {
     build_interim_count_shell_table(
         requests = safety_events_shell_requests(),
         groups = groups,
         include.overall = include.overall,
         label.header = "**Safety event**",
-        label.width = 0.46
+        label.width = 0.46,
+        use.simulated.data = use.simulated.data
     )
 }

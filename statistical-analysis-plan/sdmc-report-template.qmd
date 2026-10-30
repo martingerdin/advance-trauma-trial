@@ -1,0 +1,449 @@
+---
+title: "Report to the Trial Steering and Data Monitoring Committee"
+subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial"
+titlepage-footer: "Template v0.1.0, 2026-10-27"
+---
+
+```{r}
+#| echo: false
+#| label: setup
+#| cache: false
+
+noacsr::source_all_functions()
+attach(global_variables())
+
+# Version of the statistical analysis plan (SAP) that governs this report.
+sap.variables <- yaml::read_yaml("_variables.yml")
+
+# Report metadata filled when a report is prepared for a meeting. This first
+# report covers data from the first batch only, because only Batch 1 data
+# collection has been completed at the data cut-off date. Update these values
+# (and the data-feeding chunks) when later batches complete.
+report.number <- 1 # report number (1 to number_to_text(batches))
+batch.covered <- 1 # batch whose data collection has just completed
+data.cutoff.date <- "<date>" # end of data collection for the batch
+report.version <- "0.1.0 (template)"
+report.date <- "2026-10-27"
+
+# gtsummary otherwise prints with gt. Its autofit step sizes each column to
+# the full label, which is wider than the page and clips the first column.
+# Scale those widths so the table fits and the text wraps (same as the SAP).
+if (!isTRUE(knitr::is_latex_output()) && requireNamespace("flextable", quietly = TRUE)) {
+  flextable::set_flextable_defaults(
+    font.family = "EB Garamond",
+    font.size = 8,
+    theme_fun = flextable::theme_booktabs
+  )
+  if (isTRUE(knitr::pandoc_to("docx")) && requireNamespace("gtsummary", quietly = TRUE)) {
+    fit_word_table <- function(x, max.width = 5.5) {
+      widths <- x$body$colwidths
+      total <- sum(widths)
+      if (!is.finite(total) || total <= max.width) {
+        return(x)
+      }
+      flextable::width(x, width = as.numeric(widths) * max.width / total)
+    }
+    gtsummary::set_gtsummary_theme(list(
+      `pkgwide-str:print_engine` = "flextable",
+      `as_flex_table-lst:addl_cmds` = list(
+        valign = rlang::expr(fit_word_table())
+      )
+    ))
+  }
+}
+
+# Pooled summaries of the primary and secondary outcomes, the data dictionary
+# reading helper, and the prepared-data table renderer all live in the shared
+# function library (functions/sdmc_report_prepared_data.R). Table chunks below
+# read their values from the prepared CSVs in sdmc-report/prepared/
+# (see sdmc-report/README.md); absent or blank CSVs render blank shells.
+
+# Reference table of the outcomes assessed in the trial, for the appendix.
+render_outcomes_summary_table <- function() {
+  outcomes.table <- jsonlite::fromJSON("tables/outcomes-summary.json")
+  outcomes.table <- outcomes.table[
+    c("outcome", "design_component", "data_type", "population", "effect_measure")
+  ]
+  names(outcomes.table) <- c(
+    "Outcome",
+    "Design component",
+    "Data type",
+    "Population",
+    "Effect measure"
+  )
+  if (isTRUE(knitr::is_latex_output())) {
+    knitr::kable(outcomes.table, format = "latex", booktabs = TRUE, longtable = TRUE) |>
+      kableExtra::kable_styling(latex_options = c("repeat_header"), font_size = 8)
+  } else if (requireNamespace("flextable", quietly = TRUE)) {
+    flextable::flextable(outcomes.table) |>
+      flextable::font(fontname = "EB Garamond", part = "all") |>
+      flextable::fontsize(size = 8, part = "all") |>
+      flextable::theme_booktabs()
+  } else {
+    knitr::kable(outcomes.table)
+  }
+}
+```
+
+{{< pagebreak >}}
+
+# Administrative information
+
+**Important: this document is a template for the report to the SDMC. Table cells are blank shells and will be completed with observed data when the report is prepared; no simulated data are included. This first report covers data from the first batch only, because only Batch 1 data collection was complete at the data cut-off date.**
+
+| Item | Value |
+|------|-------|
+| Report | Report `r report.number` of `r number_to_text(batches)` to the Trial Steering and Data Monitoring Committee (SDMC) |
+| Batch covered | Batch `r batch.covered` |
+| Data cut-off date | `r data.cutoff.date` |
+| Prepared by | Trial Team |
+| Approved by | Trial Management Group (TMG) |
+| Circulated to the SDMC | At least two weeks before the meeting |
+| SDMC meeting date | \<date\> |
+| Version | `r report.version` |
+| Date | `r report.date` |
+| Governing documents | Statistical Analysis Plan version `r sap.variables$version` dated `r sap.variables$date`; SDMC charter |
+
+## Study identifiers
+
+{{< include ../shared-assets/study-identifiers.qmd >}}
+
+<!-- Per the SAP and the SDMC charter, the Trial Team prepares the report after
+the completion of data collection for each batch, the Trial Management Group
+approves it before circulation, and it is circulated to the SDMC at least two
+weeks before the meeting. -->
+
+{{< pagebreak >}}
+
+# Executive summary
+
+-   **Trial status.** *[To be completed: number of clusters included and dropping out, and numbers screened, included, not consenting to out-of-hospital follow-up, and lost to follow-up, overall and for the batch.]*
+-   **Randomisation schedule adherence.** *[To be completed: any clusters transitioning off schedule and reasons.]*
+-   **Data completeness.** *[To be completed: overall completeness of primary and secondary outcome data and any concerns.]*
+-   **Safety.** *[To be completed: number of safety events, and whether any event was assessed as probably related to the trial or intervention and reported to the SDMC immediately.]*
+-   **Decision requested.** The SDMC is asked to advise whether the trial remains feasible and should continue as planned, and to raise any concerns about safety, recruitment, or data completeness. Possible decisions are described in the SDMC charter and include early stopping if the trial is not feasible or if there is a safety concern.
+
+<!-- Per the SAP: "The SDMC will use each report to advise whether the trial
+remains feasible and should continue as planned." -->
+
+{{< pagebreak >}}
+
+# Purpose of this report
+
+The joint Trial Steering and Data Monitoring Committee (SDMC) meets after each batch has completed the trial. For each meeting, the Trial Team prepares this report and the Trial Management Group approves it before circulation. The report prepared after half of the batches have completed the trial is the interim analysis report.
+
+The purposes of reviewing these reports are to:
+
+-   assess the trial's feasibility and recommend that the trial be stopped if it is not feasible, for example if hospitals fail to adhere to the randomisation schedule or if there are substantial missing data in outcomes; and
+-   compare characteristics across intervention conditions to monitor for differential recruitment or ascertainment between the intervention and control groups.
+
+No efficacy stopping is planned, because any estimates obtained at the time of the interim analysis would be associated with major statistical uncertainties.
+
+<!-- Text from SAP section Interim analysis (statistical-analysis-plan.qmd,
+@sec-interim-analysis) and the shared interim-analysis include. -->
+
+**Note on outcome values.** As specified in the SAP, this report does not present or compare outcome values by intervention condition, to avoid biasing the SDMC or the Trial Management Group. Outcome summaries are therefore pooled across intervention conditions and periods.
+
+## How to read this report
+
+Conventions follow the SAP. In every descriptive table we summarise discrete variables as frequencies and percentages, and continuous and count variables as medians and interquartile ranges (Q1–Q3). We report missing values for each variable, and we do not adjust any of these summaries for clustering.
+
+{{< pagebreak >}}
+
+# Trial progress
+
+Trial progress is reported overall, by batch, and by intervention condition. Counts cover the number of clusters included and dropping out, and the number of potentially eligible patients screened, patients included, patients who did not consent to out-of-hospital follow-up, and patients lost to follow-up.
+
+This first report covers data from the first batch only, because only Batch 1 data collection was complete at the data cut-off date. The same tables and figures will cover subsequent batches as their data collection completes.
+
+## By intervention condition and overall
+
+```{r}
+#| label: tbl-interim-trial-progress
+#| tbl-cap: "Trial progress by intervention condition and overall. Cells to be completed with observed counts; this first report covers Batch 1 only."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("trial-progress.csv", create_interim_trial_progress_table)
+```
+
+## By batch
+
+```{r}
+#| label: tbl-interim-trial-progress-by-batch
+#| tbl-cap: "Trial progress by batch and overall. Cells to be completed with observed counts; only Batch 1 is expected to have data in this first report."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("trial-progress-by-batch.csv", sdmc_trial_progress_by_batch_table)
+```
+
+## Trial roll-out
+
+```{r}
+#| echo: false
+#| label: fig-trial-rollout
+#| fig.cap: "Trial roll-out figure for Batch 1. Light grey bars show the planned patient-inclusion periods. Coloured bars show the observed standard-care, transition, and intervention periods. A diamond on a cluster's bar marks each ATLS^®^ training course, and a cluster may have more than one course. Placeholder dates will be replaced with observed dates."
+#| fig.align: "center"
+#| fig-pos: H
+#| out-width: "100%"
+#| message: FALSE
+#| warning: FALSE
+rollout <- utils::read.csv(
+  "tables/cluster-rollout.csv",
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
+training <- utils::read.csv(
+  "tables/cluster-training.csv",
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
+# This first report covers Batch 1 only; later reports will pass the full
+# prepared rollout and training data for all completed batches.
+rollout <- rollout[rollout$batch == batch.covered, , drop = FALSE]
+training <- training[training$cluster %in% rollout$cluster, , drop = FALSE]
+knitr::include_graphics(
+  create_trial_rollout_flowchart(
+    data = rollout,
+    training = training,
+    return.figure = FALSE,
+    device = "png"
+  )
+)
+```
+
+## Participant flow (CONSORT flowcharts)
+
+The flowcharts below summarise participant flow, following the CONSORT-style diagrams specified in the SAP. Counts are left as blank `(n=)` placeholders and will be completed with observed counts; no simulated counts are shown. For this first report, completed counts will cover Batch 1 only.
+
+<!-- When counts are available, pass them through the `counts` argument of the
+create_*_consort_diagram() functions (see the README in sdmc-report/). Figures
+are written under sdmc-report/figures/ so the SAP's own CONSORT files are not
+overwritten. -->
+
+```{r}
+#| echo: false
+#| label: fig-consort-clusters
+#| fig.cap: "Cluster-level CONSORT flowchart with blank counts. Boxes cover clusters assessed and randomised, losses and exclusions after randomisation with reasons, and clusters included in the primary analysis, by sequence and overall. Counts are to be completed with observed data; for this first report they will cover Batch 1 only."
+#| fig.align: "center"
+#| fig-pos: H
+#| out-width: "100%"
+#| message: FALSE
+#| warning: FALSE
+if (!dir.exists("sdmc-report/figures")) {
+  dir.create("sdmc-report/figures", recursive = TRUE)
+}
+knitr::include_graphics(
+  create_cluster_consort_diagram(
+    sequences = sequences,
+    batches = batches,
+    total.months = total.months,
+    min.standard.care.months = min.standard.care.months,
+    transition.months = transition.months,
+    return.figure = FALSE,
+    device = "png",
+    use.simulated.data = FALSE,
+    file.name = "sdmc-report/figures/consort-clusters.png"
+  )
+)
+```
+
+```{r}
+#| echo: false
+#| label: fig-consort-patients
+#| fig.cap: "Patient-level CONSORT flowchart with blank counts. Boxes cover patients entered, losses and exclusions from the primary analysis with reasons, and patients analysed, by sequence, before and after ATLS^®^ training, and overall. Counts are to be completed with observed data; for this first report they will cover Batch 1 only."
+#| fig.align: "center"
+#| fig-pos: H
+#| out-width: "100%"
+#| message: FALSE
+#| warning: FALSE
+knitr::include_graphics(
+  create_patient_consort_diagram(
+    sequences = sequences,
+    batches = batches,
+    total.months = total.months,
+    min.standard.care.months = min.standard.care.months,
+    transition.months = transition.months,
+    return.figure = FALSE,
+    device = "png",
+    use.simulated.data = FALSE,
+    file.name = "sdmc-report/figures/consort-patients.png"
+  )
+)
+```
+
+```{r}
+#| echo: false
+#| label: fig-consort-nested-staircase
+#| fig.cap: "Nested-staircase CONSORT flowchart with blank counts. Boxes cover patients in staircase periods, the shift-stratified nested sample, losses and exclusions with reasons, and patients analysed for nested-staircase secondary outcomes, by sequence, before and after ATLS^®^ training, and overall. Coloured strip cells mark staircase months, and grey cells are outside nested data collection. Counts are to be completed with observed data; for this first report they will cover Batch 1 only."
+#| fig.align: "center"
+#| fig-pos: H
+#| out-width: "100%"
+#| message: FALSE
+#| warning: FALSE
+knitr::include_graphics(
+  create_nested_staircase_consort_diagram(
+    sequences = sequences,
+    batches = batches,
+    total.months = total.months,
+    min.standard.care.months = min.standard.care.months,
+    transition.months = transition.months,
+    staircase.months = staircase.months,
+    return.figure = FALSE,
+    device = "png",
+    use.simulated.data = FALSE,
+    file.name = "sdmc-report/figures/consort-nested-staircase.png"
+  )
+)
+```
+
+{{< pagebreak >}}
+
+# Adherence to the randomisation schedule
+
+The table below summarises whether clusters transitioned on the scheduled date or within four weeks of it. *[To be completed: list reasons for any non-adherence here.]*
+
+```{r}
+#| label: tbl-interim-randomisation-adherence
+#| tbl-cap: "Adherence to the randomisation schedule by intervention condition and overall. Cells to be completed with observed counts."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("randomisation-adherence.csv", create_interim_randomisation_adherence_table)
+```
+
+{{< pagebreak >}}
+
+# Summary statistics of clusters and patient participants
+
+The tables below summarise characteristics of the included clusters and patient participants. Comparison of characteristics across intervention conditions is used to monitor for differential recruitment or ascertainment between the intervention and control groups.
+
+## Cluster characteristics
+
+```{r}
+#| label: tbl-cluster-characteristics
+#| tbl-cap: "Cluster characteristics by sequence and overall, for the included clusters. Cells to be completed with observed data."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("cluster-characteristics.csv", sdmc_cluster_characteristics_table)
+```
+
+## Patient characteristics
+
+```{r}
+#| label: tbl-patient-characteristics
+#| tbl-cap: "Key patient characteristics by intervention condition and overall, for the included participants. Cells to be completed with observed data."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("patient-characteristics.csv", sdmc_patient_characteristics_table)
+```
+
+{{< pagebreak >}}
+
+# Outcome data completeness
+
+Completeness of primary and secondary outcome data is reported overall and by intervention condition, as observed and missing counts per outcome. No outcome values are shown.
+
+```{r}
+#| label: tbl-interim-outcome-completeness
+#| tbl-cap: "Completeness of primary and secondary outcome data by intervention condition and overall. Cells to be completed with observed counts. Shows key outcomes; the full set of outcomes can be shown by calling create_interim_outcome_completeness_table(key.only = FALSE)."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("outcome-completeness.csv", create_interim_outcome_completeness_table)
+```
+
+{{< pagebreak >}}
+
+# Summary statistics of outcomes
+
+Summary statistics of the primary and secondary outcomes are shown pooled across intervention conditions and periods, as required by the SAP. Outcome values are not presented or compared by intervention condition.
+
+```{r}
+#| label: tbl-interim-outcomes-summary
+#| tbl-cap: "Pooled summary statistics of primary and secondary outcomes, across intervention conditions and periods. Cells to be completed with observed data."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("outcomes-summary.csv", sdmc_pooled_outcomes_summary_table)
+```
+
+{{< pagebreak >}}
+
+# ATLS^®^ training delivery
+
+*[To be completed: number of physicians trained in ATLS^®^ in each hospital in the batch, and whether hospitals completed their scheduled training.]*
+
+```{r}
+#| label: tbl-interim-training
+#| tbl-cap: "ATLS^®^ training delivery by intervention condition and overall. Cells to be completed with observed counts."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("training.csv", create_interim_training_table)
+```
+
+{{< pagebreak >}}
+
+# Protocol deviations and proposed amendments
+
+*[To be completed: list protocol deviations, serious breaches, and any proposed protocol amendments or other proposed changes, including updates to statistical assumptions, patient information and consent processes, and trial timelines and milestones.]*
+
+```{r}
+#| label: tbl-interim-protocol-deviations
+#| tbl-cap: "Protocol deviations by intervention condition and overall. Cells to be completed with observed counts."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("protocol-deviations.csv", create_interim_protocol_deviations_table)
+```
+
+{{< pagebreak >}}
+
+# Safety events
+
+Safety events are defined in the protocol and are summarised below as the number and percentage of patients with at least one recorded event. The SDMC reviews safety events continuously as reported by the Trial Team. Events assessed as probably related to the trial or the intervention are reported to the SDMC immediately when identified, in addition to being summarised in this report. *[To be completed: narrative summary of any safety events and related assessments.]*
+
+```{r}
+#| label: tbl-interim-safety-events
+#| tbl-cap: "Safety events by intervention condition and overall. Cells to be completed with observed counts."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+sdmc_render_prepared_table("safety-events.csv", create_interim_safety_events_table)
+```
+
+{{< pagebreak >}}
+
+# Relevant external evidence
+
+*[To be completed: identification and circulation of relevant external evidence, for example from other trials or systematic reviews, is compiled by the Principal Investigator and the Trial Team, and is presented for discussion at the meeting.]*
+
+{{< pagebreak >}}
+
+# Appendix: Outcomes assessed in the trial
+
+The table lists the outcomes assessed in the trial, for reference. Strategies for handling intercurrent events are described in the SAP.
+
+```{r}
+#| label: tbl-outcomes-summary
+#| tbl-cap: "Summary of outcomes, design components, data types, populations, and effect measures."
+#| echo: false
+#| message: false
+#| warning: false
+#| results: asis
+render_outcomes_summary_table()
+```
