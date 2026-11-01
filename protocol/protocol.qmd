@@ -1,6 +1,6 @@
 ---
 title: "Clinical Trial Protocol"
-subtitle: | 
+subtitle: |
   | ADVANCE TRAUMA
   |
   | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial
@@ -86,7 +86,7 @@ unless they otherwise agree in a written agreement.*
 
 {{< pagebreak >}}
 
-# List of used acronyms and abbreviations 
+# List of used acronyms and abbreviations
 
 *List all abbreviations used in the protocol. Each term should be
 written out fully the first time it is used in the protocol, with the
@@ -172,7 +172,17 @@ rows as needed.*
 
 # Visual abstract
 
-![Visual abstract](../shared-assets/visual-abstract-small.png)
+```{r}
+#| echo: false
+#| label: fig-visual-abstract
+#| fig.cap: "ADVANCE TRAUMA visual abstract."
+#| fig.align: "center"
+#| message: FALSE
+#| warning: FALSE
+#| out-width: "100%"
+
+knitr::include_graphics("../shared-assets/advance-trauma-visual-abstract.png")
+```
 
 {{< pagebreak >}}
 
@@ -181,8 +191,16 @@ rows as needed.*
 ## Changelog
 
 +---------+------------+------------------------------------------------------------------+
-| Version | Date       | Details                                                          | 
+| Version | Date       | Details                                                          |
 +=========+============+==================================================================+
+| 1.6.0   | ?          | - Update title page and text formatting                          |
+|         |            | - Updated visual abstract                                        |
+|         |            | - Shortened very long lists of variable categories               |
+|         |            | - Added references to published systematic review, feasibility   |
+|         |            |   study and community consultations pre-print                    |
+|         |            | - Removed forest plot after adding the systematic review         |
+|         |            |   reference                                                      |
++---------+------------+------------------------------------------------------------------+
 | 1.5.0   | 2025-06-12 | - Clarified the definition of clusters and units, based on       |
 |         |            |   discussions during the writeup of the protocol for publication |
 |         |            | - Clarified the patient exclusion criterion of isolated limb     |
@@ -245,31 +263,21 @@ rows as needed.*
 
 <!-- Mention review by hauta_translating_2024 -->
 
-Each year, 4.3 million people die from trauma [@injuries2020]. Among people aged 10-24 and 25-49 years trauma is the largest cause of disability adjusted life years [@GBD2020]. Most deaths from trauma occur within the first 24-48 hours  [@Rauf2019]. Traumatic brain injury and exsanguination are the most common causes of trauma deaths [@Roy2017; @Callcut2019]. Most preventable trauma deaths are caused by clinical judgement errors during initial resuscitation or early care including airway management and haemorrhage control, even though the deaths occur later during the hospital stay [@Roy2017; @Ghorbani2018].
+Each year, 4.9 million people die from trauma [@naghavi_global_2025]. Among people aged 10-49 years trauma is the largest cause of disability adjusted life years [@GBD2020]. Most deaths from trauma occur within the first 24-48 hours  [@Rauf2019]. Traumatic brain injury and exsanguination are the most common causes of trauma deaths [@Roy2017; @Callcut2019]. Most preventable trauma deaths are caused by clinical judgement errors during initial resuscitation or early care including airway management and haemorrhage control, even though the deaths occur later during the hospital stay [@Roy2017; @Ghorbani2018].
 
 Several trauma life support training programmes have been developed to improve the early management of patients in the hospital by providing a structured framework for assessment and treatment [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021; @mciver_effect_2024]. The proprietary Advanced Trauma Life Support^®^ (ATLS^®^) is the most established trauma life support training programme and more than one million physicians in over 80 countries have been trained in the programme since the first course in 1978 [@acsAtls2018]. In the US and many other countries training in ATLS^®^ is virtually mandatory for trauma care physicians [@ACS2022]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020].
 
-There are three randomised studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021; @putra_impact_2023; @mciver_effect_2024]. We conducted an updated systematic review (unpublished), and estimated a pooled risk ratio of `r pooled.rr` (95% CI `r pooled.ci`) from  `r number_to_text(number.identified.studies)` heterogeneous (I^2^ `r I2`) observational studies on the effect of ATLS on mortality (see @fig-forest-plot) `r pooled.studies.citation`.
+There are three randomised studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021; @putra_impact_2023; @mciver_effect_2024]. We conducted an updated systematic review [@nakhid_effect_2026], and estimated a pooled odds ratio of 0.51 (95% CI 0.37-0.69) from  10 heterogeneous (I^2^ 69.1) observational studies on the effect of ATLS on mortality [@Vestrup1988; @Ali1993; @vanOlden2004; @Wang2010; @noordin_evolution_2011; @Hashmi2013; @Petroze2014; @Bellanova2016; @Magnone2016; @kamau_impact_2024].
 
-We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial. We published the protocol for this pilot study [@GerdinWärnberg2022]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India (unpublished data) and shows that it is feasible to conduct the proposed trial with a high percentage of patients consenting to out of hospital follow up (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
+We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial [@GerdinWärnberg2022; @gerdin_warnberg_feasibility_2025]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India and shows that it is feasible to conduct the proposed trial with a high percentage of patients consenting to out of hospital follow up (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
 
-To involve patients and the public in the planning of this trial we conducted 19 semi-structured interviews with trauma patients, caregivers, and community representatives (unpublished data). The aim of these interviews was to understand their views on the trial and important outcomes and the interviews showed high acceptability of our research and emphasised the importance of better recovery before discharge and functional outcomes at and after discharge, including pain, mobility and self-care activities. The interviews also highlighted return to work as an important outcome.
+To involve patients and the public in the planning of this trial we conducted 19 semi-structured interviews with trauma patients, caregivers, and community representatives [@david_patient-reported_2024]. The aim of these interviews was to understand their views on the trial and important outcomes and the interviews showed high acceptability of our research and emphasised the importance of better recovery before discharge and functional outcomes at and after discharge, including pain, mobility and self-care activities. The interviews also highlighted return to work as an important outcome.
 
-## Updated systematic review
-We perform systematic literature searches in collaboration with the Karolinska Institutet University Library, using Medline, Embase, Cochrane, Web of Science, Global Health, CINAHL and Google Scholar databases (PROSPERO ID CRD42022373977). The last search was conducted on January 22, 2025. We developed the search strategy in Medline (Ovid), limited the search to English language articles, searched all databases from inception, and screened a total of 10,429 records. We used a random effects model to pool estimates across studies.
+# Benefit-risk evaluation
 
-```{r forest-plot}
-#| echo: false
-#| label: fig-forest-plot
-#| fig.cap: "Summary of the updated system review. The forest plot shows the effect of ATLS on mortality. Abbreviations: RR, risk ratio; CI, confidence interval; ATLS, Advanced Trauma Life Support; I^2^, heterogeneity."
-knitr::include_graphics("forest-plot.png")
-```
+The direct risks includes integrity violations and data leakage. We will mitigate these risks by employing rigorous data collection and storage mechanisms. The procedures that we will use to collect data will be direct observation of care, routine physical examinations, questionnaires, and extraction of already collected data from patient records, which are often seen as involving only minimal risk.
 
-# Benefit-risk evaluation 
-
-The direct risks includes integrity violations and data leakage. We will mitigate these risks by employing rigorous data collection and storage mechanisms. The procedures that we will use to collect data will be direct observation of care, routine physical examinations, questionnaires, and extraction of already collected data from patient records, which are often seen as involving only minimal risk. 
-
-The long-term risks of the research and the risk that the research will be used in detrimental ways are minimal. Our trial will assess the effect of Advanced Trauma Life Support^®^ (ATLS^®^) on patient outcomes. Training in ATLS^®^ is standard in many health care systems and it is unlikely that training physicians in this programme induces any harm to participants. 
+The long-term risks of the research and the risk that the research will be used in detrimental ways are minimal. Our trial will assess the effect of Advanced Trauma Life Support^®^ (ATLS^®^) on patient outcomes. Training in ATLS^®^ is standard in many health care systems and it is unlikely that training physicians in this programme induces any harm to participants.
 
 We consider these risks weighed up by the potential direct benefit for the participants in the intervention phase, if ATLS^®^ is found to improve patient outcomes, and by the potential for improved care for the trauma patient population.
 
@@ -283,13 +291,13 @@ We will submit this trial to the Health Ministry Screening Committee at the Indi
 
 # Trial design and procedures
 
-## Overall trial design 
+## Overall trial design
 
 We will conduct a batched stepped-wedge cluster randomised controlled trial (see @fig-trial-design). The stepped-wedge trial is a uni-directional cross-over trial but the time point when clusters cross-over from standard care to the intervention is randomised [@Hemming2015]. In this trial, the unit of randomisation is the hospital: that is, the “clusters” randomised to the sequences of the stepped wedge design are the hospitals. Within each hospital, one or more units of physicians performing initial resuscitation of trauma patients in the emergency department will be trained. The number of units that will be trained in each hospital will depend on the sizes of these units and the volumes of patients the physicians attend. If more than one unit is trained in the same hospital, these are all considered to be part of the same cluster (i.e. hospital) for the purpose of randomisation. We choose this approach for two reasons: 1) it will not be logistically or financially feasible to train all physician in a given hospital; and 2) we need to balance cluster size with the number of clusters. We will conduct this trial in India because physicians providing initial trauma care in India are so far not routinely trained in ATLS^®^ or similar programmes.
 
 We will roll out the interventions to `r clusters` clusters over `r number_to_text(batches)` batches, so there will be `r number_to_text(clusters/batches)` clusters in each batch. The clusters in each batch will be randomised to one of `r number_to_text(sequences)` implementation sequences, with `r number_to_text(clusters.per.sequence)` hospital randomised to each implementation sequence. All clusters will transition through three phases, first a standard care phase, then a `r number_to_text(transition.months)` month transition phase during which the training is delivered, and finally an intervention phase, for a total of `r number_to_text(total.months)` months. The implementation sequence determines how long the phases of standard care and intervention are. Patient participants will be followed up for a total of `r number_to_text(follow.up.months)` months.
 
-Within the main stepped-wedge design, we will nest a staircase design to measure a range of secondary outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase. 
+Within the main stepped-wedge design, we will nest a staircase design to measure a range of secondary outcomes (see @fig-nested-staircase-design) [@grantham_staircase_2024]. The staircase design will include a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase.
 
 ## Design justification
 
@@ -350,7 +358,7 @@ Clusters will be secondary or tertiary hospitals providing trauma care in India.
 
 #### Screening
 
-The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-screening-interview-instrument). To avoid excluding hospitals we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019]. 
+The trial management group will compile a list of hospitals with potentially eligible clusters and reach out to them to assess their interest in participating in the trial. We will then screen hospitals for eligibility based on the criteria above, using a two-step procedure. First, we will approach hospitals to complete an initial hospital screening instrument (see Appendix @sec-appendix-hospital-screening-instrument). We will then discuss each eligible hospital individually in the Trial Management Group before deciding whether to include it in the trial. We have this discussion because we strive to include hospitals that to a large extent conducts primary resuscitation of trauma patients, rather than hospitals that primarily receives transferred patients from other hospitals, but this is difficult to formalise in the eligibility criteria. We will then perform a more in-depth interview with selected hospitals (See Appendix @sec-appendix-hospital-screening-interview-instrument). To avoid excluding hospitals we will also discuss plans to implement other potentially competing interventions during the trial period, and take these plans into account when assigning clusters to batches. For example, we are aware of the ongoing implementation of the National Emergency Life Support (NELS) programme in India, and will therefore not include hospitals that plan to implement this programme during the trial period. All screening steps and decisions will be logged using REDCap [@harris_research_2009; @harris_redcap_2019].
 
 ### Patient participant selection
 
@@ -370,7 +378,7 @@ Patient participants can choose to withdraw their consent for collection of non-
 
 @tbl-procedures-baseline shows an overview of trial procedures before and during patient admission, and @tbl-procedures-followup shows an overview of trial follow-up procedures. Clinical research coordinators will follow up patients daily until discharge to capture injury information. They will also follow up patients at 24 hours, 30 days and 90 days after arrival to the emergency department to capture mortality outcomes, and at 30 days and 90 days after arrival to the emergency department to capture functional outcomes and return to work. If patient participants are discharged before any of these follow-up time points, clinical research coordinators will follow up patients by phone.
 
-<!-- This is a hack to get the cross-reference to work in word output 
+<!-- This is a hack to get the cross-reference to work in word output
 
 | |
 |-|
@@ -430,7 +438,7 @@ We will assign clusters to batches as they are found to be eligible and receive 
 
 ## Blinding
 
-It is not possible to blind a stepped-wedge trial, because all clusters receive the intervention. 
+It is not possible to blind a stepped-wedge trial, because all clusters receive the intervention.
 
 ## Treatment after trial end
 
@@ -480,7 +488,7 @@ Any unexpected serious complication that might occur as a consequence of the tri
 
 ### Reporting and assessment of adverse and safety events
 
-In alignment with other current trials including critically ill patients [@STEPCARE2023], we will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and we already collect many of these events, for example mortality, as part of our outcomes. 
+In alignment with other current trials including critically ill patients [@STEPCARE2023], we will not collect adverse events or serious adverse events, because many of these events are expected in this patient population and we already collect many of these events, for example mortality, as part of our outcomes.
 
 We will only report safety events, if they are life-threatening, prolong hospitalisation or result in meaningful harm to the participant. We cannot pre-define a comprehensive list of events that can be considered safety events, but will actively assess the presence of the following safety events:
 
@@ -488,20 +496,20 @@ We will only report safety events, if they are life-threatening, prolong hospita
 - Initiation of renal replacement therapy
 - Prolonged (> 2 days) or renewed (restart after at least 2 days without) use of vasopressors such as norepinephrine or vasopressin
 
-These events are considered safety events because they suggest pulmonary, renal, septic or bleeding complications and an increase in their occurrence following ATLS^®^ training could indicate that the intervention is harmful. These events therefore need to be tracked during the standard care phase as well as the intervention phase, but will only be considered indicative of harm related to the intervention if they occur more often during the intervention phase than during the standard care phase. 
+These events are considered safety events because they suggest pulmonary, renal, septic or bleeding complications and an increase in their occurrence following ATLS^®^ training could indicate that the intervention is harmful. These events therefore need to be tracked during the standard care phase as well as the intervention phase, but will only be considered indicative of harm related to the intervention if they occur more often during the intervention phase than during the standard care phase.
 
 We will also report any other safety events that we identify during the trial, and the reporting of such will have to be based on the intuition of the clinical research coordinators and local investigators. Examples of such safety events could include missed injuries or missed investigations, which could be suspected if certain injuries or investigations were identified or conducted more often during the standard care phase than during the intervention phase.
 
-All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the joint Trial Steering and Data Monitoring Committee. 
+All safety events will be recorded in the Case Record Form (CRF) and reported to the trial management team within 24 hours of its occurrence. The trial management team will then assess if the event can be considered related to the trial or the intervention within 24 hours of it being reported. Events that are considered probably related will be reported immediately to the joint Trial Steering and Data Monitoring Committee.
 
 ### Follow up of safety events
 
-All safety events should be followed up by the local investigator until they are fully evaluated. 
+All safety events should be followed up by the local investigator until they are fully evaluated.
 
 <!--
 ### Assessment of Adverse Events (AE)
 
-#### **Assessment of causal relationship** 
+#### **Assessment of causal relationship**
 
 *Text suggestion:* The investigator is responsible for determining
 whether there is a causal relationship between the AE/SAE and use of the
@@ -759,31 +767,31 @@ after the trial is completed.*
 
 ### General principles
 
-The primary analysis set will include all observations within clusters with available data and irrespective of the receipt of the intervention. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. We will not adjust for multiplicity of analyses because none of the secondary outcomes will be singularly more important. However, all secondary outcomes will be interpreted with due consideration for how all are affected by the intervention without putting any undue emphasis on a single outcome that might be statistically significant but where all others appear to have remained unchanged. 
+The primary analysis set will include all observations within clusters with available data and irrespective of the receipt of the intervention. Clusters and observations within clusters will be considered exposed to the intervention after the date at which the cluster was scheduled to transition. All data will be included with the exception of the transition phases. We will not adjust for multiplicity of analyses because none of the secondary outcomes will be singularly more important. However, all secondary outcomes will be interpreted with due consideration for how all are affected by the intervention without putting any undue emphasis on a single outcome that might be statistically significant but where all others appear to have remained unchanged.
 
 We will use a two-sided significance level of 5% and estimate 95% confidence intervals. The primary subgroup analyses will be based on geographical region because demonstrating the consistency of any effect across multiple regions will enhance the generalisibility of the results[^question:batch-region]. Additional subgroup analyses will include age across the groups older adolescents (15-19 years), young adults (20-24 years), adults (25-59 years), and older adults (60 years and older) [@Diaz2021]; sex; and the clinical cohorts blunt multisytem trauma, penetrating trauma, and severe isolated traumatic brain injury.
 
-[^question:batch-region]: **Note:** Batches will not be based on regions because it will be logistically more feasible to include clusters from different regions in each batch. 
+[^question:batch-region]: **Note:** Batches will not be based on regions because it will be logistically more feasible to include clusters from different regions in each batch.
 
 ### Analysis models
 
-There are a number of requirements for the analysis model. Firstly, all analysis will consider the clustered nature of the design. Secondly, as the trial has only `r clusters` clusters, it will be essential that the model allows for a correction due to the small number of clusters. Thirdly, as the design is a stepped-wedge study, we will adjust for temporal confounding using categorical effects for period of the study (month). Full details on how each of these will be undertaken, with justification is provided below [@Li2020]. 
+There are a number of requirements for the analysis model. Firstly, all analysis will consider the clustered nature of the design. Secondly, as the trial has only `r clusters` clusters, it will be essential that the model allows for a correction due to the small number of clusters. Thirdly, as the design is a stepped-wedge study, we will adjust for temporal confounding using categorical effects for period of the study (month). Full details on how each of these will be undertaken, with justification is provided below [@Li2020].
 
-For binary outcomes, a mixed effects binomial regression with a logit link will be used to estimate the odds ratio; and a binomial model with identity link used to estimate the risk difference. These models will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). If the binomial model with the identity link does not converge then only a odds ratio will be reported. 
+For binary outcomes, a mixed effects binomial regression with a logit link will be used to estimate the odds ratio; and a binomial model with identity link used to estimate the risk difference. These models will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). If the binomial model with the identity link does not converge then only a odds ratio will be reported.
 
 We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. To correct the potential inflation of the type I error rate due to small number of clusters, a correction for a small number of clusters will be applied, but the correction that will be selected will be based on the best available evidence available closer to the time, and it may differ for the outcomes collected via the complete and incomplete designs. In a sensitivity analysis we will explore if models with more complicated correlation structures are a better fit to the data. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures which might be plausible.
 
-To this end we will additionally fit generalised linear mixed models (with same link functions and fixed effects as described above) to include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)). To allow for the randomisation by batches, a different secular trend will be included for each batch (interaction between batch and period). For continuous, count and prevalence outcomes similar model-based approaches will be used but with appropriate links and distribution functions, using transformations where appropriate. 
+To this end we will additionally fit generalised linear mixed models (with same link functions and fixed effects as described above) to include a discrete time decay correlation structure including a random cluster effect with auto-regressive structure (AR(1)). To allow for the randomisation by batches, a different secular trend will be included for each batch (interaction between batch and period). For continuous, count and prevalence outcomes similar model-based approaches will be used but with appropriate links and distribution functions, using transformations where appropriate.
 
 ### Additional sensitivity analyses
 
-To additionally explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using a spline function. Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes. 
+To additionally explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using a spline function. Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes.
 
-This will allow us to different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. A fully adjusted covariate analysis will additionally adjust for a set of pre-specified individual-level covariates of known prognostic importance. 
+This will allow us to different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. A fully adjusted covariate analysis will additionally adjust for a set of pre-specified individual-level covariates of known prognostic importance.
 
 ### Estimation and reporting of within cluster correlations
 
-We will report time adjusted within-cluster correlations for all outcomes with 95% confidence intervals. We will report correlations from the different assumed correlation structures (so we will report intra-cluster correlations (ICC); within and between-period correlations; and within-period correlations and exponential decay). As well as reporting correlations we will additionally report all variance components. For all outcomes we will report correlations on the latent scale (i.e. proportions scale for binary outcomes) as is appropriate to inform future sample size calculations.  
+We will report time adjusted within-cluster correlations for all outcomes with 95% confidence intervals. We will report correlations from the different assumed correlation structures (so we will report intra-cluster correlations (ICC); within and between-period correlations; and within-period correlations and exponential decay). As well as reporting correlations we will additionally report all variance components. For all outcomes we will report correlations on the latent scale (i.e. proportions scale for binary outcomes) as is appropriate to inform future sample size calculations.
 
 ### Sample size calculations
 
@@ -814,11 +822,11 @@ There will be one interim analysis after half of the batches have completed the 
 
 ## Quality control and quality assurance
 
-The George Institute for Global Health - India will ensure proper conduct of the trial through quality control measures including on-site training of personnel, standard operating procedures, ongoing quality metrics assessment, review of missing data and outliers, and round-the-clock availability of coordinating center personnel and Principal Investigators. The trial will strictly follow ICH GCP principles, Indian regulations, and George Institute procedures. The trial operations staff from the George Institute India will train local investigators, and trial site staff, before the trial, with continuous documentation in the site master file. All documentation will be stored securely and retained according to regulatory requirements. 
+The George Institute for Global Health - India will ensure proper conduct of the trial through quality control measures including on-site training of personnel, standard operating procedures, ongoing quality metrics assessment, review of missing data and outliers, and round-the-clock availability of coordinating center personnel and Principal Investigators. The trial will strictly follow ICH GCP principles, Indian regulations, and George Institute procedures. The trial operations staff from the George Institute India will train local investigators, and trial site staff, before the trial, with continuous documentation in the site master file. All documentation will be stored securely and retained according to regulatory requirements.
 
 ## Quality assurance and oversight
 
-The Trial Management Group and Trial Team, comprising key project leaders and managers, will play a pivotal role in ensuring the highest standards of quality assurance and effective sponsor oversight throughout the trial. These groups will be responsible for facilitating consistent communication, maintaining fidelity in study implementation, and overseeing the quality of data collection. 
+The Trial Management Group and Trial Team, comprising key project leaders and managers, will play a pivotal role in ensuring the highest standards of quality assurance and effective sponsor oversight throughout the trial. These groups will be responsible for facilitating consistent communication, maintaining fidelity in study implementation, and overseeing the quality of data collection.
 
 To achieve these objectives, the groups will implement a comprehensive communication plan and provide extensive training to site personnel. The training will cover not only the study protocol but also practical aspects of various systems, supplemented by both written and electronic materials designed to educate study and clinical emergency staff.
 
@@ -834,7 +842,7 @@ We will implement a multi-tiered monitoring strategy, including centralized data
 
 The responsible investigator shall, without delay, report to the sponsor any serious breaches and deviations from the trial protocol, ICH-GCP and other regulations that significantly and directly affect, or with high likelihood could affect, the subjects' safety and integrity or the reliability and robustness of the data generated in the trial. The sponsor should assess the suspected serious breach and the consequences of deviations that have occurred. Minor deviations that do not affect subjects' integrity or safety, nor significantly affect the trial's scientific value, are documented in the trial documentation of the principal investigator and the sponsor and appropriate measures shall be taken. The deviations must be recorded in the clinical trial report.
 
-# Audits and inspections 
+# Audits and inspections
 
 Authorized representatives for the sponsor and Competent Authorities (CA) may carry out audits or inspections at the trial site, including source data verification. The investigator must ensure that all source documents are available for audits and inspections. The purpose of an audit or inspection is to systematically and independently review all trial-related activities and documents, to determine whether these activities were performed, registered, analyzed and reported correctly according to protocol, ICH- GCP and applicable regulations.
 
@@ -899,7 +907,7 @@ To run the trial on a day-to-day basis, maintain trial databases, randomise clus
 
 **Composition**
 
-Includes the project manager, clinical research associates, principal investigator and co-investigators as needed. 
+Includes the project manager, clinical research associates, principal investigator and co-investigators as needed.
 
 **Relationships**
 
@@ -917,7 +925,7 @@ To manage the trial, including its clinical and practical aspects.
 
 **Composition**
 
-Includes members with broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator.  
+Includes members with broad expertise appropriate to the trial. The TMG will be chaired by the Principal Investigator.
 
 **Relationships**
 
@@ -956,7 +964,7 @@ After the completion of each batch, but may be more frequent if needed.
 
 # Notification of trial completion, reporting, and publication
 
-The trial will be reported to the Funders within a year of completion. The results of the trial will also be prepared as manuscripts for publication. Authorship on trial manuscripts will be based on the International Committee of Medical Journal Editors (ICMJE) criteria [@icmje_2024]: 
+The trial will be reported to the Funders within a year of completion. The results of the trial will also be prepared as manuscripts for publication. Authorship on trial manuscripts will be based on the International Committee of Medical Journal Editors (ICMJE) criteria [@icmje_2024]:
 
 > - Substantial contributions to the conception or design of the work; or the acquisition, analysis, or interpretation of data for the work; AND
 > - Drafting the work or reviewing it critically for important intellectual content; AND
@@ -967,7 +975,7 @@ The trial will be reported to the Funders within a year of completion. The resul
 
 The most recent version of the ICMJE criteria will be adhered to. We will also use the ICMJE criteria for non-author contributorship.
 
-Before work on a trial manuscript is initiated, a writing group will be formed and first and last authors will be designated. This writing group will be formed by discussion in the Trial Management Group. 
+Before work on a trial manuscript is initiated, a writing group will be formed and first and last authors will be designated. This writing group will be formed by discussion in the Trial Management Group.
 
 <!--
 *The sponsor must notify, via CTIS, each concerned Member State that a
@@ -1059,7 +1067,7 @@ in CTIS, including a summary for lay people.
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764). 
+Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764).
 
 ## Source data
 
@@ -1156,7 +1164,7 @@ number and be dated.*
 
 # Appendices {.appendix}
 
-## Initial hospital screening instrument {#sec-appendix-hospital-screening-instrument .appendix} 
+## Initial hospital screening instrument {#sec-appendix-hospital-screening-instrument .appendix}
 
 ```{r hospital-screening-instrument}
 #| echo: false
@@ -1165,7 +1173,7 @@ pages <- list.files("./appendices/hospital-screening-instrument", pattern = "pdf
 knitr::include_graphics(pages)
 ```
 
-## In-depth hospital screening interview instrument {#sec-appendix-hospital-screening-interview-instrument .appendix} 
+## In-depth hospital screening interview instrument {#sec-appendix-hospital-screening-interview-instrument .appendix}
 
 ```{r hospital-screening-interview-instrument}
 #| echo: false
