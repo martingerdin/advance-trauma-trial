@@ -1,30 +1,40 @@
 toc: true
-toc-depth: 3
+toc-depth: 4
 number-sections: true
+number-depth: 4
 fig-caption: true
 link-bibliography: false
+# github-issue-39: render @sec- as "Title (Section N)"
+filters:
+  - quarto
+  - filters/sec-title-xref.lua
 titlepage-theme:
-  title-fontsize: 15
-  subtitle-fontstyle: ["bfseries"]
-  subtitle-fontsize: 20
+  page-color: "secondary"
+  title-fontfamily: "Roboto"
+  title-fontsize: 36
+  title-spacing: 44
+  title-fontstyle: ["mdseries"]
+  title-color: "white"
+  subtitle-fontfamily: "Roboto"
+  subtitle-fontsize: 28
+  subtitle-spacing: 30
+  subtitle-fontstyle: ["sffamily"]
+  subtitle-color: "white"
+  footer-fontfamily: "Roboto"
+  footer-fontstyle: ["LARGE"]
+  footer-color: "white"
+  footer-space-after: 0pt
+  elements: ["\\advancetraumabrand", "\\titleblock", "\\vfill", "\\footerblock", "\\textcolor{white}{\\hrule}", "\\par", "\\vspace*{0.5cm}", "\\bgroup\\LARGE\\sffamily\\titlepageurl\\egroup"]
 format:
   titlepage-pdf:
-    keep-tex: true
-    titlepage: classic-lined
+    titlepage: formal
     documentclass: scrartcl
     number-sections: true 
+    keep-tex: true
     include-in-header: 
-      text: |
-        \usepackage{typearea}
-        \usepackage{lscape}
-        \usepackage{afterpage}
-        \usepackage{changepage}
-        \usepackage{scrlayer-scrpage}
-        \usepackage{soul}
-        \usepackage{lastpage}
-        \lohead{ADVANCE TRAUMA Trial Protocol}
-        \rohead{ClinicalTrials.gov ID NCT06321419}
-        \cfoot{\thepage\ of \pageref{LastPage} }
-docx: default
-html:
-  minimal: true
+      file: in-header.tex
+  docx:
+    toc: true
+    number-sections: true
+  html:
+    minimal: true

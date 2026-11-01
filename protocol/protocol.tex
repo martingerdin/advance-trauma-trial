@@ -1,25 +1,27 @@
 % Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
 ]{scrartcl}
-
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{4}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
-\ifPDFTeX\else  
-    % xetex/luatex font selection
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -37,18 +39,30 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
+
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -63,39 +77,51 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
 \makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
   \fi
   % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \usepackage{booktabs}
@@ -103,20 +129,63 @@
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage{array}
-\usepackage{typearea}
-\usepackage{lscape}
-\usepackage{afterpage}
-\usepackage{changepage}
+\usepackage{anyfontsize}
+\usepackage{multirow}
 \usepackage{scrlayer-scrpage}
-\usepackage{soul}
 \usepackage{lastpage}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\definecolor{secondary}{HTML}{1a9dbb}
 \lohead{ADVANCE TRAUMA Trial Protocol}
 \rohead{ClinicalTrials.gov ID NCT06321419}
 \cfoot{\thepage\ of \pageref{LastPage} }
-\makeatletter
-\makeatother
-\makeatletter
-\makeatother
+\setmainfont{EB Garamond}
+\setsansfont{Roboto}
+\newfontfamily\robotolight{Roboto}[Weight=300]
+\setkomafont{disposition}{\sffamily}
+% Increase heading sizes so Roboto headings stand out from Garamond body text
+\setkomafont{section}{\sffamily\LARGE}
+\setkomafont{subsection}{\sffamily\Large}
+\setkomafont{subsubsection}{\sffamily\large}
+\setkomafont{paragraph}{\sffamily\large}
+\setkomafont{pagehead}{\sffamily}
+% Title page URL on cover: clickable white text in Roboto
+\newcommand{\titlepageurl}{\href{https://www.advancetrauma.info}{\textcolor{white}{www.advancetrauma.info}}}
+% Title-page brand wordmark (replaces logo image); Quicksand matches the ADVANCE TRAUMA logo typeface
+\newfontfamily\quicksand{Quicksand}[RawFeature={axis={wght=500}}]
+\newcommand{\advancetraumabrand}{%
+  {\quicksand\fontsize{32}{40}\selectfont\textcolor{white}{ADVANCE TRAUMA}}\par
+  \vspace{1.5em}%
+}
+% Reduce vertical space around headings
+\RedeclareSectionCommand[beforeskip=2ex plus 0.5ex minus 0.2ex,afterskip=1.5ex plus 0.2ex]{section}
+\RedeclareSectionCommand[beforeskip=1.5ex plus 0.5ex minus 0.2ex,afterskip=1ex plus 0.2ex]{subsection}
+\RedeclareSectionCommand[beforeskip=1ex plus 0.5ex minus 0.2ex,afterskip=0.5ex plus 0.2ex]{subsubsection}
+\RedeclareSectionCommand[beforeskip=0.5ex plus 0.3ex minus 0.1ex,afterskip=0.5ex plus 0.1ex]{paragraph}
+% Table of contents: font sizes per level (section = largest, then step down)
+\RedeclareSectionCommand[
+  tocentryformat=\usekomafont{disposition}\Large\bfseries,
+  toclinefill=\Large\TOCLineLeaderFill,
+  tocpagenumberformat=\usekomafont{disposition}\Large\bfseries
+]{section}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{subsection}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{subsubsection}
+\RedeclareSectionCommand[
+  tocentryformat=\normalsize,
+  toclinefill=\large\TOCLineLeaderFill,
+  tocpagenumberformat=\large
+]{paragraph}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -153,18 +222,10 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
 \makeatother
 
 \usepackage{hyphenat}
@@ -182,32 +243,34 @@
 \usetikzlibrary{fadings}
 \usepackage[pagecolor=none]{pagecolor}
 
+\usepackage[pagecolor=none]{pagecolor}
 
 % Set the titlepage font families
 
+\usepackage{fontspec}
+\newfontfamily{\titlepagetitlefont}{Roboto}
 
 
 
+\usepackage{fontspec}
+\newfontfamily{\titlepagefooterfont}{Roboto}
 
 
 
 % Set the coverpage font families
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Clinical Trial Protocol},
-  pdfauthor={Version 1.5.0, 2025-06-12},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
   citecolor={Blue},
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
+
 
 \title{Clinical Trial Protocol}
 \usepackage{etoolbox}
@@ -216,14 +279,11 @@
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{ADVANCE TRAUMA\\
-\strut \\
-Effects of Advanced Trauma Life Support\textsuperscript{®} Training
-Compared to Standard Care on Adult Trauma Patient Outcomes: A
+\subtitle{Effects of Advanced Trauma Life Support\textsuperscript{®}
+Training Compared to Standard Care on Adult Trauma Patient Outcomes: A
 Stepped-Wedge Cluster Randomised Trial}
-\author{Version 1.5.0, 2025-06-12}
+\author{}
 \date{}
-
 \begin{document}
 %%%%% begin titlepage extension code
 
@@ -243,34 +303,27 @@ Stepped-Wedge Cluster Randomised Trial}
 
 \newcommand{\titleandsubtitle}{
 % Title and subtitle
-{\fontsize{15}{18.0}\selectfont
-{\uppercase{\nohyphens{Clinical Trial Protocol}}}\par
+{\fontsize{36}{44}\selectfont
+\textcolor{white}{\mdseries{\nohyphens{Clinical Trial Protocol}}}\par
 }%
 
 \vspace{\betweentitlesubtitle}
 {
-\fontsize{20}{24.0}\selectfont
-{\bfseries{\nohyphens{ADVANCE TRAUMA\\
-\strut \\
-Effects of Advanced Trauma Life Support\textsuperscript{®} Training
-Compared to Standard Care on Adult Trauma Patient Outcomes: A
-Stepped-Wedge Cluster Randomised Trial}}}\par
+\fontsize{28}{30}\selectfont
+\textcolor{white}{\sffamily{\nohyphens{Effects of Advanced Trauma Life
+Support\textsuperscript{®} Training Compared to Standard Care on Adult
+Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial}}}\par
 }}
 \newcommand{\titlepagetitleblock}{
-\rule{\textwidth}{0.4pt} % Thin horizontal rule
-\vspace{0.025\textheight} % Whitespace between the top rules and title
-
 \titleandsubtitle
-
-\vspace{0.025\textheight} 
-\rule{0.3\textwidth}{0.4pt} % Short horizontal rule under the title
 }
-\newcommand{\authorstyle}[1]{{\Large{#1}}}
+
+\newcommand{\authorstyle}[1]{{\textbf{#1}}}
 
 \newcommand{\affiliationstyle}[1]{{\large{#1}}}
 
 \newcommand{\titlepageauthorblock}{
-{\authorstyle{\nohyphens{Version 1.5.0, 2025-06-12}\\}}
+{\authorstyle{\\}}
 }
 
 \newcommand{\titlepageaffiliationblock}{
@@ -286,7 +339,7 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 {}
 }
 \newcommand{\footerstyled}{%
-{\large{\textsc{}}}
+{\LARGE{Version 1.5.0, 2025-06-12}}
 }
 \newcommand{\datestyled}{%
 {}
@@ -305,32 +358,32 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 
 %set up blocks so user can specify order
 \newcommand{\titleblock}{\newlength{\betweentitlesubtitle}
-\setlength{\betweentitlesubtitle}{\baselineskip}
+\setlength{\betweentitlesubtitle}{0.5cm}
 {
-
+\titlepagetitlefont
 {\titlepagetitleblock}
 }
 
-\vspace{0.1\textheight}
+\vspace{1.5cm}
 }
 
-\newcommand{\authorblock}{{\titlepageauthorblock}
+\newcommand{\authorblock}{}
 
-\vspace{2\baselineskip}
-}
-
-\newcommand{\affiliationblock}{{\titlepageaffiliationblock}
-
-\vspace{1pt}
-}
+\newcommand{\affiliationblock}{}
 
 \newcommand{\logoblock}{}
 
-\newcommand{\footerblock}{}
+\newcommand{\footerblock}{\textcolor{white}{\titlepagefooterfont
+\titlepagefooterblock}
+
+\vspace{0pt}
+}
 
 \newcommand{\dateblock}{}
 
 \newcommand{\headerblock}{}
+\colorlet{pgcolor}{secondary}
+\pagecolor{pgcolor}\afterpage{\nopagecolor}
 
 \thispagestyle{empty} % no page numbers on titlepages
 
@@ -342,15 +395,21 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 % [s] means stretch out vertically; assuming there is a vfill
 \begin{minipage}[b][\textheight][s]{\minipagewidth}
 \titlepagepagealign
-\titleblock
+\advancetraumabrand
 
-\authorblock
+\titleblock
 
 \vfill
 
-\logoblock
-
 \footerblock
+
+\textcolor{white}{\hrule}
+
+\par
+
+\vspace*{0.5cm}
+
+\bgroup\LARGE\sffamily\titlepageurl\egroup
 \par
 
 \end{minipage}\ifthenelse{\equal{}{right} \OR \equal{}{leftright} }{
@@ -362,41 +421,40 @@ Stepped-Wedge Cluster Randomised Trial}}}\par
 \setcounter{page}{1}
 
 %%%%% end titlepage extension code
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, interior hidden, sharp corners, breakable, frame hidden, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{4}
 \tableofcontents
 }
+
 \newpage{}
 
-\hypertarget{visual-abstract}{%
-\section{Visual abstract}\label{visual-abstract}}
+\section{Visual abstract}\label{visual-abstract}
 
 \begin{figure}
 
-{\centering \includegraphics{../shared-assets/visual-abstract-small.png}
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../shared-assets/advance-trauma-visual-abstract.png}
 
 }
 
-\caption{Visual abstract}
+\caption{\label{fig-visual-abstract}ADVANCE TRAUMA visual abstract.}
 
-\end{figure}
+\end{figure}%
 
 \newpage{}
 
-\hypertarget{administrative-information}{%
-\section{Administrative information}\label{administrative-information}}
+\section{Administrative information}\label{administrative-information}
 
-\hypertarget{changelog}{%
-\subsection{Changelog}\label{changelog}}
+\subsection{Changelog}\label{changelog}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.7500}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.7500}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Version
@@ -409,6 +467,24 @@ Details
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
+1.6.0 & ? & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  Update title page and text formatting
+\item
+  Updated visual abstract
+\item
+  Shortened very long lists of variable categories
+\item
+  Added references to published systematic review, feasibility study and
+  community consultations pre-print
+\item
+  Removed forest plot after adding the systematic review reference
+\item
+  Remove note on randomisation
+\end{itemize}
+\end{minipage} \\
 1.5.0 & 2025-06-12 & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
 \tightlist
@@ -488,8 +564,7 @@ mortality and spelling corrections. The primary outcome was updated
 following a voting procedure in the Trial Management Group. \\
 \end{longtable}
 
-\hypertarget{study-identifiers}{%
-\subsection{Study identifiers}\label{study-identifiers}}
+\subsection{Study identifiers}\label{study-identifiers}
 
 \begin{itemize}
 \tightlist
@@ -500,16 +575,15 @@ following a voting procedure in the Trial Management Group. \\
   Clinical Trials Registry - India identifier: CTRI/2024/07/071336
 \end{itemize}
 
-\hypertarget{contributors}{%
-\subsection{Contributors}\label{contributors}}
+\subsection{Contributors}\label{contributors}
 
 The following have contributed to the design and implementation of the
 trial:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2000}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2000}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Name and ORCID
@@ -531,7 +605,7 @@ Girish D Bakhshi
 & Grant Govt. Medical College \& Sir J. J. Group of Hospitals, Mumbai,
 India & TMG member \\
 Debojit Basak
-\href{https://orcid.org/90000-0002-8378-9689}{\includegraphics[width=0.16667in,height=0.16667in]{ORCIDiD_icon16x16.png}}
+\href{https://orcid.org/0000-0002-8378-9689}{\includegraphics[width=0.16667in,height=0.16667in]{ORCIDiD_icon16x16.png}}
 & Institute of Post Graduate Medical Education \& Research and Seth
 Sukhlal Karnani Memorial Hospital, Kolkata, India & TMG member \\
 Abhinav Bassi
@@ -594,12 +668,11 @@ Abbreviations: TMG, Trial Management Group; TT, Trial Team.
 
 \newpage{}
 
-\hypertarget{synopsis}{%
-\section{Synopsis}\label{synopsis}}
+\section{Synopsis}\label{synopsis}
 
 \textbf{Title} Effects of Advanced Trauma Life
 Support\textsuperscript{®} Training Compared to Standard Care on Adult
-Trauma Patient Outcomes: A Cluster Randomised Trial
+Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial
 
 \textbf{Rationale} Trauma is a massive global health issue. Many
 training programmes have been developed to help physicians in the
@@ -622,19 +695,18 @@ India.
 \textbf{Trial Population} Adult trauma patients presenting to the
 emergency department of a participating hospital.
 
-\textbf{Sample Size} 30 clusters and 4320 patients.
+\textbf{Sample Size} 30 clusters and at least 4320 patients.
 
 \textbf{Eligibility Criteria}
 
-\emph{Hospitals} are secondary or tertiary hospitals in India that admit
-or refer/transfer for admission at least 400 patients with trauma per
-year.
+\emph{Clusters} are secondary or tertiary hospitals providing trauma
+care in India that admit or refer/transfer for admission at least 400
+patients with trauma per year. Within each cluster, one or more units of
+physicians providing initial trauma care in the emergency department
+will be trained.
 
-\emph{Clusters} are one or more units of physicians providing initial
-trauma care in the emergency department of tertiary hospitals in India.
-
-\emph{Patients participants} are adult trauma patients who present to
-the emergency department of participating hospitals and are admitted or
+\emph{Participants} are adult trauma patients who present to the
+emergency department of participating hospitals and are admitted or
 transferred for admission.
 
 \textbf{Intervention} The intervention will be ATLS\textsuperscript{®}
@@ -651,18 +723,17 @@ legally authorized representative will be included under a waiver of
 informed consent. Note that consent here refers to consent to data
 collection.
 
-\textbf{Trial Period} February 2025, to October 2029
+\textbf{Trial Period} February 2025 to October 2029
 
 \newpage{}
 
-\hypertarget{background-and-rationale}{%
-\section{Background and rationale}\label{background-and-rationale}}
+\section{Background and rationale}\label{background-and-rationale}
 
-Each year, 4.3 million people die from trauma\textsuperscript{1}. Among
-people aged 10-24 and 25-49 years trauma is the largest cause of
-disability adjusted life years\textsuperscript{2}. Most deaths from
-trauma occur within the first 24-48 hours\textsuperscript{3}. Traumatic
-brain injury and exsanguination are the most common causes of trauma
+Each year, 4.9 million people die from trauma\textsuperscript{1}. Among
+people aged 10-49 years trauma is the largest cause of disability
+adjusted life years\textsuperscript{2}. Most deaths from trauma occur
+within the first 24-48 hours\textsuperscript{3}. Traumatic brain injury
+and exsanguination are the most common causes of trauma
 deaths\textsuperscript{4,5}. Most preventable trauma deaths are caused
 by clinical judgement errors during initial resuscitation or early care
 including airway management and haemorrhage control, even though the
@@ -686,58 +757,31 @@ improves knowledge and clinical skills\textsuperscript{14--16}, but
 there are no randomised controlled trials or high-quality
 quasi-experimental trials indicating that ATLS\textsuperscript{®}
 improves patient outcomes\textsuperscript{7,8,10,11,17}. We conducted an
-updated systematic review (unpublished), and estimated a pooled risk
-ratio of 0.76 (95\% CI 0.57; 1.01) from 12 heterogeneous
-(I\textsuperscript{2} 0.9) observational studies on the effect of ATLS
-on mortality (see Figure~\ref{fig-forest-plot})\textsuperscript{18--29}.
+updated systematic review\textsuperscript{18}, and estimated a pooled
+odds ratio of 0.51 (95\% CI 0.37-0.69) from 10 heterogeneous
+(I\textsuperscript{2} 69.1) observational studies on the effect of ATLS
+on mortality\textsuperscript{19--28}.
 
 We conducted a pilot cluster randomised controlled trial
 (ClinicalTrials.gov NCT05417243) between April 2022 and February 2023 as
 part of our network grant to assess the feasibility of a full scale
-trial. We published the protocol for this pilot
-study\textsuperscript{30}. Our pilot study enrolled 376 patients from
-seven hospitals across India (unpublished data) and shows that it is
-feasible to conduct the proposed trial with a high percentage of
+trial\textsuperscript{29,\textbf{GerdinWärnberg2022?}}. Our pilot study
+enrolled 376 patients from seven hospitals across India and shows that
+it is feasible to conduct the proposed trial with a high percentage of
 patients consenting to out of hospital follow up (78\%), low loss to
 follow-up rate (1\%), and low missingness in key variables (mean 0.8\%).
 
 To involve patients and the public in the planning of this trial we
 conducted 19 semi-structured interviews with trauma patients,
-caregivers, and community representatives (unpublished data). The aim of
-these interviews was to understand their views on the trial and
+caregivers, and community representatives\textsuperscript{30}. The aim
+of these interviews was to understand their views on the trial and
 important outcomes and the interviews showed high acceptability of our
 research and emphasised the importance of better recovery before
 discharge and functional outcomes at and after discharge, including
 pain, mobility and self-care activities. The interviews also highlighted
 return to work as an important outcome.
 
-\hypertarget{updated-systematic-review}{%
-\subsection{Updated systematic review}\label{updated-systematic-review}}
-
-We perform systematic literature searches in collaboration with the
-Karolinska Institutet University Library, using Medline, Embase,
-Cochrane, Web of Science, Global Health, CINAHL and Google Scholar
-databases (PROSPERO ID CRD42022373977). The last search was conducted on
-January 22, 2025. We developed the search strategy in Medline (Ovid),
-limited the search to English language articles, searched all databases
-from inception, and screened a total of 10,429 records. We used a random
-effects model to pool estimates across studies.
-
-\begin{figure}
-
-{\centering \includegraphics[width=5.81in,height=\textheight]{forest-plot.png}
-
-}
-
-\caption{\label{fig-forest-plot}Summary of the updated system review.
-The forest plot shows the effect of ATLS on mortality. Abbreviations:
-RR, risk ratio; CI, confidence interval; ATLS, Advanced Trauma Life
-Support; I\textsuperscript{2}, heterogeneity.}
-
-\end{figure}
-
-\hypertarget{benefit-risk-evaluation}{%
-\section{Benefit-risk evaluation}\label{benefit-risk-evaluation}}
+\section{Benefit-risk evaluation}\label{benefit-risk-evaluation}
 
 The direct risks includes integrity violations and data leakage. We will
 mitigate these risks by employing rigorous data collection and storage
@@ -759,15 +803,13 @@ the participants in the intervention phase, if ATLS\textsuperscript{®}
 is found to improve patient outcomes, and by the potential for improved
 care for the trauma patient population.
 
-\hypertarget{trial-aim}{%
-\section{Trial aim}\label{trial-aim}}
+\section{Trial aim}\label{trial-aim}
 
 To compare the effects of ATLS\textsuperscript{®} training with standard
 care on outcomes in adult trauma patients.
 
-\hypertarget{regulatory-approvals-and-trial-registration}{%
 \section{Regulatory approvals and trial
-registration}\label{regulatory-approvals-and-trial-registration}}
+registration}\label{regulatory-approvals-and-trial-registration}
 
 We will submit this trial to the Health Ministry Screening Committee at
 the Indian Council for Medical Research for their approval. We will
@@ -776,12 +818,9 @@ Institute for Global Health in India and the Swedish Ethical Review
 Authority. We will register this trial with Clinical Trials
 Registry-India and ClinicalTrials.gov.
 
-\hypertarget{trial-design-and-procedures}{%
-\section{Trial design and
-procedures}\label{trial-design-and-procedures}}
+\section{Trial design and procedures}\label{trial-design-and-procedures}
 
-\hypertarget{overall-trial-design}{%
-\subsection{Overall trial design}\label{overall-trial-design}}
+\subsection{Overall trial design}\label{overall-trial-design}
 
 We will conduct a batched stepped-wedge cluster randomised controlled
 trial (see Figure~\ref{fig-trial-design}). The stepped-wedge trial is a
@@ -821,8 +860,7 @@ staircase design will include a random subset of patients presenting
 during the three months preceding the transition phase, and the three
 months following the transition phase.
 
-\hypertarget{design-justification}{%
-\subsection{Design justification}\label{design-justification}}
+\subsection{Design justification}\label{design-justification}
 
 We use the cluster randomised design because the intervention cannot be
 randomised at the individual patient level. We use the stepped-wedge
@@ -843,7 +881,9 @@ collecting these for all patient participants would be unfeasible.
 
 \begin{figure}
 
-{\centering \includegraphics[width=5.9in,height=\textheight]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.0-staircase-months.png}
+\centering{
+
+\includegraphics[width=5.9in,height=\textheight,keepaspectratio]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.0-staircase-months.png}
 
 }
 
@@ -853,11 +893,13 @@ be sequentially allocated to a batch based on when they enter the study.
 Within each batch clusters will then be randomised to an intervention
 implementation sequence.}
 
-\end{figure}
+\end{figure}%
 
 \begin{figure}
 
-{\centering \includegraphics[width=5.9in,height=\textheight]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.3-staircase-months.png}
+\centering{
+
+\includegraphics[width=5.9in,height=\textheight,keepaspectratio]{trial-design-figure-30-clusters-5-sequences-6-batches-6-batches-overlap-4-min-standard-care-4-min-intervention-1-transition-months-0-transition-overlap.3-staircase-months.png}
 
 }
 
@@ -866,16 +908,14 @@ design includes a random subset of patients presenting during the three
 months preceding the transition phase, and the three months following
 the transition phase.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{eligibility-criteria}{%
-\subsection{Eligibility criteria}\label{eligibility-criteria}}
+\subsection{Eligibility criteria}\label{eligibility-criteria}
 
 Our trial has eligibility criteria on the cluster and patient
 participant level.
 
-\hypertarget{cluster-selection}{%
-\subsubsection{Cluster selection}\label{cluster-selection}}
+\subsubsection{Cluster selection}\label{cluster-selection}
 
 Clusters will be secondary or tertiary hospitals providing trauma care
 in India. This will be the unit of randomisation. Within each cluster,
@@ -884,8 +924,7 @@ emergency department will be trained. These units already exist in the
 hospitals and rotate through the emergency department on specific days
 of the week.
 
-\hypertarget{inclusion-criteria}{%
-\paragraph{Inclusion criteria}\label{inclusion-criteria}}
+\paragraph{Inclusion criteria}\label{inclusion-criteria}
 
 \textbf{Clusters} must meet the following criteria:
 
@@ -917,8 +956,7 @@ following criteria:
   in a formalised trauma life support training programme.
 \end{itemize}
 
-\hypertarget{exclusion-criteria}{%
-\paragraph{Exclusion criteria}\label{exclusion-criteria}}
+\paragraph{Exclusion criteria}\label{exclusion-criteria}
 
 \textbf{Hospitals} are excluded if they meet any of the following
 criteria:
@@ -940,43 +978,41 @@ criteria:
   period.
 \end{itemize}
 
-\hypertarget{screening}{%
-\paragraph{Screening}\label{screening}}
+\paragraph{Screening}\label{screening}
 
 The trial management group will compile a list of hospitals with
 potentially eligible clusters and reach out to them to assess their
 interest in participating in the trial. We will then screen hospitals
 for eligibility based on the criteria above, using a two-step procedure.
 First, we will approach hospitals to complete an initial hospital
-screening instrument (see Appendix
-Section~\ref{sec-appendix-hospital-screening-instrument}). We will then
-discuss each eligible hospital individually in the Trial Management
+screening instrument (see Appendix Initial hospital screening instrument
+(Section~\ref{sec-appendix-hospital-screening-instrument})). We will
+then discuss each eligible hospital individually in the Trial Management
 Group before deciding whether to include it in the trial. We have this
 discussion because we strive to include hospitals that to a large extent
 conducts primary resuscitation of trauma patients, rather than hospitals
 that primarily receives transferred patients from other hospitals, but
 this is difficult to formalise in the eligibility criteria. We will then
 perform a more in-depth interview with selected hospitals (See Appendix
-Section~\ref{sec-appendix-hospital-screening-interview-instrument}). To
-avoid excluding hospitals we will also discuss plans to implement other
-potentially competing interventions during the trial period, and take
-these plans into account when assigning clusters to batches. For
+In-depth hospital screening interview instrument
+(Section~\ref{sec-appendix-hospital-screening-interview-instrument})).
+To avoid excluding hospitals we will also discuss plans to implement
+other potentially competing interventions during the trial period, and
+take these plans into account when assigning clusters to batches. For
 example, we are aware of the ongoing implementation of the National
 Emergency Life Support (NELS) programme in India, and will therefore not
 include hospitals that plan to implement this programme during the trial
 period. All screening steps and decisions will be logged using
 REDCap\textsuperscript{35,36}.
 
-\hypertarget{patient-participant-selection}{%
 \subsubsection{Patient participant
-selection}\label{patient-participant-selection}}
+selection}\label{patient-participant-selection}
 
 Patient participants are adult trauma patients who presents to the
 emergency department of participating hospitals and are admitted or
 transferred for admission.
 
-\hypertarget{inclusion-criteria-1}{%
-\paragraph{Inclusion criteria}\label{inclusion-criteria-1}}
+\paragraph{Inclusion criteria}\label{inclusion-criteria-1}
 
 \textbf{Patients participants} must meet the following criteria:
 
@@ -999,8 +1035,7 @@ transferred for admission.
   managed by a participating unit in the emergency department.
 \end{itemize}
 
-\hypertarget{exclusion-criteria-1}{%
-\paragraph{Exclusion criteria}\label{exclusion-criteria-1}}
+\paragraph{Exclusion criteria}\label{exclusion-criteria-1}
 
 \textbf{Patients participants} are excluded if they meet the following
 criteria:
@@ -1014,8 +1049,7 @@ criteria:
   the emergency department.
 \end{itemize}
 
-\hypertarget{screening-1}{%
-\paragraph{Screening}\label{screening-1}}
+\paragraph{Screening}\label{screening-1}
 
 Clinical research coordinators will screen patient participants either
 as they arrive to the emergency department or using emergency department
@@ -1026,8 +1060,7 @@ for out of hospital follow up will be extracted from the emergency
 department registers, and will be securely held only by the clinical
 research coordinators at each sites.
 
-\hypertarget{withdrawal-criteria}{%
-\paragraph{Withdrawal criteria}\label{withdrawal-criteria}}
+\paragraph{Withdrawal criteria}\label{withdrawal-criteria}
 
 Patient participants can choose to withdraw their consent for collection
 of non-routinely recorded data at any time before the final analysis. If
@@ -1040,8 +1073,7 @@ removal of data from the trial will not affect their care in any way. If
 the patient participant withdraws consent, follow-up of this participant
 will be performed according to the participating hospitals routine.
 
-\hypertarget{procedures}{%
-\subsection{Procedures}\label{procedures}}
+\subsection{Procedures}\label{procedures}
 
 Table~\ref{tbl-procedures-baseline} shows an overview of trial
 procedures before and during patient admission, and
@@ -1055,62 +1087,76 @@ and return to work. If patient participants are discharged before any of
 these follow-up time points, clinical research coordinators will follow
 up patients by phone.
 
-\hypertarget{tbl-procedures-baseline}{}
-\setlength{\LTpost}{0mm}
-\begin{longtable}{lllll}
-\caption{\label{tbl-procedures-baseline}Overview of trial procedures before and during patient admission }\tabularnewline
+\begin{table}
 
+\caption{\label{tbl-procedures-baseline}Overview of trial procedures
+before and during patient admission}
+
+\centering{
+
+\fontsize{12.0pt}{14.0pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lllll}
 \toprule
 Procedure & Screening & Consenting & Initial assessment & In-hospital care \\ 
 \midrule\addlinespace[2.5pt]
-Eligibility criteria & √ &  &  &  \\ 
-Study information\textsuperscript{\textit{1}} &  & √ &  &  \\ 
-Informed consent\textsuperscript{\textit{1}} &  & √ &  &  \\ 
-Baseline data collection &  &  & √ &  \\ 
-Prehospital data collection &  &  & √ &  \\ 
-ATLS adherence\textsuperscript{\textit{2}} &  &  & √ &  \\ 
-ED data collection\textsuperscript{\textit{3}} &  &  & √ &  \\ 
-Hospital data collection &  &  &  & √ \\ 
-Surgery data collection &  &  &  & √ \\ 
-Imaging data collection &  &  &  & √ \\ 
-Transfusion data collection &  &  &  & √ \\ 
-Injury data collection &  &  &  & √ \\ 
-Mortality data collection &  &  &  & √ \\ 
-Assessment of safety events &  &  &  & √ \\ 
+Eligibility criteria & \ensuremath{\sqrt{}} &  &  &  \\ 
+Study information\textsuperscript{\textit{1}} &  & \ensuremath{\sqrt{}} &  &  \\ 
+Informed consent\textsuperscript{\textit{1}} &  & \ensuremath{\sqrt{}} &  &  \\ 
+Baseline data collection &  &  & \ensuremath{\sqrt{}} &  \\ 
+Prehospital data collection &  &  & \ensuremath{\sqrt{}} &  \\ 
+ATLS adherence\textsuperscript{\textit{2}} &  &  & \ensuremath{\sqrt{}} &  \\ 
+ED data collection\textsuperscript{\textit{3}} &  &  & \ensuremath{\sqrt{}} &  \\ 
+Hospital data collection &  &  &  & \ensuremath{\sqrt{}} \\ 
+Surgery data collection &  &  &  & \ensuremath{\sqrt{}} \\ 
+Imaging data collection &  &  &  & \ensuremath{\sqrt{}} \\ 
+Transfusion data collection &  &  &  & \ensuremath{\sqrt{}} \\ 
+Injury data collection &  &  &  & \ensuremath{\sqrt{}} \\ 
+Mortality data collection &  &  &  & \ensuremath{\sqrt{}} \\ 
+Assessment of safety events &  &  &  & \ensuremath{\sqrt{}} \\ 
 \bottomrule
-\end{longtable}
+\end{tabular*}
 \begin{minipage}{\linewidth}
 \textsuperscript{\textit{1}}Clinical research coordinators will inform patient participants about the study, including that they are free to withdraw their data from the study at any time, and approach them for informed consent for collection of non-routinely recorded data in person or telephonically.\\
 \textsuperscript{\textit{2}}ATLS adherence will be assessed by observing the care provided to a random sample of patient participants.\\
 \textsuperscript{\textit{3}}Emergency Department\\
 \end{minipage}
 
-\hypertarget{tbl-procedures-followup}{}
-\setlength{\LTpost}{0mm}
-\begin{longtable}{llll}
-\caption{\label{tbl-procedures-followup}Overview of trial follow-up procedures }\tabularnewline
+}
 
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-procedures-followup}Overview of trial follow-up
+procedures}
+
+\centering{
+
+\fontsize{12.0pt}{14.0pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llll}
 \toprule
 Procedure & Within 7 days of discharge & 30 days & 90 days \\ 
 \midrule\addlinespace[2.5pt]
-Mortality data collection\textsuperscript{\textit{1}} & √ & √ & √ \\ 
-EQ-5D/WHODAS & √ & √ & √ \\ 
-Return to work &  & √ & √ \\ 
-End of study &  &  & √ \\ 
+Mortality data collection\textsuperscript{\textit{1}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
+EQ-5D/WHODAS & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
+Return to work &  & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
+End of study &  &  & \ensuremath{\sqrt{}} \\ 
 \bottomrule
-\end{longtable}
+\end{tabular*}
 \begin{minipage}{\linewidth}
 \textsuperscript{\textit{1}}Will be ascertained daily from when the patient participant arrive to hospital until they leave the hospital, are discharged or die.\\
 \end{minipage}
 
-\hypertarget{biological-sampling-procedures}{%
+}
+
+\end{table}%
+
 \subsection{Biological sampling
-procedures}\label{biological-sampling-procedures}}
+procedures}\label{biological-sampling-procedures}
 
 This trial does not include biological sampling.
 
-\hypertarget{end-of-trial}{%
-\subsection{End of trial}\label{end-of-trial}}
+\subsection{End of trial}\label{end-of-trial}
 
 The trial ends when the last patient participant has completed the last
 follow-up. The trial may be prematurely terminated if it this is
@@ -1122,9 +1168,8 @@ treatment and follow-up. Decisions on premature termination are taken by
 the joint Trial Steering and Data Monitoring Committee and Trial
 Management Group.
 
-\hypertarget{intervention-and-control-treatment}{%
 \subsection{Intervention and control
-treatment}\label{intervention-and-control-treatment}}
+treatment}\label{intervention-and-control-treatment}
 
 The intervention will be ATLS\textsuperscript{®} training. The control
 will be standard care, meaning no formal trauma life support training.
@@ -1171,21 +1216,18 @@ other settings where a trauma team approach is adopted, nurses and other
 healthcare professionals are only involved to a limited extent during
 the initial management.
 
-\hypertarget{description-of-investigational-medicinal-products}{%
 \subsubsection{Description of investigational medicinal
-products}\label{description-of-investigational-medicinal-products}}
+products}\label{description-of-investigational-medicinal-products}
 
 This trial does not include any investigational medicinal products.
 
-\hypertarget{auxiliary-medicinal-products}{%
 \subsubsection{Auxiliary medicinal
-products}\label{auxiliary-medicinal-products}}
+products}\label{auxiliary-medicinal-products}
 
 This trial does not include any auxiliary medicinal products.
 
-\hypertarget{concomitant-use-of-other-medications-or-treatments}{%
 \subsubsection{Concomitant use of other medications or
-treatments}\label{concomitant-use-of-other-medications-or-treatments}}
+treatments}\label{concomitant-use-of-other-medications-or-treatments}
 
 Other than implementing another formalised trauma life support training
 programme or other major interventions to change the care of trauma
@@ -1193,15 +1235,13 @@ patients as specified in the exclusion criteria, concomitant use of
 other medications and treatments may be provided at the discretion of
 the investigators and will not be considered an exclusion criterion.
 
-\hypertarget{randomisation}{%
-\subsection{Randomisation}\label{randomisation}}
+\subsection{Randomisation}\label{randomisation}
 
 We will assign clusters to batches as they are found to be eligible and
 receive ethical approval. Batches will include clusters from hospitals
 in different regions to optimize trial logistics. We will randomise the
 clusters alloted to each batch to the different intervention
-implementation sequences within that batch\footnote{Randomisation will
-  be done using bespoke code from previous trials.}. We will balance the
+implementation sequences within that batch. We will balance the
 randomisation within each batch on cluster size, defined as monthly
 volume of eligible patient participants, using covariate constrained
 randomisation. The cluster sizes are expected to vary between 12 and 20
@@ -1210,46 +1250,44 @@ the randomisation order for as long as it is logistically possible,
 considering that arrangements for sending physicians to
 ATLS\textsuperscript{®} training need to be made in advance.
 
-\hypertarget{blinding}{%
-\subsection{Blinding}\label{blinding}}
+\subsection{Blinding}\label{blinding}
 
 It is not possible to blind a stepped-wedge trial, because all clusters
 receive the intervention.
 
-\hypertarget{treatment-after-trial-end}{%
-\subsection{Treatment after trial end}\label{treatment-after-trial-end}}
+\subsection{Treatment after trial end}\label{treatment-after-trial-end}
 
 When the trial ends, the intervention will have been implemented in all
 clusters.
 
-\hypertarget{outcomes}{%
-\subsection{Outcomes}\label{outcomes}}
+\subsection{Outcomes}\label{outcomes}
 
-\hypertarget{primary-outcome}{%
-\subsubsection{Primary outcome}\label{primary-outcome}}
+\subsubsection{Primary outcome}\label{primary-outcome}
 
 The primary outcome will be in-hospital mortality within 30 days of
-arrival at the emergency department. Clinical research coordinators will
-extract information on death from patient hospital records. If the
+arrival at the emergency department. We define this outcome as any death
+occurring in the hospital during the initial admission, up to 30 days
+post arrival at the emergency department. Clinical research coordinators
+will extract information on death from patient hospital records. If the
 patient has been transferred to another hospital, the clinical research
 coordinators will collect data on this outcome by calling the patient or
 a patient representative, or by contacting the hospital to which the
 patient was transferred. Data on this outcome will be collected
 continuously during the trial.
 
-\hypertarget{secondary-outcomes}{%
-\subsubsection{Secondary outcomes}\label{secondary-outcomes}}
+\subsubsection{Secondary outcomes}\label{secondary-outcomes}
 
-\hypertarget{collected-using-the-main-stepped-wedge-design}{%
 \paragraph{Collected using the main stepped-wedge
-design}\label{collected-using-the-main-stepped-wedge-design}}
+design}\label{collected-using-the-main-stepped-wedge-design}
 
 \begin{itemize}
 \tightlist
 \item
   All cause mortality within 24 hours, 30 days and three months of
-  arrival at the emergency department. Data on this outcome will be
-  collected in the same way as for the primary outcome.
+  arrival at the emergency department. In contrast to the primary
+  outcome, all-cause mortality includes all deaths regardless of
+  setting. Data on this outcome will be collected in the same way as for
+  the primary outcome.
 \item
   Length of emergency department stay. Data on this outcome will be
   collected from patient hospital records.
@@ -1269,9 +1307,8 @@ design}\label{collected-using-the-main-stepped-wedge-design}}
   been discharged.
 \end{itemize}
 
-\hypertarget{collected-using-the-nested-staircase-design}{%
 \paragraph{Collected using the nested staircase
-design}\label{collected-using-the-nested-staircase-design}}
+design}\label{collected-using-the-nested-staircase-design}
 
 \begin{itemize}
 \tightlist
@@ -1290,28 +1327,27 @@ design}\label{collected-using-the-nested-staircase-design}}
 \item
   Quality of life within seven days of discharge, and at 30 days and
   three months of arrival at the emergency department, measured by the
-  official and validated translations of the EQ5D3L. Data on this
-  outcome will be collected in person if the patient is still in
-  hospital, or by phone if the patient has been discharged. We will
-  collect this data using a nested staircase design.
+  official and validated translations of the EQ5D5L. This outcome is
+  only relevant to alive patients. Data on this outcome will be
+  collected in person if the patient is still in hospital, or by phone
+  if the patient has been discharged. We will collect this data using a
+  nested staircase design.
 \item
   Disability within seven days of discharge, and at 30 days and three
   months of arrival at the emergency department, assessed using the WHO
-  Disability Assessment Schedule 2.0 (WHODAS 2.0). Data on this outcome
-  will be collected in person if the patient is still in hospital, or by
-  phone if the patient has been discharged. This data will also be
-  collected using a nested staircase design.
+  Disability Assessment Schedule 2.0 (WHODAS 2.0). This outcome is only
+  relevant to alive patients. Data on this outcome will be collected in
+  person if the patient is still in hospital, or by phone if the patient
+  has been discharged. This data will also be collected using a nested
+  staircase design.
 \end{itemize}
 
-\hypertarget{handling-of-adverse-and-safety-events}{%
 \subsection{Handling of adverse and safety
-events}\label{handling-of-adverse-and-safety-events}}
+events}\label{handling-of-adverse-and-safety-events}
 
-\hypertarget{definitions}{%
-\subsubsection{Definitions}\label{definitions}}
+\subsubsection{Definitions}\label{definitions}
 
-\hypertarget{adverse-event}{%
-\paragraph{Adverse event}\label{adverse-event}}
+\paragraph{Adverse event}\label{adverse-event}
 
 Any untoward medical occurrence in a clinical trial subject and, which
 does not necessarily have a causal relationship with the treatment, can
@@ -1319,8 +1355,7 @@ be an unfavorable and unintended sign (including an abnormal laboratory
 discovery), symptom or disease temporally associated with the inclusion
 in the trial, whether or not related to the trial.
 
-\hypertarget{serious-adverse-event}{%
-\paragraph{Serious adverse event}\label{serious-adverse-event}}
+\paragraph{Serious adverse event}\label{serious-adverse-event}
 
 Any untoward medical occurrence in a trial participant that:
 
@@ -1339,15 +1374,13 @@ Any untoward medical occurrence in a trial participant that:
   results in a congenital anomaly/malformation
 \end{itemize}
 
-\hypertarget{safety-event}{%
-\paragraph{Safety event}\label{safety-event}}
+\paragraph{Safety event}\label{safety-event}
 
 Any unexpected serious complication that might occur as a consequence of
 the trial and that are not part of the natural history of trauma.
 
-\hypertarget{reporting-and-assessment-of-adverse-and-safety-events}{%
 \subsubsection{Reporting and assessment of adverse and safety
-events}\label{reporting-and-assessment-of-adverse-and-safety-events}}
+events}\label{reporting-and-assessment-of-adverse-and-safety-events}
 
 In alignment with other current trials including critically ill
 patients\textsuperscript{38}, we will not collect adverse events or
@@ -1398,18 +1431,15 @@ it being reported. Events that are considered probably related will be
 reported immediately to the joint Trial Steering and Data Monitoring
 Committee.
 
-\hypertarget{follow-up-of-safety-events}{%
 \subsubsection{Follow up of safety
-events}\label{follow-up-of-safety-events}}
+events}\label{follow-up-of-safety-events}
 
 All safety events should be followed up by the local investigator until
 they are fully evaluated.
 
-\hypertarget{statistics}{%
-\subsection{Statistics}\label{statistics}}
+\subsection{Statistics}\label{statistics}
 
-\hypertarget{general-principles}{%
-\subsubsection{General principles}\label{general-principles}}
+\subsubsection{General principles}\label{general-principles}
 
 The primary analysis set will include all observations within clusters
 with available data and irrespective of the receipt of the intervention.
@@ -1437,8 +1467,7 @@ and older)\textsuperscript{39}; sex; and the clinical cohorts blunt
 multisytem trauma, penetrating trauma, and severe isolated traumatic
 brain injury.
 
-\hypertarget{analysis-models}{%
-\subsubsection{Analysis models}\label{analysis-models}}
+\subsubsection{Analysis models}\label{analysis-models}
 
 There are a number of requirements for the analysis model. Firstly, all
 analysis will consider the clustered nature of the design. Secondly, as
@@ -1482,9 +1511,8 @@ and prevalence outcomes similar model-based approaches will be used but
 with appropriate links and distribution functions, using transformations
 where appropriate.
 
-\hypertarget{additional-sensitivity-analyses}{%
 \subsubsection{Additional sensitivity
-analyses}\label{additional-sensitivity-analyses}}
+analyses}\label{additional-sensitivity-analyses}
 
 To additionally explore if the fixed period effect is both parsimonious
 and adequate to represent the extent of any underlying secular trend, we
@@ -1507,9 +1535,8 @@ exposure time. A fully adjusted covariate analysis will additionally
 adjust for a set of pre-specified individual-level covariates of known
 prognostic importance.
 
-\hypertarget{estimation-and-reporting-of-within-cluster-correlations}{%
 \subsubsection{Estimation and reporting of within cluster
-correlations}\label{estimation-and-reporting-of-within-cluster-correlations}}
+correlations}\label{estimation-and-reporting-of-within-cluster-correlations}
 
 We will report time adjusted within-cluster correlations for all
 outcomes with 95\% confidence intervals. We will report correlations
@@ -1521,13 +1548,10 @@ components. For all outcomes we will report correlations on the latent
 scale (i.e.~proportions scale for binary outcomes) as is appropriate to
 inform future sample size calculations.
 
-\hypertarget{sample-size-calculations}{%
-\subsubsection{Sample size
-calculations}\label{sample-size-calculations}}
+\subsubsection{Sample size calculations}\label{sample-size-calculations}
 
-\hypertarget{main-stepped-wedge-design-and-primary-outcome}{%
 \paragraph{Main stepped wedge design and primary
-outcome}\label{main-stepped-wedge-design-and-primary-outcome}}
+outcome}\label{main-stepped-wedge-design-and-primary-outcome}
 
 With 30 clusters across 6 batches and a total sample size of 4320 our
 study has \textasciitilde90\% power across different combinations of
@@ -1535,23 +1559,25 @@ cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to
 detect a reduction in the primary outcome of in-hospital mortality
 within 30 days from 20\% under standard care to 15\% after
 ATLS\textsuperscript{®} training (see
-Figure~\ref{fig-power-curves})\textsuperscript{@ 41}. This effect is a
-conservative estimate and the reduction equals a risk ratio of 0.75,
-which would be clinically important while also being consistent with our
-pilot study and updated systematic review. We allowed for the clustered
-design, incorporated the one month transition period, and assumed: a
-discrete time decay correlation structure, an ICC of 0.02 (but
-considered sensitivity across the range 0.01-0.05), and a CAC of 0.9
-(but considered sensitivity across the range 0.8-1.0), based on our
-pilot study and current guidance\textsuperscript{42--45}. We included
-the CAC to allow for variation in clustering over time. We assume that
-each cluster will contribute approximately 12 observations per month to
-the analysis, but allowed for substantial variation in cluster sizes,
-based on our previous work.
+Figure~\ref{fig-power-curves})\textsuperscript{41}. This 5\% absolute
+reduction in mortality is a clinically meaningful and conservative
+estimate based on our updated systematic review and pilot
+study\textsuperscript{18,29}. We allowed for the clustered design,
+incorporated the one month transition period, and assumed: a discrete
+time decay correlation structure, an ICC of 0.02 (but considered
+sensitivity across the range 0.01-0.05), and a CAC of 0.9 (but
+considered sensitivity across the range 0.8-1.0), based on our pilot
+study and current guidance\textsuperscript{42--45}. We included the CAC
+to allow for variation in clustering over time. We assume that each
+cluster will contribute approximately 12 observations per month to the
+analysis, but allowed for substantial variation in cluster sizes, based
+on our previous work.
 
 \begin{figure}
 
-{\centering \includegraphics[width=7.08in,height=\textheight]{./combined-power-curves.png}
+\centering{
+
+\includegraphics[width=7.08in,height=\textheight,keepaspectratio]{./combined-power-curves.png}
 
 }
 
@@ -1566,11 +1592,10 @@ this scenario, we would need to increase the sample size per month to
 around 30 observations to achieve 90\% powere under most combinations of
 CAC and ICC.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{nested-staircase-design-and-secondary-outcomes}{%
 \paragraph{Nested staircase design and secondary
-outcomes}\label{nested-staircase-design-and-secondary-outcomes}}
+outcomes}\label{nested-staircase-design-and-secondary-outcomes}
 
 The secondary outcomes that will be measured using the nested staircase
 design are adherence to ATLS\textsuperscript{®} principles during
@@ -1585,21 +1610,21 @@ disability, these effects correspond to standardised effect sizes,
 expressed as Cohen's d, of 0.5. With 30 clusters in total, six per
 sequence, for a discrete time decay correlation structure, with ICCs of
 0.01 to 0.15 and a CAC of 0.8, there is \textgreater80\% power to detect
-an these effects by including four patients in each cluster in each
-period. Accounting for loss to follow-up, we will include at least six
-patients per cluster per month. These patients will be a random subset
-of patients included during the staircase months. The random subset will
-be selected using simple random sampling on the shift level, meaning
-that the timing of the clinical research coordinator's shift will be
-randomised to cover approximately eight hours during the morning,
-afternoon, or night shift. Adherence to ATLS\textsuperscript{®}
-principles, quality of life, and disability will be measured in all
-patients included during these shifts. In each hospital, the number of
-shifts that will be randomised will be determined by the volume of
-patients included during the months preceding the staircase months.
+these effects by including four patients in each cluster in each period.
+Accounting for loss to follow-up, we will include at least six patients
+per cluster per month. These patients will be a random subset of
+patients included in the primary outcome data collection during the
+staircase months. The random subset will be selected using simple random
+sampling on the shift level, meaning that the timing of the clinical
+research coordinator's shift will be randomised to cover approximately
+eight hours during the morning, afternoon, or night shift. Adherence to
+ATLS\textsuperscript{®} principles, quality of life, and disability will
+be measured in all patients included during these shifts. In each
+hospital, the number of shifts that will be randomised will be
+determined by the volume of patients included during the months
+preceding the staircase months.
 
-\hypertarget{interim-analysis}{%
-\subsubsection{Interim analysis}\label{interim-analysis}}
+\subsubsection{Interim analysis}\label{interim-analysis}
 
 There will be one interim analysis after half of the batches have
 completed the trial. The interim analysis will be assessed by the joint
@@ -1619,9 +1644,8 @@ interim analysis will be to:
   control.
 \end{itemize}
 
-\hypertarget{quality-control-and-quality-assurance}{%
 \subsection{Quality control and quality
-assurance}\label{quality-control-and-quality-assurance}}
+assurance}\label{quality-control-and-quality-assurance}
 
 The George Institute for Global Health - India will ensure proper
 conduct of the trial through quality control measures including on-site
@@ -1635,9 +1659,8 @@ investigators, and trial site staff, before the trial, with continuous
 documentation in the site master file. All documentation will be stored
 securely and retained according to regulatory requirements.
 
-\hypertarget{quality-assurance-and-oversight}{%
 \subsection{Quality assurance and
-oversight}\label{quality-assurance-and-oversight}}
+oversight}\label{quality-assurance-and-oversight}
 
 The Trial Management Group and Trial Team, comprising key project
 leaders and managers, will play a pivotal role in ensuring the highest
@@ -1667,8 +1690,7 @@ ensure that the trial is conducted with the utmost rigor, adhering to
 the highest standards of quality assurance and effective sponsor
 oversight.
 
-\hypertarget{monitoring}{%
-\subsection{Monitoring}\label{monitoring}}
+\subsection{Monitoring}\label{monitoring}
 
 We will implement a multi-tiered monitoring strategy, including
 centralized data consistency checks, statistical monitoring, and
@@ -1687,9 +1709,8 @@ monitor baseline characteristics, opt-in consent rates and differential
 opt-in consent rates across trial arms, follow-up rates, CRF return and
 completeness rates, and safety data.
 
-\hypertarget{deviations-serious-breaches-and-other-reporting-obligations}{%
 \section{Deviations, serious breaches and other reporting
-obligations}\label{deviations-serious-breaches-and-other-reporting-obligations}}
+obligations}\label{deviations-serious-breaches-and-other-reporting-obligations}
 
 The responsible investigator shall, without delay, report to the sponsor
 any serious breaches and deviations from the trial protocol, ICH-GCP and
@@ -1703,8 +1724,7 @@ scientific value, are documented in the trial documentation of the
 principal investigator and the sponsor and appropriate measures shall be
 taken. The deviations must be recorded in the clinical trial report.
 
-\hypertarget{audits-and-inspections}{%
-\section{Audits and inspections}\label{audits-and-inspections}}
+\section{Audits and inspections}\label{audits-and-inspections}
 
 Authorized representatives for the sponsor and Competent Authorities
 (CA) may carry out audits or inspections at the trial site, including
@@ -1715,12 +1735,10 @@ trial-related activities and documents, to determine whether these
 activities were performed, registered, analyzed and reported correctly
 according to protocol, ICH- GCP and applicable regulations.
 
-\hypertarget{ethics}{%
-\section{Ethics}\label{ethics}}
+\section{Ethics}\label{ethics}
 
-\hypertarget{compliance-to-the-protocol-ich-gcp-and-regulations}{%
 \subsection{Compliance to the protocol, ICH-GCP and
-regulations}\label{compliance-to-the-protocol-ich-gcp-and-regulations}}
+regulations}\label{compliance-to-the-protocol-ich-gcp-and-regulations}
 
 The trial will be performed in compliance with this clinical trial
 protocol, the Declaration of Helsinki, ICH-GCP (Good Clinical Practice),
@@ -1728,18 +1746,16 @@ and current national regulations governing this clinical trial. This is
 to ensure the safety and integrity of the trial subjects as well as the
 quality of the data collected.
 
-\hypertarget{ethical-review-of-the-trial}{%
 \subsection{Ethical review of the
-trial}\label{ethical-review-of-the-trial}}
+trial}\label{ethical-review-of-the-trial}
 
 The final protocol will be submitted for ethical review at all
 participating hospitals, where possible, as well as the The George
 Institute for Global Health in India and Swedish Ethical Review
 Atuhortiy.
 
-\hypertarget{procedure-for-obtaining-consent}{%
 \subsection{Procedure for obtaining
-consent}\label{procedure-for-obtaining-consent}}
+consent}\label{procedure-for-obtaining-consent}
 
 In this trial, consent refers to data collection, as patients cannot opt
 out of the intervention. This is because the intervention is implemented
@@ -1765,7 +1781,8 @@ included in this trial under the following modes of consent:
   representatives. Patients, or their legally authorized
   representatives, will be provided with written information about the
   study upon their arrival at the hospital. The variables assumed to be
-  routinely recorded are listed in Section~\ref{sec-variables}.
+  routinely recorded are listed in Variables
+  (Section~\ref{sec-variables}).
 \item
   Opt in consent and assent for \textbf{non-routinely recorded data}.
   Informed consent for non-routinely recorded data will be actively
@@ -1789,8 +1806,7 @@ included in this trial under the following modes of consent:
   and asked for consent for collection of non-routinely recorded data.
 \end{itemize}
 
-\hypertarget{data-protection}{%
-\subsection{Data protection}\label{data-protection}}
+\subsection{Data protection}\label{data-protection}
 
 All data will be handled according to the Indian Council of Medical
 Research's guidelines and standard operating procedures of the George
@@ -1817,8 +1833,7 @@ will inform them how:
   including the patient participant's medical history.
 \end{itemize}
 
-\hypertarget{insurances}{%
-\section{Insurances}\label{insurances}}
+\section{Insurances}\label{insurances}
 
 The George Institute for Global Health, India is responsible for
 ensuring that any insurance cover required to cover the set-up,
@@ -1835,28 +1850,26 @@ death will be provided by the George Institute for Global Health, India
 according to the regulations outlined in rules 39, 40 and 42 of the New
 Drugs and Clinical Rules (2019). x
 
-\hypertarget{substantial-changes-to-the-trial}{%
 \section{Substantial changes to the
-trial}\label{substantial-changes-to-the-trial}}
+trial}\label{substantial-changes-to-the-trial}
 
 Substantial changes to the signed clinical trial protocol are only
 possible through approved protocol amendments and by agreement between
 the sponsor and the principal investigator.
 
-\hypertarget{trial-organisation}{%
-\section{Trial organisation}\label{trial-organisation}}
+\section{Trial organisation}\label{trial-organisation}
 
 \begin{figure}
 
-{\centering 
+\centering{
 
-\includegraphics[width=0.6\textwidth,height=\textheight]{../shared-assets/trial-organisation-overview-figure.png}
+\includegraphics[width=0.6\linewidth,height=\textheight,keepaspectratio]{../shared-assets/trial-organisation-overview-figure.png}
 
 }
 
 \caption{\label{fig-organisation-overview}Trial organisation overview.}
 
-\end{figure}
+\end{figure}%
 
 Trial management and oversight is governed by three trial committees and
 groups: the Trial Team (TT), the Trial Management Group (TMG), the joint
@@ -1865,8 +1878,7 @@ their relationships are briefly described in
 Figure~\ref{fig-organisation-overview}. Details about each committee and
 group are available in their respective charter.
 
-\hypertarget{trial-team}{%
-\subsection{Trial team}\label{trial-team}}
+\subsection{Trial team}\label{trial-team}
 
 \textbf{Responsibility}
 
@@ -1888,9 +1900,8 @@ Reports to the TMG and SDMC. Operationalises decisions made by the TMG.
 
 As often as needed, often weekly or bi-weekly.
 
-\hypertarget{trial-management-group-tmg}{%
 \subsection{Trial Management Group
-(TMG)}\label{trial-management-group-tmg}}
+(TMG)}\label{trial-management-group-tmg}
 
 \textbf{Responsibility}
 
@@ -1910,9 +1921,8 @@ decisions made by the SDMC.
 
 Monthly to every six months.
 
-\hypertarget{joint-trial-steering-and-data-monitoring-committee-sdmc}{%
 \subsection{Joint Trial Steering and Data Monitoring Committee
-(SDMC)}\label{joint-trial-steering-and-data-monitoring-committee-sdmc}}
+(SDMC)}\label{joint-trial-steering-and-data-monitoring-committee-sdmc}
 
 \textbf{Responsibility}
 
@@ -1941,8 +1951,7 @@ Receives reports from the trial team and TMG.
 
 After the completion of each batch, but may be more frequent if needed.
 
-\hypertarget{funding}{%
-\section{Funding}\label{funding}}
+\section{Funding}\label{funding}
 
 \begin{itemize}
 \tightlist
@@ -1952,11 +1961,9 @@ After the completion of each batch, but may be more frequent if needed.
   Laerdal Foundation (reg. no. 2023-0297)
 \end{itemize}
 
-\hypertarget{special-considerations}{%
-\section{Special considerations}\label{special-considerations}}
+\section{Special considerations}\label{special-considerations}
 
-\hypertarget{funding-1}{%
-\subsection{Funding}\label{funding-1}}
+\subsection{Funding}\label{funding-1}
 
 This trial is not yet fully funded. The Trial Management Group has
 decided to proceed with the trial with the expectation that additional
@@ -1971,18 +1978,8 @@ participants who receive the intervention. The benefit-risk ratio is
 therefore considered to be favourable, even in the case of an
 underpowered trial.
 
-\hypertarget{potential-amendments}{%
-\subsection{Potential amendments}\label{potential-amendments}}
-
-There are ongoing discussions about re-framing the trial as a hybrid
-effectiveness-implementation trial and include a cost-effectiveness
-analysis. This would involve adding additional data collection to assess
-the implementation and costs of the intervention. This would involve
-additional funding and amended ethical approvals.
-
-\hypertarget{notification-of-trial-completion-reporting-and-publication}{%
 \section{Notification of trial completion, reporting, and
-publication}\label{notification-of-trial-completion-reporting-and-publication}}
+publication}\label{notification-of-trial-completion-reporting-and-publication}
 
 The trial will be reported to the Funders within a year of completion.
 The results of the trial will also be prepared as manuscripts for
@@ -2020,15 +2017,15 @@ Before work on a trial manuscript is initiated, a writing group will be
 formed and first and last authors will be designated. This writing group
 will be formed by discussion in the Trial Management Group.
 
-\hypertarget{collection-handling-and-archiving-of-data}{%
 \section{Collection, handling, and archiving of
-data}\label{collection-handling-and-archiving-of-data}}
+data}\label{collection-handling-and-archiving-of-data}
 
 Clinical research coordinators will collect data using a paper based CRF
-(see Appendix Section~\ref{sec-appendix-case-record-form}), which is
-then transferred to an eCRF. All trial data in the CRF must be extracted
-from and be consistent with the relevant source documents. The eCRF will
-be accessible to trial coordinators, data managers, the Investigators,
+(see Appendix Case Record Form
+(Section~\ref{sec-appendix-case-record-form})), which is then
+transferred to an eCRF. All trial data in the CRF must be extracted from
+and be consistent with the relevant source documents. The eCRF will be
+accessible to trial coordinators, data managers, the Investigators,
 Clinical Trial Monitors, Auditors, and Inspectors as required. All data
 will be registered, managed, and stored in a manner that enables correct
 reporting, interpretation, and verification. The complete Trial Master
@@ -2040,11 +2037,10 @@ anonymised data will be released upon project completion. A detailed
 data management plan is available here
 \url{https://doi.org/10.5281/zenodo.7748764}.
 
-\hypertarget{source-data}{%
-\subsection{Source data}\label{source-data}}
+\subsection{Source data}\label{source-data}
 
-The source data for each variable is given in
-Section~\ref{sec-variables}. Whenever medical records are the source
+The source data for each variable is given in Variables
+(Section~\ref{sec-variables}). Whenever medical records are the source
 data, this includes imaging and lab reports. Whenever an interview is
 given as the source, the CRF will constitute the source data, as this is
 where the responses to questions will be recorded. The local
@@ -2063,11 +2059,9 @@ trial documentation will be provided for monitoring and auditing
 purposes. Access will also be granted in the context of regulatory
 inspections.
 
-\hypertarget{sec-variables}{%
-\subsection{Variables}\label{sec-variables}}
+\subsection{Variables}\label{sec-variables}
 
-\hypertarget{screening-2}{%
-\subsubsection{Screening}\label{screening-2}}
+\subsubsection{Screening}\label{screening-2}
 
 \begin{itemize}
 \item
@@ -2181,8 +2175,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{consent}{%
-\subsubsection{Consent}\label{consent}}
+\subsubsection{Consent}\label{consent}
 
 \begin{itemize}
 \item
@@ -2327,8 +2320,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{consent-withdrawn}{%
-\subsubsection{Consent withdrawn}\label{consent-withdrawn}}
+\subsubsection{Consent withdrawn}\label{consent-withdrawn}
 
 \begin{itemize}
 \item
@@ -2362,8 +2354,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{baseline}{%
-\subsubsection{Baseline}\label{baseline}}
+\subsubsection{Baseline}\label{baseline}
 
 \begin{itemize}
 \item
@@ -5793,6 +5784,7 @@ inspections.
 
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
+  \tightlist
   \item
     \begin{enumerate}
     \def\labelenumii{\arabic{enumii}.}
@@ -5979,8 +5971,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{prehospital}{%
-\subsubsection{Prehospital}\label{prehospital}}
+\subsubsection{Prehospital}\label{prehospital}
 
 \begin{itemize}
 \item
@@ -6032,8 +6023,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{atls-adherence}{%
-\subsubsection{ATLS adherence}\label{atls-adherence}}
+\subsubsection{ATLS adherence}\label{atls-adherence}
 
 \begin{itemize}
 \item
@@ -6324,8 +6314,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{emergency-department}{%
-\subsubsection{Emergency department}\label{emergency-department}}
+\subsubsection{Emergency department}\label{emergency-department}
 
 \begin{itemize}
 \item
@@ -6384,8 +6373,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{hospital}{%
-\subsubsection{Hospital}\label{hospital}}
+\subsubsection{Hospital}\label{hospital}
 
 \begin{itemize}
 \item
@@ -6495,8 +6483,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{surgery}{%
-\subsubsection{Surgery}\label{surgery}}
+\subsubsection{Surgery}\label{surgery}
 
 \begin{itemize}
 \item
@@ -6526,6 +6513,7 @@ inspections.
 
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
+  \tightlist
   \item
     \begin{enumerate}
     \def\labelenumii{\arabic{enumii}.}
@@ -6594,8 +6582,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{imaging}{%
-\subsubsection{Imaging}\label{imaging}}
+\subsubsection{Imaging}\label{imaging}
 
 \begin{itemize}
 \item
@@ -6621,8 +6608,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{transfusion}{%
-\subsubsection{Transfusion}\label{transfusion}}
+\subsubsection{Transfusion}\label{transfusion}
 
 \begin{itemize}
 \item
@@ -6665,8 +6651,7 @@ inspections.
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{injury}{%
-\subsubsection{Injury}\label{injury}}
+\subsubsection{Injury}\label{injury}
 
 \begin{itemize}
 \item
@@ -8811,12 +8796,13 @@ inspections.
     Surgical notes
   \end{enumerate}
 \item
+  \textbf{4. AIS code}
+\item
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{individual-mortality-status}{%
 \subsubsection{Individual mortality
-status}\label{individual-mortality-status}}
+status}\label{individual-mortality-status}
 
 \begin{itemize}
 \item
@@ -8838,8 +8824,7 @@ status}\label{individual-mortality-status}}
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{quality-of-life-eq5d5l}{%
-\subsubsection{Quality of life (EQ5D5L)}\label{quality-of-life-eq5d5l}}
+\subsubsection{Quality of life (EQ5D5L)}\label{quality-of-life-eq5d5l}
 
 \begin{itemize}
 \item
@@ -8949,8 +8934,7 @@ status}\label{individual-mortality-status}}
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{disability-whodas-2.0}{%
-\subsubsection{Disability (WHODAS 2.0)}\label{disability-whodas-2.0}}
+\subsubsection{Disability (WHODAS 2.0)}\label{disability-whodas-2.0}
 
 \begin{itemize}
 \item
@@ -9404,8 +9388,7 @@ status}\label{individual-mortality-status}}
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{return-to-work}{%
-\subsubsection{Return to work}\label{return-to-work}}
+\subsubsection{Return to work}\label{return-to-work}
 
 \begin{itemize}
 \item
@@ -9448,8 +9431,7 @@ status}\label{individual-mortality-status}}
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{safety-events}{%
-\subsubsection{Safety events}\label{safety-events}}
+\subsubsection{Safety events}\label{safety-events}
 
 \begin{itemize}
 \item
@@ -9495,8 +9477,7 @@ status}\label{individual-mortality-status}}
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{end-of-study}{%
-\subsubsection{End of study}\label{end-of-study}}
+\subsubsection{End of study}\label{end-of-study}
 
 \begin{itemize}
 \item
@@ -9526,8 +9507,7 @@ status}\label{individual-mortality-status}}
   \textbf{Any other comments?}
 \end{itemize}
 
-\hypertarget{scheduling}{%
-\subsubsection{Scheduling}\label{scheduling}}
+\subsubsection{Scheduling}\label{scheduling}
 
 \begin{itemize}
 \item
@@ -9538,241 +9518,277 @@ status}\label{individual-mortality-status}}
   \textbf{Day 90}
 \end{itemize}
 
-\hypertarget{references}{%
-\section{References}\label{references}}
+\subsubsection{Review}\label{review}
 
-\hypertarget{refs}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Status}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Review pending
+  \item
+    Replies to queries pending
+  \item
+    Review done
+  \end{enumerate}
+\item
+  \textbf{Reviewed by}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Prashant
+  \item
+    Debojit
+  \item
+    Sara
+  \item
+    Martin
+  \end{enumerate}
+\item
+  \textbf{Review comments} For example, comments about main quality
+  issues, if any.
+\end{itemize}
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
 \begin{CSLReferences}{0}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-injuries2020}{}}%
+\bibitem[\citeproctext]{ref-naghavi_global_2025}
 \CSLLeftMargin{1. }%
-\CSLRightInline{GBD 2019 Diseases and Injuries Collaborators.
-Injuries---level 1 cause. \emph{The Lancet} \textbf{396}, (2020).}
+\CSLRightInline{Naghavi, M. \emph{et al.} Global burden of 292 causes of
+death in 204 countries and territories and 660 subnational locations,
+1990--2023: A systematic analysis for the {Global} {Burden} of {Disease}
+{Study} 2023. \emph{The Lancet} \textbf{406}, 1811--1872 (2025).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-GBD2020}{}}%
+\bibitem[\citeproctext]{ref-GBD2020}
 \CSLLeftMargin{2. }%
 \CSLRightInline{GBD 2019 Diseases and Injuries Collaborators. Global
 burden of 369 diseases and injuries in 204 countries and territories,
 1990--2019: A systematic analysis for the global burden of disease study
 2019. \emph{The Lancet} \textbf{396}, 1204--1222 (2020).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Rauf2019}{}}%
+\bibitem[\citeproctext]{ref-Rauf2019}
 \CSLLeftMargin{3. }%
 \CSLRightInline{Rauf, R. \emph{et al.} Changes in the temporal
 distribution of in-hospital mortality in severely injured patients---an
 analysis of the TraumaRegister DGU. \emph{PLOS ONE} \textbf{14},
 e0212095 (2019).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Roy2017}{}}%
+\bibitem[\citeproctext]{ref-Roy2017}
 \CSLLeftMargin{4. }%
 \CSLRightInline{Roy, N. \emph{et al.} Learning from 2523 trauma deaths
 in india- opportunities to prevent in-hospital deaths. \emph{BMC Health
 Serv Res} \textbf{17}, (2017).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Callcut2019}{}}%
+\bibitem[\citeproctext]{ref-Callcut2019}
 \CSLLeftMargin{5. }%
 \CSLRightInline{Callcut, R. A. \emph{et al.} The why and how our trauma
 patients die: A prospective multicenter western trauma association
 study. \emph{J Trauma.} \textbf{86}, 864--870 (2019).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ghorbani2018}{}}%
+\bibitem[\citeproctext]{ref-Ghorbani2018}
 \CSLLeftMargin{6. }%
 \CSLRightInline{Ghorbani, P. \emph{et al.} Analysis of preventable
 deaths and errors in trauma care in a scandinavian trauma level-i
 centre. \emph{Acta Anaesthesiol Scand} \textbf{62}, 1146--1153 (2018).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Mohammad2013}{}}%
+\bibitem[\citeproctext]{ref-Mohammad2013}
 \CSLLeftMargin{7. }%
 \CSLRightInline{Mohammad, A. \emph{et al.} Educational and clinical
 impact of advanced trauma life support (ATLS) courses: A systematic
 review. \emph{World J. Surg.} \textbf{38}, 322--329 (2013).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Jayaraman2014}{}}%
+\bibitem[\citeproctext]{ref-Jayaraman2014}
 \CSLLeftMargin{8. }%
 \CSLRightInline{Jayaraman, S. \emph{et al.} Advanced trauma life support
 training for hospital staff. \emph{Cochrane Database Syst Rev} (2014).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Kadhum2020}{}}%
+\bibitem[\citeproctext]{ref-Kadhum2020}
 \CSLLeftMargin{9. }%
 \CSLRightInline{Kadhum, M. \emph{et al.} Are primary trauma care (PTC)
 courses beneficial in low- and middle-income countries - a systematic
 review. \emph{Injury} \textbf{51}, 136--141 (2020).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Jin2021}{}}%
+\bibitem[\citeproctext]{ref-Jin2021}
 \CSLLeftMargin{10. }%
 \CSLRightInline{Jin, J. \emph{et al.} Effectiveness of quality
 improvement processes, interventions, and structure in trauma systems in
 low- and middle-income countries: A systematic review and meta-analysis.
 \emph{World J. Surg.} \textbf{45}, 1982--1998 (2021).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-mciver_effect_2024}{}}%
+\bibitem[\citeproctext]{ref-mciver_effect_2024}
 \CSLLeftMargin{11. }%
 \CSLRightInline{McIver, R. \emph{et al.} Effect of trauma quality
 improvement initiatives on outcomes and costs at community hospitals:
 {A} scoping review. \emph{Injury} \textbf{55}, 111492 (2024).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-acsAtls2018}{}}%
+\bibitem[\citeproctext]{ref-acsAtls2018}
 \CSLLeftMargin{12. }%
 \CSLRightInline{Committee on Trauma. \emph{Advanced trauma life support®
 student course manual}. (American College of Surgeons, 2018).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-ACS2022}{}}%
+\bibitem[\citeproctext]{ref-ACS2022}
 \CSLLeftMargin{13. }%
 \CSLRightInline{American College of Surgeons. \emph{Resources for
 optimal care of the injured patient}. ({American College of Surgeons},
 2022).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ali1995}{}}%
+\bibitem[\citeproctext]{ref-Ali1995}
 \CSLLeftMargin{14. }%
 \CSLRightInline{Ali, J. \emph{et al.} Demonstration of acquisition of
 trauma management skills by senior medical students completing the ATLS
 program. \emph{J Trauma.} \textbf{38}, 687--691 (1995).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ali1996}{}}%
+\bibitem[\citeproctext]{ref-Ali1996}
 \CSLLeftMargin{15. }%
 \CSLRightInline{Ali, J. \emph{et al.} Teaching effectiveness of the
 advanced trauma life support program as demonstrated by an objective
 structured clinical examination for practicing physicians. \emph{World
 J. Surg.} \textbf{20}, 1121--1126 (1996).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ali1999}{}}%
+\bibitem[\citeproctext]{ref-Ali1999}
 \CSLLeftMargin{16. }%
 \CSLRightInline{Ali, J. \emph{et al.} Comparison of performance of
 interns completing the old (1993) and new interactive (1997) advanced
 trauma life support courses. \emph{J Trauma.} \textbf{46}, 80--86
 (1999).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-putra_impact_2023}{}}%
+\bibitem[\citeproctext]{ref-putra_impact_2023}
 \CSLLeftMargin{17. }%
 \CSLRightInline{Putra, A. B. \emph{et al.} Impact of {Advanced} {Trauma}
 {Life} {Support} {Training} for {Improving} {Mortality} {Outcome}: {A}
 {Systematic} {Review} and {Meta}-analysis. \emph{The New Ropanasury
 Journal of Surgery} \textbf{8}, (2023).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Vestrup1988}{}}%
+\bibitem[\citeproctext]{ref-nakhid_effect_2026}
 \CSLLeftMargin{18. }%
+\CSLRightInline{Nakhid, Z. \emph{et al.} Effect of trauma life support
+training on patient outcomes: A systematic review and meta-analysis.
+\emph{Scandinavian Journal of Trauma, Resuscitation and Emergency
+Medicine} (2026).}
+
+\bibitem[\citeproctext]{ref-Vestrup1988}
+\CSLLeftMargin{19. }%
 \CSLRightInline{Vestrup, J. A. \emph{et al.} Impact of advanced trauma
 life support training on early trauma management. \emph{Am J Surg}
 \textbf{155}, 704--707 (1988).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ariyanayagam1992}{}}%
-\CSLLeftMargin{19. }%
-\CSLRightInline{Ariyanayagam, D. C. \emph{et al.} The impact of the ATLS
-course on traffic accident mortality in trinidad and tobago. \emph{West
-Indian Med J} \textbf{41}, 72--74 (1992).}
-
-\leavevmode\vadjust pre{\hypertarget{ref-Ali1993}{}}%
+\bibitem[\citeproctext]{ref-Ali1993}
 \CSLLeftMargin{20. }%
 \CSLRightInline{Ali, J. \emph{et al.} Trauma outcome improves following
 the advanced trauma life support program in a developing country.
 \emph{J Trauma} \textbf{34}, 890--899 (1993).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Olson2001}{}}%
+\bibitem[\citeproctext]{ref-vanOlden2004}
 \CSLLeftMargin{21. }%
-\CSLRightInline{Olson, C. J. \emph{et al.} Influence of trauma system
-implementation on process of care delivered to seriously injured
-patients in rural trauma centers. \emph{Surgery} \textbf{130}, 273--279
-(2001).}
-
-\leavevmode\vadjust pre{\hypertarget{ref-vanOlden2004}{}}%
-\CSLLeftMargin{22. }%
 \CSLRightInline{Olden, G. D. J. van \emph{et al.} Clinical impact of
 advanced trauma life support. \emph{Am J Emerg Med} \textbf{22},
 522--525 (2004).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Wang2010}{}}%
-\CSLLeftMargin{23. }%
+\bibitem[\citeproctext]{ref-Wang2010}
+\CSLLeftMargin{22. }%
 \CSLRightInline{Wang, P. \emph{et al.} Comparison of severe trauma care
 effect before and after advanced trauma life support training.
 \emph{Chin J Traumatol} \textbf{13}, 341--344 (2010).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Drimousis2011}{}}%
-\CSLLeftMargin{24. }%
-\CSLRightInline{Drimousis, P. G. \emph{et al.} Advanced trauma life
-support certified physicians in a non trauma system setting: Is it
-enough? \emph{Resuscitation} \textbf{82}, 180--184 (2011).}
+\bibitem[\citeproctext]{ref-noordin_evolution_2011}
+\CSLLeftMargin{23. }%
+\CSLRightInline{Noordin, S. \emph{et al.} Evolution of trauma management
+at a tertiary care hospital: {A} cohort study. \emph{International
+Journal of Surgery} \textbf{9}, 75--78 (2011).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Hashmi2013}{}}%
-\CSLLeftMargin{25. }%
+\bibitem[\citeproctext]{ref-Hashmi2013}
+\CSLLeftMargin{24. }%
 \CSLRightInline{Hashmi, Z. G. \emph{et al.} Hospital-based trauma
 quality improvement initiatives. \emph{J Trauma} \textbf{75}, 60--68
 (2013).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Petroze2014}{}}%
-\CSLLeftMargin{26. }%
+\bibitem[\citeproctext]{ref-Petroze2014}
+\CSLLeftMargin{25. }%
 \CSLRightInline{Petroze, R. T. \emph{et al.} Can focused trauma
 education initiatives reduce mortality or improve resource utilization
 in a low-resource setting? \emph{World J. Surg.} \textbf{39}, 926--933
 (2014).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Bellanova2016}{}}%
-\CSLLeftMargin{27. }%
+\bibitem[\citeproctext]{ref-Bellanova2016}
+\CSLLeftMargin{26. }%
 \CSLRightInline{Giovanni Bellanova, R. B., Francesco Buccelletti. How
 formative courses about damage control surgery and non-operative
 management improved outcome and survival in unstable politrauma patients
 in a mountain trauma center. \emph{Annali italiani di chirurgia}
 \textbf{87}, 68--74 (2016).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Magnone2016}{}}%
-\CSLLeftMargin{28. }%
+\bibitem[\citeproctext]{ref-Magnone2016}
+\CSLLeftMargin{27. }%
 \CSLRightInline{Magnone, S. \emph{et al.} Impact of {ATLS} {Guidelines}
 and {Trauma} {Team} {Introduction} an 24 {Hours} {Mortality} in {Severe}
 {Trauma} in a {Busy} {Italian} {Metropolitan} {Hospital}: A {Case}
 {Control} {Study}. \emph{Ulus Travma Derg} (2015).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-kamau_impact_2024}{}}%
-\CSLLeftMargin{29. }%
+\bibitem[\citeproctext]{ref-kamau_impact_2024}
+\CSLLeftMargin{28. }%
 \CSLRightInline{Kamau, C. \emph{et al.} Impact of advanced trauma life
 support training on 30-day mortality in severely injured patients at a
 {Kenyan} tertiary center: A retrospective matched case-control study.
 \emph{International Journal of Emergency Medicine} \textbf{17}, 153
 (2024).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-GerdinWuxe4rnberg2022}{}}%
-\CSLLeftMargin{30. }%
-\CSLRightInline{Gerdin Wärnberg, M. \emph{et al.} A pilot multicentre
-cluster randomised trial to compare the effect of trauma life support
-training programmes on patient and provider outcomes. \emph{BMJ Open}
-\textbf{12}, e057504 (2022).}
+\bibitem[\citeproctext]{ref-gerdin_warnberg_feasibility_2025}
+\CSLLeftMargin{29. }%
+\CSLRightInline{Gerdin Wärnberg, M. \emph{et al.} Feasibility of a
+cluster randomised trial on the effect of trauma life support training:
+A pilot study in {India}. \emph{BMJ Open} \textbf{15}, e099020 (2025).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Hemming2015}{}}%
+\bibitem[\citeproctext]{ref-david_patient-reported_2024}
+\CSLLeftMargin{30. }%
+\CSLRightInline{David, S. \emph{et al.} Patient-reported outcomes
+relevant to post-discharge trauma patients in urban {India}. (2024).}
+
+\bibitem[\citeproctext]{ref-Hemming2015}
 \CSLLeftMargin{31. }%
 \CSLRightInline{Hemming, K. \emph{et al.} The stepped wedge cluster
 randomised trial: Rationale, design, analysis, and reporting. \emph{BMJ}
 \textbf{350}, h391--h391 (2015).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-grantham_staircase_2024}{}}%
+\bibitem[\citeproctext]{ref-grantham_staircase_2024}
 \CSLLeftMargin{32. }%
 \CSLRightInline{Grantham, K. L. \emph{et al.} The staircase cluster
 randomised trial design: {A} pragmatic alternative to the stepped wedge.
 \emph{Statistical Methods in Medical Research} \textbf{33}, 24--41
 (2024).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Hemming2020May}{}}%
+\bibitem[\citeproctext]{ref-Hemming2020May}
 \CSLLeftMargin{33. }%
 \CSLRightInline{Hemming, K. \emph{et al.} Reflection on modern methods:
 When is a stepped-wedge cluster randomized trial a good study design
 choice? \emph{Int J Epidemiol} \textbf{49}, 1043--1052 (2020).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Kasza2022}{}}%
+\bibitem[\citeproctext]{ref-Kasza2022}
 \CSLLeftMargin{34. }%
 \CSLRightInline{Kasza, J. \emph{et al.} The batched stepped wedge
 design: A design robust to delays in cluster recruitment. \emph{Stat
 Med} \textbf{41}, 3627--3641 (2022).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-harris_research_2009}{}}%
+\bibitem[\citeproctext]{ref-harris_research_2009}
 \CSLLeftMargin{35. }%
 \CSLRightInline{Harris, P. A. \emph{et al.} Research electronic data
 capture ({REDCap})--a metadata-driven methodology and workflow process
 for providing translational research informatics support. \emph{Journal
 of Biomedical Informatics} \textbf{42}, 377--381 (2009).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-harris_redcap_2019}{}}%
+\bibitem[\citeproctext]{ref-harris_redcap_2019}
 \CSLLeftMargin{36. }%
 \CSLRightInline{Harris, P. A. \emph{et al.} The {REDCap} consortium:
 {Building} an international community of software platform partners.
 \emph{Journal of Biomedical Informatics} \textbf{95}, 103208 (2019).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-aukstakalnis_impact_2024}{}}%
+\bibitem[\citeproctext]{ref-aukstakalnis_impact_2024}
 \CSLLeftMargin{37. }%
 \CSLRightInline{Aukstakalnis, V. \emph{et al.} Impact of video
 recordings review with structured debriefings on trauma team
@@ -9780,59 +9796,59 @@ performance: A prospective observational cohort study. \emph{European
 Journal of Trauma and Emergency Surgery: Official Publication of the
 European Trauma Society} (2024).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-STEPCARE2023}{}}%
+\bibitem[\citeproctext]{ref-STEPCARE2023}
 \CSLLeftMargin{38. }%
 \CSLRightInline{Nielsen, Niklas. Sedation, {Temperature} and {Pressure}
 after {Cardiac} {Arrest} and {Resuscitation} -- the {STEPCARE} trial.
 (2023).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Diaz2021}{}}%
+\bibitem[\citeproctext]{ref-Diaz2021}
 \CSLLeftMargin{39. }%
 \CSLRightInline{Diaz, T. \emph{et al.} A call for standardised
 age-disaggregated health data. \emph{The Lancet Healthy Longevity}
 \textbf{2}, e436--e443 (2021).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Li2020}{}}%
+\bibitem[\citeproctext]{ref-Li2020}
 \CSLLeftMargin{40. }%
 \CSLRightInline{Li, F. \emph{et al.} Mixed-effects models for the design
 and analysis of stepped wedge cluster randomized trials: An overview.
 \emph{Stat Methods Med Res} \textbf{30}, 612--639 (2020).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Hemming2020Feb}{}}%
+\bibitem[\citeproctext]{ref-Hemming2020Feb}
 \CSLLeftMargin{41. }%
 \CSLRightInline{Hemming, K. \emph{et al.} A tutorial on sample size
 calculation for multiple-period cluster randomized parallel, cross-over
 and stepped-wedge trials using the shiny CRT calculator. \emph{Int J
 Epidemiol} \textbf{49}, 979--995 (2020).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Campbell2005}{}}%
+\bibitem[\citeproctext]{ref-Campbell2005}
 \CSLLeftMargin{42. }%
 \CSLRightInline{Campbell, M. K. \emph{et al.} Determinants of the
 intracluster correlation coefficient in cluster randomized trials: The
 case of implementation research. \emph{Clinical Trials} \textbf{2},
 99--107 (2005).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Eldridge2015}{}}%
+\bibitem[\citeproctext]{ref-Eldridge2015}
 \CSLLeftMargin{43. }%
 \CSLRightInline{Eldridge, S. M. \emph{et al.} How big should the pilot
 study for my cluster randomised trial be? \emph{Stat Methods Med Res}
 \textbf{25}, 1039--1056 (2015).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Martin2016}{}}%
+\bibitem[\citeproctext]{ref-Martin2016}
 \CSLLeftMargin{44. }%
 \CSLRightInline{Martin, J. \emph{et al.} Intra-cluster and inter-period
 correlation coefficients for cross-sectional cluster randomised
 controlled trials for type-2 diabetes in UK primary care. \emph{Trials}
 \textbf{17}, (2016).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-Korevaar2021}{}}%
+\bibitem[\citeproctext]{ref-Korevaar2021}
 \CSLLeftMargin{45. }%
 \CSLRightInline{Korevaar, E. \emph{et al.} Intra-cluster correlations
 from the CLustered OUtcome dataset bank to inform the design of
 longitudinal cluster trials. \emph{Clinical Trials} \textbf{18},
 529--540 (2021).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-lashoher_implementation_2017}{}}%
+\bibitem[\citeproctext]{ref-lashoher_implementation_2017}
 \CSLLeftMargin{46. }%
 \CSLRightInline{Lashoher, A. \emph{et al.} Implementation of the {World}
 {Health} {Organization} {Trauma} {Care} {Checklist} {Program} in 11
@@ -9840,117 +9856,114 @@ longitudinal cluster trials. \emph{Clinical Trials} \textbf{18},
 {Process} {Measures}. \emph{World Journal of Surgery} \textbf{41},
 954--962 (2017).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-kapitan_effect_2024}{}}%
+\bibitem[\citeproctext]{ref-kapitan_effect_2024}
 \CSLLeftMargin{47. }%
 \CSLRightInline{Kapitan, E. \emph{et al.} The effect of trauma quality
 improvement programme implementation on quality of life among trauma
 patients in urban {India}. \emph{medRxiv} 2024.09.28.24314529 (2024).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-higgins_psychometric_2021}{}}%
+\bibitem[\citeproctext]{ref-higgins_psychometric_2021}
 \CSLLeftMargin{48. }%
 \CSLRightInline{Higgins, A. M. \emph{et al.} The psychometric properties
 and minimal clinically important difference for disability assessment
 using {WHODAS} 2.0 in critically ill patients. \emph{Critical Care and
 Resuscitation} \textbf{23}, 103--112 (2021).}
 
-\leavevmode\vadjust pre{\hypertarget{ref-icmje_2024}{}}%
+\bibitem[\citeproctext]{ref-icmje_2024}
 \CSLLeftMargin{49. }%
 \CSLRightInline{{ICMJE} {\textbar} {Recommendations} {\textbar}
 {Defining} the {Role} of {Authors} and {Contributors}.}
 
 \end{CSLReferences}
 
-\hypertarget{appendices}{%
-\section{Appendices}\label{appendices}}
+\section{Appendices}\label{appendices}
 
-\hypertarget{sec-appendix-hospital-screening-instrument}{%
 \subsection{Initial hospital screening
-instrument}\label{sec-appendix-hospital-screening-instrument}}
+instrument}\label{sec-appendix-hospital-screening-instrument}
 
-\includegraphics{./appendices/hospital-screening-instrument/hospital-screening-instrument-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-instrument/hospital-screening-instrument-1.pdf}}
 
-\includegraphics{./appendices/hospital-screening-instrument/hospital-screening-instrument-2.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-instrument/hospital-screening-instrument-2.pdf}}
 
-\includegraphics{./appendices/hospital-screening-instrument/hospital-screening-instrument-3.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-instrument/hospital-screening-instrument-3.pdf}}
 
-\includegraphics{./appendices/hospital-screening-instrument/hospital-screening-instrument-4.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-instrument/hospital-screening-instrument-4.pdf}}
 
-\hypertarget{sec-appendix-hospital-screening-interview-instrument}{%
 \subsection{In-depth hospital screening interview
-instrument}\label{sec-appendix-hospital-screening-interview-instrument}}
+instrument}\label{sec-appendix-hospital-screening-interview-instrument}
 
-\includegraphics{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-1.pdf}}
 
-\includegraphics{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-2.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-2.pdf}}
 
-\includegraphics{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-3.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-3.pdf}}
 
-\includegraphics{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-4.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-4.pdf}}
 
-\includegraphics{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-5.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-5.pdf}}
 
-\includegraphics{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-6.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{./appendices/hospital-screening-interview-instrument/hospital-screening-interview-6.pdf}}
 
-\hypertarget{sec-appendix-case-record-form}{%
-\subsection{Case Record Form}\label{sec-appendix-case-record-form}}
+\subsection{Case Record Form}\label{sec-appendix-case-record-form}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-1.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-2.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-2.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-3.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-3.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-4.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-4.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-5.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-5.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-6.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-6.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-7.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-7.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-8.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-8.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-9.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-9.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-10.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-10.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-11.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-11.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-12.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-12.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-13.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-13.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-14.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-14.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-15.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-15.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-16.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-16.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-17.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-17.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-18.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-18.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-19.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-19.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-20.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-20.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-21.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-21.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-22.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-22.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-23.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-23.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-24.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-24.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-25.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-25.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-26.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-26.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-27.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-27.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-28.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-28.pdf}}
 
-\includegraphics{../case-record-form/instrument-pdfs/pages/all-instruments-29.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{../case-record-form/instrument-pdfs/pages/all-instruments-29.pdf}}
+
 
 
 

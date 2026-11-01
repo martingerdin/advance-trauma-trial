@@ -1,10 +1,7 @@
 ---
 title: "Clinical Trial Protocol"
-subtitle: |
-  | ADVANCE TRAUMA
-  |
-  | Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial
-author: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
+subtitle: "Effects of Advanced Trauma Life Support^®^ Training Compared to Standard Care on Adult Trauma Patient Outcomes: A Stepped-Wedge Cluster Randomised Trial"
+titlepage-footer: "{{< var version_type >}} {{< var version >}}, {{< var date >}}"
 bibliography: ../shared-assets/bibliography.bib
 csl: nature.csl
 ---
@@ -200,6 +197,7 @@ knitr::include_graphics("../shared-assets/advance-trauma-visual-abstract.png")
 |         |            |   study and community consultations pre-print                    |
 |         |            | - Removed forest plot after adding the systematic review         |
 |         |            |   reference                                                      |
+|         |            | - Remove note on randomisation                                   |
 +---------+------------+------------------------------------------------------------------+
 | 1.5.0   | 2025-06-12 | - Clarified the definition of clusters and units, based on       |
 |         |            |   discussions during the writeup of the protocol for publication |
@@ -432,9 +430,7 @@ Other than implementing another formalised trauma life support training programm
 
 ## Randomisation
 
-We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomise the clusters alloted to each batch to the different intervention implementation sequences within that batch[^randomisation]. We will balance the randomisation within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomisation. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
-
-[^randomisation]: Randomisation will be done using bespoke code from previous trials.
+We will assign clusters to batches as they are found to be eligible and receive ethical approval. Batches will include clusters from hospitals in different regions to optimize trial logistics. We will randomise the clusters alloted to each batch to the different intervention implementation sequences within that batch. We will balance the randomisation within each batch on cluster size, defined as monthly volume of eligible patient participants, using covariate constrained randomisation. The cluster sizes are expected to vary between 12 and 20 patients per month, based on our previous experiences. We will conceal the randomisation order for as long as it is logistically possible, considering that arrangements for sending physicians to ATLS^®^ training need to be made in advance.
 
 ## Blinding
 
