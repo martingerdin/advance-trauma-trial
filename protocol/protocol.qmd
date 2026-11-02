@@ -190,14 +190,14 @@ knitr::include_graphics("../shared-assets/advance-trauma-visual-abstract.png")
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          |
 +=========+============+==================================================================+
-| 1.6.0   | ?          | - Update title page and text formatting                          |
+| 1.6.0   | ?          | - Updated title page and text formatting                          |
 |         |            | - Updated visual abstract                                        |
 |         |            | - Shortened very long lists of variable categories               |
 |         |            | - Added references to published systematic review, feasibility   |
 |         |            |   study and community consultations pre-print                    |
 |         |            | - Removed forest plot after adding the systematic review         |
 |         |            |   reference                                                      |
-|         |            | - Remove note on randomisation                                   |
+|         |            | - Removed note on randomisation                                  |
 +---------+------------+------------------------------------------------------------------+
 | 1.5.0   | 2025-06-12 | - Clarified the definition of clusters and units, based on       |
 |         |            |   discussions during the writeup of the protocol for publication |
@@ -267,7 +267,7 @@ Several trauma life support training programmes have been developed to improve t
 
 There are three randomised studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021; @putra_impact_2023; @mciver_effect_2024]. We conducted an updated systematic review [@nakhid_effect_2026], and estimated a pooled odds ratio of 0.51 (95% CI 0.37-0.69) from  10 heterogeneous (I^2^ 69.1) observational studies on the effect of ATLS on mortality [@Vestrup1988; @Ali1993; @vanOlden2004; @Wang2010; @noordin_evolution_2011; @Hashmi2013; @Petroze2014; @Bellanova2016; @Magnone2016; @kamau_impact_2024].
 
-We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial [@GerdinWärnberg2022; @gerdin_warnberg_feasibility_2025]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India and shows that it is feasible to conduct the proposed trial with a high percentage of patients consenting to out of hospital follow up (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
+We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial [@gerdin_warnberg_feasibility_2022; @gerdin_warnberg_feasibility_2025]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India and shows that it is feasible to conduct the proposed trial with a high percentage of patients consenting to out of hospital follow up (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
 
 To involve patients and the public in the planning of this trial we conducted 19 semi-structured interviews with trauma patients, caregivers, and community representatives [@david_patient-reported_2024]. The aim of these interviews was to understand their views on the trial and important outcomes and the interviews showed high acceptability of our research and emphasised the importance of better recovery before discharge and functional outcomes at and after discharge, including pain, mobility and self-care activities. The interviews also highlighted return to work as an important outcome.
 
@@ -301,7 +301,7 @@ Within the main stepped-wedge design, we will nest a staircase design to measure
 
 We use the cluster randomised design because the intervention cannot be randomised at the individual patient level. We use the stepped-wedge design for two reasons. First, this design is statistically more efficient than the parallel cluster design when the number of clusters is limited [@Hemming2020May]. In this trial, the number of clusters is limited because of the costs associated with ATLS^®^ training and the available slots for ATLS^®^ training in India. Second, the stepped-wedge design is likely to enhance participation and engagement because all clusters receive the intervention. The batched stepped-wedge design further improves feasibility as it does not require all clusters to start at the same time, and it is robust to potential delays in cluster recruitment [@Kasza2022]. We nest a staircase design within the main design because some of the secondary outcomes will be considerably more labour intensive to collect than the primary outcome, and collecting these for all patient participants would be unfeasible.
 
-```{r main-trial-design}
+```{r}
 #| echo: false
 #| label: fig-trial-design
 #| fig.cap: "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
@@ -324,7 +324,7 @@ knitr::include_graphics(
 )
 ```
 
-```{r nested-staircase-design}
+```{r}
 #| echo: false
 #| label: fig-nested-staircase-design
 #| fig.cap: "Nested staircase design. The design includes a random subset of patients presenting during the three months preceding the transition phase, and the three months following the transition phase."
@@ -1063,7 +1063,7 @@ in CTIS, including a summary for lay people.
 
 # Collection, handling, and archiving of data
 
-Clinical research coordinators will collect data using a paper based CRF (see Appendix @sec-appendix-case-record-form), which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764).
+Clinical research coordinators will collect data using a paper based CRF, see Appendix @sec-appendix-case-record-form, which is then transferred to an eCRF. All trial data in the CRF must be extracted from and be consistent with the relevant source documents. The eCRF will be accessible to trial coordinators, data managers, the Investigators, Clinical Trial Monitors, Auditors, and Inspectors as required. All data will be registered, managed, and stored in a manner that enables correct reporting, interpretation, and verification. The complete Trial Master File, as well as source documents, will be archived for at least 10 years after the trial is completed. Source data in the medical records system are stored and archived in accordance with national regulations. Metadata will be publicly accessible via a persistent DOI, and anonymised data will be released upon project completion. A detailed data management plan is available here [https://doi.org/10.5281/zenodo.7748764](https://doi.org/10.5281/zenodo.7748764).
 
 ## Source data
 
