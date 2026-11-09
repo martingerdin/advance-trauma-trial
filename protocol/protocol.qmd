@@ -190,14 +190,14 @@ knitr::include_graphics("../shared-assets/advance-trauma-visual-abstract.png")
 +---------+------------+------------------------------------------------------------------+
 | Version | Date       | Details                                                          |
 +=========+============+==================================================================+
-| 1.6.0   | ?          | - Updated title page and text formatting                          |
+| 1.6.0   | 2026-11-09 | - Updated title page and text formatting                         |
 |         |            | - Updated visual abstract                                        |
 |         |            | - Shortened very long lists of variable categories               |
 |         |            | - Added references to published systematic review, feasibility   |
 |         |            |   study and community consultations pre-print                    |
-|         |            | - Removed forest plot after adding the systematic review         |
-|         |            |   reference                                                      |
-|         |            | - Removed note on randomisation                                  |
+|         |            | - Removed note on bespoke code for randomisation                 |
+|         |            | - Replaced RSPL estimation (SAS-specific) with R alternative     |
+|         |            | - Fixed grammar and spelling errors                              |
 +---------+------------+------------------------------------------------------------------+
 | 1.5.0   | 2025-06-12 | - Clarified the definition of clusters and units, based on       |
 |         |            |   discussions during the writeup of the protocol for publication |
@@ -265,11 +265,23 @@ Each year, 4.9 million people die from trauma [@naghavi_global_2025]. Among peop
 
 Several trauma life support training programmes have been developed to improve the early management of patients in the hospital by providing a structured framework for assessment and treatment [@Mohammad2013; @Jayaraman2014; @Kadhum2020; @Jin2021; @mciver_effect_2024]. The proprietary Advanced Trauma Life Support^®^ (ATLS^®^) is the most established trauma life support training programme and more than one million physicians in over 80 countries have been trained in the programme since the first course in 1978 [@acsAtls2018]. In the US and many other countries training in ATLS^®^ is virtually mandatory for trauma care physicians [@ACS2022]. Uptake in low- and middle income countries (LMIC) has been slow, potentially due to high costs [@Kadhum2020].
 
-There are three randomised studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021; @putra_impact_2023; @mciver_effect_2024]. We conducted an updated systematic review [@nakhid_effect_2026], and estimated a pooled odds ratio of 0.51 (95% CI 0.37-0.69) from  10 heterogeneous (I^2^ 69.1) observational studies on the effect of ATLS on mortality [@Vestrup1988; @Ali1993; @vanOlden2004; @Wang2010; @noordin_evolution_2011; @Hashmi2013; @Petroze2014; @Bellanova2016; @Magnone2016; @kamau_impact_2024].
+There are three randomised studies showing that ATLS^®^ improves knowledge and clinical skills [@Ali1995; @Ali1996; @Ali1999], but there are no randomised controlled trials or high-quality quasi-experimental trials indicating that ATLS^®^ improves patient outcomes [@Mohammad2013; @Jayaraman2014; @Jin2021; @putra_impact_2023; @mciver_effect_2024; @nakhid_effect_2026]. We updated our published systematic review [@nakhid_effect_2026] and estimated a pooled odds ratio of `r pooled.rr` (95% CI `r pooled.ci`) from `r number.identified.studies` heterogeneous (I^2^ `r formatC(I2, format = "f", digits = 1)`%) observational studies on the effect of ATLS on mortality, see @sec-updated-systematic-review details `r pooled.studies.citation`.
 
 We conducted a pilot cluster randomised controlled trial (ClinicalTrials.gov NCT05417243) between `r pilot.start.date` and `r pilot.end.date` as part of our network grant to assess the feasibility of a full scale trial [@gerdin_warnberg_feasibility_2022; @gerdin_warnberg_feasibility_2025]. Our pilot study enrolled  `r tern.patients` patients from seven hospitals across India and shows that it is feasible to conduct the proposed trial with a high percentage of patients consenting to out of hospital follow up (`r to_percent(recruitment.rate)`%), low loss to follow-up rate (`r to_percent(rate.lost.to.follow.up)`%), and low missingness in key variables (mean `r mean.missing.data`%).
 
 To involve patients and the public in the planning of this trial we conducted 19 semi-structured interviews with trauma patients, caregivers, and community representatives [@david_patient-reported_2024]. The aim of these interviews was to understand their views on the trial and important outcomes and the interviews showed high acceptability of our research and emphasised the importance of better recovery before discharge and functional outcomes at and after discharge, including pain, mobility and self-care activities. The interviews also highlighted return to work as an important outcome.
+
+## Updated systematic review {#sec-updated-systematic-review}
+
+We perform systematic literature searches in collaboration with the Karolinska Institutet University Library, using Medline, Embase, Cochrane, Web of Science, Global Health, CINAHL and Google Scholar databases. We published our findings in 2026 [@nakhid_effect_2026], based on a search in August 2025, but our latest search for this protocol was conducted in February 2026. We developed the search strategy in Medline (Ovid), limited the search to English language articles, searched all databases from inception, and screened a total of 10,046 records. We used a random effects model to pool estimates across studies. For this protocol, we pooled all `r number.identified.studies` eligible ATLS^®^ studies regardless of their quality rating. The published review only included the ten studies deemed to be of sufficiently high quality, arriving at a pooled OR of 0.51 (96% CI 0.37-0.69) [@nakhid_effect_2026].
+
+```{r}
+#| echo: false
+#| label: fig-forest-plot
+#| out-width: 100%
+#| fig.cap: "Summary of the updated systematic review. The forest plot shows the association between ATLS^®^ and mortality in all eligible ATLS studies, including the two studies excluded from the published meta-analysis because of their quality ratings [@nakhid_effect_2026]. Abbreviations: OR, odds ratio; CI, confidence interval; ATLS^®^, Advanced Trauma Life Support; I^2^, heterogeneity."
+knitr::include_graphics("forest-plot.png")
+```
 
 # Benefit-risk evaluation
 
@@ -304,7 +316,7 @@ We use the cluster randomised design because the intervention cannot be randomis
 ```{r}
 #| echo: false
 #| label: fig-trial-design
-#| fig.cap: "Trial design. Lines represent the duration of patient enrolment across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
+#| fig.cap: "Trial design. Lines represent the duration of patient inclusion across clusters and phases. Clusters will be sequentially allocated to a batch based on when they enter the study. Within each batch clusters will then be randomised to an intervention implementation sequence."
 #| fig.align: "center"
 #| message: FALSE
 #| warning: FALSE
@@ -773,7 +785,7 @@ We will use a two-sided significance level of 5% and estimate 95% confidence int
 
 There are a number of requirements for the analysis model. Firstly, all analysis will consider the clustered nature of the design. Secondly, as the trial has only `r clusters` clusters, it will be essential that the model allows for a correction due to the small number of clusters. Thirdly, as the design is a stepped-wedge study, we will adjust for temporal confounding using categorical effects for period of the study (month). Full details on how each of these will be undertaken, with justification is provided below [@Li2020].
 
-For binary outcomes, a mixed effects binomial regression with a logit link will be used to estimate the odds ratio; and a binomial model with identity link used to estimate the risk difference. These models will be fitted using residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL). If the binomial model with the identity link does not converge then only a odds ratio will be reported.
+For binary outcomes, a mixed effects binomial regression with a logit link will be used to estimate the odds ratio; and a binomial model with identity link used to estimate the risk difference. These models will be fitted using maximum likelihood, with a Laplace approximation to integrate over the random effects. If the binomial model with the identity link does not converge then only a odds ratio will be reported.
 
 We will include fixed effects for period and a fixed effect for intervention exposure. The primary analysis will allow for clustering by as a random cluster and random cluster by period effect. To correct the potential inflation of the type I error rate due to small number of clusters, a correction for a small number of clusters will be applied, but the correction that will be selected will be based on the best available evidence available closer to the time, and it may differ for the outcomes collected via the complete and incomplete designs. In a sensitivity analysis we will explore if models with more complicated correlation structures are a better fit to the data. These models are not being used as our primary analysis models as there is limited understanding as to when such models will converge and how to choose between the various different correlation structures which might be plausible.
 
@@ -783,7 +795,7 @@ To this end we will additionally fit generalised linear mixed models (with same 
 
 To additionally explore if the fixed period effect is both parsimonious and adequate to represent the extent of any underlying secular trend, we will model the time effect using a spline function. Models will also be extended to include random cluster by intervention effects (with a non-zero covariance term) to examine if results are sensitive to the assumption of no intervention by cluster interaction. Models will also be extended to include an interaction between treatment and number of periods since first treated, to examine if there is any indication of a relationship between duration of exposure to the intervention and outcomes.
 
-This will allow us to different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade).  This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. A fully adjusted covariate analysis will additionally adjust for a set of pre-specified individual-level covariates of known prognostic importance.
+This will allow us to different lag effects (whereby it takes time for the intervention to become embedded within the culture before its impact can properly start to be realised); as well as weaning effects (whereby the effect of the intervention starts to decrease – or fade). This type of analysis attempts to disentangle how some clusters end up having a long exposure to the intervention and others have a much shorter exposure time. A fully adjusted covariate analysis will additionally adjust for a set of pre-specified individual-level covariates of known prognostic importance.
 
 ### Estimation and reporting of within cluster correlations
 

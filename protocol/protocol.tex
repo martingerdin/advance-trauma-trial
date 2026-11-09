@@ -467,11 +467,11 @@ Details
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1.6.0 & ? & \begin{minipage}[t]{\linewidth}\raggedright
+1.6.0 & 2026-11-09 & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
 \tightlist
 \item
-  Update title page and text formatting
+  Updated title page and text formatting
 \item
   Updated visual abstract
 \item
@@ -480,9 +480,11 @@ Details
   Added references to published systematic review, feasibility study and
   community consultations pre-print
 \item
-  Removed forest plot after adding the systematic review reference
+  Removed note on bespoke code for randomisation
 \item
-  Remove note on randomisation
+  Replaced RSPL estimation (SAS-specific) with R alternative
+\item
+  Fixed grammar and spelling errors
 \end{itemize}
 \end{minipage} \\
 1.5.0 & 2025-06-12 & \begin{minipage}[t]{\linewidth}\raggedright
@@ -719,7 +721,7 @@ ATLS\textsuperscript{®} training facility in India.
 for collection of routinely recorded data. We will obtain informed
 consent for collection of non-routinely recorded data, such as quality
 of life and disability outcomes. Patients who are unconscious or lack a
-legally authorized representative will be included under a waiver of
+legally authorised representative will be included under a waiver of
 informed consent. Note that consent here refers to consent to data
 collection.
 
@@ -756,16 +758,18 @@ There are three randomised studies showing that ATLS\textsuperscript{®}
 improves knowledge and clinical skills\textsuperscript{14--16}, but
 there are no randomised controlled trials or high-quality
 quasi-experimental trials indicating that ATLS\textsuperscript{®}
-improves patient outcomes\textsuperscript{7,8,10,11,17}. We conducted an
-updated systematic review\textsuperscript{18}, and estimated a pooled
-odds ratio of 0.51 (95\% CI 0.37-0.69) from 10 heterogeneous
-(I\textsuperscript{2} 69.1) observational studies on the effect of ATLS
-on mortality\textsuperscript{19--28}.
+improves patient outcomes\textsuperscript{7,8,10,11,17,18}. We updated
+our published systematic review\textsuperscript{18} and estimated a
+pooled odds ratio of 0.62 (95\% CI 0.44; 0.89) from 12 heterogeneous
+(I\textsuperscript{2} 89.2\%) observational studies on the effect of
+ATLS on mortality, see Updated systematic review
+(Section~\ref{sec-updated-systematic-review})
+details\textsuperscript{19--30}.
 
 We conducted a pilot cluster randomised controlled trial
 (ClinicalTrials.gov NCT05417243) between April 2022 and February 2023 as
 part of our network grant to assess the feasibility of a full scale
-trial\textsuperscript{29,30}. Our pilot study enrolled 376 patients from
+trial\textsuperscript{31,32}. Our pilot study enrolled 376 patients from
 seven hospitals across India and shows that it is feasible to conduct
 the proposed trial with a high percentage of patients consenting to out
 of hospital follow up (78\%), low loss to follow-up rate (1\%), and low
@@ -773,13 +777,48 @@ missingness in key variables (mean 0.8\%).
 
 To involve patients and the public in the planning of this trial we
 conducted 19 semi-structured interviews with trauma patients,
-caregivers, and community representatives\textsuperscript{31}. The aim
+caregivers, and community representatives\textsuperscript{33}. The aim
 of these interviews was to understand their views on the trial and
 important outcomes and the interviews showed high acceptability of our
 research and emphasised the importance of better recovery before
 discharge and functional outcomes at and after discharge, including
 pain, mobility and self-care activities. The interviews also highlighted
 return to work as an important outcome.
+
+\subsection{Updated systematic
+review}\label{sec-updated-systematic-review}
+
+We perform systematic literature searches in collaboration with the
+Karolinska Institutet University Library, using Medline, Embase,
+Cochrane, Web of Science, Global Health, CINAHL and Google Scholar
+databases. We published our findings in 2026\textsuperscript{18}, based
+on a search in August 2025, but our latest search for this protocol was
+conducted in February 2026. We developed the search strategy in Medline
+(Ovid), limited the search to English language articles, searched all
+databases from inception, and screened a total of 10,046 records. We
+used a random effects model to pool estimates across studies. For this
+protocol, we pooled all 12 eligible ATLS\textsuperscript{®} studies
+regardless of their quality rating. The published review only included
+the ten studies deemed to be of sufficiently high quality, arriving at a
+pooled OR of 0.51 (96\% CI 0.37-0.69)\textsuperscript{18}.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{forest-plot.png}
+
+}
+
+\caption{\label{fig-forest-plot}Summary of the updated systematic
+review. The forest plot shows the association between
+ATLS\textsuperscript{®} and mortality in all eligible ATLS studies,
+including the two studies excluded from the published meta-analysis
+because of their quality ratings\textsuperscript{18}. Abbreviations: OR,
+odds ratio; CI, confidence interval; ATLS\textsuperscript{®}, Advanced
+Trauma Life Support; I\textsuperscript{2}, heterogeneity.}
+
+\end{figure}%
 
 \section{Benefit-risk evaluation}\label{benefit-risk-evaluation}
 
@@ -826,7 +865,7 @@ We will conduct a batched stepped-wedge cluster randomised controlled
 trial (see Figure~\ref{fig-trial-design}). The stepped-wedge trial is a
 uni-directional cross-over trial but the time point when clusters
 cross-over from standard care to the intervention is
-randomised\textsuperscript{32}. In this trial, the unit of randomisation
+randomised\textsuperscript{34}. In this trial, the unit of randomisation
 is the hospital: that is, the ``clusters'' randomised to the sequences
 of the stepped wedge design are the hospitals. Within each hospital, one
 or more units of physicians performing initial resuscitation of trauma
@@ -855,7 +894,7 @@ total of three months.
 
 Within the main stepped-wedge design, we will nest a staircase design to
 measure a range of secondary outcomes (see
-Figure~\ref{fig-nested-staircase-design})\textsuperscript{33}. The
+Figure~\ref{fig-nested-staircase-design})\textsuperscript{35}. The
 staircase design will include a random subset of patients presenting
 during the three months preceding the transition phase, and the three
 months following the transition phase.
@@ -866,7 +905,7 @@ We use the cluster randomised design because the intervention cannot be
 randomised at the individual patient level. We use the stepped-wedge
 design for two reasons. First, this design is statistically more
 efficient than the parallel cluster design when the number of clusters
-is limited\textsuperscript{34}. In this trial, the number of clusters is
+is limited\textsuperscript{36}. In this trial, the number of clusters is
 limited because of the costs associated with ATLS\textsuperscript{®}
 training and the available slots for ATLS\textsuperscript{®} training in
 India. Second, the stepped-wedge design is likely to enhance
@@ -874,7 +913,7 @@ participation and engagement because all clusters receive the
 intervention. The batched stepped-wedge design further improves
 feasibility as it does not require all clusters to start at the same
 time, and it is robust to potential delays in cluster
-recruitment\textsuperscript{35}. We nest a staircase design within the
+recruitment\textsuperscript{37}. We nest a staircase design within the
 main design because some of the secondary outcomes will be considerably
 more labour intensive to collect than the primary outcome, and
 collecting these for all patient participants would be unfeasible.
@@ -949,8 +988,8 @@ following criteria:
 \begin{itemize}
 \tightlist
 \item
-  admits or refers/transfers for admission at least 12 patients with
-  trauma per month for at least the last six months; and
+  admit or refer/transfer for admission at least 12 patients with trauma
+  per month for at least the last six months; and
 \item
   no more than 25\% of physicians providing initial trauma care trained
   in a formalised trauma life support training programme.
@@ -972,9 +1011,9 @@ criteria:
     for Nurses (ATCN) programme.} during the trial period; or
 \item
   plan to implement or implement other major interventions\footnote{These
-    include but are not limited to implementing of a trauma team
-    approach, opening a trauma centre and implementing a trauma quality
-    improvement programme.} that affects trauma care during the trial
+    include but are not limited to implementing a trauma team approach,
+    opening a trauma centre and implementing a trauma quality
+    improvement programme.} that affect trauma care during the trial
   period.
 \end{itemize}
 
@@ -1003,7 +1042,7 @@ example, we are aware of the ongoing implementation of the National
 Emergency Life Support (NELS) programme in India, and will therefore not
 include hospitals that plan to implement this programme during the trial
 period. All screening steps and decisions will be logged using
-REDCap\textsuperscript{36,37}.
+REDCap\textsuperscript{38,39}.
 
 \subsubsection{Patient participant
 selection}\label{patient-participant-selection}
@@ -1138,7 +1177,7 @@ procedures}
 Procedure & Within 7 days of discharge & 30 days & 90 days \\ 
 \midrule\addlinespace[2.5pt]
 Mortality data collection\textsuperscript{\textit{1}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
-EQ-5D/WHODAS & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
+EQ5D5L/WHODAS & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
 Return to work &  & \ensuremath{\sqrt{}} & \ensuremath{\sqrt{}} \\ 
 End of study &  &  & \ensuremath{\sqrt{}} \\ 
 \bottomrule
@@ -1179,30 +1218,30 @@ department. These physicians can be casualty medical officers, surgical
 residents, or emergency medicine residents, depending on the setup at
 each participating centre. The training will occur during the transition
 phase in each cluster. Our experience from our pilot study is that study
-sites adhere to the training slot alloted to them through the trial, so
+sites adhere to the training slot allotted to them through the trial, so
 we judge the risk of clusters implementing ATLS\textsuperscript{®}
 before their randomised implementation sequence as very low.
 
-We will train the number units of physicians needed to reach the
+We will train the number of units of physicians needed reach the
 required patient sample size, but estimate that this will require
-training an average of ten physicians per hospital, which on average
-should be mean that we can train one to two units per hospital. This is
-possible because many hospitals in India organise physicians staffing
-their emergency departments in units, and the physicians in the same
-unit work together in the emergency department on the same days of the
-week. We will therefore collect data only on the days when these units
-work. The units selected to constitute a cluster from each hospital will
-be a convenience sample out of all eligible units in those hospitals.
+training an average of ten physicians per hospital, which should mean
+that we can train one to two units per hospital. This is possible
+because many hospitals in India organise physicians staffing their
+emergency departments in units, and the physicians in the same unit work
+together in the emergency department on the same days of the week. We
+will therefore collect data only on the days when these units work. The
+units selected to constitute a cluster from each hospital will be a
+convenience sample out of all eligible units in those hospitals.
 
 \textbf{Advanced Trauma Life Support\textsuperscript{®}
 (ATLS\textsuperscript{®})\textsuperscript{12}} is a proprietary 2.5 day
 course teaching a standardised approach to trauma patient care using the
 concepts of a primary and secondary survey. The programme was developed
 by the Committee of Trauma of the American College of Surgeons. The
-course includes intial treatment and resuscitation, triage and
-interfacility transfers. Leaning is based on practical scenario-driven
-skill stations, lectures and includes a final performance proficiency
-evaluation. Physicians will be trained in an accredited
+course includes initial treatment and resuscitation, triage and
+interfacility transfers. Learning is based on practical scenario-driven
+skill stations and lectures, and the course includes a final performance
+proficiency evaluation. Physicians will be trained in an accredited
 ATLS\textsuperscript{®} training facility in India. We will assess
 adherence to ATLS principles before and after implementing ATLS
 training.
@@ -1318,7 +1357,7 @@ design}\label{collected-using-the-nested-staircase-design}
   patient. This assessment will be done using a 14 item checklist
   covering the key steps of the ATLS\textsuperscript{®} primary survey,
   which was modelled based on previous work on ATLS\textsuperscript{®}
-  adherence\textsuperscript{38}. We will consider completion of all 14
+  adherence\textsuperscript{40}. We will consider completion of all 14
   steps as 100\% adherence. The clinical research coordinators
   collecting the data will be trained by the trial team to do this,
   prior to the start of the trial. We will collect this data by
@@ -1383,7 +1422,7 @@ the trial and that are not part of the natural history of trauma.
 events}\label{reporting-and-assessment-of-adverse-and-safety-events}
 
 In alignment with other current trials including critically ill
-patients\textsuperscript{39}, we will not collect adverse events or
+patients\textsuperscript{41}, we will not collect adverse events or
 serious adverse events, because many of these events are expected in
 this patient population and we already collect many of these events, for
 example mortality, as part of our outcomes.
@@ -1463,7 +1502,7 @@ results\footnote{\textbf{Note:} Batches will not be based on regions
   different regions in each batch.}. Additional subgroup analyses will
 include age across the groups older adolescents (15-19 years), young
 adults (20-24 years), adults (25-59 years), and older adults (60 years
-and older)\textsuperscript{40}; sex; and the clinical cohorts blunt
+and older)\textsuperscript{42}; sex; and the clinical cohorts blunt
 multisytem trauma, penetrating trauma, and severe isolated traumatic
 brain injury.
 
@@ -1476,15 +1515,14 @@ allows for a correction due to the small number of clusters. Thirdly, as
 the design is a stepped-wedge study, we will adjust for temporal
 confounding using categorical effects for period of the study (month).
 Full details on how each of these will be undertaken, with justification
-is provided below\textsuperscript{41}.
+is provided below\textsuperscript{43}.
 
 For binary outcomes, a mixed effects binomial regression with a logit
 link will be used to estimate the odds ratio; and a binomial model with
 identity link used to estimate the risk difference. These models will be
-fitted using residual pseudo-likelihood estimation based on
-linearization with subject-specific expansion (RSPL). If the binomial
-model with the identity link does not converge then only a odds ratio
-will be reported.
+fitted using maximum likelihood, with a Laplace approximation to
+integrate over the random effects. If the binomial model with the
+identity link does not converge then only a odds ratio will be reported.
 
 We will include fixed effects for period and a fixed effect for
 intervention exposure. The primary analysis will allow for clustering by
@@ -1559,15 +1597,15 @@ cluster autocorrelations (CAC) and intra-cluster correlations (ICC) to
 detect a reduction in the primary outcome of in-hospital mortality
 within 30 days from 20\% under standard care to 15\% after
 ATLS\textsuperscript{®} training (see
-Figure~\ref{fig-power-curves})\textsuperscript{42}. This 5\% absolute
+Figure~\ref{fig-power-curves})\textsuperscript{44}. This 5\% absolute
 reduction in mortality is a clinically meaningful and conservative
 estimate based on our updated systematic review and pilot
-study\textsuperscript{18,30}. We allowed for the clustered design,
+study\textsuperscript{18,32}. We allowed for the clustered design,
 incorporated the one month transition period, and assumed: a discrete
 time decay correlation structure, an ICC of 0.02 (but considered
 sensitivity across the range 0.01-0.05), and a CAC of 0.9 (but
 considered sensitivity across the range 0.8-1.0), based on our pilot
-study and current guidance\textsuperscript{43--46}. We included the CAC
+study and current guidance\textsuperscript{45--48}. We included the CAC
 to allow for variation in clustering over time. We assume that each
 cluster will contribute approximately 12 observations per month to the
 analysis, but allowed for substantial variation in cluster sizes, based
@@ -1602,10 +1640,10 @@ design are adherence to ATLS\textsuperscript{®} principles during
 initial patient resuscitation, quality of life, and disability. The
 expected effect of the intervention on each of these outcomes are an
 improvement in adherence from 50\% during standard care to 70\% after
-training\textsuperscript{47}, an increase in EQ5D5L health status from
-70 during care to 75 after training\textsuperscript{48}, and finally a
+training\textsuperscript{49}, an increase in EQ5D5L health status from
+70 during care to 75 after training\textsuperscript{50}, and finally a
 decrease in disability from a baseline value of 25 during standard care
-to 22.5 after training\textsuperscript{49}. For quality of life and
+to 22.5 after training\textsuperscript{51}. For quality of life and
 disability, these effects correspond to standardised effect sizes,
 expressed as Cohen's d, of 0.5. With 30 clusters in total, six per
 sequence, for a discrete time decay correlation structure, with ICCs of
@@ -1985,7 +2023,7 @@ The trial will be reported to the Funders within a year of completion.
 The results of the trial will also be prepared as manuscripts for
 publication. Authorship on trial manuscripts will be based on the
 International Committee of Medical Journal Editors (ICMJE)
-criteria\textsuperscript{50}:
+criteria\textsuperscript{52}:
 
 \begin{quote}
 \begin{itemize}
@@ -2020,11 +2058,11 @@ will be formed by discussion in the Trial Management Group.
 \section{Collection, handling, and archiving of
 data}\label{collection-handling-and-archiving-of-data}
 
-Clinical research coordinators will collect data using a paper based CRF
-(see Appendix Case Record Form
-(Section~\ref{sec-appendix-case-record-form})), which is then
-transferred to an eCRF. All trial data in the CRF must be extracted from
-and be consistent with the relevant source documents. The eCRF will be
+Clinical research coordinators will collect data using a paper based
+CRF, see Appendix Case Record Form
+(Section~\ref{sec-appendix-case-record-form}), which is then transferred
+to an eCRF. All trial data in the CRF must be extracted from and be
+consistent with the relevant source documents. The eCRF will be
 accessible to trial coordinators, data managers, the Investigators,
 Clinical Trial Monitors, Auditors, and Inspectors as required. All data
 will be registered, managed, and stored in a manner that enables correct
@@ -3994,45 +4032,57 @@ Medicine} (2026).}
 life support training on early trauma management. \emph{Am J Surg}
 \textbf{155}, 704--707 (1988).}
 
-\bibitem[\citeproctext]{ref-Ali1993}
+\bibitem[\citeproctext]{ref-Ariyanayagam1992}
 \CSLLeftMargin{20. }%
+\CSLRightInline{Ariyanayagam, D. C. \emph{et al.} The impact of the ATLS
+course on traffic accident mortality in trinidad and tobago. \emph{West
+Indian Med J} \textbf{41}, 72--74 (1992).}
+
+\bibitem[\citeproctext]{ref-Ali1993}
+\CSLLeftMargin{21. }%
 \CSLRightInline{Ali, J. \emph{et al.} Trauma outcome improves following
 the advanced trauma life support program in a developing country.
 \emph{J Trauma} \textbf{34}, 890--899 (1993).}
 
 \bibitem[\citeproctext]{ref-vanOlden2004}
-\CSLLeftMargin{21. }%
+\CSLLeftMargin{22. }%
 \CSLRightInline{Olden, G. D. J. van \emph{et al.} Clinical impact of
 advanced trauma life support. \emph{Am J Emerg Med} \textbf{22},
 522--525 (2004).}
 
 \bibitem[\citeproctext]{ref-Wang2010}
-\CSLLeftMargin{22. }%
+\CSLLeftMargin{23. }%
 \CSLRightInline{Wang, P. \emph{et al.} Comparison of severe trauma care
 effect before and after advanced trauma life support training.
 \emph{Chin J Traumatol} \textbf{13}, 341--344 (2010).}
 
 \bibitem[\citeproctext]{ref-noordin_evolution_2011}
-\CSLLeftMargin{23. }%
+\CSLLeftMargin{24. }%
 \CSLRightInline{Noordin, S. \emph{et al.} Evolution of trauma management
 at a tertiary care hospital: {A} cohort study. \emph{International
 Journal of Surgery} \textbf{9}, 75--78 (2011).}
 
+\bibitem[\citeproctext]{ref-Drimousis2011}
+\CSLLeftMargin{25. }%
+\CSLRightInline{Drimousis, P. G. \emph{et al.} Advanced trauma life
+support certified physicians in a non trauma system setting: Is it
+enough? \emph{Resuscitation} \textbf{82}, 180--184 (2011).}
+
 \bibitem[\citeproctext]{ref-Hashmi2013}
-\CSLLeftMargin{24. }%
+\CSLLeftMargin{26. }%
 \CSLRightInline{Hashmi, Z. G. \emph{et al.} Hospital-based trauma
 quality improvement initiatives. \emph{J Trauma} \textbf{75}, 60--68
 (2013).}
 
 \bibitem[\citeproctext]{ref-Petroze2014}
-\CSLLeftMargin{25. }%
+\CSLLeftMargin{27. }%
 \CSLRightInline{Petroze, R. T. \emph{et al.} Can focused trauma
 education initiatives reduce mortality or improve resource utilization
 in a low-resource setting? \emph{World J. Surg.} \textbf{39}, 926--933
 (2014).}
 
 \bibitem[\citeproctext]{ref-Bellanova2016}
-\CSLLeftMargin{26. }%
+\CSLLeftMargin{28. }%
 \CSLRightInline{Giovanni Bellanova, R. B., Francesco Buccelletti. How
 formative courses about damage control surgery and non-operative
 management improved outcome and survival in unstable politrauma patients
@@ -4040,14 +4090,14 @@ in a mountain trauma center. \emph{Annali italiani di chirurgia}
 \textbf{87}, 68--74 (2016).}
 
 \bibitem[\citeproctext]{ref-Magnone2016}
-\CSLLeftMargin{27. }%
+\CSLLeftMargin{29. }%
 \CSLRightInline{Magnone, S. \emph{et al.} Impact of {ATLS} {Guidelines}
 and {Trauma} {Team} {Introduction} an 24 {Hours} {Mortality} in {Severe}
 {Trauma} in a {Busy} {Italian} {Metropolitan} {Hospital}: A {Case}
 {Control} {Study}. \emph{Ulus Travma Derg} (2015).}
 
 \bibitem[\citeproctext]{ref-kamau_impact_2024}
-\CSLLeftMargin{28. }%
+\CSLLeftMargin{30. }%
 \CSLRightInline{Kamau, C. \emph{et al.} Impact of advanced trauma life
 support training on 30-day mortality in severely injured patients at a
 {Kenyan} tertiary center: A retrospective matched case-control study.
@@ -4055,63 +4105,63 @@ support training on 30-day mortality in severely injured patients at a
 (2024).}
 
 \bibitem[\citeproctext]{ref-gerdin_warnberg_feasibility_2022}
-\CSLLeftMargin{29. }%
+\CSLLeftMargin{31. }%
 \CSLRightInline{Gerdin Wärnberg, M. \emph{et al.} A pilot multicentre
 cluster randomised trial to compare the effect of trauma life support
 training programmes on patient and provider outcomes. \emph{BMJ Open}
 \textbf{12}, e057504 (2022).}
 
 \bibitem[\citeproctext]{ref-gerdin_warnberg_feasibility_2025}
-\CSLLeftMargin{30. }%
+\CSLLeftMargin{32. }%
 \CSLRightInline{Gerdin Wärnberg, M. \emph{et al.} Feasibility of a
 cluster randomised trial on the effect of trauma life support training:
 A pilot study in {India}. \emph{BMJ Open} \textbf{15}, e099020 (2025).}
 
 \bibitem[\citeproctext]{ref-david_patient-reported_2024}
-\CSLLeftMargin{31. }%
+\CSLLeftMargin{33. }%
 \CSLRightInline{David, S. \emph{et al.} Patient-reported outcomes
 relevant to post-discharge trauma patients in urban {India}. (2024).}
 
 \bibitem[\citeproctext]{ref-Hemming2015}
-\CSLLeftMargin{32. }%
+\CSLLeftMargin{34. }%
 \CSLRightInline{Hemming, K. \emph{et al.} The stepped wedge cluster
 randomised trial: Rationale, design, analysis, and reporting. \emph{BMJ}
 \textbf{350}, h391--h391 (2015).}
 
 \bibitem[\citeproctext]{ref-grantham_staircase_2024}
-\CSLLeftMargin{33. }%
+\CSLLeftMargin{35. }%
 \CSLRightInline{Grantham, K. L. \emph{et al.} The staircase cluster
 randomised trial design: {A} pragmatic alternative to the stepped wedge.
 \emph{Statistical Methods in Medical Research} \textbf{33}, 24--41
 (2024).}
 
 \bibitem[\citeproctext]{ref-Hemming2020May}
-\CSLLeftMargin{34. }%
+\CSLLeftMargin{36. }%
 \CSLRightInline{Hemming, K. \emph{et al.} Reflection on modern methods:
 When is a stepped-wedge cluster randomized trial a good study design
 choice? \emph{Int J Epidemiol} \textbf{49}, 1043--1052 (2020).}
 
 \bibitem[\citeproctext]{ref-Kasza2022}
-\CSLLeftMargin{35. }%
+\CSLLeftMargin{37. }%
 \CSLRightInline{Kasza, J. \emph{et al.} The batched stepped wedge
 design: A design robust to delays in cluster recruitment. \emph{Stat
 Med} \textbf{41}, 3627--3641 (2022).}
 
 \bibitem[\citeproctext]{ref-harris_research_2009}
-\CSLLeftMargin{36. }%
+\CSLLeftMargin{38. }%
 \CSLRightInline{Harris, P. A. \emph{et al.} Research electronic data
 capture ({REDCap})--a metadata-driven methodology and workflow process
 for providing translational research informatics support. \emph{Journal
 of Biomedical Informatics} \textbf{42}, 377--381 (2009).}
 
 \bibitem[\citeproctext]{ref-harris_redcap_2019}
-\CSLLeftMargin{37. }%
+\CSLLeftMargin{39. }%
 \CSLRightInline{Harris, P. A. \emph{et al.} The {REDCap} consortium:
 {Building} an international community of software platform partners.
 \emph{Journal of Biomedical Informatics} \textbf{95}, 103208 (2019).}
 
 \bibitem[\citeproctext]{ref-aukstakalnis_impact_2024}
-\CSLLeftMargin{38. }%
+\CSLLeftMargin{40. }%
 \CSLRightInline{Aukstakalnis, V. \emph{et al.} Impact of video
 recordings review with structured debriefings on trauma team
 performance: A prospective observational cohort study. \emph{European
@@ -4119,59 +4169,59 @@ Journal of Trauma and Emergency Surgery: Official Publication of the
 European Trauma Society} (2024).}
 
 \bibitem[\citeproctext]{ref-STEPCARE2023}
-\CSLLeftMargin{39. }%
+\CSLLeftMargin{41. }%
 \CSLRightInline{Nielsen, Niklas. Sedation, {Temperature} and {Pressure}
 after {Cardiac} {Arrest} and {Resuscitation} -- the {STEPCARE} trial.
 (2023).}
 
 \bibitem[\citeproctext]{ref-Diaz2021}
-\CSLLeftMargin{40. }%
+\CSLLeftMargin{42. }%
 \CSLRightInline{Diaz, T. \emph{et al.} A call for standardised
 age-disaggregated health data. \emph{The Lancet Healthy Longevity}
 \textbf{2}, e436--e443 (2021).}
 
 \bibitem[\citeproctext]{ref-Li2020}
-\CSLLeftMargin{41. }%
+\CSLLeftMargin{43. }%
 \CSLRightInline{Li, F. \emph{et al.} Mixed-effects models for the design
 and analysis of stepped wedge cluster randomized trials: An overview.
 \emph{Stat Methods Med Res} \textbf{30}, 612--639 (2020).}
 
 \bibitem[\citeproctext]{ref-Hemming2020Feb}
-\CSLLeftMargin{42. }%
+\CSLLeftMargin{44. }%
 \CSLRightInline{Hemming, K. \emph{et al.} A tutorial on sample size
 calculation for multiple-period cluster randomized parallel, cross-over
 and stepped-wedge trials using the shiny CRT calculator. \emph{Int J
 Epidemiol} \textbf{49}, 979--995 (2020).}
 
 \bibitem[\citeproctext]{ref-Campbell2005}
-\CSLLeftMargin{43. }%
+\CSLLeftMargin{45. }%
 \CSLRightInline{Campbell, M. K. \emph{et al.} Determinants of the
 intracluster correlation coefficient in cluster randomized trials: The
 case of implementation research. \emph{Clinical Trials} \textbf{2},
 99--107 (2005).}
 
 \bibitem[\citeproctext]{ref-Eldridge2015}
-\CSLLeftMargin{44. }%
+\CSLLeftMargin{46. }%
 \CSLRightInline{Eldridge, S. M. \emph{et al.} How big should the pilot
 study for my cluster randomised trial be? \emph{Stat Methods Med Res}
 \textbf{25}, 1039--1056 (2015).}
 
 \bibitem[\citeproctext]{ref-Martin2016}
-\CSLLeftMargin{45. }%
+\CSLLeftMargin{47. }%
 \CSLRightInline{Martin, J. \emph{et al.} Intra-cluster and inter-period
 correlation coefficients for cross-sectional cluster randomised
 controlled trials for type-2 diabetes in UK primary care. \emph{Trials}
 \textbf{17}, (2016).}
 
 \bibitem[\citeproctext]{ref-Korevaar2021}
-\CSLLeftMargin{46. }%
+\CSLLeftMargin{48. }%
 \CSLRightInline{Korevaar, E. \emph{et al.} Intra-cluster correlations
 from the CLustered OUtcome dataset bank to inform the design of
 longitudinal cluster trials. \emph{Clinical Trials} \textbf{18},
 529--540 (2021).}
 
 \bibitem[\citeproctext]{ref-lashoher_implementation_2017}
-\CSLLeftMargin{47. }%
+\CSLLeftMargin{49. }%
 \CSLRightInline{Lashoher, A. \emph{et al.} Implementation of the {World}
 {Health} {Organization} {Trauma} {Care} {Checklist} {Program} in 11
 {Centers} {Across} {Multiple} {Economic} {Strata}: {Effect} on {Care}
@@ -4179,20 +4229,20 @@ longitudinal cluster trials. \emph{Clinical Trials} \textbf{18},
 954--962 (2017).}
 
 \bibitem[\citeproctext]{ref-kapitan_effect_2024}
-\CSLLeftMargin{48. }%
+\CSLLeftMargin{50. }%
 \CSLRightInline{Kapitan, E. \emph{et al.} The effect of trauma quality
 improvement programme implementation on quality of life among trauma
 patients in urban {India}. \emph{medRxiv} 2024.09.28.24314529 (2024).}
 
 \bibitem[\citeproctext]{ref-higgins_psychometric_2021}
-\CSLLeftMargin{49. }%
+\CSLLeftMargin{51. }%
 \CSLRightInline{Higgins, A. M. \emph{et al.} The psychometric properties
 and minimal clinically important difference for disability assessment
 using {WHODAS} 2.0 in critically ill patients. \emph{Critical Care and
 Resuscitation} \textbf{23}, 103--112 (2021).}
 
 \bibitem[\citeproctext]{ref-icmje_2024}
-\CSLLeftMargin{50. }%
+\CSLLeftMargin{52. }%
 \CSLRightInline{{ICMJE} {\textbar} {Recommendations} {\textbar}
 {Defining} the {Role} of {Authors} and {Contributors}.}
 

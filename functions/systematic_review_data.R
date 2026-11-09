@@ -1,9 +1,9 @@
-systematic_review_data <- function() {
+systematic_review_data <- function(include.low.quality = FALSE) {
     ## Study-level mortality counts primarily from Nakhid et al. 2026
     ## (Scand J Trauma Resusc Emerg Med; doi:10.1186/s13049-026-01549-w).
     ## Includes the 17 studies that passed SIGN quality appraisal and entered
     ## the published mortality meta-analysis (Ariyanayagam 1992 and
-    ## Drimousis 2011 were rated unacceptable and are omitted), plus
+    ## Drimousis 2011 were rated unacceptable and are optional), plus
     ## Lule et al. 2026 (JMIR Hum Factors; doi:10.2196/82591) — a cluster
     ## RCT of RTTDC that was a preprint at the time of the Nakhid search
     ## and is now published.
@@ -11,7 +11,7 @@ systematic_review_data <- function() {
     ## `atls.*` / `non.atls.*` columns are trained vs untrained counts
     ## (historical names kept for the metabin export). `programme` is the
     ## trauma life support training programme used as the intervention.
-    list(
+    data <- list(
         Vestrup1988 = list(
             study = "Vestrup et al. 1988",
             design = "Retrospective cohort",
@@ -231,4 +231,35 @@ systematic_review_data <- function() {
             atls.died = 24
         )
     )
+    if (include.low.quality) {
+        # Nakhid et al. 2026, Table 2: use in-hospital mortality for both studies.
+        # Ariyanayagam counts were sourced by that review from Putra et al. 2023.
+        data <- c(data, list(
+            Ariyanayagam1992 = list(
+                study = "Ariyanayagam et al. 1992",
+                design = "Retrospective cohort",
+                year = 1992,
+                programme = "ATLS",
+                outcome = "In-hospital",
+                eligibility = NA,
+                non.atls.n = 13739,
+                non.atls.died = 637,
+                atls.n = 9132,
+                atls.died = 430
+            ),
+            Drimousis2011 = list(
+                study = "Drimousis et al. 2011",
+                design = "Registry based",
+                year = 2011,
+                programme = "ATLS",
+                outcome = "In-hospital",
+                eligibility = "Required admission",
+                non.atls.n = 6734,
+                non.atls.died = 128,
+                atls.n = 1431,
+                atls.died = 53
+            )
+        ))
+    }
+    data
 }

@@ -93,7 +93,7 @@ create_patient_procedure_table <- function() {
         "Assessment of safety events" = create_follow_up_schedule(
             in.hospital.care = TRUE
         ),
-        "EQ-5D/WHODAS" = create_follow_up_schedule(
+        "EQ5D5L/WHODAS" = create_follow_up_schedule(
             follow.up.7.days.discharge = TRUE,
             follow.up.30.days = TRUE,
             follow.up.90.days = TRUE

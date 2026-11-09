@@ -14,9 +14,9 @@ Minimal protocol changes needed to stay consistent with the revised Statistical 
 
 ## Required (unavoidable material conflict with approved SAP)
 
-- [ ] **P1 (from A1).** Replace RSPL with the SAP estimation framework. Protocol § Statistics → Analysis models (`protocol.qmd` ~line 815) still says models are fitted using “residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL)”. The SAP uses maximum likelihood with Laplace approximation because RSPL is SAS-specific with no exact R equivalent — a protocol-compatible SAP wording is not available without retaining an inaccurate method name. *Minimal edit: replace the RSPL sentence only.*
+- [X] **P1 (from A1).** Replace RSPL with the SAP estimation framework. Protocol § Statistics → Analysis models (`protocol.qmd` ~line 815) still says models are fitted using “residual pseudo-likelihood estimation based on linearization with subject-specific expansion (RSPL)”. The SAP uses maximum likelihood with Laplace approximation because RSPL is SAS-specific with no exact R equivalent — a protocol-compatible SAP wording is not available without retaining an inaccurate method name. *Minimal edit: replace the RSPL sentence only.*
 
-- [ ] **P3 (from C7).** Harmonise EQ-5D naming to **EQ-5D-5L** (and correct 3L where present). `../shared-assets/outcomes.qmd` still uses `EQ5D5L`; `protocol/variables.csv` still says EQ-5D-3L while the CRF uses EQ-5D-5L. SAP analysis text, `@tbl-outcomes-summary`, and the SAP-only nested sample-size include already use EQ-5D-5L. *Minimal edits: replace instrument name strings only; do not rewrite outcome definitions.*
+- [X] **P3 (from C7).** Harmonise EQ-5D naming to **EQ-5D-5L** (and correct 3L where present). `../shared-assets/outcomes.qmd` still uses `EQ5D5L`; `protocol/variables.csv` still says EQ-5D-3L while the CRF uses EQ-5D-5L. SAP analysis text, `@tbl-outcomes-summary`, and the SAP-only nested sample-size include already use EQ-5D-5L. *Minimal edits: replace instrument name strings only; do not rewrite outcome definitions.*
 
 ---
 
@@ -38,18 +38,18 @@ These are misspellings, grammar faults and one American spelling in files that r
 
 | # | File (`../shared-assets/`) | Current | Corrected |
 |---|---|---|---|
-| [ ] P5 | `intervention-and-control-treatment.qmd`:1 | `the training slot alloted to them` | `the training slot allotted to them` |
-| [ ] P6 | `intervention-and-control-treatment.qmd`:3 | `We will train the number units of physicians needed` | `We will train the number of units of physicians needed` |
-| [ ] P7 | `intervention-and-control-treatment.qmd`:3 | `which on average should be mean that we can train` | `which should mean that we can train` |
-| [ ] P8 | `intervention-and-control-treatment.qmd`:5 | `The course includes intial treatment and resuscitation` | `The course includes initial treatment and resuscitation` |
-| [ ] P9 | `intervention-and-control-treatment.qmd`:5 | `Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation.` | `Learning is based on practical scenario-driven skill stations and lectures, and the course includes a final performance proficiency evaluation.` |
-| [ ] P10 | `eligibility-criteria-patient-participant.qmd`:3 and :13 | `**Patients participants**` (twice) | `**Patient participants**` |
-| [ ] P11 | `eligibility-criteria-cluster.qmd`:11 | `- admits or refers/transfers for admission at least 12 patients` | `- admit or refer/transfer for admission at least 12 patients` |
-| [ ] P12 | `eligibility-criteria-cluster.qmd`:12 | `- no more than 25% of physicians providing initial trauma care trained in…` | `- have no more than 25% of physicians providing initial trauma care trained in…` |
-| [ ] P13 | `eligibility-criteria-cluster.qmd`:20 | `other major interventions[^note:major-interventions] that affects trauma care` | `…that affect trauma care` |
-| [ ] P14 | `eligibility-criteria-cluster.qmd`:24 | `not limited to implementing of a trauma team approach` | `not limited to implementing a trauma team approach` |
-| [ ] P15 | `synopsis.qmd`:34 | `lack a legally authorized representative` | `lack a legally authorised representative` |
-| [ ] P16 | `sample-size-calculations-main.qmd`:1 | `We assume that each cluster will contribute…, but allowed for` | `We assumed that each cluster would contribute…, and allowed for` |
+| [X] P5 | `intervention-and-control-treatment.qmd`:1 | `the training slot alloted to them` | `the training slot allotted to them` |
+| [X] P6 | `intervention-and-control-treatment.qmd`:3 | `We will train the number units of physicians needed` | `We will train the number of units of physicians needed` |
+| [X] P7 | `intervention-and-control-treatment.qmd`:3 | `which on average should be mean that we can train` | `which should mean that we can train` |
+| [X] P8 | `intervention-and-control-treatment.qmd`:5 | `The course includes intial treatment and resuscitation` | `The course includes initial treatment and resuscitation` |
+| [X] P9 | `intervention-and-control-treatment.qmd`:5 | `Leaning is based on practical scenario-driven skill stations, lectures and includes a final performance proficiency evaluation.` | `Learning is based on practical scenario-driven skill stations and lectures, and the course includes a final performance proficiency evaluation.` |
+| [X] P10 | `eligibility-criteria-patient-participant.qmd`:3 and :13 | `**Patients participants**` (twice) | `**Patient participants**` |
+| [X] P11 | `eligibility-criteria-cluster.qmd`:11 | `- admits or refers/transfers for admission at least 12 patients` | `- admit or refer/transfer for admission at least 12 patients` |
+| [X] P12 | `eligibility-criteria-cluster.qmd`:12 | `- no more than 25% of physicians providing initial trauma care trained in…` | `- have no more than 25% of physicians providing initial trauma care trained in…` |
+| [X] P13 | `eligibility-criteria-cluster.qmd`:20 | `other major interventions[^note:major-interventions] that affects trauma care` | `…that affect trauma care` |
+| [X] P14 | `eligibility-criteria-cluster.qmd`:24 | `not limited to implementing of a trauma team approach` | `not limited to implementing a trauma team approach` |
+| [X] P15 | `synopsis.qmd`:34 | `lack a legally authorized representative` | `lack a legally authorised representative` |
+| [X] P16 | `sample-size-calculations-main.qmd`:1 | `We assume that each cluster will contribute…, but allowed for` | `We assumed that each cluster would contribute…, and allowed for` |
 
 Notes on the two judgement calls. **P9** is two faults in one string: `Leaning` for `Learning`, and a coordination fault, since learning does not "include" an evaluation — the course does. If the team wants the minimal fix, correct the spelling only and keep the coordination fault on this list. **P12** is here because the bullet has no verb and so does not complete its stem; the parallel criterion on line 8 of the same file does carry one (`have at most 25% of physicians …`).
 

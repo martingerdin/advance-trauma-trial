@@ -18,7 +18,7 @@ Batched stepped-wedge cluster randomised trial in India.
 **Trial Population**
 Adult trauma patients presenting to the emergency department of a participating hospital.
 
-**Sample Size** 
+**Sample Size**
 `r number_to_text(clusters)` clusters and at least `r number_to_text(sample.size)` patients.
 
 **Eligibility Criteria**
@@ -27,11 +27,11 @@ Adult trauma patients presenting to the emergency department of a participating 
 
 *Participants* are adult trauma patients who present to the emergency department of participating hospitals and are admitted or transferred for admission.
 
-**Intervention** 
-The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India. 
+**Intervention**
+The intervention will be ATLS^®^ training, a proprietary 2.5 day course teaching a standardised approach to trauma patient care using the concepts of a primary and secondary survey. Physicians will be trained in an accredited ATLS^®^ training facility in India.
 
-**Ethical Considerations** 
-We will use an opt-out consent approach for collection of routinely recorded data. We will obtain informed consent for collection of non-routinely recorded data, such as quality of life and disability outcomes. Patients who are unconscious or lack a legally authorized representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection.
+**Ethical Considerations**
+We will use an opt-out consent approach for collection of routinely recorded data. We will obtain informed consent for collection of non-routinely recorded data, such as quality of life and disability outcomes. Patients who are unconscious or lack a legally authorised representative will be included under a waiver of informed consent. Note that consent here refers to consent to data collection.
 
 **Trial Period**
 February 2025 to October 2029
