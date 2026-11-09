@@ -2,7 +2,7 @@ The following have contributed to the design and implementation of the trial:
 
 | Name and  ORCID | Affiliation | Role |
 |-----------------|-------------|------|
-| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet, Stockholm, Sweden | Principal Investigator, TMG chair and TT member |
+| Martin Gerdin Wärnberg `r insert_orcid_link("0000-0001-6069-4794")`| Karolinska Institutet and Karolinska University Hospital, Stockholm, Sweden | Principal Investigator, TMG chair and TT member |
 | Girish D Bakhshi `r insert_orcid_link("0000-0001-9542-4428")` | Grant Govt. Medical College & Sir J. J. Group of Hospitals, Mumbai, India | TMG member |
 | Debojit Basak `r insert_orcid_link("0000-0002-8378-9689")` | Institute of Post Graduate Medical Education & Research and Seth Sukhlal Karnani Memorial Hospital, Kolkata, India | TMG member |
 | Abhinav Bassi `r insert_orcid_link("0000-0003-0750-9179")` |  The George Institute for Global Health, New Delhi, India | TMG and TT member |
