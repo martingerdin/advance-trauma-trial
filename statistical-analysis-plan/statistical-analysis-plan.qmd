@@ -140,9 +140,11 @@ We have designed and will analyse the trial within a superiority framework, with
 # Study design {#sec-study-design}
 ## Trial design {#sec-trial-design}
 <!-- sap-revision-todo D3 (comments id=3 MGW, id=4 AO; Round Two): confirm design descriptors including allocation and repeated measures on clusters. -->
-This is a batched stepped-wedge cluster randomised trial with `r clusters` clusters (see @fig-trial-design). Each cluster is one hospital, and we randomise hospitals, even when we train more than one unit of physicians in the same hospital. There are two intervention conditions: ATLS^®^ training and standard care.
+<!-- sap-revision-todo-v0.7.0 A1 (comments id=33 KH, id=46 JM): define "unit" of physicians. -->
+This is a batched stepped-wedge cluster randomised trial with `r clusters` clusters (see @fig-trial-design). Each cluster is one hospital, and we randomise hospitals, even when we train more than one unit of physicians in the same hospital. A unit is a group of physicians who staff the emergency department together. There are two intervention conditions: ATLS^®^ training and standard care.
 
-The trial comprises `r batches` batches of identical `r total.months`-period `r sequences`-sequence designs, with one cluster allocated to each sequence of each batch (equal allocation across sequences) [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. We measure clusters repeatedly across periods. We will implement the intervention during a one-month transition period, which we exclude from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
+<!-- sap-revision-todo-v0.7.0 A2 (comments id=34 JK, id=35 JK): removed the ambiguous "(equal allocation across sequences)" parenthetical; the sentence now states the equal numbers fact directly. -->
+The trial comprises `r batches` batches of identical `r total.months`-period `r sequences`-sequence designs, with one cluster allocated to each sequence of each batch [@Kasza2022]. Each period is one month, and each cluster will be in the trial for a total of `r total.months` months. We measure clusters repeatedly across periods. We will implement the intervention during a one-month transition period, which we exclude from the analysis. There will be an anticipated overlap of `r batches.overlap.months` months between successive batches.
 
 Clusters will be sequentially allocated to batches based on when they enter the study, and within each batch clusters will then be randomised to an intervention implementation sequence. We include individual patients cross-sectionally for the primary outcome, although we assess some secondary outcomes at multiple follow-up time points. The anticipated trial period is from February 2025 to October 2029.
 
@@ -834,7 +836,7 @@ We will use the R Statistical Software for all analyses [@R]. We will select the
 ## Presentation of analysis results {#sec-presentation-of-analysis-results}
 <!-- sap-revision-todo J2: gtsummary tbl_regression-style key/all shells; shared descriptive section headers and label style. -->
 <!-- github-issue-34: outcome names as nested headers; effect measures indented with modify_indent. -->
-We will report intervention effect estimates for the primary and secondary outcomes with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text (@tbl-outcomes-analysis-results) and all outcome analyses in the supplementary material (@tbl-outcomes-analysis-results-all).
+We will report intervention effect estimates for the primary and secondary outcomes with 95% CIs and p-values, using the effect measures specified for each outcome. We will present key outcome analyses in the main text (@tbl-outcomes-analysis-results) and all outcome analyses in the supplementary material (@tbl-outcomes-analysis-results-all). Key outcome analyses are the analyses of the primary outcome and each secondary outcome at its summary level. The supplementary table additionally reports the EQ-5D-5L domain and VAS analyses of quality of life.
 
 <!-- sap-revision-todo J3: shell for sensitivity, fully adjusted, and subgroup analyses of the primary outcome. -->
 <!-- github-issue-34: analysis names as nested headers; OR/ARD indented with modify_indent. -->
