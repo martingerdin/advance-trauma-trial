@@ -1,0 +1,912 @@
+[00:00:04] A#00min: Hi Martin,
+[00:00:05] A#00min: good morning.
+[00:00:07] B#00min: Hey, good morning.
+[00:00:08] B#00min: Hi.
+[00:00:08] A#00min: Hi.
+[00:00:09] A#00min: Hi Jess.
+[00:00:11] B#00min: Hi, Jess. Hi, James.
+[00:00:12] B#00min: Hi, Peter.
+[00:00:14] C#00min: Hi everyone.
+[00:00:15] B#00min: Hello.
+[00:00:15] A#00min: Hi everyone.
+[00:00:19] B#00min: Good morning.
+[00:00:20] B#00min: Thank you so much for taking time out and finding a time despite the different time zones.
+[00:00:27] A#00min: Martin, before we start,
+[00:00:29] A#00min: I think I have to leave a bit early.
+[00:00:31] B#00min: Okay,
+[00:00:32] B#00min: how much early?
+[00:00:33] A#00min: Um,
+[00:00:34] A#00min: 20 minutes,
+[00:00:35] A#00min: maybe 15.
+[00:00:37] B#00min: Sure,
+[00:00:37] A#00min: Thank you.
+[00:00:38] B#00min: okay.
+[00:00:41] B#00min: So we're just waiting for Anna.
+[00:00:44] B#00min: I'll give her one more minute and then I think we need to get started.
+[00:01:12] B#00min: They all know each other.
+[00:01:13] B#00min: I know everyone.
+[00:01:14] B#00min: Al-Pita,
+[00:01:15] B#00min: have you met everyone?
+[00:01:17] D#00min: No, I know everyone,
+[00:01:19] D#00min: but I have not yet met them.
+[00:01:23] B#00min: So maybe if you introduce yourself, Al-Pita, and then we can just do a very quick hello.
+[00:01:28] D#00min: Yes.
+[00:01:28] B#00min: Yeah.
+[00:01:30] D#00min: Sure.
+[00:01:30] D#00min: Hello,
+[00:01:31] D#00min: I'm Orpita Ghosh. I work at the Georgia Institute for Global Health in the India office and a station by background and I requested Martin when I heard about the study to
+[00:01:44] D#00min: for exposure to the design and the analysis and he has been very kind to include me in the conversation so that's why I'm here in this meeting to learn from the discussion thank you
+[00:01:58] B#00min: Thanks, Avita.
+[00:01:59] B#00min: So, Jess.
+[00:02:04] E#00min: If I'd mind unmute Martin.
+[00:02:05] E#00min: Oh, hi, Evita.
+[00:02:06] E#00min: I'm Jess Case. I'm a professor of biostats at Monash University in Melbourne.
+[00:02:12] E#00min: Yeah,
+[00:02:12] E#00min: so I've done a lot of work on the stepped wedge design kind of following in Carla's footsteps, who's the one who really kickstarted this area.
+[00:02:20] E#00min: I've been lucky enough to work with Carla a bit too,
+[00:02:22] E#00min: which has been nice. And James too,
+[00:02:24] E#00min: a little bit more peripherally.
+[00:02:28] B#00min: Thank you, Carla.
+[00:02:30] A#00min: Hi, I'm Arpita.
+[00:02:31] A#00min: Nice to meet you.
+[00:02:33] A#00min: I've worked in cholesterol trials and step-wide trials.
+[00:02:36] A#00min: I think Jess is underselling herself.
+[00:02:38] A#00min: It goes the other way around.
+[00:02:41] A#00min: Nice to meet you.
+[00:02:43] D#00min: Thank you.
+[00:02:45] B#00min: And James.
+[00:02:46] F#00min: Yeah, hi,
+[00:02:47] F#00min: I'll be James,
+[00:02:48] F#00min: mine,
+[00:02:48] F#00min: medical statistician at the University of Birmingham and work very closely with Carla.
+[00:02:56] D#00min: Yes, as I said,
+[00:02:58] D#00min: I know all of you from reading your papers, so I definitely know the work that, you know, all of you have done,
+[00:03:05] D#00min: especially in cluster randomized different designs.
+[00:03:09] D#00min: So very happy,
+[00:03:10] D#00min: very fortunate to be here.
+[00:03:11] D#00min: Thank you.
+[00:03:12] A#00min: Oh, Peter,
+[00:03:13] A#00min: we have this like fellowship thing with India.
+[00:03:16] A#00min: I can't remember whether I forwarded it to Martin.
+[00:03:19] B#00min: I don't think so.
+[00:03:20] B#00min: I don't recognize it.
+[00:03:22] A#00min: I think the deadline's just passed,
+[00:03:24] A#00min: but it's like six months or yearly and it allows collaborators from India to come and spend a couple of months in the UK.
+[00:03:31] A#00min: I'll see if I can find it and send it to you.
+[00:03:34] D#00min: Okay,
+[00:03:35] D#00min: that'd be very helpful.
+[00:03:36] D#00min: Thank you.
+[00:03:39] B#00min: I think we should get started and I'll fill Anna in later in case she's not joining.
+[00:03:46] B#00min: So there.
+[00:03:48] B#00min: So the aim of this meeting,
+[00:03:49] B#00min: the purpose of this meeting is to really try to get the final things down so that we can lock this SAP in and you've all been very kind to spend your time reading and commenting on this.
+[00:04:04] B#00min: Basically, we had almost 90 comments on this last version with some back and forth.
+[00:04:10] B#00min: I think the majority of these are mostly wording issues,
+[00:04:15] B#00min: things that need to be clarified. And I think there were some quite a bit of suggestions in the actual document itself. So those should be straightforward. There were 11 more larger or more substantive.
+[00:04:31] B#00min: Things that I want to discuss or spend this time on discussing and hopefully come to decisions on so that we can kind of finalize those.
+[00:04:46] B#00min: Just for you who haven't been in one of the recent management group meetings,
+[00:04:54] B#00min: just a brief on where we are at with the trial.
+[00:04:58] B#00min: So it started in February 2025.
+[00:05:02] B#00min: The first batch has finished.
+[00:05:07] B#00min: Batch two is ongoing right now and batch three is...
+[00:05:11] B#00min: And plan to start next week after a couple of months of delays because one cluster dropped out at a very late stage.
+[00:05:22] B#00min: And we are including or so far have included some 2,500 patients,
+[00:05:29] B#00min: which is slightly more than we anticipated.
+[00:05:33] B#00min: So that's where we're at.
+[00:05:36] B#00min: Um,
+[00:05:37] B#00min: these are the 11 decisions that I,
+[00:05:41] B#00min: or 11 things that I've
+[00:05:44] B#00min: would like us to focus on during this meeting and I did circulate this just a couple of hours before this meeting as well but you you have that so you can go can I go through it on your own as well in case there are things that we don't have time to discuss now but these also include page references to the actual document so I hope that will help our discussions
+[00:06:08] B#00min: So I suggest that we go start right ahead and start unless anyone has anything to comment or say right now.
+[00:06:20] B#00min: No?
+[00:06:21] B#00min: Okay.
+[00:06:24] B#00min: So let's start talking about the interim analysis.
+[00:06:28] B#00min: And we have, this is something that we have discussed a bit before, and there's been a couple of back and forth about this.
+[00:06:39] B#00min: It's in the protocol. So in the trial protocol,
+[00:06:42] B#00min: we have stated that there will be, we have stated these things, there will be an interim analysis,
+[00:06:47] B#00min: although without formal stopping rules,
+[00:06:49] B#00min: and there will be kind of after each batch, there will be a meeting by the SDMC.
+[00:06:56] B#00min: So that's what we have stated in the protocol.
+[00:07:02] B#00min: Now, it was noted that in this app it doesn't say anything about formal stopping routes and that's the reason why.
+[00:07:08] B#00min: And it was suggested that these per batch reports are very similar to the ones that or to the actual in what we call an interim analysis.
+[00:07:18] B#00min: Although it all sounds a bit like routine trial monitoring.
+[00:07:23] B#00min: And the suggestion in the document is to reframe or basically go ahead and call these per batch reports as routine monitoring reports and then have the meeting that is planned after half the batches have finished, have that as the interim analysis and then have the decision to...
+[00:07:48] B#00min: continue or stop after that halfway time point,
+[00:07:53] B#00min: although we ask the SMC to make that decision based on feasibility rather than effectiveness,
+[00:08:02] B#00min: because what we have said before is to not analyze effectiveness as part of the interim analysis.
+[00:08:11] A#00min: So I don't think it matters too much what you call it just as long as it's clear that whether or not you're going to be comparing the treatment arms and estimating a value of the effect,
+[00:08:22] A#00min: the outcomes.
+[00:08:24] A#00min: I think that's all you need to do is just clarify what you're going to be doing.
+[00:08:29] B#00min: And I think what we have said is that we will not analyze or compare intervention ARPs as part of the interim analysis, because any estimate at that point in time will be associated with large uncertainty.
+[00:08:43] A#00min: So if you've said that, I think it's fine.
+[00:08:44] B#00min: So, yeah.
+[00:08:49] B#00min: Do we all agree on that?
+[00:08:50] B#00min: Are there other opinions?
+[00:08:55] E#00min: Yeah, I think I think I also James, I noticed you're on mute. I'll just jump in.
+[00:08:59] F#00min: That's all you,
+[00:08:59] F#00min: first guess.
+[00:09:00] E#00min: Thanks.
+[00:09:02] E#00min: Yeah,
+[00:09:03] E#00min: I think I'd sort of noted that I didn't think that the interim analysis label was appropriate.
+[00:09:09] E#00min: But look,
+[00:09:10] E#00min: I think like Carla said,
+[00:09:11] E#00min: it really doesn't matter at the end of the day.
+[00:09:13] E#00min: I personally would prefer it not be called interim analysis because it's not a formal analysis of an outcome.
+[00:09:22] E#00min: Look if it's clear then that's that's fine
+[00:09:28] F#00min: Yeah, yes,
+[00:09:31] A#00min: I'm happy to call it routine monitoring.
+[00:09:35] A#00min: That's fine by me.
+[00:09:42] A#00min: Shall we take it?
+[00:09:44] F#00min: you have.
+[00:09:45] F#00min: I think the only thing I was going to say was around the wording of when you'd said about decision to continue or stop halfway and what that was being based upon because as you said you're not comparing outcomes you know you're not presenting any treatment effects because of the large uncertainty you'd have in them so when you're asking them about whether you should continue or stop what is that being based upon?
+[00:10:14] B#00min: So I think what we have discussed previously is to base that discussion primarily on feasibility measures. So if we fail to include clusters or they fail to adhere to the randomization schedule or we are seeing too much missing in key variables, so things like that rather than effect estimate.
+[00:10:39] F#00min: and has any of that been decided you know what what you know when you say about if it's not feasible so if they're not adhering to the randomization or I think about missing data then is is there thresholds that you've already thought of
+[00:10:53] B#00min: We haven't, no.
+[00:10:54] F#00min: taken the protocol
+[00:10:55] B#00min: No,
+[00:10:55] F#00min: in
+[00:10:55] B#00min: we didn't set that.
+[00:10:56] B#00min: No,
+[00:10:56] B#00min: we didn't set that,
+[00:10:57] B#00min: no.
+[00:11:06] B#00min: The only reason I would be cautious about changing the terminology would be that we state in the protocol,
+[00:11:14] B#00min: or we call it an interim analysis in the protocol,
+[00:11:17] B#00min: and changing that wording would kind of trigger us to do a protocol amendment,
+[00:11:24] B#00min: which I would like to avoid.
+[00:11:26] B#00min: But maybe you think that that's not necessary, we can change that anyway.
+[00:11:36] A#00min: I don't think it's very important not in what we call it.
+[00:11:39] A#00min: I mean,
+[00:11:39] B#00min: Yeah.
+[00:11:39] A#00min: yeah, in the ideal world maybe we might change it, but if it's going to cause complications.
+[00:11:47] B#00min: Okay.
+[00:11:47] B#00min: So let's avoid complication,
+[00:11:49] B#00min: right?
+[00:11:51] B#00min: But James,
+[00:11:52] B#00min: do you think that there should be formal criteria for those feasibility aspects?
+[00:12:00] A#12min: No.
+[00:12:01] B#12min: well yeah
+[00:12:02] C#12min: That's not part of the SAP though.
+[00:12:03] B#12min: that's more of the sort of the MTT charter perhaps but
+[00:12:11] B#12min: it was more if there is that criteria that it's reported somewhere because if you've got here that this is what you're doing after half of the batches are completed then you know you might just want to refer to a DSMB
+[00:12:25] B#12min: chart
+[00:12:25] D#12min: Yeah.
+[00:12:25] B#12min: to say about the guidance it was more than I was just looking and thinking well you've said you want to do that but I'm not sure if you've thought about it at this stage about what how you would make that decision
+[00:12:38] D#12min: No,
+[00:12:38] D#12min: that's a good point.
+[00:12:39] D#12min: So that can be clarified and we can refer to the charter.
+[00:12:42] D#12min: Yeah.
+[00:12:44] D#12min: So let's try to clarify what we actually mean by the analysis and that we will not compare outcomes between treatment arms and then refer to the charter.
+[00:12:56] D#12min: Okay?
+[00:12:59] D#12min: Excellent,
+[00:13:00] D#12min: thank you.
+[00:13:02] D#12min: So then we have the treatment of length of stay outcomes.
+[00:13:08] D#12min: So we have a number of these and what is now suggested is to treat them as count rather than time to event outcomes.
+[00:13:22] D#12min: It wasn't clear in the SAP how these are measured,
+[00:13:27] D#12min: but what we actually have are basically time stamps,
+[00:13:31] D#12min: so date and time of admission and discharge.
+[00:13:35] D#12min: So we have it as a continuous,
+[00:13:38] D#12min: or the data is on a continuous scale, so to speak, if that change how we want to do this.
+[00:13:50] D#12min: I think you suggested just to change it to a time-to-event.
+[00:13:59] C#12min: Well, it seems like, I mean, that's how I would analyze an outcome like this.
+[00:14:06] C#12min: I would include maybe,
+[00:14:09] C#12min: so you're looking at time to discharge.
+[00:14:16] C#12min: I would have time to discharge with death as a competing risk,
+[00:14:21] C#12min: something like that.
+[00:14:26] D#12min: Yeah, I see nodding heads.
+[00:14:29] D#12min: Yeah.
+[00:14:32] D#12min: So then I suggest we do that.
+[00:14:34] D#12min: We analyze length of stay as time to event outcomes with death as competing risk.
+[00:14:45] D#12min: Okay, going on to the next one.
+[00:14:48] D#12min: So then it's the intercurrent events where there is some confusion and I will see if I can find that table.
+[00:15:00] D#12min: So basically,
+[00:15:02] D#12min: if I got the comments.
+[00:15:05] D#12min: Right, what we have is that loss to follow-up and maybe also withdrawal,
+[00:15:12] D#12min: but that was not in the comments,
+[00:15:13] D#12min: is actually missing data.
+[00:15:17] D#12min: And we have already basically said that we will treat this as missing data,
+[00:15:24] D#12min: but technically that's not an intercurrent event.
+[00:15:30] D#12min: My suggestion then would be to basically treat this as missing data instead and not handle it within the intercurrent events framework.
+[00:15:43] D#12min: Does that, and then Jess, you had a comment about treatment policy and basically that's how we handle the actual cluster level of intercurrent event of not adhering to.
+[00:15:58] D#12min: the actual scheduled trainee date.
+[00:16:03] D#12min: So clarifying that as well.
+[00:16:05] D#12min: So that would be my suggestion for how to handle this.
+[00:16:09] D#12min: Any comments on that?
+[00:16:15] E#12min: So I think.
+[00:16:17] F#12min: I think Jess and I may be saying the same thing but in different ways so missing data is not really an intercurrent event and Jess
+[00:16:23] D#12min: That's
+[00:16:23] F#12min: was saying
+[00:16:23] D#12min: what I guess.
+[00:16:24] F#12min: okay sorry and then Jess is saying that well lost a follow-up you've already said that you're going to have a treatment policy strategy so I think that that can just be removed from this table
+[00:16:35] D#12min: Sorry,
+[00:16:36] D#12min: yes, I thought you meant not lost to follow up, but actually that not.
+[00:16:42] D#12min: The lack of adherence to the treatment schedule is actually an intercurrent event.
+[00:16:46] D#12min: Did I
+[00:16:47] C#12min: No,
+[00:16:47] D#12min: misunderstand you?
+[00:16:48] C#12min: I think I was talking about, so going back to the document,
+[00:16:53] C#12min: I think I was saying the same thing as Carla really, like loss to follow up kind of means that the patient, we don't have the outcome for the patient essentially.
+[00:17:03] C#12min: So we've got missing data for that outcome for the patient.
+[00:17:06] C#12min: So.
+[00:17:06] D#12min: Yeah.
+[00:17:08] C#12min: That's, sorry,
+[00:17:10] D#12min: I'm just highlighting this comment then,
+[00:17:12] D#12min: which was what I was thinking.
+[00:17:13] C#12min: let
+[00:17:13] D#12min: You
+[00:17:13] C#12min: me,
+[00:17:13] D#12min: said,
+[00:17:13] C#12min: let
+[00:17:13] D#12min: yeah.
+[00:17:14] C#12min: me move this.
+[00:17:15] C#12min: Yes, for all of these, an intercurrent event is the intervention not being delivered as planned.
+[00:17:20] C#12min: Yeah,
+[00:17:21] C#12min: so I guess I was saying that I see intercurrent events as being things that interrupt the intervention being delivered,
+[00:17:32] C#12min: loss to follow up.
+[00:17:35] C#12min: I'm maybe in some situations that would would interrupt the delivery of the intervention I'm
+[00:17:42] D#12min: Hmm.
+[00:17:43] C#12min: thinking about like the patient level but more often I would think okay you've got the patient they you know receive the their exposure to the intervention and then we never find out what their outcomes are
+[00:17:56] C#12min: So they've been lost to follow up.
+[00:17:58] C#12min: Yeah. So we know that they received the treatment.
+[00:18:02] C#12min: So that's fine. So there hasn't been something that interrupts that.
+[00:18:07] C#12min: But then there's been something that interrupts whether or not we actually observe the outcome.
+[00:18:12] C#12min: So it's missing data there.
+[00:18:19] C#12min: I can see that my comment here is not very clear because I too am having trouble interpreting that right now.
+[00:18:26] D#12min: So just to clarify,
+[00:18:28] D#12min: so my understanding of intercurrent event is that that's an event that happens after intervention exposure,
+[00:18:36] D#12min: but before the outcome can be uncertain.
+[00:18:42] D#12min: But what you say, what it could also be something that stops or the intervention from happening.
+[00:18:47] C#12min: Yeah, so between like randomisation and when the intervention is supposed to be received and completed.
+[00:18:57] C#12min: So
+[00:18:57] D#12min: Okay.
+[00:18:58] C#12min: a patient,
+[00:18:59] C#12min: sorry,
+[00:19:00] C#12min: Carly.
+[00:19:01] F#12min: So again,
+[00:19:02] F#12min: I think this is perhaps one of those things where
+[00:19:05] F#12min: It doesn't quite matter whether we're following like particular definitions.
+[00:19:10] F#12min: It's more about semantics. I think some people would say missing data isn't or lost follow-up isn't an inherent event.
+[00:19:17] F#12min: But I don't think it matters terribly here whether we put it in the table or we don't. It's just, just maybe doesn't need to go in.
+[00:19:28] D#12min: Yeah,
+[00:19:29] F#12min: It's
+[00:19:29] D#12min: it doesn't,
+[00:19:29] F#12min: just a V.
+[00:19:30] D#12min: yeah.
+[00:19:31] C#12min: Yeah, yeah,
+[00:19:31] C#12min: I agree.
+[00:19:33] D#12min: It doesn't have to go in here or be treated as intercurrent.
+[00:19:37] D#12min: Yeah.
+[00:19:40] D#12min: Good.
+[00:19:43] D#12min: Any other comments on this?
+[00:19:50] F#12min: If you're going to do the time to event.
+[00:19:55] F#12min: and not
+[00:19:56] D#12min: Yeah.
+[00:19:56] F#12min: the negative binomial,
+[00:19:58] F#12min: then the death will be removed from here, I think.
+[00:20:03] D#12min: Yeah.
+[00:20:04] D#12min: And it's
+[00:20:05] F#12min: It's about
+[00:20:05] D#12min: a competing
+[00:20:05] F#12min: relevant outcome.
+[00:20:06] D#12min: event.
+[00:20:06] D#12min: Yeah. Yeah.
+[00:20:09] D#12min: Peter,
+[00:20:10] D#12min: you raised your hand.
+[00:20:12] G#12min: Yeah, I wanted to ask for the time to event and the last one for the length of stay.
+[00:20:21] G#12min: This is just to clarify for my understanding.
+[00:20:23] G#12min: For a transfer,
+[00:20:25] G#12min: so transfers would be included into the outcome definition.
+[00:20:29] G#12min: So the length of stay would be in this admission as well as part of the transfer.
+[00:20:37] G#12min: Because debt may also happen there.
+[00:20:40] G#12min: So will that be a competing risk and will that part of the stay?
+[00:20:46] F#12min: Yes, I think that would be a competing event.
+[00:20:49] F#12min: I guess you could put the death and the transfers in here and then in the strategy,
+[00:20:54] F#12min: what would you call it, would it be more like a composite or?
+[00:21:02] B#12min: Is it, is
+[00:21:04] F#12min: I don't know what it would be called,
+[00:21:06] F#12min: but I think it could go in the table.
+[00:21:08] F#12min: But it's just that it would already be implicit in what you were saying, so you wouldn't have to put it in the table.
+[00:21:15] G#12min: Okay.
+[00:21:15] F#12min: Sorry, Jess.
+[00:21:16] C#12min: No, no, I'm just thinking of, I guess whether or not transfer is an intercurrent event depends on what the outcome is. So if you're looking at length of stay in hospital.
+[00:21:28] C#12min: and someone's transferred you know from the ED to the ward then that that doesn't matter that's irrelevant because we're talking about if we're just talking about length of stay within the ED then transfer out kind of terminates that
+[00:21:45] D#12min: Yeah.
+[00:21:45] C#12min: um
+[00:21:48] C#12min: If you're talking about transfer to a different hospital, maybe, then maybe in that situation, it is an intercurrent event because we no longer get to observe the outcome for that patient that because they might like fall out of the trial or be lost to follow up at that point.
+[00:22:04] D#12min: Yeah.
+[00:22:12] G#12min: I
+[00:22:12] D#12min: Okay,
+[00:22:12] G#12min: thought that,
+[00:22:13] D#12min: so yeah,
+[00:22:13] G#12min: sorry,
+[00:22:13] D#12min: go ahead. I'll be done.
+[00:22:14] G#12min: 
+[00:22:15] G#12min: I thought it was mentioned in the chat that the trial coordinators would follow up in case of a trial, and I understood it in case of a transfer to another hospital.
+[00:22:26] G#12min: they would follow them up so we would get the at least for the all cause mortality even for the in hospital mortality it is suggested that it would be counted towards in hospital so my understanding was that even for a transfer to another hospital it's part of the outcome
+[00:22:46] D#12min: Yes, I think for mortality outcomes,
+[00:22:48] D#12min: we are getting that.
+[00:22:50] D#12min: Data, but we...
+[00:22:54] D#12min: we're currently not collecting kind of ICU data from other hospitals so we wouldn't know if they are transferred from one ICU to another ICU then we wouldn't know when kind of they were discharged from that ICU so I guess for those outcomes transfer would be an intercurrent event although I don't think that happens very often but yeah
+[00:23:18] F#12min: I think that could have been a bit clearer, Martin.
+[00:23:20] F#12min: I think now I'm remembering.
+[00:23:21] F#12min: I'm reminded that I was a bit confused by that.
+[00:23:24] D#12min: Okay,
+[00:23:24] D#12min: by the fact that some things are follow-up from other hospitals and some are not.
+[00:23:28] F#12min: Yeah,
+[00:23:28] D#12min: Yeah,
+[00:23:28] F#12min: 
+[00:23:28] D#12min: okay,
+[00:23:28] F#12min: yeah.
+[00:23:29] D#12min: got it.
+[00:23:29] D#12min: Yeah.
+[00:23:35] D#12min: Okay,
+[00:23:36] D#12min: moving on.
+[00:23:39] D#12min: Missing data.
+[00:23:41] D#12min: Basically, what we have said is that we will impugn as the primary analysis if we have more than 10% missing in the primary outcome.
+[00:24:00] A#24min: And the discussion in the SAP was that this 10% is arbitrary.
+[00:24:05] A#24min: Maybe it's better just to say that the primary analysis will not use multiple imputation and then include a multiple imputed analysis as sensitivity analysis instead.
+[00:24:21] A#24min: I mean, we do expect very low or...
+[00:24:25] A#24min: at least less than one percent missing in the primary outcome and that's what we have said from the start.
+[00:24:35] A#24min: So maybe that makes sense not to have a kind of pre-specified cutoff for when we will do multiple imputation but this would add sensitivity analysis and there are some discussions about that later.
+[00:24:52] A#24min: Thoughts on this?
+[00:25:06] B#24min: I personally think it's fine to say if there's any missing data, we're going to do some multiple imputation.
+[00:25:12] B#24min: That's great.
+[00:25:13] B#24min: Might not help you much if you've got say very low rates of missingness.
+[00:25:19] B#24min: I often will specify a threshold in the SAPs I'm involved with.
+[00:25:25] B#24min: I'm not sure if that's best practice these days,
+[00:25:27] B#24min: but that's still what I do.
+[00:25:31] B#24min: Yeah.
+[00:25:33] B#24min: Oh,
+[00:25:33] A#24min: Yeah.
+[00:25:33] B#24min: I'd be curious to know what Carla and James think on that point.
+[00:25:37] C#24min: What missing data might you have in the primary analysis or the primary outcome?
+[00:25:43] C#24min: Because the primary analysis of the primary outcome,
+[00:25:46] C#24min: it doesn't adjust for anything,
+[00:25:49] C#24min: does it?
+[00:25:49] C#24min: So
+[00:25:49] A#24min: No.
+[00:25:50] C#24min: what's going to be missing?
+[00:25:52] A#24min: No, it's the outcome that might be missing.
+[00:25:54] C#24min: Just the outcome.
+[00:25:55] A#24min: Yeah.
+[00:25:59] A#24min: But otherwise we shouldn't have close to zero missing in the primary analysis.
+[00:26:05] A#24min: What we will have missing data on is when we do the fully adjusted analysis,
+[00:26:11] A#24min: that we have missing data in unexpected,
+[00:26:15] A#24min: quite high proportions of missing data in some of the covariates like patient level,
+[00:26:20] A#24min: vital signs and so on that we have said that we'll adjust for.
+[00:26:25] A#24min: But in the primary analysis,
+[00:26:26] A#24min: we're not expecting much missingness at all.
+[00:26:31] A#24min: And.
+[00:26:31] C#24min: So is it clear in what's written that...
+[00:26:37] C#24min: So what you're going to do without missing data analysis for,
+[00:26:40] C#24min: so have you sort of said that for the primary outcome analysis,
+[00:26:44] C#24min: you might perhaps do some multiple imputation and likewise,
+[00:26:47] C#24min: have you said in the fully covariate adjusted analysis,
+[00:26:50] C#24min: you also might do some multiple imputation.
+[00:26:54] C#24min: I
+[00:26:55] A#24min: Yes.
+[00:26:55] C#24min: mean, it's a sort of separate point.
+[00:26:57] A#24min: So that's why we have used this.
+[00:26:59] A#24min: So for the primary analysis,
+[00:27:01] A#24min: we've said that we will impute if we have more than 10% missing.
+[00:27:05] A#24min: That's what
+[00:27:06] C#24min: That's
+[00:27:06] A#24min: we have said.
+[00:27:06] C#24min: the missing primary outcome.
+[00:27:08] A#24min: Missing primary outcome.
+[00:27:11] C#24min: But what about the covariate adjusted analysis?
+[00:27:16] A#24min: And we will.
+[00:27:17] C#24min: Because there it's not about the primary outcome being missing.
+[00:27:21] A#24min: No, but that's true.
+[00:27:25] A#24min: But we base that also on the primary outcome,
+[00:27:29] A#24min: but maybe that should be reconsidered.
+[00:27:32] C#24min: Yeah, I think so. I think you probably need to articulate it a little bit differently if you're going to do a covariance adjusted analysis than that missing data.
+[00:27:43] C#24min: method approach will be more important for the missing
+[00:27:45] A#24min: Yeah,
+[00:27:46] C#24min: for the
+[00:27:46] A#24min: yeah,
+[00:27:46] C#24min: covariance adjustment analysis
+[00:27:47] A#24min: yeah,
+[00:27:47] C#24min: than this one right
+[00:27:48] A#24min: yeah, yeah.
+[00:27:49] C#24min: 10 seems a bit bit high to me i think if you're going to put a percentage i think maybe five percent would be closer to what you might say and
+[00:28:02] C#24min: i don't feel very strongly about whether you put percentage there or not
+[00:28:08] A#24min: James,
+[00:28:08] A#24min: you said something.
+[00:28:10] D#24min: Oh, actually, it was about Carla's point that you've got the 10% missing primary outcome data as your threshold,
+[00:28:17] D#24min: but then yeah, for the second part where you were talking about the covariate adjusted,
+[00:28:21] D#24min: it's going to be probably proportion or percentage of people with missing primary outcome or covariate data that you probably want to base it on.
+[00:28:31] A#24min: Yeah, yeah.
+[00:28:32] A#24min: I see that now,
+[00:28:34] A#24min: yeah.
+[00:28:36] D#24min: um the other thing is is about whether this is all done together so are you doing one set of imputation using um you know all of these covariance and any um other variables to aid the imputation and then you're fitting you know a set of unadjusted models and a set of adjusted models or are you doing anything
+[00:29:00] D#24min: you know are you doing i don't know unadjusted and then adjusted separately because that's almost how it reads at the moment um
+[00:29:08] A#24min: Yeah,
+[00:29:08] D#24min: and i'm sure probably not the case
+[00:29:12] A#24min: that's a very good question also whether we should, because in the discussion it was almost as if we would decide whether we should impute based on...
+[00:29:26] A#24min: the amount of missingness in each secondary outcome.
+[00:29:30] A#24min: But to me that sounds a bit overly complicated and maybe a more straightforward approach would be to do, maybe that's what you just said James,
+[00:29:43] A#24min: is to do one
+[00:29:46] A#24min: imputation in the sense that we create imputed data set with x number of or x number of imputed data sets and then run all analysis using the same imputation if you see what I mean.
+[00:30:00] D#24min: I mean, from a computational point of view, that would also be a lot better because it's doing imputation with no clustering can be quite.
+[00:30:11] D#24min: computationally expensive when you've
+[00:30:13] A#24min: Mm
+[00:30:13] D#24min: got clustering
+[00:30:13] A#24min: -hmm.
+[00:30:14] D#24min: it adds a lot of complexity to it and so we're trying to do it individually for each outcome would be quite a time-consuming process
+[00:30:23] A#24min: Yeah, yeah.
+[00:30:25] A#24min: So basically the suggestion is to,
+[00:30:27] A#24min: if I try to summarize this, is to modify the threshold, but perhaps still include the threshold, but then say 5% for the primary outcome analysis. And then...
+[00:30:41] A#24min: add that if we have and use the same threshold for missing covariate data in the adjusted analysis and if we need to impute then conduct or create one imputed data set and run all analysis on that imputed data set.
+[00:31:01] A#24min: Is
+[00:31:01] D#24min: I think
+[00:31:01] A#24min: that correct?
+[00:31:01] D#24min: so.
+[00:31:02] D#24min: I guess the one potential thing here, though, is that you'd have to then make sure that you're using the same number of you'd have to specify what that imputation will be. Is that based on a, you know, you've said here at least 20.
+[00:31:15] D#24min: Is that based on the proportion of missing data or are you just specifying, you know, a number of imputations that you're going to do?
+[00:31:26] A#24min: No,
+[00:31:26] A#24min: so I...
+[00:31:27] A#24min: So I see that it's not specified. My recommendation would be that we write that we use the proportion of missing data, but use at least 20.
+[00:31:37] D#24min: So I guess I'm saying that because obviously for your unadjusted model,
+[00:31:42] D#24min: your proportion of missing data is based on missing primary outcome.
+[00:31:45] A#24min: Yeah.
+[00:31:46] D#24min: But in your adjusted model,
+[00:31:48] D#24min: it's proportioned with any missing data. And so those two aren't going to align.
+[00:31:53] A#24min: No.
+[00:31:55] A#24min: But then we can still use the larger,
+[00:31:57] A#24min: the one with
+[00:31:59] D#24min: Yeah.
+[00:31:59] A#24min: the larger N,
+[00:32:00] A#24min: right?
+[00:32:01] A#24min: Also for the primary analysis.
+[00:32:02] A#24min: Yeah.
+[00:32:03] D#24min: Yeah.
+[00:32:03] D#24min: But that's what I'm just, it's just about making sure that then.
+[00:32:06] D#24min: Yeah.
+[00:32:06] A#24min: Yeah.
+[00:32:07] A#24min: Yeah.
+[00:32:07] A#24min: So clarifying that.
+[00:32:09] A#24min: Yeah.
+[00:32:09] A#24min: Good point.
+[00:32:18] A#24min: Okay.
+[00:32:20] A#24min: And then that means that we clarify the missing data strategy,
+[00:32:24] A#24min: but we do not call it a sensitivity analysis.
+[00:32:29] A#24min: That would be my interpretation of the discussion.
+[00:32:41] A#24min: Okay.
+[00:32:42] C#24min: Sorry,
+[00:32:43] C#24min: Martin,
+[00:32:43] C#24min: I don't follow the last bit.
+[00:32:45] C#24min: Not call it a sensitivity analysis,
+[00:32:46] C#24min: did you say?
+[00:32:46] A#24min: Yeah, I mean what we are calling it now is more is we haven't specified a sensitivity analysis where we use multiple imputation,
+[00:32:56] A#24min: where we don't call it the sensitivity analysis. We specify it here under how we handle missing data.
+[00:33:03] B#24min: Okay.
+[00:33:04] A#24min: Yeah.
+[00:33:05] C#24min: Okay, so the one option is that if there's a certain proportion of missing data,
+[00:33:10] C#24min: then this would just become a default versus
+[00:33:12] A#24min: Yeah.
+[00:33:13] C#24min: we'll present a complete case analysis
+[00:33:15] A#24min: Yeah,
+[00:33:15] C#24min: and a sensitivity analysis.
+[00:33:17] A#24min: exactly.
+[00:33:18] C#24min: Are other people all right with that?
+[00:33:25] C#24min: So just jump straight.
+[00:33:27] B#24min: I like to see the complete case analysis.
+[00:33:30] C#24min: Yeah, me too.
+[00:33:34] C#24min: Yeah, I think you have to present the complete case analysis.
+[00:33:38] A#24min: So does that mean that we should say that the default is a complete case analysis?
+[00:33:45] A#24min: And then if we have these set of if and then we do a multiple imputation, if we have missing data more than 5%.
+[00:33:55] C#24min: So for the primary outcome.
+[00:33:58] C#24min: I
+[00:33:58] A#24min: Yeah.
+[00:33:58] C#24min: don't think it's going to matter very much because
+[00:34:00] A#24min: There
+[00:34:00] C#24min: you're
+[00:34:00] A#24min: it
+[00:34:00] C#24min: quite
+[00:34:00] A#24min: was.
+[00:34:00] C#24min: certain
+[00:34:00] A#24min: Yeah.
+[00:34:01] C#24min: that there's going to be quite a low proportion of missing data.
+[00:34:03] A#24min: Yeah.
+[00:34:03] C#24min: So for the primary outcome,
+[00:34:05] C#24min: I don't think it's going to matter.
+[00:34:07] C#24min: And I think you just could call it a sensitivity analysis for the primary outcome.
+[00:34:10] C#24min: But when you get to the covariance adjusted analysis,
+[00:34:13] C#24min: that's already a sensitivity analysis anyway.
+[00:34:15] A#24min: Yeah.
+[00:34:16] A#24min: Okay.
+[00:34:26] A#24min: Okay, good.
+[00:34:32] A#24min: So next one,
+[00:34:34] A#24min: is that okay?
+[00:34:41] A#24min: I think, Carla, you had a comment about whether we should include cluster size in the randomization or not in the randomization, sorry,
+[00:34:50] A#24min: in the primary analysis model.
+[00:34:52] A#24min: And we're not doing that currently.
+[00:34:57] A#24min: And my suggestion is that we do that,
+[00:34:59] A#24min: but that would make the model more complex.
+[00:35:09] C#24min: So I have to remind myself about this. So in the covariate constrained randomization,
+[00:35:13] C#24min: there was a covariate that was cluster size.
+[00:35:18] C#24min: And then in the analysis,
+[00:35:20] C#24min: we don't have any adjustment for cluster size.
+[00:35:24] D#24min: No.
+[00:35:25] C#24min: Is that right?
+[00:35:26] A#24min: That's correct.
+[00:35:28] C#24min: So usually the rule is that if you've put something into the randomization, you should adjust for it.
+[00:35:34] A#24min: Yeah.
+[00:35:34] C#24min: Cluster size is a bit different though and I'm not completely sure whether we need it.
+[00:35:42] C#24min: I don't really need to mention why we're not including it,
+[00:35:45] C#24min: but
+[00:35:48] C#24min: I don't know.
+[00:35:56] A#24min: Others?
+[00:35:58] B#24min: So I don't I don't
+[00:36:00] A#36min: I mean, yes, it makes the model slightly more complex. Like that's not a great deal more complexity in my mind.
+[00:36:10] A#36min: I mean,
+[00:36:11] A#36min: cluster size is, you know, tricky.
+[00:36:13] A#36min: This informative cluster size stuff,
+[00:36:15] A#36min: I guess we're just not thinking about that.
+[00:36:20] A#36min: But I think adjusting for cluster sizes or covariate helps to protect a little bit against that. I don't know.
+[00:36:28] A#36min: So I guess I just don't understand why you wouldn't just include it in the model.
+[00:36:35] B#36min: okay yeah let's do it I mean the only reason I was just hesitant a little bit is because it's not like a usual covariate like and like a regular covariate might be I don't know somebody's the average age and then you could adjust for the participant's age whereas cluster size is a bit more dynamic
+[00:36:55] B#36min: it's you know you put it in as your best guess of what
+[00:36:57] C#36min: Yeah.
+[00:36:58] B#36min: that cluster size was and
+[00:36:59] C#36min: Yeah.
+[00:37:00] B#36min: then also just because of the informative cluster size and I was just I just couldn't work that out in my head whether it would have any consequences but I am happy to adjust for it but what are we going to adjust for regular
+[00:37:13] A#36min: It would be the cluster size as considered at randomization, wouldn't it?
+[00:37:20] B#36min: Okay, let's
+[00:37:21] D#36min: Yeah, I think so.
+[00:37:22] B#36min: do that.
+[00:37:27] D#36min: Yeah, so then we can use the same data as the data that you were using, James, when you actually do the randomization, right?
+[00:37:38] D#36min: Actually, so I just want to...
+[00:37:42] D#36min: A flight that would,
+[00:37:43] D#36min: I mean, that data, as you said, it's not a guess entirely,
+[00:37:51] D#36min: but it's based on the data that we have at the time point when the randomization needs to happen and the amount of
+[00:38:04] D#36min: And it does fluctuate over time how large volumes each center is seeing,
+[00:38:12] D#36min: but maybe that's fine.
+[00:38:21] B#36min: But Jess,
+[00:38:22] B#36min: imagine that you had chosen a model here and that model,
+[00:38:26] B#36min: we knew was targeting the individual level average.
+[00:38:30] B#36min: Maybe it was an IEE with weighting.
+[00:38:32] B#36min: You wouldn't additionally need to adjust for the cluster size there, would you? Because isn't that sort of implicit in the model?
+[00:38:40] A#36min: That's a really good question.
+[00:38:42] A#36min: I don't know.
+[00:38:46] A#36min: I guess I'm thinking of cluster size,
+[00:38:50] A#36min: just that covariate that's defined at the randomization time point. I'm not thinking of it as something that changes over time as it does, of course.
+[00:39:00] A#36min: I'm just thinking of that variable that was used at randomization.
+[00:39:07] D#36min: Yeah, okay.
+[00:39:08] B#36min: Okay, let's add that in then.
+[00:39:10] D#36min: Yeah, thank you.
+[00:39:13] A#36min: It's super interesting.
+[00:39:15] A#36min: Oh gosh.
+[00:39:18] D#36min: Okay, and then we have the small sample inference and whether we should pre-specify a small sample correction. I think that this is something that we also have discussed before and we've been a bit unsure about and we've set a point that we'll decide when it's time to do the analysis because it's an evolving field.
+[00:39:39] D#36min: Now,
+[00:39:40] D#36min: my interpretation of the discussion in the SAP was that...
+[00:39:44] D#36min: yeah we could add the kepler roger for linear models and then use which i did not quite follow but it's something that you seem to be doing and i think anna understands what that is uh jess and that's the dk minus two convention um so
+[00:40:04] D#36min: Is that something that we're comfortable with putting at this stage,
+[00:40:08] D#36min: or do we want more flexibility of being able to decide later?
+[00:40:20] A#36min: I want to know what Carla thinks of this.
+[00:40:26] A#36min: I guess if I needed to decide now what to do,
+[00:40:29] A#36min: this is what I would say I was doing.
+[00:40:32] B#36min: So I'm just trying to look at the comments.
+[00:40:35] B#36min: Where did the, what we call,
+[00:40:39] B#36min: yeah, where's the K minus two come from?
+[00:40:42] B#36min: Because K
+[00:40:43] D#36min: That's in one of the comments from Jess.
+[00:40:46] B#36min: minus two is not so straight. Oh, we've got a T in there. Is the T the number of time periods, not the T distribution?
+[00:40:53] A#36min: No, no, this was the T distribution with number of clusters minus two.
+[00:40:59] A#36min: Yeah.
+[00:41:00] B#36min: Because that works well in a parallel design,
+[00:41:02] A#36min: Yeah,
+[00:41:02] B#36min: but does
+[00:41:03] A#36min: yeah.
+[00:41:03] B#36min: that work all right in a step wedge design?
+[00:41:06] B#36min: Because then so
+[00:41:07] A#36min: This is, do I have a reference?
+[00:41:11] B#36min: I remember that Jennifer Thompson looked at different sort of like degrees of freedom correction,
+[00:41:18] B#36min: like these simple ones.
+[00:41:20] B#36min: but it was with a GEE and she looked at a few examples a few suggestions Andrew had said and I don't think any of them worked very well although it was within a GEE
+[00:41:33] A#36min: I think so.
+[00:41:43] A#36min: I mean, this is what I have been doing for
+[00:41:45] B#36min: Mm
+[00:41:45] A#36min: GLRMs
+[00:41:45] B#36min: -hmm.
+[00:41:45] A#36min: and I think even for GAEs as well. And I'm pretty sure I read somewhere that it was OK,
+[00:41:51] A#36min: but I would love to know that that I shouldn't be doing this so I can stop now.
+[00:42:05] B#36min: So I didn't know what was all right.
+[00:42:08] B#36min: But I do know that one of Derek is doing
+[00:42:12] A#36min: Yeah.
+[00:42:13] B#36min: a review of assimilation statuses like we did for parallel designs.
+[00:42:19] B#36min: He's doing it for stepwise trials.
+[00:42:21] A#36min: Very cool.
+[00:42:22] B#36min: So I was sort of hoping that by the time we needed to fix this, he might have done it and then.
+[00:42:27] A#36min: Look,
+[00:42:28] A#36min: I think it's fine. If we don't need to specify this now,
+[00:42:31] A#36min: then I'd be happy to kind of leave it.
+[00:42:35] E#36min: what's the rough date of analysis is it like
+[00:42:40] D#36min: So it's
+[00:42:41] E#36min: if you get like if it's in is it in like three years time right
+[00:42:46] D#36min: yeah almost the end of 28 so that's two years yeah
+[00:42:51] D#36min: Yeah, earliest I would say. It might be 2029 as well.
+[00:42:57] B#36min: I think it's all right to say we're not going to fix this, we're going to wait because we know somebody's doing some work.
+[00:43:04] D#36min: Yeah, okay.
+[00:43:05] D#36min: So let's do that then.
+[00:43:06] D#36min: Yeah.
+[00:43:11] D#36min: Good.
+[00:43:12] D#36min: And now you are, you needed to leave, right,
+[00:43:16] D#36min: Carla?
+[00:43:17] D#36min: So,
+[00:43:18] D#36min: or do you still have a couple of minutes?
+[00:43:20] B#36min: I'm okay for a bit. I'm alright for a bit. I'll probably be alright.
+[00:43:23] D#36min: okay let's go so yeah so then we have quality of life and disability and that so we measured that at multiple different time points and as it was stated in the SAP and the idea was to run separate analysis but then there was a suggestion of building a joint longitudinal model instead and I know that you James you were kind of
+[00:43:48] D#36min: You like that idea.
+[00:43:51] D#36min: So is that something that we should do?
+[00:43:53] D#36min: I'm all for trying to reduce the number of analysis.
+[00:44:12] D#36min: I think you're muted,
+[00:44:13] D#36min: James, if you try to say something.
+[00:44:15] D#36min: Sorry.
+[00:44:15] E#36min: I'm just trying to find it in the SAP at the moment.
+[00:44:18] D#36min: Okay,
+[00:44:19] D#36min: sorry.
+[00:44:19] D#36min: So I will do the same then.
+[00:44:21] D#36min: It's supposed to be in paragraph or section nine, two.
+[00:44:43] B#36min: Yes, I just came across your comment. It's nothing to do with what we're talking about at the minute because it's actually on page 25, which I think there's a page we're looking for.
+[00:44:51] B#36min: It says that you've started doing,
+[00:44:53] B#36min: you have an interest in, you started using estimating risk ratios using log binomials, but in the reanalysis data sets, we've re-estimated risk ratios using binomial models and only converged 30% of the time.
+[00:45:07] A#36min: Really?
+[00:45:08] B#36min: Yeah.
+[00:45:10] A#36min: I must have been very lucky.
+[00:45:14] D#36min: Yeah.
+[00:45:14] B#36min: Yeah.
+[00:45:14] D#36min: 
+[00:45:14] B#36min: I mean, we haven't like played with anything. It's just like under the default settings.
+[00:45:18] A#36min: I haven't played with anything either. I think I'm
+[00:45:23] A#36min: going to go back and check, but I'm pretty, I'm pretty sure.
+[00:45:25] B#36min: I remember where it happens most is if you've got any clusters with zero events.
+[00:45:31] B#36min: But
+[00:45:31] A#36min: Ah,
+[00:45:31] B#36min: quite
+[00:45:31] A#36min: okay.
+[00:45:32] B#36min: a
+[00:45:32] A#36min: Yep, yep.
+[00:45:33] B#36min: lot of trials actually have that, at least one zero event in a cluster.
+[00:45:39] A#36min: So I guess the situation where I've actually been using that model a lot is individually randomized trials, but with lots of hospitals and
+[00:45:51] A#36min: they're forgetting
+[00:45:53] B#36min: Okay,
+[00:45:53] A#36min: that which
+[00:45:53] B#36min: might be different.
+[00:45:54] E#36min: randomized Yeah, trials.
+[00:45:55] A#36min: yeah.
+[00:45:56] D#36min: Sorry,
+[00:46:00] D#36min: it was you, Jess,
+[00:46:01] D#36min: you said, it wasn't you, James,
+[00:46:03] D#36min: I mix it up, sorry.
+[00:46:04] D#36min: So you said that you generally prefer the approach of combining all the data into longitudinal model.
+[00:46:10] D#36min: And that was what Anna suggested as well.
+[00:46:14] D#36min: So if you don't see any major problems with doing that, I suggest that that's how we analyze this as well.
+[00:46:22] A#36min: Yeah, I mean, my preference is generally if you've got multiple measurements on the same individual,
+[00:46:27] A#36min: you just include them in one model together.
+[00:46:31] D#36min: Yeah.
+[00:46:32] A#36min: There can be arguments against that.
+[00:46:34] A#36min: That's fine.
+[00:46:35] A#36min: But I think here,
+[00:46:37] A#36min: you know, if Anna's okay with that, then.
+[00:46:40] D#36min: So what would your scenario be if we have much more missing at 90 days compared to 30 days, for example?
+[00:46:51] A#36min: I mean, then you kind of get to borrow strength from the data you do have at the 30 days.
+[00:46:58] D#36min: Okay.
+[00:47:02] B#36min: I am happy with that approach,
+[00:47:05] B#36min: but you just also need to be careful to pre-specify what you're like,
+[00:47:09] B#36min: your S demands or what you're going to report from that model.
+[00:47:13] B#36min: Is it the effect at 90 days?
+[00:47:15] B#36min: Is it the difference between 90 and zero?
+[00:47:19] B#36min: You know, there's so many different coefficients from that model.
+[00:47:22] B#36min: You've got to specify what thing you're interested in.
+[00:47:24] D#36min: Yeah, okay.
+[00:47:26] A#36min: And I would suggest on that point, just the treatment effect at each of those time points, not looking at differences between them or anything like that, unless that is something that is of particular interest.
+[00:47:38] D#36min: So basically use one model but then estimate the treatment effect at each time point.
+[00:47:44] D#36min: Yeah.
+[00:47:46] D#36min: Got it.
+[00:47:51] D#36min: Very good. I think this is going okay so far.
+[00:47:54] D#36min: Then there was a comment and I think it was your comment.
+[00:48:00] A#48min: comment yes about the main kind of effect size and whether we should consider reporting a risk ratio instead of an odds ratio and what we are currently saying is that we will report both an odds ratio and an absolute risk reduction.
+[00:48:22] A#48min: And only if the ARD does not or that model does not converge will we report only the odds ratio.
+[00:48:31] B#48min: Look, I'm fine.
+[00:48:33] B#48min: I'm fine with whatever approach. I think I must have.
+[00:48:36] B#48min: gotten to this just after I'd had my morning coffee because it seems like I made a lot of a lot of comments that are maybe a little bit out there look I think you know based on what Carla has has said about these relative risk risk ratio models that I suggested not converging a lot of the time I I just I just think
+[00:48:59] B#48min: Just, you know, the odds ratio, the interpretation of that can be a bit more difficult, but if you're happy with that, then that's fine.
+[00:49:07] C#48min: So we've just been going through this in another trial and then we're like going backwards and forwards.
+[00:49:15] C#48min: The reason why we wanted to go with an odds ratio is just a lot simpler.
+[00:49:21] C#48min: You know, what model are you going to fit?
+[00:49:23] C#48min: It's very likely to converge.
+[00:49:26] C#48min: So it's just for simplicity, but absolutely agree that it's harder to interpret.
+[00:49:33] C#48min: So with this other trial,
+[00:49:35] C#48min: we went to them saying we just report an odds ratio, it's also a stepped wedge trial,
+[00:49:39] C#48min: and they said no,
+[00:49:40] C#48min: they definitely wanted a risk ratio.
+[00:49:43] C#48min: So that was problematic for us because then we didn't know what we were going to do if it was going to fail to converge. So we went to the DMC.
+[00:49:53] C#48min: I agree and Andrew K. Pass is on on that board and he came back with I thought what was a useful suggestion and his suggestion was to report an odds ratio report three basically and you use you sort of like your main influences are on the odds ratio but alongside that you report a relative risk and a risk difference so people can understand.
+[00:50:18] C#48min: Yeah, so that is an alternative.
+[00:50:20] C#48min: I mean he articulated it in a better way than I've just said it and when he wrote it in the email I was convinced it was the right idea. Now I'm saying it, I'm not sure.
+[00:50:30] C#48min: But that's an alternative,
+[00:50:31] C#48min: Martin,
+[00:50:31] C#48min: so I can send you that and then maybe Yeah it's up to you to decide.
+[00:50:35] A#48min: Yeah, okay,
+[00:50:36] D#48min: The
+[00:50:36] A#48min: sure.
+[00:50:36] D#48min: thing to consider for that is that for that approach,
+[00:50:40] D#48min: we were estimating the risk ratio and risk difference using a logistic model and then using marginal standard errors.
+[00:50:46] C#48min: Oh yeah,
+[00:50:46] D#48min: 
+[00:50:46] C#48min: that's a difference.
+[00:50:47] C#48min: Yeah, sorry.
+[00:50:48] C#48min: Yeah,
+[00:50:48] C#48min: that's an important distinction.
+[00:50:50] D#48min: And then so we were using just the p-value from the odds ratio and
+[00:50:54] C#48min: That's it,
+[00:50:55] D#48min: then
+[00:50:55] C#48min: yeah.
+[00:50:55] D#48min: reporting the relative risk and risk difference
+[00:50:57] C#48min: Yeah,
+[00:50:57] D#48min: to help
+[00:50:58] C#48min: that's
+[00:50:58] D#48min: with the presentation.
+[00:50:58] C#48min: not going to work here, actually. A very good point I forgot because we wouldn't want to use marginal standardisation here, I don't think.
+[00:51:09] A#48min: Okay,
+[00:51:10] C#48min: How
+[00:51:10] A#48min: so let's
+[00:51:10] C#48min: can we start
+[00:51:10] A#48min: keep
+[00:51:11] C#48min: we're going to report the ARD estimate the ARD from a binomial model.
+[00:51:15] A#48min: Yeah, yeah, so we're using different link functions that what we said.
+[00:51:19] A#48min: Yeah
+[00:51:19] C#48min: I
+[00:51:23] C#48min: think it's a bit safer to report the odds ratio.
+[00:51:30] A#48min: Good
+[00:51:31] A#48min: And then you had a common caller where you said, what is this when it was about the effect size of the adherents analysis.
+[00:51:46] A#48min: where it currently is a difference on the logic scale from a better regression model,
+[00:51:50] A#48min: which is my interpretation of the literal meaning of the coefficients that we would get from that model,
+[00:51:57] A#48min: that maybe it would make more sense to justimate an average marginal effect instead.
+[00:52:10] A#48min: from that model.
+[00:52:11] C#48min: Sorry, Martin, can we go back a little bit?
+[00:52:14] C#48min: So adherence, so this is an outcome.
+[00:52:17] A#48min: So
+[00:52:18] C#48min: And
+[00:52:18] A#48min: adherence
+[00:52:18] C#48min: you've got that
+[00:52:19] A#48min: is the adherence to the actual principles of the intervention,
+[00:52:25] A#48min: of the treatment.
+[00:52:26] A#48min: So there's a training program,
+[00:52:29] A#48min: it involves completing a certain number of steps as you manage a patient. We measure whether those steps are actually completed and we get a proportion of the number of steps completed.
+[00:52:43] C#48min: in both arms.
+[00:52:44] A#48min: yeah
+[00:52:44] C#48min: You've
+[00:52:45] A#48min: yeah
+[00:52:45] C#48min: got that in treatment and control.
+[00:52:46] C#48min: Okay,
+[00:52:47] A#48min: no
+[00:52:47] C#48min: so it's just a binary outcome,
+[00:52:48] C#48min: really.
+[00:52:48] C#48min: Is that right?
+[00:52:49] A#48min: it's not a binary it's a proportion yeah
+[00:52:52] C#48min: Oh, okay.
+[00:52:53] C#48min: Right.
+[00:52:54] C#48min: So, okay.
+[00:52:55] C#48min: And is that, that's for each participant, each individual, they have an outcome on the scale zero to one.
+[00:53:02] A#48min: yeah yeah so that's part of the nested staircase so we have it for for the yeah yeah
+[00:53:09] C#48min: It's just happy with that because that's just his part, isn't it?
+[00:53:17] A#48min: Yes, this is your part.
+[00:53:20] A#48min: No,
+[00:53:21] B#48min: Yeah.
+[00:53:21] A#48min: but yeah.
+[00:53:24] A#48min: So basically adherence is just one of the outcomes that we measure as part of the nested staircase and we randomize on the data collector shift level which patients to include for that outcome because it requires someone to be there and observe as care is being delivered.
+[00:53:45] A#48min: So we have a random subset of patients where we collect this outcome,
+[00:53:51] A#48min: where we collect this outcome,
+[00:53:53] C#48min: So
+[00:53:53] A#48min: yeah.
+[00:53:53] C#48min: it just hasn't seen us and agreed with us.
+[00:53:56] C#48min: I wouldn't know how to fit a beta regression model with random effects.
+[00:54:01] A#48min: What would you do?
+[00:54:03] B#48min: either.
+[00:54:06] B#48min: Sounds like it could be fine.
+[00:54:07] B#48min: Yeah,
+[00:54:08] B#48min: I must admit,
+[00:54:09] B#48min: I think I must have lost a bit of steam by this point, unfortunately.
+[00:54:13] B#48min: I'm sorry.
+[00:54:18] A#48min: But that's perfectly fine.
+[00:54:20] A#48min: So how would you,
+[00:54:21] A#48min: so we have an outcome that is a proportion.
+[00:54:25] B#48min: I'm sure you could fit this and you could use just cluster robust standard errors.
+[00:54:31] B#48min: I'm sure there would be a way to do that.
+[00:54:37] B#48min: So not including random effects or anything like that,
+[00:54:43] C#48min: I
+[00:54:43] B#48min: but still
+[00:54:43] C#48min: do count it, yeah.
+[00:54:43] B#48min: for the clustering.
+[00:54:49] B#48min: I think that could be fine. It kind of depends on how important this outcome is.
+[00:54:57] B#48min: If it's not super important,
+[00:54:59] B#48min: then cluster above standard errors.
+[00:55:03] B#48min: I think that's okay.
+[00:55:06] C#48min: That would be finer, so the right underlying model be to regression model.
+[00:55:10] C#48min: I've never used a pure regression model.
+[00:55:14] B#48min: I think that's right.
+[00:55:16] B#48min: I'm sort of reaching back in.
+[00:55:27] A#48min: Maybe we can pause this and I can get back to you on this in an email with what we should use for this specific outcome or if there is a way to handle this outcome that makes more sense, if there is a model that you're more familiar with maybe.
+[00:55:45] A#48min: Okay.
+[00:55:48] A#48min: And then I will get back to you, Carla,
+[00:55:50] A#48min: on this because you had a comment where it said get rest on these and then you had highlighted the section and I'm not sure what you meant, but I'll get back to you on that.
+[00:55:59] A#48min: James.
+[00:56:00] C#48min: So.
+[00:56:00] D#48min: So just looking at how it's described,
+[00:56:03] D#48min: so it says that it's a 14 item checklist and so
+[00:56:08] D#48min: Um,
+[00:56:09] D#48min: you've said that you're converted to percentage, but I guess, is there a reason to not have it as count with an offset for, you know, there's 14 items they could have completed and you've got the number of items they did complete.
+[00:56:26] A#48min: No, I mean, that was one of the alternatives that we discussed,
+[00:56:31] A#48min: me and Anna.
+[00:56:33] A#48min: So would that make it simpler,
+[00:56:35] A#48min: do you think?
+[00:56:37] D#48min: Well, I'm going on the basis that none of us have fitted beta regression models before,
+[00:56:43] D#48min: so there's not really anything about their model performance in these sorts of studies, whereas the use of, you know,
+[00:56:51] D#48min: Poisson models has been used more
+[00:56:54] A#48min: Okay, yeah,
+[00:56:55] D#48min: on that basis than anything else.
+[00:56:58] A#48min: yeah.
+[00:57:01] A#48min: Yeah, I would be happy if we can preserve kind of the nature of that outcome as far as possible.
+[00:57:06] A#48min: I'm happy.
+[00:57:07] A#48min: I would like to avoid dichotomizing it, for example. But if we can use it as a count outcome,
+[00:57:13] A#48min: that works for me.
+[00:57:18] C#48min: I think that would be a lot more straightforward.
+[00:57:20] A#48min: Yeah.
+[00:57:21] A#48min: So let's do that then. Let's use it as a count outcome. Yeah.
+[00:57:28] A#48min: Okay,
+[00:57:29] A#48min: good.
+[00:57:30] A#48min: Then we had some discussions on the sensitivity analysis and I think you Carla said that there had been discussions in a recent paper about a number of sensitivity analysis and we have quite a few.
+[00:57:43] A#48min: Maybe I'm conservative but most of these were analysis that we specified in the protocol already.
+[00:57:54] A#48min: So there's really only the exposure by precision date.
+[00:58:02] A#48min: That's the only sensitivity analysis that we've added in this SAP.
+[00:58:09] A#48min: So should we still go ahead and remove these that were or should we keep them in?
+[00:58:17] C#48min: It's hard to take them out, isn't it now? Sorry,
+[00:58:19] C#48min: Martin.
+[00:58:20] A#48min: Yeah, that's how I feel as well.
+[00:58:27] A#48min: Okay.
+[00:58:28] C#48min: Let's definitely not overplay them.
+[00:58:31] A#48min: Yeah, yeah.
+[00:58:33] A#48min: But let's keep them in the report.
+[00:58:38] A#48min: Okay.
+[00:58:39] A#48min: So we are one minute over time.
+[00:58:41] A#48min: If anyone needs to leave,
+[00:58:42] A#48min: that's perfectly okay.
+[00:58:45] A#48min: We have two more things to discuss.
+[00:58:48] B#48min: I can hang around for five more minutes, but I will need to head off after that.
+[00:58:53] A#48min: Yeah.
+[00:58:54] A#48min: Okay.
+[00:58:55] A#48min: So this one is about age groups and geographical regions.
+[00:58:59] A#48min: And basically we did not, we have specified age groups.
+[00:59:04] A#48min: Here,
+[00:59:05] A#48min: one suggestion was to reduce the number of age groups.
+[00:59:12] A#48min: To be completely honest,
+[00:59:13] A#48min: I'm not sure whether we did pre-specify it in the protocol already in our age groups.
+[00:59:18] A#48min: Otherwise, my suggestion would be that we can use a conventional cutoff for basically having a younger and an older cohort.
+[00:59:29] A#48min: So that would make sense given what its data usually look like and then when it comes to geographical region what it says in this app is to use states but we also have these solo councils that we could use which is a much smaller number.
+[00:59:49] A#48min: So my suggestion would be to use only two edge groups if that's supported by the protocol and then use these sonar consoles instead of...
+[01:00:00] A#60min: individual states yeah
+[01:00:04] A#60min: okay
+[01:00:07] A#60min: i take the nodding head says approval so then final one and that is whether one patient can appear more than once and that
+[01:00:20] A#60min: It's not common for these patients to be readmitted during these 13 months.
+[01:00:28] A#60min: I don't have an estimate from it. We do have that data. We can look at it, but I don't have an estimate right now.
+[01:00:37] A#60min: So either I think one suggestion in this app was to only treat the first admission and maybe that's the more straightforward option than treating them as independent.
+[01:00:50] B#60min: I
+[01:00:50] A#60min: I
+[01:00:50] B#60min: think
+[01:00:50] A#60min: like,
+[01:00:50] B#60min: it's fine.
+[01:00:52] B#60min: You just need to be clear.
+[01:00:53] B#60min: And I think you can just say, yeah, there may be a small number of patients that are admitted more than once, but it's only a small number and we're not going to acknowledge it in our analysis.
+[01:01:03] B#60min: I think just something like that. It's just more about clarity.
+[01:01:05] A#60min: That's fine.
+[01:01:05] A#60min: Yeah.
+[01:01:09] A#60min: Okay.
+[01:01:10] A#60min: Excellent.
+[01:01:12] A#60min: uh yeah that was that was that thank you so much um so i will work with this together with anna and also on the other comments and clarifications and send you a revision and hopefully we can finalize that okay thank you so much for taking your time yeah
+[01:01:30] B#60min: Thanks, Martin.
+[01:01:31] B#60min: Hi, everyone.
+[01:01:32] A#60min: thank
+[01:01:32] B#60min: Good to see you later.
+[01:01:33] A#60min: bye good to see you bye

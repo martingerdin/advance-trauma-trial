@@ -1,0 +1,919 @@
+# Diarized transcript — SAP finalisation meeting, 2026-11-10
+# Source: audio1595844097.m4a (trimmed: leading 12:15 of silence removed)
+# Speakers: Martin (chair), Karla (KH), Jess (JK), James (JM), Arpita (guest, George Institute India)
+# Note: labels restart per 12-min chunk; a few brief interjections (marked "Unknown") could not be attributed reliably.
+# Spelling/ASR fixes applied: Peter/Al-Pita/Orpita/Avita/Evita -> Arpita; Carla -> Karla;
+#   cholesterol->cluster; step-wide/stepwise/stepped wedge -> stepped-wedge; Georgia->George Institute.
+
+[00:00:04] Karla: Hi Martin,
+[00:00:05] Karla: good morning.
+[00:00:07] Martin: Hey, good morning.
+[00:00:08] Martin: Hi.
+[00:00:08] Karla: Hi.
+[00:00:09] Karla: Hi Jess.
+[00:00:11] Martin: Hi, Jess. Hi, James.
+[00:00:12] Martin: Hi, Arpita.
+[00:00:14] Unknown: Hi everyone.
+[00:00:15] Martin: Hello.
+[00:00:15] Karla: Hi everyone.
+[00:00:19] Martin: Good morning.
+[00:00:20] Martin: Thank you so much for taking time out and finding a time despite the different time zones.
+[00:00:27] Karla: Martin, before we start,
+[00:00:29] Karla: I think I have to leave a bit early.
+[00:00:31] Martin: Okay,
+[00:00:32] Martin: how much early?
+[00:00:33] Karla: Um,
+[00:00:34] Karla: 20 minutes,
+[00:00:35] Karla: maybe 15.
+[00:00:37] Martin: Sure,
+[00:00:37] Karla: Thank you.
+[00:00:38] Martin: okay.
+[00:00:41] Martin: So we're just waiting for Anna.
+[00:00:44] Martin: I'll give her one more minute and then I think we need to get started.
+[00:01:12] Martin: They all know each other.
+[00:01:13] Martin: I know everyone.
+[00:01:14] Martin: Arpita,
+[00:01:15] Martin: have you met everyone?
+[00:01:17] Arpita: No, I know everyone,
+[00:01:19] Arpita: but I have not yet met them.
+[00:01:23] Martin: So maybe if you introduce yourself, Arpita, and then we can just do a very quick hello.
+[00:01:28] Arpita: Yes.
+[00:01:28] Martin: Yeah.
+[00:01:30] Arpita: Sure.
+[00:01:30] Arpita: Hello,
+[00:01:31] Arpita: I'm Arpita Ghosh. I work at the George Institute for Global Health in the India office and a station by background and I requested Martin when I heard about the study to
+[00:01:44] Arpita: for exposure to the design and the analysis and he has been very kind to include me in the conversation so that's why I'm here in this meeting to learn from the discussion thank you
+[00:01:58] Martin: Thanks, Arpita.
+[00:01:59] Martin: So, Jess.
+[00:02:04] Jess: If I'd mind unmute Martin.
+[00:02:05] Jess: Oh, hi, Arpita.
+[00:02:06] Jess: I'm Jess Case. I'm a professor of biostats at Monash University in Melbourne.
+[00:02:12] Jess: Yeah,
+[00:02:12] Jess: so I've done a lot of work on the stepped-wedge design kind of following in Karla's footsteps, who's the one who really kickstarted this area.
+[00:02:20] Jess: I've been lucky enough to work with Karla a bit too,
+[00:02:22] Jess: which has been nice. And James too,
+[00:02:24] Jess: a little bit more peripherally.
+[00:02:28] Martin: Thank you, Karla.
+[00:02:30] Karla: Hi, I'm Karla.
+[00:02:31] Karla: Nice to meet you.
+[00:02:33] Karla: I've worked in cluster trials and stepped-wedge trials.
+[00:02:36] Karla: I think Jess is underselling herself.
+[00:02:38] Karla: It goes the other way around.
+[00:02:41] Karla: Nice to meet you.
+[00:02:43] Arpita: Thank you.
+[00:02:45] Martin: And James.
+[00:02:46] James: Yeah, hi,
+[00:02:47] James: I'll be James,
+[00:02:48] James: mine,
+[00:02:48] James: medical statistician at the University of Birmingham and work very closely with Karla.
+[00:02:56] Arpita: Yes, as I said,
+[00:02:58] Arpita: I know all of you from reading your papers, so I definitely know the work that, you know, all of you have done,
+[00:03:05] Arpita: especially in cluster randomized different designs.
+[00:03:09] Arpita: So very happy,
+[00:03:10] Arpita: very fortunate to be here.
+[00:03:11] Arpita: Thank you.
+[00:03:12] Karla: Oh, Arpita,
+[00:03:13] Karla: we have this like fellowship thing with India.
+[00:03:16] Karla: I can't remember whether I forwarded it to Martin.
+[00:03:19] Martin: I don't think so.
+[00:03:20] Martin: I don't recognize it.
+[00:03:22] Karla: I think the deadline's just passed,
+[00:03:24] Karla: but it's like six months or yearly and it allows collaborators from India to come and spend a couple of months in the UK.
+[00:03:31] Karla: I'll see if I can find it and send it to you.
+[00:03:34] Arpita: Okay,
+[00:03:35] Arpita: that'd be very helpful.
+[00:03:36] Arpita: Thank you.
+[00:03:39] Martin: I think we should get started and I'll fill Anna in later in case she's not joining.
+[00:03:46] Martin: So there.
+[00:03:48] Martin: So the aim of this meeting,
+[00:03:49] Martin: the purpose of this meeting is to really try to get the final things down so that we can lock this SAP in and you've all been very kind to spend your time reading and commenting on this.
+[00:04:04] Martin: Basically, we had almost 90 comments on this last version with some back and forth.
+[00:04:10] Martin: I think the majority of these are mostly wording issues,
+[00:04:15] Martin: things that need to be clarified. And I think there were some quite a bit of suggestions in the actual document itself. So those should be straightforward. There were 11 more larger or more substantive.
+[00:04:31] Martin: Things that I want to discuss or spend this time on discussing and hopefully come to decisions on so that we can kind of finalize those.
+[00:04:46] Martin: Just for you who haven't been in one of the recent management group meetings,
+[00:04:54] Martin: just a brief on where we are at with the trial.
+[00:04:58] Martin: So it started in February 2025.
+[00:05:02] Martin: The first batch has finished.
+[00:05:07] Martin: Batch two is ongoing right now and batch three is...
+[00:05:11] Martin: And plan to start next week after a couple of months of delays because one cluster dropped out at a very late stage.
+[00:05:22] Martin: And we are including or so far have included some 2,500 patients,
+[00:05:29] Martin: which is slightly more than we anticipated.
+[00:05:33] Martin: So that's where we're at.
+[00:05:36] Martin: Um,
+[00:05:37] Martin: these are the 11 decisions that I,
+[00:05:41] Martin: or 11 things that I've
+[00:05:44] Martin: would like us to focus on during this meeting and I did circulate this just a couple of hours before this meeting as well but you you have that so you can go can I go through it on your own as well in case there are things that we don't have time to discuss now but these also include page references to the actual document so I hope that will help our discussions
+[00:06:08] Martin: So I suggest that we go start right ahead and start unless anyone has anything to comment or say right now.
+[00:06:20] Martin: No?
+[00:06:21] Martin: Okay.
+[00:06:24] Martin: So let's start talking about the interim analysis.
+[00:06:28] Martin: And we have, this is something that we have discussed a bit before, and there's been a couple of back and forth about this.
+[00:06:39] Martin: It's in the protocol. So in the trial protocol,
+[00:06:42] Martin: we have stated that there will be, we have stated these things, there will be an interim analysis,
+[00:06:47] Martin: although without formal stopping rules,
+[00:06:49] Martin: and there will be kind of after each batch, there will be a meeting by the SDMC.
+[00:06:56] Martin: So that's what we have stated in the protocol.
+[00:07:02] Martin: Now, it was noted that in this app it doesn't say anything about formal stopping routes and that's the reason why.
+[00:07:08] Martin: And it was suggested that these per batch reports are very similar to the ones that or to the actual in what we call an interim analysis.
+[00:07:18] Martin: Although it all sounds a bit like routine trial monitoring.
+[00:07:23] Martin: And the suggestion in the document is to reframe or basically go ahead and call these per batch reports as routine monitoring reports and then have the meeting that is planned after half the batches have finished, have that as the interim analysis and then have the decision to...
+[00:07:48] Martin: continue or stop after that halfway time point,
+[00:07:53] Martin: although we ask the SMC to make that decision based on feasibility rather than effectiveness,
+[00:08:02] Martin: because what we have said before is to not analyze effectiveness as part of the interim analysis.
+[00:08:11] Karla: So I don't think it matters too much what you call it just as long as it's clear that whether or not you're going to be comparing the treatment arms and estimating a value of the effect,
+[00:08:22] Karla: the outcomes.
+[00:08:24] Karla: I think that's all you need to do is just clarify what you're going to be doing.
+[00:08:29] Martin: And I think what we have said is that we will not analyze or compare intervention ARPs as part of the interim analysis, because any estimate at that point in time will be associated with large uncertainty.
+[00:08:43] Karla: So if you've said that, I think it's fine.
+[00:08:44] Martin: So, yeah.
+[00:08:49] Martin: Do we all agree on that?
+[00:08:50] Martin: Are there other opinions?
+[00:08:55] Jess: Yeah, I think I think I also James, I noticed you're on mute. I'll just jump in.
+[00:08:59] James: That's all you,
+[00:08:59] James: first guess.
+[00:09:00] Jess: Thanks.
+[00:09:02] Jess: Yeah,
+[00:09:03] Jess: I think I'd sort of noted that I didn't think that the interim analysis label was appropriate.
+[00:09:09] Jess: But look,
+[00:09:10] Jess: I think like Karla said,
+[00:09:11] Jess: it really doesn't matter at the end of the day.
+[00:09:13] Jess: I personally would prefer it not be called interim analysis because it's not a formal analysis of an outcome.
+[00:09:22] Jess: Look if it's clear then that's that's fine
+[00:09:28] James: Yeah, yes,
+[00:09:31] Karla: I'm happy to call it routine monitoring.
+[00:09:35] Karla: That's fine by me.
+[00:09:42] Karla: Shall we take it?
+[00:09:44] James: you have.
+[00:09:45] James: I think the only thing I was going to say was around the wording of when you'd said about decision to continue or stop halfway and what that was being based upon because as you said you're not comparing outcomes you know you're not presenting any treatment effects because of the large uncertainty you'd have in them so when you're asking them about whether you should continue or stop what is that being based upon?
+[00:10:14] Martin: So I think what we have discussed previously is to base that discussion primarily on feasibility measures. So if we fail to include clusters or they fail to adhere to the randomization schedule or we are seeing too much missing in key variables, so things like that rather than effect estimate.
+[00:10:39] James: and has any of that been decided you know what what you know when you say about if it's not feasible so if they're not adhering to the randomization or I think about missing data then is is there thresholds that you've already thought of
+[00:10:53] Martin: We haven't, no.
+[00:10:54] James: taken the protocol
+[00:10:55] Martin: No,
+[00:10:55] James: in
+[00:10:55] Martin: we didn't set that.
+[00:10:56] Martin: No,
+[00:10:56] Martin: we didn't set that,
+[00:10:57] Martin: no.
+[00:11:06] Martin: The only reason I would be cautious about changing the terminology would be that we state in the protocol,
+[00:11:14] Martin: or we call it an interim analysis in the protocol,
+[00:11:17] Martin: and changing that wording would kind of trigger us to do a protocol amendment,
+[00:11:24] Martin: which I would like to avoid.
+[00:11:26] Martin: But maybe you think that that's not necessary, we can change that anyway.
+[00:11:36] Karla: I don't think it's very important not in what we call it.
+[00:11:39] Karla: I mean,
+[00:11:39] Martin: Yeah.
+[00:11:39] Karla: yeah, in the ideal world maybe we might change it, but if it's going to cause complications.
+[00:11:47] Martin: Okay.
+[00:11:47] Martin: So let's avoid complication,
+[00:11:49] Martin: right?
+[00:11:51] Martin: But James,
+[00:11:52] Martin: do you think that there should be formal criteria for those feasibility aspects?
+[00:12:00] James: No.
+[00:12:01] James: well yeah
+[00:12:02] Jess: That's not part of the SAP though.
+[00:12:03] James: that's more of the sort of the MTT charter perhaps but
+[00:12:11] James: it was more if there is that criteria that it's reported somewhere because if you've got here that this is what you're doing after half of the batches are completed then you know you might just want to refer to a DSMB
+[00:12:25] James: chart
+[00:12:25] Martin: Yeah.
+[00:12:25] James: to say about the guidance it was more than I was just looking and thinking well you've said you want to do that but I'm not sure if you've thought about it at this stage about what how you would make that decision
+[00:12:38] Martin: No,
+[00:12:38] Martin: that's a good point.
+[00:12:39] Martin: So that can be clarified and we can refer to the charter.
+[00:12:42] Martin: Yeah.
+[00:12:44] Martin: So let's try to clarify what we actually mean by the analysis and that we will not compare outcomes between treatment arms and then refer to the charter.
+[00:12:56] Martin: Okay?
+[00:12:59] Martin: Excellent,
+[00:13:00] Martin: thank you.
+[00:13:02] Martin: So then we have the treatment of length of stay outcomes.
+[00:13:08] Martin: So we have a number of these and what is now suggested is to treat them as count rather than time to event outcomes.
+[00:13:22] Martin: It wasn't clear in the SAP how these are measured,
+[00:13:27] Martin: but what we actually have are basically time stamps,
+[00:13:31] Martin: so date and time of admission and discharge.
+[00:13:35] Martin: So we have it as a continuous,
+[00:13:38] Martin: or the data is on a continuous scale, so to speak, if that change how we want to do this.
+[00:13:50] Martin: I think you suggested just to change it to a time-to-event.
+[00:13:59] Jess: Well, it seems like, I mean, that's how I would analyze an outcome like this.
+[00:14:06] Jess: I would include maybe,
+[00:14:09] Jess: so you're looking at time to discharge.
+[00:14:16] Jess: I would have time to discharge with death as a competing risk,
+[00:14:21] Jess: something like that.
+[00:14:26] Martin: Yeah, I see nodding heads.
+[00:14:29] Martin: Yeah.
+[00:14:32] Martin: So then I suggest we do that.
+[00:14:34] Martin: We analyze length of stay as time to event outcomes with death as competing risk.
+[00:14:45] Martin: Okay, going on to the next one.
+[00:14:48] Martin: So then it's the intercurrent events where there is some confusion and I will see if I can find that table.
+[00:15:00] Martin: So basically,
+[00:15:02] Martin: if I got the comments.
+[00:15:05] Martin: Right, what we have is that loss to follow-up and maybe also withdrawal,
+[00:15:12] Martin: but that was not in the comments,
+[00:15:13] Martin: is actually missing data.
+[00:15:17] Martin: And we have already basically said that we will treat this as missing data,
+[00:15:24] Martin: but technically that's not an intercurrent event.
+[00:15:30] Martin: My suggestion then would be to basically treat this as missing data instead and not handle it within the intercurrent events framework.
+[00:15:43] Martin: Does that, and then Jess, you had a comment about treatment policy and basically that's how we handle the actual cluster level of intercurrent event of not adhering to.
+[00:15:58] Martin: the actual scheduled trainee date.
+[00:16:03] Martin: So clarifying that as well.
+[00:16:05] Martin: So that would be my suggestion for how to handle this.
+[00:16:09] Martin: Any comments on that?
+[00:16:15] Karla: So I think.
+[00:16:17] Karla: I think Jess and I may be saying the same thing but in different ways so missing data is not really an intercurrent event and Jess
+[00:16:23] Martin: That's
+[00:16:23] Karla: was saying
+[00:16:23] Martin: what I guess.
+[00:16:24] Karla: okay sorry and then Jess is saying that well lost a follow-up you've already said that you're going to have a treatment policy strategy so I think that that can just be removed from this table
+[00:16:35] Martin: Sorry,
+[00:16:36] Martin: yes, I thought you meant not lost to follow up, but actually that not.
+[00:16:42] Martin: The lack of adherence to the treatment schedule is actually an intercurrent event.
+[00:16:46] Martin: Did I
+[00:16:47] Jess: No,
+[00:16:47] Martin: misunderstand you?
+[00:16:48] Jess: I think I was talking about, so going back to the document,
+[00:16:53] Jess: I think I was saying the same thing as Karla really, like loss to follow up kind of means that the patient, we don't have the outcome for the patient essentially.
+[00:17:03] Jess: So we've got missing data for that outcome for the patient.
+[00:17:06] Jess: So.
+[00:17:06] Martin: Yeah.
+[00:17:08] Jess: That's, sorry,
+[00:17:10] Martin: I'm just highlighting this comment then,
+[00:17:12] Martin: which was what I was thinking.
+[00:17:13] Jess: let
+[00:17:13] Martin: You
+[00:17:13] Jess: me,
+[00:17:13] Martin: said,
+[00:17:13] Jess: let
+[00:17:13] Martin: yeah.
+[00:17:14] Jess: me move this.
+[00:17:15] Jess: Yes, for all of these, an intercurrent event is the intervention not being delivered as planned.
+[00:17:20] Jess: Yeah,
+[00:17:21] Jess: so I guess I was saying that I see intercurrent events as being things that interrupt the intervention being delivered,
+[00:17:32] Jess: loss to follow up.
+[00:17:35] Jess: I'm maybe in some situations that would would interrupt the delivery of the intervention I'm
+[00:17:42] Martin: Hmm.
+[00:17:43] Jess: thinking about like the patient level but more often I would think okay you've got the patient they you know receive the their exposure to the intervention and then we never find out what their outcomes are
+[00:17:56] Jess: So they've been lost to follow up.
+[00:17:58] Jess: Yeah. So we know that they received the treatment.
+[00:18:02] Jess: So that's fine. So there hasn't been something that interrupts that.
+[00:18:07] Jess: But then there's been something that interrupts whether or not we actually observe the outcome.
+[00:18:12] Jess: So it's missing data there.
+[00:18:19] Jess: I can see that my comment here is not very clear because I too am having trouble interpreting that right now.
+[00:18:26] Martin: So just to clarify,
+[00:18:28] Martin: so my understanding of intercurrent event is that that's an event that happens after intervention exposure,
+[00:18:36] Martin: but before the outcome can be uncertain.
+[00:18:42] Martin: But what you say, what it could also be something that stops or the intervention from happening.
+[00:18:47] Jess: Yeah, so between like randomisation and when the intervention is supposed to be received and completed.
+[00:18:57] Jess: So
+[00:18:57] Martin: Okay.
+[00:18:58] Jess: a patient,
+[00:18:59] Jess: sorry,
+[00:19:00] Jess: Carly.
+[00:19:01] Karla: So again,
+[00:19:02] Karla: I think this is perhaps one of those things where
+[00:19:05] Karla: It doesn't quite matter whether we're following like particular definitions.
+[00:19:10] Karla: It's more about semantics. I think some people would say missing data isn't or lost follow-up isn't an inherent event.
+[00:19:17] Karla: But I don't think it matters terribly here whether we put it in the table or we don't. It's just, just maybe doesn't need to go in.
+[00:19:28] Martin: Yeah,
+[00:19:29] Karla: It's
+[00:19:29] Martin: it doesn't,
+[00:19:29] Karla: just a V.
+[00:19:30] Martin: yeah.
+[00:19:31] Jess: Yeah, yeah,
+[00:19:31] Jess: I agree.
+[00:19:33] Martin: It doesn't have to go in here or be treated as intercurrent.
+[00:19:37] Martin: Yeah.
+[00:19:40] Martin: Good.
+[00:19:43] Martin: Any other comments on this?
+[00:19:50] Karla: If you're going to do the time to event.
+[00:19:55] Karla: and not
+[00:19:56] Martin: Yeah.
+[00:19:56] Karla: the negative binomial,
+[00:19:58] Karla: then the death will be removed from here, I think.
+[00:20:03] Martin: Yeah.
+[00:20:04] Martin: And it's
+[00:20:05] Karla: It's about
+[00:20:05] Martin: a competing
+[00:20:05] Karla: relevant outcome.
+[00:20:06] Martin: event.
+[00:20:06] Martin: Yeah. Yeah.
+[00:20:09] Martin: Arpita,
+[00:20:10] Martin: you raised your hand.
+[00:20:12] Arpita: Yeah, I wanted to ask for the time to event and the last one for the length of stay.
+[00:20:21] Arpita: This is just to clarify for my understanding.
+[00:20:23] Arpita: For a transfer,
+[00:20:25] Arpita: so transfers would be included into the outcome definition.
+[00:20:29] Arpita: So the length of stay would be in this admission as well as part of the transfer.
+[00:20:37] Arpita: Because debt may also happen there.
+[00:20:40] Arpita: So will that be a competing risk and will that part of the stay?
+[00:20:46] Karla: Yes, I think that would be a competing event.
+[00:20:49] Karla: I guess you could put the death and the transfers in here and then in the strategy,
+[00:20:54] Karla: what would you call it, would it be more like a composite or?
+[00:21:02] James: Is it, is
+[00:21:04] Karla: I don't know what it would be called,
+[00:21:06] Karla: but I think it could go in the table.
+[00:21:08] Karla: But it's just that it would already be implicit in what you were saying, so you wouldn't have to put it in the table.
+[00:21:15] Arpita: Okay.
+[00:21:15] Karla: Sorry, Jess.
+[00:21:16] Jess: No, no, I'm just thinking of, I guess whether or not transfer is an intercurrent event depends on what the outcome is. So if you're looking at length of stay in hospital.
+[00:21:28] Jess: and someone's transferred you know from the ED to the ward then that that doesn't matter that's irrelevant because we're talking about if we're just talking about length of stay within the ED then transfer out kind of terminates that
+[00:21:45] Martin: Yeah.
+[00:21:45] Jess: um
+[00:21:48] Jess: If you're talking about transfer to a different hospital, maybe, then maybe in that situation, it is an intercurrent event because we no longer get to observe the outcome for that patient that because they might like fall out of the trial or be lost to follow up at that point.
+[00:22:04] Martin: Yeah.
+[00:22:12] Arpita: I
+[00:22:12] Martin: Okay,
+[00:22:12] Arpita: thought that,
+[00:22:13] Martin: so yeah,
+[00:22:13] Arpita: sorry,
+[00:22:13] Martin: go ahead. I'll be done.
+[00:22:14] Arpita: 
+[00:22:15] Arpita: I thought it was mentioned in the chat that the trial coordinators would follow up in case of a trial, and I understood it in case of a transfer to another hospital.
+[00:22:26] Arpita: they would follow them up so we would get the at least for the all cause mortality even for the in hospital mortality it is suggested that it would be counted towards in hospital so my understanding was that even for a transfer to another hospital it's part of the outcome
+[00:22:46] Martin: Yes, I think for mortality outcomes,
+[00:22:48] Martin: we are getting that.
+[00:22:50] Martin: Data, but we...
+[00:22:54] Martin: we're currently not collecting kind of ICU data from other hospitals so we wouldn't know if they are transferred from one ICU to another ICU then we wouldn't know when kind of they were discharged from that ICU so I guess for those outcomes transfer would be an intercurrent event although I don't think that happens very often but yeah
+[00:23:18] Karla: I think that could have been a bit clearer, Martin.
+[00:23:20] Karla: I think now I'm remembering.
+[00:23:21] Karla: I'm reminded that I was a bit confused by that.
+[00:23:24] Martin: Okay,
+[00:23:24] Martin: by the fact that some things are follow-up from other hospitals and some are not.
+[00:23:28] Karla: Yeah,
+[00:23:28] Martin: Yeah,
+[00:23:28] Karla: 
+[00:23:28] Martin: okay,
+[00:23:28] Karla: yeah.
+[00:23:29] Martin: got it.
+[00:23:29] Martin: Yeah.
+[00:23:35] Martin: Okay,
+[00:23:36] Martin: moving on.
+[00:23:39] Martin: Missing data.
+[00:23:41] Martin: Basically, what we have said is that we will impugn as the primary analysis if we have more than 10% missing in the primary outcome.
+[00:24:00] Martin: And the discussion in the SAP was that this 10% is arbitrary.
+[00:24:05] Martin: Maybe it's better just to say that the primary analysis will not use multiple imputation and then include a multiple imputed analysis as sensitivity analysis instead.
+[00:24:21] Martin: I mean, we do expect very low or...
+[00:24:25] Martin: at least less than one percent missing in the primary outcome and that's what we have said from the start.
+[00:24:35] Martin: So maybe that makes sense not to have a kind of pre-specified cutoff for when we will do multiple imputation but this would add sensitivity analysis and there are some discussions about that later.
+[00:24:52] Martin: Thoughts on this?
+[00:25:06] Jess: I personally think it's fine to say if there's any missing data, we're going to do some multiple imputation.
+[00:25:12] Jess: That's great.
+[00:25:13] Jess: Might not help you much if you've got say very low rates of missingness.
+[00:25:19] Jess: I often will specify a threshold in the SAPs I'm involved with.
+[00:25:25] Jess: I'm not sure if that's best practice these days,
+[00:25:27] Jess: but that's still what I do.
+[00:25:31] Jess: Yeah.
+[00:25:33] Jess: Oh,
+[00:25:33] Martin: Yeah.
+[00:25:33] Jess: I'd be curious to know what Karla and James think on that point.
+[00:25:37] Karla: What missing data might you have in the primary analysis or the primary outcome?
+[00:25:43] Karla: Because the primary analysis of the primary outcome,
+[00:25:46] Karla: it doesn't adjust for anything,
+[00:25:49] Karla: does it?
+[00:25:49] Karla: So
+[00:25:49] Martin: No.
+[00:25:50] Karla: what's going to be missing?
+[00:25:52] Martin: No, it's the outcome that might be missing.
+[00:25:54] Karla: Just the outcome.
+[00:25:55] Martin: Yeah.
+[00:25:59] Martin: But otherwise we shouldn't have close to zero missing in the primary analysis.
+[00:26:05] Martin: What we will have missing data on is when we do the fully adjusted analysis,
+[00:26:11] Martin: that we have missing data in unexpected,
+[00:26:15] Martin: quite high proportions of missing data in some of the covariates like patient level,
+[00:26:20] Martin: vital signs and so on that we have said that we'll adjust for.
+[00:26:25] Martin: But in the primary analysis,
+[00:26:26] Martin: we're not expecting much missingness at all.
+[00:26:31] Martin: And.
+[00:26:31] Karla: So is it clear in what's written that...
+[00:26:37] Karla: So what you're going to do without missing data analysis for,
+[00:26:40] Karla: so have you sort of said that for the primary outcome analysis,
+[00:26:44] Karla: you might perhaps do some multiple imputation and likewise,
+[00:26:47] Karla: have you said in the fully covariate adjusted analysis,
+[00:26:50] Karla: you also might do some multiple imputation.
+[00:26:54] Karla: I
+[00:26:55] Martin: Yes.
+[00:26:55] Karla: mean, it's a sort of separate point.
+[00:26:57] Martin: So that's why we have used this.
+[00:26:59] Martin: So for the primary analysis,
+[00:27:01] Martin: we've said that we will impute if we have more than 10% missing.
+[00:27:05] Martin: That's what
+[00:27:06] Karla: That's
+[00:27:06] Martin: we have said.
+[00:27:06] Karla: the missing primary outcome.
+[00:27:08] Martin: Missing primary outcome.
+[00:27:11] Karla: But what about the covariate adjusted analysis?
+[00:27:16] Martin: And we will.
+[00:27:17] Karla: Because there it's not about the primary outcome being missing.
+[00:27:21] Martin: No, but that's true.
+[00:27:25] Martin: But we base that also on the primary outcome,
+[00:27:29] Martin: but maybe that should be reconsidered.
+[00:27:32] Karla: Yeah, I think so. I think you probably need to articulate it a little bit differently if you're going to do a covariance adjusted analysis than that missing data.
+[00:27:43] Karla: method approach will be more important for the missing
+[00:27:45] Martin: Yeah,
+[00:27:46] Karla: for the
+[00:27:46] Martin: yeah,
+[00:27:46] Karla: covariance adjustment analysis
+[00:27:47] Martin: yeah,
+[00:27:47] Karla: than this one right
+[00:27:48] Martin: yeah, yeah.
+[00:27:49] Karla: 10 seems a bit bit high to me i think if you're going to put a percentage i think maybe five percent would be closer to what you might say and
+[00:28:02] Karla: i don't feel very strongly about whether you put percentage there or not
+[00:28:08] Martin: James,
+[00:28:08] Martin: you said something.
+[00:28:10] James: Oh, actually, it was about Karla's point that you've got the 10% missing primary outcome data as your threshold,
+[00:28:17] James: but then yeah, for the second part where you were talking about the covariate adjusted,
+[00:28:21] James: it's going to be probably proportion or percentage of people with missing primary outcome or covariate data that you probably want to base it on.
+[00:28:31] Martin: Yeah, yeah.
+[00:28:32] Martin: I see that now,
+[00:28:34] Martin: yeah.
+[00:28:36] James: um the other thing is is about whether this is all done together so are you doing one set of imputation using um you know all of these covariance and any um other variables to aid the imputation and then you're fitting you know a set of unadjusted models and a set of adjusted models or are you doing anything
+[00:29:00] James: you know are you doing i don't know unadjusted and then adjusted separately because that's almost how it reads at the moment um
+[00:29:08] Martin: Yeah,
+[00:29:08] James: and i'm sure probably not the case
+[00:29:12] Martin: that's a very good question also whether we should, because in the discussion it was almost as if we would decide whether we should impute based on...
+[00:29:26] Martin: the amount of missingness in each secondary outcome.
+[00:29:30] Martin: But to me that sounds a bit overly complicated and maybe a more straightforward approach would be to do, maybe that's what you just said James,
+[00:29:43] Martin: is to do one
+[00:29:46] Martin: imputation in the sense that we create imputed data set with x number of or x number of imputed data sets and then run all analysis using the same imputation if you see what I mean.
+[00:30:00] James: I mean, from a computational point of view, that would also be a lot better because it's doing imputation with no clustering can be quite.
+[00:30:11] James: computationally expensive when you've
+[00:30:13] Martin: Mm
+[00:30:13] James: got clustering
+[00:30:13] Martin: -hmm.
+[00:30:14] James: it adds a lot of complexity to it and so we're trying to do it individually for each outcome would be quite a time-consuming process
+[00:30:23] Martin: Yeah, yeah.
+[00:30:25] Martin: So basically the suggestion is to,
+[00:30:27] Martin: if I try to summarize this, is to modify the threshold, but perhaps still include the threshold, but then say 5% for the primary outcome analysis. And then...
+[00:30:41] Martin: add that if we have and use the same threshold for missing covariate data in the adjusted analysis and if we need to impute then conduct or create one imputed data set and run all analysis on that imputed data set.
+[00:31:01] Martin: Is
+[00:31:01] James: I think
+[00:31:01] Martin: that correct?
+[00:31:01] James: so.
+[00:31:02] James: I guess the one potential thing here, though, is that you'd have to then make sure that you're using the same number of you'd have to specify what that imputation will be. Is that based on a, you know, you've said here at least 20.
+[00:31:15] James: Is that based on the proportion of missing data or are you just specifying, you know, a number of imputations that you're going to do?
+[00:31:26] Martin: No,
+[00:31:26] Martin: so I...
+[00:31:27] Martin: So I see that it's not specified. My recommendation would be that we write that we use the proportion of missing data, but use at least 20.
+[00:31:37] James: So I guess I'm saying that because obviously for your unadjusted model,
+[00:31:42] James: your proportion of missing data is based on missing primary outcome.
+[00:31:45] Martin: Yeah.
+[00:31:46] James: But in your adjusted model,
+[00:31:48] James: it's proportioned with any missing data. And so those two aren't going to align.
+[00:31:53] Martin: No.
+[00:31:55] Martin: But then we can still use the larger,
+[00:31:57] Martin: the one with
+[00:31:59] James: Yeah.
+[00:31:59] Martin: the larger N,
+[00:32:00] Martin: right?
+[00:32:01] Martin: Also for the primary analysis.
+[00:32:02] Martin: Yeah.
+[00:32:03] James: Yeah.
+[00:32:03] James: But that's what I'm just, it's just about making sure that then.
+[00:32:06] James: Yeah.
+[00:32:06] Martin: Yeah.
+[00:32:07] Martin: Yeah.
+[00:32:07] Martin: So clarifying that.
+[00:32:09] Martin: Yeah.
+[00:32:09] Martin: Good point.
+[00:32:18] Martin: Okay.
+[00:32:20] Martin: And then that means that we clarify the missing data strategy,
+[00:32:24] Martin: but we do not call it a sensitivity analysis.
+[00:32:29] Martin: That would be my interpretation of the discussion.
+[00:32:41] Martin: Okay.
+[00:32:42] Karla: Sorry,
+[00:32:43] Karla: Martin,
+[00:32:43] Karla: I don't follow the last bit.
+[00:32:45] Karla: Not call it a sensitivity analysis,
+[00:32:46] Karla: did you say?
+[00:32:46] Martin: Yeah, I mean what we are calling it now is more is we haven't specified a sensitivity analysis where we use multiple imputation,
+[00:32:56] Martin: where we don't call it the sensitivity analysis. We specify it here under how we handle missing data.
+[00:33:03] Jess: Okay.
+[00:33:04] Martin: Yeah.
+[00:33:05] Karla: Okay, so the one option is that if there's a certain proportion of missing data,
+[00:33:10] Karla: then this would just become a default versus
+[00:33:12] Martin: Yeah.
+[00:33:13] Karla: we'll present a complete case analysis
+[00:33:15] Martin: Yeah,
+[00:33:15] Karla: and a sensitivity analysis.
+[00:33:17] Martin: exactly.
+[00:33:18] Karla: Are other people all right with that?
+[00:33:25] Karla: So just jump straight.
+[00:33:27] Jess: I like to see the complete case analysis.
+[00:33:30] Karla: Yeah, me too.
+[00:33:34] Karla: Yeah, I think you have to present the complete case analysis.
+[00:33:38] Martin: So does that mean that we should say that the default is a complete case analysis?
+[00:33:45] Martin: And then if we have these set of if and then we do a multiple imputation, if we have missing data more than 5%.
+[00:33:55] Karla: So for the primary outcome.
+[00:33:58] Karla: I
+[00:33:58] Martin: Yeah.
+[00:33:58] Karla: don't think it's going to matter very much because
+[00:34:00] Martin: There
+[00:34:00] Karla: you're
+[00:34:00] Martin: it
+[00:34:00] Karla: quite
+[00:34:00] Martin: was.
+[00:34:00] Karla: certain
+[00:34:00] Martin: Yeah.
+[00:34:01] Karla: that there's going to be quite a low proportion of missing data.
+[00:34:03] Martin: Yeah.
+[00:34:03] Karla: So for the primary outcome,
+[00:34:05] Karla: I don't think it's going to matter.
+[00:34:07] Karla: And I think you just could call it a sensitivity analysis for the primary outcome.
+[00:34:10] Karla: But when you get to the covariance adjusted analysis,
+[00:34:13] Karla: that's already a sensitivity analysis anyway.
+[00:34:15] Martin: Yeah.
+[00:34:16] Martin: Okay.
+[00:34:26] Martin: Okay, good.
+[00:34:32] Martin: So next one,
+[00:34:34] Martin: is that okay?
+[00:34:41] Martin: I think, Karla, you had a comment about whether we should include cluster size in the randomization or not in the randomization, sorry,
+[00:34:50] Martin: in the primary analysis model.
+[00:34:52] Martin: And we're not doing that currently.
+[00:34:57] Martin: And my suggestion is that we do that,
+[00:34:59] Martin: but that would make the model more complex.
+[00:35:09] Karla: So I have to remind myself about this. So in the covariate constrained randomization,
+[00:35:13] Karla: there was a covariate that was cluster size.
+[00:35:18] Karla: And then in the analysis,
+[00:35:20] Karla: we don't have any adjustment for cluster size.
+[00:35:24] James: No.
+[00:35:25] Karla: Is that right?
+[00:35:26] Martin: That's correct.
+[00:35:28] Karla: So usually the rule is that if you've put something into the randomization, you should adjust for it.
+[00:35:34] Martin: Yeah.
+[00:35:34] Karla: Cluster size is a bit different though and I'm not completely sure whether we need it.
+[00:35:42] Karla: I don't really need to mention why we're not including it,
+[00:35:45] Karla: but
+[00:35:48] Karla: I don't know.
+[00:35:56] Martin: Others?
+[00:35:58] Jess: So I don't I don't
+[00:36:00] Jess: I mean, yes, it makes the model slightly more complex. Like that's not a great deal more complexity in my mind.
+[00:36:10] Jess: I mean,
+[00:36:11] Jess: cluster size is, you know, tricky.
+[00:36:13] Jess: This informative cluster size stuff,
+[00:36:15] Jess: I guess we're just not thinking about that.
+[00:36:20] Jess: But I think adjusting for cluster sizes or covariate helps to protect a little bit against that. I don't know.
+[00:36:28] Jess: So I guess I just don't understand why you wouldn't just include it in the model.
+[00:36:35] Karla: okay yeah let's do it I mean the only reason I was just hesitant a little bit is because it's not like a usual covariate like and like a regular covariate might be I don't know somebody's the average age and then you could adjust for the participant's age whereas cluster size is a bit more dynamic
+[00:36:55] Karla: it's you know you put it in as your best guess of what
+[00:36:57] Unknown: Yeah.
+[00:36:58] Karla: that cluster size was and
+[00:36:59] Unknown: Yeah.
+[00:37:00] Karla: then also just because of the informative cluster size and I was just I just couldn't work that out in my head whether it would have any consequences but I am happy to adjust for it but what are we going to adjust for regular
+[00:37:13] Jess: It would be the cluster size as considered at randomization, wouldn't it?
+[00:37:20] Karla: Okay, let's
+[00:37:21] Martin: Yeah, I think so.
+[00:37:22] Karla: do that.
+[00:37:27] Martin: Yeah, so then we can use the same data as the data that you were using, James, when you actually do the randomization, right?
+[00:37:38] Martin: Actually, so I just want to...
+[00:37:42] Martin: A flight that would,
+[00:37:43] Martin: I mean, that data, as you said, it's not a guess entirely,
+[00:37:51] Martin: but it's based on the data that we have at the time point when the randomization needs to happen and the amount of
+[00:38:04] Martin: And it does fluctuate over time how large volumes each center is seeing,
+[00:38:12] Martin: but maybe that's fine.
+[00:38:21] Karla: But Jess,
+[00:38:22] Karla: imagine that you had chosen a model here and that model,
+[00:38:26] Karla: we knew was targeting the individual level average.
+[00:38:30] Karla: Maybe it was an IEE with weighting.
+[00:38:32] Karla: You wouldn't additionally need to adjust for the cluster size there, would you? Because isn't that sort of implicit in the model?
+[00:38:40] Jess: That's a really good question.
+[00:38:42] Jess: I don't know.
+[00:38:46] Jess: I guess I'm thinking of cluster size,
+[00:38:50] Jess: just that covariate that's defined at the randomization time point. I'm not thinking of it as something that changes over time as it does, of course.
+[00:39:00] Jess: I'm just thinking of that variable that was used at randomization.
+[00:39:07] Martin: Yeah, okay.
+[00:39:08] Karla: Okay, let's add that in then.
+[00:39:10] Martin: Yeah, thank you.
+[00:39:13] Jess: It's super interesting.
+[00:39:15] Jess: Oh gosh.
+[00:39:18] Martin: Okay, and then we have the small sample inference and whether we should pre-specify a small sample correction. I think that this is something that we also have discussed before and we've been a bit unsure about and we've set a point that we'll decide when it's time to do the analysis because it's an evolving field.
+[00:39:39] Martin: Now,
+[00:39:40] Martin: my interpretation of the discussion in the SAP was that...
+[00:39:44] Martin: yeah we could add the kepler roger for linear models and then use which i did not quite follow but it's something that you seem to be doing and i think anna understands what that is uh jess and that's the dk minus two convention um so
+[00:40:04] Martin: Is that something that we're comfortable with putting at this stage,
+[00:40:08] Martin: or do we want more flexibility of being able to decide later?
+[00:40:20] Jess: I want to know what Karla thinks of this.
+[00:40:26] Jess: I guess if I needed to decide now what to do,
+[00:40:29] Jess: this is what I would say I was doing.
+[00:40:32] Karla: So I'm just trying to look at the comments.
+[00:40:35] Karla: Where did the, what we call,
+[00:40:39] Karla: yeah, where's the K minus two come from?
+[00:40:42] Karla: Because K
+[00:40:43] Martin: That's in one of the comments from Jess.
+[00:40:46] Karla: minus two is not so straight. Oh, we've got a T in there. Is the T the number of time periods, not the T distribution?
+[00:40:53] Jess: No, no, this was the T distribution with number of clusters minus two.
+[00:40:59] Jess: Yeah.
+[00:41:00] Karla: Because that works well in a parallel design,
+[00:41:02] Jess: Yeah,
+[00:41:02] Karla: but does
+[00:41:03] Jess: yeah.
+[00:41:03] Karla: that work all right in a step wedge design?
+[00:41:06] Karla: Because then so
+[00:41:07] Jess: This is, do I have a reference?
+[00:41:11] Karla: I remember that Jennifer Thompson looked at different sort of like degrees of freedom correction,
+[00:41:18] Karla: like these simple ones.
+[00:41:20] Karla: but it was with a GEE and she looked at a few examples a few suggestions Andrew had said and I don't think any of them worked very well although it was within a GEE
+[00:41:33] Jess: I think so.
+[00:41:43] Jess: I mean, this is what I have been doing for
+[00:41:45] Karla: Mm
+[00:41:45] Jess: GLRMs
+[00:41:45] Karla: -hmm.
+[00:41:45] Jess: and I think even for GAEs as well. And I'm pretty sure I read somewhere that it was OK,
+[00:41:51] Jess: but I would love to know that that I shouldn't be doing this so I can stop now.
+[00:42:05] Karla: So I didn't know what was all right.
+[00:42:08] Karla: But I do know that one of Derek is doing
+[00:42:12] Jess: Yeah.
+[00:42:13] Karla: a review of assimilation statuses like we did for parallel designs.
+[00:42:19] Karla: He's doing it for stepped-wedge trials.
+[00:42:21] Jess: Very cool.
+[00:42:22] Karla: So I was sort of hoping that by the time we needed to fix this, he might have done it and then.
+[00:42:27] Jess: Look,
+[00:42:28] Jess: I think it's fine. If we don't need to specify this now,
+[00:42:31] Jess: then I'd be happy to kind of leave it.
+[00:42:35] James: what's the rough date of analysis is it like
+[00:42:40] Martin: So it's
+[00:42:41] James: if you get like if it's in is it in like three years time right
+[00:42:46] Martin: yeah almost the end of 28 so that's two years yeah
+[00:42:51] Martin: Yeah, earliest I would say. It might be 2029 as well.
+[00:42:57] Karla: I think it's all right to say we're not going to fix this, we're going to wait because we know somebody's doing some work.
+[00:43:04] Martin: Yeah, okay.
+[00:43:05] Martin: So let's do that then.
+[00:43:06] Martin: Yeah.
+[00:43:11] Martin: Good.
+[00:43:12] Martin: And now you are, you needed to leave, right,
+[00:43:16] Martin: Karla?
+[00:43:17] Martin: So,
+[00:43:18] Martin: or do you still have a couple of minutes?
+[00:43:20] Karla: I'm okay for a bit. I'm alright for a bit. I'll probably be alright.
+[00:43:23] Martin: okay let's go so yeah so then we have quality of life and disability and that so we measured that at multiple different time points and as it was stated in the SAP and the idea was to run separate analysis but then there was a suggestion of building a joint longitudinal model instead and I know that you James you were kind of
+[00:43:48] Martin: You like that idea.
+[00:43:51] Martin: So is that something that we should do?
+[00:43:53] Martin: I'm all for trying to reduce the number of analysis.
+[00:44:12] Martin: I think you're muted,
+[00:44:13] Martin: James, if you try to say something.
+[00:44:15] Martin: Sorry.
+[00:44:15] James: I'm just trying to find it in the SAP at the moment.
+[00:44:18] Martin: Okay,
+[00:44:19] Martin: sorry.
+[00:44:19] Martin: So I will do the same then.
+[00:44:21] Martin: It's supposed to be in paragraph or section nine, two.
+[00:44:43] Karla: Yes, I just came across your comment. It's nothing to do with what we're talking about at the minute because it's actually on page 25, which I think there's a page we're looking for.
+[00:44:51] Karla: It says that you've started doing,
+[00:44:53] Karla: you have an interest in, you started using estimating risk ratios using log binomials, but in the reanalysis data sets, we've re-estimated risk ratios using binomial models and only converged 30% of the time.
+[00:45:07] Jess: Really?
+[00:45:08] Karla: Yeah.
+[00:45:10] Jess: I must have been very lucky.
+[00:45:14] Martin: Yeah.
+[00:45:14] Karla: Yeah.
+[00:45:14] Martin: 
+[00:45:14] Karla: I mean, we haven't like played with anything. It's just like under the default settings.
+[00:45:18] Jess: I haven't played with anything either. I think I'm
+[00:45:23] Jess: going to go back and check, but I'm pretty, I'm pretty sure.
+[00:45:25] Karla: I remember where it happens most is if you've got any clusters with zero events.
+[00:45:31] Karla: But
+[00:45:31] Jess: Ah,
+[00:45:31] Karla: quite
+[00:45:31] Jess: okay.
+[00:45:32] Karla: a
+[00:45:32] Jess: Yep, yep.
+[00:45:33] Karla: lot of trials actually have that, at least one zero event in a cluster.
+[00:45:39] Jess: So I guess the situation where I've actually been using that model a lot is individually randomized trials, but with lots of hospitals and
+[00:45:51] Jess: they're forgetting
+[00:45:53] Karla: Okay,
+[00:45:53] Jess: that which
+[00:45:53] Karla: might be different.
+[00:45:54] James: randomized Yeah, trials.
+[00:45:55] Jess: yeah.
+[00:45:56] Martin: Sorry,
+[00:46:00] Martin: it was you, Jess,
+[00:46:01] Martin: you said, it wasn't you, James,
+[00:46:03] Martin: I mix it up, sorry.
+[00:46:04] Martin: So you said that you generally prefer the approach of combining all the data into longitudinal model.
+[00:46:10] Martin: And that was what Anna suggested as well.
+[00:46:14] Martin: So if you don't see any major problems with doing that, I suggest that that's how we analyze this as well.
+[00:46:22] Jess: Yeah, I mean, my preference is generally if you've got multiple measurements on the same individual,
+[00:46:27] Jess: you just include them in one model together.
+[00:46:31] Martin: Yeah.
+[00:46:32] Jess: There can be arguments against that.
+[00:46:34] Jess: That's fine.
+[00:46:35] Jess: But I think here,
+[00:46:37] Jess: you know, if Anna's okay with that, then.
+[00:46:40] Martin: So what would your scenario be if we have much more missing at 90 days compared to 30 days, for example?
+[00:46:51] Jess: I mean, then you kind of get to borrow strength from the data you do have at the 30 days.
+[00:46:58] Martin: Okay.
+[00:47:02] Karla: I am happy with that approach,
+[00:47:05] Karla: but you just also need to be careful to pre-specify what you're like,
+[00:47:09] Karla: your S demands or what you're going to report from that model.
+[00:47:13] Karla: Is it the effect at 90 days?
+[00:47:15] Karla: Is it the difference between 90 and zero?
+[00:47:19] Karla: You know, there's so many different coefficients from that model.
+[00:47:22] Karla: You've got to specify what thing you're interested in.
+[00:47:24] Martin: Yeah, okay.
+[00:47:26] Jess: And I would suggest on that point, just the treatment effect at each of those time points, not looking at differences between them or anything like that, unless that is something that is of particular interest.
+[00:47:38] Martin: So basically use one model but then estimate the treatment effect at each time point.
+[00:47:44] Martin: Yeah.
+[00:47:46] Martin: Got it.
+[00:47:51] Martin: Very good. I think this is going okay so far.
+[00:47:54] Martin: Then there was a comment and I think it was your comment.
+[00:48:00] Martin: comment yes about the main kind of effect size and whether we should consider reporting a risk ratio instead of an odds ratio and what we are currently saying is that we will report both an odds ratio and an absolute risk reduction.
+[00:48:22] Martin: And only if the ARD does not or that model does not converge will we report only the odds ratio.
+[00:48:31] Jess: Look, I'm fine.
+[00:48:33] Jess: I'm fine with whatever approach. I think I must have.
+[00:48:36] Jess: gotten to this just after I'd had my morning coffee because it seems like I made a lot of a lot of comments that are maybe a little bit out there look I think you know based on what Karla has has said about these relative risk risk ratio models that I suggested not converging a lot of the time I I just I just think
+[00:48:59] Jess: Just, you know, the odds ratio, the interpretation of that can be a bit more difficult, but if you're happy with that, then that's fine.
+[00:49:07] Karla: So we've just been going through this in another trial and then we're like going backwards and forwards.
+[00:49:15] Karla: The reason why we wanted to go with an odds ratio is just a lot simpler.
+[00:49:21] Karla: You know, what model are you going to fit?
+[00:49:23] Karla: It's very likely to converge.
+[00:49:26] Karla: So it's just for simplicity, but absolutely agree that it's harder to interpret.
+[00:49:33] Karla: So with this other trial,
+[00:49:35] Karla: we went to them saying we just report an odds ratio, it's also a stepped-wedge trial,
+[00:49:39] Karla: and they said no,
+[00:49:40] Karla: they definitely wanted a risk ratio.
+[00:49:43] Karla: So that was problematic for us because then we didn't know what we were going to do if it was going to fail to converge. So we went to the DMC.
+[00:49:53] Karla: I agree and Andrew K. Pass is on on that board and he came back with I thought what was a useful suggestion and his suggestion was to report an odds ratio report three basically and you use you sort of like your main influences are on the odds ratio but alongside that you report a relative risk and a risk difference so people can understand.
+[00:50:18] Karla: Yeah, so that is an alternative.
+[00:50:20] Karla: I mean he articulated it in a better way than I've just said it and when he wrote it in the email I was convinced it was the right idea. Now I'm saying it, I'm not sure.
+[00:50:30] Karla: But that's an alternative,
+[00:50:31] Karla: Martin,
+[00:50:31] Karla: so I can send you that and then maybe Yeah it's up to you to decide.
+[00:50:35] Martin: Yeah, okay,
+[00:50:36] James: The
+[00:50:36] Martin: sure.
+[00:50:36] James: thing to consider for that is that for that approach,
+[00:50:40] James: we were estimating the risk ratio and risk difference using a logistic model and then using marginal standard errors.
+[00:50:46] Karla: Oh yeah,
+[00:50:46] James: 
+[00:50:46] Karla: that's a difference.
+[00:50:47] Karla: Yeah, sorry.
+[00:50:48] Karla: Yeah,
+[00:50:48] Karla: that's an important distinction.
+[00:50:50] James: And then so we were using just the p-value from the odds ratio and
+[00:50:54] Karla: That's it,
+[00:50:55] James: then
+[00:50:55] Karla: yeah.
+[00:50:55] James: reporting the relative risk and risk difference
+[00:50:57] Karla: Yeah,
+[00:50:57] James: to help
+[00:50:58] Karla: that's
+[00:50:58] James: with the presentation.
+[00:50:58] Karla: not going to work here, actually. A very good point I forgot because we wouldn't want to use marginal standardisation here, I don't think.
+[00:51:09] Martin: Okay,
+[00:51:10] Karla: How
+[00:51:10] Martin: so let's
+[00:51:10] Karla: can we start
+[00:51:10] Martin: keep
+[00:51:11] Karla: we're going to report the ARD estimate the ARD from a binomial model.
+[00:51:15] Martin: Yeah, yeah, so we're using different link functions that what we said.
+[00:51:19] Martin: Yeah
+[00:51:19] Karla: I
+[00:51:23] Karla: think it's a bit safer to report the odds ratio.
+[00:51:30] Martin: Good
+[00:51:31] Martin: And then you had a common caller where you said, what is this when it was about the effect size of the adherents analysis.
+[00:51:46] Martin: where it currently is a difference on the logic scale from a better regression model,
+[00:51:50] Martin: which is my interpretation of the literal meaning of the coefficients that we would get from that model,
+[00:51:57] Martin: that maybe it would make more sense to justimate an average marginal effect instead.
+[00:52:10] Martin: from that model.
+[00:52:11] Karla: Sorry, Martin, can we go back a little bit?
+[00:52:14] Karla: So adherence, so this is an outcome.
+[00:52:17] Martin: So
+[00:52:18] Karla: And
+[00:52:18] Martin: adherence
+[00:52:18] Karla: you've got that
+[00:52:19] Martin: is the adherence to the actual principles of the intervention,
+[00:52:25] Martin: of the treatment.
+[00:52:26] Martin: So there's a training program,
+[00:52:29] Martin: it involves completing a certain number of steps as you manage a patient. We measure whether those steps are actually completed and we get a proportion of the number of steps completed.
+[00:52:43] Karla: in both arms.
+[00:52:44] Martin: yeah
+[00:52:44] Karla: You've
+[00:52:45] Martin: yeah
+[00:52:45] Karla: got that in treatment and control.
+[00:52:46] Karla: Okay,
+[00:52:47] Martin: no
+[00:52:47] Karla: so it's just a binary outcome,
+[00:52:48] Karla: really.
+[00:52:48] Karla: Is that right?
+[00:52:49] Martin: it's not a binary it's a proportion yeah
+[00:52:52] Karla: Oh, okay.
+[00:52:53] Karla: Right.
+[00:52:54] Karla: So, okay.
+[00:52:55] Karla: And is that, that's for each participant, each individual, they have an outcome on the scale zero to one.
+[00:53:02] Martin: yeah yeah so that's part of the nested staircase so we have it for for the yeah yeah
+[00:53:09] Karla: It's just happy with that because that's just his part, isn't it?
+[00:53:17] Martin: Yes, this is your part.
+[00:53:20] Martin: No,
+[00:53:21] Jess: Yeah.
+[00:53:21] Martin: but yeah.
+[00:53:24] Martin: So basically adherence is just one of the outcomes that we measure as part of the nested staircase and we randomize on the data collector shift level which patients to include for that outcome because it requires someone to be there and observe as care is being delivered.
+[00:53:45] Martin: So we have a random subset of patients where we collect this outcome,
+[00:53:51] Martin: where we collect this outcome,
+[00:53:53] Karla: So
+[00:53:53] Martin: yeah.
+[00:53:53] Karla: it just hasn't seen us and agreed with us.
+[00:53:56] Karla: I wouldn't know how to fit a beta regression model with random effects.
+[00:54:01] Martin: What would you do?
+[00:54:03] Jess: either.
+[00:54:06] Jess: Sounds like it could be fine.
+[00:54:07] Jess: Yeah,
+[00:54:08] Jess: I must admit,
+[00:54:09] Jess: I think I must have lost a bit of steam by this point, unfortunately.
+[00:54:13] Jess: I'm sorry.
+[00:54:18] Martin: But that's perfectly fine.
+[00:54:20] Martin: So how would you,
+[00:54:21] Martin: so we have an outcome that is a proportion.
+[00:54:25] Jess: I'm sure you could fit this and you could use just cluster robust standard errors.
+[00:54:31] Jess: I'm sure there would be a way to do that.
+[00:54:37] Jess: So not including random effects or anything like that,
+[00:54:43] Karla: I
+[00:54:43] Jess: but still
+[00:54:43] Karla: do count it, yeah.
+[00:54:43] Jess: for the clustering.
+[00:54:49] Jess: I think that could be fine. It kind of depends on how important this outcome is.
+[00:54:57] Jess: If it's not super important,
+[00:54:59] Jess: then cluster above standard errors.
+[00:55:03] Jess: I think that's okay.
+[00:55:06] Karla: That would be finer, so the right underlying model be to regression model.
+[00:55:10] Karla: I've never used a pure regression model.
+[00:55:14] Jess: I think that's right.
+[00:55:16] Jess: I'm sort of reaching back in.
+[00:55:27] Martin: Maybe we can pause this and I can get back to you on this in an email with what we should use for this specific outcome or if there is a way to handle this outcome that makes more sense, if there is a model that you're more familiar with maybe.
+[00:55:45] Martin: Okay.
+[00:55:48] Martin: And then I will get back to you, Karla,
+[00:55:50] Martin: on this because you had a comment where it said get rest on these and then you had highlighted the section and I'm not sure what you meant, but I'll get back to you on that.
+[00:55:59] Martin: James.
+[00:56:00] Karla: So.
+[00:56:00] James: So just looking at how it's described,
+[00:56:03] James: so it says that it's a 14 item checklist and so
+[00:56:08] James: Um,
+[00:56:09] James: you've said that you're converted to percentage, but I guess, is there a reason to not have it as count with an offset for, you know, there's 14 items they could have completed and you've got the number of items they did complete.
+[00:56:26] Martin: No, I mean, that was one of the alternatives that we discussed,
+[00:56:31] Martin: me and Anna.
+[00:56:33] Martin: So would that make it simpler,
+[00:56:35] Martin: do you think?
+[00:56:37] James: Well, I'm going on the basis that none of us have fitted beta regression models before,
+[00:56:43] James: so there's not really anything about their model performance in these sorts of studies, whereas the use of, you know,
+[00:56:51] James: Poisson models has been used more
+[00:56:54] Martin: Okay, yeah,
+[00:56:55] James: on that basis than anything else.
+[00:56:58] Martin: yeah.
+[00:57:01] Martin: Yeah, I would be happy if we can preserve kind of the nature of that outcome as far as possible.
+[00:57:06] Martin: I'm happy.
+[00:57:07] Martin: I would like to avoid dichotomizing it, for example. But if we can use it as a count outcome,
+[00:57:13] Martin: that works for me.
+[00:57:18] Karla: I think that would be a lot more straightforward.
+[00:57:20] Martin: Yeah.
+[00:57:21] Martin: So let's do that then. Let's use it as a count outcome. Yeah.
+[00:57:28] Martin: Okay,
+[00:57:29] Martin: good.
+[00:57:30] Martin: Then we had some discussions on the sensitivity analysis and I think you Karla said that there had been discussions in a recent paper about a number of sensitivity analysis and we have quite a few.
+[00:57:43] Martin: Maybe I'm conservative but most of these were analysis that we specified in the protocol already.
+[00:57:54] Martin: So there's really only the exposure by precision date.
+[00:58:02] Martin: That's the only sensitivity analysis that we've added in this SAP.
+[00:58:09] Martin: So should we still go ahead and remove these that were or should we keep them in?
+[00:58:17] Karla: It's hard to take them out, isn't it now? Sorry,
+[00:58:19] Karla: Martin.
+[00:58:20] Martin: Yeah, that's how I feel as well.
+[00:58:27] Martin: Okay.
+[00:58:28] Karla: Let's definitely not overplay them.
+[00:58:31] Martin: Yeah, yeah.
+[00:58:33] Martin: But let's keep them in the report.
+[00:58:38] Martin: Okay.
+[00:58:39] Martin: So we are one minute over time.
+[00:58:41] Martin: If anyone needs to leave,
+[00:58:42] Martin: that's perfectly okay.
+[00:58:45] Martin: We have two more things to discuss.
+[00:58:48] Jess: I can hang around for five more minutes, but I will need to head off after that.
+[00:58:53] Martin: Yeah.
+[00:58:54] Martin: Okay.
+[00:58:55] Martin: So this one is about age groups and geographical regions.
+[00:58:59] Martin: And basically we did not, we have specified age groups.
+[00:59:04] Martin: Here,
+[00:59:05] Martin: one suggestion was to reduce the number of age groups.
+[00:59:12] Martin: To be completely honest,
+[00:59:13] Martin: I'm not sure whether we did pre-specify it in the protocol already in our age groups.
+[00:59:18] Martin: Otherwise, my suggestion would be that we can use a conventional cutoff for basically having a younger and an older cohort.
+[00:59:29] Martin: So that would make sense given what its data usually look like and then when it comes to geographical region what it says in this app is to use states but we also have these solo councils that we could use which is a much smaller number.
+[00:59:49] Martin: So my suggestion would be to use only two edge groups if that's supported by the protocol and then use these sonar consoles instead of...
+[01:00:00] Martin: individual states yeah
+[01:00:04] Martin: okay
+[01:00:07] Martin: i take the nodding head says approval so then final one and that is whether one patient can appear more than once and that
+[01:00:20] Martin: It's not common for these patients to be readmitted during these 13 months.
+[01:00:28] Martin: I don't have an estimate from it. We do have that data. We can look at it, but I don't have an estimate right now.
+[01:00:37] Martin: So either I think one suggestion in this app was to only treat the first admission and maybe that's the more straightforward option than treating them as independent.
+[01:00:50] Jess: I
+[01:00:50] Martin: I
+[01:00:50] Jess: think
+[01:00:50] Martin: like,
+[01:00:50] Jess: it's fine.
+[01:00:52] Jess: You just need to be clear.
+[01:00:53] Jess: And I think you can just say, yeah, there may be a small number of patients that are admitted more than once, but it's only a small number and we're not going to acknowledge it in our analysis.
+[01:01:03] Jess: I think just something like that. It's just more about clarity.
+[01:01:05] Martin: That's fine.
+[01:01:05] Martin: Yeah.
+[01:01:09] Martin: Okay.
+[01:01:10] Martin: Excellent.
+[01:01:12] Martin: uh yeah that was that was that thank you so much um so i will work with this together with anna and also on the other comments and clarifications and send you a revision and hopefully we can finalize that okay thank you so much for taking your time yeah
+[01:01:30] Jess: Thanks, Martin.
+[01:01:31] Jess: Hi, everyone.
+[01:01:32] Martin: thank
+[01:01:32] Jess: Good to see you later.
+[01:01:33] Martin: bye good to see you bye

@@ -1,0 +1,5477 @@
+{
+  "duration": 3704.64,
+  "segments": [
+    {
+      "start": 4.932,
+      "end": 5.682,
+      "speaker": "A#00min",
+      "text": " Hi Martin,"
+    },
+    {
+      "start": 5.732,
+      "end": 6.182,
+      "speaker": "A#00min",
+      "text": " good morning."
+    },
+    {
+      "start": 7.082,
+      "end": 7.982,
+      "speaker": "B#00min",
+      "text": " Hey, good morning."
+    },
+    {
+      "start": 8.032,
+      "end": 8.482,
+      "speaker": "B#00min",
+      "text": " Hi."
+    },
+    {
+      "start": 8.482,
+      "end": 8.882000000000001,
+      "speaker": "A#00min",
+      "text": " Hi."
+    },
+    {
+      "start": 9.932,
+      "end": 10.682,
+      "speaker": "A#00min",
+      "text": " Hi Jess."
+    },
+    {
+      "start": 11.582,
+      "end": 12.832,
+      "speaker": "B#00min",
+      "text": " Hi, Jess. Hi, James."
+    },
+    {
+      "start": 12.932000000000002,
+      "end": 13.582,
+      "speaker": "B#00min",
+      "text": " Hi, Peter."
+    },
+    {
+      "start": 14.232000000000003,
+      "end": 14.882000000000001,
+      "speaker": "C#00min",
+      "text": " Hi everyone."
+    },
+    {
+      "start": 15.532000000000004,
+      "end": 15.732000000000003,
+      "speaker": "B#00min",
+      "text": " Hello."
+    },
+    {
+      "start": 15.732000000000003,
+      "end": 16.532000000000004,
+      "speaker": "A#00min",
+      "text": " Hi everyone."
+    },
+    {
+      "start": 19.182,
+      "end": 20.081999999999997,
+      "speaker": "B#00min",
+      "text": " Good morning."
+    },
+    {
+      "start": 20.131999999999998,
+      "end": 26.432,
+      "speaker": "B#00min",
+      "text": " Thank you so much for taking time out and finding a time despite the different time zones."
+    },
+    {
+      "start": 27.932,
+      "end": 29.282,
+      "speaker": "A#00min",
+      "text": " Martin, before we start,"
+    },
+    {
+      "start": 29.382,
+      "end": 30.682000000000002,
+      "speaker": "A#00min",
+      "text": " I think I have to leave a bit early."
+    },
+    {
+      "start": 31.7,
+      "end": 32.1,
+      "speaker": "B#00min",
+      "text": " Okay,"
+    },
+    {
+      "start": 32.15,
+      "end": 33.15,
+      "speaker": "B#00min",
+      "text": " how much early?"
+    },
+    {
+      "start": 33.7,
+      "end": 34.2,
+      "speaker": "A#00min",
+      "text": " Um,"
+    },
+    {
+      "start": 34.3,
+      "end": 35.4,
+      "speaker": "A#00min",
+      "text": " 20 minutes,"
+    },
+    {
+      "start": 35.55,
+      "end": 36.5,
+      "speaker": "A#00min",
+      "text": " maybe 15."
+    },
+    {
+      "start": 37.2,
+      "end": 37.6,
+      "speaker": "B#00min",
+      "text": " Sure,"
+    },
+    {
+      "start": 37.6,
+      "end": 38.0,
+      "speaker": "A#00min",
+      "text": " Thank you."
+    },
+    {
+      "start": 38.0,
+      "end": 38.3,
+      "speaker": "B#00min",
+      "text": " okay."
+    },
+    {
+      "start": 41.5,
+      "end": 43.8,
+      "speaker": "B#00min",
+      "text": " So we're just waiting for Anna."
+    },
+    {
+      "start": 44.45,
+      "end": 47.7,
+      "speaker": "B#00min",
+      "text": " I'll give her one more minute and then I think we need to get started."
+    },
+    {
+      "start": 72.02,
+      "end": 73.07,
+      "speaker": "B#00min",
+      "text": " They all know each other."
+    },
+    {
+      "start": 73.11999999999999,
+      "end": 73.86999999999999,
+      "speaker": "B#00min",
+      "text": " I know everyone."
+    },
+    {
+      "start": 74.61999999999999,
+      "end": 75.22,
+      "speaker": "B#00min",
+      "text": " Al-Pita,"
+    },
+    {
+      "start": 75.32,
+      "end": 75.97,
+      "speaker": "B#00min",
+      "text": " have you met everyone?"
+    },
+    {
+      "start": 77.52,
+      "end": 79.52,
+      "speaker": "D#00min",
+      "text": " No, I know everyone,"
+    },
+    {
+      "start": 79.82,
+      "end": 81.87,
+      "speaker": "D#00min",
+      "text": " but I have not yet met them."
+    },
+    {
+      "start": 83.57,
+      "end": 88.17,
+      "speaker": "B#00min",
+      "text": " So maybe if you introduce yourself, Al-Pita, and then we can just do a very quick hello."
+    },
+    {
+      "start": 88.17,
+      "end": 88.72,
+      "speaker": "D#00min",
+      "text": " Yes."
+    },
+    {
+      "start": 88.72,
+      "end": 89.17,
+      "speaker": "B#00min",
+      "text": " Yeah."
+    },
+    {
+      "start": 90.196,
+      "end": 90.696,
+      "speaker": "D#00min",
+      "text": " Sure."
+    },
+    {
+      "start": 90.846,
+      "end": 91.54599999999999,
+      "speaker": "D#00min",
+      "text": " Hello,"
+    },
+    {
+      "start": 91.696,
+      "end": 102.696,
+      "speaker": "D#00min",
+      "text": " I'm Orpita Ghosh. I work at the Georgia Institute for Global Health in the India office and a station by background and I requested Martin when I heard about the study to"
+    },
+    {
+      "start": 104.18,
+      "end": 117.48,
+      "speaker": "D#00min",
+      "text": " for exposure to the design and the analysis and he has been very kind to include me in the conversation so that's why I'm here in this meeting to learn from the discussion thank you"
+    },
+    {
+      "start": 118.93,
+      "end": 119.78,
+      "speaker": "B#00min",
+      "text": " Thanks, Avita."
+    },
+    {
+      "start": 119.88000000000001,
+      "end": 121.08000000000001,
+      "speaker": "B#00min",
+      "text": " So, Jess."
+    },
+    {
+      "start": 124.404,
+      "end": 125.404,
+      "speaker": "E#00min",
+      "text": " If I'd mind unmute Martin."
+    },
+    {
+      "start": 125.454,
+      "end": 126.304,
+      "speaker": "E#00min",
+      "text": " Oh, hi, Evita."
+    },
+    {
+      "start": 126.354,
+      "end": 131.004,
+      "speaker": "E#00min",
+      "text": " I'm Jess Case. I'm a professor of biostats at Monash University in Melbourne."
+    },
+    {
+      "start": 132.35399999999998,
+      "end": 132.754,
+      "speaker": "E#00min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 132.804,
+      "end": 140.254,
+      "speaker": "E#00min",
+      "text": " so I've done a lot of work on the stepped wedge design kind of following in Carla's footsteps, who's the one who really kickstarted this area."
+    },
+    {
+      "start": 140.304,
+      "end": 142.60399999999998,
+      "speaker": "E#00min",
+      "text": " I've been lucky enough to work with Carla a bit too,"
+    },
+    {
+      "start": 142.654,
+      "end": 144.254,
+      "speaker": "E#00min",
+      "text": " which has been nice. And James too,"
+    },
+    {
+      "start": 144.354,
+      "end": 145.904,
+      "speaker": "E#00min",
+      "text": " a little bit more peripherally."
+    },
+    {
+      "start": 148.354,
+      "end": 149.354,
+      "speaker": "B#00min",
+      "text": " Thank you, Carla."
+    },
+    {
+      "start": 150.484,
+      "end": 151.88400000000001,
+      "speaker": "A#00min",
+      "text": " Hi, I'm Arpita."
+    },
+    {
+      "start": 151.984,
+      "end": 152.984,
+      "speaker": "A#00min",
+      "text": " Nice to meet you."
+    },
+    {
+      "start": 153.88400000000001,
+      "end": 156.834,
+      "speaker": "A#00min",
+      "text": " I've worked in cholesterol trials and step-wide trials."
+    },
+    {
+      "start": 156.88400000000001,
+      "end": 158.434,
+      "speaker": "A#00min",
+      "text": " I think Jess is underselling herself."
+    },
+    {
+      "start": 158.584,
+      "end": 159.584,
+      "speaker": "A#00min",
+      "text": " It goes the other way around."
+    },
+    {
+      "start": 161.584,
+      "end": 162.53400000000002,
+      "speaker": "A#00min",
+      "text": " Nice to meet you."
+    },
+    {
+      "start": 163.88400000000001,
+      "end": 164.53400000000002,
+      "speaker": "D#00min",
+      "text": " Thank you."
+    },
+    {
+      "start": 165.084,
+      "end": 165.984,
+      "speaker": "B#00min",
+      "text": " And James."
+    },
+    {
+      "start": 166.234,
+      "end": 166.984,
+      "speaker": "F#00min",
+      "text": " Yeah, hi,"
+    },
+    {
+      "start": 167.084,
+      "end": 168.13400000000001,
+      "speaker": "F#00min",
+      "text": " I'll be James,"
+    },
+    {
+      "start": 168.43400000000003,
+      "end": 168.68400000000003,
+      "speaker": "F#00min",
+      "text": " mine,"
+    },
+    {
+      "start": 168.78400000000002,
+      "end": 174.334,
+      "speaker": "F#00min",
+      "text": " medical statistician at the University of Birmingham and work very closely with Carla."
+    },
+    {
+      "start": 176.372,
+      "end": 177.972,
+      "speaker": "D#00min",
+      "text": " Yes, as I said,"
+    },
+    {
+      "start": 178.072,
+      "end": 185.072,
+      "speaker": "D#00min",
+      "text": " I know all of you from reading your papers, so I definitely know the work that, you know, all of you have done,"
+    },
+    {
+      "start": 185.122,
+      "end": 188.42200000000003,
+      "speaker": "D#00min",
+      "text": " especially in cluster randomized different designs."
+    },
+    {
+      "start": 189.072,
+      "end": 190.122,
+      "speaker": "D#00min",
+      "text": " So very happy,"
+    },
+    {
+      "start": 190.17200000000003,
+      "end": 191.27200000000002,
+      "speaker": "D#00min",
+      "text": " very fortunate to be here."
+    },
+    {
+      "start": 191.372,
+      "end": 192.07200000000003,
+      "speaker": "D#00min",
+      "text": " Thank you."
+    },
+    {
+      "start": 192.972,
+      "end": 193.52200000000002,
+      "speaker": "A#00min",
+      "text": " Oh, Peter,"
+    },
+    {
+      "start": 193.622,
+      "end": 196.122,
+      "speaker": "A#00min",
+      "text": " we have this like fellowship thing with India."
+    },
+    {
+      "start": 196.22200000000004,
+      "end": 198.32200000000003,
+      "speaker": "A#00min",
+      "text": " I can't remember whether I forwarded it to Martin."
+    },
+    {
+      "start": 199.27200000000002,
+      "end": 200.122,
+      "speaker": "B#00min",
+      "text": " I don't think so."
+    },
+    {
+      "start": 200.372,
+      "end": 201.622,
+      "speaker": "B#00min",
+      "text": " I don't recognize it."
+    },
+    {
+      "start": 202.676,
+      "end": 204.27599999999998,
+      "speaker": "A#00min",
+      "text": " I think the deadline's just passed,"
+    },
+    {
+      "start": 204.37599999999998,
+      "end": 210.926,
+      "speaker": "A#00min",
+      "text": " but it's like six months or yearly and it allows collaborators from India to come and spend a couple of months in the UK."
+    },
+    {
+      "start": 211.87599999999998,
+      "end": 214.37599999999998,
+      "speaker": "A#00min",
+      "text": " I'll see if I can find it and send it to you."
+    },
+    {
+      "start": 214.976,
+      "end": 215.426,
+      "speaker": "D#00min",
+      "text": " Okay,"
+    },
+    {
+      "start": 215.476,
+      "end": 216.77599999999998,
+      "speaker": "D#00min",
+      "text": " that'd be very helpful."
+    },
+    {
+      "start": 216.87599999999998,
+      "end": 217.27599999999998,
+      "speaker": "D#00min",
+      "text": " Thank you."
+    },
+    {
+      "start": 219.926,
+      "end": 226.62599999999998,
+      "speaker": "B#00min",
+      "text": " I think we should get started and I'll fill Anna in later in case she's not joining."
+    },
+    {
+      "start": 226.726,
+      "end": 227.37599999999998,
+      "speaker": "B#00min",
+      "text": " So there."
+    },
+    {
+      "start": 228.244,
+      "end": 229.594,
+      "speaker": "B#00min",
+      "text": " So the aim of this meeting,"
+    },
+    {
+      "start": 229.694,
+      "end": 242.144,
+      "speaker": "B#00min",
+      "text": " the purpose of this meeting is to really try to get the final things down so that we can lock this SAP in and you've all been very kind to spend your time reading and commenting on this."
+    },
+    {
+      "start": 244.532,
+      "end": 250.43200000000002,
+      "speaker": "B#00min",
+      "text": " Basically, we had almost 90 comments on this last version with some back and forth."
+    },
+    {
+      "start": 250.58200000000002,
+      "end": 255.58200000000002,
+      "speaker": "B#00min",
+      "text": " I think the majority of these are mostly wording issues,"
+    },
+    {
+      "start": 255.732,
+      "end": 270.78200000000004,
+      "speaker": "B#00min",
+      "text": " things that need to be clarified. And I think there were some quite a bit of suggestions in the actual document itself. So those should be straightforward. There were 11 more larger or more substantive."
+    },
+    {
+      "start": 271.412,
+      "end": 283.11199999999997,
+      "speaker": "B#00min",
+      "text": " Things that I want to discuss or spend this time on discussing and hopefully come to decisions on so that we can kind of finalize those."
+    },
+    {
+      "start": 286.58,
+      "end": 293.88,
+      "speaker": "B#00min",
+      "text": " Just for you who haven't been in one of the recent management group meetings,"
+    },
+    {
+      "start": 294.03,
+      "end": 298.47999999999996,
+      "speaker": "B#00min",
+      "text": " just a brief on where we are at with the trial."
+    },
+    {
+      "start": 298.68,
+      "end": 302.22999999999996,
+      "speaker": "B#00min",
+      "text": " So it started in February 2025."
+    },
+    {
+      "start": 302.78,
+      "end": 306.03,
+      "speaker": "B#00min",
+      "text": " The first batch has finished."
+    },
+    {
+      "start": 307.53,
+      "end": 311.22999999999996,
+      "speaker": "B#00min",
+      "text": " Batch two is ongoing right now and batch three is..."
+    },
+    {
+      "start": 311.764,
+      "end": 321.314,
+      "speaker": "B#00min",
+      "text": " And plan to start next week after a couple of months of delays because one cluster dropped out at a very late stage."
+    },
+    {
+      "start": 322.36400000000003,
+      "end": 328.86400000000003,
+      "speaker": "B#00min",
+      "text": " And we are including or so far have included some 2,500 patients,"
+    },
+    {
+      "start": 329.064,
+      "end": 331.86400000000003,
+      "speaker": "B#00min",
+      "text": " which is slightly more than we anticipated."
+    },
+    {
+      "start": 333.764,
+      "end": 335.914,
+      "speaker": "B#00min",
+      "text": " So that's where we're at."
+    },
+    {
+      "start": 336.948,
+      "end": 337.34799999999996,
+      "speaker": "B#00min",
+      "text": " Um,"
+    },
+    {
+      "start": 337.548,
+      "end": 341.84799999999996,
+      "speaker": "B#00min",
+      "text": " these are the 11 decisions that I,"
+    },
+    {
+      "start": 341.998,
+      "end": 343.498,
+      "speaker": "B#00min",
+      "text": " or 11 things that I've"
+    },
+    {
+      "start": 344.084,
+      "end": 367.334,
+      "speaker": "B#00min",
+      "text": " would like us to focus on during this meeting and I did circulate this just a couple of hours before this meeting as well but you you have that so you can go can I go through it on your own as well in case there are things that we don't have time to discuss now but these also include page references to the actual document so I hope that will help our discussions"
+    },
+    {
+      "start": 368.724,
+      "end": 378.62399999999997,
+      "speaker": "B#00min",
+      "text": " So I suggest that we go start right ahead and start unless anyone has anything to comment or say right now."
+    },
+    {
+      "start": 380.87399999999997,
+      "end": 381.274,
+      "speaker": "B#00min",
+      "text": " No?"
+    },
+    {
+      "start": 381.424,
+      "end": 381.974,
+      "speaker": "B#00min",
+      "text": " Okay."
+    },
+    {
+      "start": 384.116,
+      "end": 387.666,
+      "speaker": "B#00min",
+      "text": " So let's start talking about the interim analysis."
+    },
+    {
+      "start": 388.466,
+      "end": 396.716,
+      "speaker": "B#00min",
+      "text": " And we have, this is something that we have discussed a bit before, and there's been a couple of back and forth about this."
+    },
+    {
+      "start": 399.572,
+      "end": 402.272,
+      "speaker": "B#00min",
+      "text": " It's in the protocol. So in the trial protocol,"
+    },
+    {
+      "start": 402.372,
+      "end": 407.222,
+      "speaker": "B#00min",
+      "text": " we have stated that there will be, we have stated these things, there will be an interim analysis,"
+    },
+    {
+      "start": 407.372,
+      "end": 409.822,
+      "speaker": "B#00min",
+      "text": " although without formal stopping rules,"
+    },
+    {
+      "start": 409.972,
+      "end": 416.272,
+      "speaker": "B#00min",
+      "text": " and there will be kind of after each batch, there will be a meeting by the SDMC."
+    },
+    {
+      "start": 416.972,
+      "end": 419.572,
+      "speaker": "B#00min",
+      "text": " So that's what we have stated in the protocol."
+    },
+    {
+      "start": 422.324,
+      "end": 428.524,
+      "speaker": "B#00min",
+      "text": " Now, it was noted that in this app it doesn't say anything about formal stopping routes and that's the reason why."
+    },
+    {
+      "start": 428.92400000000004,
+      "end": 436.824,
+      "speaker": "B#00min",
+      "text": " And it was suggested that these per batch reports are very similar to the ones that or to the actual in what we call an interim analysis."
+    },
+    {
+      "start": 438.624,
+      "end": 442.974,
+      "speaker": "B#00min",
+      "text": " Although it all sounds a bit like routine trial monitoring."
+    },
+    {
+      "start": 443.93600000000004,
+      "end": 468.336,
+      "speaker": "B#00min",
+      "text": " And the suggestion in the document is to reframe or basically go ahead and call these per batch reports as routine monitoring reports and then have the meeting that is planned after half the batches have finished, have that as the interim analysis and then have the decision to..."
+    },
+    {
+      "start": 468.628,
+      "end": 473.328,
+      "speaker": "B#00min",
+      "text": " continue or stop after that halfway time point,"
+    },
+    {
+      "start": 473.428,
+      "end": 481.828,
+      "speaker": "B#00min",
+      "text": " although we ask the SMC to make that decision based on feasibility rather than effectiveness,"
+    },
+    {
+      "start": 482.228,
+      "end": 488.178,
+      "speaker": "B#00min",
+      "text": " because what we have said before is to not analyze effectiveness as part of the interim analysis."
+    },
+    {
+      "start": 491.444,
+      "end": 502.344,
+      "speaker": "A#00min",
+      "text": " So I don't think it matters too much what you call it just as long as it's clear that whether or not you're going to be comparing the treatment arms and estimating a value of the effect,"
+    },
+    {
+      "start": 502.594,
+      "end": 503.79400000000004,
+      "speaker": "A#00min",
+      "text": " the outcomes."
+    },
+    {
+      "start": 504.144,
+      "end": 507.29400000000004,
+      "speaker": "A#00min",
+      "text": " I think that's all you need to do is just clarify what you're going to be doing."
+    },
+    {
+      "start": 509.876,
+      "end": 521.626,
+      "speaker": "B#00min",
+      "text": " And I think what we have said is that we will not analyze or compare intervention ARPs as part of the interim analysis, because any estimate at that point in time will be associated with large uncertainty."
+    },
+    {
+      "start": 523.076,
+      "end": 524.776,
+      "speaker": "A#00min",
+      "text": " So if you've said that, I think it's fine."
+    },
+    {
+      "start": 524.776,
+      "end": 525.826,
+      "speaker": "B#00min",
+      "text": " So, yeah."
+    },
+    {
+      "start": 529.276,
+      "end": 530.526,
+      "speaker": "B#00min",
+      "text": " Do we all agree on that?"
+    },
+    {
+      "start": 530.576,
+      "end": 531.726,
+      "speaker": "B#00min",
+      "text": " Are there other opinions?"
+    },
+    {
+      "start": 535.476,
+      "end": 538.676,
+      "speaker": "E#00min",
+      "text": " Yeah, I think I think I also James, I noticed you're on mute. I'll just jump in."
+    },
+    {
+      "start": 539.226,
+      "end": 539.676,
+      "speaker": "F#00min",
+      "text": " That's all you,"
+    },
+    {
+      "start": 539.726,
+      "end": 540.026,
+      "speaker": "F#00min",
+      "text": " first guess."
+    },
+    {
+      "start": 540.876,
+      "end": 541.276,
+      "speaker": "E#00min",
+      "text": " Thanks."
+    },
+    {
+      "start": 542.726,
+      "end": 543.226,
+      "speaker": "E#00min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 543.326,
+      "end": 548.876,
+      "speaker": "E#00min",
+      "text": " I think I'd sort of noted that I didn't think that the interim analysis label was appropriate."
+    },
+    {
+      "start": 549.126,
+      "end": 550.076,
+      "speaker": "E#00min",
+      "text": " But look,"
+    },
+    {
+      "start": 550.126,
+      "end": 551.176,
+      "speaker": "E#00min",
+      "text": " I think like Carla said,"
+    },
+    {
+      "start": 551.226,
+      "end": 553.626,
+      "speaker": "E#00min",
+      "text": " it really doesn't matter at the end of the day."
+    },
+    {
+      "start": 553.926,
+      "end": 560.376,
+      "speaker": "E#00min",
+      "text": " I personally would prefer it not be called interim analysis because it's not a formal analysis of an outcome."
+    },
+    {
+      "start": 562.164,
+      "end": 566.164,
+      "speaker": "E#00min",
+      "text": " Look if it's clear then that's that's fine"
+    },
+    {
+      "start": 568.914,
+      "end": 570.4639999999999,
+      "speaker": "F#00min",
+      "text": " Yeah, yes,"
+    },
+    {
+      "start": 571.364,
+      "end": 575.314,
+      "speaker": "A#00min",
+      "text": " I'm happy to call it routine monitoring."
+    },
+    {
+      "start": 575.7139999999999,
+      "end": 576.614,
+      "speaker": "A#00min",
+      "text": " That's fine by me."
+    },
+    {
+      "start": 582.9639999999999,
+      "end": 584.164,
+      "speaker": "A#00min",
+      "text": " Shall we take it?"
+    },
+    {
+      "start": 584.164,
+      "end": 585.4639999999999,
+      "speaker": "F#00min",
+      "text": " you have."
+    },
+    {
+      "start": 585.716,
+      "end": 611.766,
+      "speaker": "F#00min",
+      "text": " I think the only thing I was going to say was around the wording of when you'd said about decision to continue or stop halfway and what that was being based upon because as you said you're not comparing outcomes you know you're not presenting any treatment effects because of the large uncertainty you'd have in them so when you're asking them about whether you should continue or stop what is that being based upon?"
+    },
+    {
+      "start": 614.068,
+      "end": 638.418,
+      "speaker": "B#00min",
+      "text": " So I think what we have discussed previously is to base that discussion primarily on feasibility measures. So if we fail to include clusters or they fail to adhere to the randomization schedule or we are seeing too much missing in key variables, so things like that rather than effect estimate."
+    },
+    {
+      "start": 639.5680000000001,
+      "end": 653.668,
+      "speaker": "F#00min",
+      "text": " and has any of that been decided you know what what you know when you say about if it's not feasible so if they're not adhering to the randomization or I think about missing data then is is there thresholds that you've already thought of"
+    },
+    {
+      "start": 653.668,
+      "end": 654.368,
+      "speaker": "B#00min",
+      "text": " We haven't, no."
+    },
+    {
+      "start": 654.4680000000001,
+      "end": 655.0680000000001,
+      "speaker": "F#00min",
+      "text": " taken the protocol"
+    },
+    {
+      "start": 655.0680000000001,
+      "end": 655.2180000000001,
+      "speaker": "B#00min",
+      "text": " No,"
+    },
+    {
+      "start": 655.2180000000001,
+      "end": 655.368,
+      "speaker": "F#00min",
+      "text": " in"
+    },
+    {
+      "start": 655.368,
+      "end": 656.2180000000001,
+      "speaker": "B#00min",
+      "text": " we didn't set that."
+    },
+    {
+      "start": 656.3180000000001,
+      "end": 656.518,
+      "speaker": "B#00min",
+      "text": " No,"
+    },
+    {
+      "start": 656.618,
+      "end": 657.368,
+      "speaker": "B#00min",
+      "text": " we didn't set that,"
+    },
+    {
+      "start": 657.4680000000001,
+      "end": 657.7180000000001,
+      "speaker": "B#00min",
+      "text": " no."
+    },
+    {
+      "start": 666.452,
+      "end": 674.302,
+      "speaker": "B#00min",
+      "text": " The only reason I would be cautious about changing the terminology would be that we state in the protocol,"
+    },
+    {
+      "start": 674.402,
+      "end": 677.152,
+      "speaker": "B#00min",
+      "text": " or we call it an interim analysis in the protocol,"
+    },
+    {
+      "start": 677.352,
+      "end": 683.752,
+      "speaker": "B#00min",
+      "text": " and changing that wording would kind of trigger us to do a protocol amendment,"
+    },
+    {
+      "start": 684.152,
+      "end": 685.902,
+      "speaker": "B#00min",
+      "text": " which I would like to avoid."
+    },
+    {
+      "start": 686.152,
+      "end": 690.552,
+      "speaker": "B#00min",
+      "text": " But maybe you think that that's not necessary, we can change that anyway."
+    },
+    {
+      "start": 696.724,
+      "end": 699.024,
+      "speaker": "A#00min",
+      "text": " I don't think it's very important not in what we call it."
+    },
+    {
+      "start": 699.224,
+      "end": 699.8240000000001,
+      "speaker": "A#00min",
+      "text": " I mean,"
+    },
+    {
+      "start": 699.8240000000001,
+      "end": 699.874,
+      "speaker": "B#00min",
+      "text": " Yeah."
+    },
+    {
+      "start": 699.874,
+      "end": 704.3240000000001,
+      "speaker": "A#00min",
+      "text": " yeah, in the ideal world maybe we might change it, but if it's going to cause complications."
+    },
+    {
+      "start": 707.024,
+      "end": 707.6740000000001,
+      "speaker": "B#00min",
+      "text": " Okay."
+    },
+    {
+      "start": 707.874,
+      "end": 709.4240000000001,
+      "speaker": "B#00min",
+      "text": " So let's avoid complication,"
+    },
+    {
+      "start": 709.474,
+      "end": 709.8240000000001,
+      "speaker": "B#00min",
+      "text": " right?"
+    },
+    {
+      "start": 711.6740000000001,
+      "end": 712.524,
+      "speaker": "B#00min",
+      "text": " But James,"
+    },
+    {
+      "start": 712.6740000000001,
+      "end": 719.124,
+      "speaker": "B#00min",
+      "text": " do you think that there should be formal criteria for those feasibility aspects?"
+    },
+    {
+      "start": 720.0,
+      "end": 720.1,
+      "speaker": "A#12min",
+      "text": " No."
+    },
+    {
+      "start": 721.2,
+      "end": 722.05,
+      "speaker": "B#12min",
+      "text": " well yeah"
+    },
+    {
+      "start": 722.05,
+      "end": 723.7,
+      "speaker": "C#12min",
+      "text": " That's not part of the SAP though."
+    },
+    {
+      "start": 723.7,
+      "end": 729.65,
+      "speaker": "B#12min",
+      "text": " that's more of the sort of the MTT charter perhaps but"
+    },
+    {
+      "start": 731.35,
+      "end": 743.7,
+      "speaker": "B#12min",
+      "text": " it was more if there is that criteria that it's reported somewhere because if you've got here that this is what you're doing after half of the batches are completed then you know you might just want to refer to a DSMB"
+    },
+    {
+      "start": 745.012,
+      "end": 745.212,
+      "speaker": "B#12min",
+      "text": " chart"
+    },
+    {
+      "start": 745.212,
+      "end": 745.512,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 745.512,
+      "end": 757.112,
+      "speaker": "B#12min",
+      "text": " to say about the guidance it was more than I was just looking and thinking well you've said you want to do that but I'm not sure if you've thought about it at this stage about what how you would make that decision"
+    },
+    {
+      "start": 758.212,
+      "end": 758.562,
+      "speaker": "D#12min",
+      "text": " No,"
+    },
+    {
+      "start": 758.712,
+      "end": 759.412,
+      "speaker": "D#12min",
+      "text": " that's a good point."
+    },
+    {
+      "start": 759.562,
+      "end": 762.312,
+      "speaker": "D#12min",
+      "text": " So that can be clarified and we can refer to the charter."
+    },
+    {
+      "start": 762.512,
+      "end": 762.862,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 764.788,
+      "end": 775.738,
+      "speaker": "D#12min",
+      "text": " So let's try to clarify what we actually mean by the analysis and that we will not compare outcomes between treatment arms and then refer to the charter."
+    },
+    {
+      "start": 776.188,
+      "end": 776.888,
+      "speaker": "D#12min",
+      "text": " Okay?"
+    },
+    {
+      "start": 779.888,
+      "end": 780.388,
+      "speaker": "D#12min",
+      "text": " Excellent,"
+    },
+    {
+      "start": 780.488,
+      "end": 781.038,
+      "speaker": "D#12min",
+      "text": " thank you."
+    },
+    {
+      "start": 782.138,
+      "end": 787.288,
+      "speaker": "D#12min",
+      "text": " So then we have the treatment of length of stay outcomes."
+    },
+    {
+      "start": 788.0840000000001,
+      "end": 798.784,
+      "speaker": "D#12min",
+      "text": " So we have a number of these and what is now suggested is to treat them as count rather than time to event outcomes."
+    },
+    {
+      "start": 802.996,
+      "end": 807.796,
+      "speaker": "D#12min",
+      "text": " It wasn't clear in the SAP how these are measured,"
+    },
+    {
+      "start": 807.846,
+      "end": 810.896,
+      "speaker": "D#12min",
+      "text": " but what we actually have are basically time stamps,"
+    },
+    {
+      "start": 811.146,
+      "end": 815.196,
+      "speaker": "D#12min",
+      "text": " so date and time of admission and discharge."
+    },
+    {
+      "start": 815.596,
+      "end": 818.646,
+      "speaker": "D#12min",
+      "text": " So we have it as a continuous,"
+    },
+    {
+      "start": 818.946,
+      "end": 827.646,
+      "speaker": "D#12min",
+      "text": " or the data is on a continuous scale, so to speak, if that change how we want to do this."
+    },
+    {
+      "start": 830.74,
+      "end": 834.24,
+      "speaker": "D#12min",
+      "text": " I think you suggested just to change it to a time-to-event."
+    },
+    {
+      "start": 839.09,
+      "end": 845.94,
+      "speaker": "C#12min",
+      "text": " Well, it seems like, I mean, that's how I would analyze an outcome like this."
+    },
+    {
+      "start": 846.39,
+      "end": 849.19,
+      "speaker": "C#12min",
+      "text": " I would include maybe,"
+    },
+    {
+      "start": 849.29,
+      "end": 853.04,
+      "speaker": "C#12min",
+      "text": " so you're looking at time to discharge."
+    },
+    {
+      "start": 856.9159999999999,
+      "end": 861.6659999999999,
+      "speaker": "C#12min",
+      "text": " I would have time to discharge with death as a competing risk,"
+    },
+    {
+      "start": 861.816,
+      "end": 863.616,
+      "speaker": "C#12min",
+      "text": " something like that."
+    },
+    {
+      "start": 866.766,
+      "end": 868.116,
+      "speaker": "D#12min",
+      "text": " Yeah, I see nodding heads."
+    },
+    {
+      "start": 869.766,
+      "end": 870.1659999999999,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 872.316,
+      "end": 874.016,
+      "speaker": "D#12min",
+      "text": " So then I suggest we do that."
+    },
+    {
+      "start": 874.066,
+      "end": 880.016,
+      "speaker": "D#12min",
+      "text": " We analyze length of stay as time to event outcomes with death as competing risk."
+    },
+    {
+      "start": 885.94,
+      "end": 887.59,
+      "speaker": "D#12min",
+      "text": " Okay, going on to the next one."
+    },
+    {
+      "start": 888.39,
+      "end": 897.14,
+      "speaker": "D#12min",
+      "text": " So then it's the intercurrent events where there is some confusion and I will see if I can find that table."
+    },
+    {
+      "start": 900.39,
+      "end": 902.29,
+      "speaker": "D#12min",
+      "text": " So basically,"
+    },
+    {
+      "start": 902.39,
+      "end": 904.79,
+      "speaker": "D#12min",
+      "text": " if I got the comments."
+    },
+    {
+      "start": 905.812,
+      "end": 912.012,
+      "speaker": "D#12min",
+      "text": " Right, what we have is that loss to follow-up and maybe also withdrawal,"
+    },
+    {
+      "start": 912.312,
+      "end": 913.662,
+      "speaker": "D#12min",
+      "text": " but that was not in the comments,"
+    },
+    {
+      "start": 913.812,
+      "end": 917.6120000000001,
+      "speaker": "D#12min",
+      "text": " is actually missing data."
+    },
+    {
+      "start": 917.712,
+      "end": 924.412,
+      "speaker": "D#12min",
+      "text": " And we have already basically said that we will treat this as missing data,"
+    },
+    {
+      "start": 924.512,
+      "end": 927.562,
+      "speaker": "D#12min",
+      "text": " but technically that's not an intercurrent event."
+    },
+    {
+      "start": 930.9639999999999,
+      "end": 940.314,
+      "speaker": "D#12min",
+      "text": " My suggestion then would be to basically treat this as missing data instead and not handle it within the intercurrent events framework."
+    },
+    {
+      "start": 943.614,
+      "end": 956.764,
+      "speaker": "D#12min",
+      "text": " Does that, and then Jess, you had a comment about treatment policy and basically that's how we handle the actual cluster level of intercurrent event of not adhering to."
+    },
+    {
+      "start": 958.8679999999999,
+      "end": 962.968,
+      "speaker": "D#12min",
+      "text": " the actual scheduled trainee date."
+    },
+    {
+      "start": 963.318,
+      "end": 965.718,
+      "speaker": "D#12min",
+      "text": " So clarifying that as well."
+    },
+    {
+      "start": 965.8679999999999,
+      "end": 969.518,
+      "speaker": "D#12min",
+      "text": " So that would be my suggestion for how to handle this."
+    },
+    {
+      "start": 969.668,
+      "end": 970.768,
+      "speaker": "D#12min",
+      "text": " Any comments on that?"
+    },
+    {
+      "start": 975.468,
+      "end": 976.518,
+      "speaker": "E#12min",
+      "text": " So I think."
+    },
+    {
+      "start": 977.62,
+      "end": 983.52,
+      "speaker": "F#12min",
+      "text": " I think Jess and I may be saying the same thing but in different ways so missing data is not really an intercurrent event and Jess"
+    },
+    {
+      "start": 983.52,
+      "end": 983.62,
+      "speaker": "D#12min",
+      "text": " That's"
+    },
+    {
+      "start": 983.62,
+      "end": 983.87,
+      "speaker": "F#12min",
+      "text": " was saying"
+    },
+    {
+      "start": 983.87,
+      "end": 984.22,
+      "speaker": "D#12min",
+      "text": " what I guess."
+    },
+    {
+      "start": 984.72,
+      "end": 994.1700000000001,
+      "speaker": "F#12min",
+      "text": " okay sorry and then Jess is saying that well lost a follow-up you've already said that you're going to have a treatment policy strategy so I think that that can just be removed from this table"
+    },
+    {
+      "start": 995.97,
+      "end": 996.52,
+      "speaker": "D#12min",
+      "text": " Sorry,"
+    },
+    {
+      "start": 996.62,
+      "end": 1002.4200000000001,
+      "speaker": "D#12min",
+      "text": " yes, I thought you meant not lost to follow up, but actually that not."
+    },
+    {
+      "start": 1002.932,
+      "end": 1006.6320000000001,
+      "speaker": "D#12min",
+      "text": " The lack of adherence to the treatment schedule is actually an intercurrent event."
+    },
+    {
+      "start": 1006.732,
+      "end": 1007.782,
+      "speaker": "D#12min",
+      "text": " Did I"
+    },
+    {
+      "start": 1007.782,
+      "end": 1007.8820000000001,
+      "speaker": "C#12min",
+      "text": " No,"
+    },
+    {
+      "start": 1007.8820000000001,
+      "end": 1008.282,
+      "speaker": "D#12min",
+      "text": " misunderstand you?"
+    },
+    {
+      "start": 1008.282,
+      "end": 1013.1320000000001,
+      "speaker": "C#12min",
+      "text": " I think I was talking about, so going back to the document,"
+    },
+    {
+      "start": 1013.432,
+      "end": 1022.832,
+      "speaker": "C#12min",
+      "text": " I think I was saying the same thing as Carla really, like loss to follow up kind of means that the patient, we don't have the outcome for the patient essentially."
+    },
+    {
+      "start": 1023.432,
+      "end": 1026.382,
+      "speaker": "C#12min",
+      "text": " So we've got missing data for that outcome for the patient."
+    },
+    {
+      "start": 1026.482,
+      "end": 1026.7820000000002,
+      "speaker": "C#12min",
+      "text": " So."
+    },
+    {
+      "start": 1026.7820000000002,
+      "end": 1027.232,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1028.404,
+      "end": 1030.004,
+      "speaker": "C#12min",
+      "text": " That's, sorry,"
+    },
+    {
+      "start": 1030.004,
+      "end": 1031.954,
+      "speaker": "D#12min",
+      "text": " I'm just highlighting this comment then,"
+    },
+    {
+      "start": 1032.054,
+      "end": 1033.204,
+      "speaker": "D#12min",
+      "text": " which was what I was thinking."
+    },
+    {
+      "start": 1033.204,
+      "end": 1033.304,
+      "speaker": "C#12min",
+      "text": " let"
+    },
+    {
+      "start": 1033.304,
+      "end": 1033.404,
+      "speaker": "D#12min",
+      "text": " You"
+    },
+    {
+      "start": 1033.404,
+      "end": 1033.504,
+      "speaker": "C#12min",
+      "text": " me,"
+    },
+    {
+      "start": 1033.504,
+      "end": 1033.704,
+      "speaker": "D#12min",
+      "text": " said,"
+    },
+    {
+      "start": 1033.704,
+      "end": 1033.904,
+      "speaker": "C#12min",
+      "text": " let"
+    },
+    {
+      "start": 1033.904,
+      "end": 1034.004,
+      "speaker": "D#12min",
+      "text": " yeah."
+    },
+    {
+      "start": 1034.004,
+      "end": 1035.404,
+      "speaker": "C#12min",
+      "text": " me move this."
+    },
+    {
+      "start": 1035.654,
+      "end": 1039.954,
+      "speaker": "C#12min",
+      "text": " Yes, for all of these, an intercurrent event is the intervention not being delivered as planned."
+    },
+    {
+      "start": 1040.554,
+      "end": 1041.154,
+      "speaker": "C#12min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1041.204,
+      "end": 1052.304,
+      "speaker": "C#12min",
+      "text": " so I guess I was saying that I see intercurrent events as being things that interrupt the intervention being delivered,"
+    },
+    {
+      "start": 1052.554,
+      "end": 1054.404,
+      "speaker": "C#12min",
+      "text": " loss to follow up."
+    },
+    {
+      "start": 1055.444,
+      "end": 1062.844,
+      "speaker": "C#12min",
+      "text": " I'm maybe in some situations that would would interrupt the delivery of the intervention I'm"
+    },
+    {
+      "start": 1062.844,
+      "end": 1063.294,
+      "speaker": "D#12min",
+      "text": " Hmm."
+    },
+    {
+      "start": 1063.294,
+      "end": 1075.944,
+      "speaker": "C#12min",
+      "text": " thinking about like the patient level but more often I would think okay you've got the patient they you know receive the their exposure to the intervention and then we never find out what their outcomes are"
+    },
+    {
+      "start": 1076.9479999999999,
+      "end": 1078.598,
+      "speaker": "C#12min",
+      "text": " So they've been lost to follow up."
+    },
+    {
+      "start": 1078.648,
+      "end": 1082.6979999999999,
+      "speaker": "C#12min",
+      "text": " Yeah. So we know that they received the treatment."
+    },
+    {
+      "start": 1082.748,
+      "end": 1086.9479999999999,
+      "speaker": "C#12min",
+      "text": " So that's fine. So there hasn't been something that interrupts that."
+    },
+    {
+      "start": 1087.498,
+      "end": 1092.248,
+      "speaker": "C#12min",
+      "text": " But then there's been something that interrupts whether or not we actually observe the outcome."
+    },
+    {
+      "start": 1092.6979999999999,
+      "end": 1096.548,
+      "speaker": "C#12min",
+      "text": " So it's missing data there."
+    },
+    {
+      "start": 1099.476,
+      "end": 1104.826,
+      "speaker": "C#12min",
+      "text": " I can see that my comment here is not very clear because I too am having trouble interpreting that right now."
+    },
+    {
+      "start": 1106.776,
+      "end": 1108.526,
+      "speaker": "D#12min",
+      "text": " So just to clarify,"
+    },
+    {
+      "start": 1108.626,
+      "end": 1116.576,
+      "speaker": "D#12min",
+      "text": " so my understanding of intercurrent event is that that's an event that happens after intervention exposure,"
+    },
+    {
+      "start": 1116.926,
+      "end": 1120.926,
+      "speaker": "D#12min",
+      "text": " but before the outcome can be uncertain."
+    },
+    {
+      "start": 1122.132,
+      "end": 1127.3319999999999,
+      "speaker": "D#12min",
+      "text": " But what you say, what it could also be something that stops or the intervention from happening."
+    },
+    {
+      "start": 1127.932,
+      "end": 1135.882,
+      "speaker": "C#12min",
+      "text": " Yeah, so between like randomisation and when the intervention is supposed to be received and completed."
+    },
+    {
+      "start": 1137.732,
+      "end": 1137.982,
+      "speaker": "C#12min",
+      "text": " So"
+    },
+    {
+      "start": 1137.982,
+      "end": 1138.382,
+      "speaker": "D#12min",
+      "text": " Okay."
+    },
+    {
+      "start": 1138.382,
+      "end": 1139.8319999999999,
+      "speaker": "C#12min",
+      "text": " a patient,"
+    },
+    {
+      "start": 1139.882,
+      "end": 1140.3319999999999,
+      "speaker": "C#12min",
+      "text": " sorry,"
+    },
+    {
+      "start": 1140.382,
+      "end": 1140.782,
+      "speaker": "C#12min",
+      "text": " Carly."
+    },
+    {
+      "start": 1141.5819999999999,
+      "end": 1142.482,
+      "speaker": "F#12min",
+      "text": " So again,"
+    },
+    {
+      "start": 1142.5819999999999,
+      "end": 1144.882,
+      "speaker": "F#12min",
+      "text": " I think this is perhaps one of those things where"
+    },
+    {
+      "start": 1145.588,
+      "end": 1150.288,
+      "speaker": "F#12min",
+      "text": " It doesn't quite matter whether we're following like particular definitions."
+    },
+    {
+      "start": 1150.638,
+      "end": 1157.388,
+      "speaker": "F#12min",
+      "text": " It's more about semantics. I think some people would say missing data isn't or lost follow-up isn't an inherent event."
+    },
+    {
+      "start": 1157.888,
+      "end": 1165.688,
+      "speaker": "F#12min",
+      "text": " But I don't think it matters terribly here whether we put it in the table or we don't. It's just, just maybe doesn't need to go in."
+    },
+    {
+      "start": 1168.788,
+      "end": 1169.138,
+      "speaker": "D#12min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1169.138,
+      "end": 1169.288,
+      "speaker": "F#12min",
+      "text": " It's"
+    },
+    {
+      "start": 1169.288,
+      "end": 1169.588,
+      "speaker": "D#12min",
+      "text": " it doesn't,"
+    },
+    {
+      "start": 1169.588,
+      "end": 1170.088,
+      "speaker": "F#12min",
+      "text": " just a V."
+    },
+    {
+      "start": 1170.088,
+      "end": 1170.438,
+      "speaker": "D#12min",
+      "text": " yeah."
+    },
+    {
+      "start": 1171.06,
+      "end": 1171.76,
+      "speaker": "C#12min",
+      "text": " Yeah, yeah,"
+    },
+    {
+      "start": 1171.81,
+      "end": 1172.46,
+      "speaker": "C#12min",
+      "text": " I agree."
+    },
+    {
+      "start": 1173.46,
+      "end": 1177.01,
+      "speaker": "D#12min",
+      "text": " It doesn't have to go in here or be treated as intercurrent."
+    },
+    {
+      "start": 1177.16,
+      "end": 1177.51,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1180.6100000000001,
+      "end": 1180.96,
+      "speaker": "D#12min",
+      "text": " Good."
+    },
+    {
+      "start": 1183.01,
+      "end": 1184.46,
+      "speaker": "D#12min",
+      "text": " Any other comments on this?"
+    },
+    {
+      "start": 1190.6100000000001,
+      "end": 1194.56,
+      "speaker": "F#12min",
+      "text": " If you're going to do the time to event."
+    },
+    {
+      "start": 1195.476,
+      "end": 1196.676,
+      "speaker": "F#12min",
+      "text": " and not"
+    },
+    {
+      "start": 1196.676,
+      "end": 1196.926,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1196.926,
+      "end": 1198.576,
+      "speaker": "F#12min",
+      "text": " the negative binomial,"
+    },
+    {
+      "start": 1198.676,
+      "end": 1201.826,
+      "speaker": "F#12min",
+      "text": " then the death will be removed from here, I think."
+    },
+    {
+      "start": 1203.126,
+      "end": 1203.476,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1204.976,
+      "end": 1205.526,
+      "speaker": "D#12min",
+      "text": " And it's"
+    },
+    {
+      "start": 1205.526,
+      "end": 1205.876,
+      "speaker": "F#12min",
+      "text": " It's about"
+    },
+    {
+      "start": 1205.876,
+      "end": 1205.976,
+      "speaker": "D#12min",
+      "text": " a competing"
+    },
+    {
+      "start": 1205.976,
+      "end": 1206.276,
+      "speaker": "F#12min",
+      "text": " relevant outcome."
+    },
+    {
+      "start": 1206.276,
+      "end": 1206.726,
+      "speaker": "D#12min",
+      "text": " event."
+    },
+    {
+      "start": 1206.876,
+      "end": 1207.726,
+      "speaker": "D#12min",
+      "text": " Yeah. Yeah."
+    },
+    {
+      "start": 1209.926,
+      "end": 1210.676,
+      "speaker": "D#12min",
+      "text": " Peter,"
+    },
+    {
+      "start": 1210.776,
+      "end": 1211.876,
+      "speaker": "D#12min",
+      "text": " you raised your hand."
+    },
+    {
+      "start": 1212.884,
+      "end": 1219.984,
+      "speaker": "G#12min",
+      "text": " Yeah, I wanted to ask for the time to event and the last one for the length of stay."
+    },
+    {
+      "start": 1221.334,
+      "end": 1223.684,
+      "speaker": "G#12min",
+      "text": " This is just to clarify for my understanding."
+    },
+    {
+      "start": 1223.884,
+      "end": 1225.334,
+      "speaker": "G#12min",
+      "text": " For a transfer,"
+    },
+    {
+      "start": 1225.384,
+      "end": 1229.734,
+      "speaker": "G#12min",
+      "text": " so transfers would be included into the outcome definition."
+    },
+    {
+      "start": 1229.884,
+      "end": 1236.284,
+      "speaker": "G#12min",
+      "text": " So the length of stay would be in this admission as well as part of the transfer."
+    },
+    {
+      "start": 1237.172,
+      "end": 1239.672,
+      "speaker": "G#12min",
+      "text": " Because debt may also happen there."
+    },
+    {
+      "start": 1240.272,
+      "end": 1244.772,
+      "speaker": "G#12min",
+      "text": " So will that be a competing risk and will that part of the stay?"
+    },
+    {
+      "start": 1246.722,
+      "end": 1249.022,
+      "speaker": "F#12min",
+      "text": " Yes, I think that would be a competing event."
+    },
+    {
+      "start": 1249.172,
+      "end": 1254.472,
+      "speaker": "F#12min",
+      "text": " I guess you could put the death and the transfers in here and then in the strategy,"
+    },
+    {
+      "start": 1254.722,
+      "end": 1260.372,
+      "speaker": "F#12min",
+      "text": " what would you call it, would it be more like a composite or?"
+    },
+    {
+      "start": 1262.836,
+      "end": 1263.4360000000001,
+      "speaker": "B#12min",
+      "text": " Is it, is"
+    },
+    {
+      "start": 1264.4859999999999,
+      "end": 1266.2359999999999,
+      "speaker": "F#12min",
+      "text": " I don't know what it would be called,"
+    },
+    {
+      "start": 1266.286,
+      "end": 1267.6860000000001,
+      "speaker": "F#12min",
+      "text": " but I think it could go in the table."
+    },
+    {
+      "start": 1268.786,
+      "end": 1273.136,
+      "speaker": "F#12min",
+      "text": " But it's just that it would already be implicit in what you were saying, so you wouldn't have to put it in the table."
+    },
+    {
+      "start": 1275.7359999999999,
+      "end": 1275.9859999999999,
+      "speaker": "G#12min",
+      "text": " Okay."
+    },
+    {
+      "start": 1275.9859999999999,
+      "end": 1276.386,
+      "speaker": "F#12min",
+      "text": " Sorry, Jess."
+    },
+    {
+      "start": 1276.886,
+      "end": 1288.286,
+      "speaker": "C#12min",
+      "text": " No, no, I'm just thinking of, I guess whether or not transfer is an intercurrent event depends on what the outcome is. So if you're looking at length of stay in hospital."
+    },
+    {
+      "start": 1288.9479999999999,
+      "end": 1305.048,
+      "speaker": "C#12min",
+      "text": " and someone's transferred you know from the ED to the ward then that that doesn't matter that's irrelevant because we're talking about if we're just talking about length of stay within the ED then transfer out kind of terminates that"
+    },
+    {
+      "start": 1305.048,
+      "end": 1305.3980000000001,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1305.3980000000001,
+      "end": 1307.3980000000001,
+      "speaker": "C#12min",
+      "text": " um"
+    },
+    {
+      "start": 1308.1799999999998,
+      "end": 1323.53,
+      "speaker": "C#12min",
+      "text": " If you're talking about transfer to a different hospital, maybe, then maybe in that situation, it is an intercurrent event because we no longer get to observe the outcome for that patient that because they might like fall out of the trial or be lost to follow up at that point."
+    },
+    {
+      "start": 1324.1799999999998,
+      "end": 1324.6799999999998,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1332.692,
+      "end": 1332.692,
+      "speaker": "G#12min",
+      "text": " I"
+    },
+    {
+      "start": 1332.692,
+      "end": 1332.792,
+      "speaker": "D#12min",
+      "text": " Okay,"
+    },
+    {
+      "start": 1332.792,
+      "end": 1333.192,
+      "speaker": "G#12min",
+      "text": " thought that,"
+    },
+    {
+      "start": 1333.192,
+      "end": 1333.492,
+      "speaker": "D#12min",
+      "text": " so yeah,"
+    },
+    {
+      "start": 1333.492,
+      "end": 1333.742,
+      "speaker": "G#12min",
+      "text": " sorry,"
+    },
+    {
+      "start": 1333.742,
+      "end": 1334.942,
+      "speaker": "D#12min",
+      "text": " go ahead. I'll be done."
+    },
+    {
+      "start": 1334.942,
+      "end": 1334.992,
+      "speaker": "G#12min",
+      "text": ""
+    },
+    {
+      "start": 1335.042,
+      "end": 1343.992,
+      "speaker": "G#12min",
+      "text": " I thought it was mentioned in the chat that the trial coordinators would follow up in case of a trial, and I understood it in case of a transfer to another hospital."
+    },
+    {
+      "start": 1346.26,
+      "end": 1363.26,
+      "speaker": "G#12min",
+      "text": " they would follow them up so we would get the at least for the all cause mortality even for the in hospital mortality it is suggested that it would be counted towards in hospital so my understanding was that even for a transfer to another hospital it's part of the outcome"
+    },
+    {
+      "start": 1366.71,
+      "end": 1368.56,
+      "speaker": "D#12min",
+      "text": " Yes, I think for mortality outcomes,"
+    },
+    {
+      "start": 1368.71,
+      "end": 1370.46,
+      "speaker": "D#12min",
+      "text": " we are getting that."
+    },
+    {
+      "start": 1370.868,
+      "end": 1373.768,
+      "speaker": "D#12min",
+      "text": " Data, but we..."
+    },
+    {
+      "start": 1374.324,
+      "end": 1397.574,
+      "speaker": "D#12min",
+      "text": " we're currently not collecting kind of ICU data from other hospitals so we wouldn't know if they are transferred from one ICU to another ICU then we wouldn't know when kind of they were discharged from that ICU so I guess for those outcomes transfer would be an intercurrent event although I don't think that happens very often but yeah"
+    },
+    {
+      "start": 1398.1239999999998,
+      "end": 1400.174,
+      "speaker": "F#12min",
+      "text": " I think that could have been a bit clearer, Martin."
+    },
+    {
+      "start": 1400.224,
+      "end": 1401.274,
+      "speaker": "F#12min",
+      "text": " I think now I'm remembering."
+    },
+    {
+      "start": 1401.0439999999999,
+      "end": 1403.2440000000001,
+      "speaker": "F#12min",
+      "text": " I'm reminded that I was a bit confused by that."
+    },
+    {
+      "start": 1404.444,
+      "end": 1404.894,
+      "speaker": "D#12min",
+      "text": " Okay,"
+    },
+    {
+      "start": 1404.944,
+      "end": 1408.594,
+      "speaker": "D#12min",
+      "text": " by the fact that some things are follow-up from other hospitals and some are not."
+    },
+    {
+      "start": 1408.594,
+      "end": 1408.694,
+      "speaker": "F#12min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1408.694,
+      "end": 1408.844,
+      "speaker": "D#12min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1408.844,
+      "end": 1408.894,
+      "speaker": "F#12min",
+      "text": ""
+    },
+    {
+      "start": 1408.894,
+      "end": 1408.9940000000001,
+      "speaker": "D#12min",
+      "text": " okay,"
+    },
+    {
+      "start": 1408.9940000000001,
+      "end": 1409.394,
+      "speaker": "F#12min",
+      "text": " yeah."
+    },
+    {
+      "start": 1409.394,
+      "end": 1409.844,
+      "speaker": "D#12min",
+      "text": " got it."
+    },
+    {
+      "start": 1409.9940000000001,
+      "end": 1410.2440000000001,
+      "speaker": "D#12min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1415.644,
+      "end": 1416.2939999999999,
+      "speaker": "D#12min",
+      "text": " Okay,"
+    },
+    {
+      "start": 1416.394,
+      "end": 1417.844,
+      "speaker": "D#12min",
+      "text": " moving on."
+    },
+    {
+      "start": 1419.844,
+      "end": 1421.094,
+      "speaker": "D#12min",
+      "text": " Missing data."
+    },
+    {
+      "start": 1421.3,
+      "end": 1438.5,
+      "speaker": "D#12min",
+      "text": " Basically, what we have said is that we will impugn as the primary analysis if we have more than 10% missing in the primary outcome."
+    },
+    {
+      "start": 1440.0,
+      "end": 1444.8,
+      "speaker": "A#24min",
+      "text": " And the discussion in the SAP was that this 10% is arbitrary."
+    },
+    {
+      "start": 1445.4,
+      "end": 1460.0,
+      "speaker": "A#24min",
+      "text": " Maybe it's better just to say that the primary analysis will not use multiple imputation and then include a multiple imputed analysis as sensitivity analysis instead."
+    },
+    {
+      "start": 1461.35,
+      "end": 1465.4,
+      "speaker": "A#24min",
+      "text": " I mean, we do expect very low or..."
+    },
+    {
+      "start": 1465.684,
+      "end": 1475.134,
+      "speaker": "A#24min",
+      "text": " at least less than one percent missing in the primary outcome and that's what we have said from the start."
+    },
+    {
+      "start": 1475.384,
+      "end": 1490.834,
+      "speaker": "A#24min",
+      "text": " So maybe that makes sense not to have a kind of pre-specified cutoff for when we will do multiple imputation but this would add sensitivity analysis and there are some discussions about that later."
+    },
+    {
+      "start": 1492.664,
+      "end": 1493.514,
+      "speaker": "A#24min",
+      "text": " Thoughts on this?"
+    },
+    {
+      "start": 1506.5140000000001,
+      "end": 1512.564,
+      "speaker": "B#24min",
+      "text": " I personally think it's fine to say if there's any missing data, we're going to do some multiple imputation."
+    },
+    {
+      "start": 1512.714,
+      "end": 1513.5140000000001,
+      "speaker": "B#24min",
+      "text": " That's great."
+    },
+    {
+      "start": 1513.614,
+      "end": 1518.964,
+      "speaker": "B#24min",
+      "text": " Might not help you much if you've got say very low rates of missingness."
+    },
+    {
+      "start": 1519.252,
+      "end": 1525.502,
+      "speaker": "B#24min",
+      "text": " I often will specify a threshold in the SAPs I'm involved with."
+    },
+    {
+      "start": 1525.552,
+      "end": 1527.702,
+      "speaker": "B#24min",
+      "text": " I'm not sure if that's best practice these days,"
+    },
+    {
+      "start": 1527.802,
+      "end": 1529.802,
+      "speaker": "B#24min",
+      "text": " but that's still what I do."
+    },
+    {
+      "start": 1531.402,
+      "end": 1531.902,
+      "speaker": "B#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1533.552,
+      "end": 1533.802,
+      "speaker": "B#24min",
+      "text": " Oh,"
+    },
+    {
+      "start": 1533.802,
+      "end": 1533.952,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1533.952,
+      "end": 1536.702,
+      "speaker": "B#24min",
+      "text": " I'd be curious to know what Carla and James think on that point."
+    },
+    {
+      "start": 1537.652,
+      "end": 1542.502,
+      "speaker": "C#24min",
+      "text": " What missing data might you have in the primary analysis or the primary outcome?"
+    },
+    {
+      "start": 1543.412,
+      "end": 1546.512,
+      "speaker": "C#24min",
+      "text": " Because the primary analysis of the primary outcome,"
+    },
+    {
+      "start": 1546.762,
+      "end": 1549.112,
+      "speaker": "C#24min",
+      "text": " it doesn't adjust for anything,"
+    },
+    {
+      "start": 1549.212,
+      "end": 1549.612,
+      "speaker": "C#24min",
+      "text": " does it?"
+    },
+    {
+      "start": 1549.762,
+      "end": 1549.912,
+      "speaker": "C#24min",
+      "text": " So"
+    },
+    {
+      "start": 1549.912,
+      "end": 1550.062,
+      "speaker": "A#24min",
+      "text": " No."
+    },
+    {
+      "start": 1550.062,
+      "end": 1551.262,
+      "speaker": "C#24min",
+      "text": " what's going to be missing?"
+    },
+    {
+      "start": 1552.212,
+      "end": 1554.462,
+      "speaker": "A#24min",
+      "text": " No, it's the outcome that might be missing."
+    },
+    {
+      "start": 1554.462,
+      "end": 1555.162,
+      "speaker": "C#24min",
+      "text": " Just the outcome."
+    },
+    {
+      "start": 1555.162,
+      "end": 1555.662,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1559.412,
+      "end": 1565.312,
+      "speaker": "A#24min",
+      "text": " But otherwise we shouldn't have close to zero missing in the primary analysis."
+    },
+    {
+      "start": 1565.662,
+      "end": 1571.412,
+      "speaker": "A#24min",
+      "text": " What we will have missing data on is when we do the fully adjusted analysis,"
+    },
+    {
+      "start": 1571.762,
+      "end": 1574.712,
+      "speaker": "A#24min",
+      "text": " that we have missing data in unexpected,"
+    },
+    {
+      "start": 1575.012,
+      "end": 1580.262,
+      "speaker": "A#24min",
+      "text": " quite high proportions of missing data in some of the covariates like patient level,"
+    },
+    {
+      "start": 1580.362,
+      "end": 1584.562,
+      "speaker": "A#24min",
+      "text": " vital signs and so on that we have said that we'll adjust for."
+    },
+    {
+      "start": 1585.044,
+      "end": 1586.344,
+      "speaker": "A#24min",
+      "text": " But in the primary analysis,"
+    },
+    {
+      "start": 1586.444,
+      "end": 1588.444,
+      "speaker": "A#24min",
+      "text": " we're not expecting much missingness at all."
+    },
+    {
+      "start": 1591.294,
+      "end": 1591.644,
+      "speaker": "A#24min",
+      "text": " And."
+    },
+    {
+      "start": 1591.644,
+      "end": 1596.444,
+      "speaker": "C#24min",
+      "text": " So is it clear in what's written that..."
+    },
+    {
+      "start": 1597.172,
+      "end": 1600.472,
+      "speaker": "C#24min",
+      "text": " So what you're going to do without missing data analysis for,"
+    },
+    {
+      "start": 1600.522,
+      "end": 1603.972,
+      "speaker": "C#24min",
+      "text": " so have you sort of said that for the primary outcome analysis,"
+    },
+    {
+      "start": 1604.222,
+      "end": 1607.8220000000001,
+      "speaker": "C#24min",
+      "text": " you might perhaps do some multiple imputation and likewise,"
+    },
+    {
+      "start": 1607.922,
+      "end": 1610.472,
+      "speaker": "C#24min",
+      "text": " have you said in the fully covariate adjusted analysis,"
+    },
+    {
+      "start": 1610.672,
+      "end": 1613.3220000000001,
+      "speaker": "C#24min",
+      "text": " you also might do some multiple imputation."
+    },
+    {
+      "start": 1614.922,
+      "end": 1615.222,
+      "speaker": "C#24min",
+      "text": " I"
+    },
+    {
+      "start": 1615.222,
+      "end": 1615.272,
+      "speaker": "A#24min",
+      "text": " Yes."
+    },
+    {
+      "start": 1615.272,
+      "end": 1616.372,
+      "speaker": "C#24min",
+      "text": " mean, it's a sort of separate point."
+    },
+    {
+      "start": 1617.812,
+      "end": 1619.812,
+      "speaker": "A#24min",
+      "text": " So that's why we have used this."
+    },
+    {
+      "start": 1619.862,
+      "end": 1621.112,
+      "speaker": "A#24min",
+      "text": " So for the primary analysis,"
+    },
+    {
+      "start": 1621.312,
+      "end": 1625.162,
+      "speaker": "A#24min",
+      "text": " we've said that we will impute if we have more than 10% missing."
+    },
+    {
+      "start": 1625.712,
+      "end": 1626.262,
+      "speaker": "A#24min",
+      "text": " That's what"
+    },
+    {
+      "start": 1626.262,
+      "end": 1626.312,
+      "speaker": "C#24min",
+      "text": " That's"
+    },
+    {
+      "start": 1626.312,
+      "end": 1626.912,
+      "speaker": "A#24min",
+      "text": " we have said."
+    },
+    {
+      "start": 1626.912,
+      "end": 1628.312,
+      "speaker": "C#24min",
+      "text": " the missing primary outcome."
+    },
+    {
+      "start": 1628.512,
+      "end": 1629.812,
+      "speaker": "A#24min",
+      "text": " Missing primary outcome."
+    },
+    {
+      "start": 1631.712,
+      "end": 1634.262,
+      "speaker": "C#24min",
+      "text": " But what about the covariate adjusted analysis?"
+    },
+    {
+      "start": 1636.912,
+      "end": 1637.862,
+      "speaker": "A#24min",
+      "text": " And we will."
+    },
+    {
+      "start": 1637.862,
+      "end": 1640.212,
+      "speaker": "C#24min",
+      "text": " Because there it's not about the primary outcome being missing."
+    },
+    {
+      "start": 1641.62,
+      "end": 1644.42,
+      "speaker": "A#24min",
+      "text": " No, but that's true."
+    },
+    {
+      "start": 1645.67,
+      "end": 1649.87,
+      "speaker": "A#24min",
+      "text": " But we base that also on the primary outcome,"
+    },
+    {
+      "start": 1649.97,
+      "end": 1652.22,
+      "speaker": "A#24min",
+      "text": " but maybe that should be reconsidered."
+    },
+    {
+      "start": 1652.42,
+      "end": 1662.62,
+      "speaker": "C#24min",
+      "text": " Yeah, I think so. I think you probably need to articulate it a little bit differently if you're going to do a covariance adjusted analysis than that missing data."
+    },
+    {
+      "start": 1663.284,
+      "end": 1665.934,
+      "speaker": "C#24min",
+      "text": " method approach will be more important for the missing"
+    },
+    {
+      "start": 1665.934,
+      "end": 1666.084,
+      "speaker": "A#24min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1666.084,
+      "end": 1666.584,
+      "speaker": "C#24min",
+      "text": " for the"
+    },
+    {
+      "start": 1666.584,
+      "end": 1666.684,
+      "speaker": "A#24min",
+      "text": " yeah,"
+    },
+    {
+      "start": 1666.684,
+      "end": 1667.634,
+      "speaker": "C#24min",
+      "text": " covariance adjustment analysis"
+    },
+    {
+      "start": 1667.634,
+      "end": 1667.834,
+      "speaker": "A#24min",
+      "text": " yeah,"
+    },
+    {
+      "start": 1667.834,
+      "end": 1668.784,
+      "speaker": "C#24min",
+      "text": " than this one right"
+    },
+    {
+      "start": 1668.784,
+      "end": 1669.684,
+      "speaker": "A#24min",
+      "text": " yeah, yeah."
+    },
+    {
+      "start": 1669.684,
+      "end": 1680.084,
+      "speaker": "C#24min",
+      "text": " 10 seems a bit bit high to me i think if you're going to put a percentage i think maybe five percent would be closer to what you might say and"
+    },
+    {
+      "start": 1682.334,
+      "end": 1685.384,
+      "speaker": "C#24min",
+      "text": " i don't feel very strongly about whether you put percentage there or not"
+    },
+    {
+      "start": 1688.034,
+      "end": 1688.534,
+      "speaker": "A#24min",
+      "text": " James,"
+    },
+    {
+      "start": 1688.584,
+      "end": 1689.334,
+      "speaker": "A#24min",
+      "text": " you said something."
+    },
+    {
+      "start": 1690.708,
+      "end": 1697.458,
+      "speaker": "D#24min",
+      "text": " Oh, actually, it was about Carla's point that you've got the 10% missing primary outcome data as your threshold,"
+    },
+    {
+      "start": 1697.558,
+      "end": 1700.758,
+      "speaker": "D#24min",
+      "text": " but then yeah, for the second part where you were talking about the covariate adjusted,"
+    },
+    {
+      "start": 1701.008,
+      "end": 1710.958,
+      "speaker": "D#24min",
+      "text": " it's going to be probably proportion or percentage of people with missing primary outcome or covariate data that you probably want to base it on."
+    },
+    {
+      "start": 1711.408,
+      "end": 1712.258,
+      "speaker": "A#24min",
+      "text": " Yeah, yeah."
+    },
+    {
+      "start": 1712.908,
+      "end": 1713.958,
+      "speaker": "A#24min",
+      "text": " I see that now,"
+    },
+    {
+      "start": 1714.058,
+      "end": 1714.258,
+      "speaker": "A#24min",
+      "text": " yeah."
+    },
+    {
+      "start": 1716.0520000000001,
+      "end": 1739.002,
+      "speaker": "D#24min",
+      "text": " um the other thing is is about whether this is all done together so are you doing one set of imputation using um you know all of these covariance and any um other variables to aid the imputation and then you're fitting you know a set of unadjusted models and a set of adjusted models or are you doing anything"
+    },
+    {
+      "start": 1740.9479999999999,
+      "end": 1748.098,
+      "speaker": "D#24min",
+      "text": " you know are you doing i don't know unadjusted and then adjusted separately because that's almost how it reads at the moment um"
+    },
+    {
+      "start": 1748.098,
+      "end": 1748.1979999999999,
+      "speaker": "A#24min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1748.1979999999999,
+      "end": 1749.798,
+      "speaker": "D#24min",
+      "text": " and i'm sure probably not the case"
+    },
+    {
+      "start": 1752.348,
+      "end": 1765.848,
+      "speaker": "A#24min",
+      "text": " that's a very good question also whether we should, because in the discussion it was almost as if we would decide whether we should impute based on..."
+    },
+    {
+      "start": 1766.708,
+      "end": 1770.158,
+      "speaker": "A#24min",
+      "text": " the amount of missingness in each secondary outcome."
+    },
+    {
+      "start": 1770.808,
+      "end": 1783.508,
+      "speaker": "A#24min",
+      "text": " But to me that sounds a bit overly complicated and maybe a more straightforward approach would be to do, maybe that's what you just said James,"
+    },
+    {
+      "start": 1783.558,
+      "end": 1785.708,
+      "speaker": "A#24min",
+      "text": " is to do one"
+    },
+    {
+      "start": 1786.516,
+      "end": 1800.016,
+      "speaker": "A#24min",
+      "text": " imputation in the sense that we create imputed data set with x number of or x number of imputed data sets and then run all analysis using the same imputation if you see what I mean."
+    },
+    {
+      "start": 1800.316,
+      "end": 1810.916,
+      "speaker": "D#24min",
+      "text": " I mean, from a computational point of view, that would also be a lot better because it's doing imputation with no clustering can be quite."
+    },
+    {
+      "start": 1811.6680000000001,
+      "end": 1813.4180000000001,
+      "speaker": "D#24min",
+      "text": " computationally expensive when you've"
+    },
+    {
+      "start": 1813.4180000000001,
+      "end": 1813.568,
+      "speaker": "A#24min",
+      "text": " Mm"
+    },
+    {
+      "start": 1813.568,
+      "end": 1813.868,
+      "speaker": "D#24min",
+      "text": " got clustering"
+    },
+    {
+      "start": 1813.868,
+      "end": 1814.068,
+      "speaker": "A#24min",
+      "text": "-hmm."
+    },
+    {
+      "start": 1814.068,
+      "end": 1822.468,
+      "speaker": "D#24min",
+      "text": " it adds a lot of complexity to it and so we're trying to do it individually for each outcome would be quite a time-consuming process"
+    },
+    {
+      "start": 1823.268,
+      "end": 1824.018,
+      "speaker": "A#24min",
+      "text": " Yeah, yeah."
+    },
+    {
+      "start": 1825.396,
+      "end": 1827.596,
+      "speaker": "A#24min",
+      "text": " So basically the suggestion is to,"
+    },
+    {
+      "start": 1827.746,
+      "end": 1840.096,
+      "speaker": "A#24min",
+      "text": " if I try to summarize this, is to modify the threshold, but perhaps still include the threshold, but then say 5% for the primary outcome analysis. And then..."
+    },
+    {
+      "start": 1841.076,
+      "end": 1858.576,
+      "speaker": "A#24min",
+      "text": " add that if we have and use the same threshold for missing covariate data in the adjusted analysis and if we need to impute then conduct or create one imputed data set and run all analysis on that imputed data set."
+    },
+    {
+      "start": 1861.108,
+      "end": 1861.108,
+      "speaker": "A#24min",
+      "text": " Is"
+    },
+    {
+      "start": 1861.108,
+      "end": 1861.358,
+      "speaker": "D#24min",
+      "text": " I think"
+    },
+    {
+      "start": 1861.358,
+      "end": 1861.758,
+      "speaker": "A#24min",
+      "text": " that correct?"
+    },
+    {
+      "start": 1861.758,
+      "end": 1862.108,
+      "speaker": "D#24min",
+      "text": " so."
+    },
+    {
+      "start": 1862.158,
+      "end": 1875.408,
+      "speaker": "D#24min",
+      "text": " I guess the one potential thing here, though, is that you'd have to then make sure that you're using the same number of you'd have to specify what that imputation will be. Is that based on a, you know, you've said here at least 20."
+    },
+    {
+      "start": 1875.558,
+      "end": 1883.508,
+      "speaker": "D#24min",
+      "text": " Is that based on the proportion of missing data or are you just specifying, you know, a number of imputations that you're going to do?"
+    },
+    {
+      "start": 1886.108,
+      "end": 1886.408,
+      "speaker": "A#24min",
+      "text": " No,"
+    },
+    {
+      "start": 1886.458,
+      "end": 1886.958,
+      "speaker": "A#24min",
+      "text": " so I..."
+    },
+    {
+      "start": 1887.636,
+      "end": 1896.836,
+      "speaker": "A#24min",
+      "text": " So I see that it's not specified. My recommendation would be that we write that we use the proportion of missing data, but use at least 20."
+    },
+    {
+      "start": 1897.886,
+      "end": 1901.986,
+      "speaker": "D#24min",
+      "text": " So I guess I'm saying that because obviously for your unadjusted model,"
+    },
+    {
+      "start": 1902.086,
+      "end": 1905.536,
+      "speaker": "D#24min",
+      "text": " your proportion of missing data is based on missing primary outcome."
+    },
+    {
+      "start": 1905.986,
+      "end": 1906.336,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1906.336,
+      "end": 1908.536,
+      "speaker": "D#24min",
+      "text": " But in your adjusted model,"
+    },
+    {
+      "start": 1908.636,
+      "end": 1912.336,
+      "speaker": "D#24min",
+      "text": " it's proportioned with any missing data. And so those two aren't going to align."
+    },
+    {
+      "start": 1913.1399999999999,
+      "end": 1913.54,
+      "speaker": "A#24min",
+      "text": " No."
+    },
+    {
+      "start": 1915.09,
+      "end": 1917.6399999999999,
+      "speaker": "A#24min",
+      "text": " But then we can still use the larger,"
+    },
+    {
+      "start": 1917.8899999999999,
+      "end": 1919.94,
+      "speaker": "A#24min",
+      "text": " the one with"
+    },
+    {
+      "start": 1919.94,
+      "end": 1919.99,
+      "speaker": "D#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1919.99,
+      "end": 1920.6399999999999,
+      "speaker": "A#24min",
+      "text": " the larger N,"
+    },
+    {
+      "start": 1920.74,
+      "end": 1921.04,
+      "speaker": "A#24min",
+      "text": " right?"
+    },
+    {
+      "start": 1921.1399999999999,
+      "end": 1922.84,
+      "speaker": "A#24min",
+      "text": " Also for the primary analysis."
+    },
+    {
+      "start": 1922.99,
+      "end": 1923.1399999999999,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1923.3899999999999,
+      "end": 1923.69,
+      "speaker": "D#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1923.79,
+      "end": 1925.94,
+      "speaker": "D#24min",
+      "text": " But that's what I'm just, it's just about making sure that then."
+    },
+    {
+      "start": 1926.44,
+      "end": 1926.74,
+      "speaker": "D#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1926.74,
+      "end": 1927.1399999999999,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1927.3899999999999,
+      "end": 1927.8899999999999,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1927.94,
+      "end": 1928.99,
+      "speaker": "A#24min",
+      "text": " So clarifying that."
+    },
+    {
+      "start": 1929.04,
+      "end": 1929.34,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1929.69,
+      "end": 1930.54,
+      "speaker": "A#24min",
+      "text": " Good point."
+    },
+    {
+      "start": 1938.8899999999999,
+      "end": 1939.34,
+      "speaker": "A#24min",
+      "text": " Okay."
+    },
+    {
+      "start": 1940.724,
+      "end": 1944.624,
+      "speaker": "A#24min",
+      "text": " And then that means that we clarify the missing data strategy,"
+    },
+    {
+      "start": 1944.774,
+      "end": 1947.874,
+      "speaker": "A#24min",
+      "text": " but we do not call it a sensitivity analysis."
+    },
+    {
+      "start": 1949.174,
+      "end": 1952.024,
+      "speaker": "A#24min",
+      "text": " That would be my interpretation of the discussion."
+    },
+    {
+      "start": 1961.174,
+      "end": 1962.474,
+      "speaker": "A#24min",
+      "text": " Okay."
+    },
+    {
+      "start": 1962.974,
+      "end": 1963.474,
+      "speaker": "C#24min",
+      "text": " Sorry,"
+    },
+    {
+      "start": 1963.624,
+      "end": 1963.824,
+      "speaker": "C#24min",
+      "text": " Martin,"
+    },
+    {
+      "start": 1963.974,
+      "end": 1965.024,
+      "speaker": "C#24min",
+      "text": " I don't follow the last bit."
+    },
+    {
+      "start": 1965.074,
+      "end": 1966.624,
+      "speaker": "C#24min",
+      "text": " Not call it a sensitivity analysis,"
+    },
+    {
+      "start": 1966.774,
+      "end": 1967.274,
+      "speaker": "C#24min",
+      "text": " did you say?"
+    },
+    {
+      "start": 1966.804,
+      "end": 1976.204,
+      "speaker": "A#24min",
+      "text": " Yeah, I mean what we are calling it now is more is we haven't specified a sensitivity analysis where we use multiple imputation,"
+    },
+    {
+      "start": 1976.3539999999998,
+      "end": 1983.904,
+      "speaker": "A#24min",
+      "text": " where we don't call it the sensitivity analysis. We specify it here under how we handle missing data."
+    },
+    {
+      "start": 1983.904,
+      "end": 1984.454,
+      "speaker": "B#24min",
+      "text": " Okay."
+    },
+    {
+      "start": 1984.454,
+      "end": 1985.204,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1985.78,
+      "end": 1990.4299999999998,
+      "speaker": "C#24min",
+      "text": " Okay, so the one option is that if there's a certain proportion of missing data,"
+    },
+    {
+      "start": 1990.53,
+      "end": 1992.78,
+      "speaker": "C#24min",
+      "text": " then this would just become a default versus"
+    },
+    {
+      "start": 1992.78,
+      "end": 1993.1799999999998,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 1993.1799999999998,
+      "end": 1995.1799999999998,
+      "speaker": "C#24min",
+      "text": " we'll present a complete case analysis"
+    },
+    {
+      "start": 1995.1799999999998,
+      "end": 1995.4299999999998,
+      "speaker": "A#24min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 1995.4299999999998,
+      "end": 1997.73,
+      "speaker": "C#24min",
+      "text": " and a sensitivity analysis."
+    },
+    {
+      "start": 1997.73,
+      "end": 1998.13,
+      "speaker": "A#24min",
+      "text": " exactly."
+    },
+    {
+      "start": 1998.13,
+      "end": 2000.03,
+      "speaker": "C#24min",
+      "text": " Are other people all right with that?"
+    },
+    {
+      "start": 2005.58,
+      "end": 2006.6799999999998,
+      "speaker": "C#24min",
+      "text": " So just jump straight."
+    },
+    {
+      "start": 2007.53,
+      "end": 2009.88,
+      "speaker": "B#24min",
+      "text": " I like to see the complete case analysis."
+    },
+    {
+      "start": 2010.08,
+      "end": 2011.03,
+      "speaker": "C#24min",
+      "text": " Yeah, me too."
+    },
+    {
+      "start": 2014.228,
+      "end": 2016.978,
+      "speaker": "C#24min",
+      "text": " Yeah, I think you have to present the complete case analysis."
+    },
+    {
+      "start": 2018.978,
+      "end": 2024.878,
+      "speaker": "A#24min",
+      "text": " So does that mean that we should say that the default is a complete case analysis?"
+    },
+    {
+      "start": 2025.7779999999998,
+      "end": 2033.9279999999999,
+      "speaker": "A#24min",
+      "text": " And then if we have these set of if and then we do a multiple imputation, if we have missing data more than 5%."
+    },
+    {
+      "start": 2035.9279999999999,
+      "end": 2037.6779999999999,
+      "speaker": "C#24min",
+      "text": " So for the primary outcome."
+    },
+    {
+      "start": 2038.356,
+      "end": 2038.356,
+      "speaker": "C#24min",
+      "text": " I"
+    },
+    {
+      "start": 2038.356,
+      "end": 2038.556,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2038.556,
+      "end": 2040.056,
+      "speaker": "C#24min",
+      "text": " don't think it's going to matter very much because"
+    },
+    {
+      "start": 2040.056,
+      "end": 2040.106,
+      "speaker": "A#24min",
+      "text": " There"
+    },
+    {
+      "start": 2040.106,
+      "end": 2040.306,
+      "speaker": "C#24min",
+      "text": " you're"
+    },
+    {
+      "start": 2040.306,
+      "end": 2040.406,
+      "speaker": "A#24min",
+      "text": " it"
+    },
+    {
+      "start": 2040.406,
+      "end": 2040.5059999999999,
+      "speaker": "C#24min",
+      "text": " quite"
+    },
+    {
+      "start": 2040.5059999999999,
+      "end": 2040.656,
+      "speaker": "A#24min",
+      "text": " was."
+    },
+    {
+      "start": 2040.656,
+      "end": 2040.9560000000001,
+      "speaker": "C#24min",
+      "text": " certain"
+    },
+    {
+      "start": 2040.9560000000001,
+      "end": 2041.106,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2041.106,
+      "end": 2043.356,
+      "speaker": "C#24min",
+      "text": " that there's going to be quite a low proportion of missing data."
+    },
+    {
+      "start": 2043.356,
+      "end": 2043.806,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2043.806,
+      "end": 2045.356,
+      "speaker": "C#24min",
+      "text": " So for the primary outcome,"
+    },
+    {
+      "start": 2045.406,
+      "end": 2046.906,
+      "speaker": "C#24min",
+      "text": " I don't think it's going to matter."
+    },
+    {
+      "start": 2047.0059999999999,
+      "end": 2050.406,
+      "speaker": "C#24min",
+      "text": " And I think you just could call it a sensitivity analysis for the primary outcome."
+    },
+    {
+      "start": 2050.6059999999998,
+      "end": 2052.706,
+      "speaker": "C#24min",
+      "text": " But when you get to the covariance adjusted analysis,"
+    },
+    {
+      "start": 2053.056,
+      "end": 2055.056,
+      "speaker": "C#24min",
+      "text": " that's already a sensitivity analysis anyway."
+    },
+    {
+      "start": 2055.756,
+      "end": 2056.256,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2056.756,
+      "end": 2057.506,
+      "speaker": "A#24min",
+      "text": " Okay."
+    },
+    {
+      "start": 2066.6440000000002,
+      "end": 2067.544,
+      "speaker": "A#24min",
+      "text": " Okay, good."
+    },
+    {
+      "start": 2072.944,
+      "end": 2074.794,
+      "speaker": "A#24min",
+      "text": " So next one,"
+    },
+    {
+      "start": 2074.844,
+      "end": 2075.544,
+      "speaker": "A#24min",
+      "text": " is that okay?"
+    },
+    {
+      "start": 2081.7799999999997,
+      "end": 2090.58,
+      "speaker": "A#24min",
+      "text": " I think, Carla, you had a comment about whether we should include cluster size in the randomization or not in the randomization, sorry,"
+    },
+    {
+      "start": 2090.68,
+      "end": 2092.2799999999997,
+      "speaker": "A#24min",
+      "text": " in the primary analysis model."
+    },
+    {
+      "start": 2092.38,
+      "end": 2093.73,
+      "speaker": "A#24min",
+      "text": " And we're not doing that currently."
+    },
+    {
+      "start": 2097.68,
+      "end": 2099.63,
+      "speaker": "A#24min",
+      "text": " And my suggestion is that we do that,"
+    },
+    {
+      "start": 2099.68,
+      "end": 2103.48,
+      "speaker": "A#24min",
+      "text": " but that would make the model more complex."
+    },
+    {
+      "start": 2109.0119999999997,
+      "end": 2113.0119999999997,
+      "speaker": "C#24min",
+      "text": " So I have to remind myself about this. So in the covariate constrained randomization,"
+    },
+    {
+      "start": 2113.062,
+      "end": 2117.212,
+      "speaker": "C#24min",
+      "text": " there was a covariate that was cluster size."
+    },
+    {
+      "start": 2118.712,
+      "end": 2120.2619999999997,
+      "speaker": "C#24min",
+      "text": " And then in the analysis,"
+    },
+    {
+      "start": 2120.362,
+      "end": 2123.612,
+      "speaker": "C#24min",
+      "text": " we don't have any adjustment for cluster size."
+    },
+    {
+      "start": 2124.312,
+      "end": 2124.7619999999997,
+      "speaker": "D#24min",
+      "text": " No."
+    },
+    {
+      "start": 2125.0119999999997,
+      "end": 2125.862,
+      "speaker": "C#24min",
+      "text": " Is that right?"
+    },
+    {
+      "start": 2126.42,
+      "end": 2127.0699999999997,
+      "speaker": "A#24min",
+      "text": " That's correct."
+    },
+    {
+      "start": 2128.0699999999997,
+      "end": 2133.8199999999997,
+      "speaker": "C#24min",
+      "text": " So usually the rule is that if you've put something into the randomization, you should adjust for it."
+    },
+    {
+      "start": 2134.3199999999997,
+      "end": 2134.67,
+      "speaker": "A#24min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2134.67,
+      "end": 2139.67,
+      "speaker": "C#24min",
+      "text": " Cluster size is a bit different though and I'm not completely sure whether we need it."
+    },
+    {
+      "start": 2142.67,
+      "end": 2145.87,
+      "speaker": "C#24min",
+      "text": " I don't really need to mention why we're not including it,"
+    },
+    {
+      "start": 2145.92,
+      "end": 2146.72,
+      "speaker": "C#24min",
+      "text": " but"
+    },
+    {
+      "start": 2148.12,
+      "end": 2148.72,
+      "speaker": "C#24min",
+      "text": " I don't know."
+    },
+    {
+      "start": 2156.084,
+      "end": 2156.434,
+      "speaker": "A#24min",
+      "text": " Others?"
+    },
+    {
+      "start": 2158.184,
+      "end": 2159.434,
+      "speaker": "B#24min",
+      "text": " So I don't I don't"
+    },
+    {
+      "start": 2160.596,
+      "end": 2169.446,
+      "speaker": "A#36min",
+      "text": " I mean, yes, it makes the model slightly more complex. Like that's not a great deal more complexity in my mind."
+    },
+    {
+      "start": 2170.896,
+      "end": 2171.796,
+      "speaker": "A#36min",
+      "text": " I mean,"
+    },
+    {
+      "start": 2171.846,
+      "end": 2173.646,
+      "speaker": "A#36min",
+      "text": " cluster size is, you know, tricky."
+    },
+    {
+      "start": 2173.696,
+      "end": 2175.396,
+      "speaker": "A#36min",
+      "text": " This informative cluster size stuff,"
+    },
+    {
+      "start": 2175.596,
+      "end": 2180.046,
+      "speaker": "A#36min",
+      "text": " I guess we're just not thinking about that."
+    },
+    {
+      "start": 2180.096,
+      "end": 2185.796,
+      "speaker": "A#36min",
+      "text": " But I think adjusting for cluster sizes or covariate helps to protect a little bit against that. I don't know."
+    },
+    {
+      "start": 2188.948,
+      "end": 2192.498,
+      "speaker": "A#36min",
+      "text": " So I guess I just don't understand why you wouldn't just include it in the model."
+    },
+    {
+      "start": 2195.398,
+      "end": 2214.198,
+      "speaker": "B#36min",
+      "text": " okay yeah let's do it I mean the only reason I was just hesitant a little bit is because it's not like a usual covariate like and like a regular covariate might be I don't know somebody's the average age and then you could adjust for the participant's age whereas cluster size is a bit more dynamic"
+    },
+    {
+      "start": 2215.22,
+      "end": 2217.87,
+      "speaker": "B#36min",
+      "text": " it's you know you put it in as your best guess of what"
+    },
+    {
+      "start": 2217.87,
+      "end": 2218.22,
+      "speaker": "C#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2218.22,
+      "end": 2219.52,
+      "speaker": "B#36min",
+      "text": " that cluster size was and"
+    },
+    {
+      "start": 2219.52,
+      "end": 2220.07,
+      "speaker": "C#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2220.07,
+      "end": 2233.82,
+      "speaker": "B#36min",
+      "text": " then also just because of the informative cluster size and I was just I just couldn't work that out in my head whether it would have any consequences but I am happy to adjust for it but what are we going to adjust for regular"
+    },
+    {
+      "start": 2233.82,
+      "end": 2240.17,
+      "speaker": "A#36min",
+      "text": " It would be the cluster size as considered at randomization, wouldn't it?"
+    },
+    {
+      "start": 2240.756,
+      "end": 2241.3559999999998,
+      "speaker": "B#36min",
+      "text": " Okay, let's"
+    },
+    {
+      "start": 2241.3559999999998,
+      "end": 2242.156,
+      "speaker": "D#36min",
+      "text": " Yeah, I think so."
+    },
+    {
+      "start": 2242.156,
+      "end": 2242.3559999999998,
+      "speaker": "B#36min",
+      "text": " do that."
+    },
+    {
+      "start": 2247.6059999999998,
+      "end": 2254.956,
+      "speaker": "D#36min",
+      "text": " Yeah, so then we can use the same data as the data that you were using, James, when you actually do the randomization, right?"
+    },
+    {
+      "start": 2258.906,
+      "end": 2261.256,
+      "speaker": "D#36min",
+      "text": " Actually, so I just want to..."
+    },
+    {
+      "start": 2262.324,
+      "end": 2263.724,
+      "speaker": "D#36min",
+      "text": " A flight that would,"
+    },
+    {
+      "start": 2263.824,
+      "end": 2271.624,
+      "speaker": "D#36min",
+      "text": " I mean, that data, as you said, it's not a guess entirely,"
+    },
+    {
+      "start": 2271.674,
+      "end": 2282.924,
+      "speaker": "D#36min",
+      "text": " but it's based on the data that we have at the time point when the randomization needs to happen and the amount of"
+    },
+    {
+      "start": 2284.372,
+      "end": 2292.472,
+      "speaker": "D#36min",
+      "text": " And it does fluctuate over time how large volumes each center is seeing,"
+    },
+    {
+      "start": 2292.572,
+      "end": 2295.622,
+      "speaker": "D#36min",
+      "text": " but maybe that's fine."
+    },
+    {
+      "start": 2301.588,
+      "end": 2302.488,
+      "speaker": "B#36min",
+      "text": " But Jess,"
+    },
+    {
+      "start": 2302.688,
+      "end": 2306.638,
+      "speaker": "B#36min",
+      "text": " imagine that you had chosen a model here and that model,"
+    },
+    {
+      "start": 2306.688,
+      "end": 2310.038,
+      "speaker": "B#36min",
+      "text": " we knew was targeting the individual level average."
+    },
+    {
+      "start": 2310.238,
+      "end": 2312.488,
+      "speaker": "B#36min",
+      "text": " Maybe it was an IEE with weighting."
+    },
+    {
+      "start": 2312.838,
+      "end": 2318.538,
+      "speaker": "B#36min",
+      "text": " You wouldn't additionally need to adjust for the cluster size there, would you? Because isn't that sort of implicit in the model?"
+    },
+    {
+      "start": 2320.838,
+      "end": 2322.138,
+      "speaker": "A#36min",
+      "text": " That's a really good question."
+    },
+    {
+      "start": 2322.188,
+      "end": 2323.138,
+      "speaker": "A#36min",
+      "text": " I don't know."
+    },
+    {
+      "start": 2326.676,
+      "end": 2329.926,
+      "speaker": "A#36min",
+      "text": " I guess I'm thinking of cluster size,"
+    },
+    {
+      "start": 2330.076,
+      "end": 2340.176,
+      "speaker": "A#36min",
+      "text": " just that covariate that's defined at the randomization time point. I'm not thinking of it as something that changes over time as it does, of course."
+    },
+    {
+      "start": 2340.876,
+      "end": 2346.476,
+      "speaker": "A#36min",
+      "text": " I'm just thinking of that variable that was used at randomization."
+    },
+    {
+      "start": 2347.076,
+      "end": 2348.176,
+      "speaker": "D#36min",
+      "text": " Yeah, okay."
+    },
+    {
+      "start": 2348.876,
+      "end": 2350.026,
+      "speaker": "B#36min",
+      "text": " Okay, let's add that in then."
+    },
+    {
+      "start": 2350.484,
+      "end": 2353.184,
+      "speaker": "D#36min",
+      "text": " Yeah, thank you."
+    },
+    {
+      "start": 2353.784,
+      "end": 2355.284,
+      "speaker": "A#36min",
+      "text": " It's super interesting."
+    },
+    {
+      "start": 2355.384,
+      "end": 2355.884,
+      "speaker": "A#36min",
+      "text": " Oh gosh."
+    },
+    {
+      "start": 2358.4139999999998,
+      "end": 2378.564,
+      "speaker": "D#36min",
+      "text": " Okay, and then we have the small sample inference and whether we should pre-specify a small sample correction. I think that this is something that we also have discussed before and we've been a bit unsure about and we've set a point that we'll decide when it's time to do the analysis because it's an evolving field."
+    },
+    {
+      "start": 2379.764,
+      "end": 2380.364,
+      "speaker": "D#36min",
+      "text": " Now,"
+    },
+    {
+      "start": 2380.514,
+      "end": 2384.314,
+      "speaker": "D#36min",
+      "text": " my interpretation of the discussion in the SAP was that..."
+    },
+    {
+      "start": 2384.82,
+      "end": 2403.27,
+      "speaker": "D#36min",
+      "text": " yeah we could add the kepler roger for linear models and then use which i did not quite follow but it's something that you seem to be doing and i think anna understands what that is uh jess and that's the dk minus two convention um so"
+    },
+    {
+      "start": 2404.372,
+      "end": 2408.072,
+      "speaker": "D#36min",
+      "text": " Is that something that we're comfortable with putting at this stage,"
+    },
+    {
+      "start": 2408.172,
+      "end": 2412.672,
+      "speaker": "D#36min",
+      "text": " or do we want more flexibility of being able to decide later?"
+    },
+    {
+      "start": 2420.672,
+      "end": 2423.222,
+      "speaker": "A#36min",
+      "text": " I want to know what Carla thinks of this."
+    },
+    {
+      "start": 2426.292,
+      "end": 2429.342,
+      "speaker": "A#36min",
+      "text": " I guess if I needed to decide now what to do,"
+    },
+    {
+      "start": 2429.442,
+      "end": 2431.592,
+      "speaker": "A#36min",
+      "text": " this is what I would say I was doing."
+    },
+    {
+      "start": 2432.892,
+      "end": 2435.042,
+      "speaker": "B#36min",
+      "text": " So I'm just trying to look at the comments."
+    },
+    {
+      "start": 2435.192,
+      "end": 2439.792,
+      "speaker": "B#36min",
+      "text": " Where did the, what we call,"
+    },
+    {
+      "start": 2439.892,
+      "end": 2442.192,
+      "speaker": "B#36min",
+      "text": " yeah, where's the K minus two come from?"
+    },
+    {
+      "start": 2442.242,
+      "end": 2443.142,
+      "speaker": "B#36min",
+      "text": " Because K"
+    },
+    {
+      "start": 2443.142,
+      "end": 2445.092,
+      "speaker": "D#36min",
+      "text": " That's in one of the comments from Jess."
+    },
+    {
+      "start": 2446.842,
+      "end": 2452.042,
+      "speaker": "B#36min",
+      "text": " minus two is not so straight. Oh, we've got a T in there. Is the T the number of time periods, not the T distribution?"
+    },
+    {
+      "start": 2453.268,
+      "end": 2458.718,
+      "speaker": "A#36min",
+      "text": " No, no, this was the T distribution with number of clusters minus two."
+    },
+    {
+      "start": 2459.468,
+      "end": 2459.968,
+      "speaker": "A#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2460.318,
+      "end": 2462.718,
+      "speaker": "B#36min",
+      "text": " Because that works well in a parallel design,"
+    },
+    {
+      "start": 2462.718,
+      "end": 2462.968,
+      "speaker": "A#36min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 2462.968,
+      "end": 2463.318,
+      "speaker": "B#36min",
+      "text": " but does"
+    },
+    {
+      "start": 2463.318,
+      "end": 2463.418,
+      "speaker": "A#36min",
+      "text": " yeah."
+    },
+    {
+      "start": 2463.418,
+      "end": 2465.518,
+      "speaker": "B#36min",
+      "text": " that work all right in a step wedge design?"
+    },
+    {
+      "start": 2466.668,
+      "end": 2467.518,
+      "speaker": "B#36min",
+      "text": " Because then so"
+    },
+    {
+      "start": 2467.518,
+      "end": 2469.418,
+      "speaker": "A#36min",
+      "text": " This is, do I have a reference?"
+    },
+    {
+      "start": 2471.668,
+      "end": 2478.418,
+      "speaker": "B#36min",
+      "text": " I remember that Jennifer Thompson looked at different sort of like degrees of freedom correction,"
+    },
+    {
+      "start": 2478.568,
+      "end": 2479.618,
+      "speaker": "B#36min",
+      "text": " like these simple ones."
+    },
+    {
+      "start": 2480.692,
+      "end": 2490.642,
+      "speaker": "B#36min",
+      "text": " but it was with a GEE and she looked at a few examples a few suggestions Andrew had said and I don't think any of them worked very well although it was within a GEE"
+    },
+    {
+      "start": 2493.092,
+      "end": 2497.042,
+      "speaker": "A#36min",
+      "text": " I think so."
+    },
+    {
+      "start": 2503.252,
+      "end": 2505.252,
+      "speaker": "A#36min",
+      "text": " I mean, this is what I have been doing for"
+    },
+    {
+      "start": 2505.252,
+      "end": 2505.552,
+      "speaker": "B#36min",
+      "text": " Mm"
+    },
+    {
+      "start": 2505.552,
+      "end": 2505.652,
+      "speaker": "A#36min",
+      "text": " GLRMs"
+    },
+    {
+      "start": 2505.652,
+      "end": 2505.802,
+      "speaker": "B#36min",
+      "text": "-hmm."
+    },
+    {
+      "start": 2505.802,
+      "end": 2511.552,
+      "speaker": "A#36min",
+      "text": " and I think even for GAEs as well. And I'm pretty sure I read somewhere that it was OK,"
+    },
+    {
+      "start": 2511.752,
+      "end": 2521.702,
+      "speaker": "A#36min",
+      "text": " but I would love to know that that I shouldn't be doing this so I can stop now."
+    },
+    {
+      "start": 2525.052,
+      "end": 2526.752,
+      "speaker": "B#36min",
+      "text": " So I didn't know what was all right."
+    },
+    {
+      "start": 2528.948,
+      "end": 2532.798,
+      "speaker": "B#36min",
+      "text": " But I do know that one of Derek is doing"
+    },
+    {
+      "start": 2532.798,
+      "end": 2533.148,
+      "speaker": "A#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2533.148,
+      "end": 2538.898,
+      "speaker": "B#36min",
+      "text": " a review of assimilation statuses like we did for parallel designs."
+    },
+    {
+      "start": 2539.098,
+      "end": 2540.348,
+      "speaker": "B#36min",
+      "text": " He's doing it for stepwise trials."
+    },
+    {
+      "start": 2541.548,
+      "end": 2542.098,
+      "speaker": "A#36min",
+      "text": " Very cool."
+    },
+    {
+      "start": 2542.198,
+      "end": 2546.848,
+      "speaker": "B#36min",
+      "text": " So I was sort of hoping that by the time we needed to fix this, he might have done it and then."
+    },
+    {
+      "start": 2547.828,
+      "end": 2548.178,
+      "speaker": "A#36min",
+      "text": " Look,"
+    },
+    {
+      "start": 2548.228,
+      "end": 2551.828,
+      "speaker": "A#36min",
+      "text": " I think it's fine. If we don't need to specify this now,"
+    },
+    {
+      "start": 2551.928,
+      "end": 2554.478,
+      "speaker": "A#36min",
+      "text": " then I'd be happy to kind of leave it."
+    },
+    {
+      "start": 2555.378,
+      "end": 2559.878,
+      "speaker": "E#36min",
+      "text": " what's the rough date of analysis is it like"
+    },
+    {
+      "start": 2560.578,
+      "end": 2561.228,
+      "speaker": "D#36min",
+      "text": " So it's"
+    },
+    {
+      "start": 2561.228,
+      "end": 2566.578,
+      "speaker": "E#36min",
+      "text": " if you get like if it's in is it in like three years time right"
+    },
+    {
+      "start": 2566.578,
+      "end": 2570.428,
+      "speaker": "D#36min",
+      "text": " yeah almost the end of 28 so that's two years yeah"
+    },
+    {
+      "start": 2571.572,
+      "end": 2575.272,
+      "speaker": "D#36min",
+      "text": " Yeah, earliest I would say. It might be 2029 as well."
+    },
+    {
+      "start": 2577.172,
+      "end": 2583.672,
+      "speaker": "B#36min",
+      "text": " I think it's all right to say we're not going to fix this, we're going to wait because we know somebody's doing some work."
+    },
+    {
+      "start": 2584.372,
+      "end": 2585.322,
+      "speaker": "D#36min",
+      "text": " Yeah, okay."
+    },
+    {
+      "start": 2585.4719999999998,
+      "end": 2586.7219999999998,
+      "speaker": "D#36min",
+      "text": " So let's do that then."
+    },
+    {
+      "start": 2586.822,
+      "end": 2587.122,
+      "speaker": "D#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2591.4719999999998,
+      "end": 2591.9719999999998,
+      "speaker": "D#36min",
+      "text": " Good."
+    },
+    {
+      "start": 2592.022,
+      "end": 2596.322,
+      "speaker": "D#36min",
+      "text": " And now you are, you needed to leave, right,"
+    },
+    {
+      "start": 2596.422,
+      "end": 2596.622,
+      "speaker": "D#36min",
+      "text": " Carla?"
+    },
+    {
+      "start": 2597.9719999999998,
+      "end": 2598.4719999999998,
+      "speaker": "D#36min",
+      "text": " So,"
+    },
+    {
+      "start": 2598.572,
+      "end": 2600.672,
+      "speaker": "D#36min",
+      "text": " or do you still have a couple of minutes?"
+    },
+    {
+      "start": 2600.672,
+      "end": 2602.872,
+      "speaker": "B#36min",
+      "text": " I'm okay for a bit. I'm alright for a bit. I'll probably be alright."
+    },
+    {
+      "start": 2603.668,
+      "end": 2628.368,
+      "speaker": "D#36min",
+      "text": " okay let's go so yeah so then we have quality of life and disability and that so we measured that at multiple different time points and as it was stated in the SAP and the idea was to run separate analysis but then there was a suggestion of building a joint longitudinal model instead and I know that you James you were kind of"
+    },
+    {
+      "start": 2628.852,
+      "end": 2629.902,
+      "speaker": "D#36min",
+      "text": " You like that idea."
+    },
+    {
+      "start": 2631.002,
+      "end": 2633.052,
+      "speaker": "D#36min",
+      "text": " So is that something that we should do?"
+    },
+    {
+      "start": 2633.102,
+      "end": 2636.352,
+      "speaker": "D#36min",
+      "text": " I'm all for trying to reduce the number of analysis."
+    },
+    {
+      "start": 2652.468,
+      "end": 2653.368,
+      "speaker": "D#36min",
+      "text": " I think you're muted,"
+    },
+    {
+      "start": 2653.468,
+      "end": 2654.968,
+      "speaker": "D#36min",
+      "text": " James, if you try to say something."
+    },
+    {
+      "start": 2655.068,
+      "end": 2655.368,
+      "speaker": "D#36min",
+      "text": " Sorry."
+    },
+    {
+      "start": 2655.368,
+      "end": 2658.368,
+      "speaker": "E#36min",
+      "text": " I'm just trying to find it in the SAP at the moment."
+    },
+    {
+      "start": 2658.768,
+      "end": 2659.268,
+      "speaker": "D#36min",
+      "text": " Okay,"
+    },
+    {
+      "start": 2659.318,
+      "end": 2659.568,
+      "speaker": "D#36min",
+      "text": " sorry."
+    },
+    {
+      "start": 2659.668,
+      "end": 2661.668,
+      "speaker": "D#36min",
+      "text": " So I will do the same then."
+    },
+    {
+      "start": 2661.718,
+      "end": 2665.368,
+      "speaker": "D#36min",
+      "text": " It's supposed to be in paragraph or section nine, two."
+    },
+    {
+      "start": 2683.06,
+      "end": 2691.31,
+      "speaker": "B#36min",
+      "text": " Yes, I just came across your comment. It's nothing to do with what we're talking about at the minute because it's actually on page 25, which I think there's a page we're looking for."
+    },
+    {
+      "start": 2691.56,
+      "end": 2693.56,
+      "speaker": "B#36min",
+      "text": " It says that you've started doing,"
+    },
+    {
+      "start": 2693.66,
+      "end": 2706.76,
+      "speaker": "B#36min",
+      "text": " you have an interest in, you started using estimating risk ratios using log binomials, but in the reanalysis data sets, we've re-estimated risk ratios using binomial models and only converged 30% of the time."
+    },
+    {
+      "start": 2707.924,
+      "end": 2708.424,
+      "speaker": "A#36min",
+      "text": " Really?"
+    },
+    {
+      "start": 2708.674,
+      "end": 2709.174,
+      "speaker": "B#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2710.524,
+      "end": 2712.374,
+      "speaker": "A#36min",
+      "text": " I must have been very lucky."
+    },
+    {
+      "start": 2714.074,
+      "end": 2714.124,
+      "speaker": "D#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2714.124,
+      "end": 2714.574,
+      "speaker": "B#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2714.574,
+      "end": 2714.674,
+      "speaker": "D#36min",
+      "text": ""
+    },
+    {
+      "start": 2714.674,
+      "end": 2718.024,
+      "speaker": "B#36min",
+      "text": " I mean, we haven't like played with anything. It's just like under the default settings."
+    },
+    {
+      "start": 2718.024,
+      "end": 2721.974,
+      "speaker": "A#36min",
+      "text": " I haven't played with anything either. I think I'm"
+    },
+    {
+      "start": 2723.024,
+      "end": 2725.224,
+      "speaker": "A#36min",
+      "text": " going to go back and check, but I'm pretty, I'm pretty sure."
+    },
+    {
+      "start": 2725.774,
+      "end": 2730.524,
+      "speaker": "B#36min",
+      "text": " I remember where it happens most is if you've got any clusters with zero events."
+    },
+    {
+      "start": 2731.54,
+      "end": 2731.54,
+      "speaker": "B#36min",
+      "text": " But"
+    },
+    {
+      "start": 2731.54,
+      "end": 2731.89,
+      "speaker": "A#36min",
+      "text": " Ah,"
+    },
+    {
+      "start": 2731.89,
+      "end": 2731.99,
+      "speaker": "B#36min",
+      "text": " quite"
+    },
+    {
+      "start": 2731.99,
+      "end": 2732.44,
+      "speaker": "A#36min",
+      "text": " okay."
+    },
+    {
+      "start": 2732.44,
+      "end": 2732.94,
+      "speaker": "B#36min",
+      "text": " a"
+    },
+    {
+      "start": 2732.94,
+      "end": 2733.64,
+      "speaker": "A#36min",
+      "text": " Yep, yep."
+    },
+    {
+      "start": 2733.64,
+      "end": 2737.99,
+      "speaker": "B#36min",
+      "text": " lot of trials actually have that, at least one zero event in a cluster."
+    },
+    {
+      "start": 2739.04,
+      "end": 2750.29,
+      "speaker": "A#36min",
+      "text": " So I guess the situation where I've actually been using that model a lot is individually randomized trials, but with lots of hospitals and"
+    },
+    {
+      "start": 2751.44,
+      "end": 2753.14,
+      "speaker": "A#36min",
+      "text": " they're forgetting"
+    },
+    {
+      "start": 2753.14,
+      "end": 2753.64,
+      "speaker": "B#36min",
+      "text": " Okay,"
+    },
+    {
+      "start": 2753.64,
+      "end": 2753.84,
+      "speaker": "A#36min",
+      "text": " that which"
+    },
+    {
+      "start": 2753.84,
+      "end": 2754.14,
+      "speaker": "B#36min",
+      "text": " might be different."
+    },
+    {
+      "start": 2754.14,
+      "end": 2755.29,
+      "speaker": "E#36min",
+      "text": " randomized Yeah, trials."
+    },
+    {
+      "start": 2755.29,
+      "end": 2755.74,
+      "speaker": "A#36min",
+      "text": " yeah."
+    },
+    {
+      "start": 2756.5,
+      "end": 2757.25,
+      "speaker": "D#36min",
+      "text": " Sorry,"
+    },
+    {
+      "start": 2760.45,
+      "end": 2761.55,
+      "speaker": "D#36min",
+      "text": " it was you, Jess,"
+    },
+    {
+      "start": 2761.7,
+      "end": 2763.6,
+      "speaker": "D#36min",
+      "text": " you said, it wasn't you, James,"
+    },
+    {
+      "start": 2763.7,
+      "end": 2764.6,
+      "speaker": "D#36min",
+      "text": " I mix it up, sorry."
+    },
+    {
+      "start": 2764.8,
+      "end": 2769.5,
+      "speaker": "D#36min",
+      "text": " So you said that you generally prefer the approach of combining all the data into longitudinal model."
+    },
+    {
+      "start": 2770.1,
+      "end": 2772.4,
+      "speaker": "D#36min",
+      "text": " And that was what Anna suggested as well."
+    },
+    {
+      "start": 2774.35,
+      "end": 2779.7,
+      "speaker": "D#36min",
+      "text": " So if you don't see any major problems with doing that, I suggest that that's how we analyze this as well."
+    },
+    {
+      "start": 2782.068,
+      "end": 2787.418,
+      "speaker": "A#36min",
+      "text": " Yeah, I mean, my preference is generally if you've got multiple measurements on the same individual,"
+    },
+    {
+      "start": 2787.618,
+      "end": 2791.068,
+      "speaker": "A#36min",
+      "text": " you just include them in one model together."
+    },
+    {
+      "start": 2791.668,
+      "end": 2792.068,
+      "speaker": "D#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2792.818,
+      "end": 2794.568,
+      "speaker": "A#36min",
+      "text": " There can be arguments against that."
+    },
+    {
+      "start": 2794.818,
+      "end": 2795.618,
+      "speaker": "A#36min",
+      "text": " That's fine."
+    },
+    {
+      "start": 2795.668,
+      "end": 2796.968,
+      "speaker": "A#36min",
+      "text": " But I think here,"
+    },
+    {
+      "start": 2797.068,
+      "end": 2799.318,
+      "speaker": "A#36min",
+      "text": " you know, if Anna's okay with that, then."
+    },
+    {
+      "start": 2800.618,
+      "end": 2808.268,
+      "speaker": "D#36min",
+      "text": " So what would your scenario be if we have much more missing at 90 days compared to 30 days, for example?"
+    },
+    {
+      "start": 2811.732,
+      "end": 2817.882,
+      "speaker": "A#36min",
+      "text": " I mean, then you kind of get to borrow strength from the data you do have at the 30 days."
+    },
+    {
+      "start": 2818.782,
+      "end": 2819.332,
+      "speaker": "D#36min",
+      "text": " Okay."
+    },
+    {
+      "start": 2822.632,
+      "end": 2824.982,
+      "speaker": "B#36min",
+      "text": " I am happy with that approach,"
+    },
+    {
+      "start": 2825.032,
+      "end": 2828.982,
+      "speaker": "B#36min",
+      "text": " but you just also need to be careful to pre-specify what you're like,"
+    },
+    {
+      "start": 2829.082,
+      "end": 2833.332,
+      "speaker": "B#36min",
+      "text": " your S demands or what you're going to report from that model."
+    },
+    {
+      "start": 2833.632,
+      "end": 2835.582,
+      "speaker": "B#36min",
+      "text": " Is it the effect at 90 days?"
+    },
+    {
+      "start": 2835.632,
+      "end": 2838.582,
+      "speaker": "B#36min",
+      "text": " Is it the difference between 90 and zero?"
+    },
+    {
+      "start": 2839.476,
+      "end": 2841.776,
+      "speaker": "B#36min",
+      "text": " You know, there's so many different coefficients from that model."
+    },
+    {
+      "start": 2842.076,
+      "end": 2844.326,
+      "speaker": "B#36min",
+      "text": " You've got to specify what thing you're interested in."
+    },
+    {
+      "start": 2844.976,
+      "end": 2845.926,
+      "speaker": "D#36min",
+      "text": " Yeah, okay."
+    },
+    {
+      "start": 2846.976,
+      "end": 2857.076,
+      "speaker": "A#36min",
+      "text": " And I would suggest on that point, just the treatment effect at each of those time points, not looking at differences between them or anything like that, unless that is something that is of particular interest."
+    },
+    {
+      "start": 2858.776,
+      "end": 2863.376,
+      "speaker": "D#36min",
+      "text": " So basically use one model but then estimate the treatment effect at each time point."
+    },
+    {
+      "start": 2864.148,
+      "end": 2864.448,
+      "speaker": "D#36min",
+      "text": " Yeah."
+    },
+    {
+      "start": 2866.648,
+      "end": 2867.098,
+      "speaker": "D#36min",
+      "text": " Got it."
+    },
+    {
+      "start": 2871.148,
+      "end": 2874.098,
+      "speaker": "D#36min",
+      "text": " Very good. I think this is going okay so far."
+    },
+    {
+      "start": 2874.998,
+      "end": 2879.848,
+      "speaker": "D#36min",
+      "text": " Then there was a comment and I think it was your comment."
+    },
+    {
+      "start": 2880.0,
+      "end": 2899.25,
+      "speaker": "A#48min",
+      "text": " comment yes about the main kind of effect size and whether we should consider reporting a risk ratio instead of an odds ratio and what we are currently saying is that we will report both an odds ratio and an absolute risk reduction."
+    },
+    {
+      "start": 2902.068,
+      "end": 2908.718,
+      "speaker": "A#48min",
+      "text": " And only if the ARD does not or that model does not converge will we report only the odds ratio."
+    },
+    {
+      "start": 2911.318,
+      "end": 2912.468,
+      "speaker": "B#48min",
+      "text": " Look, I'm fine."
+    },
+    {
+      "start": 2913.218,
+      "end": 2915.718,
+      "speaker": "B#48min",
+      "text": " I'm fine with whatever approach. I think I must have."
+    },
+    {
+      "start": 2916.468,
+      "end": 2939.168,
+      "speaker": "B#48min",
+      "text": " gotten to this just after I'd had my morning coffee because it seems like I made a lot of a lot of comments that are maybe a little bit out there look I think you know based on what Carla has has said about these relative risk risk ratio models that I suggested not converging a lot of the time I I just I just think"
+    },
+    {
+      "start": 2939.732,
+      "end": 2947.032,
+      "speaker": "B#48min",
+      "text": " Just, you know, the odds ratio, the interpretation of that can be a bit more difficult, but if you're happy with that, then that's fine."
+    },
+    {
+      "start": 2947.782,
+      "end": 2955.532,
+      "speaker": "C#48min",
+      "text": " So we've just been going through this in another trial and then we're like going backwards and forwards."
+    },
+    {
+      "start": 2955.832,
+      "end": 2960.382,
+      "speaker": "C#48min",
+      "text": " The reason why we wanted to go with an odds ratio is just a lot simpler."
+    },
+    {
+      "start": 2961.282,
+      "end": 2963.432,
+      "speaker": "C#48min",
+      "text": " You know, what model are you going to fit?"
+    },
+    {
+      "start": 2963.532,
+      "end": 2964.882,
+      "speaker": "C#48min",
+      "text": " It's very likely to converge."
+    },
+    {
+      "start": 2966.132,
+      "end": 2972.482,
+      "speaker": "C#48min",
+      "text": " So it's just for simplicity, but absolutely agree that it's harder to interpret."
+    },
+    {
+      "start": 2973.632,
+      "end": 2975.282,
+      "speaker": "C#48min",
+      "text": " So with this other trial,"
+    },
+    {
+      "start": 2975.532,
+      "end": 2979.782,
+      "speaker": "C#48min",
+      "text": " we went to them saying we just report an odds ratio, it's also a stepped wedge trial,"
+    },
+    {
+      "start": 2979.882,
+      "end": 2980.432,
+      "speaker": "C#48min",
+      "text": " and they said no,"
+    },
+    {
+      "start": 2980.482,
+      "end": 2981.932,
+      "speaker": "C#48min",
+      "text": " they definitely wanted a risk ratio."
+    },
+    {
+      "start": 2983.432,
+      "end": 2991.832,
+      "speaker": "C#48min",
+      "text": " So that was problematic for us because then we didn't know what we were going to do if it was going to fail to converge. So we went to the DMC."
+    },
+    {
+      "start": 2993.364,
+      "end": 3016.364,
+      "speaker": "C#48min",
+      "text": " I agree and Andrew K. Pass is on on that board and he came back with I thought what was a useful suggestion and his suggestion was to report an odds ratio report three basically and you use you sort of like your main influences are on the odds ratio but alongside that you report a relative risk and a risk difference so people can understand."
+    },
+    {
+      "start": 3018.772,
+      "end": 3020.422,
+      "speaker": "C#48min",
+      "text": " Yeah, so that is an alternative."
+    },
+    {
+      "start": 3020.7219999999998,
+      "end": 3028.522,
+      "speaker": "C#48min",
+      "text": " I mean he articulated it in a better way than I've just said it and when he wrote it in the email I was convinced it was the right idea. Now I'm saying it, I'm not sure."
+    },
+    {
+      "start": 3030.022,
+      "end": 3031.122,
+      "speaker": "C#48min",
+      "text": " But that's an alternative,"
+    },
+    {
+      "start": 3031.272,
+      "end": 3031.672,
+      "speaker": "C#48min",
+      "text": " Martin,"
+    },
+    {
+      "start": 3031.772,
+      "end": 3034.322,
+      "speaker": "C#48min",
+      "text": " so I can send you that and then maybe Yeah it's up to you to decide."
+    },
+    {
+      "start": 3035.124,
+      "end": 3036.174,
+      "speaker": "A#48min",
+      "text": " Yeah, okay,"
+    },
+    {
+      "start": 3036.174,
+      "end": 3036.274,
+      "speaker": "D#48min",
+      "text": " The"
+    },
+    {
+      "start": 3036.274,
+      "end": 3036.524,
+      "speaker": "A#48min",
+      "text": " sure."
+    },
+    {
+      "start": 3036.524,
+      "end": 3039.974,
+      "speaker": "D#48min",
+      "text": " thing to consider for that is that for that approach,"
+    },
+    {
+      "start": 3040.074,
+      "end": 3046.624,
+      "speaker": "D#48min",
+      "text": " we were estimating the risk ratio and risk difference using a logistic model and then using marginal standard errors."
+    },
+    {
+      "start": 3046.624,
+      "end": 3046.824,
+      "speaker": "C#48min",
+      "text": " Oh yeah,"
+    },
+    {
+      "start": 3046.824,
+      "end": 3046.924,
+      "speaker": "D#48min",
+      "text": ""
+    },
+    {
+      "start": 3046.924,
+      "end": 3047.574,
+      "speaker": "C#48min",
+      "text": " that's a difference."
+    },
+    {
+      "start": 3047.774,
+      "end": 3048.224,
+      "speaker": "C#48min",
+      "text": " Yeah, sorry."
+    },
+    {
+      "start": 3048.374,
+      "end": 3048.574,
+      "speaker": "C#48min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 3048.624,
+      "end": 3049.474,
+      "speaker": "C#48min",
+      "text": " that's an important distinction."
+    },
+    {
+      "start": 3050.452,
+      "end": 3054.552,
+      "speaker": "D#48min",
+      "text": " And then so we were using just the p-value from the odds ratio and"
+    },
+    {
+      "start": 3054.552,
+      "end": 3055.202,
+      "speaker": "C#48min",
+      "text": " That's it,"
+    },
+    {
+      "start": 3055.202,
+      "end": 3055.352,
+      "speaker": "D#48min",
+      "text": " then"
+    },
+    {
+      "start": 3055.352,
+      "end": 3055.502,
+      "speaker": "C#48min",
+      "text": " yeah."
+    },
+    {
+      "start": 3055.502,
+      "end": 3057.602,
+      "speaker": "D#48min",
+      "text": " reporting the relative risk and risk difference"
+    },
+    {
+      "start": 3057.602,
+      "end": 3057.652,
+      "speaker": "C#48min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 3057.652,
+      "end": 3058.102,
+      "speaker": "D#48min",
+      "text": " to help"
+    },
+    {
+      "start": 3058.102,
+      "end": 3058.252,
+      "speaker": "C#48min",
+      "text": " that's"
+    },
+    {
+      "start": 3058.252,
+      "end": 3058.852,
+      "speaker": "D#48min",
+      "text": " with the presentation."
+    },
+    {
+      "start": 3058.852,
+      "end": 3067.002,
+      "speaker": "C#48min",
+      "text": " not going to work here, actually. A very good point I forgot because we wouldn't want to use marginal standardisation here, I don't think."
+    },
+    {
+      "start": 3069.876,
+      "end": 3070.276,
+      "speaker": "A#48min",
+      "text": " Okay,"
+    },
+    {
+      "start": 3070.276,
+      "end": 3070.376,
+      "speaker": "C#48min",
+      "text": " How"
+    },
+    {
+      "start": 3070.376,
+      "end": 3070.626,
+      "speaker": "A#48min",
+      "text": " so let's"
+    },
+    {
+      "start": 3070.626,
+      "end": 3070.976,
+      "speaker": "C#48min",
+      "text": " can we start"
+    },
+    {
+      "start": 3070.976,
+      "end": 3071.076,
+      "speaker": "A#48min",
+      "text": " keep"
+    },
+    {
+      "start": 3071.076,
+      "end": 3075.226,
+      "speaker": "C#48min",
+      "text": " we're going to report the ARD estimate the ARD from a binomial model."
+    },
+    {
+      "start": 3075.226,
+      "end": 3079.226,
+      "speaker": "A#48min",
+      "text": " Yeah, yeah, so we're using different link functions that what we said."
+    },
+    {
+      "start": 3079.426,
+      "end": 3079.676,
+      "speaker": "A#48min",
+      "text": " Yeah"
+    },
+    {
+      "start": 3079.676,
+      "end": 3080.076,
+      "speaker": "C#48min",
+      "text": " I"
+    },
+    {
+      "start": 3083.176,
+      "end": 3085.526,
+      "speaker": "C#48min",
+      "text": " think it's a bit safer to report the odds ratio."
+    },
+    {
+      "start": 3090.576,
+      "end": 3090.976,
+      "speaker": "A#48min",
+      "text": " Good"
+    },
+    {
+      "start": 3091.668,
+      "end": 3103.768,
+      "speaker": "A#48min",
+      "text": " And then you had a common caller where you said, what is this when it was about the effect size of the adherents analysis."
+    },
+    {
+      "start": 3106.3559999999998,
+      "end": 3110.006,
+      "speaker": "A#48min",
+      "text": " where it currently is a difference on the logic scale from a better regression model,"
+    },
+    {
+      "start": 3110.206,
+      "end": 3117.306,
+      "speaker": "A#48min",
+      "text": " which is my interpretation of the literal meaning of the coefficients that we would get from that model,"
+    },
+    {
+      "start": 3117.506,
+      "end": 3126.706,
+      "speaker": "A#48min",
+      "text": " that maybe it would make more sense to justimate an average marginal effect instead."
+    },
+    {
+      "start": 3130.804,
+      "end": 3131.454,
+      "speaker": "A#48min",
+      "text": " from that model."
+    },
+    {
+      "start": 3131.454,
+      "end": 3134.604,
+      "speaker": "C#48min",
+      "text": " Sorry, Martin, can we go back a little bit?"
+    },
+    {
+      "start": 3134.654,
+      "end": 3137.254,
+      "speaker": "C#48min",
+      "text": " So adherence, so this is an outcome."
+    },
+    {
+      "start": 3137.94,
+      "end": 3138.34,
+      "speaker": "A#48min",
+      "text": " So"
+    },
+    {
+      "start": 3138.34,
+      "end": 3138.64,
+      "speaker": "C#48min",
+      "text": " And"
+    },
+    {
+      "start": 3138.64,
+      "end": 3138.79,
+      "speaker": "A#48min",
+      "text": " adherence"
+    },
+    {
+      "start": 3138.79,
+      "end": 3139.19,
+      "speaker": "C#48min",
+      "text": " you've got that"
+    },
+    {
+      "start": 3139.19,
+      "end": 3145.74,
+      "speaker": "A#48min",
+      "text": " is the adherence to the actual principles of the intervention,"
+    },
+    {
+      "start": 3145.94,
+      "end": 3146.69,
+      "speaker": "A#48min",
+      "text": " of the treatment."
+    },
+    {
+      "start": 3146.79,
+      "end": 3149.69,
+      "speaker": "A#48min",
+      "text": " So there's a training program,"
+    },
+    {
+      "start": 3149.89,
+      "end": 3163.09,
+      "speaker": "A#48min",
+      "text": " it involves completing a certain number of steps as you manage a patient. We measure whether those steps are actually completed and we get a proportion of the number of steps completed."
+    },
+    {
+      "start": 3163.34,
+      "end": 3164.04,
+      "speaker": "C#48min",
+      "text": " in both arms."
+    },
+    {
+      "start": 3164.692,
+      "end": 3164.892,
+      "speaker": "A#48min",
+      "text": " yeah"
+    },
+    {
+      "start": 3164.892,
+      "end": 3165.092,
+      "speaker": "C#48min",
+      "text": " You've"
+    },
+    {
+      "start": 3165.092,
+      "end": 3165.292,
+      "speaker": "A#48min",
+      "text": " yeah"
+    },
+    {
+      "start": 3165.292,
+      "end": 3166.292,
+      "speaker": "C#48min",
+      "text": " got that in treatment and control."
+    },
+    {
+      "start": 3166.892,
+      "end": 3167.192,
+      "speaker": "C#48min",
+      "text": " Okay,"
+    },
+    {
+      "start": 3167.192,
+      "end": 3167.392,
+      "speaker": "A#48min",
+      "text": " no"
+    },
+    {
+      "start": 3167.392,
+      "end": 3168.442,
+      "speaker": "C#48min",
+      "text": " so it's just a binary outcome,"
+    },
+    {
+      "start": 3168.542,
+      "end": 3168.792,
+      "speaker": "C#48min",
+      "text": " really."
+    },
+    {
+      "start": 3168.892,
+      "end": 3169.642,
+      "speaker": "C#48min",
+      "text": " Is that right?"
+    },
+    {
+      "start": 3169.742,
+      "end": 3172.692,
+      "speaker": "A#48min",
+      "text": " it's not a binary it's a proportion yeah"
+    },
+    {
+      "start": 3172.692,
+      "end": 3173.642,
+      "speaker": "C#48min",
+      "text": " Oh, okay."
+    },
+    {
+      "start": 3173.692,
+      "end": 3173.892,
+      "speaker": "C#48min",
+      "text": " Right."
+    },
+    {
+      "start": 3174.192,
+      "end": 3175.542,
+      "speaker": "C#48min",
+      "text": " So, okay."
+    },
+    {
+      "start": 3175.992,
+      "end": 3182.292,
+      "speaker": "C#48min",
+      "text": " And is that, that's for each participant, each individual, they have an outcome on the scale zero to one."
+    },
+    {
+      "start": 3182.742,
+      "end": 3187.992,
+      "speaker": "A#48min",
+      "text": " yeah yeah so that's part of the nested staircase so we have it for for the yeah yeah"
+    },
+    {
+      "start": 3189.812,
+      "end": 3194.262,
+      "speaker": "C#48min",
+      "text": " It's just happy with that because that's just his part, isn't it?"
+    },
+    {
+      "start": 3197.962,
+      "end": 3199.262,
+      "speaker": "A#48min",
+      "text": " Yes, this is your part."
+    },
+    {
+      "start": 3200.788,
+      "end": 3201.088,
+      "speaker": "A#48min",
+      "text": " No,"
+    },
+    {
+      "start": 3201.088,
+      "end": 3201.638,
+      "speaker": "B#48min",
+      "text": " Yeah."
+    },
+    {
+      "start": 3201.638,
+      "end": 3202.488,
+      "speaker": "A#48min",
+      "text": " but yeah."
+    },
+    {
+      "start": 3204.188,
+      "end": 3224.738,
+      "speaker": "A#48min",
+      "text": " So basically adherence is just one of the outcomes that we measure as part of the nested staircase and we randomize on the data collector shift level which patients to include for that outcome because it requires someone to be there and observe as care is being delivered."
+    },
+    {
+      "start": 3225.62,
+      "end": 3231.17,
+      "speaker": "A#48min",
+      "text": " So we have a random subset of patients where we collect this outcome,"
+    },
+    {
+      "start": 3231.2200000000003,
+      "end": 3233.37,
+      "speaker": "A#48min",
+      "text": " where we collect this outcome,"
+    },
+    {
+      "start": 3233.37,
+      "end": 3233.52,
+      "speaker": "C#48min",
+      "text": " So"
+    },
+    {
+      "start": 3233.52,
+      "end": 3233.7200000000003,
+      "speaker": "A#48min",
+      "text": " yeah."
+    },
+    {
+      "start": 3233.7200000000003,
+      "end": 3236.32,
+      "speaker": "C#48min",
+      "text": " it just hasn't seen us and agreed with us."
+    },
+    {
+      "start": 3236.42,
+      "end": 3240.52,
+      "speaker": "C#48min",
+      "text": " I wouldn't know how to fit a beta regression model with random effects."
+    },
+    {
+      "start": 3241.2200000000003,
+      "end": 3242.2200000000003,
+      "speaker": "A#48min",
+      "text": " What would you do?"
+    },
+    {
+      "start": 3243.4700000000003,
+      "end": 3244.07,
+      "speaker": "B#48min",
+      "text": " either."
+    },
+    {
+      "start": 3246.1,
+      "end": 3247.45,
+      "speaker": "B#48min",
+      "text": " Sounds like it could be fine."
+    },
+    {
+      "start": 3247.55,
+      "end": 3248.05,
+      "speaker": "B#48min",
+      "text": " Yeah,"
+    },
+    {
+      "start": 3248.4,
+      "end": 3249.5,
+      "speaker": "B#48min",
+      "text": " I must admit,"
+    },
+    {
+      "start": 3249.6,
+      "end": 3253.6,
+      "speaker": "B#48min",
+      "text": " I think I must have lost a bit of steam by this point, unfortunately."
+    },
+    {
+      "start": 3253.65,
+      "end": 3254.1,
+      "speaker": "B#48min",
+      "text": " I'm sorry."
+    },
+    {
+      "start": 3258.6,
+      "end": 3260.45,
+      "speaker": "A#48min",
+      "text": " But that's perfectly fine."
+    },
+    {
+      "start": 3260.55,
+      "end": 3261.8,
+      "speaker": "A#48min",
+      "text": " So how would you,"
+    },
+    {
+      "start": 3261.85,
+      "end": 3263.65,
+      "speaker": "A#48min",
+      "text": " so we have an outcome that is a proportion."
+    },
+    {
+      "start": 3265.9,
+      "end": 3270.45,
+      "speaker": "B#48min",
+      "text": " I'm sure you could fit this and you could use just cluster robust standard errors."
+    },
+    {
+      "start": 3271.38,
+      "end": 3275.18,
+      "speaker": "B#48min",
+      "text": " I'm sure there would be a way to do that."
+    },
+    {
+      "start": 3277.63,
+      "end": 3283.13,
+      "speaker": "B#48min",
+      "text": " So not including random effects or anything like that,"
+    },
+    {
+      "start": 3283.13,
+      "end": 3283.2799999999997,
+      "speaker": "C#48min",
+      "text": " I"
+    },
+    {
+      "start": 3283.2799999999997,
+      "end": 3283.5299999999997,
+      "speaker": "B#48min",
+      "text": " but still"
+    },
+    {
+      "start": 3283.5299999999997,
+      "end": 3283.98,
+      "speaker": "C#48min",
+      "text": " do count it, yeah."
+    },
+    {
+      "start": 3283.98,
+      "end": 3285.0299999999997,
+      "speaker": "B#48min",
+      "text": " for the clustering."
+    },
+    {
+      "start": 3289.2799999999997,
+      "end": 3296.23,
+      "speaker": "B#48min",
+      "text": " I think that could be fine. It kind of depends on how important this outcome is."
+    },
+    {
+      "start": 3297.556,
+      "end": 3299.6059999999998,
+      "speaker": "B#48min",
+      "text": " If it's not super important,"
+    },
+    {
+      "start": 3299.956,
+      "end": 3303.1059999999998,
+      "speaker": "B#48min",
+      "text": " then cluster above standard errors."
+    },
+    {
+      "start": 3303.406,
+      "end": 3304.806,
+      "speaker": "B#48min",
+      "text": " I think that's okay."
+    },
+    {
+      "start": 3306.256,
+      "end": 3309.706,
+      "speaker": "C#48min",
+      "text": " That would be finer, so the right underlying model be to regression model."
+    },
+    {
+      "start": 3310.156,
+      "end": 3312.056,
+      "speaker": "C#48min",
+      "text": " I've never used a pure regression model."
+    },
+    {
+      "start": 3314.8559999999998,
+      "end": 3315.906,
+      "speaker": "B#48min",
+      "text": " I think that's right."
+    },
+    {
+      "start": 3316.056,
+      "end": 3320.6059999999998,
+      "speaker": "B#48min",
+      "text": " I'm sort of reaching back in."
+    },
+    {
+      "start": 3327.956,
+      "end": 3342.306,
+      "speaker": "A#48min",
+      "text": " Maybe we can pause this and I can get back to you on this in an email with what we should use for this specific outcome or if there is a way to handle this outcome that makes more sense, if there is a model that you're more familiar with maybe."
+    },
+    {
+      "start": 3345.656,
+      "end": 3346.1059999999998,
+      "speaker": "A#48min",
+      "text": " Okay."
+    },
+    {
+      "start": 3348.596,
+      "end": 3350.446,
+      "speaker": "A#48min",
+      "text": " And then I will get back to you, Carla,"
+    },
+    {
+      "start": 3350.496,
+      "end": 3357.496,
+      "speaker": "A#48min",
+      "text": " on this because you had a comment where it said get rest on these and then you had highlighted the section and I'm not sure what you meant, but I'll get back to you on that."
+    },
+    {
+      "start": 3359.996,
+      "end": 3360.046,
+      "speaker": "A#48min",
+      "text": " James."
+    },
+    {
+      "start": 3360.046,
+      "end": 3360.346,
+      "speaker": "C#48min",
+      "text": " So."
+    },
+    {
+      "start": 3360.896,
+      "end": 3363.746,
+      "speaker": "D#48min",
+      "text": " So just looking at how it's described,"
+    },
+    {
+      "start": 3363.946,
+      "end": 3367.646,
+      "speaker": "D#48min",
+      "text": " so it says that it's a 14 item checklist and so"
+    },
+    {
+      "start": 3368.788,
+      "end": 3369.288,
+      "speaker": "D#48min",
+      "text": " Um,"
+    },
+    {
+      "start": 3369.488,
+      "end": 3384.138,
+      "speaker": "D#48min",
+      "text": " you've said that you're converted to percentage, but I guess, is there a reason to not have it as count with an offset for, you know, there's 14 items they could have completed and you've got the number of items they did complete."
+    },
+    {
+      "start": 3386.138,
+      "end": 3391.438,
+      "speaker": "A#48min",
+      "text": " No, I mean, that was one of the alternatives that we discussed,"
+    },
+    {
+      "start": 3391.488,
+      "end": 3391.988,
+      "speaker": "A#48min",
+      "text": " me and Anna."
+    },
+    {
+      "start": 3393.788,
+      "end": 3395.2380000000003,
+      "speaker": "A#48min",
+      "text": " So would that make it simpler,"
+    },
+    {
+      "start": 3395.388,
+      "end": 3395.8379999999997,
+      "speaker": "A#48min",
+      "text": " do you think?"
+    },
+    {
+      "start": 3397.524,
+      "end": 3402.924,
+      "speaker": "D#48min",
+      "text": " Well, I'm going on the basis that none of us have fitted beta regression models before,"
+    },
+    {
+      "start": 3403.024,
+      "end": 3411.324,
+      "speaker": "D#48min",
+      "text": " so there's not really anything about their model performance in these sorts of studies, whereas the use of, you know,"
+    },
+    {
+      "start": 3411.374,
+      "end": 3414.524,
+      "speaker": "D#48min",
+      "text": " Poisson models has been used more"
+    },
+    {
+      "start": 3414.524,
+      "end": 3415.174,
+      "speaker": "A#48min",
+      "text": " Okay, yeah,"
+    },
+    {
+      "start": 3415.174,
+      "end": 3418.524,
+      "speaker": "D#48min",
+      "text": " on that basis than anything else."
+    },
+    {
+      "start": 3418.974,
+      "end": 3419.524,
+      "speaker": "A#48min",
+      "text": " yeah."
+    },
+    {
+      "start": 3421.3,
+      "end": 3426.3,
+      "speaker": "A#48min",
+      "text": " Yeah, I would be happy if we can preserve kind of the nature of that outcome as far as possible."
+    },
+    {
+      "start": 3426.35,
+      "end": 3427.05,
+      "speaker": "A#48min",
+      "text": " I'm happy."
+    },
+    {
+      "start": 3427.1,
+      "end": 3433.65,
+      "speaker": "A#48min",
+      "text": " I would like to avoid dichotomizing it, for example. But if we can use it as a count outcome,"
+    },
+    {
+      "start": 3433.8,
+      "end": 3434.7,
+      "speaker": "A#48min",
+      "text": " that works for me."
+    },
+    {
+      "start": 3438.15,
+      "end": 3439.45,
+      "speaker": "C#48min",
+      "text": " I think that would be a lot more straightforward."
+    },
+    {
+      "start": 3440.3,
+      "end": 3440.6,
+      "speaker": "A#48min",
+      "text": " Yeah."
+    },
+    {
+      "start": 3441.1,
+      "end": 3444.7,
+      "speaker": "A#48min",
+      "text": " So let's do that then. Let's use it as a count outcome. Yeah."
+    },
+    {
+      "start": 3448.628,
+      "end": 3449.728,
+      "speaker": "A#48min",
+      "text": " Okay,"
+    },
+    {
+      "start": 3449.828,
+      "end": 3450.578,
+      "speaker": "A#48min",
+      "text": " good."
+    },
+    {
+      "start": 3450.678,
+      "end": 3461.428,
+      "speaker": "A#48min",
+      "text": " Then we had some discussions on the sensitivity analysis and I think you Carla said that there had been discussions in a recent paper about a number of sensitivity analysis and we have quite a few."
+    },
+    {
+      "start": 3463.228,
+      "end": 3473.928,
+      "speaker": "A#48min",
+      "text": " Maybe I'm conservative but most of these were analysis that we specified in the protocol already."
+    },
+    {
+      "start": 3474.656,
+      "end": 3482.206,
+      "speaker": "A#48min",
+      "text": " So there's really only the exposure by precision date."
+    },
+    {
+      "start": 3482.6059999999998,
+      "end": 3486.456,
+      "speaker": "A#48min",
+      "text": " That's the only sensitivity analysis that we've added in this SAP."
+    },
+    {
+      "start": 3489.806,
+      "end": 3495.806,
+      "speaker": "A#48min",
+      "text": " So should we still go ahead and remove these that were or should we keep them in?"
+    },
+    {
+      "start": 3497.6059999999998,
+      "end": 3499.6059999999998,
+      "speaker": "C#48min",
+      "text": " It's hard to take them out, isn't it now? Sorry,"
+    },
+    {
+      "start": 3499.656,
+      "end": 3499.906,
+      "speaker": "C#48min",
+      "text": " Martin."
+    },
+    {
+      "start": 3500.66,
+      "end": 3504.06,
+      "speaker": "A#48min",
+      "text": " Yeah, that's how I feel as well."
+    },
+    {
+      "start": 3507.41,
+      "end": 3507.86,
+      "speaker": "A#48min",
+      "text": " Okay."
+    },
+    {
+      "start": 3508.66,
+      "end": 3511.26,
+      "speaker": "C#48min",
+      "text": " Let's definitely not overplay them."
+    },
+    {
+      "start": 3511.81,
+      "end": 3513.01,
+      "speaker": "A#48min",
+      "text": " Yeah, yeah."
+    },
+    {
+      "start": 3513.31,
+      "end": 3515.01,
+      "speaker": "A#48min",
+      "text": " But let's keep them in the report."
+    },
+    {
+      "start": 3518.11,
+      "end": 3518.71,
+      "speaker": "A#48min",
+      "text": " Okay."
+    },
+    {
+      "start": 3519.16,
+      "end": 3521.11,
+      "speaker": "A#48min",
+      "text": " So we are one minute over time."
+    },
+    {
+      "start": 3521.16,
+      "end": 3522.56,
+      "speaker": "A#48min",
+      "text": " If anyone needs to leave,"
+    },
+    {
+      "start": 3522.71,
+      "end": 3524.91,
+      "speaker": "A#48min",
+      "text": " that's perfectly okay."
+    },
+    {
+      "start": 3525.11,
+      "end": 3527.31,
+      "speaker": "A#48min",
+      "text": " We have two more things to discuss."
+    },
+    {
+      "start": 3528.34,
+      "end": 3533.24,
+      "speaker": "B#48min",
+      "text": " I can hang around for five more minutes, but I will need to head off after that."
+    },
+    {
+      "start": 3533.74,
+      "end": 3534.14,
+      "speaker": "A#48min",
+      "text": " Yeah."
+    },
+    {
+      "start": 3534.44,
+      "end": 3535.04,
+      "speaker": "A#48min",
+      "text": " Okay."
+    },
+    {
+      "start": 3535.74,
+      "end": 3539.29,
+      "speaker": "A#48min",
+      "text": " So this one is about age groups and geographical regions."
+    },
+    {
+      "start": 3539.34,
+      "end": 3543.24,
+      "speaker": "A#48min",
+      "text": " And basically we did not, we have specified age groups."
+    },
+    {
+      "start": 3544.59,
+      "end": 3545.34,
+      "speaker": "A#48min",
+      "text": " Here,"
+    },
+    {
+      "start": 3545.49,
+      "end": 3550.94,
+      "speaker": "A#48min",
+      "text": " one suggestion was to reduce the number of age groups."
+    },
+    {
+      "start": 3552.212,
+      "end": 3553.4120000000003,
+      "speaker": "A#48min",
+      "text": " To be completely honest,"
+    },
+    {
+      "start": 3553.5119999999997,
+      "end": 3557.612,
+      "speaker": "A#48min",
+      "text": " I'm not sure whether we did pre-specify it in the protocol already in our age groups."
+    },
+    {
+      "start": 3558.0119999999997,
+      "end": 3567.312,
+      "speaker": "A#48min",
+      "text": " Otherwise, my suggestion would be that we can use a conventional cutoff for basically having a younger and an older cohort."
+    },
+    {
+      "start": 3569.748,
+      "end": 3587.648,
+      "speaker": "A#48min",
+      "text": " So that would make sense given what its data usually look like and then when it comes to geographical region what it says in this app is to use states but we also have these solo councils that we could use which is a much smaller number."
+    },
+    {
+      "start": 3589.3959999999997,
+      "end": 3599.746,
+      "speaker": "A#48min",
+      "text": " So my suggestion would be to use only two edge groups if that's supported by the protocol and then use these sonar consoles instead of..."
+    },
+    {
+      "start": 3600.0,
+      "end": 3601.9,
+      "speaker": "A#60min",
+      "text": " individual states yeah"
+    },
+    {
+      "start": 3604.2,
+      "end": 3605.4,
+      "speaker": "A#60min",
+      "text": " okay"
+    },
+    {
+      "start": 3607.2,
+      "end": 3619.05,
+      "speaker": "A#60min",
+      "text": " i take the nodding head says approval so then final one and that is whether one patient can appear more than once and that"
+    },
+    {
+      "start": 3620.724,
+      "end": 3626.574,
+      "speaker": "A#60min",
+      "text": " It's not common for these patients to be readmitted during these 13 months."
+    },
+    {
+      "start": 3628.124,
+      "end": 3635.324,
+      "speaker": "A#60min",
+      "text": " I don't have an estimate from it. We do have that data. We can look at it, but I don't have an estimate right now."
+    },
+    {
+      "start": 3637.46,
+      "end": 3647.46,
+      "speaker": "A#60min",
+      "text": " So either I think one suggestion in this app was to only treat the first admission and maybe that's the more straightforward option than treating them as independent."
+    },
+    {
+      "start": 3650.356,
+      "end": 3650.356,
+      "speaker": "B#60min",
+      "text": " I"
+    },
+    {
+      "start": 3650.356,
+      "end": 3650.506,
+      "speaker": "A#60min",
+      "text": " I"
+    },
+    {
+      "start": 3650.506,
+      "end": 3650.656,
+      "speaker": "B#60min",
+      "text": " think"
+    },
+    {
+      "start": 3650.656,
+      "end": 3650.856,
+      "speaker": "A#60min",
+      "text": " like,"
+    },
+    {
+      "start": 3650.856,
+      "end": 3652.356,
+      "speaker": "B#60min",
+      "text": " it's fine."
+    },
+    {
+      "start": 3652.506,
+      "end": 3653.656,
+      "speaker": "B#60min",
+      "text": " You just need to be clear."
+    },
+    {
+      "start": 3653.806,
+      "end": 3662.906,
+      "speaker": "B#60min",
+      "text": " And I think you can just say, yeah, there may be a small number of patients that are admitted more than once, but it's only a small number and we're not going to acknowledge it in our analysis."
+    },
+    {
+      "start": 3663.156,
+      "end": 3665.406,
+      "speaker": "B#60min",
+      "text": " I think just something like that. It's just more about clarity."
+    },
+    {
+      "start": 3665.406,
+      "end": 3665.8559999999998,
+      "speaker": "A#60min",
+      "text": " That's fine."
+    },
+    {
+      "start": 3665.956,
+      "end": 3666.456,
+      "speaker": "A#60min",
+      "text": " Yeah."
+    },
+    {
+      "start": 3669.256,
+      "end": 3669.656,
+      "speaker": "A#60min",
+      "text": " Okay."
+    },
+    {
+      "start": 3670.306,
+      "end": 3670.8559999999998,
+      "speaker": "A#60min",
+      "text": " Excellent."
+    },
+    {
+      "start": 3672.02,
+      "end": 3690.42,
+      "speaker": "A#60min",
+      "text": " uh yeah that was that was that thank you so much um so i will work with this together with anna and also on the other comments and clarifications and send you a revision and hopefully we can finalize that okay thank you so much for taking your time yeah"
+    },
+    {
+      "start": 3690.42,
+      "end": 3691.37,
+      "speaker": "B#60min",
+      "text": " Thanks, Martin."
+    },
+    {
+      "start": 3691.52,
+      "end": 3692.07,
+      "speaker": "B#60min",
+      "text": " Hi, everyone."
+    },
+    {
+      "start": 3692.07,
+      "end": 3692.32,
+      "speaker": "A#60min",
+      "text": " thank"
+    },
+    {
+      "start": 3692.32,
+      "end": 3693.12,
+      "speaker": "B#60min",
+      "text": " Good to see you later."
+    },
+    {
+      "start": 3693.12,
+      "end": 3694.87,
+      "speaker": "A#60min",
+      "text": " bye good to see you bye"
+    }
+  ]
+}
