@@ -1,7 +1,7 @@
 # Meeting notes: SAP v0.7.0 finalisation meeting (2026-11-10)
 
 Purpose: Finalise the ADVANCE TRAUMA statistical analysis plan (SAP).
-Attendees: Martin Gerdin Wärnberg (chair), Karla Hemming, Jessica Kasza, James Martin, Arpita Ghosh (guest, George Institute India). Anna Olofsson absent.
+Attendees: Martin Gerdin Wärnberg (chair), Karla Hemming, Jessica Kasza, James Martin, Arpita Ghosh. Anna Olofsson absent.
 
 ## Trial status
 
