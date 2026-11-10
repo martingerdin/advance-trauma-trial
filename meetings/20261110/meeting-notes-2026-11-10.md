@@ -2,20 +2,17 @@
 
 **Purpose:** Finalise the statistical analysis plan (SAP) — resolve the ~11 substantive decision topics raised in the reviewer comments.
 **Attendees:** Martin Gerdin Wärnberg (chair), Karla Hemming (KH), Jessica Kasza (JK, "Jess"), James Martin (JM), Arpita Ghosh (guest, George Institute India). Anna Olofsson (AO) did not attend.
-**Recording:** `2026-11-10 08.50.40 .../audio1595844097.m4a` (74 min; first 12:15 is silence, trimmed).
-**Transcripts:** `transcripts/meeting-2026-11-10.transcript.txt` (label-based) · `transcripts/meeting-2026-11-10.named.txt` (speaker-named) · `transcripts/meeting-2026-11-10.diarized.json` (raw).
-**Source documents:** `comment-triage-2026-11-09.md` (D1–D11 framework) · `meeting-deck-2026-11-10.qmd`.
 
 ---
 
 ## Trial status (Martin, ~04:58)
 
-- Trial started **February 2025**. Batch 1 finished; **batch 2 ongoing**; **batch 3 planned to start next week** (delayed ~2 months because one cluster dropped out at a late stage).
+- Trial started **February 2025**. Batch 1 finished; **batch 2 ongoing**; **batch 3 planned to start next week** (delayed ~6 months because one cluster dropped out at a late stage).
 - ~**2,500 patients** included so far — slightly more than anticipated.
 
 ---
 
-## Decisions (mapped to the D1–D11 triage framework)
+## Decisions
 
 ### D1 — Interim analysis wording (§4.5) — RESOLVED: keep "interim analysis" but clarify content
 - Karla: "I don't think it matters too much what you call it just as long as it's clear whether or not you're going to be comparing the treatment arms." Jess agreed: would prefer not to call it "interim analysis" since it's not a formal outcome analysis, but "if it's clear, that's fine."
