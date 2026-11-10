@@ -1,68 +1,89 @@
 ---
-title: "SAP v0.7.0: comment review & decisions"
-subtitle: "11 open questions to agree in 60 minutes"
-author: "Trial statistics team"
+title: "Finalise ADVANCE TRAUMA SAP"
+subtitle: "SAP v0.7.0: comment review & decisions"
 date: "10 November 2026"
 lang: en
+format:
+  beamer:
+    theme: default
+    aspectratio: 169
+    toc: false
+    latex-engine: pdflatex
+    include-in-header:
+      - text: |
+          \setbeamertemplate{itemize item}[triangle]
+          \setbeamertemplate{itemize subitem}[circle]
+          \setbeamertemplate{itemize subsubitem}[square]
+slide-level: 1
+number-sections: false
+toc: false
+filters:
+  - quarto
 ---
 
-<!-- Rebuild the pptx (including page numbers) with: sh build-deck-2026-11-10.sh   (or: pandoc meeting-deck-2026-11-10.md -t pptx -o meeting-deck-2026-11-10.pptx --slide-level=2) -->
+# Context
 
-## Context: the round in one screen
+- 89 comments on SAP v0.7.0 (2026-10-07)
+- Today: make 11 substantive decisions (~5 min each)
+- Rest is wording/clarification, handled as offline drafting
 
-- 89 comments on SAP v0.7.0 (2026-10-07): KH 31 · JK 20 · JM 15 · AO 23
-- Today: agree the 11 substantive decisions (~5 min each, suggested timebox)
-- Everything else is wording/clarification, handled as offline drafting (see later slide)
+# Trial status
 
-## Agenda: the 11 decisions (60 minutes)
+- Batch 1 finished. First SDMC meeting before end of year
+- Batch 2 ongoing
+- Batch 3 starting next week (delayed)
+- \~2500 patients included.
 
-- Interim analysis vs routine trial monitoring (p. 13)
-- Length-of-stay: count, duration, or time-to-event? (pp. 16, 18, 21, 26)
-- QoL & disability: separate or longitudinal? (p. 25)
-- Effect sizes: odds ratio, risk ratio, or marginal effect? (pp. 22–24)
-- Adjust the primary model for randomisation factors (pp. 23, 27)
-- Small-sample inference & model-fit criteria (pp. 23, 27)
-- Missing-data strategy (pp. 27–28)
-- Intercurrent-events table (pp. 18–21)
-- Sensitivity-analysis suite (pp. 28–30)
-- Subgroups: age groups & region (pp. 30–31)
-- Repeated ED presentations (p. 30)
+# The 11 decisions
 
-## Is "Interim analysis" really trial monitoring (§4.5, p. 13)
+1. Interim analysis vs routine trial monitoring (p. 13)
+2. Length-of-stay: counts, durations, or time-to-event? (pp. 16, 18, 21, 26)
+3. Intercurrent-events table (pp. 18–21)
+4. Missing data (pp. 27–28)
+5. Adjust the primary model for randomisation factors (pp. 23, 27)
+6. Small-sample inference & model-fit criteria (pp. 23, 27)
+7. QoL & disability (p. 25)
+8. Effect sizes (pp. 22–24)
+9. Sensitivity analyses (pp. 28–30)
+10. Subgroups (pp. 30–31)
+11. Repeated ED presentations (p. 30)
+
+# 1. Is "Interim analysis" really trial monitoring (§4.5, p. 13)
 
 **Decision:** terminology, and what the half-way report contains.
 
-- The document calls the half-way review an "interim analysis", but nothing in §4.5 is a stopping rule based on the treatment effect; the per-batch reports are really routine trial monitoring.
+- The document calls the half-way review an "interim analysis", but nothing in §4.5 is a stopping rule based on the treatment effect. The per-batch reports are really routine trial monitoring.
 
-**Suggestion:** 
+**Suggestion:**
 
-- Call per batch summaries **"routine monitoring reports"** 
-- Call the half-way report **"interim analysis"** (included in protocol). 
+- Call per batch summaries **"routine monitoring reports"**
+- Call the half-way report **"interim analysis"** (included in protocol).
+- Ask for a decision to continue or stop half-way.
 - Exclude outcome comparisons and formal effect-based stopping rules.
 
-## Length-of-stay: counts, durations, or time-to-event? (§9.2.5–9.2.8, pp. 16, 18, 21, 26)
+# 2. Length-of-stay: counts, durations, or time-to-event? (§9.2.5–9.2.8, pp. 16, 18, 21, 26)
 
 **Decision:** statistical model, effect measure, estimand wording (ED, hospital, ICU LOS).
 
 - LOS is analysed with negative binomial regression, but the data are recorded as **date and time** (continuous durations).
-- Options: 
+- Options:
   - **gamma/log-link** reporting a ratio of expected LOS
-  - **time-to-event** with death as a competing risk; either way the estimand (observed duration until exit) should be stated and 
+  - **time-to-event** with death as a competing risk; either way the estimand (observed duration until exit) should be stated and
 
 **Suggestion:**
 
-- State the estimand as observed duration until exit an prefer the gamma/log-link model. 
+- State the estimand as observed duration until exit an prefer the gamma/log-link model.
 - Interpret alongside mortality and transfer frequencies.
 
-## Intercurrent-events table: what belongs there? (§8.1, pp. 18–21)
+# 3. Intercurrent-events table: what belongs there? (§8.1, pp. 18–21)
 
 **Decision:** restructure Table 1 / simplify §8.1.
 
 - The table currently mixes three different things: true intercurrent events, missing-data issues (loss to follow-up, outcomes that cannot be ascertained), and an outcome definition (ICU admission only if admission precedes death/transfer).
 
-**Suggestion:** 
+**Suggestion:**
 
-- Remove loss to follow up from the list of intercurrent events 
+- Remove loss to follow up from the list of intercurrent events
 - Remove ICU outcome definition as well
 - Add "treatment policy" wording (exposure already follows the scheduled transition date)
 
@@ -70,15 +91,15 @@ lang: en
 Timebox 4 min. This has broad consensus in the comments; it mostly needs an in-room "yes" and owner AO.
 :::
 
-## Missing data: replace the 10% rule? (§9.4, pp. 27–28)
+# 4. Missing data: replace the 10% rule? (§9.4, pp. 27–28)
 
 **Decision:** primary estimator, role of multiple imputation, imputation specification.
 
 - The 10%-missing threshold is arbitrary: bias depends on the missingness mechanism.
 
-**Suggestion:** 
+**Suggestion:**
 
-- drop the 10% fixed-threshold framing 
+- drop the 10% fixed-threshold framing
 - pre-specify primary analysis as using all available observed outcome data
 - use multiple imputation as a sensitivity analysis under a MAR assumption
 - consider missingness separately for each outcome
@@ -87,7 +108,7 @@ Timebox 4 min. This has broad consensus in the comments; it mostly needs an in-r
 Timebox 7 min. Two clean options: available-cases primary + MI sensitivity, or always prespecified MI. Pick one and decide the tipping-point question.
 :::
 
-## Adjust the primary model for randomisation factors? (§9.1, pp. 23, 27)
+# 5. Adjust the primary model for randomisation factors? (§9.1, pp. 23, 27)
 
 **Decision:** include the cluster-size randomisation variable as a fixed covariate?
 
@@ -99,13 +120,13 @@ Timebox 7 min. Two clean options: available-cases primary + MI sensitivity, or a
 Timebox 4 min. Randomisation-factor adjustment is a reviewer expectation, so the default is to add cluster size. Only argue the alternative if model complexity genuinely threatens convergence (see the small-sample discussion).
 :::
 
-## Small-sample inference & model-fit criteria (§9, pp. 23, 27)
+# 6. Small-sample inference & model-fit criteria (§9, pp. 23, 27)
 
 **Decision:** pre-specified wording for corrections and acceptable fit.
 
 - The SAP needs a pre-specified small-sample correction for the non-linear models (the choice affects SEs, CIs and p-values and must not be data-driven), plus criteria for acceptable fit beyond convergence.
 
-**Suggestion:** 
+**Suggestion:**
 
 - Kenward–Roger for linear models and an objective fallback for GLMMs (the t(K−2) convention has worked well with few clusters)
 - accept zero variance components (simpler structures as sensitivity)
@@ -115,7 +136,7 @@ Timebox 4 min. Randomisation-factor adjustment is a reviewer expectation, so the
 Timebox 4 min. This is wording plus a modelling convention; the t(K−2) and zero-variance guidance are strong defaults. The unit-level question deserves a quick yes/no here.
 :::
 
-## QoL & disability: separate or longitudinal? (§9.2.2–9.2.3, p. 25)
+# 7. QoL & disability: separate or longitudinal? (§9.2.2–9.2.3, p. 25)
 
 **Decision:** per-time-point analyses, or one joint longitudinal model?
 
@@ -127,7 +148,7 @@ Timebox 4 min. This is wording plus a modelling convention; the t(K−2) and zer
 Timebox 4 min. There is a clear methodological preference for the joint longitudinal model; expect a quick decision.
 :::
 
-## Effect sizes: odds ratio, risk ratio, or marginal effect? (§8.4, §9.1, pp. 22–24)
+# 8. Effect sizes: odds ratio, risk ratio, or marginal effect? (§8.4, §9.1, pp. 22–24)
 
 **Decision:** the effect measure each outcome reports:
 
@@ -144,7 +165,7 @@ Timebox 4 min. There is a clear methodological preference for the joint longitud
 Timebox 4 min. Two threads: (1) JK's preference for risk ratios for binary outcomes, (2) adopting the average marginal effect for the adherence proportion. Settle the reporting principle once per outcome type; the open thread is comment 155, ask KH today if possible.
 :::
 
-## Sensitivity analyses (§9.5, pp. 28–30)
+# 9. Sensitivity analyses (§9.5, pp. 28–30)
 
 **Decision:** the final list of sensitivity analyses, consistent with the protocol.
 
@@ -152,31 +173,31 @@ Timebox 4 min. Two threads: (1) JK's preference for risk ratios for binary outco
 
 **Currently specified analyses:**
 
-| Sensitivity analysis | In the protcol? |
+| Sensitivity analysis | In the protocol? |
 |---|---|
 | 9.5.1 Exposure by actual transition date | No (SAP addition) |
 | 9.5.2 Autoregressive within-cluster correlation | Yes |
 | 9.5.3 Random cluster × intervention | Yes |
 | 9.5.4 Time modelled with a spline | Yes |
 | 9.5.5 Lag & weaning effects | Yes |
+| Multiple imputation under MAR | No (SAP missing-data plan) |
 
-**Suggestion:** 
+**Suggestion:**
 
-- keep the analyses to avoid a major protocol amendment. 
-- the only candidate to remove is 9.5.1 (actual transition date), which the protocol does not require. 
+- keep the analyses to avoid a major protocol amendment.
 
 ::: notes
 Timebox 5 min. Four of the five analyses are mandated by the protocol (9.5.2–9.5.5); only 9.5.1 is an SAP addition. Agree on 9.5.1 (keep or drop). Flag that cutting any protocol-mandated analysis requires a protocol amendment.
 :::
 
-## Subgroups: age groups & geographical region (§9.7, pp. 30–31)
+# 10. Subgroups: age groups & geographical region (§9.7, pp. 30–31)
 
 **Decision:** age categorisation; how the primary subgroup is handled.
 
 - Four age groups risk some subgroups with very few events and the expected patient distribution is unknown.
 - The final set of states (geographical region) is not fixed, yet region is currently the primary subgroup.
 
-**Suggestion:** 
+**Suggestion:**
 
 - use two clinically justified age groups (cut-off fixed before analysis)
 - for region, use zonal councils (Northern, Southern, Central, Eastern, Western, North Eastern)
@@ -185,7 +206,7 @@ Timebox 5 min. Four of the five analyses are mandated by the protocol (9.5.2–9
 Timebox 5 min. Give the age-distribution question priority; nothing is decided on age until we have the expected distribution.
 :::
 
-## Can a patient appear more than once? (§9, p. 30)
+# 11. Can a patient appear more than once? (§9, p. 30)
 
 **Decision:** inclusion rule for repeated ED presentations; any within-patient correlation modelling.
 
@@ -197,7 +218,8 @@ Timebox 5 min. Give the age-distribution question priority; nothing is decided o
 Timebox 3 min. Default is the first-presentation rule unless re-presentation is common.
 :::
 
-## Everything else (offline, no meeting time)
+<!--
+# Everything else (offline, no meeting time)
 
 **Drafting list for AO** (all P2 wording/clarification edits, into the next version):
 
@@ -216,7 +238,7 @@ Timebox 3 min. Default is the first-presentation rule unless re-presentation is 
 1–2 min. Confirm only that AO owns the drafting round and that nothing here needs in-room discussion. Item 214 is a clarification, listed on the next slide.
 :::
 
-## Inputs we need before drafting
+# Inputs we need before drafting
 
 | Comment | Who | Question |
 |---|---|---|
@@ -236,7 +258,7 @@ Timebox 3 min. Default is the first-presentation rule unless re-presentation is 
 2 min. Run through the table; anything not answered today simply delays that item, not the rest of the round.
 :::
 
-## Next steps & owners
+# Next steps & owners
 
 - **Today:** 11 decisions recorded in the minutes (this deck is the working document)
 - **AO:** drafts the next SAP version, covering all D-decisions and the P2 wording edits
@@ -250,3 +272,5 @@ Timebox 3 min. Default is the first-presentation rule unless re-presentation is 
 ::: notes
 Close with: owners + target date. Set the sign-off date explicitly before closing.
 :::
+
+-->
