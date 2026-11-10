@@ -97,3 +97,5 @@ TMG. Update on progress.
 
 ## 2026-08-24
 TMG. Update on progress.
+## 2026-11-10
+SAP v0.7.0 finalisation meeting. Decisions on the 11 review topics; see 20261110/.
