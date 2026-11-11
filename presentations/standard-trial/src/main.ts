@@ -1,0 +1,1254 @@
+import { animate, stagger } from "motion";
+import { slides, type Slide, type Stat } from "./slides";
+import { renderTrainingSelection } from "./training-selection";
+import { renderBatchTimeline } from "./batch-timeline";
+import {
+  applyAxisChrome,
+  createSteppedWedgeSvg,
+  createWedgeLegend,
+  setRevealMonth,
+  focusViewBox,
+  viewBoxString,
+} from "./stepped-wedge";
+import { createForestPlot, type ForestPlotController } from "./forest-plot";
+import { designRevealStageMeta, startDesignReveal, type DesignRevealControls } from "./design-reveal";
+import { createSequencesChart, createSequencesLegend } from "./sequences";
+import { trialDesign, trialDesignStaircase, selectDesignBatch } from "./figure-data";
+import { buildSitesLegendHtml, mountSitesMap, type SitesMapController } from "./sites-map";
+import { participatingSites } from "./data/sites";
+// Fonts are bundled rather than fetched from Google so the deck renders
+// identically on a venue network that blocks or throttles external requests.
+import "@fontsource-variable/eb-garamond";
+import "@fontsource-variable/roboto";
+import "@fontsource-variable/quicksand";
+import "./style.css";
+import "./initiation.css";
+import "./standard.css";
+
+let currentIndex = 0;
+let isAnimating = false;
+let overviewOpen = false;
+const forestControllers = new WeakMap<HTMLElement, ForestPlotController>();
+const sitesMapControllers = new WeakMap<HTMLElement, SitesMapController>();
+let designReveal: DesignRevealControls | null = null;
+
+const slidesEl = document.getElementById("slides")!;
+const counterEl = document.getElementById("slide-counter")!;
+const trialBrandingEl = document.getElementById("trial-branding")!;
+const progressBar = document.getElementById("progress-bar")!;
+const prevBtn = document.getElementById("prev")!;
+const nextBtn = document.getElementById("next")!;
+const overviewEl = document.getElementById("overview")!;
+const overviewFilmstrip = document.getElementById("overview-filmstrip")!;
+const overviewToggle = document.getElementById("overview-toggle")!;
+const overviewClose = document.getElementById("overview-close")!;
+const overviewBackdrop = document.getElementById("overview-backdrop")!;
+const overviewPanel = document.getElementById("overview-panel");
+
+function provocationStatements(slide: Slide): string[] {
+  if (slide.statements?.length) return slide.statements;
+  return slide.body ? [slide.body] : [];
+}
+
+function designData(slide: Slide) {
+  const data = slide.designVariant === "staircase" ? trialDesignStaircase : trialDesign;
+  return slide.designBatch ? selectDesignBatch(data, slide.designBatch) : data;
+}
+
+function renderSlide(slide: Slide): HTMLElement {
+  const el = document.createElement("article");
+  el.className = `slide slide--${slide.layout}`;
+  el.id = `slide-${slide.id}`;
+  el.dataset.layout = slide.layout;
+
+  switch (slide.layout) {
+    case "title":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--center">
+          ${slide.eyebrow ? `<p class="eyebrow" data-animate>${slide.eyebrow}</p>` : ""}
+          <h1 class="display" data-animate>${slide.title}</h1>
+          ${slide.subtitle ? `<p class="subtitle" data-animate>${slide.subtitle}</p>` : ""}
+          ${slide.footer ? `<p class="meta" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "provocation":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--provocation">
+          <div class="provocation-stack" data-animate>
+            ${provocationStatements(slide)
+              .map(
+                (s) => `<div class="provocation-line"><p class="provocation-line__text">${s}</p></div>`
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+      break;
+
+    case "section":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--center">
+          <h2 class="section-title" data-animate>${slide.title}</h2>
+          ${slide.subtitle ? `<p class="section-subtitle" data-animate>${slide.subtitle}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "presenter":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--presenter">
+          ${slide.eyebrow ? `<p class="eyebrow" data-animate>${slide.eyebrow}</p>` : ""}
+          <h1 class="presenter-name" data-animate>${slide.title}</h1>
+          ${slide.subtitle ? `<p class="presenter-degrees" data-animate>${slide.subtitle}</p>` : ""}
+          <div class="presenter-grid">
+            ${
+              slide.bullets?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Positions</h2>
+                    <ul class="presenter-list">
+                      ${slide.bullets.map((b) => `<li>${b}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+            ${
+              slide.affiliations?.length
+                ? `<section class="presenter-block" data-animate>
+                    <h2 class="presenter-heading">Affiliations</h2>
+                    <ul class="presenter-list">
+                      ${slide.affiliations.map((a) => `<li>${a}</li>`).join("")}
+                    </ul>
+                  </section>`
+                : ""
+            }
+          </div>
+          ${
+            slide.body
+              ? `<section class="presenter-disclosure" data-animate>
+                  <h2 class="presenter-heading">Disclosures</h2>
+                  <p class="presenter-disclosure__text">${slide.body}</p>
+                </section>`
+              : ""
+          }
+        </div>
+      `;
+      break;
+
+    case "closing":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--center">
+          <h2 class="display" data-animate>${slide.title}</h2>
+          <figure class="closing-qr" data-animate>
+            <img
+              src="./advancetrauma-qr.svg"
+              alt="QR code linking to advancetrauma.info"
+              width="256"
+              height="256"
+            />
+          </figure>
+          ${slide.subtitle ? `<p class="closing-link" data-animate><a href="https://advancetrauma.info">${slide.subtitle}</a></p>` : ""}
+          ${slide.footer ? `<p class="meta" data-animate>${slide.footer}</p>` : ""}
+          ${slide.body ? `<p class="closing-trademark" data-animate>${slide.body}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "stats": {
+      const statCite = (s: Stat) =>
+        s.source ? `<sup class="cite-ref" aria-label="Reference ${s.source}">${s.source}</sup>` : "";
+      // A focus stat is the slide's headline figure, so it leads above the grid
+      // rather than sitting in it as an outsized card.
+      const focusStats = (slide.stats ?? []).filter((s) => s.focus);
+      const cardStats = (slide.stats ?? []).filter((s) => !s.focus);
+      // Once a headline figure leads the slide, the remaining figures are
+      // qualifiers to it, not peers of each other: a rail of hairline-divided
+      // columns reads that way, where two wide panels flanking one number read
+      // as filler.
+      const leadsWithFocus = focusStats.length > 0;
+
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--stats">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="stats-layout ${slide.image ? "stats-layout--with-image" : ""}">
+            <div class="stats-stack ${leadsWithFocus ? "stats-stack--lead" : ""}">
+              ${focusStats
+                .map(
+                  (s) => `
+                <p class="stat-focus" data-animate>
+                  <span class="stat-value">${s.value}</span>
+                  <span class="stat-label">${s.label}${statCite(s)}</span>
+                </p>`
+                )
+                .join("")}
+              ${
+                cardStats.length
+                  ? `<div class="${leadsWithFocus ? "rail rail--ruled" : "stats-grid"}" data-animate-group>
+                      ${cardStats
+                        .map(
+                          (s) => `
+                        <div class="${leadsWithFocus ? "rail__item" : "panel stat-card"}" data-animate>
+                          <span class="stat-value">${s.value}</span>
+                          <span class="stat-label">${s.label}${statCite(s)}</span>
+                        </div>`
+                        )
+                        .join("")}
+                    </div>`
+                  : ""
+              }
+            </div>
+            ${
+              slide.image
+                ? `<figure class="slide-figure" data-animate><img src="${slide.image}" alt="${slide.imageAlt ?? ""}" /></figure>`
+                : ""
+            }
+          </div>
+          ${
+            slide.references?.length
+              ? `<ol class="slide-references" data-animate>
+                  ${slide.references
+                    .map((ref) => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`)
+                    .join("")}
+                </ol>`
+              : ""
+          }
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+    }
+
+    case "quote":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--quote">
+          <h2 data-animate>${slide.title}</h2>
+          <blockquote class="quote-block" data-animate>
+            <p class="quote-text">${slide.body}</p>
+            ${slide.cite ? `<cite>${slide.cite}</cite>` : ""}
+          </blockquote>
+        </div>
+      `;
+      break;
+
+    case "bullets": {
+      const items = slide.bullets ?? [];
+      const reviewRows = items.length > 0 && items.every((b) => b.includes(" — "));
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--bullets">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.image ? '<div class="illustrated-bullets">' : ''}
+          <ul class="${reviewRows ? "paper-list" : "bullet-list"}" data-animate-group>
+            ${items
+              .map((b, i) => {
+                if (!reviewRows) return `<li data-animate>${b}</li>`;
+                const [author, ...rest] = b.split(" — ");
+                return `<li class="paper-list__item" data-animate>
+                  <span class="paper-list__n" aria-hidden="true">${i + 1}</span>
+                  <div class="paper-list__body">
+                    <p class="paper-list__primary">${author}</p>
+                    <p class="paper-list__secondary">${rest.join(" — ")}</p>
+                  </div>
+                </li>`;
+              })
+              .join("")}
+          </ul>
+          ${slide.image ? `<img class="background-illustration" src="${slide.image}" alt="${slide.imageAlt ?? ''}" data-animate></div>` : ''}
+          ${slide.cite ? `<p class="cite-line" data-animate>${slide.cite}</p>` : ""}
+          ${slide.references?.length ? `<ol class="slide-references" data-animate>${slide.references.map(ref => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`).join("")}</ol>` : ""}
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+    }
+
+    case "evidence":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--evidence">
+          <h2 data-animate>${slide.title}</h2>
+          <ul class="paper-list" data-animate-group>
+            ${(slide.evidence ?? [])
+              .map(
+                (item) => `
+              <li class="paper-list__item" data-animate>
+                <span class="paper-list__n" aria-hidden="true">${item.id}</span>
+                <div class="paper-list__body">
+                  ${item.tag ? `<span class="panel-tag">${item.tag}</span>` : ""}
+                  <p class="paper-list__primary">${item.claim}</p>
+                  <p class="paper-list__secondary">${item.source}</p>
+                </div>
+              </li>`
+              )
+              .join("")}
+          </ul>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "aim":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--aim">
+          <h2 data-animate>${slide.title}</h2>
+          <p class="aim-statement" data-animate>${slide.body}</p>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "outcomes":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--outcomes">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
+          <div class="rail rail--ruled rail--even" data-animate-group>
+            ${(slide.outcomes ?? [])
+              .map(
+                (item) => `
+              <article class="rail__item" data-animate>
+                ${item.tag ? `<span class="outcome-term__source">${item.tag}</span>` : ""}
+                <p class="outcome-term__title">${item.title}</p>
+                ${item.detail ? `<p class="outcome-term__detail">${item.detail}</p>` : ""}
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "outcome-list":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--outcome-list">
+          <h2 data-animate>${slide.title}</h2>
+          <ul class="outcome-list" data-animate-group>
+            ${(slide.outcomes ?? [])
+              .map(
+                (item) => `
+              <li class="outcome-list__row" data-animate>
+                ${item.tag ? `<span class="outcome-list__category">${item.tag}</span>` : ""}
+                <span class="outcome-list__title">${item.title}</span>
+                ${item.detail ? `<span class="outcome-list__detail">${item.detail}</span>` : ""}
+              </li>`
+              )
+              .join("")}
+          </ul>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "arms":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--arms">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="arms-grid" data-animate-group>
+            ${(slide.arms ?? [])
+              .map(
+                (arm) => `
+              <article class="panel arm-card arm-card--${arm.variant}" data-animate>
+
+                <h3 class="arm-card__title">${arm.title}</h3>
+                <figure class="arm-card__figure">
+                  <img src="${arm.image}" alt="${arm.imageAlt}" />
+                </figure>
+                <p class="arm-card__text">${arm.body}</p>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "training-selection":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--training-selection">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="training-intro" data-animate>${slide.body}</p>` : ""}
+          <div data-animate>${renderTrainingSelection(slide.trainingSelection ?? "concentrated")}</div>
+          ${slide.footer ? `<p class="training-recruitment" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "schedule":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--schedule">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="schedule-scroll" data-animate>
+            <table class="assessment-schedule">
+              <caption class="sr-only">Patient assessments from ED arrival to 90-day follow-up</caption>
+              <thead><tr><th scope="col">Assessment</th><th scope="col">During admission</th><th scope="col">After discharge</th><th scope="col">Day 30</th><th scope="col">Day 90</th></tr></thead>
+              <tbody>${(slide.schedule ?? []).map((row) => `<tr><th scope="row">${row.activity}</th>${row.times.map((time) => `<td>${time}</td>`).join("")}</tr>`).join("")}</tbody>
+            </table>
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "columns":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--columns">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
+          <div class="columns-grid" data-animate-group>
+            ${(slide.columns ?? [])
+              .map(
+                (col) => `
+              <section class="column-card" data-animate>
+                <h3 class="column-card__heading">${col.heading}</h3>
+                <ul class="bullet-list">
+                  ${col.bullets.map((b) => `<li>${b}</li>`).join("")}
+                </ul>
+              </section>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "milestones":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--milestones">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="rail rail--stacked" data-animate-group>
+            ${(slide.milestones ?? [])
+              .map(
+                (m) => `
+              <article class="rail__item milestone" data-animate>
+                ${
+                  m.image
+                    ? `<figure class="milestone__media">
+                        <img src="${m.image}" alt="${m.imageAlt ?? ""}" />
+                      </figure>`
+                    : ""
+                }
+                <div class="milestone__body">
+                  <p class="milestone__label">${m.label}${
+                    m.cite
+                      ? `<sup class="cite-ref" aria-label="Reference ${m.cite}">${m.cite}</sup>`
+                      : ""
+                  }</p>
+                  <p class="milestone__year">${m.year}</p>
+                </div>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${
+            slide.references?.length
+              ? `<ol class="slide-references" data-animate>
+                  ${slide.references
+                    .map((ref) => `<li value="${ref.id}"><span class="ref-marker">${ref.id}.</span> ${ref.text}</li>`)
+                    .join("")}
+                </ol>`
+              : ""
+          }
+        </div>
+      `;
+      break;
+
+    case "batch-timeline":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--batch-timeline">
+          <h2 data-animate>${slide.title}</h2>
+          <p class="batch-timeline__intro" data-animate>${slide.body}</p>
+          ${renderBatchTimeline(slide.anticipatedStart!)}
+          <p class="batch-timeline__note" data-animate>${slide.footer}</p>
+        </div>
+      `;
+      break;
+
+    case "design":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--design">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="design-layout">
+            <div class="design-copy" data-animate-group>
+              ${slide.body ? `<p class="lead" data-animate>${slide.body}</p>` : ""}
+              ${
+                slide.stats?.length
+                  ? `<div class="design-metrics" data-animate>
+                      ${slide.stats
+                        .map(
+                          (s) => `
+                        <div class="design-metric">
+                          <span class="stat-value">${s.value}</span>
+                          <span class="stat-label">${s.label}</span>
+                        </div>`
+                        )
+                        .join("")}
+                    </div>`
+                  : ""
+              }
+              ${
+                slide.bullets?.length
+                  ? `<div class="design-notes" data-animate>
+                      ${slide.bullets.map((b) => `<p>${b}</p>`).join("")}
+                    </div>`
+                  : ""
+              }
+            </div>
+            <div class="design-figure" data-animate>
+              <div class="wedge-legend-mount"></div>
+              <div class="wedge-container" data-wedge-mount></div>
+            </div>
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "design-animation": {
+      const stages = designRevealStageMeta();
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--design-animation">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="wedge-panel wedge-panel--solo" data-animate>
+            <div class="wedge-toolbar">
+              <div class="wedge-stages" role="list" aria-label="Design reveal stages">
+                ${stages
+                  .map(
+                    (s) =>
+                      `<button type="button" class="wedge-stage" data-stage="${s.id}" role="listitem">${s.label}</button>`
+                  )
+                  .join("")}
+              </div>
+              <button type="button" class="wedge-play-pause" aria-label="Pause animation" title="Pause (Space)"></button>
+            </div>
+            <p class="wedge-caption" aria-live="polite"></p>
+            <div class="wedge-legend-mount"></div>
+            <div class="wedge-chart-stack">
+              <div class="wedge-container wedge-container--animation" data-wedge-mount>
+                <div class="wedge-phase-callouts" hidden aria-hidden="true">
+                  <article class="wedge-phase" data-phase="standard-care" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-before-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Standard care</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="transition" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./training-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Training</p>
+                    </div>
+                  </article>
+                  <article class="wedge-phase" data-phase="intervention" aria-hidden="true">
+                    <figure class="wedge-phase__figure">
+                      <img src="./patient-review-after-illustration.png" alt="" />
+                    </figure>
+                    <div class="wedge-phase__copy">
+                      <p class="wedge-phase__title">Intervention</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      break;
+    }
+
+    case "sequences":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--sequences">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="sequences-panel">
+            <div class="sequences-mount" id="sequences-mount"></div>
+            <div class="sequences-legend-mount" data-animate></div>
+          </div>
+        </div>
+      `;
+      break;
+
+    case "forest":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--forest">
+          <h2 data-animate>${slide.title}</h2>
+          <div id="forest-mount"></div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "implications":
+      el.innerHTML = `
+        <div class="slide-inner">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="implications-grid" data-animate-group>
+            <div class="panel implication-card implication-card--positive" data-animate>
+              <figure><img src="./patient-review-after-illustration.png" alt="Positive outcome — ATLS improves care" /></figure>
+              <p>If ATLS<sup>®</sup> <strong>improves</strong> patient outcomes, it should be further promoted.</p>
+            </div>
+            <div class="panel implication-card implication-card--negative" data-animate>
+              <figure><img src="./needs-to-change-illustration.png" alt="A trauma course being taught, with a question mark on the board" /></figure>
+              <p>If ATLS<sup>®</sup> <strong>does not improve</strong> patient outcomes, trauma life support training needs to change.</p>
+            </div>
+          </div>
+        </div>
+      `;
+      break;
+
+    case "status-map":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--status-map">
+          <h2 data-animate>${slide.title}</h2>
+          <div class="status-map-layout">
+            <div class="rail rail--stacked" data-animate-group>
+              ${(slide.stats ?? [])
+                .map(
+                  (s) => `
+                <div class="rail__item" data-animate>
+                  <span class="stat-value">${s.value}</span>
+                  <span class="stat-label">${s.label}</span>
+                </div>`
+                )
+                .join("")}
+            </div>
+            <figure class="status-map-figure" data-animate>
+              <div
+                class="sites-map"
+                data-map
+                role="region"
+                aria-label="Map of the ${participatingSites.length} hospitals participating in the trial"
+              ></div>
+              <figcaption class="sites-legend">
+                ${buildSitesLegendHtml()}
+              </figcaption>
+            </figure>
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "team":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--team">
+          <header class="team-header" data-animate>
+            <h2>${slide.title}</h2>
+            ${slide.subtitle ? `<p class="team-subtitle">${slide.subtitle}</p>` : ""}
+          </header>
+          <div class="rail rail--even" data-animate-group>
+            ${(slide.teamGroups ?? [])
+              .map(
+                (group) => `
+              <article class="rail__item" data-animate>
+                <h3 class="team-group__label">${group.label}</h3>
+                <p class="team-group__location">${group.location}</p>
+                <ul class="team-group__members">
+                  ${group.members
+                    .map(
+                      (m) => `
+                    <li>
+                      <span class="team-member__name">${m.name}</span>
+                      <span class="team-member__role">${m.role}</span>
+                    </li>`
+                    )
+                    .join("")}
+                </ul>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="slide-footer" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+
+    case "funding":
+      el.innerHTML = `
+        <div class="slide-inner slide-inner--funding">
+          <h2 data-animate>${slide.title}</h2>
+          ${slide.body ? `<p class="funding-intro" data-animate>${slide.body}</p>` : ""}
+          <div class="rail rail--even" data-animate-group>
+            ${(slide.funders ?? [])
+              .map(
+                (f) => `
+              <article class="rail__item" data-animate>
+                <p class="funder__name">${f.name}</p>
+              </article>`
+              )
+              .join("")}
+          </div>
+          ${slide.footer ? `<p class="funding-ask" data-animate>${slide.footer}</p>` : ""}
+        </div>
+      `;
+      break;
+  }
+
+  if (slide !== slides[0] && slide !== slides[slides.length - 1]) {
+    const header = document.createElement("header");
+    header.className = "trial-header";
+    header.innerHTML = `<span class="trial-header__brandmark">ADVANCE TRAUMA</span><span aria-hidden="true">·</span><a href="https://advancetrauma.info" target="_blank" rel="noopener noreferrer">advancetrauma.info</a>`;
+    el.prepend(header);
+  }
+
+  return el;
+}
+
+function mountSlides(): void {
+  slidesEl.innerHTML = "";
+  slides.forEach((slide, i) => {
+    const el = renderSlide(slide);
+    el.classList.toggle("is-active", i === currentIndex);
+    el.setAttribute("aria-hidden", i === currentIndex ? "false" : "true");
+    slidesEl.appendChild(el);
+
+    if (slide.layout === "design" || slide.layout === "design-animation") {
+      const mount = el.querySelector("[data-wedge-mount]");
+      if (mount) {
+        if (slide.layout === "design") {
+          const data = designData(slide);
+          mount.appendChild(createSteppedWedgeSvg(data));
+          const legendMount = el.querySelector(".wedge-legend-mount");
+          if (legendMount) legendMount.appendChild(createWedgeLegend(data));
+        }
+        if (slide.layout === "design-animation") {
+          // A separate static chart keeps printing independent of reveal state.
+          const printFigure = document.createElement("div");
+          printFigure.className = "print-design";
+          const svg = createSteppedWedgeSvg(trialDesign);
+          svg.setAttribute("viewBox", viewBoxString(focusViewBox(trialDesign, "full")));
+          svg.dataset.stage = "full";
+          setRevealMonth(svg, trialDesign.xMax);
+          svg.querySelectorAll(".wedge-row").forEach((row) => row.setAttribute("opacity", "1"));
+          applyAxisChrome(svg, trialDesign, "full");
+          printFigure.append(createWedgeLegend(trialDesign), svg);
+          el.querySelector(".slide-inner")!.appendChild(printFigure);
+        }
+        // The on-screen animation chart is mounted by startDesignReveal.
+      }
+    }
+    if (slide.layout === "sequences") {
+      const mount = el.querySelector("#sequences-mount");
+      const legendMount = el.querySelector(".sequences-legend-mount");
+      if (mount) mount.appendChild(createSequencesChart(trialDesign));
+      if (legendMount) legendMount.appendChild(createSequencesLegend());
+    }
+    if (slide.layout === "forest") {
+      const mount = el.querySelector("#forest-mount");
+      if (mount) {
+        const forest = createForestPlot();
+        forest.includeAll();
+        mount.appendChild(forest.element);
+        forestControllers.set(el, forest);
+      }
+    }
+    // Keyed off the DOM, not the layout name, so any slide carrying a map works.
+    const mapMount = el.querySelector<HTMLElement>("[data-map]");
+    if (mapMount) {
+      void mountSitesMap(mapMount).then((controller) => {
+        sitesMapControllers.set(el, controller);
+        // Covers a deep link landing on the map slide before Leaflet resolves.
+        if (el.classList.contains("is-active")) controller.refresh();
+      });
+    }
+  });
+}
+
+function slideThumbLabel(slide: Slide): string {
+  if (slide.layout === "provocation") {
+    const opener = provocationStatements(slide)[0];
+    if (opener) return opener.length > 48 ? `${opener.slice(0, 45)}…` : opener;
+  }
+  return slide.title ?? slide.subtitle ?? slide.id;
+}
+
+function thumbPreviewClass(slide: Slide): string {
+  if (
+    slide.layout === "title" ||
+    slide.layout === "closing" ||
+    slide.layout === "section" ||
+    slide.layout === "aim" ||
+    slide.layout === "provocation"
+  ) {
+    return `overview-thumb__preview--${slide.layout}`;
+  }
+  if (slide.image) return "overview-thumb__preview--image";
+  return "";
+}
+
+function thumbPreviewInner(slide: Slide): string {
+  const label = slideThumbLabel(slide);
+  const chips =
+    slide.layout === "stats" ||
+    slide.layout === "evidence" ||
+    slide.layout === "milestones" ||
+    slide.layout === "columns" ||
+    slide.layout === "arms" ||
+    slide.layout === "outcomes" ||
+    slide.layout === "outcome-list" ||
+    slide.layout === "status-map"
+      ? `<div class="overview-thumb__chips" aria-hidden="true">
+          <span class="overview-thumb__chip"></span>
+          <span class="overview-thumb__chip overview-thumb__chip--accent"></span>
+          <span class="overview-thumb__chip overview-thumb__chip--purple"></span>
+        </div>`
+      : slide.layout === "design" || slide.layout === "design-animation" || slide.layout === "forest"
+        ? `<div class="overview-thumb__chips" aria-hidden="true">
+            <span class="overview-thumb__chip" style="max-width:100%"></span>
+          </div>`
+        : "";
+
+  return `${chips}<span class="overview-thumb__mini-title">${label}</span>`;
+}
+
+function mountOverview(): void {
+  overviewFilmstrip.innerHTML = "";
+  slides.forEach((slide, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "overview-thumb";
+    btn.dataset.index = String(i);
+    btn.setAttribute("role", "listitem");
+    btn.setAttribute("aria-label", `Go to slide ${i + 1}: ${slideThumbLabel(slide)}`);
+    if (i === currentIndex) btn.classList.add("is-current");
+
+    const previewClass = thumbPreviewClass(slide);
+    const imageStyle = slide.image ? ` style="background-image:url('${slide.image}')"` : "";
+
+    btn.innerHTML = `
+      <div class="overview-thumb__preview ${previewClass}"${imageStyle}>
+        <div class="overview-thumb__preview-inner">
+          ${thumbPreviewInner(slide)}
+        </div>
+      </div>
+      <div class="overview-thumb__meta">
+        <span class="overview-thumb__num">${i + 1}</span>
+        <span class="overview-thumb__label">${slideThumbLabel(slide)}</span>
+      </div>
+    `;
+
+    btn.addEventListener("click", () => {
+      const target = i;
+      closeOverview();
+      if (target !== currentIndex) goTo(target);
+    });
+
+    overviewFilmstrip.appendChild(btn);
+  });
+}
+
+function updateOverviewActive(): void {
+  const thumbs = overviewFilmstrip.querySelectorAll<HTMLButtonElement>(".overview-thumb");
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle("is-current", i === currentIndex);
+  });
+  const current = thumbs[currentIndex];
+  if (current && overviewOpen) {
+    current.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
+}
+
+function openOverview(): void {
+  if (overviewOpen) return;
+  overviewOpen = true;
+  overviewEl.hidden = false;
+  overviewEl.setAttribute("aria-hidden", "false");
+  overviewToggle.setAttribute("aria-expanded", "true");
+  overviewToggle.setAttribute("aria-label", "Close slide overview");
+  document.body.classList.add("overview-open");
+  // Force reflow so the open transition runs.
+  void overviewEl.offsetWidth;
+  overviewEl.classList.add("is-open");
+  updateOverviewActive();
+  overviewClose.focus();
+}
+
+function closeOverview(): void {
+  if (!overviewOpen) return;
+  overviewOpen = false;
+  overviewEl.classList.remove("is-open");
+  overviewToggle.setAttribute("aria-expanded", "false");
+  overviewToggle.setAttribute("aria-label", "Open slide overview");
+  document.body.classList.remove("overview-open");
+
+  const finish = (): void => {
+    if (overviewOpen) return;
+    overviewEl.hidden = true;
+    overviewEl.setAttribute("aria-hidden", "true");
+  };
+
+  overviewPanel?.addEventListener("transitionend", finish, { once: true });
+  window.setTimeout(finish, 350);
+  overviewToggle.focus();
+}
+
+function toggleOverview(): void {
+  if (overviewOpen) closeOverview();
+  else openOverview();
+}
+
+function updateUI(): void {
+  trialBrandingEl.hidden = currentIndex === 0 || currentIndex === slides.length - 1;
+  counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
+  progressBar.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
+  document.title = `${slides[currentIndex].title ?? "ADVANCE TRAUMA"} — Trial overview`;
+  history.replaceState(null, "", `#${slides[currentIndex].id}`);
+  updateOverviewActive();
+}
+
+/**
+ * Provocation lines are held back and released one keypress at a time, with
+ * everything already said dimmed so the sentence being spoken is the only one
+ * at full strength. Arriving from behind shows the whole statement, so stepping
+ * back through the deck never replays a reveal the audience has already seen.
+ */
+function setProvocationStep(slideEl: HTMLElement, step: number): void {
+  const lines = Array.from(slideEl.querySelectorAll<HTMLElement>(".provocation-line"));
+  lines.forEach((line, i) => {
+    line.classList.toggle("is-revealed", i <= step);
+    line.classList.toggle("is-current", i === step);
+    line.setAttribute("aria-hidden", i <= step ? "false" : "true");
+  });
+  slideEl.dataset.provocationStep = String(step);
+}
+
+function advanceProvocation(slideEl: HTMLElement): boolean {
+  const total = slideEl.querySelectorAll(".provocation-line").length;
+  const step = Number(slideEl.dataset.provocationStep ?? "0");
+  if (step >= total - 1) return false;
+  setProvocationStep(slideEl, step + 1);
+  return true;
+}
+
+function animateSlideIn(slideEl: HTMLElement, direction: "forward" | "backward" = "forward"): void {
+  if (slideEl.dataset.layout === "provocation") {
+    const total = slideEl.querySelectorAll(".provocation-line").length;
+    setProvocationStep(slideEl, direction === "backward" ? total - 1 : 0);
+  }
+
+  const targets = Array.from(slideEl.querySelectorAll<HTMLElement>("[data-animate]"));
+  if (targets.length === 0) return;
+
+  animate(
+    targets,
+    { opacity: [0, 1], transform: ["translateY(24px)", "translateY(0)"] } as Record<string, unknown>,
+    { duration: 0.55, delay: stagger(0.08), ease: [0.22, 1, 0.36, 1] }
+  );
+
+  if (slideEl.dataset.layout === "design" || slideEl.dataset.layout === "design-animation") {
+    const slide = slides[currentIndex];
+    designReveal?.cancel();
+    designReveal = null;
+
+    if (slide?.layout === "design-animation") {
+      designReveal = startDesignReveal(slideEl, trialDesign);
+    } else if (slide?.layout === "design") {
+      const data = designData(slide);
+      const rows = Array.from(slideEl.querySelectorAll<SVGGElement>(".wedge-row"));
+      const svg = slideEl.querySelector<SVGSVGElement>(".stepped-wedge-chart");
+      if (svg) {
+        const stage = slide.designBatch ? "batch" : "full";
+        svg.setAttribute("viewBox", viewBoxString(focusViewBox(data, stage)));
+        applyAxisChrome(svg, data, stage);
+        setRevealMonth(svg, data.xMax);
+      }
+      rows.forEach((row) => {
+        row.style.opacity = "1";
+        row.setAttribute("opacity", "1");
+      });
+      slideEl.querySelectorAll<SVGTextElement>(".wedge-batch-label").forEach((label) => {
+        label.setAttribute("opacity", "1");
+      });
+      animate(
+        rows,
+        { opacity: [0, 1], transform: ["translateX(-20px)", "translateX(0)"] } as Record<string, unknown>,
+        { duration: 0.4, delay: stagger(0.02, { startDelay: 0.3 }), ease: "easeOut" }
+      );
+
+      const segments = Array.from(slideEl.querySelectorAll<SVGRectElement>(".wedge-segment"));
+      segments.forEach((seg) => {
+        seg.style.transformOrigin = "left center";
+      });
+      animate(
+        segments,
+        { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+        {
+          duration: 0.35,
+          delay: stagger(0.008, { startDelay: 0.4 }),
+          ease: [0.22, 1, 0.36, 1],
+        }
+      );
+    }
+  } else {
+    designReveal?.cancel();
+    designReveal = null;
+  }
+
+  if (slideEl.dataset.layout === "sequences") {
+    const flowParts = Array.from(
+      slideEl.querySelectorAll<HTMLElement>(
+        ".consort-flow__assessed, .consort-flow__mid, .consort-flow__randomised, .consort-flow__sequences"
+      )
+    );
+    animate(
+      flowParts,
+      { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.45, delay: stagger(0.14, { startDelay: 0.15 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cols = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-sequence"));
+    animate(
+      cols,
+      { opacity: [0, 1], transform: ["translateY(12px)", "translateY(0)"] } as Record<string, unknown>,
+      { duration: 0.4, delay: stagger(0.08, { startDelay: 0.55 }), ease: [0.22, 1, 0.36, 1] }
+    );
+    const cells = Array.from(slideEl.querySelectorAll<HTMLElement>(".consort-cell"));
+    cells.forEach((cell) => {
+      cell.style.transformOrigin = "left center";
+    });
+    animate(
+      cells,
+      { transform: ["scaleX(0)", "scaleX(1)"] } as Record<string, unknown>,
+      {
+        duration: 0.35,
+        delay: stagger(0.012, { startDelay: 0.7 }),
+        ease: [0.22, 1, 0.36, 1],
+      }
+    );
+  }
+
+  if (slideEl.dataset.layout === "forest") {
+    // Show the evidence immediately; filters remain available for discussion.
+    forestControllers.get(slideEl)?.includeAll();
+  }
+
+  // Leaflet must remeasure once the slide is on screen, or tiles render grey.
+  // The WeakMap returns undefined for every slide without a map.
+  sitesMapControllers.get(slideEl)?.refresh();
+
+  const img = slideEl.querySelector<HTMLElement>(".slide-figure img, .visual-figure img");
+  if (img) {
+    animate(
+      img,
+      { transform: ["scale(0.92)", "scale(1)"], opacity: [0, 1] } as Record<string, unknown>,
+      { duration: 0.7, delay: 0.15, ease: "easeOut" }
+    );
+  }
+}
+
+function goTo(index: number): void {
+  if (isAnimating || index < 0 || index >= slides.length || index === currentIndex) return;
+  const direction = index > currentIndex ? "forward" : "backward";
+  isAnimating = true;
+  designReveal?.cancel();
+  designReveal = null;
+
+  const current = slidesEl.children[currentIndex] as HTMLElement;
+  const next = slidesEl.children[index] as HTMLElement;
+  forestControllers.get(current)?.abortReveal();
+
+  animate(
+    current,
+    { opacity: [1, 0], transform: ["scale(1)", "scale(0.98)"] } as Record<string, unknown>,
+    { duration: 0.25, ease: "easeIn" }
+  ).then(() => {
+    current.classList.remove("is-active");
+    current.setAttribute("aria-hidden", "true");
+    next.classList.add("is-active");
+    next.setAttribute("aria-hidden", "false");
+    currentIndex = index;
+    updateUI();
+    animateSlideIn(next, direction);
+    animate(
+      next,
+      { opacity: [0, 1], transform: ["scale(1.02)", "scale(1)"] } as Record<string, unknown>,
+      { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
+    ).then(() => {
+      isAnimating = false;
+    });
+  });
+}
+
+function next(): void {
+  goTo(currentIndex + 1);
+}
+
+/**
+ * A "next" keypress on a slide that carries an animation drives that animation
+ * instead of leaving the slide, and only advances the deck once the animation
+ * has finished. Returns true when the keypress was consumed.
+ *
+ * The on-screen navigation arrows deliberately bypass this: clicking them is an
+ * explicit request to change slide, whatever the animation is doing.
+ */
+function advanceAnimation(): boolean {
+  const slide = slides[currentIndex];
+
+  if (slide?.layout === "provocation") {
+    return advanceProvocation(slidesEl.children[currentIndex] as HTMLElement);
+  }
+
+  if (slide?.layout === "design-animation") {
+    if (!designReveal || designReveal.isComplete()) return false;
+    if (designReveal.isPaused()) designReveal.resume();
+    return true;
+  }
+
+  if (slide?.layout === "forest") {
+    const slideEl = slidesEl.children[currentIndex] as HTMLElement;
+    return forestControllers.get(slideEl)?.advance() ?? false;
+  }
+
+  return false;
+}
+
+function prev(): void {
+  goTo(currentIndex - 1);
+}
+
+function initFromHash(): void {
+  const hash = location.hash.slice(1);
+  if (hash) {
+    const idx = slides.findIndex((s) => s.id === hash);
+    if (idx >= 0) currentIndex = idx;
+  }
+}
+
+function setupKeyboard(): void {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overviewOpen) {
+      e.preventDefault();
+      closeOverview();
+      return;
+    }
+
+    if ((e.key === "o" || e.key === "O") && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      e.preventDefault();
+      toggleOverview();
+      return;
+    }
+
+    if (overviewOpen) {
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        e.preventDefault();
+        const nextThumb = Math.min(currentIndex + 1, slides.length - 1);
+        if (nextThumb !== currentIndex) goTo(nextThumb);
+        else updateOverviewActive();
+        return;
+      }
+      if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault();
+        const prevThumb = Math.max(currentIndex - 1, 0);
+        if (prevThumb !== currentIndex) goTo(prevThumb);
+        else updateOverviewActive();
+        return;
+      }
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        closeOverview();
+        return;
+      }
+      if (e.key === "Home") {
+        e.preventDefault();
+        goTo(0);
+        return;
+      }
+      if (e.key === "End") {
+        e.preventDefault();
+        goTo(slides.length - 1);
+        return;
+      }
+      return;
+    }
+
+    const onStagedDesign = slides[currentIndex]?.layout === "design-animation";
+
+    // Space drives the animation only while it is still running. Once it has
+    // finished, Space advances the deck as it does everywhere else — otherwise
+    // the natural "I'm done here" keypress replays the whole sequence.
+    if (e.key === " " && onStagedDesign && designReveal && !designReveal.isComplete()) {
+      e.preventDefault();
+      designReveal.toggle();
+      return;
+    }
+
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+      e.preventDefault();
+      if (!advanceAnimation()) next();
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
+      prev();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      goTo(slides.length - 1);
+    } else if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  });
+}
+
+function setupTouch(): void {
+  let startX = 0;
+  let startY = 0;
+
+  slidesEl.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  slidesEl.addEventListener(
+    "touchend",
+    (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        if (dx < 0) next();
+        else prev();
+      }
+    },
+    { passive: true }
+  );
+}
+
+prevBtn.addEventListener("click", prev);
+nextBtn.addEventListener("click", next);
+overviewToggle.addEventListener("click", toggleOverview);
+counterEl.addEventListener("click", toggleOverview);
+overviewClose.addEventListener("click", closeOverview);
+overviewBackdrop.addEventListener("click", closeOverview);
+
+initFromHash();
+mountSlides();
+mountOverview();
+updateUI();
+
+const activeSlide = slidesEl.querySelector(".is-active") as HTMLElement;
+animateSlideIn(activeSlide);
+
+setupKeyboard();
+setupTouch();
+
+window.addEventListener("hashchange", () => {
+  const hash = location.hash.slice(1);
+  const idx = slides.findIndex((s) => s.id === hash);
+  if (idx >= 0 && idx !== currentIndex) goTo(idx);
+});
+
+const progressBarEl = document.getElementById("progress-bar");
+if (progressBarEl) {
+  progressBarEl.style.transformOrigin = "left center";
+}

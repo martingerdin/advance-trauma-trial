@@ -1,0 +1,586 @@
+{
+  "results": [
+    {
+      "width": 1280,
+      "id": "title",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 508,
+      "limit": 720,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "background",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 609,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "atls-purpose",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 465,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "clinician-evidence",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 486,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "patient-evidence",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 506,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "systematic-reviews",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 558,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "atls-forest",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 608,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "aim",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 455,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "design",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 606,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "setting",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 518,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "cluster-eligibility",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 534,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "eligibility",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 526,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "intervention",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 543,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "training",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 518,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "allocation",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 502,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "timeline",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 502,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "primary-outcome",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 480,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "secondary-outcomes",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 469,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "schedule",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 599,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "nested-methods",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 518,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "sample-size",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 568,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "analysis",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 518,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "analysis-detail",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 518,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "data",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 502,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "consent",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 573,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "safety",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 526,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "oversight",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 542,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "interpretation",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 534,
+      "limit": 610,
+      "brokenImages": 0
+    },
+    {
+      "width": 1280,
+      "id": "closing",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 611,
+      "limit": 720,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "title",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 707,
+      "limit": 1080,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "background",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 803,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "atls-purpose",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 673,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "clinician-evidence",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 698,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "patient-evidence",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 749,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "systematic-reviews",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 790,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "atls-forest",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 944,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "aim",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 628,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "design",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 874,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "setting",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 754,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "cluster-eligibility",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 754,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "eligibility",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 744,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "intervention",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 814,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "training",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 754,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "allocation",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 735,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "timeline",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 735,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "primary-outcome",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 680,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "secondary-outcomes",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 715,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "schedule",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 788,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "nested-methods",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 735,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "sample-size",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 785,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "analysis",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 754,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "analysis-detail",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 735,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "data",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 735,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "consent",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 829,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "safety",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 763,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "oversight",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 763,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "interpretation",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 754,
+      "limit": 970,
+      "brokenImages": 0
+    },
+    {
+      "width": 1920,
+      "id": "closing",
+      "overflowX": 0,
+      "overflowY": 0,
+      "brandingCollision": false,
+      "bottom": 859,
+      "limit": 1080,
+      "brokenImages": 0
+    }
+  ],
+  "printOverflow": [],
+  "errors": []
+}
