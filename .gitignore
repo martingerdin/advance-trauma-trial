@@ -5,6 +5,7 @@
 *.pem
 *.key
 *.crt
+*.pnpm-store
 
 # --- Microsoft Office lock / temporary files ---
 ~$*
