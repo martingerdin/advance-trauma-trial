@@ -1,0 +1,850 @@
+{
+  "parameters": {
+    "clusters": 30,
+    "sequences": 5,
+    "batches": 6,
+    "minStandardCareMonths": 4,
+    "minInterventionMonths": 4,
+    "batchesOverlapMonths": 6,
+    "transitionMonths": 1,
+    "transitionOverlapMonths": 0,
+    "startMonth": 0,
+    "totalMonths": 13,
+    "staircaseMonths": 0,
+    "currentMonth": null,
+    "clustersPerBatch": 5
+  },
+  "segments": [
+    {
+      "cluster": 1,
+      "sequence": 1,
+      "batch": 1,
+      "phase": "Standard care",
+      "start": 0,
+      "end": 4,
+      "layer": "main"
+    },
+    {
+      "cluster": 2,
+      "sequence": 2,
+      "batch": 1,
+      "phase": "Standard care",
+      "start": 0,
+      "end": 5,
+      "layer": "main"
+    },
+    {
+      "cluster": 3,
+      "sequence": 3,
+      "batch": 1,
+      "phase": "Standard care",
+      "start": 0,
+      "end": 6,
+      "layer": "main"
+    },
+    {
+      "cluster": 4,
+      "sequence": 4,
+      "batch": 1,
+      "phase": "Standard care",
+      "start": 0,
+      "end": 7,
+      "layer": "main"
+    },
+    {
+      "cluster": 5,
+      "sequence": 5,
+      "batch": 1,
+      "phase": "Standard care",
+      "start": 0,
+      "end": 8,
+      "layer": "main"
+    },
+    {
+      "cluster": 1,
+      "sequence": 1,
+      "batch": 1,
+      "phase": "Transition",
+      "start": 4,
+      "end": 5,
+      "layer": "main"
+    },
+    {
+      "cluster": 2,
+      "sequence": 2,
+      "batch": 1,
+      "phase": "Transition",
+      "start": 5,
+      "end": 6,
+      "layer": "main"
+    },
+    {
+      "cluster": 3,
+      "sequence": 3,
+      "batch": 1,
+      "phase": "Transition",
+      "start": 6,
+      "end": 7,
+      "layer": "main"
+    },
+    {
+      "cluster": 4,
+      "sequence": 4,
+      "batch": 1,
+      "phase": "Transition",
+      "start": 7,
+      "end": 8,
+      "layer": "main"
+    },
+    {
+      "cluster": 5,
+      "sequence": 5,
+      "batch": 1,
+      "phase": "Transition",
+      "start": 8,
+      "end": 9,
+      "layer": "main"
+    },
+    {
+      "cluster": 1,
+      "sequence": 1,
+      "batch": 1,
+      "phase": "Intervention",
+      "start": 5,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 2,
+      "sequence": 2,
+      "batch": 1,
+      "phase": "Intervention",
+      "start": 6,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 3,
+      "sequence": 3,
+      "batch": 1,
+      "phase": "Intervention",
+      "start": 7,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 4,
+      "sequence": 4,
+      "batch": 1,
+      "phase": "Intervention",
+      "start": 8,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 5,
+      "sequence": 5,
+      "batch": 1,
+      "phase": "Intervention",
+      "start": 9,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 6,
+      "sequence": 1,
+      "batch": 2,
+      "phase": "Standard care",
+      "start": 7,
+      "end": 11,
+      "layer": "main"
+    },
+    {
+      "cluster": 7,
+      "sequence": 2,
+      "batch": 2,
+      "phase": "Standard care",
+      "start": 7,
+      "end": 12,
+      "layer": "main"
+    },
+    {
+      "cluster": 8,
+      "sequence": 3,
+      "batch": 2,
+      "phase": "Standard care",
+      "start": 7,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 9,
+      "sequence": 4,
+      "batch": 2,
+      "phase": "Standard care",
+      "start": 7,
+      "end": 14,
+      "layer": "main"
+    },
+    {
+      "cluster": 10,
+      "sequence": 5,
+      "batch": 2,
+      "phase": "Standard care",
+      "start": 7,
+      "end": 15,
+      "layer": "main"
+    },
+    {
+      "cluster": 6,
+      "sequence": 1,
+      "batch": 2,
+      "phase": "Transition",
+      "start": 11,
+      "end": 12,
+      "layer": "main"
+    },
+    {
+      "cluster": 7,
+      "sequence": 2,
+      "batch": 2,
+      "phase": "Transition",
+      "start": 12,
+      "end": 13,
+      "layer": "main"
+    },
+    {
+      "cluster": 8,
+      "sequence": 3,
+      "batch": 2,
+      "phase": "Transition",
+      "start": 13,
+      "end": 14,
+      "layer": "main"
+    },
+    {
+      "cluster": 9,
+      "sequence": 4,
+      "batch": 2,
+      "phase": "Transition",
+      "start": 14,
+      "end": 15,
+      "layer": "main"
+    },
+    {
+      "cluster": 10,
+      "sequence": 5,
+      "batch": 2,
+      "phase": "Transition",
+      "start": 15,
+      "end": 16,
+      "layer": "main"
+    },
+    {
+      "cluster": 6,
+      "sequence": 1,
+      "batch": 2,
+      "phase": "Intervention",
+      "start": 12,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 7,
+      "sequence": 2,
+      "batch": 2,
+      "phase": "Intervention",
+      "start": 13,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 8,
+      "sequence": 3,
+      "batch": 2,
+      "phase": "Intervention",
+      "start": 14,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 9,
+      "sequence": 4,
+      "batch": 2,
+      "phase": "Intervention",
+      "start": 15,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 10,
+      "sequence": 5,
+      "batch": 2,
+      "phase": "Intervention",
+      "start": 16,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 11,
+      "sequence": 1,
+      "batch": 3,
+      "phase": "Standard care",
+      "start": 14,
+      "end": 18,
+      "layer": "main"
+    },
+    {
+      "cluster": 12,
+      "sequence": 2,
+      "batch": 3,
+      "phase": "Standard care",
+      "start": 14,
+      "end": 19,
+      "layer": "main"
+    },
+    {
+      "cluster": 13,
+      "sequence": 3,
+      "batch": 3,
+      "phase": "Standard care",
+      "start": 14,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 14,
+      "sequence": 4,
+      "batch": 3,
+      "phase": "Standard care",
+      "start": 14,
+      "end": 21,
+      "layer": "main"
+    },
+    {
+      "cluster": 15,
+      "sequence": 5,
+      "batch": 3,
+      "phase": "Standard care",
+      "start": 14,
+      "end": 22,
+      "layer": "main"
+    },
+    {
+      "cluster": 11,
+      "sequence": 1,
+      "batch": 3,
+      "phase": "Transition",
+      "start": 18,
+      "end": 19,
+      "layer": "main"
+    },
+    {
+      "cluster": 12,
+      "sequence": 2,
+      "batch": 3,
+      "phase": "Transition",
+      "start": 19,
+      "end": 20,
+      "layer": "main"
+    },
+    {
+      "cluster": 13,
+      "sequence": 3,
+      "batch": 3,
+      "phase": "Transition",
+      "start": 20,
+      "end": 21,
+      "layer": "main"
+    },
+    {
+      "cluster": 14,
+      "sequence": 4,
+      "batch": 3,
+      "phase": "Transition",
+      "start": 21,
+      "end": 22,
+      "layer": "main"
+    },
+    {
+      "cluster": 15,
+      "sequence": 5,
+      "batch": 3,
+      "phase": "Transition",
+      "start": 22,
+      "end": 23,
+      "layer": "main"
+    },
+    {
+      "cluster": 11,
+      "sequence": 1,
+      "batch": 3,
+      "phase": "Intervention",
+      "start": 19,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 12,
+      "sequence": 2,
+      "batch": 3,
+      "phase": "Intervention",
+      "start": 20,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 13,
+      "sequence": 3,
+      "batch": 3,
+      "phase": "Intervention",
+      "start": 21,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 14,
+      "sequence": 4,
+      "batch": 3,
+      "phase": "Intervention",
+      "start": 22,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 15,
+      "sequence": 5,
+      "batch": 3,
+      "phase": "Intervention",
+      "start": 23,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 16,
+      "sequence": 1,
+      "batch": 4,
+      "phase": "Standard care",
+      "start": 21,
+      "end": 25,
+      "layer": "main"
+    },
+    {
+      "cluster": 17,
+      "sequence": 2,
+      "batch": 4,
+      "phase": "Standard care",
+      "start": 21,
+      "end": 26,
+      "layer": "main"
+    },
+    {
+      "cluster": 18,
+      "sequence": 3,
+      "batch": 4,
+      "phase": "Standard care",
+      "start": 21,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 19,
+      "sequence": 4,
+      "batch": 4,
+      "phase": "Standard care",
+      "start": 21,
+      "end": 28,
+      "layer": "main"
+    },
+    {
+      "cluster": 20,
+      "sequence": 5,
+      "batch": 4,
+      "phase": "Standard care",
+      "start": 21,
+      "end": 29,
+      "layer": "main"
+    },
+    {
+      "cluster": 16,
+      "sequence": 1,
+      "batch": 4,
+      "phase": "Transition",
+      "start": 25,
+      "end": 26,
+      "layer": "main"
+    },
+    {
+      "cluster": 17,
+      "sequence": 2,
+      "batch": 4,
+      "phase": "Transition",
+      "start": 26,
+      "end": 27,
+      "layer": "main"
+    },
+    {
+      "cluster": 18,
+      "sequence": 3,
+      "batch": 4,
+      "phase": "Transition",
+      "start": 27,
+      "end": 28,
+      "layer": "main"
+    },
+    {
+      "cluster": 19,
+      "sequence": 4,
+      "batch": 4,
+      "phase": "Transition",
+      "start": 28,
+      "end": 29,
+      "layer": "main"
+    },
+    {
+      "cluster": 20,
+      "sequence": 5,
+      "batch": 4,
+      "phase": "Transition",
+      "start": 29,
+      "end": 30,
+      "layer": "main"
+    },
+    {
+      "cluster": 16,
+      "sequence": 1,
+      "batch": 4,
+      "phase": "Intervention",
+      "start": 26,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 17,
+      "sequence": 2,
+      "batch": 4,
+      "phase": "Intervention",
+      "start": 27,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 18,
+      "sequence": 3,
+      "batch": 4,
+      "phase": "Intervention",
+      "start": 28,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 19,
+      "sequence": 4,
+      "batch": 4,
+      "phase": "Intervention",
+      "start": 29,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 20,
+      "sequence": 5,
+      "batch": 4,
+      "phase": "Intervention",
+      "start": 30,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 21,
+      "sequence": 1,
+      "batch": 5,
+      "phase": "Standard care",
+      "start": 28,
+      "end": 32,
+      "layer": "main"
+    },
+    {
+      "cluster": 22,
+      "sequence": 2,
+      "batch": 5,
+      "phase": "Standard care",
+      "start": 28,
+      "end": 33,
+      "layer": "main"
+    },
+    {
+      "cluster": 23,
+      "sequence": 3,
+      "batch": 5,
+      "phase": "Standard care",
+      "start": 28,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 24,
+      "sequence": 4,
+      "batch": 5,
+      "phase": "Standard care",
+      "start": 28,
+      "end": 35,
+      "layer": "main"
+    },
+    {
+      "cluster": 25,
+      "sequence": 5,
+      "batch": 5,
+      "phase": "Standard care",
+      "start": 28,
+      "end": 36,
+      "layer": "main"
+    },
+    {
+      "cluster": 21,
+      "sequence": 1,
+      "batch": 5,
+      "phase": "Transition",
+      "start": 32,
+      "end": 33,
+      "layer": "main"
+    },
+    {
+      "cluster": 22,
+      "sequence": 2,
+      "batch": 5,
+      "phase": "Transition",
+      "start": 33,
+      "end": 34,
+      "layer": "main"
+    },
+    {
+      "cluster": 23,
+      "sequence": 3,
+      "batch": 5,
+      "phase": "Transition",
+      "start": 34,
+      "end": 35,
+      "layer": "main"
+    },
+    {
+      "cluster": 24,
+      "sequence": 4,
+      "batch": 5,
+      "phase": "Transition",
+      "start": 35,
+      "end": 36,
+      "layer": "main"
+    },
+    {
+      "cluster": 25,
+      "sequence": 5,
+      "batch": 5,
+      "phase": "Transition",
+      "start": 36,
+      "end": 37,
+      "layer": "main"
+    },
+    {
+      "cluster": 21,
+      "sequence": 1,
+      "batch": 5,
+      "phase": "Intervention",
+      "start": 33,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 22,
+      "sequence": 2,
+      "batch": 5,
+      "phase": "Intervention",
+      "start": 34,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 23,
+      "sequence": 3,
+      "batch": 5,
+      "phase": "Intervention",
+      "start": 35,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 24,
+      "sequence": 4,
+      "batch": 5,
+      "phase": "Intervention",
+      "start": 36,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 25,
+      "sequence": 5,
+      "batch": 5,
+      "phase": "Intervention",
+      "start": 37,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 26,
+      "sequence": 1,
+      "batch": 6,
+      "phase": "Standard care",
+      "start": 35,
+      "end": 39,
+      "layer": "main"
+    },
+    {
+      "cluster": 27,
+      "sequence": 2,
+      "batch": 6,
+      "phase": "Standard care",
+      "start": 35,
+      "end": 40,
+      "layer": "main"
+    },
+    {
+      "cluster": 28,
+      "sequence": 3,
+      "batch": 6,
+      "phase": "Standard care",
+      "start": 35,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 29,
+      "sequence": 4,
+      "batch": 6,
+      "phase": "Standard care",
+      "start": 35,
+      "end": 42,
+      "layer": "main"
+    },
+    {
+      "cluster": 30,
+      "sequence": 5,
+      "batch": 6,
+      "phase": "Standard care",
+      "start": 35,
+      "end": 43,
+      "layer": "main"
+    },
+    {
+      "cluster": 26,
+      "sequence": 1,
+      "batch": 6,
+      "phase": "Transition",
+      "start": 39,
+      "end": 40,
+      "layer": "main"
+    },
+    {
+      "cluster": 27,
+      "sequence": 2,
+      "batch": 6,
+      "phase": "Transition",
+      "start": 40,
+      "end": 41,
+      "layer": "main"
+    },
+    {
+      "cluster": 28,
+      "sequence": 3,
+      "batch": 6,
+      "phase": "Transition",
+      "start": 41,
+      "end": 42,
+      "layer": "main"
+    },
+    {
+      "cluster": 29,
+      "sequence": 4,
+      "batch": 6,
+      "phase": "Transition",
+      "start": 42,
+      "end": 43,
+      "layer": "main"
+    },
+    {
+      "cluster": 30,
+      "sequence": 5,
+      "batch": 6,
+      "phase": "Transition",
+      "start": 43,
+      "end": 44,
+      "layer": "main"
+    },
+    {
+      "cluster": 26,
+      "sequence": 1,
+      "batch": 6,
+      "phase": "Intervention",
+      "start": 40,
+      "end": 48,
+      "layer": "main"
+    },
+    {
+      "cluster": 27,
+      "sequence": 2,
+      "batch": 6,
+      "phase": "Intervention",
+      "start": 41,
+      "end": 48,
+      "layer": "main"
+    },
+    {
+      "cluster": 28,
+      "sequence": 3,
+      "batch": 6,
+      "phase": "Intervention",
+      "start": 42,
+      "end": 48,
+      "layer": "main"
+    },
+    {
+      "cluster": 29,
+      "sequence": 4,
+      "batch": 6,
+      "phase": "Intervention",
+      "start": 43,
+      "end": 48,
+      "layer": "main"
+    },
+    {
+      "cluster": 30,
+      "sequence": 5,
+      "batch": 6,
+      "phase": "Intervention",
+      "start": 44,
+      "end": 48,
+      "layer": "main"
+    }
+  ],
+  "colors": {
+    "Standard care": "#f6851f",
+    "Transition": "#1c9ebc",
+    "Intervention": "#663996"
+  },
+  "legend": ["Standard care", "Transition", "Intervention"],
+  "labels": {
+    "x": "Study month",
+    "y": "Cluster",
+    "fill": "Phase",
+    "batch": "Batch"
+  },
+  "geometry": {
+    "xPadding": 0.1,
+    "barHalfHeight": 0.3,
+    "overlayHalfHeight": 0.4,
+    "xBreakStep": 2,
+    "yMin": 0.5,
+    "yMax": 30.5
+  },
+  "xMax": 48
+}
